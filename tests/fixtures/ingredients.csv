@@ -1,0 +1,4 @@
+FOOD,ENERGY (Kcal),PROTEIN (g),prep_state
+"Olive Oil",884,0,Raw / Unprepared
+"Bread",,,Ready
+"Bread",265,abc,Prepared / Cooked Dish

@@ -1,0 +1,7152 @@
+# Recipe Review Queue
+
+- Source: data/raw/Recipes For Eqyption Food.csv
+- Records: 1468
+
+- row 2 [needs_review] Air Fryer Everything Bagel Chicken Cutlets
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 3 [needs_review] Air Fryer Honey Sriracha Salmon Bites
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 4 [needs_review] Air Fryer Lemon Garlic Parmesan Chicken
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 5 [needs_review] Air Fryer Grilled Pimento Cheese
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 6 [needs_review] Air Fryer Po' Boy
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 7 [needs_review] Air Fryer Hearts of Palm Sticks
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 8 [needs_review] Air Fryer Crispy Pickle Chips with Creole Dipping Sauce
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 9 [needs_review] Air Fryer Green Bean Fries
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 10 [needs_review] Air Fryer Everything Bagel Chicken Cutlets
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 11 [needs_review] Air Fryer Salmon Croquettes
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 12 [needs_review] Air Fryer Lemon Garlic Parmesan Chicken
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 13 [needs_review] Air Fryer Grilled Pimento Cheese
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 14 [needs_review] Air Fryer Po' Boy
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 15 [needs_review] Air Fryer Chicken Nuggets
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 16 [needs_review] Air Fryer Rib-Eye Steak
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 17 [needs_review] Air Fryer Garlic Green Beans
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 18 [needs_review] Air Fryer Green Beans
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 19 [needs_review] Air Fryer Roasted Asparagus
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 20 [needs_review] Air Fryer Spaghetti Squash
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 21 [needs_review] Air Fryer Fried Green Tomatoes
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 22 [needs_review] Air Fryer Seasoned Breakfast Potatoes
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 23 [needs_review] Air Fryer Roasted Potatoes
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 24 [needs_review] Air Fryer Stuffing Balls
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 25 [needs_review] Air Fryer Falafel
+  - some Egyptian-scope signals present but insufficient or single-source
+  - signal: dish_name_match=falafel
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 26 [needs_review] Air Fryer Parmesan Chicken Skewers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 27 [needs_review] Air Fryer Crispy Pickle Chips with Creole Dipping Sauce
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 28 [needs_review] Air Fryer Green Bean Fries
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 29 [needs_review] Air Fryer Cheese Curds
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 30 [needs_review] TikTok Air Fryer Bagel Chips
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 31 [needs_review] Healthier Jalapeño Poppers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 32 [needs_review] Air Fryer Puffed Butter Beans
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 33 [needs_review] Easy Air Fryer Cream Cheese Wontons
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 34 [needs_review] Air Fryer Chicken Taquitos
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 35 [needs_review] Air Fryer Pasta Chips
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 36 [needs_review] 20 Layer Air Fryer Nachos
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 37 [needs_review] Air Fryer Hearts of Palm Sticks
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 38 [needs_review] Air Fryer Reuben-Inspired Mozzarella Sticks
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 39 [needs_review] Greek Stuffed Peppers—the Delicious All-in-One Meal We'll Make on Repeat
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 40 [needs_review] Garlic Butter Chicken Cutlets
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 41 [needs_review] Lemon Chicken Gnocchi
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 42 [needs_review] These 4-Ingredient Chicken Tenders Are Weeknight Dinner Gold
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 43 [needs_review] Air Fryer Turkey Stuffed Peppers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 44 [needs_review] Ground Turkey and Zucchini Skillet
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 45 [needs_review] Balsamic Caprese Grilled Steak
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 46 [needs_review] Peach and Mango Habanero Chicken Thighs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 47 [needs_review] Dallas' Spicy Habanero Salsa
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 48 [needs_review] Loaded Olive Oil Dip
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 49 [needs_review] Fresh Cherry Crumb Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 50 [needs_review] Firecracker Chicken Meatballs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 51 [needs_review] Copycat Taco Bell Baja Sauce
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 52 [needs_review] Green Goddess Egg Salad
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 53 [needs_review] Italian Meatballs on Parmesan Noodles
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 54 [needs_review] Peach Cobbler Cookies
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 55 [needs_review] Sheet Pan Honey Mustard Salmon and Green Beans
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 56 [needs_review] Grilled Pineapple Lime Chicken Thighs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 57 [needs_review] Mediterranean Flatbread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 58 [needs_review] Summer Crab Salad
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 59 [needs_review] Chantilly Cake
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 60 [needs_review] Dallas' Spicy Habanero Salsa
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 61 [needs_review] Loaded Olive Oil Dip
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 62 [needs_review] Firecracker Chicken Meatballs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 63 [needs_review] Mediterranean Flatbread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 64 [needs_review] French Dip Sliders
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 65 [needs_review] Air Fryer Honey Sriracha Salmon Bites
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 66 [needs_review] Asparagus Ricotta Tart
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 67 [needs_review] Mediterranean Flatbread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 68 [needs_review] Sloppy Joe Garlic Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 69 [needs_review] Olive Cheese Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 70 [needs_review] Pistachio Hummus
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 71 [needs_review] Sloppy Joe Sliders
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 72 [needs_review] Meatball Subs on a Stick
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 73 [needs_review] Jalapeno Spinach Dip
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 74 [needs_review] Baked Boursin Tomato Dip
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 75 [needs_review] Herby Garlic Skillet Dinner Rolls
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 76 [needs_review] Lemon Cranberry Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 77 [needs_review] Cheesy Garlic Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 78 [needs_review] Grilled Gyro Flatbread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 79 [needs_review] Plum and Pecan Muffins
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 80 [needs_review] Rhubarb Poppy Seed Muffins
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 81 [needs_review] One-Bowl Lemon Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 82 [needs_review] Lemon Blueberry Scones
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 83 [needs_review] Air Fryer Sourdough Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 84 [needs_review] Yummy Lemon Coconut Loaf
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 85 [needs_review] Almond Flour Chocolate Chip Muffins
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 86 [needs_review] Blueberry Lemon Breakfast Biscuits
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 87 [needs_review] Ginger Scones
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 88 [needs_review] Air Fryer Pão de Queijo
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 89 [needs_review] Almond Flour Lemon Muffins
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 90 [needs_review] Carrot-Apple Muffins
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 91 [needs_review] Spelt Flat Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 92 [needs_review] Reese's Cup Overnight Oats
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 93 [needs_review] Halloumi Breakfast Sandwiches
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 94 [needs_review] Baked Feta Eggs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 95 [needs_review] Granola Cups
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 96 [needs_review] Overnight Pineapple-Banana Oatmeal
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 97 [needs_review] Sausage, Egg, and Cheese Breakfast Cookies
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 98 [needs_review] Egg White Breakfast Bites
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 99 [needs_review] Fresh Cherry Crumb Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 100 [needs_review] Peach Cobbler Cookies
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 101 [needs_review] Chantilly Cake
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 102 [needs_review] Lemon Blackberry Blondies
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 103 [needs_review] Rhubarb Olive Oil Cake
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 104 [needs_review] Best Ever Blueberry Cookies
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 105 [needs_review] No-Bake Lemon Ricotta Cheesecake Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 106 [needs_review] Lemon Olive Oil Cake
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 107 [needs_review] Sticky Toffee Pudding Thumbprints
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 108 [needs_review] Lemon Crumb Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 109 [needs_review] Nutella Swirl Cheesecake Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 110 [needs_review] Italian Ricotta Cookie Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 111 [needs_review] Christmas Cheesecake Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 112 [needs_review] Apple Fritter Cake
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 113 [needs_review] Blackberry Cheesecake Brownies
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 114 [needs_review] Lemon Chicken Gnocchi
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 115 [needs_review] Air Fryer Turkey Stuffed Peppers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 116 [needs_review] Ground Turkey and Zucchini Skillet
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 117 [needs_review] Balsamic Caprese Grilled Steak
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 118 [needs_review] Peach and Mango Habanero Chicken Thighs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 119 [needs_review] Firecracker Chicken Meatballs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 120 [needs_review] Italian Meatballs on Parmesan Noodles
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 121 [needs_review] Sheet Pan Honey Mustard Salmon and Green Beans
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 122 [needs_review] Grilled Pineapple Lime Chicken Thighs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 123 [needs_review] Cowboy Butter Spaghetti
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 124 [needs_review] Tzatziki Chicken Naan Pizza
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 125 [needs_review] One-Pan Creamy Chicken and Vegetable Pasta
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 126 [needs_review] Fresh Salmon Patties
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 127 [needs_review] 15-Minute Creamy Garlic Basil Pasta
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 128 [needs_review] One-Pan Creamy Baked Salmon and Orzo
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 129 [needs_review] Sheet Pan Za'atar Chicken Thighs and Vegetables
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 130 [needs_review] BBQ Meatballs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 131 [needs_review] Air Fryer Everything Bagel Chicken Cutlets
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 132 [needs_review] Chicken Alfredo Rice Casserole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 133 [needs_review] Chicken Thigh and Orzo Skillet
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 134 [needs_review] Cabbage, Potato, and Sausage Skillet
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 135 [needs_review] Smothered Chicken
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 136 [needs_review] Caprese Orzo Pesto Salad
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 137 [needs_review] Asparagus, Cucumber, and Tomato Salad
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 138 [needs_review] Asparagus, Cucumber, and Tomato Salad with Sesame Soy Vinaigrette
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 139 [needs_review] Roasted Beet and Avocado Salad
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 140 [needs_review] Melon Salad with Feta
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 141 [needs_review] Mixed Salad
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 142 [needs_review] California Roll Cucumber Salad
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 143 [needs_review] Southwest Chicken Power Salad
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 144 [needs_review] High Protein Egg Salad
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 145 [needs_review] Spicy Creamy Cucumber Salad
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 146 [needs_review] Avocado Caprese Salad
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 147 [needs_review] Cucumber Feta Quinoa Salad
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 148 [needs_review] Cucumber Feta Couscous Salad
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 149 [needs_review] Peach Quinoa Salad
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 150 [needs_review] Salmon Caesar Salad
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 151 [needs_review] Easy Buffalo Chicken Salad
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 152 [needs_review] Spicy Dill Pickle Tuna Salad
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - human verification: unreviewed
+- row 153 [needs_review] Light Tomato Salad
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 154 [needs_review] Shaved Asparagus Salad
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 155 [needs_review] Greek Potato Salad
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 156 [needs_review] Edamame and Radish Salad
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 157 [needs_review] Celebrate Summer with Watermelon, Feta, and Mint Salad
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 158 [needs_review] Caprese Pasta with Thai Basil
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 159 [needs_review] My Favorite Chicken Salad
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 160 [needs_review] Bionicos (Mexican Fruit Bowls)
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 161 [needs_review] Healthy Chicken Salad
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 162 [needs_review] Amazing Cucumber Basil Salad
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 163 [needs_review] Smoked Salmon Poke Bowl
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 164 [needs_review] Mediterranean Salmon Pasta Salad
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 165 [needs_review] No-Mayo Chicken Salad
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 166 [needs_review] Aw-some Coleslaw Recipe
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 167 [needs_review] Greek Zoodle Salad
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 168 [needs_review] Greek Yogurt Chicken Salad
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 169 [needs_review] Cilantro, Avocado, Tomato, and Feta Salad
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 170 [needs_review] Grilled Cajun Corn
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 171 [needs_review] Scarborough Fair Roasted Vegetables
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 172 [needs_review] 15-Minute Creamy Garlic Basil Pasta
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 173 [needs_review] Lemon Garlic Butter Beans
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 174 [needs_review] Roasted Asparagus and Carrots
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 175 [needs_review] Oregano Roasted Carrots
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 176 [needs_review] Caramelized Onion Mashed Potatoes
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 177 [needs_review] Honey Lemon Roasted Carrots
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 178 [needs_review] Marry Me Chickpeas
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 179 [needs_review] Roasted Cauliflower with Feta
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 180 [needs_review] Hot Honey Roasted Cauliflower
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 181 [needs_review] Roasted Honey Garlic Cauliflower
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 182 [needs_review] Roasted Red Pepper Sauce
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 183 [needs_review] Parmesan Pesto Roasted Cauliflower
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 184 [needs_review] Zhug Cauliflower
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 185 [needs_review] Bang Bang Cauliflower
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 186 [needs_review] Honey Roasted Beets
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 187 [needs_review] Sweet and Spicy Sweet Potato Bites
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 188 [needs_review] Muffin Pan Roasted Potato Wedges
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 189 [needs_review] Pesto Aioli
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 190 [needs_review] Cheesy Garlic Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 191 [needs_review] Sweet and Spicy Baked Cauliflower
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 192 [needs_review] Tuscan Chicken Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 193 [needs_review] Creamy Chicken and Mushroom Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 194 [needs_review] Cottage Cheese Tomato Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 195 [needs_review] Harissa Butternut Squash Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 196 [needs_review] Creamy Tomato Bean Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 197 [needs_review] Coconut Lime Fish Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 198 [needs_review] Tomato White Bean Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 199 [needs_review] Nordstrom's Tomato Basil Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 200 [needs_review] Copycat Chick-fil-A Chicken Tortilla Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 201 [needs_review] Cauliflower Cheddar Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 202 [needs_review] Marry Me Bean Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 203 [needs_review] Slow Cooker Stuffed Pepper Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 204 [needs_review] Easy Black Bean Soup for Two
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 205 [needs_review] Couscous Chicken Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 206 [needs_review] Chicken Soup with Pearl Couscous
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 207 [needs_review] Quick Tomato and Bean Soup Provencal
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 208 [needs_review] Creamy Cajun Potato Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 209 [needs_review] Artichoke Parmesan Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 210 [needs_review] Roasted Cauliflower and Garlic Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 211 [needs_review] Mom's Butter Bean Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 212 [needs_review] Roasted Cherry Tomato Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 213 [needs_review] Tomato Feta Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 214 [needs_review] Boursin Chicken and Vegetable Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 215 [needs_review] Instant Pot Shrimp Boil Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 216 [needs_review] Beef and Mushroom Dumplings in Broth
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 217 [needs_review] Tomato Soup with Grilled Cheese Croutons
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 218 [needs_review] Instant Pot Asparagus Brie Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 219 [needs_review] Instant Pot Turkey Bone Broth
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 220 [needs_review] Chicken Minestrone Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 221 [needs_review] Roasted Broccoli Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 222 [needs_review] Lemon Chicken Orzo Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 223 [needs_review] Chicken and Gnocchi Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 224 [needs_review] High-Altitude Angel Food Cake
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 225 [needs_review] Chocolate Angel Food Cake II
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 226 [needs_review] Toasted Angel Food Cake with Strawberries
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 227 [needs_review] Mediterranean Flatbread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 228 [needs_review] Best Caprese Skewers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 229 [needs_review] Antipasto
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 230 [needs_review] Caprese Skewers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 231 [needs_review] Easy Caponata
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 232 [needs_review] Roasted Peppers in Oil (Peperoni Arrostiti Sotto Olio)
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 233 [needs_review] Tortellini Skewers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 234 [needs_review] Roasted Veggie Antipasto
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 235 [needs_review] Bruschetta with Peas and Mint
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 236 [needs_review] Magaricz
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 237 [needs_review] The Best Garlic Knots—No-Knead, No-Rise!
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 238 [needs_review] These 4-Ingredient Chicken Tenders Are Weeknight Dinner Gold
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 239 [needs_review] Dallas' Spicy Habanero Salsa
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 240 [needs_review] Mississippi Chicken Skewers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 241 [needs_review] Loaded Olive Oil Dip
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 242 [needs_review] Firecracker Chicken Meatballs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 243 [needs_review] Pissaladière (Southern French "Pizza")
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 244 [needs_review] Simple Snack Mix
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 245 [needs_review] Upside Down Apple Puff Pastry Tarts with Fontina
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 246 [needs_review] BBQ Salmon Bowls
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 247 [needs_review] Air Fryer Honey Sriracha Salmon Bites
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 248 [needs_review] Taco Beef Lettuce Cups
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 249 [needs_review] Asparagus Ricotta Tart
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 250 [needs_review] Mediterranean Flatbread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 251 [needs_review] Fleischsalat (German Meat Salad)
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - human verification: unreviewed
+- row 252 [needs_review] Chopped Greek Salad Dip
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 253 [needs_review] Mediterranean Flatbread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 254 [needs_review] Best Caprese Skewers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 255 [needs_review] Antipasto
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 256 [needs_review] Caprese Skewers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 257 [needs_review] Easy Caponata
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 258 [needs_review] Roasted Peppers in Oil (Peperoni Arrostiti Sotto Olio)
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 259 [needs_review] Tortellini Skewers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 260 [needs_review] Roasted Veggie Antipasto
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 261 [needs_review] Bruschetta with Peas and Mint
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 262 [needs_review] Magaricz
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 263 [needs_review] Upside Down Apple Puff Pastry Tarts with Fontina
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 264 [needs_review] Tuna Melt Nachos
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 265 [needs_review] Cheesy Mushroom Puff Pastry Bites
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 266 [needs_review] 20 Layer Air Fryer Nachos
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 267 [needs_review] Baked Feta Cheese and Tomatoes
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 268 [needs_review] Grilled Halloumi
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 269 [needs_review] Air Fryer Reuben-Inspired Mozzarella Sticks
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 270 [needs_review] Cool and Creamy Cucumber Spread Bites
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 271 [needs_review] Dallas' Spicy Habanero Salsa
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 272 [needs_review] BBQ Salmon Bowls
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 273 [needs_review] Chef John's Baba Ganoush
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 274 [needs_review] Fleischsalat (German Meat Salad)
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - human verification: unreviewed
+- row 275 [needs_review] Chopped Greek Salad Dip
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 276 [needs_review] Baba Ganoush
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 277 [needs_review] Pistachio Hummus
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 278 [needs_review] Dubai Chocolate Strawberry Dip
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 279 [needs_review] Marry Me Dip
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 280 [needs_review] Jalapeno Spinach Dip
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 281 [needs_review] Baked Boursin Tomato Dip
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 282 [needs_review] Smoked Turkey Collard Green Dip
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 283 [needs_review] Roscoe's Chilaquiles
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 284 [needs_review] Cranberry Jalapeno Dip
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 285 [needs_review] 10 Layer Dip
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 286 [needs_review] Copycat Cava Crazy Feta Dip
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 287 [needs_review] Tomato Pie Dip
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 288 [needs_review] Mango Salsa
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 289 [needs_review] My Own Famous Stuffed Grape Leaves
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 290 [needs_review] Balsamic Roasted Grapes
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 291 [needs_review] Fig and Goat Cheese Pizza
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 292 [needs_review] Savory Blue Cheese Cheesecake with Cherry Pear Compote and Cherry Balsamic Glaze
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 293 [needs_review] Deep-Fried Sous Vide Egg Yolks
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 294 [needs_review] Easy Black Bean Dip
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 295 [needs_review] Roasted Oranges with Thyme
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 296 [needs_review] Watermelon Salad on a Stick
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 297 [needs_review] Firecracker Chicken Meatballs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 298 [needs_review] Big Mac Crispy Rice
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 299 [needs_review] Sloppy Joe Sliders
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 300 [needs_review] Meatball Subs on a Stick
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 301 [needs_review] Meatball Slider Bombs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 302 [needs_review] Za'atar Chicken Wings
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 303 [needs_review] Coconut Chicken Tenders
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 304 [needs_review] Baked Turkey Curry Empanadas
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 305 [needs_review] Air Fryer Parmesan Chicken Skewers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 306 [needs_review] Greek-Style Chicken Pops
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 307 [needs_review] Fried Bologna Bánh Mì Bites
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 308 [needs_review] Baked Chicken Curry Dip
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 309 [needs_review] Easy Chicken Lettuce Wraps
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 310 [needs_review] Buffalo Chicken Bombs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 311 [needs_review] The Best Salmon Cakes
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 312 [needs_review] Tuna Melt Nachos
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 313 [needs_review] Salmon Croquettes
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 314 [needs_review] Best Ever Ceviche
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 315 [needs_review] Garlic Shrimp Aguachile
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 316 [needs_review] Taramosalata
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 317 [needs_review] Vietnamese Fresh Spring Rolls
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 318 [needs_review] Easy Tuna Patties
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 319 [needs_review] Crab-Stuffed Mushrooms
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 320 [needs_review] Seafood Skillet Dip
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 321 [needs_review] How to Make Maryland Crab Cakes
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 322 [needs_review] Baked Maryland Lump Crab Cakes
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 323 [needs_review] Jamaican Saltfish Fritters (Stamp and Go)
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 324 [needs_review] Hot Crab Dip
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 325 [needs_review] Mexican Ceviche
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 326 [needs_review] Grilled Marinated Shrimp
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 327 [needs_review] Cream Cheese and Crab Sushi Rolls
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 328 [needs_review] Super Easy Salmon Cakes
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 329 [needs_review] Salmon Patties with Dill Sauce
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 330 [needs_review] Daddy's Shrimp Toast
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 331 [needs_review] Zucchini Scarpaccia
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 332 [needs_review] Olive Cheese Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 333 [needs_review] Colcannon Balls
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 334 [needs_review] Olive Cheese Balls
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 335 [needs_review] Deviled Potato Bites
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 336 [needs_review] Cheesy Mushroom Puff Pastry Bites
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 337 [needs_review] French Fries all'Assassina (Assassin's French Fries)
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 338 [needs_review] Air Fryer Crispy Pickle Chips with Creole Dipping Sauce
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 339 [needs_review] Air Fryer Green Bean Fries
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 340 [needs_review] Crab-Stuffed Mushrooms
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 341 [needs_review] Easy Sausage-Stuffed Mushrooms
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 342 [needs_review] Baked Artichokes with Herb Butter
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 343 [needs_review] Crispy Parmesan Ranch Smashed Carrots
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 344 [needs_review] Deviled Potato Bites
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 345 [needs_review] Deviled Egg Potato Salad
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 346 [needs_review] Southern Deviled Eggs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 347 [needs_review] Kimberly's Curried Deviled Eggs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 348 [needs_review] Seven-Layer Taco Dip
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 349 [needs_review] Roasted Chickpeas
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 350 [needs_review] Heather's Cilantro, Black Bean, and Corn Salsa
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 351 [needs_review] Best-Ever Texas Caviar
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 352 [needs_review] Southwestern Egg Rolls
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 353 [needs_review] Simple Roasted Chickpea Snack
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 354 [needs_review] Super Easy Hummus
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 355 [needs_review] Crispy Edamame
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 356 [needs_review] Supremely Spicy Hummus
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 357 [needs_review] Black Bean Hummus
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 358 [needs_review] Mexican Layered Dip
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 359 [needs_review] Seven Layer Tex Mex Dip
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 360 [needs_review] Simple Roasted Edamame
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 361 [needs_review] Falafels with Yogurt-Dill Sauce
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 362 [needs_review] Wasabi Green Peas
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 363 [needs_review] Espinacas con Garbanzos (Spinach with Garbanzo Beans)
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 364 [needs_review] Jalapeño Hummus
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 365 [needs_review] Best Ever Layered Mexican Dip
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 366 [needs_review] Extra Easy Hummus
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 367 [needs_review] Authentic Middle Eastern Hummus (Chummus)
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 368 [needs_review] Hummus III
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 369 [needs_review] Black Bean and Feta Cheese Ugly Dip
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 370 [needs_review] The Best Dry-Roasted Chickpea Recipe
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 371 [needs_review] Sun-Dried Tomato Hummus
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 372 [needs_review] Roasted Salt & Vinegar Chickpeas
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 373 [needs_review] Skinny Seven Layer Dip
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 374 [needs_review] Oven-Roasted Chickpeas
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 375 [needs_review] Big Ray's White Bean, Kale, and Kielbasa Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 376 [needs_review] Indian-Spiced Roasted Chickpeas
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 377 [needs_review] Turkey Nacho Bake
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 378 [needs_review] Sweet Potato Hummus
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 379 [needs_review] Easy Spanakopita
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 380 [needs_review] Greek Spanakopita
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 381 [needs_review] Beef Samosas
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 382 [needs_review] Baked Turkey Curry Empanadas
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 383 [needs_review] Coney Island Knishes
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 384 [needs_review] "Toy Box" Tomato Ricotta Cheese Torta
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 385 [needs_review] Frito Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 386 [needs_review] Chef John's Tomato Tart
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 387 [needs_review] Upside Down Apple Puff Pastry Tarts with Fontina
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 388 [needs_review] Apple Cheddar Twists
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 389 [needs_review] Cheesy Mushroom Puff Pastry Bites
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 390 [needs_review] Stuffed Crescent Rolls
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 391 [needs_review] Mini Mushroom and Goat Cheese Tarts
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 392 [needs_review] Jamaican Saltfish Fritters (Stamp and Go)
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 393 [needs_review] Spinach Rolls with Puff Pastry
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 394 [needs_review] Classic Beef Empanadas
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 395 [needs_review] Sambusa
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 396 [needs_review] How to Make Cheese Sticks
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 397 [needs_review] Feta Cheese Foldovers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 398 [needs_review] Samosas
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 399 [needs_review] Authentic Chicken Empanadas (Empanadas de Pollo)
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 400 [needs_review] Wild Mushroom Puff Pastry
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 401 [needs_review] Cajun Cashews
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 402 [needs_review] Roasted Winter Squash Seeds
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 403 [needs_review] Sweet and Spicy Almonds
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 404 [needs_review] Air Fryer Roasted Almonds
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 405 [needs_review] Roasted Butternut Squash Seeds
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 406 [needs_review] Caramelized Spicy Pumpkin Seeds
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 407 [needs_review] Taco Beef Lettuce Cups
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 408 [needs_review] The Cheesecake Factory Thai Chicken Lettuce Wraps
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 409 [needs_review] Vietnamese Fresh Spring Rolls
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 410 [needs_review] Easy Chicken Lettuce Wraps
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 411 [needs_review] Southwestern Egg Rolls
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 412 [needs_review] Cream Cheese and Crab Sushi Rolls
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 413 [needs_review] Vietnamese Spring Rolls With Dipping Sauce
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 414 [needs_review] Spicy Crab Spring Rolls
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 415 [needs_review] Frito Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 416 [needs_review] Grilled Peppers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 417 [needs_review] Awesome Slow Cooker Buffalo Wings
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 418 [needs_review] Tomatillo Salsa Verde
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 419 [needs_review] Spicy Chicken Zucchini Meatballs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 420 [needs_review] Buffalo Cauliflower
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 421 [needs_review] Homemade Sushi
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 422 [needs_review] Best-Ever Texas Caviar
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 423 [needs_review] Southwestern Egg Rolls
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 424 [needs_review] Mango Salsa
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 425 [needs_review] Spicy Pretzels
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 426 [needs_review] Beef Samosas
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 427 [needs_review] Grilled Marinated Shrimp
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 428 [needs_review] Stuffed Hot Peppers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 429 [needs_review] Cheesy Buffalo Chicken Dip
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 430 [needs_review] Caprese Garlic Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 431 [needs_review] Easy Garlic Knots
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 432 [needs_review] Cheesy Garlic Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 433 [needs_review] Cheesy Stuffed Garlic Hawaiian Rolls
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 434 [needs_review] Roasted Garlic Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 435 [needs_review] Garlic Bread Spread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 436 [needs_review] Toasted Garlic Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 437 [needs_review] Make-Ahead Garlic Toast
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 438 [needs_review] Homemade Garlic Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 439 [needs_review] Easy Cheesy Garlic Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 440 [needs_review] Garlic Pita Bread Bites
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 441 [needs_review] Stuffed Italian Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 442 [needs_review] Bread Machine Garlic Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 443 [needs_review] Garlic Bread Fantastique
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 444 [needs_review] Jimmbo's Garlic Knots
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 445 [needs_review] Garlic and Herb Pull Apart Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 446 [needs_review] Garlic Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 447 [needs_review] Fried Garlic Pita
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 448 [needs_review] Two-Ingredient Dough Garlic Knots
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 449 [needs_review] Grilled Garlic Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 450 [needs_review] 2-Ingredient Dough Garlic Knots
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 451 [needs_review] Rosemary Garlic Knots
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 452 [needs_review] Extra Garlicky Garlic Knots
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 453 [needs_review] Great Garlic Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 454 [needs_review] Lazy Bruschetta
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 455 [needs_review] Chef John's Grilled Swordfish Bruschetta
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 456 [needs_review] Bruschetta with Mozzarella
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 457 [needs_review] Ali's Amazing Bruschetta
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 458 [needs_review] Easy Bruschetta
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 459 [needs_review] Double Tomato Bruschetta
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 460 [needs_review] Best Bruschetta Ever
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 461 [needs_review] Bruschetta with Cheese
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 462 [needs_review] Bruschetta al Pomodoro
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 463 [needs_review] Caprese Garlic Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 464 [needs_review] Mushroom and Tomato Bruschetta
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 465 [needs_review] Bruschetta with Roasted Sweet Red Peppers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 466 [needs_review] Burrata Bruschetta with Figs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 467 [needs_review] Apple Goat Cheese Bruschetta
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 468 [needs_review] Becca's Bruschetta
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 469 [needs_review] Bruschetta with Peas and Mint
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 470 [needs_review] Best Ever Bruschetta!
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 471 [needs_review] Jen's Tomato Arugula Bruschetta
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 472 [needs_review] Caprese Grilled Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 473 [needs_review] Heirloom Tomato Bruschetta
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 474 [needs_review] Fantastic Fennel Bruschetta
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 475 [needs_review] Healthier Double Tomato Bruschetta
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 476 [needs_review] Molletes
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 477 [needs_review] Hunt's® Easy Tomato Bruschetta
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 478 [needs_review] Million Dollar Snack Mix
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 479 [needs_review] Simple Snack Mix
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 480 [needs_review] Thin Mint Muddy Buddies
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 481 [needs_review] Baked Potato Chips
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 482 [needs_review] Air Fryer Crispy Pickle Chips with Creole Dipping Sauce
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 483 [needs_review] Baked Kale Chips
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 484 [needs_review] Homemade Pita Chips
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 485 [needs_review] Air Fryer Pasta Chips
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 486 [needs_review] Ranch Oyster Crackers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 487 [needs_review] Marinated Pretzels
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 488 [needs_review] Baked Banana Chips
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 489 [needs_review] Spicy Pretzels
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 490 [needs_review] Salt and Garlic Bagel Chips
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 491 [needs_review] Crostini D'Emily
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 492 [needs_review] Daddy's Shrimp Toast
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 493 [needs_review] Crab Delights
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 494 [needs_review] Mediterranean Flatbread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 495 [needs_review] Crostini
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 496 [needs_review] Creamy Dill Cucumber Toasties
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 497 [needs_review] Easy Cucumber Party Sandwiches
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 498 [needs_review] Crostini with Mozzarella and Tomato
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 499 [needs_review] Mini Philly Cheesesteaks
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 500 [needs_review] Roasted Tomato, Avocado, and Fresh Mozzarella Crostini
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 501 [needs_review] Roasted Pumpkin and Goat Cheese Crostini
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 502 [needs_review] Smoked Salmon Canapés
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 503 [needs_review] Mexican Fiesta Bites
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 504 [needs_review] Cucumber and Olive Appetizers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 505 [needs_review] Crostini with Pear, Parmesan, and Caramelized Shallots
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 506 [needs_review] Tea Party Sandwiches (Puerto Rican Version)
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 507 [needs_review] Blue Cheese and Grilled Pear Crostini
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 508 [needs_review] Pear and Blue Cheese Pastry Triangles
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 509 [needs_review] Cucumber Favorites
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 510 [needs_review] Roasted Grape Crostini with Fresh Herbs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 511 [needs_review] Christa's Cucumber Basil Tea Sandwiches
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 512 [needs_review] Caprese Grilled Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 513 [needs_review] Sweet Potato Sausage Bites
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 514 [needs_review] Strawberry Banana Pineapple Bites
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 515 [needs_review] Eggplant Parmesan Bites
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 516 [needs_review] Crab-Stuffed Mushrooms
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 517 [needs_review] My Own Famous Stuffed Grape Leaves
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 518 [needs_review] Grilled Marinated Shrimp
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 519 [needs_review] Espinacas con Garbanzos (Spinach with Garbanzo Beans)
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 520 [needs_review] Tofu and Rice Stuffed Peppers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 521 [needs_review] Deep-Fried Sous Vide Egg Yolks
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 522 [needs_review] Tortilla Española
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 523 [needs_review] Crispy Tuna Croquettes
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 524 [needs_review] Arroz Tapado (Rice-On-Top)
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 525 [needs_review] Basque Salad
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 526 [needs_review] Artichoke Bites I
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 527 [needs_review] Roasted Oranges with Thyme
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 528 [needs_review] Linguine with Cajun-Spiced Shrimp and Corn
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 529 [needs_review] Little Broccoli Bites
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 530 [needs_review] Crab Swiss Bites
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 531 [needs_review] Pipirrana (Spanish Potato Salad)
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 532 [needs_review] Artichoke Bites II
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 533 [needs_review] Easy Lasagna Cups
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 534 [needs_review] Air Fryer Ravioli
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 535 [needs_review] Vietnamese Spring Rolls With Dipping Sauce
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 536 [needs_review] Tia and David's Deep-Fried Tortellini
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 537 [needs_review] Spaghetti and Meatballs Muffin Bites
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 538 [needs_review] Tortellini Skewers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 539 [needs_review] Easy Spring Rolls
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 540 [needs_review] Traditional Beef Samosas
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 541 [needs_review] Crunchy Air-Fried Ravioli
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 542 [needs_review] Veggie Spring Rolls with Thai Mango Dipping Sauce
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 543 [needs_review] Crab Rangoon Dip with Crispy Wonton Chips
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 544 [needs_review] Thanksgiving Leftover Wontons with Cranberry Salsa
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 545 [needs_review] Baked Salmon Wontons
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 546 [needs_review] Linguine with Cajun-Spiced Shrimp and Corn
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 547 [needs_review] Spring Lamb Pan-Fried Dumplings
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 548 [needs_review] Lasagna-Stuffed Manicotti Shells
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 549 [needs_review] Creamy Cheese Wontons
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 550 [needs_review] My Grandma's Guacamole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 551 [needs_review] Black Bean and Corn Guacamole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 552 [needs_review] BBQ Salmon Bowls
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 553 [needs_review] Roscoe's Chilaquiles
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 554 [needs_review] Dallas' Spicy Habanero Salsa
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 555 [needs_review] Pineapple Sriracha Salsa
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 556 [needs_review] Salsa Macha
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 557 [needs_review] Tomatillo Salsa Verde
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 558 [needs_review] Heather's Cilantro, Black Bean, and Corn Salsa
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 559 [needs_review] Best-Ever Texas Caviar
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 560 [needs_review] Mango Salsa
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 561 [needs_review] Cool Cucumber Salsa
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 562 [needs_review] Magic Meatball Crackers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 563 [needs_review] Cocktail Meatballs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 564 [needs_review] Zombie Eyes (Halloween Meatballs)
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 565 [needs_review] Cranberry Meatballs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 566 [needs_review] Turkey Cocktail Meatballs with Orange Cranberry Glaze
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 567 [needs_review] Cajun Appetizer Meatballs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 568 [needs_review] Cocktail Meatballs I
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 569 [needs_review] Air Fryer Chicken Kiev Balls
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 570 [needs_review] Spaghetti and Meatballs Muffin Bites
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 571 [needs_review] Vegetarian Sweet and Sour Meatballs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 572 [needs_review] Cape Cod Cocktail Meatballs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 573 [needs_review] Enchilada Meatballs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 574 [needs_review] Best Easy Meatballs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 575 [needs_review] Sweet and Spicy Cocktail Meatballs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 576 [needs_review] Cajun Crab Cakes (No Breadcrumbs)
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 577 [needs_review] True Maryland Crab Cakes
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 578 [needs_review] Lori's Famous Crab Cakes
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 579 [needs_review] Mini Crab Cakes
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 580 [needs_review] Paleo Maryland Crab Cakes
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 581 [needs_review] Deviled Crab Cakes on Mixed Greens with Ginger-Citrus Vinaigrette
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 582 [needs_review] Easy Crab Cakes with Panko
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 583 [needs_review] Fried Crab Cakes
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 584 [needs_review] Poor Man's Crab Cakes
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 585 [needs_review] Dorsey's Fish & Oyster House Crab Cakes
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 586 [needs_review] Laura's Maryland Crab Cakes
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 587 [needs_review] Crab Cakes with Cilantro-Sour Cream Sauce
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 588 [needs_review] Fabienne's 'Black-Eyed' Crab Cakes
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 589 [needs_review] Garlic Shrimp Aguachile
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 590 [needs_review] Vietnamese Fresh Spring Rolls
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 591 [needs_review] Thai Shrimp Wonton Cups
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 592 [needs_review] Grilled Marinated Shrimp
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 593 [needs_review] Daddy's Shrimp Toast
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 594 [needs_review] Rock Shrimp Tempura (Pan-Fried)
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 595 [needs_review] The Best Seafood-Stuffed Mushrooms
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 596 [needs_review] Vietnamese Spring Rolls With Dipping Sauce
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 597 [needs_review] Grilled Shrimp Scampi
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 598 [needs_review] Popcorn Shrimp
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 599 [needs_review] Mexican-Style Shrimp Cocktail
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 600 [needs_review] Shrimp and Avocado Salad
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 601 [needs_review] Crispy Rosemary Sea Salt Flatbread Crackers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 602 [needs_review] Tasty Seasoned Oyster Crackers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 603 [needs_review] Oatmeal Crackers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 604 [needs_review] Lavash Cracker Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 605 [needs_review] Ranch Oyster Crackers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 606 [needs_review] Almond "You Must Be Nuts!" Crackers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 607 [needs_review] Sourdough Rosemary Crackers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 608 [needs_review] Seasoned Oyster Crackers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 609 [needs_review] Lebanese Zaatar (Za'atar) Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 610 [needs_review] Savory Crackers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 611 [needs_review] Truffle-Parmesan Phyllo Crackers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 612 [needs_review] Sarah's Everything Caulipower Crackers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 613 [needs_review] Easy Beet Chips
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 614 [needs_review] Baked Banana Chips
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 615 [needs_review] Best Baked French Fries
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 616 [needs_review] Cucumber Nut Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 617 [needs_review] Easy Baked Zucchini Chips
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 618 [needs_review] Strawberry Oatmeal Breakfast Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 619 [needs_review] Cheesy Kale Chips
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 620 [needs_review] Extra Easy Hummus
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 621 [needs_review] Healthy Mozzarella Sticks
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 622 [needs_review] Oatmeal Crackers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 623 [needs_review] Fried Yellow Squash
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 624 [needs_review] Carrot Chips
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 625 [needs_review] Pumpkin Spinach Toddler Muffins
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 626 [needs_review] Zucchini Tots
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 627 [needs_review] Fruit Punch Salad
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - human verification: unreviewed
+- row 628 [needs_review] Million Dollar Snack Mix
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 629 [needs_review] Thin Mint Muddy Buddies
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 630 [needs_review] Marinated Pretzels
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 631 [needs_review] Spicy Pretzels
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 632 [needs_review] No Cook Pretzels with a Kick
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 633 [needs_review] Truffle Lovers' Popcorn
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 634 [needs_review] Chex Lemon Buddies
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 635 [needs_review] Buttery Gluten-Free Ranch Chex Mix
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 636 [needs_review] Spicy Ranch Party Mix
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 637 [needs_review] Cajun-Spiced Popcorn
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 638 [needs_review] Truffle Lovers' Popcorn
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 639 [needs_review] Italian Popcorn with Parmesan
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 640 [needs_review] Gourmet Microwave Popcorn
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 641 [needs_review] Butter Popcorn With Sumac
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 642 [needs_review] Healthier Jalapeño Poppers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 643 [needs_review] Four Cheese Stuffed Jalapeños
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 644 [needs_review] Triple Cheese Gluten-Free Jalapeno Poppers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 645 [needs_review] Crab-Stuffed Mushrooms
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 646 [needs_review] Easy Sausage-Stuffed Mushrooms
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 647 [needs_review] Mini Mushroom and Goat Cheese Tarts
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 648 [needs_review] The Best Seafood-Stuffed Mushrooms
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 649 [needs_review] Antipasto
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 650 [needs_review] Andie's Stuffed Mushrooms
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 651 [needs_review] Artichoke Stuffed Mushrooms
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 652 [needs_review] Spinach Stuffed Mushrooms
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 653 [needs_review] Wild Mushroom Puff Pastry
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 654 [needs_review] Giant Stuffed Mushrooms
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 655 [needs_review] Truffle Lovers' Popcorn
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 656 [needs_review] Deep-Fried Morel Mushrooms
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 657 [needs_review] Chicken-Stuffed Mushrooms
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 658 [needs_review] Mushroom and Tomato Bruschetta
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 659 [needs_review] Mushroom Toast Cups
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 660 [needs_review] Dinah's Stuffed Mushrooms
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 661 [needs_review] Sausage Stuffed Mushrooms
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 662 [needs_review] Grilled Portobello Mushrooms with Mashed Cannellini Beans and Harissa Sauce
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 663 [needs_review] Easy Sausage-Stuffed Mushrooms
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 664 [needs_review] The Best Seafood-Stuffed Mushrooms
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 665 [needs_review] Andie's Stuffed Mushrooms
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 666 [needs_review] Artichoke Stuffed Mushrooms
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 667 [needs_review] Spinach Stuffed Mushrooms
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 668 [needs_review] Giant Stuffed Mushrooms
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 669 [needs_review] Chicken-Stuffed Mushrooms
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 670 [needs_review] Dinah's Stuffed Mushrooms
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 671 [needs_review] Sausage Stuffed Mushrooms
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 672 [needs_review] Grilled Portobello Mushrooms with Mashed Cannellini Beans and Harissa Sauce
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 673 [needs_review] Stuffed Portobello Mushrooms with Egg and Pesto
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 674 [needs_review] Buffalo Chicken Stuffed Mushrooms (Low-Carb)
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 675 [needs_review] Sausage-Stuffed Mushrooms
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 676 [needs_review] Grilled Mushrooms Stuffed with Basil and Blue Cheese Butter
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 677 [needs_review] Chicken, Artichoke, and Spinach-Stuffed Portobellos
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 678 [needs_review] Spinach Stuffed Portobello Mushrooms with Avocado
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 679 [needs_review] Boursin Stuffed Mushrooms
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 680 [needs_review] Stuffed Mushrooms II
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 681 [needs_review] Stuffed Mushrooms III
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 682 [needs_review] Stuffed Portobello Mushrooms with Spinach and Feta
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 683 [needs_review] Clam-Stuffed Portobello Mushrooms
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 684 [needs_review] Easy Feta-Stuffed Mushrooms
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 685 [needs_review] Megan's Marvelous Mushrooms
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 686 [needs_review] Baked Cheese Olives
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 687 [needs_review] Cheddar and Olive Balls
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 688 [needs_review] Olive Puffs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 689 [needs_review] Cucumber and Olive Appetizers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 690 [needs_review] Gorgonzola and Olive Stuffed Grape Leaves
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 691 [needs_review] Olive Cheese Melts
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 692 [needs_review] Fig and Olive Tapenade
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 693 [needs_review] Cocktail Meatballs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 694 [needs_review] Awesome Slow Cooker Buffalo Wings
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 695 [needs_review] Mexican Cheese and Hamburger Dip
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 696 [needs_review] Slow Cooker BBQ Meatballs and Polish Sausage
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 697 [needs_review] Ranch Taco Chicken Dip
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 698 [needs_review] Awesome Crispy Baked Chicken Wings
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 699 [needs_review] Za'atar Chicken Wings
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 700 [needs_review] Awesome Slow Cooker Buffalo Wings
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 701 [needs_review] Indian Masala Chicken Wings
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 702 [needs_review] Smoked Chicken Wings
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 703 [needs_review] Dill Pickle Meatballs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 704 [needs_review] Air Fryer Crispy Pickle Chips with Creole Dipping Sauce
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 705 [needs_review] Bread and Butter Pickles
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 706 [needs_review] Japanese-Style Pickled Cucumber (Sunomono)
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 707 [needs_review] Chef John's Bread and Butter Pickles
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 708 [needs_review] Crisp Bread and Butter Pickles
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 709 [needs_review] Microwave Bread and Butter Pickles
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 710 [needs_review] Deb's Bread and Butter Pickles
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 711 [needs_review] Refrigerator Bread and Butter Pickles
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 712 [needs_review] Bea and Bill's Bread and Butter Pickles
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 713 [needs_review] Gram Miller's Bread and Butter Pickles
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 714 [needs_review] Bab's Bread and Butter Pickles
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 715 [needs_review] Apple-Gruyère Slab Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 716 [needs_review] Mini Apple Pies
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 717 [needs_review] Dutch Apple Pie with Oatmeal Streusel
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 718 [needs_review] Copycat McDonald's Apple Pies
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 719 [needs_review] Apple Crumb Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 720 [needs_review] Apple Pie in a Brown Paper Bag
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 721 [needs_review] Apple Slab Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 722 [needs_review] Dutch Apple Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 723 [needs_review] Apple Slice Squares
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 724 [needs_review] Best Apple Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 725 [needs_review] Apple Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 726 [needs_review] American Apple Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 727 [needs_review] Apple Blackberry Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 728 [needs_review] Creamy Apple Blueberry Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 729 [needs_review] Mum's Irish Apple Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 730 [needs_review] Instant Pot® Applesauce
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 731 [needs_review] Rice Cooker Recipe: Raspberry Applesauce
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 732 [needs_review] Delicious Artichoke Dip
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 733 [needs_review] Baked Spinach-Artichoke Dip without Mayo
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 734 [needs_review] Florentine Artichoke Dip
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 735 [needs_review] Artichoke Dip
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 736 [needs_review] Artichoke Cheese Dip
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 737 [needs_review] Artichoke Dip with Fresh Spinach
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 738 [needs_review] Skinny Spinach and Artichoke Dip
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 739 [needs_review] Hot Artichoke Dip with Green Chiles
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 740 [needs_review] Artichoke Jalapeno Hummus Dip
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 741 [needs_review] Cheesy Artichoke Dip by Jean Carper
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 742 [needs_review] Vegan Spinach Dip with Artichokes
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 743 [needs_review] Cream Cheese-Filled Bagel Balls
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 744 [needs_review] 2-Ingredient Dough Bagels
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 745 [needs_review] Two-Ingredient Bagels
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 746 [needs_review] Nova Lox Everything Breakfast Bagel
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 747 [needs_review] Tori's Air Fryer Pumpkin Bagels
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 748 [needs_review] Gigantes (Greek Lima Beans)
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 749 [needs_review] Healthier Banana Banana Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 750 [needs_review] Ginger Banana Bread Recipe
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 751 [needs_review] Double Banana Nut Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 752 [needs_review] Raspberry Banana Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 753 [needs_review] Banana Apple Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 754 [needs_review] Double Banana Nut Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 755 [needs_review] Roasted Pecan Banana Bread Loaves
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 756 [needs_review] Kay's Gluten-Free Banana Date Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 757 [needs_review] Blueberry Banana Nut Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 758 [needs_review] Very Banana-y Whole Wheat Banana Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 759 [needs_review] Best Hawaiian Banana Nut Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 760 [needs_review] Banana Walnut Flax Seed Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 761 [needs_review] Powerhouse Banana Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 762 [needs_review] Nutty Banana Chocolate Chip Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 763 [needs_review] Chocolate Fudge Banana Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 764 [needs_review] Whole Wheat Chocolate Banana Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 765 [needs_review] Dark Chocolate Marbled Banana Bread with Greek Yogurt
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 766 [needs_review] Gluten-Free Moist Choc Chip Banana Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 767 [needs_review] Nutty Banana Chocolate Chip Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 768 [needs_review] Banana Yogurt Cake
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 769 [needs_review] Maui Banana Cream Tube Cake
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 770 [needs_review] Banana-Pumpkin Bundt Cake
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 771 [needs_review] Rice Cooker Muffin Cake
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 772 [needs_review] Hearty Breakfast Muffins
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 773 [needs_review] Pumpkin Banana Oat Muffins
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 774 [needs_review] Lower-Carb Banana Protein Muffins
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 775 [needs_review] Banana Nut Muffins
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 776 [needs_review] Banana, Date and Walnut Muffins
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 777 [needs_review] Yogurt, Banana, and Pear Muffins
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 778 [needs_review] Gluten-Free Banana-Chocolate Chip Muffins
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 779 [needs_review] Banana-Date Muffins
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 780 [needs_review] Vegan Date Sweet Potato Muffins
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 781 [needs_review] Lemon Blackberry Blondies
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 782 [needs_review] Blackberry Cheesecake Brownies
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 783 [needs_review] No-Bake Lemon Ricotta Cheesecake Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 784 [needs_review] Lemon Crumb Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 785 [needs_review] Nutella Swirl Cheesecake Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 786 [needs_review] Christmas Cheesecake Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 787 [needs_review] Lemon Curd-Poppy Seed Crumb Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 788 [needs_review] Cranberry Lemon Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 789 [needs_review] Apple Crisp-Browned Butter Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 790 [needs_review] Pineapple Upside Down Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 791 [needs_review] The Best Lemon Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 792 [needs_review] Fresh Cherry Crumb Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 793 [needs_review] Strawberry Pretzel Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 794 [needs_review] Italian Ricotta Cookie Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 795 [needs_review] Apple Crisp-Browned Butter Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 796 [needs_review] Brown Butter Apple Crisp Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 797 [needs_review] Easy Caramel Apple Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 798 [needs_review] Delicious Apple Pie Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 799 [needs_review] Lemon-Raspberry Oatmeal Crumb Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 800 [needs_review] Raspberry-Lemon Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 801 [needs_review] Lemon Raspberry Crumb Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 802 [needs_review] Matrimonial Date Squares
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 803 [needs_review] Chinese Chews I
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 804 [needs_review] Energy Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 805 [needs_review] Sugarless Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 806 [needs_review] Date Crumble
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 807 [needs_review] Best Date Squares Ever
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 808 [needs_review] Date Bars II
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 809 [needs_review] Grandmother's Matrimonial Squares
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 810 [needs_review] First Place Apricot-Date Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 811 [needs_review] Honey Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 812 [needs_review] Apricot-Date Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 813 [needs_review] Trail Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 814 [needs_review] Lemon Glazed Date Sticks
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 815 [needs_review] Zucchini Nut Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 816 [needs_review] No-Bake Lemon Ricotta Cheesecake Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 817 [needs_review] Nutella Swirl Cheesecake Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 818 [needs_review] Mom's Cheesecake Cookie Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 819 [needs_review] Italian Cheesecake Cookies
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 820 [needs_review] Easy Lemon Cheesecake Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 821 [needs_review] Baked Cheesecake Squares
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 822 [needs_review] Cheesecake Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 823 [needs_review] Lemon Curd-Poppy Seed Crumb Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 824 [needs_review] Chef John's Lemon Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 825 [needs_review] Cranberry Lemon Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 826 [needs_review] The Best Lemon Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 827 [needs_review] Lemon Cream Cheese Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 828 [needs_review] Lemon Pie Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 829 [needs_review] Lemon Curd Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 830 [needs_review] Bake Sale Lemon Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 831 [needs_review] Graham Moist Lemon Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 832 [needs_review] Lemon Cheesecake Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 833 [needs_review] Easy Lemon Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 834 [needs_review] Lemon Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 835 [needs_review] Luscious Lemon Snaps
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 836 [needs_review] Bake-Sale-Worthy Lemon Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 837 [needs_review] Tart Lemon Triangles
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 838 [needs_review] Lemon Curd Bars with Coconut
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 839 [needs_review] Blueberry-Lemon Crumb Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 840 [needs_review] Lemon Oatmeal Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 841 [needs_review] Poppy Seed-Lemon Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 842 [needs_review] Blueberry Lemon Bars with Meringue Topping
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 843 [needs_review] Luscious Lemon Triangles
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 844 [needs_review] Lemon Bars with Coconut
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 845 [needs_review] Lemon Bar Peeps
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 846 [needs_review] Lemon Raspberry Crumb Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 847 [needs_review] Lemon Dream Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 848 [needs_review] Strawberry Lemon Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 849 [needs_review] Easy Lemon Cheesecake Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 850 [needs_review] Perfect Lemon Squares
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 851 [needs_review] Lemon Squares III
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 852 [needs_review] Chipotle Lemon Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 853 [needs_review] Lemon Squares I
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 854 [needs_review] Gluten Free Lemon Coconut Poppy Seed Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 855 [needs_review] Lemon Blackberry Blondies
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 856 [needs_review] Easy Lemon Cake Mix Brownies
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 857 [needs_review] Blackberry Cheesecake Brownies
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 858 [needs_review] Low-Sugar Date Brownies
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 859 [needs_review] Lemon-Blueberry Blondie Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 860 [needs_review] Cranberry-Lemon Blondies
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 861 [needs_review] Balsamic Caprese Grilled Steak
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 862 [needs_review] Dump and Bake Meatball Stroganoff
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 863 [needs_review] Hawaiian-Style Beef Stew
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 864 [needs_review] Philly Cheesesteak Casserole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 865 [needs_review] Italian Meatballs on Parmesan Noodles
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 866 [needs_review] The Best Ground Beef Taco Meat
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 867 [needs_review] Crispy Fried Ground Beef Tacos
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 868 [needs_review] Diamond Cut Steak with Garlic Butter Pan Sauce
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 869 [needs_review] Crockpot Garlic Butter Steak Bites
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 870 [needs_review] Taco Bell Cheesy Potato Casserole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 871 [needs_review] Stick of Butter Steak and Rice
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 872 [needs_review] Poor Man's Pasta
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 873 [needs_review] BBQ Meatballs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 874 [needs_review] Taco Beef Lettuce Cups
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 875 [needs_review] Taco Salad Casserole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 876 [needs_review] Michigan Olive Burger
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 877 [needs_review] Slow Cooker Brisket Tacos
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 878 [needs_review] Slow Cooker Shepherd's Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 879 [needs_review] Fajita Cheeseburger
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 880 [needs_review] Easiest Sheet Pan Tacos
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 881 [needs_review] Creamy Beef and Bow Tie Pasta
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 882 [needs_review] Polish Cabbage Roll Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 883 [needs_review] Dump and Bake Meatball Casserole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 884 [needs_review] Oxtail Rendang Curry
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 885 [needs_review] Swedish Meatball Pasta Bake
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 886 [needs_review] Slow Cooker Beef Tips with Mushroom Gravy
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 887 [needs_review] Big Mac Crispy Rice
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 888 [needs_review] Sloppy Joe Sliders
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 889 [needs_review] Meatball Subs on a Stick
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 890 [needs_review] Slow Cooker Ground Beef Stroganoff
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 891 [needs_review] Cowboy Butter Steak Toast
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 892 [needs_review] Picadillo Cornbread Casserole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 893 [needs_review] Tomato Soup and Grilled Cheese Casserole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 894 [needs_review] Homemade Spaghetti-O's
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 895 [needs_review] Sloppy Joe Cornbread Casserole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 896 [needs_review] Trout Tacos
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 897 [needs_review] Parmesan-Crusted Baked Fish
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 898 [needs_review] Chicken Apple Sausage Sheet Pan Dinner
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 899 [needs_review] Spicy Canned Salmon Salad Rice Bowl
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 900 [needs_review] Chicken Al Pastor
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 901 [needs_review] Smoked Prime Rib Roast
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 902 [needs_review] The Best Prime Rib Ever
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 903 [needs_review] Prime Rib Roast on Charcoal Grill
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 904 [needs_review] Delicious and Easy Prime Rib
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 905 [needs_review] Cheesy Smoked Sausage Casserole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 906 [needs_review] Pinto Bean and Sausage Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 907 [needs_review] Healthy Big Bowl
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 908 [needs_review] Tanya's Boneless Short Ribs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 909 [needs_review] Barbeque Style Braised Short Ribs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 910 [needs_review] Slow Cooker Asian Short Ribs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 911 [needs_review] Ribs Fantastic
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 912 [needs_review] Jane's Barbecued Short Ribs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 913 [needs_review] New York Strip Chicago Style
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 914 [needs_review] Beef Tagliata
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 915 [needs_review] Basic Beef Brisket in a Dutch Oven
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 916 [needs_review] Baked Corn Beef Hash
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 917 [needs_review] Saint Paddy's Irish Sandwich
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 918 [needs_review] Irish Tacos
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 919 [needs_review] Instant Pot Chicago Beef
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 920 [needs_review] Miso Gochujang Beef Ragu
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 921 [needs_review] Seared Chuck Eye Steak
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 922 [needs_review] Slow Cooker Beef Pot Roast
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 923 [needs_review] Instant Pot Best Beef Stew
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 924 [needs_review] Ghormeh Sabzi (Persian Herb Stew)
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 925 [needs_review] Barbacoa-Style Shredded Beef
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 926 [needs_review] Chile Colorado
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 927 [needs_review] Birria de Res Tacos (Beef Birria Tacos)
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 928 [needs_review] Beef and Lentil Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 929 [needs_review] Chef John's Beef Goulash
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 930 [needs_review] Chipotle Barbacoa
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 931 [needs_review] Charley's Slow Cooker Mexican Style Meat
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 932 [needs_review] Beef Birria
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 933 [needs_review] Barbacoa
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 934 [needs_review] Slow Cooker Au Jus Pot Roast
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 935 [needs_review] Beef Vindaloo
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 936 [needs_review] Authentic Bangladeshi Beef Curry
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 937 [needs_review] Chef John's Meatball-Inspired Meatloaf
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 938 [needs_review] Beef and Vegetable Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 939 [needs_review] Perfect Porterhouse Steak
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 940 [needs_review] Air Fryer Beef Tenderloin
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 941 [needs_review] Grilling Thick Steaks - The Reverse Sear
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 942 [needs_review] 5-Hour Beef Stew
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 943 [needs_review] Easy Barbeque Beef Tenderloin Steak
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 944 [needs_review] Garlic Steak with Garlic
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 945 [needs_review] Bistecca alla Fiorentina (Tuscan Porterhouse)
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 946 [needs_review] Mouthwatering Crabmeat Pan Seared Filets
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 947 [needs_review] Filet Mignons with Pepper Cream Sauce
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 948 [needs_review] The Best No-Mushroom Beef Tips
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 949 [needs_review] Sicilian Style Steak
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 950 [needs_review] Smothered Filet Mignon
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 951 [needs_review] Grilled Balsamic Beef
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 952 [needs_review] Crispy Garlic Crumb Steak
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 953 [needs_review] Herb Rubbed Sirloin Tip Roast
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 954 [needs_review] Carne Asada Tacos
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 955 [needs_review] Grilled Beef Tenderloin with Herb-Garlic-Pepper Coating
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 956 [needs_review] Bihari Kabab
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 957 [needs_review] Air Fryer Beef Tenderloin
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 958 [needs_review] 5-Hour Beef Stew
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 959 [needs_review] Easy Barbeque Beef Tenderloin Steak
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 960 [needs_review] Mouthwatering Crabmeat Pan Seared Filets
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 961 [needs_review] Filet Mignons with Pepper Cream Sauce
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 962 [needs_review] The Best No-Mushroom Beef Tips
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 963 [needs_review] Smothered Filet Mignon
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 964 [needs_review] Herb and Garlic Roast Tenderloin with Creamy Horseradish Sauce
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 965 [needs_review] Herbed and Spiced Roasted Beef Tenderloin
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 966 [needs_review] Louise's Herbed Beef Tenderloin
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 967 [needs_review] Korean Sushi
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 968 [needs_review] One-Pan Stuffed Pepper Casserole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 969 [needs_review] Philly Cheesesteak Casserole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 970 [needs_review] Italian Meatballs on Parmesan Noodles
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 971 [needs_review] Crispy Fried Ground Beef Tacos
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 972 [needs_review] The Best Ground Beef Taco Meat
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 973 [needs_review] Taco Bell Cheesy Potato Casserole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 974 [needs_review] Poor Man's Pasta
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 975 [needs_review] BBQ Meatballs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 976 [needs_review] Taco Beef Lettuce Cups
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 977 [needs_review] Taco Salad Casserole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 978 [needs_review] Michigan Olive Burger
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 979 [needs_review] Slow Cooker Shepherd's Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 980 [needs_review] Fajita Cheeseburger
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 981 [needs_review] Easiest Sheet Pan Tacos
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 982 [needs_review] Creamy Beef and Bow Tie Pasta
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 983 [needs_review] Polish Cabbage Roll Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 984 [needs_review] Swedish Meatball Pasta Bake
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 985 [needs_review] Big Mac Crispy Rice
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 986 [needs_review] Sloppy Joe Sliders
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 987 [needs_review] Meatball Subs on a Stick
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 988 [needs_review] Slow Cooker Ground Beef Stroganoff
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 989 [needs_review] Greek Smashed Pita
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 990 [needs_review] Ground Beef and Rice Skillet
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 991 [needs_review] Cheese Puff Sliders
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 992 [needs_review] Tortellini Lasagna Skillet
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 993 [needs_review] Creamy Gochujang Spaghetti With Ground Beef
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 994 [needs_review] Unstuffed Shells Pasta Bake
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 995 [needs_review] Turkish Pasta
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 996 [needs_review] The Best Million Dollar Spaghetti
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 997 [needs_review] Slow Cooker Stuffed Pepper Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 998 [needs_review] Slow Cooker Cheeseburger Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 999 [needs_review] Sloppy Joe Shepherd's Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1000 [needs_review] Diamond Cut Steak with Garlic Butter Pan Sauce
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1001 [needs_review] Cowboy Steak
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1002 [needs_review] Classic Swiss Steak
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1003 [needs_review] Sheet Pan Steak and Shrimp Fajitas
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1004 [needs_review] Perfect Grilled Ribeye
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1005 [needs_review] Crispy Garlic Crumb Steak
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1006 [needs_review] Cast Iron Pan-Seared Steak (Oven-Finished)
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1007 [needs_review] Crockpot Garlic Butter Steak Bites
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1008 [needs_review] Stick of Butter Steak and Rice
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1009 [needs_review] Sheet Pan Garlic Butter Steak Bites with Veggies
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1010 [needs_review] London Broil for the Slow Cooker
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1011 [needs_review] Air Fryer Rib-Eye Steak
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1012 [needs_review] Filipino Beef Steak
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1013 [needs_review] Country-Style Steak
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1014 [needs_review] Steak Tips in the Oven
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1015 [needs_review] London Broil
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1016 [needs_review] Perfect Porterhouse Steak
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1017 [needs_review] Air Fryer Wiener Schnitzel
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1018 [needs_review] Demi-Glace
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1019 [needs_review] Baked Veal Milanese
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1020 [needs_review] Stuffed Breast of Veal
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1021 [needs_review] Dutch Croquetten
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1022 [needs_review] Yummy Veal Meat Loaf
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1023 [needs_review] Veal Scallopini in a Sweet Red Pepper Sauce
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1024 [needs_review] World's Fastest Meatballs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1025 [needs_review] Instant Pot Mexican-Style Meatballs and Quinoa
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1026 [needs_review] Pan-Seared Veal Chop with Roasted Kale Pesto and Butternut Squash and Parsnip Puree
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1027 [needs_review] Meatball-Stuffed Garlic Bread Sliders
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1028 [needs_review] Loaded Beef Nachos
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1029 [needs_review] Crunchwrap Ring
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1030 [needs_review] Cocktail Meatballs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1031 [needs_review] Big Mac Crispy Rice
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1032 [needs_review] Papas Rellenas (Fried Stuffed Potatoes)
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1033 [needs_review] Beef Samosas
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1034 [needs_review] How to Make Beef Satay
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1035 [needs_review] Taco in a Bag
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1036 [needs_review] Classic Beef Empanadas
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1037 [needs_review] Rye Bread Boat Dip
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1038 [needs_review] Fantastic Mexican Dip
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1039 [needs_review] Polish Mistakes
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1040 [needs_review] Cranberry Meatballs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1041 [needs_review] Perfect Grilled Ribeye
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1042 [needs_review] Mom's Beef Shish Kabobs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1043 [needs_review] Lisa's Favorite Carne Asada Marinade
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1044 [needs_review] Best Hamburger Ever
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1045 [needs_review] Grilled Beef Tenderloin with Herb-Garlic-Pepper Coating
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1046 [needs_review] London Broil
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1047 [needs_review] How to Make Beef Satay
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1048 [needs_review] Delicious Grilled Hamburgers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1049 [needs_review] Grilled Delmonico Steaks
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1050 [needs_review] Sensational Steak Kabobs
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1051 [needs_review] Savory Garlic Marinated Steaks
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1052 [needs_review] Grilling Thick Steaks - The Reverse Sear
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1053 [needs_review] Marinated Flat Iron Steak
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1054 [needs_review] Grilled London Broil
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1055 [needs_review] Kabob Koobideh (Persian Ground Meat Kabobs)
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1056 [needs_review] London Broil I
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1057 [needs_review] Mexican Steak Torta
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1058 [needs_review] Quick-and-Easy Steak Marinade
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1059 [needs_review] Grilled Balsamic and Soy Marinated Flank Steak
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1060 [needs_review] Feta-Stuffed Hamburgers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1061 [needs_review] Greek Souzoukaklia
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1062 [needs_review] Dump and Bake Meatball Stroganoff
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1063 [needs_review] Crockpot Garlic Butter Steak Bites
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1064 [needs_review] Stick of Butter Steak and Rice
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1065 [needs_review] Slow Cooker Brisket Tacos
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1066 [needs_review] Oxtail Rendang Curry
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1067 [needs_review] Slow Cooker Ground Beef Stroganoff
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1068 [needs_review] Ground Beef and Rice Skillet
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1069 [needs_review] Cowboy Steak
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1070 [needs_review] Easy Roasted Beef Tenderloin
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1071 [needs_review] Beef Birria Ramen
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1072 [needs_review] Beef Tenderloin with Dijon Cream Sauce
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1073 [needs_review] Easy Pot Roast
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1074 [needs_review] French Onion Beef and Noodles
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1075 [needs_review] Classic Swiss Steak
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1076 [needs_review] 4-Ingredient Hamburger Casserole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1077 [needs_review] Grilled Balsamic Beef
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1078 [needs_review] One-Dish Meatball and Ravioli Casserole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1079 [needs_review] Stuffed Green Peppers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1080 [needs_review] Steak and Rice Bowls with Vegetable Relish
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1081 [needs_review] Crispy Garlic Crumb Steak
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1082 [needs_review] Cast Iron Pan-Seared Steak (Oven-Finished)
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1083 [needs_review] Instant Pot Beef Paprika
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1084 [needs_review] Slow Cooker Pot Roast
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1085 [needs_review] Garlic Butter Burger
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1086 [needs_review] Best Hamburger Ever
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1087 [needs_review] Delicious Grilled Hamburgers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1088 [needs_review] Feta-Stuffed Hamburgers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1089 [needs_review] Meatball-Stuffed Garlic Bread Sliders
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1090 [needs_review] Chef John's Beef Sliders
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1091 [needs_review] Grilled Cheese Patty Melts
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1092 [needs_review] Ranch Burgers from Hidden Valley
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1093 [needs_review] Homemade Pizza Burgers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1094 [needs_review] Taco Burgers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1095 [needs_review] Loaded Greek Burgers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1096 [needs_review] Gyros Burgers
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1097 [needs_review] Sunnyside Burger with Chipotle Aioli
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1098 [needs_review] Baked Philly Cheesesteak Sliders
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1099 [needs_review] Philly Cheesesteak Casserole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1100 [needs_review] Taco Bell Cheesy Potato Casserole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1101 [needs_review] Poor Man's Pasta
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1102 [needs_review] Taco Salad Casserole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1103 [needs_review] Picadillo Cornbread Casserole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1104 [needs_review] Unstuffed Shells Pasta Bake
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1105 [needs_review] The Casserole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1106 [needs_review] Sloppy Joe Skillet Cornbread Casserole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1107 [needs_review] Sloppy Joe Cornbread Casserole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1108 [needs_review] 4-Ingredient Hamburger Casserole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1109 [needs_review] Beef Enchilada Bake
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1110 [needs_review] Sloppy Joe Casserole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1111 [needs_review] Grandma's Hamburger Casserole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1112 [needs_review] Big Mac Casserole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1113 [needs_review] Dorito Casserole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1114 [needs_review] Easy English Cottage Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1115 [needs_review] Tater Tot Hotdish
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1116 [needs_review] Lasagna Casserole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1117 [needs_review] Best Taco Casserole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1118 [needs_review] Cabbage Roll Casserole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1119 [needs_review] The Best Spaghetti Casserole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1120 [needs_review] Johnny Marzetti Casserole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1121 [needs_review] Ground Beef Spinach Casserole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1122 [needs_review] Shearers' Mince and Potato Hot Pot
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1123 [needs_review] Musaka
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1124 [needs_review] Southwestern-Style Ground Beef and Potato Casserole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1125 [needs_review] One-Dish Meatball and Ravioli Casserole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1126 [needs_review] A Minnesotan's Beef and Macaroni Hotdish
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1127 [needs_review] Classic Hamburger Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1128 [needs_review] Best Meatloaf
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1129 [needs_review] Hidden Veggie Meatloaf
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1130 [needs_review] Momma's Healthy Meatloaf
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1131 [needs_review] Glazed Meatloaf
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1132 [needs_review] Meatloaf for Tomato Haters
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1133 [needs_review] Easy Salsa Meatloaf
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1134 [needs_review] Best Italian Meatloaf
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1135 [needs_review] Skillet Meatloaf
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1136 [needs_review] Meatloaf
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1137 [needs_review] Heinz Classic Meatloaf
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1138 [needs_review] Best-Ever Meatloaf
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1139 [needs_review] Meatloaf Patties
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1140 [needs_review] Italian Mozzarella-Stuffed Meatloaf
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1141 [needs_review] French Onion Meatloaf
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1142 [needs_review] Grandma's Meatloaf with Oats
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1143 [needs_review] Instant Pot Chicago Beef
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1144 [needs_review] Garlic Butter Meatball Sub
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1145 [needs_review] Arayes (Lebanese Crispy Meat Stuffed Pita)
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1146 [needs_review] Slow Cooker Italian Beef
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1147 [needs_review] Dash's Donair
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1148 [needs_review] The Original Donair From the East Coast of Canada
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1149 [needs_review] Donair
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1150 [needs_review] Bologna Salad Sandwich Spread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - human verification: unreviewed
+- row 1151 [needs_review] Ultimate Steak Sandwich
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1152 [needs_review] Classic Sloppy Joes
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1153 [needs_review] Air Fryer Steak and Cheese Melts
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1154 [needs_review] Neat Sloppy Joes
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1155 [needs_review] Mexican Steak Torta
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1156 [needs_review] American Gyros
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1157 [needs_review] Traditional Gyros
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1158 [needs_review] Easy Beef Shawarma
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1159 [needs_review] Chicago-Inspired Italian Beef Sandwich
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1160 [needs_review] Instant Pot Sloppy Joes
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1161 [needs_review] Saint Paddy's Irish Sandwich
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1162 [needs_review] Slow Cooker Shepherd's Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1163 [needs_review] Classic Shepherd's Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1164 [needs_review] Shepherd's Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1165 [needs_review] Easy English Cottage Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1166 [needs_review] Traditional Shepherd's Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1167 [needs_review] Instant Pot Shepherd's Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1168 [needs_review] Gourmet Pastelillos (Meat Pies)
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1169 [needs_review] Old-School Tamale Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1170 [needs_review] Good Old Meat Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1171 [needs_review] Easy Crescent Taco Bake
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1172 [needs_review] Bierocks (German Meat Turnovers)
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1173 [needs_review] Beef and Biscuit
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1174 [needs_review] Great Grandma Johns' Pasties
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1175 [needs_review] Beef Empanadas
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1176 [needs_review] Fritos Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1177 [needs_review] Savory Beef Stir-Fry
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1178 [needs_review] Chinese Pepper Round Steak
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1179 [needs_review] Vietnamese Stir-Fry
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1180 [needs_review] Korean Ground Beef Stir-Fry
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1181 [needs_review] Orange Vegetable Beef Stir-Fry
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1182 [needs_review] Steak and Spinach Salad
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1183 [needs_review] Spicy Gingered Beef and Snap Pea Salad
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1184 [needs_review] Layered Beef Salad with Warm Dressing
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1185 [needs_review] Easy 5-Ingredient Chili
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1186 [needs_review] Easy Homemade Chili
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1187 [needs_review] Sweet Potato Chili
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1188 [needs_review] Just Like Wendy's Chili
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1189 [needs_review] Chili-Topped Potato Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1190 [needs_review] Homemade Chili
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1191 [needs_review] Slow Cooker Chili
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1192 [needs_review] Quick Chili
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1193 [needs_review] Pressure Cooker Chili
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1194 [needs_review] It's Chili by George!!
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1195 [needs_review] Spicy Chili
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1196 [needs_review] Easy Chili
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1197 [needs_review] My Chili
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1198 [needs_review] Slow-Cooked Stew Meat Chili
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1199 [needs_review] No-Tomato Chili
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1200 [needs_review] Very Veggie and Beef Chili
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1201 [needs_review] Blue Ribbon Chili
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1202 [needs_review] Emily's Chipotle Chili
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1203 [needs_review] Chili Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1204 [needs_review] Real Texas Chili
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1205 [needs_review] Meaty Thick Man Chili
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1206 [needs_review] Hearty Ground Beef Chili
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1207 [needs_review] Flatlander Chili
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1208 [needs_review] Chili con Carne II
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1209 [needs_review] Steak Chili
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1210 [needs_review] Instant Pot Chili
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1211 [needs_review] Hawaiian-Style Chili
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1212 [needs_review] Easy Slow Cooker Chili
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1213 [needs_review] Pumpkin Chili
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1214 [needs_review] Easy Sweet Chili
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1215 [needs_review] Gramma's Old-Fashioned Chili Mac
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1216 [needs_review] Cincinnati Chili I
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1217 [needs_review] Slow Cooker Cactus Chili
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1218 [needs_review] Easy Mild Chili
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1219 [needs_review] Easy Texas Chili
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1220 [needs_review] Pressure Cooker Beef Chili
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1221 [needs_review] Chef John's Cincinnati-Style Chili
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1222 [needs_review] Chuck Roast Chili
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1223 [needs_review] Wisconsin Blue Ribbon Chili
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1224 [needs_review] Slow Cooker Cheeseburger Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1225 [needs_review] Hamburger Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1226 [needs_review] Cheeseburger Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1227 [needs_review] Beef and Mushroom Dumplings in Broth
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1228 [needs_review] Beef and Cabbage Soup in a Jar
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1229 [needs_review] Beef Noodle Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1230 [needs_review] Steak Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1231 [needs_review] Hearty Hamburger Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1232 [needs_review] Homemade Vegetable Beef Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1233 [needs_review] Cabbage Roll Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1234 [needs_review] Slow Cooker Beef Barley Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1235 [needs_review] My Mom's Hamburger and Potato Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1236 [needs_review] Meatball Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1237 [needs_review] Instant Pot Taco Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1238 [needs_review] Home-Style Vegetable Beef Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1239 [needs_review] Hamburger Soup with Macaroni
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1240 [needs_review] Instant Pot Hamburger Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1241 [needs_review] Beef and Vegetable Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1242 [needs_review] Mama's Old-Fashioned Albondigas (Meatball Soup)
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1243 [needs_review] Beef and Barley Soup I
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1244 [needs_review] Mexican Oxtail Beef Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1245 [needs_review] Sweet and Sour Cabbage Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1246 [needs_review] Dutch Oven Vegetable Beef Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1247 [needs_review] Portuguese Sopas
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1248 [needs_review] Instant Pot Cabbage and Beef Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1249 [needs_review] Slow Cooker Caribou Stew
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1250 [needs_review] Low-Carb Beef Cabbage Stew
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1251 [needs_review] MeMe's Pasta Fagioli
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1252 [needs_review] California Italian Wedding Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1253 [needs_review] Linda's Oxtail and Barley Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1254 [needs_review] Easy Taco Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1255 [needs_review] Lazy Golumpki (Stuffed Cabbage) Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1256 [needs_review] French Onion Beef and Noodles
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1257 [needs_review] Homemade Beef Stew
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1258 [needs_review] Puerto Rican Sancocho
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1259 [needs_review] Instant Pot Best Beef Stew
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1260 [needs_review] Ghormeh Sabzi (Persian Herb Stew)
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1261 [needs_review] Ground Beef and Vegetable Stew
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1262 [needs_review] Beef and Cabbage Stew
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1263 [needs_review] Mom's Hearty Beef Stew with Dumplings
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1264 [needs_review] Beef and Vegetable Stew
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1265 [needs_review] Chile Colorado
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1266 [needs_review] Puerto Rican Canned Corned Beef Stew
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1267 [needs_review] Chef John's Beef and Barley Stew
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1268 [needs_review] Slow Cooker Beef Neck Bones and Gravy
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1269 [needs_review] Beef and Lentil Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1270 [needs_review] Dutch Oven Beef Stew
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1271 [needs_review] 5-Hour Beef Stew
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1272 [needs_review] Authentic Bangladeshi Beef Curry
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1273 [needs_review] Oven-Baked Beef Stew
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1274 [needs_review] Old-Fashioned Beef Stew
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1275 [needs_review] Alita's Tomato Beef Stew
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1276 [needs_review] Spicy Beef Curry Stew for the Slow Cooker
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1277 [needs_review] Puerto Rican Mondongo
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1278 [needs_review] Beef Tinaktak
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1279 [needs_review] Caldereta (Filipino Beef Stew)
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1280 [needs_review] French Onion Beef and Noodles
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1281 [needs_review] Homemade Beef Stew
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1282 [needs_review] Puerto Rican Sancocho
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1283 [needs_review] Instant Pot Best Beef Stew
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1284 [needs_review] Ghormeh Sabzi (Persian Herb Stew)
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1285 [needs_review] Ground Beef and Vegetable Stew
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1286 [needs_review] Beef and Cabbage Stew
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1287 [needs_review] Mom's Hearty Beef Stew with Dumplings
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1288 [needs_review] Beef and Vegetable Stew
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1289 [needs_review] Chile Colorado
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1290 [needs_review] Puerto Rican Canned Corned Beef Stew
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1291 [needs_review] Chef John's Beef and Barley Stew
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1292 [needs_review] Slow Cooker Beef Neck Bones and Gravy
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1293 [needs_review] Beef and Lentil Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1294 [needs_review] Dutch Oven Beef Stew
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1295 [needs_review] 5-Hour Beef Stew
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1296 [needs_review] Authentic Bangladeshi Beef Curry
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1297 [needs_review] Oven-Baked Beef Stew
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1298 [needs_review] Old-Fashioned Beef Stew
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1299 [needs_review] Alita's Tomato Beef Stew
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1300 [needs_review] Spicy Beef Curry Stew for the Slow Cooker
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1301 [needs_review] Puerto Rican Mondongo
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1302 [needs_review] Beef Tinaktak
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1303 [needs_review] Caldereta (Filipino Beef Stew)
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1304 [needs_review] Dump and Bake Meatball Stroganoff
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1305 [needs_review] Campbell's Kitchen Beef Stroganoff
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1306 [needs_review] Best Home-Style Beef Stroganoff
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1307 [needs_review] Classic Beef Stroganoff in a Slow Cooker
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1308 [needs_review] One-Pot Ground Beef Stroganoff
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1309 [needs_review] Simple Ground Beef Stroganoff
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1310 [needs_review] Beef Stroganoff Casserole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1311 [needs_review] Instant Pot Beef and Noodles
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1312 [needs_review] Grilled Beef Tenderloin with Herb-Garlic-Pepper Coating
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1313 [needs_review] Bihari Kabab
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1314 [needs_review] Air Fryer Beef Tenderloin
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1315 [needs_review] 5-Hour Beef Stew
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): african
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1316 [needs_review] Easy Barbeque Beef Tenderloin Steak
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1317 [needs_review] Mouthwatering Crabmeat Pan Seared Filets
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1318 [needs_review] Filet Mignons with Pepper Cream Sauce
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1319 [needs_review] The Best No-Mushroom Beef Tips
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1320 [needs_review] Smothered Filet Mignon
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1321 [needs_review] Herb and Garlic Roast Tenderloin with Creamy Horseradish Sauce
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1322 [needs_review] Herbed and Spiced Roasted Beef Tenderloin
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1323 [needs_review] Louise's Herbed Beef Tenderloin
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1324 [needs_review] Korean Sushi
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1325 [needs_review] Gluten-Free Biscotti
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1326 [needs_review] Passover Mandelbread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1327 [needs_review] Authentic Mandelbrot
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1328 [needs_review] Double Chocolate Biscotti II
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1329 [needs_review] Iced Dried Cherry Biscuits
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1330 [needs_review] Herby Ricotta Biscuits
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1331 [needs_review] Sweet Potato Sage Biscuits
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1332 [needs_review] Classic Biscuits
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1333 [needs_review] Strawberry Rhubarb Drop Biscuits
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1334 [needs_review] Red Lobster Cheddar Biscuits
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1335 [needs_review] Cheddar Bay Biscuits
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1336 [needs_review] Garlic-Herb Butter Drop Biscuits
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1337 [needs_review] Blueberry Lemon Breakfast Biscuits
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1338 [needs_review] Cheddar Biscuits
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1339 [needs_review] Herb Buttermilk Biscuits
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1340 [needs_review] Orange Blintzes
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1341 [needs_review] Cheese Blintzes II
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1342 [needs_review] Lemon-Blueberry Blondie Bars
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1343 [needs_review] Cranberry-Lemon Blondies
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1344 [needs_review] Ripley's Bloody Mary Mix for Canning
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1345 [needs_review] Dani's Butt Kickin' Bloody Mary Mix
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1346 [needs_review] Bloody Mary Mix
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1347 [needs_review] Blueberry Pie with Frozen Berries
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1348 [needs_review] Blueberry Crumb Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1349 [needs_review] Bumbleberry Pie II
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1350 [needs_review] Blackberry and Blueberry Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1351 [needs_review] Blueberry Raspberry Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1352 [needs_review] Creamy Apple Blueberry Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1353 [needs_review] Blueberry and Vanilla Custard Tart
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1354 [needs_review] Grandma's Blueberry Pie Recipe
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1355 [needs_review] Cherry Berry Peach Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1356 [needs_review] Peach Blueberry Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1357 [needs_review] Berry Galette
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1358 [needs_review] Mom's Blueberry Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1359 [needs_review] Lemon Blueberry Custard Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1360 [needs_review] Blueberry Tart
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1361 [needs_review] Blueberry Cherry Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1362 [needs_review] Marry-Me Blueberry Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1363 [needs_review] Bluebarb Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1364 [needs_review] Mixed Berry Crostata
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1365 [needs_review] Peach-Blueberry Streusel Tart
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1366 [needs_review] Rustic Blueberry and Fig Crostata
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1367 [needs_review] Patsy's Half-Baked Blueberry Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1368 [needs_review] Cherry Berry Pie with Whole Wheat Pie Crust
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1369 [needs_review] Luscious Blueberry Pie Perfection!
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1370 [needs_review] Blueberry Cream Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1371 [needs_review] Blueberry Pie Pops
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1372 [needs_review] Little Ann's Peach and Blueberry Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1373 [needs_review] Triple Berry Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1374 [needs_review] Red, White, and Blue Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1375 [needs_review] Blueberry Pie with Flax and Almonds
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1376 [needs_review] Lemon Blueberry Pie
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1377 [needs_review] Russian Cabbage Borscht
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1378 [needs_review] Cabbage Borscht Mennonite Soup
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1379 [needs_review] Vegetarian Borscht
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1380 [needs_review] Vegan Borscht
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1381 [needs_review] Cabbage Borsht
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1382 [needs_review] Borscht II
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1383 [needs_review] Sweet and Sour Borscht Shooters
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1384 [needs_review] Spring Greens Borscht
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1385 [needs_review] Jen's Borscht With Beef
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1386 [needs_review] Omi's Borscht
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1387 [needs_review] Pressure Cooker Soup: From Moscow with Cabbage
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1388 [needs_review] Chai-Spiced Apple Babka
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1389 [needs_review] Pissaladière (Southern French "Pizza")
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1390 [needs_review] Lobster Roll Khachapuri
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1391 [needs_review] Cowboy Butter Swim Biscuits
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1392 [needs_review] Cornbread Donuts
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1393 [needs_review] Sour Cream and Chive Skillet Dinner Rolls
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1394 [needs_review] Mediterranean Flatbread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1395 [needs_review] Herby Garlic Skillet Dinner Rolls
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1396 [needs_review] Roman-Style Pizza
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1397 [needs_review] Holiday Star Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1398 [needs_review] Lemon Cranberry Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1399 [needs_review] Garlic Dinner Rolls
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1400 [needs_review] Easy Garlic Knots
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1401 [needs_review] Sloppy Joe Cornbread Casserole
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1402 [needs_review] Flatbreads with Roasted Red Pepper Sauce
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1403 [needs_review] No-Yeast Pizza Crust
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1404 [needs_review] Two-Ingredient Pizza Dough
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1405 [needs_review] Roman-Style Pizza
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1406 [needs_review] Easy Garlic Knots
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1407 [needs_review] South Shore Bar Pizza
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1408 [needs_review] Tavern Pizza
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1409 [needs_review] Amazing Whole Wheat Pizza Crust
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1410 [needs_review] Perfect Every Time Pizza or Calzone Dough
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1411 [needs_review] Bread Machine Thin Crust Pizza Dough
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1412 [needs_review] Jay's Signature Pizza Crust
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1413 [needs_review] Cauliflower Pizza Crust
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1414 [needs_review] Master Pizza Dough
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1415 [needs_review] Spelt Pizza Dough
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1416 [needs_review] World's Easiest Bread Machine Pizza Dough
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1417 [needs_review] Chef John's Easy Homemade Pizza Dough
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1418 [needs_review] Italian Pizza Dough
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1419 [needs_review] Sourdough Pizza Crust Dough
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1420 [needs_review] Valentino's Pizza Crust
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1421 [needs_review] New York-Style Pizza Dough
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1422 [needs_review] Crazy Crust Pizza Dough
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1423 [needs_review] Cauliflower Almond Pizza Crust
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1424 [needs_review] Rye Pizza Dough
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1425 [needs_review] Italian Feather Bread Pizza Dough
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1426 [needs_review] Flash Pizza
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1427 [needs_review] New York Italian Pizza Dough
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1428 [needs_review] Famous California Pizza Dough
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1429 [needs_review] Whole Wheat Pizza Dough
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1430 [needs_review] Thin Crust Pizza Dough
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1431 [needs_review] Brooklyn-Style Pizza Dough
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1432 [needs_review] Real Italian Pizza Dough
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1433 [needs_review] Neapolitan-Style Pizza Dough with Garlic and Italian Seasonings
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1434 [needs_review] Pizza Oven Dough
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1435 [needs_review] Pizza Crust for Bread Machine
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1436 [needs_review] Basic Pizza Dough
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1437 [needs_review] Ricardo's Pizza Crust
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1438 [needs_review] Four-Cheese Fathead Pizza Dough
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1439 [needs_review] Keto Pizza Crust
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1440 [needs_review] Garlic Lover's Pizza Crust for the Bread Machine
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1441 [needs_review] Pizza Crust I
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1442 [needs_review] Italian Pizza Crust in Bread Machine
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1443 [needs_review] Keto Fathead Pizza with Chorizo and Salsa
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1444 [needs_review] Bread Machine Thin Crust Pizza Dough
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1445 [needs_review] Italian Bread Using a Bread Machine
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1446 [needs_review] Softest Soft Bread with Air Pockets Using Bread Machine
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1447 [needs_review] Bread Machine Focaccia
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1448 [needs_review] Ciabatta Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1449 [needs_review] Deliciously Easy Garlic Herb Focaccia
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1450 [needs_review] Super Easy Rosemary Bread Machine Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1451 [needs_review] World's Easiest Bread Machine Pizza Dough
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1452 [needs_review] Jo's Rosemary Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1453 [needs_review] Bread Machine Sugar-Free Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1454 [needs_review] Herb Bread for Bread Machine
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1455 [needs_review] Healthy Whole Wheat Bread Machine Buns
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1456 [needs_review] Cranberry Orange Bread (For Bread Machine)
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1457 [needs_review] Bread Machine Ezekiel Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1458 [needs_review] Gluten-Free White Bread for Bread Machines
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1459 [needs_review] Tomato Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1460 [needs_review] Lobster Roll Khachapuri
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1461 [needs_review] Sour Cream and Chive Skillet Dinner Rolls
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1462 [needs_review] Mediterranean Flatbread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1463 [needs_review] Herby Garlic Skillet Dinner Rolls
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1464 [needs_review] Pizza Dough
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1465 [needs_review] Holiday Star Bread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1466 [needs_review] Garlic Dinner Rolls
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1467 [needs_review] Feta and Sardine Flatbread
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): mediterranean
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1468 [needs_review] Panettone
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed
+- row 1469 [needs_review] Orange and Saffron Panettone
+  - only broad regional tags present (e.g. Middle Eastern/Mediterranean); not Egyptian evidence
+  - broad tag (discounted, NOT positive evidence): middle eastern region
+  - human verification: unreviewed

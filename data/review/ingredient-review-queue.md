@@ -1,0 +1,9271 @@
+# Ingredient Review Queue
+
+- Source: data/raw/Egyptian_Food_Categorized.csv
+- Records: 4633
+
+- row 36 [unmatched] - ounce can black beans drained rinsed divided
+  - no exact match in reference vocabulary
+- row 1388 [unmatched] - ounce dry yeast
+  - no exact match in reference vocabulary
+- row 8 [unmatched] - ounces jar reduced-sodium dill pickle chips drained
+  - no exact match in reference vocabulary
+- row 862 [unmatched] --ounce bag frozen cooked beef meatballs
+  - no exact match in reference vocabulary
+- row 310 [unmatched] -count can refrigerated buttermilk biscuits
+  - no exact match in reference vocabulary
+- row 71 [unmatched] -count package rolls
+  - no exact match in reference vocabulary
+- row 64 [unmatched] -count package slider buns
+  - no exact match in reference vocabulary
+- row 1275 [unmatched] -inch carrot chunks
+  - no exact match in reference vocabulary
+- row 877 [unmatched] -inch corn tortillas
+  - no exact match in reference vocabulary
+- row 1278 [unmatched] -inch cut green beans
+  - no exact match in reference vocabulary
+- row 1003 [unmatched] -inch flour tortillas
+  - no exact match in reference vocabulary
+- row 477 [unmatched] -inch french baguette cut into -inch slices
+  - no exact match in reference vocabulary
+- row 900 [unmatched] -inch jumbo wooden skewers
+  - no exact match in reference vocabulary
+- row 1034 [unmatched] -inch long metal skewers
+  - no exact match in reference vocabulary
+- row 1034 [unmatched] -inch piece fresh lemon grass white part only
+  - no exact match in reference vocabulary
+- row 1275 [unmatched] -inch potato chunks
+  - no exact match in reference vocabulary
+- row 1367 [unmatched] -inch refrigerated pie crust
+  - no exact match in reference vocabulary
+- row 539 [unmatched] -inch round rice papers divided
+  - no exact match in reference vocabulary
+- row 1278 [unmatched] -inch sliced green onions
+  - no exact match in reference vocabulary
+- row 245 [unmatched] -inch sprigs fresh thyme
+  - no exact match in reference vocabulary
+- row 714 [unmatched] -inch thick cucumber slices
+  - no exact match in reference vocabulary
+- row 456 [unmatched] -inch thick diagonal slices baguette
+  - no exact match in reference vocabulary
+- row 722 [unmatched] -inch unbaked pie crust
+  - no exact match in reference vocabulary
+- row 862 [unmatched] -ounce bag wide egg noodles
+  - no exact match in reference vocabulary
+- row 36 [unmatched] -ounce black olives drained
+  - no exact match in reference vocabulary
+- row 890 [unmatched] -ounce can beef consomme
+  - no exact match in reference vocabulary
+- row 1113 [unmatched] -ounce can black beans drained rinsed
+  - no exact match in reference vocabulary
+- row 246 [unmatched] -ounce can black beans rinsed drained
+  - no exact match in reference vocabulary
+- row 196 [unmatched] -ounce can cannellini beans
+  - no exact match in reference vocabulary
+- row 197 [unmatched] -ounce can coconut milk
+  - no exact match in reference vocabulary
+- row 998 [unmatched] -ounce can condensed cheddar cheese soup
+  - no exact match in reference vocabulary
+- row 1074 [unmatched] -ounce can condensed french onion soup
+  - no exact match in reference vocabulary
+- row 200 [unmatched] -ounce can cream style corn
+  - no exact match in reference vocabulary
+- row 999 [unmatched] -ounce can crushed tomatoes
+  - no exact match in reference vocabulary
+- row 1113 [unmatched] -ounce can diced tomatoes green chiles such as rotel drained
+  - no exact match in reference vocabulary
+- row 998 [unmatched] -ounce can diced tomatoes undrained
+  - no exact match in reference vocabulary
+- row 877 [unmatched] -ounce can enchilada sauce
+  - no exact match in reference vocabulary
+- row 70 [unmatched] -ounce can garbanzo beans drained rinsed
+  - no exact match in reference vocabulary
+- row 1124 [unmatched] -ounce can mexican-style corn drained
+  - no exact match in reference vocabulary
+- row 1122 [unmatched] -ounce can mushrooms drained
+  - no exact match in reference vocabulary
+- row 790 [unmatched] -ounce can pineapple rings in pineapple juice
+  - no exact match in reference vocabulary
+- row 1074 [unmatched] -ounce can rench-fried onions
+  - no exact match in reference vocabulary
+- row 197 [unmatched] -ounce can roasted tomatoes
+  - no exact match in reference vocabulary
+- row 998 [unmatched] -ounce can tomato sauce
+  - no exact match in reference vocabulary
+- row 1076 [unmatched] -ounce can tomato soup
+  - no exact match in reference vocabulary
+- row 200 [unmatched] -ounce can whole kernel corn
+  - no exact match in reference vocabulary
+- row 864 [unmatched] -ounce canlower sodium lower sodium
+  - no exact match in reference vocabulary
+- row 200 [unmatched] -ounce cans cannellini beans
+  - no exact match in reference vocabulary
+- row 200 [unmatched] -ounce cans diced tomatoes with green chilies
+  - no exact match in reference vocabulary
+- row 1110 [unmatched] -ounce cans tomato sauce
+  - no exact match in reference vocabulary
+- row 286 [unmatched] -ounce feta cheese
+  - no exact match in reference vocabulary
+- row 883 [unmatched] -ounce frozen meatballs thawed
+  - no exact match in reference vocabulary
+- row 883 [unmatched] -ounce jar marinara sauce
+  - no exact match in reference vocabulary
+- row 864 [unmatched] -ounce package cream cheese softened cut up
+  - no exact match in reference vocabulary
+- row 878 [unmatched] -ounce package frozen mixed vegetables
+  - no exact match in reference vocabulary
+- row 214 [unmatched] -ounce package gournay cheese with fine herbs garlic such as boursin
+  - no exact match in reference vocabulary
+- row 999 [unmatched] -ounce package mashed potatoes
+  - no exact match in reference vocabulary
+- row 793 [unmatched] -ounce packages cream cheese
+  - no exact match in reference vocabulary
+- row 284 [unmatched] -ounce packages cream cheese softened
+  - no exact match in reference vocabulary
+- row 878 [unmatched] -ounce packages refrigerated mashed potatoes
+  - no exact match in reference vocabulary
+- row 156 [unmatched] -ounce packages shelled edamame
+  - no exact match in reference vocabulary
+- row 1113 [unmatched] -ounce packet taco seasoning
+  - no exact match in reference vocabulary
+- row 128 [unmatched] -ounce salmon fillets
+  - no exact match in reference vocabulary
+- row 1074 [unmatched] -ounce wide medium egg noodles
+  - no exact match in reference vocabulary
+- row 36 [unmatched] -ounces cans diced green chiles
+  - no exact match in reference vocabulary
+- row 713 [unmatched] -pint canning jars with lids rings
+  - no exact match in reference vocabulary
+- row 1072 [unmatched] -pound beef tenderloin trimmed with silver skin removed
+  - no exact match in reference vocabulary
+- row 712 [unmatched] -quart canning jars with lids rings
+  - no exact match in reference vocabulary
+- row 298 [unmatched] ½ ½ garlic powder divided
+  - no exact match in reference vocabulary
+- row 1418 [unmatched] ½ active dry yeast
+  - no exact match in reference vocabulary
+- row 1019 [unmatched] ½ adobo seasoning taste
+  - no exact match in reference vocabulary
+- row 84 [unmatched] ½ all-purpose flour
+  - no exact match in reference vocabulary
+- row 1414 [unmatched] ½ all-purpose flour as needed
+  - no exact match in reference vocabulary
+- row 1268 [unmatched] ½ all-purpose flour divided
+  - no exact match in reference vocabulary
+- row 922 [unmatched] ½ all-purpose flour divided more as needed
+  - no exact match in reference vocabulary
+- row 1424 [unmatched] ½ all-purpose flour for kneading dough as needed
+  - no exact match in reference vocabulary
+- row 1430 [unmatched] ½ all-purpose flour more as needed
+  - no exact match in reference vocabulary
+- row 860 [unmatched] ½ almond extract
+  - no exact match in reference vocabulary
+- row 842 [unmatched] ½ almond flour
+  - no exact match in reference vocabulary
+- row 829 [unmatched] ½ almonds chopped
+  - no exact match in reference vocabulary
+- row 797 [unmatched] ½ apple - peeled cored chopped
+  - no exact match in reference vocabulary
+- row 1368 [unmatched] ½ apple cider vinegar
+  - no exact match in reference vocabulary
+- row 715 [unmatched] ½ apple pie spice
+  - no exact match in reference vocabulary
+- row 766 [unmatched] ½ applesauce
+  - no exact match in reference vocabulary
+- row 810 [unmatched] ½ apricot nectar such as kern s
+  - no exact match in reference vocabulary
+- row 1019 [unmatched] ½ arugula divided
+  - no exact match in reference vocabulary
+- row 313 [unmatched] ½ baking mix such as bisquick
+  - no exact match in reference vocabulary
+- row 25 [unmatched] ½ baking powder
+  - no exact match in reference vocabulary
+- row 87 [unmatched] ½ baking soda
+  - no exact match in reference vocabulary
+- row 944 [unmatched] ½ balsamic vinegar
+  - no exact match in reference vocabulary
+- row 768 [unmatched] ½ banana-flavored greek yogurt
+  - no exact match in reference vocabulary
+- row 567 [unmatched] ½ barbeque sauce
+  - no exact match in reference vocabulary
+- row 1231 [unmatched] ½ barley
+  - no exact match in reference vocabulary
+- row 548 [unmatched] ½ basil leaves
+  - no exact match in reference vocabulary
+- row 925 [unmatched] ½ beef broth
+  - no exact match in reference vocabulary
+- row 858 [unmatched] ½ bittersweet chocolate chips optional
+  - no exact match in reference vocabulary
+- row 443 [unmatched] ½ black pepper
+  - no exact match in reference vocabulary
+- row 113 [unmatched] ½ blackberries
+  - no exact match in reference vocabulary
+- row 771 [unmatched] ½ bran flakes crushed
+  - no exact match in reference vocabulary
+- row 563 [unmatched] ½ bread crumbs
+  - no exact match in reference vocabulary
+- row 1421 [unmatched] ½ bread flour
+  - no exact match in reference vocabulary
+- row 446 [unmatched] ½ bread machine yeast
+  - no exact match in reference vocabulary
+- row 292 [unmatched] ½ brown sugar
+  - no exact match in reference vocabulary
+- row 292 [unmatched] ½ butter
+  - no exact match in reference vocabulary
+- row 762 [unmatched] ½ butter at room temperature
+  - no exact match in reference vocabulary
+- row 839 [unmatched] ½ butter chilled diced
+  - no exact match in reference vocabulary
+- row 1309 [unmatched] ½ butter divided
+  - no exact match in reference vocabulary
+- row 445 [unmatched] ½ butter melted
+  - no exact match in reference vocabulary
+- row 819 [unmatched] ½ butter melted cooled
+  - no exact match in reference vocabulary
+- row 434 [unmatched] ½ butter softened
+  - no exact match in reference vocabulary
+- row 21 [unmatched] ½ buttermilk
+  - no exact match in reference vocabulary
+- row 1458 [unmatched] ½ buttermilk at room temperature
+  - no exact match in reference vocabulary
+- row 757 [unmatched] ½ cake flour
+  - no exact match in reference vocabulary
+- row 1380 [unmatched] ½ canned peeled diced tomatoes
+  - no exact match in reference vocabulary
+- row 1213 [unmatched] ½ canned pumpkin puree
+  - no exact match in reference vocabulary
+- row 528 [unmatched] ½ canned whole kernel corn drained
+  - no exact match in reference vocabulary
+- row 708 [unmatched] ½ canning salt
+  - no exact match in reference vocabulary
+- row 383 [unmatched] ½ canola oil
+  - no exact match in reference vocabulary
+- row 394 [unmatched] ½ cayenne pepper
+  - no exact match in reference vocabulary
+- row 632 [unmatched] ½ cayenne pepper more taste
+  - no exact match in reference vocabulary
+- row 168 [unmatched] ½ celery diced
+  - no exact match in reference vocabulary
+- row 1261 [unmatched] ½ celery salt
+  - no exact match in reference vocabulary
+- row 705 [unmatched] ½ celery seed
+  - no exact match in reference vocabulary
+- row 158 [unmatched] ½ cherry tomatoes halved
+  - no exact match in reference vocabulary
+- row 566 [unmatched] ½ chicken broth
+  - no exact match in reference vocabulary
+- row 540 [unmatched] ½ chile powder more taste
+  - no exact match in reference vocabulary
+- row 899 [unmatched] ½ chile-garlic sauce such as sriracha
+  - no exact match in reference vocabulary
+- row 352 [unmatched] ½ chili powder
+  - no exact match in reference vocabulary
+- row 1021 [unmatched] ½ chili powder optional
+  - no exact match in reference vocabulary
+- row 1336 [unmatched] ½ chilled unsalted butter cut into cubes
+  - no exact match in reference vocabulary
+- row 636 [unmatched] ½ chipotle chile powder
+  - no exact match in reference vocabulary
+- row 1025 [unmatched] ½ chipotle powder
+  - no exact match in reference vocabulary
+- row 584 [unmatched] ½ chopped bell pepper
+  - no exact match in reference vocabulary
+- row 161 [unmatched] ½ chopped celery
+  - no exact match in reference vocabulary
+- row 813 [unmatched] ½ chopped dates
+  - no exact match in reference vocabulary
+- row 804 [unmatched] ½ chopped dried apricots
+  - no exact match in reference vocabulary
+- row 1061 [unmatched] ½ chopped flat leaf parsley
+  - no exact match in reference vocabulary
+- row 549 [unmatched] ½ chopped fresh basil taste
+  - no exact match in reference vocabulary
+- row 550 [unmatched] ½ chopped fresh cilantro
+  - no exact match in reference vocabulary
+- row 270 [unmatched] ½ chopped fresh dill
+  - no exact match in reference vocabulary
+- row 937 [unmatched] ½ chopped fresh flat-leaf parsley
+  - no exact match in reference vocabulary
+- row 690 [unmatched] ½ chopped fresh garlic
+  - no exact match in reference vocabulary
+- row 289 [unmatched] ½ chopped fresh mint leaves
+  - no exact match in reference vocabulary
+- row 467 [unmatched] ½ chopped fresh oregano
+  - no exact match in reference vocabulary
+- row 330 [unmatched] ½ chopped fresh parsley
+  - no exact match in reference vocabulary
+- row 450 [unmatched] ½ chopped fresh parsley plus more for garnish
+  - no exact match in reference vocabulary
+- row 549 [unmatched] ½ chopped fresh parsley taste optional
+  - no exact match in reference vocabulary
+- row 1447 [unmatched] ½ chopped fresh rosemary divided
+  - no exact match in reference vocabulary
+- row 514 [unmatched] ½ chopped fresh strawberries
+  - no exact match in reference vocabulary
+- row 1117 [unmatched] ½ chopped fresh tomato
+  - no exact match in reference vocabulary
+- row 561 [unmatched] ½ chopped green bell pepper
+  - no exact match in reference vocabulary
+- row 650 [unmatched] ½ chopped green bell peppers
+  - no exact match in reference vocabulary
+- row 1117 [unmatched] ½ chopped green onion
+  - no exact match in reference vocabulary
+- row 358 [unmatched] ½ chopped green onions
+  - no exact match in reference vocabulary
+- row 584 [unmatched] ½ chopped onion
+  - no exact match in reference vocabulary
+- row 1377 [unmatched] ½ chopped onions
+  - no exact match in reference vocabulary
+- row 728 [unmatched] ½ chopped pecans
+  - no exact match in reference vocabulary
+- row 1258 [unmatched] ½ chopped peeled pumpkin
+  - no exact match in reference vocabulary
+- row 1098 [unmatched] ½ chopped pickled peppers
+  - no exact match in reference vocabulary
+- row 804 [unmatched] ½ chopped pitted dates
+  - no exact match in reference vocabulary
+- row 805 [unmatched] ½ chopped raisins
+  - no exact match in reference vocabulary
+- row 773 [unmatched] ½ chopped toasted pecans
+  - no exact match in reference vocabulary
+- row 1378 [unmatched] ½ chopped tomato
+  - no exact match in reference vocabulary
+- row 758 [unmatched] ½ chopped walnuts
+  - no exact match in reference vocabulary
+- row 719 [unmatched] ½ chopped walnuts optional
+  - no exact match in reference vocabulary
+- row 309 [unmatched] ½ chopped water chestnuts
+  - no exact match in reference vocabulary
+- row 1119 [unmatched] ½ chopped yellow onion
+  - no exact match in reference vocabulary
+- row 964 [unmatched] ½ coarse sea salt kosher salt divided
+  - no exact match in reference vocabulary
+- row 738 [unmatched] ½ coarsely crushed garlic croutons
+  - no exact match in reference vocabulary
+- row 755 [unmatched] ½ coconut extract
+  - no exact match in reference vocabulary
+- row 854 [unmatched] ½ coconut flour
+  - no exact match in reference vocabulary
+- row 832 [unmatched] ½ cold butter
+  - no exact match in reference vocabulary
+- row 82 [unmatched] ½ cold butter cubed
+  - no exact match in reference vocabulary
+- row 1357 [unmatched] ½ cold unsalted butter cut into -inch pieces
+  - no exact match in reference vocabulary
+- row 601 [unmatched] ½ cold water
+  - no exact match in reference vocabulary
+- row 720 [unmatched] ½ cold water more as needed
+  - no exact match in reference vocabulary
+- row 86 [unmatched] ½ confectioners sugar
+  - no exact match in reference vocabulary
+- row 1233 [unmatched] ½ converted long-grain white rice
+  - no exact match in reference vocabulary
+- row 330 [unmatched] ½ cooked crabmeat
+  - no exact match in reference vocabulary
+- row 696 [unmatched] ½ cornflakes cereal crushed
+  - no exact match in reference vocabulary
+- row 1308 [unmatched] ½ cornstarch
+  - no exact match in reference vocabulary
+- row 571 [unmatched] ½ cottage cheese
+  - no exact match in reference vocabulary
+- row 940 [unmatched] ½ cracked black pepper
+  - no exact match in reference vocabulary
+- row 821 [unmatched] ½ cream cheese
+  - no exact match in reference vocabulary
+- row 743 [unmatched] ½ cream cheese as needed
+  - no exact match in reference vocabulary
+- row 1098 [unmatched] ½ cream cheese softened
+  - no exact match in reference vocabulary
+- row 226 [unmatched] ½ cream tartar
+  - no exact match in reference vocabulary
+- row 774 [unmatched] ½ creamy natural peanut butter
+  - no exact match in reference vocabulary
+- row 379 [unmatched] ½ crumbled feta cheese
+  - no exact match in reference vocabulary
+- row 391 [unmatched] ½ crumbled goat cheese
+  - no exact match in reference vocabulary
+- row 690 [unmatched] ½ crumbled gorgonzola cheese
+  - no exact match in reference vocabulary
+- row 684 [unmatched] ½ crumbled reduced-fat feta cheese
+  - no exact match in reference vocabulary
+- row 1044 [unmatched] ½ crushed dried rosemary
+  - no exact match in reference vocabulary
+- row 1116 [unmatched] ½ crushed red pepper flakes
+  - no exact match in reference vocabulary
+- row 1160 [unmatched] ½ crushed strained tomatoes such as aurora
+  - no exact match in reference vocabulary
+- row 421 [unmatched] ½ cucumber peeled cut into small strips
+  - no exact match in reference vocabulary
+- row 363 [unmatched] ½ cumin
+  - no exact match in reference vocabulary
+- row 381 [unmatched] ½ cumin seeds
+  - no exact match in reference vocabulary
+- row 364 [unmatched] ½ curry powder
+  - no exact match in reference vocabulary
+- row 682 [unmatched] ½ dehydrated minced garlic taste
+  - no exact match in reference vocabulary
+- row 657 [unmatched] ½ diamond crystal kosher salt
+  - no exact match in reference vocabulary
+- row 161 [unmatched] ½ diced apple
+  - no exact match in reference vocabulary
+- row 771 [unmatched] ½ diced banana
+  - no exact match in reference vocabulary
+- row 584 [unmatched] ½ diced celery
+  - no exact match in reference vocabulary
+- row 11 [unmatched] ½ diced onion
+  - no exact match in reference vocabulary
+- row 1098 [unmatched] ½ diced onions
+  - no exact match in reference vocabulary
+- row 1130 [unmatched] ½ diced sweet onion
+  - no exact match in reference vocabulary
+- row 161 [unmatched] ½ dijon mustard
+  - no exact match in reference vocabulary
+- row 709 [unmatched] ½ distilled white vinegar
+  - no exact match in reference vocabulary
+- row 220 [unmatched] ½ ditalini pasta
+  - no exact match in reference vocabulary
+- row 484 [unmatched] ½ dried basil
+  - no exact match in reference vocabulary
+- row 1437 [unmatched] ½ dried basil leaves
+  - no exact match in reference vocabulary
+- row 568 [unmatched] ½ dried bread crumbs
+  - no exact match in reference vocabulary
+- row 292 [unmatched] ½ dried cherries
+  - no exact match in reference vocabulary
+- row 928 [unmatched] ½ dried cilantro
+  - no exact match in reference vocabulary
+- row 1182 [unmatched] ½ dried cranberries
+  - no exact match in reference vocabulary
+- row 1307 [unmatched] ½ dried dill
+  - no exact match in reference vocabulary
+- row 486 [unmatched] ½ dried dill weed
+  - no exact match in reference vocabulary
+- row 1230 [unmatched] ½ dried marjoram
+  - no exact match in reference vocabulary
+- row 222 [unmatched] ½ dried oregano
+  - no exact match in reference vocabulary
+- row 237 [unmatched] ½ dried parsley
+  - no exact match in reference vocabulary
+- row 1336 [unmatched] ½ dried parsley flakes
+  - no exact match in reference vocabulary
+- row 906 [unmatched] ½ dried pinto beans
+  - no exact match in reference vocabulary
+- row 923 [unmatched] ½ dried rosemary
+  - no exact match in reference vocabulary
+- row 966 [unmatched] ½ dried rosemary crushed
+  - no exact match in reference vocabulary
+- row 1096 [unmatched] ½ dried savory
+  - no exact match in reference vocabulary
+- row 1053 [unmatched] ½ dried tarragon
+  - no exact match in reference vocabulary
+- row 222 [unmatched] ½ dried thyme
+  - no exact match in reference vocabulary
+- row 321 [unmatched] ½ dry bread crumbs
+  - no exact match in reference vocabulary
+- row 608 [unmatched] ½ dry ranch-style dressing mix
+  - no exact match in reference vocabulary
+- row 224 [unmatched] ½ egg whites
+  - no exact match in reference vocabulary
+- row 612 [unmatched] ½ everything bagel seasoning
+  - no exact match in reference vocabulary
+- row 367 [unmatched] ½ extra-virgin olive oil
+  - no exact match in reference vocabulary
+- row 1433 [unmatched] ½ fast-rising dry yeast
+  - no exact match in reference vocabulary
+- row 741 [unmatched] ½ fat-free cottage cheese
+  - no exact match in reference vocabulary
+- row 747 [unmatched] ½ fat-free greek yogurt such as fage
+  - no exact match in reference vocabulary
+- row 1403 [unmatched] ½ fat-free milk
+  - no exact match in reference vocabulary
+- row 474 [unmatched] ½ fennel seed
+  - no exact match in reference vocabulary
+- row 293 [unmatched] ½ fine bread crumbs
+  - no exact match in reference vocabulary
+- row 1141 [unmatched] ½ fine dry bread crumbs
+  - no exact match in reference vocabulary
+- row 83 [unmatched] ½ fine sea salt
+  - no exact match in reference vocabulary
+- row 24 [unmatched] ½ finely chopped celery
+  - no exact match in reference vocabulary
+- row 330 [unmatched] ½ finely chopped celery optional
+  - no exact match in reference vocabulary
+- row 87 [unmatched] ½ finely chopped crystallized ginger
+  - no exact match in reference vocabulary
+- row 1129 [unmatched] ½ finely chopped green bell pepper
+  - no exact match in reference vocabulary
+- row 924 [unmatched] ½ finely chopped italian flat-leaf parsley
+  - no exact match in reference vocabulary
+- row 418 [unmatched] ½ finely chopped onion
+  - no exact match in reference vocabulary
+- row 924 [unmatched] ½ finely chopped spinach
+  - no exact match in reference vocabulary
+- row 330 [unmatched] ½ finely chopped water chestnuts optional
+  - no exact match in reference vocabulary
+- row 1160 [unmatched] ½ finely diced garlic
+  - no exact match in reference vocabulary
+- row 599 [unmatched] ½ finely diced red onion
+  - no exact match in reference vocabulary
+- row 1156 [unmatched] ½ finely diced yellow onion
+  - no exact match in reference vocabulary
+- row 452 [unmatched] ½ finely grated parmesan cheese
+  - no exact match in reference vocabulary
+- row 88 [unmatched] ½ finely grated parmigiano-reggiano cheese
+  - no exact match in reference vocabulary
+- row 97 [unmatched] ½ finely minced white onion
+  - no exact match in reference vocabulary
+- row 644 [unmatched] ½ finely shredded monterey jack cheese
+  - no exact match in reference vocabulary
+- row 796 [unmatched] ½ firmly packed brown sugar
+  - no exact match in reference vocabulary
+- row 1327 [unmatched] ½ firmly packed light brown sugar
+  - no exact match in reference vocabulary
+- row 84 [unmatched] ½ flaked coconut
+  - no exact match in reference vocabulary
+- row 607 [unmatched] ½ flaked sea salt
+  - no exact match in reference vocabulary
+- row 606 [unmatched] ½ flax seed meal
+  - no exact match in reference vocabulary
+- row 789 [unmatched] ½ flour
+  - no exact match in reference vocabulary
+- row 472 [unmatched] ½ french baguette halved lengthwise
+  - no exact match in reference vocabulary
+- row 740 [unmatched] ½ fresh basil
+  - no exact match in reference vocabulary
+- row 627 [unmatched] ½ fresh blueberries
+  - no exact match in reference vocabulary
+- row 25 [unmatched] ½ fresh cilantro stems removed
+  - no exact match in reference vocabulary
+- row 234 [unmatched] ½ fresh green beans cut into -inch pieces
+  - no exact match in reference vocabulary
+- row 909 [unmatched] ½ fresh ground black pepper
+  - no exact match in reference vocabulary
+- row 222 [unmatched] ½ fresh lemon juice
+  - no exact match in reference vocabulary
+- row 528 [unmatched] ½ fresh lime juice
+  - no exact match in reference vocabulary
+- row 165 [unmatched] ½ fresh squeezed lemon juice
+  - no exact match in reference vocabulary
+- row 542 [unmatched] ½ fresh thai basil cilantro chopped
+  - no exact match in reference vocabulary
+- row 601 [unmatched] ½ freshly grated parmigiano-reggiano cheese
+  - no exact match in reference vocabulary
+- row 97 [unmatched] ½ freshly ground black pepper
+  - no exact match in reference vocabulary
+- row 1098 [unmatched] ½ freshly shredded provolone cheese
+  - no exact match in reference vocabulary
+- row 220 [unmatched] ½ frozen cut green beans
+  - no exact match in reference vocabulary
+- row 1229 [unmatched] ½ frozen egg noodles
+  - no exact match in reference vocabulary
+- row 625 [unmatched] ½ frozen spinach thawed drained
+  - no exact match in reference vocabulary
+- row 163 [unmatched] ½ garlic minced
+  - no exact match in reference vocabulary
+- row 1050 [unmatched] ½ garlic pepper seasoning
+  - no exact match in reference vocabulary
+- row 159 [unmatched] ½ garlic powder
+  - no exact match in reference vocabulary
+- row 362 [unmatched] ½ garlic powder taste
+  - no exact match in reference vocabulary
+- row 361 [unmatched] ½ garlic salt
+  - no exact match in reference vocabulary
+- row 651 [unmatched] ½ garlic salt taste
+  - no exact match in reference vocabulary
+- row 1325 [unmatched] ½ gluten-free all-purpose flour mix such as bob s red mill
+  - no exact match in reference vocabulary
+- row 627 [unmatched] ½ granny smith apple chopped
+  - no exact match in reference vocabulary
+- row 762 [unmatched] ½ granular sucralose sweetener such as splenda
+  - no exact match in reference vocabulary
+- row 1311 [unmatched] ½ granulated garlic
+  - no exact match in reference vocabulary
+- row 1311 [unmatched] ½ granulated onion
+  - no exact match in reference vocabulary
+- row 166 [unmatched] ½ grated carrots
+  - no exact match in reference vocabulary
+- row 911 [unmatched] ½ grated celery
+  - no exact match in reference vocabulary
+- row 86 [unmatched] ½ grated lemon zest
+  - no exact match in reference vocabulary
+- row 911 [unmatched] ½ grated onion
+  - no exact match in reference vocabulary
+- row 35 [unmatched] ½ grated parmesan cheese
+  - no exact match in reference vocabulary
+- row 537 [unmatched] ½ grated parmesan cheese divided
+  - no exact match in reference vocabulary
+- row 928 [unmatched] ½ grated parmesan cheese taste
+  - no exact match in reference vocabulary
+- row 1019 [unmatched] ½ grated pecorino romano cheese
+  - no exact match in reference vocabulary
+- row 740 [unmatched] ½ greek yogurt
+  - no exact match in reference vocabulary
+- row 1206 [unmatched] ½ green bell pepper chopped
+  - no exact match in reference vocabulary
+- row 1153 [unmatched] ½ green bell pepper thinly sliced
+  - no exact match in reference vocabulary
+- row 531 [unmatched] ½ green olives with pimento anchovy halved
+  - no exact match in reference vocabulary
+- row 1096 [unmatched] ½ ground allspice
+  - no exact match in reference vocabulary
+- row 933 [unmatched] ½ ground ancho chile powder
+  - no exact match in reference vocabulary
+- row 6 [unmatched] ½ ground black pepper
+  - no exact match in reference vocabulary
+- row 1248 [unmatched] ½ ground black pepper taste
+  - no exact match in reference vocabulary
+- row 87 [unmatched] ½ ground cardamom
+  - no exact match in reference vocabulary
+- row 953 [unmatched] ½ ground cayenne pepper
+  - no exact match in reference vocabulary
+- row 90 [unmatched] ½ ground cinnamon
+  - no exact match in reference vocabulary
+- row 761 [unmatched] ½ ground cinnamon optional
+  - no exact match in reference vocabulary
+- row 762 [unmatched] ½ ground cloves
+  - no exact match in reference vocabulary
+- row 930 [unmatched] ½ ground cloves taste
+  - no exact match in reference vocabulary
+- row 376 [unmatched] ½ ground coriander
+  - no exact match in reference vocabulary
+- row 352 [unmatched] ½ ground cumin
+  - no exact match in reference vocabulary
+- row 357 [unmatched] ½ ground cumin more taste
+  - no exact match in reference vocabulary
+- row 321 [unmatched] ½ ground dry mustard
+  - no exact match in reference vocabulary
+- row 87 [unmatched] ½ ground ginger
+  - no exact match in reference vocabulary
+- row 1153 [unmatched] ½ ground mustard
+  - no exact match in reference vocabulary
+- row 625 [unmatched] ½ ground nutmeg
+  - no exact match in reference vocabulary
+- row 929 [unmatched] ½ ground thyme
+  - no exact match in reference vocabulary
+- row 398 [unmatched] ½ ground turmeric
+  - no exact match in reference vocabulary
+- row 528 [unmatched] ½ half- -half
+  - no exact match in reference vocabulary
+- row 1112 [unmatched] ½ hamburger dill pickle slices roughly chopped
+  - no exact match in reference vocabulary
+- row 1258 [unmatched] ½ head cabbage chopped
+  - no exact match in reference vocabulary
+- row 1248 [unmatched] ½ head cabbage cored coarsely chopped
+  - no exact match in reference vocabulary
+- row 1413 [unmatched] ½ head cauliflower coarsely chopped
+  - no exact match in reference vocabulary
+- row 234 [unmatched] ½ head cauliflower finely chopped
+  - no exact match in reference vocabulary
+- row 82 [unmatched] ½ heavy cream
+  - no exact match in reference vocabulary
+- row 1152 [unmatched] ½ heinz tomato ketchup
+  - no exact match in reference vocabulary
+- row 701 [unmatched] ½ hot chile powder
+  - no exact match in reference vocabulary
+- row 1178 [unmatched] ½ hot cooked rice
+  - no exact match in reference vocabulary
+- row 567 [unmatched] ½ hot pepper sauce
+  - no exact match in reference vocabulary
+- row 420 [unmatched] ½ hot pepper sauce such as frank s redhot
+  - no exact match in reference vocabulary
+- row 582 [unmatched] ½ hot sauce
+  - no exact match in reference vocabulary
+- row 1222 [unmatched] ½ hot sauce such as valentina
+  - no exact match in reference vocabulary
+- row 1433 [unmatched] ½ ice water as needed
+  - no exact match in reference vocabulary
+- row 936 [unmatched] ½ inch cinnamon sticks
+  - no exact match in reference vocabulary
+- row 656 [unmatched] ½ italian cracker crumbs
+  - no exact match in reference vocabulary
+- row 1019 [unmatched] ½ italian seasoned bread crumbs
+  - no exact match in reference vocabulary
+- row 541 [unmatched] ½ italian seasoning
+  - no exact match in reference vocabulary
+- row 572 [unmatched] ½ ketchup
+  - no exact match in reference vocabulary
+- row 292 [unmatched] ½ kosher salt
+  - no exact match in reference vocabulary
+- row 6 [unmatched] ½ kosher salt divided
+  - no exact match in reference vocabulary
+- row 547 [unmatched] ½ kosher salt taste
+  - no exact match in reference vocabulary
+- row 576 [unmatched] ½ large carrot finely chopped
+  - no exact match in reference vocabulary
+- row 1215 [unmatched] ½ large green bell pepper chopped
+  - no exact match in reference vocabulary
+- row 1126 [unmatched] ½ large green bell pepper coarsely chopped
+  - no exact match in reference vocabulary
+- row 954 [unmatched] ½ large onion chopped
+  - no exact match in reference vocabulary
+- row 524 [unmatched] ½ large onion finely chopped
+  - no exact match in reference vocabulary
+- row 576 [unmatched] ½ large red bell pepper finely chopped
+  - no exact match in reference vocabulary
+- row 474 [unmatched] ½ large sweet bermuda onion diced
+  - no exact match in reference vocabulary
+- row 224 [unmatched] ½ lemon extract
+  - no exact match in reference vocabulary
+- row 166 [unmatched] ½ lemon juice
+  - no exact match in reference vocabulary
+- row 11 [unmatched] ½ lemon juiced
+  - no exact match in reference vocabulary
+- row 1172 [unmatched] ½ lemon pepper
+  - no exact match in reference vocabulary
+- row 378 [unmatched] ½ lemon zest
+  - no exact match in reference vocabulary
+- row 777 [unmatched] ½ light brown sugar
+  - no exact match in reference vocabulary
+- row 755 [unmatched] ½ light butter at room temperature
+  - no exact match in reference vocabulary
+- row 758 [unmatched] ½ lightly packed brown sugar
+  - no exact match in reference vocabulary
+- row 591 [unmatched] ½ lime
+  - no exact match in reference vocabulary
+- row 1051 [unmatched] ½ liquid smoke flavoring
+  - no exact match in reference vocabulary
+- row 98 [unmatched] ½ low-fat cottage cheese
+  - no exact match in reference vocabulary
+- row 198 [unmatched] ½ low-sodium vegetable stock
+  - no exact match in reference vocabulary
+- row 998 [unmatched] ½ lower sodium beef broth
+  - no exact match in reference vocabulary
+- row 1410 [unmatched] ½ lukewarm water
+  - no exact match in reference vocabulary
+- row 777 [unmatched] ½ margarine
+  - no exact match in reference vocabulary
+- row 529 [unmatched] ½ margarine softened
+  - no exact match in reference vocabulary
+- row 562 [unmatched] ½ marinara sauce
+  - no exact match in reference vocabulary
+- row 1326 [unmatched] ½ matzo cake meal
+  - no exact match in reference vocabulary
+- row 159 [unmatched] ½ mayonnaise
+  - no exact match in reference vocabulary
+- row 917 [unmatched] ½ medium head cabbage cored sliced thin
+  - no exact match in reference vocabulary
+- row 1346 [unmatched] ½ medium lemons juiced
+  - no exact match in reference vocabulary
+- row 1049 [unmatched] ½ medium onion chopped
+  - no exact match in reference vocabulary
+- row 265 [unmatched] ½ medium onion diced
+  - no exact match in reference vocabulary
+- row 330 [unmatched] ½ medium yellow onion minced
+  - no exact match in reference vocabulary
+- row 1172 [unmatched] ½ melted butter
+  - no exact match in reference vocabulary
+- row 84 [unmatched] ½ milk
+  - no exact match in reference vocabulary
+- row 662 [unmatched] ½ minced fresh cilantro
+  - no exact match in reference vocabulary
+- row 159 [unmatched] ½ minced fresh dill
+  - no exact match in reference vocabulary
+- row 352 [unmatched] ½ minced fresh parsley
+  - no exact match in reference vocabulary
+- row 906 [unmatched] ½ minced garlic
+  - no exact match in reference vocabulary
+- row 732 [unmatched] ½ minced red onion
+  - no exact match in reference vocabulary
+- row 766 [unmatched] ½ miniature chocolate chips more taste
+  - no exact match in reference vocabulary
+- row 762 [unmatched] ½ miniature semisweet chocolate chips optional
+  - no exact match in reference vocabulary
+- row 362 [unmatched] ½ mirepoix diced celery carrots onion
+  - no exact match in reference vocabulary
+- row 1443 [unmatched] ½ mozzarella cheese shredded
+  - no exact match in reference vocabulary
+- row 923 [unmatched] ½ mushrooms halved
+  - no exact match in reference vocabulary
+- row 713 [unmatched] ½ mustard seed
+  - no exact match in reference vocabulary
+- row 709 [unmatched] ½ mustard seeds
+  - no exact match in reference vocabulary
+- row 804 [unmatched] ½ nonfat dry milk powder
+  - no exact match in reference vocabulary
+- row 85 [unmatched] ½ nonfat greek yogurt
+  - no exact match in reference vocabulary
+- row 762 [unmatched] ½ nonfat plain yogurt
+  - no exact match in reference vocabulary
+- row 619 [unmatched] ½ nutritional yeast
+  - no exact match in reference vocabulary
+- row 371 [unmatched] ½ oil-packed sun-dried tomatoes drained
+  - no exact match in reference vocabulary
+- row 585 [unmatched] ½ old bay seasoning
+  - no exact match in reference vocabulary
+- row 90 [unmatched] ½ old-fashioned oats
+  - no exact match in reference vocabulary
+- row 618 [unmatched] ½ old-fashioned rolled oats
+  - no exact match in reference vocabulary
+- row 158 [unmatched] ½ olive oil
+  - no exact match in reference vocabulary
+- row 684 [unmatched] ½ olive oil divided
+  - no exact match in reference vocabulary
+- row 531 [unmatched] ½ onion chopped
+  - no exact match in reference vocabulary
+- row 363 [unmatched] ½ onion diced
+  - no exact match in reference vocabulary
+- row 576 [unmatched] ½ onion finely chopped
+  - no exact match in reference vocabulary
+- row 659 [unmatched] ½ onion finely diced
+  - no exact match in reference vocabulary
+- row 1096 [unmatched] ½ onion grated
+  - no exact match in reference vocabulary
+- row 22 [unmatched] ½ onion powder
+  - no exact match in reference vocabulary
+- row 1094 [unmatched] ½ onion sliced
+  - no exact match in reference vocabulary
+- row 1340 [unmatched] ½ orange juice
+  - no exact match in reference vocabulary
+- row 627 [unmatched] ½ orange juiced
+  - no exact match in reference vocabulary
+- row 566 [unmatched] ½ orange marmalade
+  - no exact match in reference vocabulary
+- row 576 [unmatched] ½ oregano
+  - no exact match in reference vocabulary
+- row 1252 [unmatched] ½ orzo rice-shaped pasta uncooked
+  - no exact match in reference vocabulary
+- row 736 [unmatched] ½ ounce can artichoke hearts drained
+  - no exact match in reference vocabulary
+- row 820 [unmatched] ½ ounce can lemon pie filling
+  - no exact match in reference vocabulary
+- row 1258 [unmatched] ½ ounce can tomato sauce
+  - no exact match in reference vocabulary
+- row 229 [unmatched] ½ ounce cans tuna drained flaked
+  - no exact match in reference vocabulary
+- row 739 [unmatched] ½ ounce jar creamy salad dressing
+  - no exact match in reference vocabulary
+- row 1357 [unmatched] ½ ounce package cold cream cheese cut into -inch pieces
+  - no exact match in reference vocabulary
+- row 327 [unmatched] ½ ounce package cream cheese sliced
+  - no exact match in reference vocabulary
+- row 737 [unmatched] ½ ounce package cream cheese softened cut into pieces
+  - no exact match in reference vocabulary
+- row 164 [unmatched] ½ ounce package mezze short penne pasta
+  - no exact match in reference vocabulary
+- row 472 [unmatched] ½ ounce package mozzarella cheese thinly sliced
+  - no exact match in reference vocabulary
+- row 697 [unmatched] ½ ounce package ranch dressing mix
+  - no exact match in reference vocabulary
+- row 425 [unmatched] ½ ounce packages mini pretzels
+  - no exact match in reference vocabulary
+- row 380 [unmatched] ½ ounce packages phyllo dough
+  - no exact match in reference vocabulary
+- row 1216 [unmatched] ½ ounce square unsweetened chocolate
+  - no exact match in reference vocabulary
+- row 591 [unmatched] ½ ounces chive- -onion cream cheese spread
+  - no exact match in reference vocabulary
+- row 687 [unmatched] ½ ounces extra sharp cheddar cheese shredded
+  - no exact match in reference vocabulary
+- row 572 [unmatched] ½ packed brown sugar
+  - no exact match in reference vocabulary
+- row 812 [unmatched] ½ packed brown sugar divided
+  - no exact match in reference vocabulary
+- row 618 [unmatched] ½ packed light brown sugar
+  - no exact match in reference vocabulary
+- row 952 [unmatched] ½ panko bread crumbs
+  - no exact match in reference vocabulary
+- row 21 [unmatched] ½ paprika
+  - no exact match in reference vocabulary
+- row 659 [unmatched] ½ parmesan cheese grated
+  - no exact match in reference vocabulary
+- row 567 [unmatched] ½ peach preserves
+  - no exact match in reference vocabulary
+- row 1267 [unmatched] ½ pearl barley
+  - no exact match in reference vocabulary
+- row 726 [unmatched] ½ peeled cored sliced apples
+  - no exact match in reference vocabulary
+- row 1230 [unmatched] ½ peeled diced yukon gold potatoes
+  - no exact match in reference vocabulary
+- row 233 [unmatched] ½ pesto
+  - no exact match in reference vocabulary
+- row 829 [unmatched] ½ pillsbury best all purpose flour
+  - no exact match in reference vocabulary
+- row 819 [unmatched] ½ pint sour cream
+  - no exact match in reference vocabulary
+- row 805 [unmatched] ½ pitted dates
+  - no exact match in reference vocabulary
+- row 805 [unmatched] ½ pitted prunes
+  - no exact match in reference vocabulary
+- row 566 [unmatched] ½ plain bread crumbs
+  - no exact match in reference vocabulary
+- row 89 [unmatched] ½ plain fat-free greek yogurt
+  - no exact match in reference vocabulary
+- row 276 [unmatched] ½ plain yogurt more taste
+  - no exact match in reference vocabulary
+- row 1458 [unmatched] ½ potato starch
+  - no exact match in reference vocabulary
+- row 24 [unmatched] ½ poultry seasoning
+  - no exact match in reference vocabulary
+- row 1243 [unmatched] ½ pound baby carrots
+  - no exact match in reference vocabulary
+- row 938 [unmatched] ½ pound boneless beef chuck roast cut into -inch pieces
+  - no exact match in reference vocabulary
+- row 1120 [unmatched] ½ pound bulk mild italian sausage
+  - no exact match in reference vocabulary
+- row 1382 [unmatched] ½ pound carrots cut into inch pieces
+  - no exact match in reference vocabulary
+- row 583 [unmatched] ½ pound cooked lump crabmeat drained
+  - no exact match in reference vocabulary
+- row 809 [unmatched] ½ pound dates pitted chopped
+  - no exact match in reference vocabulary
+- row 464 [unmatched] ½ pound diced fresh mushrooms
+  - no exact match in reference vocabulary
+- row 1252 [unmatched] ½ pound extra-lean ground beef
+  - no exact match in reference vocabulary
+- row 659 [unmatched] ½ pound fresh mushrooms finely diced
+  - no exact match in reference vocabulary
+- row 1050 [unmatched] ½ pound fresh mushrooms stems removed
+  - no exact match in reference vocabulary
+- row 548 [unmatched] ½ pound ground beef
+  - no exact match in reference vocabulary
+- row 574 [unmatched] ½ pound ground italian sausage
+  - no exact match in reference vocabulary
+- row 1187 [unmatched] ½ pound ground turkey
+  - no exact match in reference vocabulary
+- row 421 [unmatched] ½ pound imitation crabmeat flaked
+  - no exact match in reference vocabulary
+- row 1096 [unmatched] ½ pound lean ground beef
+  - no exact match in reference vocabulary
+- row 1096 [unmatched] ½ pound lean ground lamb
+  - no exact match in reference vocabulary
+- row 457 [unmatched] ½ pound loaf italian bread cut into inch slices
+  - no exact match in reference vocabulary
+- row 659 [unmatched] ½ pound loaves sliced white bread
+  - no exact match in reference vocabulary
+- row 23 [unmatched] ½ pound mini potatoes
+  - no exact match in reference vocabulary
+- row 1279 [unmatched] ½ pound miniature cocktail sausages
+  - no exact match in reference vocabulary
+- row 220 [unmatched] ½ pound skinless boneless chicken breast cut into bite-sized pieces
+  - no exact match in reference vocabulary
+- row 548 [unmatched] ½ pound sweet italian sausage
+  - no exact match in reference vocabulary
+- row 1220 [unmatched] ½ pounds beef chuck cut into -inch cubes
+  - no exact match in reference vocabulary
+- row 1268 [unmatched] ½ pounds beef neck bones more taste
+  - no exact match in reference vocabulary
+- row 1262 [unmatched] ½ pounds beef stew meat cut into -inch pieces
+  - no exact match in reference vocabulary
+- row 1232 [unmatched] ½ pounds beef stew meat cut into ½-inch cubes
+  - no exact match in reference vocabulary
+- row 1258 [unmatched] ½ pounds beef stew meat cut into small pieces
+  - no exact match in reference vocabulary
+- row 1246 [unmatched] ½ pounds beef top sirloin cut into bite-sized pieces
+  - no exact match in reference vocabulary
+- row 1159 [unmatched] ½ pounds boneless beef chuck cut into -inch pieces
+  - no exact match in reference vocabulary
+- row 929 [unmatched] ½ pounds boneless beef chuck roast cut into -inch cubes
+  - no exact match in reference vocabulary
+- row 954 [unmatched] ½ pounds boneless beef top sirloin cut into thin bite-size slices
+  - no exact match in reference vocabulary
+- row 924 [unmatched] ½ pounds boneless chuck roast cut into -inch cubes
+  - no exact match in reference vocabulary
+- row 1234 [unmatched] ½ pounds boneless lean beef cubed
+  - no exact match in reference vocabulary
+- row 1233 [unmatched] ½ pounds cabbage cut into bite-size pieces
+  - no exact match in reference vocabulary
+- row 1118 [unmatched] ½ pounds chopped cabbage
+  - no exact match in reference vocabulary
+- row 1279 [unmatched] ½ pounds cubed beef stew meat
+  - no exact match in reference vocabulary
+- row 1059 [unmatched] ½ pounds flank steak
+  - no exact match in reference vocabulary
+- row 1080 [unmatched] ½ pounds flank steak about -inch thick
+  - no exact match in reference vocabulary
+- row 1053 [unmatched] ½ pounds flat iron steak
+  - no exact match in reference vocabulary
+- row 541 [unmatched] ½ pounds frozen cheese ravioli thawed
+  - no exact match in reference vocabulary
+- row 1115 [unmatched] ½ pounds frozen tater tots
+  - no exact match in reference vocabulary
+- row 1061 [unmatched] ½ pounds ground beef
+  - no exact match in reference vocabulary
+- row 573 [unmatched] ½ pounds ground beef chuck
+  - no exact match in reference vocabulary
+- row 1212 [unmatched] ½ pounds ground beef more taste
+  - no exact match in reference vocabulary
+- row 866 [unmatched] ½ pounds ground round
+  - no exact match in reference vocabulary
+- row 1119 [unmatched] ½ pounds ground sirloin
+  - no exact match in reference vocabulary
+- row 6 [unmatched] ½ pounds large shrimp - peeled deveined tails removed
+  - no exact match in reference vocabulary
+- row 1042 [unmatched] ½ pounds lean beef cut into -inch cubes
+  - no exact match in reference vocabulary
+- row 1230 [unmatched] ½ pounds lean boneless beef round steak cut into cubes
+  - no exact match in reference vocabulary
+- row 1044 [unmatched] ½ pounds lean ground beef
+  - no exact match in reference vocabulary
+- row 1010 [unmatched] ½ pounds london broil
+  - no exact match in reference vocabulary
+- row 597 [unmatched] ½ pounds medium shrimp peeled deveined
+  - no exact match in reference vocabulary
+- row 1249 [unmatched] ½ pounds moose meat cut into cubes
+  - no exact match in reference vocabulary
+- row 677 [unmatched] ½ pounds skinless boneless chicken breasts chopped
+  - no exact match in reference vocabulary
+- row 1054 [unmatched] ½ pounds top round london broil cut
+  - no exact match in reference vocabulary
+- row 1023 [unmatched] ½ pounds veal cutlets
+  - no exact match in reference vocabulary
+- row 844 [unmatched] ½ powdered sugar
+  - no exact match in reference vocabulary
+- row 1135 [unmatched] ½ prepared yellow mustard
+  - no exact match in reference vocabulary
+- row 747 [unmatched] ½ pumpkin puree
+  - no exact match in reference vocabulary
+- row 770 [unmatched] ½ pure maple syrup
+  - no exact match in reference vocabulary
+- row 761 [unmatched] ½ quick cooking oats
+  - no exact match in reference vocabulary
+- row 809 [unmatched] ½ quick-cooking oats
+  - no exact match in reference vocabulary
+- row 804 [unmatched] ½ raisins
+  - no exact match in reference vocabulary
+- row 719 [unmatched] ½ raisins optional
+  - no exact match in reference vocabulary
+- row 475 [unmatched] ½ ready- -eat sun-dried tomatoes chopped
+  - no exact match in reference vocabulary
+- row 1223 [unmatched] ½ red bell pepper chopped
+  - no exact match in reference vocabulary
+- row 458 [unmatched] ½ red onion minced
+  - no exact match in reference vocabulary
+- row 1268 [unmatched] ½ red pepper flakes
+  - no exact match in reference vocabulary
+- row 779 [unmatched] ½ reduced-calorie margarine
+  - no exact match in reference vocabulary
+- row 1179 [unmatched] ½ reduced-sodium beef broth
+  - no exact match in reference vocabulary
+- row 16 [unmatched] ½ reduced-sodium soy sauce
+  - no exact match in reference vocabulary
+- row 1057 [unmatched] ½ refried beans
+  - no exact match in reference vocabulary
+- row 1325 [unmatched] ½ rice-based flour mix with xanthan gum
+  - no exact match in reference vocabulary
+- row 510 [unmatched] ½ ricotta cheese
+  - no exact match in reference vocabulary
+- row 414 [unmatched] ½ ripe avocado sliced lengthwise into pieces
+  - no exact match in reference vocabulary
+- row 603 [unmatched] ½ rolled oats
+  - no exact match in reference vocabulary
+- row 1423 [unmatched] ½ rosemary
+  - no exact match in reference vocabulary
+- row 1133 [unmatched] ½ salsa
+  - no exact match in reference vocabulary
+- row 24 [unmatched] ½ salt
+  - no exact match in reference vocabulary
+- row 237 [unmatched] ½ salt divided
+  - no exact match in reference vocabulary
+- row 357 [unmatched] ½ salt more taste
+  - no exact match in reference vocabulary
+- row 294 [unmatched] ½ salt taste
+  - no exact match in reference vocabulary
+- row 1311 [unmatched] ½ salt-free seasoning blend
+  - no exact match in reference vocabulary
+- row 635 [unmatched] ½ salted butter
+  - no exact match in reference vocabulary
+- row 580 [unmatched] ½ seafood seasoning such as old bay
+  - no exact match in reference vocabulary
+- row 1021 [unmatched] ½ seasoned dry bread crumbs
+  - no exact match in reference vocabulary
+- row 1092 [unmatched] ½ seasoned dry bread crumbs optional
+  - no exact match in reference vocabulary
+- row 602 [unmatched] ½ seasoned salt
+  - no exact match in reference vocabulary
+- row 19 [unmatched] ½ seasoned salt taste
+  - no exact match in reference vocabulary
+- row 450 [unmatched] ½ self-rising flour plus more for kneading
+  - no exact match in reference vocabulary
+- row 773 [unmatched] ½ semisweet chocolate chips
+  - no exact match in reference vocabulary
+- row 391 [unmatched] ½ sheet puff pastry
+  - no exact match in reference vocabulary
+- row 832 [unmatched] ½ shortbread cookie crumbs
+  - no exact match in reference vocabulary
+- row 1174 [unmatched] ½ shortening
+  - no exact match in reference vocabulary
+- row 166 [unmatched] ½ shredded cabbage
+  - no exact match in reference vocabulary
+- row 309 [unmatched] ½ shredded carrots
+  - no exact match in reference vocabulary
+- row 584 [unmatched] ½ shredded cheddar cheese
+  - no exact match in reference vocabulary
+- row 1176 [unmatched] ½ shredded cheddar cheese taste
+  - no exact match in reference vocabulary
+- row 772 [unmatched] ½ shredded coconut
+  - no exact match in reference vocabulary
+- row 1044 [unmatched] ½ shredded colby jack cheddar cheese
+  - no exact match in reference vocabulary
+- row 1110 [unmatched] ½ shredded colby-jack cheese divided
+  - no exact match in reference vocabulary
+- row 544 [unmatched] ½ shredded cooked turkey
+  - no exact match in reference vocabulary
+- row 918 [unmatched] ½ shredded corned beef
+  - no exact match in reference vocabulary
+- row 31 [unmatched] ½ shredded gouda cheese
+  - no exact match in reference vocabulary
+- row 715 [unmatched] ½ shredded gruyere cheese divided
+  - no exact match in reference vocabulary
+- row 737 [unmatched] ½ shredded italian cheese blend
+  - no exact match in reference vocabulary
+- row 34 [unmatched] ½ shredded mexican cheese blend
+  - no exact match in reference vocabulary
+- row 543 [unmatched] ½ shredded monterey jack cheese
+  - no exact match in reference vocabulary
+- row 1173 [unmatched] ½ shredded monterey jack cheese divided
+  - no exact match in reference vocabulary
+- row 379 [unmatched] ½ shredded mozzarella cheese
+  - no exact match in reference vocabulary
+- row 738 [unmatched] ½ shredded parmesan cheese
+  - no exact match in reference vocabulary
+- row 1116 [unmatched] ½ shredded part-skim mozzarella cheese
+  - no exact match in reference vocabulary
+- row 1115 [unmatched] ½ shredded sharp cheddar cheese
+  - no exact match in reference vocabulary
+- row 1111 [unmatched] ½ shredded sharp cheddar cheese more taste
+  - no exact match in reference vocabulary
+- row 1189 [unmatched] ½ shredded white cheddar cheese
+  - no exact match in reference vocabulary
+- row 798 [unmatched] ½ sifted all-purpose flour
+  - no exact match in reference vocabulary
+- row 853 [unmatched] ½ sifted confectioners sugar
+  - no exact match in reference vocabulary
+- row 1129 [unmatched] ½ skim milk
+  - no exact match in reference vocabulary
+- row 220 [unmatched] ½ sliced carrot
+  - no exact match in reference vocabulary
+- row 1230 [unmatched] ½ sliced carrots
+  - no exact match in reference vocabulary
+- row 416 [unmatched] ½ sliced jalapeño peppers
+  - no exact match in reference vocabulary
+- row 1385 [unmatched] ½ small head cabbage shredded
+  - no exact match in reference vocabulary
+- row 500 [unmatched] ½ small lemon
+  - no exact match in reference vocabulary
+- row 610 [unmatched] ½ smoked paprika
+  - no exact match in reference vocabulary
+- row 298 [unmatched] ½ smoked paprika divided
+  - no exact match in reference vocabulary
+- row 581 [unmatched] ½ soft bread crumbs
+  - no exact match in reference vocabulary
+- row 850 [unmatched] ½ softened butter
+  - no exact match in reference vocabulary
+- row 497 [unmatched] ½ sour cream
+  - no exact match in reference vocabulary
+- row 1029 [unmatched] ½ sour cream for serving
+  - no exact match in reference vocabulary
+- row 1305 [unmatched] ½ sour cream yogurt
+  - no exact match in reference vocabulary
+- row 83 [unmatched] ½ sourdough starter
+  - no exact match in reference vocabulary
+- row 1458 [unmatched] ½ soy flour
+  - no exact match in reference vocabulary
+- row 910 [unmatched] ½ soy sauce
+  - no exact match in reference vocabulary
+- row 83 [unmatched] ½ spelt flour
+  - no exact match in reference vocabulary
+- row 1235 [unmatched] ½ stalk celery with leaves diced
+  - no exact match in reference vocabulary
+- row 1378 [unmatched] ½ star anise
+  - no exact match in reference vocabulary
+- row 1006 [unmatched] ½ steak seasoning such as fiesta brand uncle chris taste
+  - no exact match in reference vocabulary
+- row 757 [unmatched] ½ steel-cut oats
+  - no exact match in reference vocabulary
+- row 714 [unmatched] ½ sugar
+  - no exact match in reference vocabulary
+- row 1184 [unmatched] ½ sukiyaki sauce
+  - no exact match in reference vocabulary
+- row 459 [unmatched] ½ sun-dried tomatoes packed in oil
+  - no exact match in reference vocabulary
+- row 780 [unmatched] ½ sunflower seed oil
+  - no exact match in reference vocabulary
+- row 1266 [unmatched] ½ sweet corn kernels
+  - no exact match in reference vocabulary
+- row 457 [unmatched] ½ sweet onion chopped
+  - no exact match in reference vocabulary
+- row 468 [unmatched] ½ sweet onion finely chopped
+  - no exact match in reference vocabulary
+- row 159 [unmatched] ½ sweet pickle relish
+  - no exact match in reference vocabulary
+- row 1150 [unmatched] ½ sweet pickle relish taste
+  - no exact match in reference vocabulary
+- row 780 [unmatched] ½ sweet potato peeled diced
+  - no exact match in reference vocabulary
+- row 357 [unmatched] ½ tahini
+  - no exact match in reference vocabulary
+- row 1377 [unmatched] ½ thinly sliced potatoes
+  - no exact match in reference vocabulary
+- row 38 [unmatched] ½ thousand island salad dressing taste
+  - no exact match in reference vocabulary
+- row 1167 [unmatched] ½ thyme
+  - no exact match in reference vocabulary
+- row 838 [unmatched] ½ toasted chopped almonds
+  - no exact match in reference vocabulary
+- row 761 [unmatched] ½ toasted flake coconut optional
+  - no exact match in reference vocabulary
+- row 804 [unmatched] ½ toasted wheat germ
+  - no exact match in reference vocabulary
+- row 1223 [unmatched] ½ tomato juice
+  - no exact match in reference vocabulary
+- row 1201 [unmatched] ½ tomato sauce
+  - no exact match in reference vocabulary
+- row 537 [unmatched] ½ tomato-based pasta sauce
+  - no exact match in reference vocabulary
+- row 1424 [unmatched] ½ unbleached all-purpose flour
+  - no exact match in reference vocabulary
+- row 1180 [unmatched] ½ uncooked jasmine rice rinsed drained
+  - no exact match in reference vocabulary
+- row 1079 [unmatched] ½ uncooked rice
+  - no exact match in reference vocabulary
+- row 796 [unmatched] ½ unsalted butter
+  - no exact match in reference vocabulary
+- row 824 [unmatched] ½ unsalted butter at room temperature
+  - no exact match in reference vocabulary
+- row 87 [unmatched] ½ unsalted butter frozen
+  - no exact match in reference vocabulary
+- row 85 [unmatched] ½ unsalted butter melted
+  - no exact match in reference vocabulary
+- row 807 [unmatched] ½ unsalted butter melted cooled
+  - no exact match in reference vocabulary
+- row 84 [unmatched] ½ unsalted butter softened
+  - no exact match in reference vocabulary
+- row 804 [unmatched] ½ unsalted raw sunflower seeds
+  - no exact match in reference vocabulary
+- row 764 [unmatched] ½ unsweetened cocoa powder
+  - no exact match in reference vocabulary
+- row 813 [unmatched] ½ unsweetened flaked coconut
+  - no exact match in reference vocabulary
+- row 1279 [unmatched] ½ unsweetened pineapple juice
+  - no exact match in reference vocabulary
+- row 87 [unmatched] ½ vanilla extract
+  - no exact match in reference vocabulary
+- row 773 [unmatched] ½ vanilla greek yogurt
+  - no exact match in reference vocabulary
+- row 742 [unmatched] ½ vegan shredded parmesan-style cheese
+  - no exact match in reference vocabulary
+- row 910 [unmatched] ½ vegetable broth
+  - no exact match in reference vocabulary
+- row 380 [unmatched] ½ vegetable oil
+  - no exact match in reference vocabulary
+- row 641 [unmatched] ½ vegetable oil divided
+  - no exact match in reference vocabulary
+- row 937 [unmatched] ½ very dry white bread crumbs
+  - no exact match in reference vocabulary
+- row 755 [unmatched] ½ very ripe mashed bananas
+  - no exact match in reference vocabulary
+- row 166 [unmatched] ½ vinegar
+  - no exact match in reference vocabulary
+- row 1373 [unmatched] ½ vital wheat gluten
+  - no exact match in reference vocabulary
+- row 1182 [unmatched] ½ walnut halves
+  - no exact match in reference vocabulary
+- row 1127 [unmatched] ½ warm milk
+  - no exact match in reference vocabulary
+- row 383 [unmatched] ½ warm water
+  - no exact match in reference vocabulary
+- row 1409 [unmatched] ½ warm water degrees f degrees c
+  - no exact match in reference vocabulary
+- row 83 [unmatched] ½ water
+  - no exact match in reference vocabulary
+- row 1020 [unmatched] ½ water as needed
+  - no exact match in reference vocabulary
+- row 1186 [unmatched] ½ water as needed optional
+  - no exact match in reference vocabulary
+- row 1238 [unmatched] ½ water divided
+  - no exact match in reference vocabulary
+- row 924 [unmatched] ½ water more as needed
+  - no exact match in reference vocabulary
+- row 294 [unmatched] ½ water more if needed
+  - no exact match in reference vocabulary
+- row 813 [unmatched] ½ wheat germ
+  - no exact match in reference vocabulary
+- row 860 [unmatched] ½ white chocolate chips
+  - no exact match in reference vocabulary
+- row 1053 [unmatched] ½ white pepper
+  - no exact match in reference vocabulary
+- row 159 [unmatched] ½ white sugar
+  - no exact match in reference vocabulary
+- row 1371 [unmatched] ½ white sugar taste
+  - no exact match in reference vocabulary
+- row 231 [unmatched] ½ white vinegar
+  - no exact match in reference vocabulary
+- row 403 [unmatched] ½ whole almonds
+  - no exact match in reference vocabulary
+- row 705 [unmatched] ½ whole cloves
+  - no exact match in reference vocabulary
+- row 618 [unmatched] ½ whole wheat flour
+  - no exact match in reference vocabulary
+- row 313 [unmatched] ½ worcestershire sauce
+  - no exact match in reference vocabulary
+- row 707 [unmatched] ½ yellow onion sliced
+  - no exact match in reference vocabulary
+- row 893 [unmatched] ½-inch thick slices sourdough bread
+  - no exact match in reference vocabulary
+- row 21 [unmatched] ⅓ all-purpose flour
+  - no exact match in reference vocabulary
+- row 1412 [unmatched] ⅓ all-purpose flour divided
+  - no exact match in reference vocabulary
+- row 1307 [unmatched] ⅓ all-purpose flour spooned leveled
+  - no exact match in reference vocabulary
+- row 580 [unmatched] ⅓ almond flour
+  - no exact match in reference vocabulary
+- row 930 [unmatched] ⅓ apple cider
+  - no exact match in reference vocabulary
+- row 933 [unmatched] ⅓ apple cider vinegar
+  - no exact match in reference vocabulary
+- row 852 [unmatched] ⅓ apricot preserves preserves your choice
+  - no exact match in reference vocabulary
+- row 309 [unmatched] ⅓ asian-style salad dressing
+  - no exact match in reference vocabulary
+- row 776 [unmatched] ⅓ becel salted plant-based bricks melted
+  - no exact match in reference vocabulary
+- row 947 [unmatched] ⅓ beef broth
+  - no exact match in reference vocabulary
+- row 1177 [unmatched] ⅓ boiling water
+  - no exact match in reference vocabulary
+- row 1149 [unmatched] ⅓ bread crumbs
+  - no exact match in reference vocabulary
+- row 1131 [unmatched] ⅓ brown sugar
+  - no exact match in reference vocabulary
+- row 769 [unmatched] ⅓ butter
+  - no exact match in reference vocabulary
+- row 822 [unmatched] ⅓ butter softened
+  - no exact match in reference vocabulary
+- row 1334 [unmatched] ⅓ butter softened cut into pieces
+  - no exact match in reference vocabulary
+- row 90 [unmatched] ⅓ buttermilk
+  - no exact match in reference vocabulary
+- row 364 [unmatched] ⅓ canned jalapeño pepper slices juice reserved
+  - no exact match in reference vocabulary
+- row 476 [unmatched] ⅓ chile-garlic sauce such as sriracha
+  - no exact match in reference vocabulary
+- row 1258 [unmatched] ⅓ chopped celery
+  - no exact match in reference vocabulary
+- row 477 [unmatched] ⅓ chopped fresh basil
+  - no exact match in reference vocabulary
+- row 317 [unmatched] ⅓ chopped fresh thai basil
+  - no exact match in reference vocabulary
+- row 1258 [unmatched] ⅓ chopped green bell pepper
+  - no exact match in reference vocabulary
+- row 1152 [unmatched] ⅓ chopped green pepper
+  - no exact match in reference vocabulary
+- row 244 [unmatched] ⅓ chopped mixed nuts
+  - no exact match in reference vocabulary
+- row 568 [unmatched] ⅓ chopped onion
+  - no exact match in reference vocabulary
+- row 780 [unmatched] ⅓ chopped pitted dates
+  - no exact match in reference vocabulary
+- row 158 [unmatched] ⅓ chopped thai basil
+  - no exact match in reference vocabulary
+- row 692 [unmatched] ⅓ chopped toasted walnuts
+  - no exact match in reference vocabulary
+- row 822 [unmatched] ⅓ chopped walnuts
+  - no exact match in reference vocabulary
+- row 90 [unmatched] ⅓ chopped walnuts lightly toasted
+  - no exact match in reference vocabulary
+- row 915 [unmatched] ⅓ cider vinegar
+  - no exact match in reference vocabulary
+- row 711 [unmatched] ⅓ coarse salt
+  - no exact match in reference vocabulary
+- row 776 [unmatched] ⅓ coarsely chopped walnuts
+  - no exact match in reference vocabulary
+- row 801 [unmatched] ⅓ confectioners sugar
+  - no exact match in reference vocabulary
+- row 811 [unmatched] ⅓ confectioners sugar for decoration
+  - no exact match in reference vocabulary
+- row 852 [unmatched] ⅓ confectioners sugar for dusting
+  - no exact match in reference vocabulary
+- row 313 [unmatched] ⅓ cornmeal
+  - no exact match in reference vocabulary
+- row 1458 [unmatched] ⅓ cornstarch
+  - no exact match in reference vocabulary
+- row 507 [unmatched] ⅓ cream cheese softened
+  - no exact match in reference vocabulary
+- row 676 [unmatched] ⅓ crumbled blue cheese
+  - no exact match in reference vocabulary
+- row 528 [unmatched] ⅓ diced red onion
+  - no exact match in reference vocabulary
+- row 528 [unmatched] ⅓ diced sweet red bell pepper
+  - no exact match in reference vocabulary
+- row 578 [unmatched] ⅓ dry bread crumbs
+  - no exact match in reference vocabulary
+- row 414 [unmatched] ⅓ english cucumber cut into matchsticks
+  - no exact match in reference vocabulary
+- row 474 [unmatched] ⅓ extra-virgin olive oil
+  - no exact match in reference vocabulary
+- row 741 [unmatched] ⅓ fat-free half- -half
+  - no exact match in reference vocabulary
+- row 581 [unmatched] ⅓ finely chopped celery
+  - no exact match in reference vocabulary
+- row 361 [unmatched] ⅓ finely chopped fresh dill
+  - no exact match in reference vocabulary
+- row 900 [unmatched] ⅓ finely chopped onion divided
+  - no exact match in reference vocabulary
+- row 611 [unmatched] ⅓ finely grated parmesan cheese
+  - no exact match in reference vocabulary
+- row 1024 [unmatched] ⅓ finely grated parmigiano-reggiano cheese
+  - no exact match in reference vocabulary
+- row 850 [unmatched] ⅓ flaked coconut toasted optional
+  - no exact match in reference vocabulary
+- row 1383 [unmatched] ⅓ fresh lemon juice
+  - no exact match in reference vocabulary
+- row 352 [unmatched] ⅓ frozen corn kernels
+  - no exact match in reference vocabulary
+- row 1336 [unmatched] ⅓ garlic powder
+  - no exact match in reference vocabulary
+- row 437 [unmatched] ⅓ grated parmesan cheese
+  - no exact match in reference vocabulary
+- row 220 [unmatched] ⅓ grated parmesan cheese more taste optional
+  - no exact match in reference vocabulary
+- row 691 [unmatched] ⅓ green onions chopped
+  - no exact match in reference vocabulary
+- row 726 [unmatched] ⅓ ground cinnamon
+  - no exact match in reference vocabulary
+- row 428 [unmatched] ⅓ ground italian sausage
+  - no exact match in reference vocabulary
+- row 574 [unmatched] ⅓ half- -half
+  - no exact match in reference vocabulary
+- row 1250 [unmatched] ⅓ hot chicken broth
+  - no exact match in reference vocabulary
+- row 429 [unmatched] ⅓ hot pepper sauce such as frank s redhot
+  - no exact match in reference vocabulary
+- row 574 [unmatched] ⅓ italian bread crumbs
+  - no exact match in reference vocabulary
+- row 428 [unmatched] ⅓ italian-style dry bread crumbs
+  - no exact match in reference vocabulary
+- row 565 [unmatched] ⅓ ketchup
+  - no exact match in reference vocabulary
+- row 1244 [unmatched] ⅓ lentils picked over rinsed
+  - no exact match in reference vocabulary
+- row 741 [unmatched] ⅓ light mayonnaise
+  - no exact match in reference vocabulary
+- row 1043 [unmatched] ⅓ lime juice
+  - no exact match in reference vocabulary
+- row 1244 [unmatched] ⅓ long grain rice
+  - no exact match in reference vocabulary
+- row 759 [unmatched] ⅓ mashed bananas
+  - no exact match in reference vocabulary
+- row 749 [unmatched] ⅓ mashed overripe bananas
+  - no exact match in reference vocabulary
+- row 11 [unmatched] ⅓ mayonnaise
+  - no exact match in reference vocabulary
+- row 1382 [unmatched] ⅓ medium head cabbage shredded
+  - no exact match in reference vocabulary
+- row 160 [unmatched] ⅓ mexican crema
+  - no exact match in reference vocabulary
+- row 798 [unmatched] ⅓ milk as needed
+  - no exact match in reference vocabulary
+- row 474 [unmatched] ⅓ minced fresh basil
+  - no exact match in reference vocabulary
+- row 574 [unmatched] ⅓ minced onion
+  - no exact match in reference vocabulary
+- row 444 [unmatched] ⅓ olive oil
+  - no exact match in reference vocabulary
+- row 490 [unmatched] ⅓ olive oil plus more for greasing the sheet
+  - no exact match in reference vocabulary
+- row 821 [unmatched] ⅓ packed brown sugar
+  - no exact match in reference vocabulary
+- row 726 [unmatched] ⅓ packed light brown sugar
+  - no exact match in reference vocabulary
+- row 564 [unmatched] ⅓ panko bread crumbs
+  - no exact match in reference vocabulary
+- row 740 [unmatched] ⅓ pickled jalapeno pepper slices
+  - no exact match in reference vocabulary
+- row 712 [unmatched] ⅓ pickling salt
+  - no exact match in reference vocabulary
+- row 160 [unmatched] ⅓ plain yogurt
+  - no exact match in reference vocabulary
+- row 800 [unmatched] ⅓ powdered sugar
+  - no exact match in reference vocabulary
+- row 804 [unmatched] ⅓ pure maple syrup
+  - no exact match in reference vocabulary
+- row 771 [unmatched] ⅓ raisins
+  - no exact match in reference vocabulary
+- row 588 [unmatched] ⅓ rinsed drained canned black-eyed peas
+  - no exact match in reference vocabulary
+- row 98 [unmatched] ⅓ roasted red peppers drained chopped
+  - no exact match in reference vocabulary
+- row 760 [unmatched] ⅓ roasted walnut oil
+  - no exact match in reference vocabulary
+- row 1035 [unmatched] ⅓ salsa
+  - no exact match in reference vocabulary
+- row 352 [unmatched] ⅓ salt
+  - no exact match in reference vocabulary
+- row 760 [unmatched] ⅓ sea salt
+  - no exact match in reference vocabulary
+- row 821 [unmatched] ⅓ shortening
+  - no exact match in reference vocabulary
+- row 1022 [unmatched] ⅓ shredded baby carrots
+  - no exact match in reference vocabulary
+- row 675 [unmatched] ⅓ shredded mozzarella cheese
+  - no exact match in reference vocabulary
+- row 224 [unmatched] ⅓ sifted cake flour
+  - no exact match in reference vocabulary
+- row 815 [unmatched] ⅓ sifted confectioners sugar
+  - no exact match in reference vocabulary
+- row 764 [unmatched] ⅓ skim milk
+  - no exact match in reference vocabulary
+- row 650 [unmatched] ⅓ soft bread crumbs
+  - no exact match in reference vocabulary
+- row 587 [unmatched] ⅓ sour cream more taste
+  - no exact match in reference vocabulary
+- row 1387 [unmatched] ⅓ stone-ground mustard
+  - no exact match in reference vocabulary
+- row 160 [unmatched] ⅓ sweetened condensed milk
+  - no exact match in reference vocabulary
+- row 368 [unmatched] ⅓ tahini
+  - no exact match in reference vocabulary
+- row 612 [unmatched] ⅓ thinly shaved parmesan cheese
+  - no exact match in reference vocabulary
+- row 1339 [unmatched] ⅓ unsalted butter softened
+  - no exact match in reference vocabulary
+- row 758 [unmatched] ⅓ unsweetened applesauce
+  - no exact match in reference vocabulary
+- row 858 [unmatched] ⅓ unsweetened cocoa powder
+  - no exact match in reference vocabulary
+- row 751 [unmatched] ⅓ vegetable oil
+  - no exact match in reference vocabulary
+- row 1445 [unmatched] ⅓ warm water degrees f degrees c
+  - no exact match in reference vocabulary
+- row 226 [unmatched] ⅓ water
+  - no exact match in reference vocabulary
+- row 610 [unmatched] ⅓ wheat germ
+  - no exact match in reference vocabulary
+- row 82 [unmatched] ⅓ white sugar
+  - no exact match in reference vocabulary
+- row 858 [unmatched] ⅓ whole wheat flour
+  - no exact match in reference vocabulary
+- row 1412 [unmatched] ¼ active dry yeast
+  - no exact match in reference vocabulary
+- row 774 [unmatched] ¼ agave nectar
+  - no exact match in reference vocabulary
+- row 87 [unmatched] ¼ all-purpose flour
+  - no exact match in reference vocabulary
+- row 842 [unmatched] ¼ almond extract
+  - no exact match in reference vocabulary
+- row 580 [unmatched] ¼ almond flour
+  - no exact match in reference vocabulary
+- row 369 [unmatched] ¼ apple cider vinegar
+  - no exact match in reference vocabulary
+- row 757 [unmatched] ¼ applesauce
+  - no exact match in reference vocabulary
+- row 616 [unmatched] ¼ baking powder
+  - no exact match in reference vocabulary
+- row 25 [unmatched] ¼ baking soda
+  - no exact match in reference vocabulary
+- row 455 [unmatched] ¼ balsamic vinegar
+  - no exact match in reference vocabulary
+- row 1229 [unmatched] ¼ beef bouillon granules
+  - no exact match in reference vocabulary
+- row 1170 [unmatched] ¼ beef broth
+  - no exact match in reference vocabulary
+- row 1308 [unmatched] ¼ beef stock
+  - no exact match in reference vocabulary
+- row 352 [unmatched] ¼ black beans rinsed drained
+  - no exact match in reference vocabulary
+- row 359 [unmatched] ¼ black olives drained
+  - no exact match in reference vocabulary
+- row 270 [unmatched] ¼ black pepper
+  - no exact match in reference vocabulary
+- row 674 [unmatched] ¼ blue cheese dressing
+  - no exact match in reference vocabulary
+- row 504 [unmatched] ¼ blue cheese salad dressing
+  - no exact match in reference vocabulary
+- row 1371 [unmatched] ¼ blueberries
+  - no exact match in reference vocabulary
+- row 322 [unmatched] ¼ bread crumbs
+  - no exact match in reference vocabulary
+- row 1448 [unmatched] ¼ bread flour
+  - no exact match in reference vocabulary
+- row 1427 [unmatched] ¼ bread flour more if needed
+  - no exact match in reference vocabulary
+- row 90 [unmatched] ¼ brown sugar
+  - no exact match in reference vocabulary
+- row 1139 [unmatched] ¼ brown sugar taste
+  - no exact match in reference vocabulary
+- row 674 [unmatched] ¼ buffalo wing sauce
+  - no exact match in reference vocabulary
+- row 641 [unmatched] ¼ butter
+  - no exact match in reference vocabulary
+- row 495 [unmatched] ¼ butter margarine
+  - no exact match in reference vocabulary
+- row 491 [unmatched] ¼ butter softened
+  - no exact match in reference vocabulary
+- row 292 [unmatched] ¼ candied pecans
+  - no exact match in reference vocabulary
+- row 924 [unmatched] ¼ canola oil divided
+  - no exact match in reference vocabulary
+- row 588 [unmatched] ¼ cayenne pepper
+  - no exact match in reference vocabulary
+- row 656 [unmatched] ¼ cayenne pepper more taste
+  - no exact match in reference vocabulary
+- row 1080 [unmatched] ¼ cayenne pepper taste
+  - no exact match in reference vocabulary
+- row 1026 [unmatched] ¼ cayenne powder
+  - no exact match in reference vocabulary
+- row 709 [unmatched] ¼ celery seed
+  - no exact match in reference vocabulary
+- row 643 [unmatched] ¼ chili powder
+  - no exact match in reference vocabulary
+- row 1201 [unmatched] ¼ chili seasoning mix
+  - no exact match in reference vocabulary
+- row 1026 [unmatched] ¼ chinese five-spice powder
+  - no exact match in reference vocabulary
+- row 1326 [unmatched] ¼ chocolate chips taste optional
+  - no exact match in reference vocabulary
+- row 358 [unmatched] ¼ chopped black olives
+  - no exact match in reference vocabulary
+- row 1469 [unmatched] ¼ chopped candied lemon peel
+  - no exact match in reference vocabulary
+- row 1469 [unmatched] ¼ chopped candied orange peel
+  - no exact match in reference vocabulary
+- row 1120 [unmatched] ¼ chopped celery
+  - no exact match in reference vocabulary
+- row 812 [unmatched] ¼ chopped dried apricots
+  - no exact match in reference vocabulary
+- row 473 [unmatched] ¼ chopped fresh basil
+  - no exact match in reference vocabulary
+- row 737 [unmatched] ¼ chopped fresh chives
+  - no exact match in reference vocabulary
+- row 1179 [unmatched] ¼ chopped fresh cilantro
+  - no exact match in reference vocabulary
+- row 1080 [unmatched] ¼ chopped fresh cilantro leaves
+  - no exact match in reference vocabulary
+- row 325 [unmatched] ¼ chopped fresh cilantro taste
+  - no exact match in reference vocabulary
+- row 584 [unmatched] ¼ chopped fresh dill
+  - no exact match in reference vocabulary
+- row 326 [unmatched] ¼ chopped fresh parsley
+  - no exact match in reference vocabulary
+- row 737 [unmatched] ¼ chopped fresh sage
+  - no exact match in reference vocabulary
+- row 1194 [unmatched] ¼ chopped green bell pepper
+  - no exact match in reference vocabulary
+- row 1173 [unmatched] ¼ chopped green chile pepper
+  - no exact match in reference vocabulary
+- row 359 [unmatched] ¼ chopped green onions
+  - no exact match in reference vocabulary
+- row 1199 [unmatched] ¼ chopped jalapeno pepper optional
+  - no exact match in reference vocabulary
+- row 759 [unmatched] ¼ chopped macadamia nuts
+  - no exact match in reference vocabulary
+- row 675 [unmatched] ¼ chopped onion
+  - no exact match in reference vocabulary
+- row 1274 [unmatched] ¼ chopped parsley
+  - no exact match in reference vocabulary
+- row 550 [unmatched] ¼ chopped roma tomatoes
+  - no exact match in reference vocabulary
+- row 292 [unmatched] ¼ chopped toasted pecans
+  - no exact match in reference vocabulary
+- row 759 [unmatched] ¼ chopped walnuts
+  - no exact match in reference vocabulary
+- row 1326 [unmatched] ¼ chopped walnuts taste optional
+  - no exact match in reference vocabulary
+- row 912 [unmatched] ¼ cider vinegar
+  - no exact match in reference vocabulary
+- row 789 [unmatched] ¼ cinnamon
+  - no exact match in reference vocabulary
+- row 467 [unmatched] ¼ coarse ground black pepper
+  - no exact match in reference vocabulary
+- row 947 [unmatched] ¼ coarsely crushed black peppercorns
+  - no exact match in reference vocabulary
+- row 765 [unmatched] ¼ cocoa powder
+  - no exact match in reference vocabulary
+- row 742 [unmatched] ¼ coconut yogurt
+  - no exact match in reference vocabulary
+- row 1469 [unmatched] ¼ cointreau
+  - no exact match in reference vocabulary
+- row 915 [unmatched] ¼ cold water
+  - no exact match in reference vocabulary
+- row 806 [unmatched] ¼ cold water as needed
+  - no exact match in reference vocabulary
+- row 824 [unmatched] ¼ confectioners sugar
+  - no exact match in reference vocabulary
+- row 587 [unmatched] ¼ corn oil for frying
+  - no exact match in reference vocabulary
+- row 536 [unmatched] ¼ cornflake crumbs
+  - no exact match in reference vocabulary
+- row 1428 [unmatched] ¼ cornmeal as needed
+  - no exact match in reference vocabulary
+- row 1457 [unmatched] ¼ cracked wheat
+  - no exact match in reference vocabulary
+- row 680 [unmatched] ¼ cream cheese softened
+  - no exact match in reference vocabulary
+- row 224 [unmatched] ¼ cream tartar
+  - no exact match in reference vocabulary
+- row 98 [unmatched] ¼ crumbled feta cheese
+  - no exact match in reference vocabulary
+- row 467 [unmatched] ¼ crumbled goat cheese
+  - no exact match in reference vocabulary
+- row 1264 [unmatched] ¼ crushed red pepper flakes
+  - no exact match in reference vocabulary
+- row 597 [unmatched] ¼ crushed red pepper flakes taste
+  - no exact match in reference vocabulary
+- row 1078 [unmatched] ¼ crushed red pepper flakes taste optional
+  - no exact match in reference vocabulary
+- row 161 [unmatched] ¼ cubed cooked chicken
+  - no exact match in reference vocabulary
+- row 327 [unmatched] ¼ cucumber peeled sliced lengthwise
+  - no exact match in reference vocabulary
+- row 406 [unmatched] ¼ cumin
+  - no exact match in reference vocabulary
+- row 530 [unmatched] ¼ curry powder
+  - no exact match in reference vocabulary
+- row 761 [unmatched] ¼ dark brown sugar divided
+  - no exact match in reference vocabulary
+- row 163 [unmatched] ¼ diced avocado
+  - no exact match in reference vocabulary
+- row 163 [unmatched] ¼ diced cucumber
+  - no exact match in reference vocabulary
+- row 931 [unmatched] ¼ diced green chile pepper
+  - no exact match in reference vocabulary
+- row 163 [unmatched] ¼ diced mango
+  - no exact match in reference vocabulary
+- row 1131 [unmatched] ¼ diced onion
+  - no exact match in reference vocabulary
+- row 313 [unmatched] ¼ diced red bell pepper
+  - no exact match in reference vocabulary
+- row 361 [unmatched] ¼ diced red onion
+  - no exact match in reference vocabulary
+- row 613 [unmatched] ¼ dill
+  - no exact match in reference vocabulary
+- row 935 [unmatched] ¼ distilled white vinegar
+  - no exact match in reference vocabulary
+- row 435 [unmatched] ¼ dried basil
+  - no exact match in reference vocabulary
+- row 1416 [unmatched] ¼ dried cilantro
+  - no exact match in reference vocabulary
+- row 513 [unmatched] ¼ dried cranberries
+  - no exact match in reference vocabulary
+- row 435 [unmatched] ¼ dried marjoram
+  - no exact match in reference vocabulary
+- row 435 [unmatched] ¼ dried oregano
+  - no exact match in reference vocabulary
+- row 319 [unmatched] ¼ dried oregano taste
+  - no exact match in reference vocabulary
+- row 1229 [unmatched] ¼ dried parsley
+  - no exact match in reference vocabulary
+- row 435 [unmatched] ¼ dried parsley taste
+  - no exact match in reference vocabulary
+- row 1267 [unmatched] ¼ dried rosemary
+  - no exact match in reference vocabulary
+- row 571 [unmatched] ¼ dried sage
+  - no exact match in reference vocabulary
+- row 265 [unmatched] ¼ dried thyme
+  - no exact match in reference vocabulary
+- row 319 [unmatched] ¼ dried thyme taste
+  - no exact match in reference vocabulary
+- row 532 [unmatched] ¼ dry bread crumbs
+  - no exact match in reference vocabulary
+- row 578 [unmatched] ¼ dry mustard
+  - no exact match in reference vocabulary
+- row 702 [unmatched] ¼ dry rub for chicken such as mccormick grill mates
+  - no exact match in reference vocabulary
+- row 167 [unmatched] ¼ english cucumber chopped
+  - no exact match in reference vocabulary
+- row 455 [unmatched] ¼ extra virgin olive oil
+  - no exact match in reference vocabulary
+- row 607 [unmatched] ¼ extra-virgin olive oil
+  - no exact match in reference vocabulary
+- row 477 [unmatched] ¼ extra-virgin olive oil divided
+  - no exact match in reference vocabulary
+- row 474 [unmatched] ¼ extra-virgin olive oil for brushing
+  - no exact match in reference vocabulary
+- row 503 [unmatched] ¼ fat-free refried beans
+  - no exact match in reference vocabulary
+- row 526 [unmatched] ¼ fine dry bread crumbs
+  - no exact match in reference vocabulary
+- row 165 [unmatched] ¼ finely chopped celery
+  - no exact match in reference vocabulary
+- row 924 [unmatched] ¼ finely chopped chives
+  - no exact match in reference vocabulary
+- row 924 [unmatched] ¼ finely chopped cilantro
+  - no exact match in reference vocabulary
+- row 924 [unmatched] ¼ finely chopped fenugreek leaves
+  - no exact match in reference vocabulary
+- row 1137 [unmatched] ¼ finely chopped green pepper
+  - no exact match in reference vocabulary
+- row 24 [unmatched] ¼ finely chopped onion
+  - no exact match in reference vocabulary
+- row 288 [unmatched] ¼ finely chopped red bell pepper
+  - no exact match in reference vocabulary
+- row 1116 [unmatched] ¼ finely grated parmigiano-reggiano plus additional for serving
+  - no exact match in reference vocabulary
+- row 371 [unmatched] ¼ finely shredded fresh basil
+  - no exact match in reference vocabulary
+- row 435 [unmatched] ¼ fines herbs
+  - no exact match in reference vocabulary
+- row 413 [unmatched] ¼ fish sauce
+  - no exact match in reference vocabulary
+- row 774 [unmatched] ¼ flax seed meal
+  - no exact match in reference vocabulary
+- row 1273 [unmatched] ¼ flour as needed
+  - no exact match in reference vocabulary
+- row 459 [unmatched] ¼ fresh basil stems removed
+  - no exact match in reference vocabulary
+- row 475 [unmatched] ¼ fresh basil stems removed leaves chopped
+  - no exact match in reference vocabulary
+- row 567 [unmatched] ¼ fresh bread crumbs
+  - no exact match in reference vocabulary
+- row 1377 [unmatched] ¼ fresh dill weed
+  - no exact match in reference vocabulary
+- row 371 [unmatched] ¼ fresh lemon juice
+  - no exact match in reference vocabulary
+- row 367 [unmatched] ¼ fresh lemon juice more taste
+  - no exact match in reference vocabulary
+- row 925 [unmatched] ¼ fresh lime juice
+  - no exact match in reference vocabulary
+- row 1243 [unmatched] ¼ fresh parsley
+  - no exact match in reference vocabulary
+- row 313 [unmatched] ¼ freshly chopped parsley
+  - no exact match in reference vocabulary
+- row 457 [unmatched] ¼ freshly grated parmesan cheese
+  - no exact match in reference vocabulary
+- row 534 [unmatched] ¼ freshly grated pecorino romano cheese
+  - no exact match in reference vocabulary
+- row 1098 [unmatched] ¼ freshly ground black pepper
+  - no exact match in reference vocabulary
+- row 1443 [unmatched] ¼ freshly ground black pepper taste
+  - no exact match in reference vocabulary
+- row 524 [unmatched] ¼ frozen peas
+  - no exact match in reference vocabulary
+- row 935 [unmatched] ¼ garlic paste
+  - no exact match in reference vocabulary
+- row 98 [unmatched] ¼ garlic powder
+  - no exact match in reference vocabulary
+- row 905 [unmatched] ¼ garlic powder more taste
+  - no exact match in reference vocabulary
+- row 486 [unmatched] ¼ garlic powder optional
+  - no exact match in reference vocabulary
+- row 1232 [unmatched] ¼ garlic powder taste
+  - no exact match in reference vocabulary
+- row 541 [unmatched] ¼ garlic salt
+  - no exact match in reference vocabulary
+- row 756 [unmatched] ¼ gluten-free all purpose baking flour such as krusteazl
+  - no exact match in reference vocabulary
+- row 644 [unmatched] ¼ gluten-free bread crumbs
+  - no exact match in reference vocabulary
+- row 448 [unmatched] ¼ granulated garlic
+  - no exact match in reference vocabulary
+- row 568 [unmatched] ¼ grape jelly
+  - no exact match in reference vocabulary
+- row 626 [unmatched] ¼ grated carrot
+  - no exact match in reference vocabulary
+- row 319 [unmatched] ¼ grated parmesan cheese
+  - no exact match in reference vocabulary
+- row 1078 [unmatched] ¼ grated parmesan cheese more taste
+  - no exact match in reference vocabulary
+- row 222 [unmatched] ¼ grated parmesan cheese optional
+  - no exact match in reference vocabulary
+- row 757 [unmatched] ¼ greek yogurt
+  - no exact match in reference vocabulary
+- row 578 [unmatched] ¼ green bell pepper seeded diced
+  - no exact match in reference vocabulary
+- row 547 [unmatched] ¼ green peas taste
+  - no exact match in reference vocabulary
+- row 717 [unmatched] ¼ ground allspice
+  - no exact match in reference vocabulary
+- row 850 [unmatched] ¼ ground almonds
+  - no exact match in reference vocabulary
+- row 24 [unmatched] ¼ ground black pepper
+  - no exact match in reference vocabulary
+- row 1216 [unmatched] ¼ ground cayenne pepper
+  - no exact match in reference vocabulary
+- row 376 [unmatched] ¼ ground cinnamon
+  - no exact match in reference vocabulary
+- row 796 [unmatched] ¼ ground cinnamon divided
+  - no exact match in reference vocabulary
+- row 728 [unmatched] ¼ ground cinnamon more taste
+  - no exact match in reference vocabulary
+- row 701 [unmatched] ¼ ground cloves
+  - no exact match in reference vocabulary
+- row 378 [unmatched] ¼ ground coriander
+  - no exact match in reference vocabulary
+- row 374 [unmatched] ¼ ground cumin
+  - no exact match in reference vocabulary
+- row 610 [unmatched] ¼ ground flax seed
+  - no exact match in reference vocabulary
+- row 777 [unmatched] ¼ ground flax seeds
+  - no exact match in reference vocabulary
+- row 406 [unmatched] ¼ ground ginger
+  - no exact match in reference vocabulary
+- row 1178 [unmatched] ¼ ground ginger taste
+  - no exact match in reference vocabulary
+- row 1261 [unmatched] ¼ ground marjoram
+  - no exact match in reference vocabulary
+- row 90 [unmatched] ¼ ground nutmeg
+  - no exact match in reference vocabulary
+- row 319 [unmatched] ¼ ground savory taste
+  - no exact match in reference vocabulary
+- row 709 [unmatched] ¼ ground turmeric
+  - no exact match in reference vocabulary
+- row 361 [unmatched] ¼ ground white pepper
+  - no exact match in reference vocabulary
+- row 1024 [unmatched] ¼ ground white pepper optional
+  - no exact match in reference vocabulary
+- row 1080 [unmatched] ¼ ground white pepper taste
+  - no exact match in reference vocabulary
+- row 503 [unmatched] ¼ guacamole
+  - no exact match in reference vocabulary
+- row 292 [unmatched] ¼ heavy cream at room temperature
+  - no exact match in reference vocabulary
+- row 1116 [unmatched] ¼ heavy whipping cream
+  - no exact match in reference vocabulary
+- row 1163 [unmatched] ¼ heinz tomato ketchup
+  - no exact match in reference vocabulary
+- row 295 [unmatched] ¼ honey
+  - no exact match in reference vocabulary
+- row 1132 [unmatched] ¼ hot pepper sauce
+  - no exact match in reference vocabulary
+- row 580 [unmatched] ¼ hot pepper sauce such as tabasco
+  - no exact match in reference vocabulary
+- row 1429 [unmatched] ¼ instant yeast
+  - no exact match in reference vocabulary
+- row 341 [unmatched] ¼ italian bread crumbs
+  - no exact match in reference vocabulary
+- row 237 [unmatched] ¼ italian seasoning
+  - no exact match in reference vocabulary
+- row 534 [unmatched] ¼ italian-style bread crumbs such as vigo
+  - no exact match in reference vocabulary
+- row 532 [unmatched] ¼ italian-style seasoning
+  - no exact match in reference vocabulary
+- row 1134 [unmatched] ¼ ketchup
+  - no exact match in reference vocabulary
+- row 1130 [unmatched] ¼ ketchup taste
+  - no exact match in reference vocabulary
+- row 292 [unmatched] ¼ kosher salt
+  - no exact match in reference vocabulary
+- row 349 [unmatched] ¼ kosher salt taste
+  - no exact match in reference vocabulary
+- row 449 [unmatched] ¼ large baguette sliced
+  - no exact match in reference vocabulary
+- row 6 [unmatched] ¼ lemon juice
+  - no exact match in reference vocabulary
+- row 605 [unmatched] ¼ lemon pepper
+  - no exact match in reference vocabulary
+- row 486 [unmatched] ¼ lemon pepper optional
+  - no exact match in reference vocabulary
+- row 1278 [unmatched] ¼ light soy sauce divided
+  - no exact match in reference vocabulary
+- row 350 [unmatched] ¼ lime juice
+  - no exact match in reference vocabulary
+- row 625 [unmatched] ¼ maple syrup
+  - no exact match in reference vocabulary
+- row 650 [unmatched] ¼ margarine
+  - no exact match in reference vocabulary
+- row 770 [unmatched] ¼ mashed overripe bananas
+  - no exact match in reference vocabulary
+- row 769 [unmatched] ¼ mashed ripe bananas
+  - no exact match in reference vocabulary
+- row 347 [unmatched] ¼ mayonnaise
+  - no exact match in reference vocabulary
+- row 1379 [unmatched] ¼ medium head cabbage shredded
+  - no exact match in reference vocabulary
+- row 1375 [unmatched] ¼ melted butter
+  - no exact match in reference vocabulary
+- row 166 [unmatched] ¼ milk
+  - no exact match in reference vocabulary
+- row 1128 [unmatched] ¼ milk as needed optional
+  - no exact match in reference vocabulary
+- row 762 [unmatched] ¼ milled flax seed
+  - no exact match in reference vocabulary
+- row 1457 [unmatched] ¼ millet flour
+  - no exact match in reference vocabulary
+- row 680 [unmatched] ¼ minced onion
+  - no exact match in reference vocabulary
+- row 587 [unmatched] ¼ minced red bell pepper
+  - no exact match in reference vocabulary
+- row 166 [unmatched] ¼ minced sweet onion
+  - no exact match in reference vocabulary
+- row 24 [unmatched] ¼ no-salt-added chicken broth
+  - no exact match in reference vocabulary
+- row 1275 [unmatched] ¼ oil
+  - no exact match in reference vocabulary
+- row 578 [unmatched] ¼ old bay tm seasoning
+  - no exact match in reference vocabulary
+- row 16 [unmatched] ¼ olive oil
+  - no exact match in reference vocabulary
+- row 623 [unmatched] ¼ olive oil more as needed
+  - no exact match in reference vocabulary
+- row 578 [unmatched] ¼ onion powder
+  - no exact match in reference vocabulary
+- row 905 [unmatched] ¼ onion powder more taste
+  - no exact match in reference vocabulary
+- row 1232 [unmatched] ¼ onion powder taste
+  - no exact match in reference vocabulary
+- row 362 [unmatched] ¼ onion salt taste
+  - no exact match in reference vocabulary
+- row 1034 [unmatched] ¼ packed brown sugar
+  - no exact match in reference vocabulary
+- row 808 [unmatched] ¼ packed light brown sugar
+  - no exact match in reference vocabulary
+- row 361 [unmatched] ¼ panko bread crumbs
+  - no exact match in reference vocabulary
+- row 583 [unmatched] ¼ panko bread crumbs as needed
+  - no exact match in reference vocabulary
+- row 319 [unmatched] ¼ paprika
+  - no exact match in reference vocabulary
+- row 357 [unmatched] ¼ paprika as needed
+  - no exact match in reference vocabulary
+- row 346 [unmatched] ¼ paprika for garnish
+  - no exact match in reference vocabulary
+- row 1119 [unmatched] ¼ parmesan cheese
+  - no exact match in reference vocabulary
+- row 513 [unmatched] ¼ pecans
+  - no exact match in reference vocabulary
+- row 599 [unmatched] ¼ peeled seeded diced ripe tomatoes
+  - no exact match in reference vocabulary
+- row 1021 [unmatched] ¼ pepper
+  - no exact match in reference vocabulary
+- row 673 [unmatched] ¼ pesto
+  - no exact match in reference vocabulary
+- row 812 [unmatched] ¼ pitted chopped dates
+  - no exact match in reference vocabulary
+- row 1027 [unmatched] ¼ plain bread crumbs
+  - no exact match in reference vocabulary
+- row 309 [unmatched] ¼ plain greek yogurt
+  - no exact match in reference vocabulary
+- row 31 [unmatched] ¼ plain greek-style yogurt
+  - no exact match in reference vocabulary
+- row 774 [unmatched] ¼ plain non-fat greek-style yogurt
+  - no exact match in reference vocabulary
+- row 778 [unmatched] ¼ plain nonfat greek yogurt
+  - no exact match in reference vocabulary
+- row 760 [unmatched] ¼ plain yogurt
+  - no exact match in reference vocabulary
+- row 854 [unmatched] ¼ poppy seeds
+  - no exact match in reference vocabulary
+- row 566 [unmatched] ¼ poultry seasoning
+  - no exact match in reference vocabulary
+- row 391 [unmatched] ¼ pound mushrooms sliced
+  - no exact match in reference vocabulary
+- row 1114 [unmatched] ¼ pound shredded cheddar cheese
+  - no exact match in reference vocabulary
+- row 1306 [unmatched] ¼ pounds beef sirloin steak
+  - no exact match in reference vocabulary
+- row 1029 [unmatched] ¼ pounds ground beef lean
+  - no exact match in reference vocabulary
+- row 574 [unmatched] ¼ pounds ground round beef
+  - no exact match in reference vocabulary
+- row 566 [unmatched] ¼ pounds ground turkey
+  - no exact match in reference vocabulary
+- row 1173 [unmatched] ¼ pounds lean ground beef
+  - no exact match in reference vocabulary
+- row 674 [unmatched] ¼ ranch dressing
+  - no exact match in reference vocabulary
+- row 578 [unmatched] ¼ red bell pepper seeded diced
+  - no exact match in reference vocabulary
+- row 914 [unmatched] ¼ red onion sliced optional
+  - no exact match in reference vocabulary
+- row 413 [unmatched] ¼ red pepper flakes
+  - no exact match in reference vocabulary
+- row 1159 [unmatched] ¼ red pepper flakes taste
+  - no exact match in reference vocabulary
+- row 503 [unmatched] ¼ reduced-fat sour cream
+  - no exact match in reference vocabulary
+- row 1179 [unmatched] ¼ reduced-sodium soy sauce
+  - no exact match in reference vocabulary
+- row 776 [unmatched] ¼ ripe mashed bananas about bananas
+  - no exact match in reference vocabulary
+- row 738 [unmatched] ¼ roasted red peppers drained chopped
+  - no exact match in reference vocabulary
+- row 900 [unmatched] ¼ roughly chopped fresh cilantro
+  - no exact match in reference vocabulary
+- row 500 [unmatched] ¼ roughly chopped fresh dill
+  - no exact match in reference vocabulary
+- row 737 [unmatched] ¼ roughly chopped fresh italian parsley
+  - no exact match in reference vocabulary
+- row 1457 [unmatched] ¼ rye flour
+  - no exact match in reference vocabulary
+- row 443 [unmatched] ¼ sage
+  - no exact match in reference vocabulary
+- row 503 [unmatched] ¼ salsa
+  - no exact match in reference vocabulary
+- row 1094 [unmatched] ¼ salsa taste
+  - no exact match in reference vocabulary
+- row 82 [unmatched] ¼ salt
+  - no exact match in reference vocabulary
+- row 851 [unmatched] ¼ salt optional
+  - no exact match in reference vocabulary
+- row 370 [unmatched] ¼ salt taste
+  - no exact match in reference vocabulary
+- row 20 [unmatched] ¼ sea salt
+  - no exact match in reference vocabulary
+- row 633 [unmatched] ¼ sea salt taste
+  - no exact match in reference vocabulary
+- row 313 [unmatched] ¼ seafood seasoning such as old bay
+  - no exact match in reference vocabulary
+- row 626 [unmatched] ¼ seasoned bread crumbs
+  - no exact match in reference vocabulary
+- row 313 [unmatched] ¼ seasoned salt
+  - no exact match in reference vocabulary
+- row 1115 [unmatched] ¼ seasoned salt such as lawry s
+  - no exact match in reference vocabulary
+- row 745 [unmatched] ¼ self-rising flour more as needed
+  - no exact match in reference vocabulary
+- row 356 [unmatched] ¼ sesame oil
+  - no exact match in reference vocabulary
+- row 914 [unmatched] ¼ shaved parmesan cheese
+  - no exact match in reference vocabulary
+- row 568 [unmatched] ¼ shortening
+  - no exact match in reference vocabulary
+- row 643 [unmatched] ¼ shredded cheddar cheese
+  - no exact match in reference vocabulary
+- row 652 [unmatched] ¼ shredded gouda cheese
+  - no exact match in reference vocabulary
+- row 652 [unmatched] ¼ shredded mozzarella cheese
+  - no exact match in reference vocabulary
+- row 1237 [unmatched] ¼ shredded oaxaca cheese taste
+  - no exact match in reference vocabulary
+- row 1438 [unmatched] ¼ shredded parmesan cheese
+  - no exact match in reference vocabulary
+- row 733 [unmatched] ¼ shredded parmesan cheese more taste
+  - no exact match in reference vocabulary
+- row 1438 [unmatched] ¼ shredded sharp cheddar cheese
+  - no exact match in reference vocabulary
+- row 396 [unmatched] ¼ shredded sharp white cheddar cheese
+  - no exact match in reference vocabulary
+- row 530 [unmatched] ¼ shredded swiss cheese
+  - no exact match in reference vocabulary
+- row 854 [unmatched] ¼ shredded toasted coconut
+  - no exact match in reference vocabulary
+- row 742 [unmatched] ¼ shredded vegan mozzarella-style cheese
+  - no exact match in reference vocabulary
+- row 163 [unmatched] ¼ sliced fresh strawberries
+  - no exact match in reference vocabulary
+- row 373 [unmatched] ¼ sliced green onions
+  - no exact match in reference vocabulary
+- row 349 [unmatched] ¼ smoked paprika
+  - no exact match in reference vocabulary
+- row 522 [unmatched] ¼ smoked paprika taste
+  - no exact match in reference vocabulary
+- row 497 [unmatched] ¼ snipped fresh dill leaves as needed
+  - no exact match in reference vocabulary
+- row 532 [unmatched] ¼ snipped fresh parsley
+  - no exact match in reference vocabulary
+- row 729 [unmatched] ¼ sour cream
+  - no exact match in reference vocabulary
+- row 1384 [unmatched] ¼ sour cream for topping optional
+  - no exact match in reference vocabulary
+- row 1094 [unmatched] ¼ sour cream taste
+  - no exact match in reference vocabulary
+- row 163 [unmatched] ¼ soy sauce
+  - no exact match in reference vocabulary
+- row 295 [unmatched] ¼ sriracha sauce more taste
+  - no exact match in reference vocabulary
+- row 346 [unmatched] ¼ sweetened condensed milk more taste
+  - no exact match in reference vocabulary
+- row 161 [unmatched] ¼ sweetened dried cranberries such as craisins
+  - no exact match in reference vocabulary
+- row 697 [unmatched] ¼ taco sauce
+  - no exact match in reference vocabulary
+- row 356 [unmatched] ¼ tahini
+  - no exact match in reference vocabulary
+- row 591 [unmatched] ¼ thai sweet chili sauce
+  - no exact match in reference vocabulary
+- row 544 [unmatched] ¼ thick turkey gravy
+  - no exact match in reference vocabulary
+- row 579 [unmatched] ¼ thinly sliced green onion
+  - no exact match in reference vocabulary
+- row 167 [unmatched] ¼ thinly sliced red onion
+  - no exact match in reference vocabulary
+- row 929 [unmatched] ¼ tomato paste
+  - no exact match in reference vocabulary
+- row 1168 [unmatched] ¼ tomato sauce
+  - no exact match in reference vocabulary
+- row 640 [unmatched] ¼ unpopped popcorn
+  - no exact match in reference vocabulary
+- row 749 [unmatched] ¼ unsalted butter
+  - no exact match in reference vocabulary
+- row 848 [unmatched] ¼ unsalted butter cut into chunks
+  - no exact match in reference vocabulary
+- row 89 [unmatched] ¼ unsalted butter melted
+  - no exact match in reference vocabulary
+- row 225 [unmatched] ¼ unsweetened cocoa powder
+  - no exact match in reference vocabulary
+- row 225 [unmatched] ¼ vanilla extract
+  - no exact match in reference vocabulary
+- row 1340 [unmatched] ¼ vanilla yogurt
+  - no exact match in reference vocabulary
+- row 90 [unmatched] ¼ vegetable oil
+  - no exact match in reference vocabulary
+- row 1455 [unmatched] ¼ warm water
+  - no exact match in reference vocabulary
+- row 1435 [unmatched] ¼ warm water degrees f degrees c
+  - no exact match in reference vocabulary
+- row 362 [unmatched] ¼ wasabi powder
+  - no exact match in reference vocabulary
+- row 88 [unmatched] ¼ water
+  - no exact match in reference vocabulary
+- row 1432 [unmatched] ¼ water at room temperature
+  - no exact match in reference vocabulary
+- row 760 [unmatched] ¼ wheat germ
+  - no exact match in reference vocabulary
+- row 369 [unmatched] ¼ white sugar
+  - no exact match in reference vocabulary
+- row 1213 [unmatched] ¼ white sugar taste
+  - no exact match in reference vocabulary
+- row 634 [unmatched] ¼ white vanilla baking chips
+  - no exact match in reference vocabulary
+- row 413 [unmatched] ¼ white vinegar
+  - no exact match in reference vocabulary
+- row 933 [unmatched] ¼ whole cloves
+  - no exact match in reference vocabulary
+- row 88 [unmatched] ¼ whole milk
+  - no exact match in reference vocabulary
+- row 604 [unmatched] ¼ whole wheat flour
+  - no exact match in reference vocabulary
+- row 804 [unmatched] ¼ whole-wheat pastry flour
+  - no exact match in reference vocabulary
+- row 566 [unmatched] ¼ worcestershire sauce
+  - no exact match in reference vocabulary
+- row 772 [unmatched] ¼ yogurt
+  - no exact match in reference vocabulary
+- row 244 [unmatched] ¼ yogurt-covered raisins
+  - no exact match in reference vocabulary
+- row 1113 [unmatched] ¼-ounce bag nacho cheese cool ranch doritos
+  - no exact match in reference vocabulary
+- row 779 [unmatched] ⅛ all-purpose flour
+  - no exact match in reference vocabulary
+- row 1221 [unmatched] ⅛ allspice
+  - no exact match in reference vocabulary
+- row 322 [unmatched] ⅛ black pepper
+  - no exact match in reference vocabulary
+- row 1215 [unmatched] ⅛ brown sugar
+  - no exact match in reference vocabulary
+- row 686 [unmatched] ⅛ cayenne pepper
+  - no exact match in reference vocabulary
+- row 1220 [unmatched] ⅛ chopped fresh cilantro
+  - no exact match in reference vocabulary
+- row 1220 [unmatched] ⅛ chopped green onions
+  - no exact match in reference vocabulary
+- row 613 [unmatched] ⅛ cracked black pepper
+  - no exact match in reference vocabulary
+- row 346 [unmatched] ⅛ distilled white vinegar
+  - no exact match in reference vocabulary
+- row 526 [unmatched] ⅛ dried oregano
+  - no exact match in reference vocabulary
+- row 97 [unmatched] ⅛ dried parsley
+  - no exact match in reference vocabulary
+- row 656 [unmatched] ⅛ dried thyme
+  - no exact match in reference vocabulary
+- row 165 [unmatched] ⅛ garlic powder
+  - no exact match in reference vocabulary
+- row 20 [unmatched] ⅛ ground black pepper
+  - no exact match in reference vocabulary
+- row 1365 [unmatched] ⅛ ground cardamom
+  - no exact match in reference vocabulary
+- row 841 [unmatched] ⅛ ground cardamom optional
+  - no exact match in reference vocabulary
+- row 659 [unmatched] ⅛ ground cayenne pepper
+  - no exact match in reference vocabulary
+- row 1156 [unmatched] ⅛ ground cinnamon
+  - no exact match in reference vocabulary
+- row 616 [unmatched] ⅛ ground cloves
+  - no exact match in reference vocabulary
+- row 1220 [unmatched] ⅛ ground corn chips optional
+  - no exact match in reference vocabulary
+- row 276 [unmatched] ⅛ ground cumin
+  - no exact match in reference vocabulary
+- row 616 [unmatched] ⅛ ground nutmeg
+  - no exact match in reference vocabulary
+- row 526 [unmatched] ⅛ hot pepper sauce
+  - no exact match in reference vocabulary
+- row 1126 [unmatched] ⅛ hot pepper sauce such as tabasco
+  - no exact match in reference vocabulary
+- row 1469 [unmatched] ⅛ instant yeast
+  - no exact match in reference vocabulary
+- row 729 [unmatched] ⅛ lemon juice
+  - no exact match in reference vocabulary
+- row 736 [unmatched] ⅛ lemon pepper
+  - no exact match in reference vocabulary
+- row 1151 [unmatched] ⅛ liquid smoke
+  - no exact match in reference vocabulary
+- row 749 [unmatched] ⅛ nonfat plain yogurt
+  - no exact match in reference vocabulary
+- row 91 [unmatched] ⅛ onion powder
+  - no exact match in reference vocabulary
+- row 736 [unmatched] ⅛ onion salt
+  - no exact match in reference vocabulary
+- row 371 [unmatched] ⅛ paprika optional
+  - no exact match in reference vocabulary
+- row 165 [unmatched] ⅛ pepper
+  - no exact match in reference vocabulary
+- row 276 [unmatched] ⅛ red chile powder
+  - no exact match in reference vocabulary
+- row 775 [unmatched] ⅛ salt
+  - no exact match in reference vocabulary
+- row 20 [unmatched] ⅛ smoked paprika
+  - no exact match in reference vocabulary
+- row 1328 [unmatched] ⅛ unsweetened cocoa powder
+  - no exact match in reference vocabulary
+- row 91 [unmatched] ⅛ white sugar
+  - no exact match in reference vocabulary
+- row 244 [unmatched] ⅔ banana chips
+  - no exact match in reference vocabulary
+- row 721 [unmatched] ⅔ brown sugar
+  - no exact match in reference vocabulary
+- row 721 [unmatched] ⅔ butter
+  - no exact match in reference vocabulary
+- row 759 [unmatched] ⅔ canola oil
+  - no exact match in reference vocabulary
+- row 756 [unmatched] ⅔ chopped dates
+  - no exact match in reference vocabulary
+- row 692 [unmatched] ⅔ chopped kalamata olives
+  - no exact match in reference vocabulary
+- row 756 [unmatched] ⅔ cinnamon-flavored applesauce
+  - no exact match in reference vocabulary
+- row 830 [unmatched] ⅔ confectioners sugar
+  - no exact match in reference vocabulary
+- row 1469 [unmatched] ⅔ cool water
+  - no exact match in reference vocabulary
+- row 759 [unmatched] ⅔ crushed pineapple drained
+  - no exact match in reference vocabulary
+- row 1267 [unmatched] ⅔ diced carrots
+  - no exact match in reference vocabulary
+- row 1267 [unmatched] ⅔ diced celery
+  - no exact match in reference vocabulary
+- row 650 [unmatched] ⅔ dry bread crumbs
+  - no exact match in reference vocabulary
+- row 759 [unmatched] ⅔ flaked coconut
+  - no exact match in reference vocabulary
+- row 742 [unmatched] ⅔ frozen chopped spinach thawed drained
+  - no exact match in reference vocabulary
+- row 654 [unmatched] ⅔ kasha toasted buckwheat groats
+  - no exact match in reference vocabulary
+- row 802 [unmatched] ⅔ light brown sugar
+  - no exact match in reference vocabulary
+- row 587 [unmatched] ⅔ mayonnaise
+  - no exact match in reference vocabulary
+- row 1334 [unmatched] ⅔ milk
+  - no exact match in reference vocabulary
+- row 802 [unmatched] ⅔ orange juice
+  - no exact match in reference vocabulary
+- row 789 [unmatched] ⅔ packed brown sugar
+  - no exact match in reference vocabulary
+- row 683 [unmatched] ⅔ panko bread crumbs
+  - no exact match in reference vocabulary
+- row 1129 [unmatched] ⅔ pound ground turkey
+  - no exact match in reference vocabulary
+- row 706 [unmatched] ⅔ rice vinegar
+  - no exact match in reference vocabulary
+- row 1129 [unmatched] ⅔ salt
+  - no exact match in reference vocabulary
+- row 1351 [unmatched] ⅔ shortening
+  - no exact match in reference vocabulary
+- row 1350 [unmatched] ⅔ shortening chilled
+  - no exact match in reference vocabulary
+- row 1277 [unmatched] ⅔ sofrito
+  - no exact match in reference vocabulary
+- row 549 [unmatched] ⅔ soy sauce
+  - no exact match in reference vocabulary
+- row 760 [unmatched] ⅔ sunflower seed oil
+  - no exact match in reference vocabulary
+- row 421 [unmatched] ⅔ uncooked short-grain white rice
+  - no exact match in reference vocabulary
+- row 1362 [unmatched] ⅔ vegetable oil
+  - no exact match in reference vocabulary
+- row 1163 [unmatched] ⅔ warm milk
+  - no exact match in reference vocabulary
+- row 85 [unmatched] ⅔ white sugar
+  - no exact match in reference vocabulary
+- row 895 [unmatched] ⅔ whole milk
+  - no exact match in reference vocabulary
+- row 1123 [unmatched] ⅔ yogurt
+  - no exact match in reference vocabulary
+- row 97 [unmatched] ¾ all-purpose flour
+  - no exact match in reference vocabulary
+- row 383 [unmatched] ¾ all-purpose flour more as needed
+  - no exact match in reference vocabulary
+- row 1438 [unmatched] ¾ almond flour
+  - no exact match in reference vocabulary
+- row 789 [unmatched] ¾ baking powder
+  - no exact match in reference vocabulary
+- row 759 [unmatched] ¾ baking soda
+  - no exact match in reference vocabulary
+- row 1253 [unmatched] ¾ barley
+  - no exact match in reference vocabulary
+- row 1164 [unmatched] ¾ beef broth
+  - no exact match in reference vocabulary
+- row 1198 [unmatched] ¾ beef broth divided
+  - no exact match in reference vocabulary
+- row 429 [unmatched] ¾ blue cheese dressing
+  - no exact match in reference vocabulary
+- row 779 [unmatched] ¾ bran flakes cereal
+  - no exact match in reference vocabulary
+- row 749 [unmatched] ¾ brown sugar
+  - no exact match in reference vocabulary
+- row 808 [unmatched] ¾ butter
+  - no exact match in reference vocabulary
+- row 830 [unmatched] ¾ butter margarine softened
+  - no exact match in reference vocabulary
+- row 799 [unmatched] ¾ butter melted
+  - no exact match in reference vocabulary
+- row 761 [unmatched] ¾ butter optional
+  - no exact match in reference vocabulary
+- row 812 [unmatched] ¾ butter softened
+  - no exact match in reference vocabulary
+- row 6 [unmatched] ¾ buttermilk
+  - no exact match in reference vocabulary
+- row 225 [unmatched] ¾ cake flour
+  - no exact match in reference vocabulary
+- row 602 [unmatched] ¾ canola oil
+  - no exact match in reference vocabulary
+- row 1252 [unmatched] ¾ chicken broth
+  - no exact match in reference vocabulary
+- row 1205 [unmatched] ¾ chili powder
+  - no exact match in reference vocabulary
+- row 563 [unmatched] ¾ chili sauce
+  - no exact match in reference vocabulary
+- row 322 [unmatched] ¾ cholesterol-free egg product
+  - no exact match in reference vocabulary
+- row 1226 [unmatched] ¾ chopped celery
+  - no exact match in reference vocabulary
+- row 467 [unmatched] ¾ chopped fresh thyme
+  - no exact match in reference vocabulary
+- row 690 [unmatched] ¾ chopped green olives
+  - no exact match in reference vocabulary
+- row 690 [unmatched] ¾ chopped kalamata olives
+  - no exact match in reference vocabulary
+- row 690 [unmatched] ¾ chopped macadamia nuts
+  - no exact match in reference vocabulary
+- row 1120 [unmatched] ¾ chopped onion
+  - no exact match in reference vocabulary
+- row 159 [unmatched] ¾ chopped pecans
+  - no exact match in reference vocabulary
+- row 776 [unmatched] ¾ chopped pitted dates
+  - no exact match in reference vocabulary
+- row 770 [unmatched] ¾ chopped walnuts
+  - no exact match in reference vocabulary
+- row 753 [unmatched] ¾ chopped walnuts optional
+  - no exact match in reference vocabulary
+- row 657 [unmatched] ¾ coarsely ground pepper
+  - no exact match in reference vocabulary
+- row 1349 [unmatched] ¾ cold water
+  - no exact match in reference vocabulary
+- row 508 [unmatched] ¾ crumbled blue cheese
+  - no exact match in reference vocabulary
+- row 770 [unmatched] ¾ dark chocolate chips
+  - no exact match in reference vocabulary
+- row 1191 [unmatched] ¾ diced celery
+  - no exact match in reference vocabulary
+- row 1191 [unmatched] ¾ diced green bell pepper
+  - no exact match in reference vocabulary
+- row 1191 [unmatched] ¾ diced onion
+  - no exact match in reference vocabulary
+- row 1187 [unmatched] ¾ diced sweet onion
+  - no exact match in reference vocabulary
+- row 662 [unmatched] ¾ dijon mustard
+  - no exact match in reference vocabulary
+- row 1126 [unmatched] ¾ dried basil
+  - no exact match in reference vocabulary
+- row 906 [unmatched] ¾ dried oregano
+  - no exact match in reference vocabulary
+- row 660 [unmatched] ¾ dry bread crumbs
+  - no exact match in reference vocabulary
+- row 1379 [unmatched] ¾ dry yellow lentils
+  - no exact match in reference vocabulary
+- row 1328 [unmatched] ¾ egg substitute
+  - no exact match in reference vocabulary
+- row 232 [unmatched] ¾ extra-virgin olive oil
+  - no exact match in reference vocabulary
+- row 1129 [unmatched] ¾ finely chopped celery
+  - no exact match in reference vocabulary
+- row 502 [unmatched] ¾ finely chopped white onion
+  - no exact match in reference vocabulary
+- row 644 [unmatched] ¾ finely grated cheddar cheese
+  - no exact match in reference vocabulary
+- row 1375 [unmatched] ¾ finely ground almonds almond meal
+  - no exact match in reference vocabulary
+- row 829 [unmatched] ¾ flaked coconut
+  - no exact match in reference vocabulary
+- row 1375 [unmatched] ¾ flax seed meal
+  - no exact match in reference vocabulary
+- row 715 [unmatched] ¾ flour
+  - no exact match in reference vocabulary
+- row 1359 [unmatched] ¾ fresh blueberries
+  - no exact match in reference vocabulary
+- row 1432 [unmatched] ¾ fresh compressed yeast
+  - no exact match in reference vocabulary
+- row 25 [unmatched] ¾ fresh flat-leafed parsley stems removed
+  - no exact match in reference vocabulary
+- row 235 [unmatched] ¾ fresh frozen peas
+  - no exact match in reference vocabulary
+- row 289 [unmatched] ¾ fresh lemon juice divided
+  - no exact match in reference vocabulary
+- row 752 [unmatched] ¾ frozen unsweetened raspberries thawed
+  - no exact match in reference vocabulary
+- row 1020 [unmatched] ¾ garlic powder
+  - no exact match in reference vocabulary
+- row 237 [unmatched] ¾ garlic powder divided
+  - no exact match in reference vocabulary
+- row 420 [unmatched] ¾ gluten-free baking flour such as premium gold flax ancient grains all-purpose flour
+  - no exact match in reference vocabulary
+- row 831 [unmatched] ¾ graham cracker crumbs
+  - no exact match in reference vocabulary
+- row 681 [unmatched] ¾ grated parmesan cheese
+  - no exact match in reference vocabulary
+- row 815 [unmatched] ¾ grated zucchini
+  - no exact match in reference vocabulary
+- row 394 [unmatched] ¾ green olives pitted chopped
+  - no exact match in reference vocabulary
+- row 906 [unmatched] ¾ ground black pepper
+  - no exact match in reference vocabulary
+- row 752 [unmatched] ¾ ground cinnamon
+  - no exact match in reference vocabulary
+- row 1244 [unmatched] ¾ ground cumin
+  - no exact match in reference vocabulary
+- row 711 [unmatched] ¾ ground turmeric
+  - no exact match in reference vocabulary
+- row 1163 [unmatched] ¾ heinz tomato juice
+  - no exact match in reference vocabulary
+- row 404 [unmatched] ¾ himalayan pink salt taste
+  - no exact match in reference vocabulary
+- row 813 [unmatched] ¾ honey
+  - no exact match in reference vocabulary
+- row 1425 [unmatched] ¾ hot water
+  - no exact match in reference vocabulary
+- row 414 [unmatched] ¾ imitation crabmeat
+  - no exact match in reference vocabulary
+- row 1132 [unmatched] ¾ italian-style bread crumbs
+  - no exact match in reference vocabulary
+- row 544 [unmatched] ¾ lemon juice
+  - no exact match in reference vocabulary
+- row 221 [unmatched] ¾ lemon pepper more as needed
+  - no exact match in reference vocabulary
+- row 520 [unmatched] ¾ marinara sauce divided
+  - no exact match in reference vocabulary
+- row 758 [unmatched] ¾ mashed bananas
+  - no exact match in reference vocabulary
+- row 773 [unmatched] ¾ mashed ripe bananas
+  - no exact match in reference vocabulary
+- row 506 [unmatched] ¾ mayonnaise-style sandwich spread with chopped sweet pickle
+  - no exact match in reference vocabulary
+- row 1308 [unmatched] ¾ milk
+  - no exact match in reference vocabulary
+- row 1171 [unmatched] ¾ old el paso thick n chunky salsa
+  - no exact match in reference vocabulary
+- row 487 [unmatched] ¾ olive oil
+  - no exact match in reference vocabulary
+- row 807 [unmatched] ¾ orange juice
+  - no exact match in reference vocabulary
+- row 11 [unmatched] ¾ panko bread crumbs
+  - no exact match in reference vocabulary
+- row 90 [unmatched] ¾ peeled grated apple
+  - no exact match in reference vocabulary
+- row 90 [unmatched] ¾ peeled grated carrots
+  - no exact match in reference vocabulary
+- row 776 [unmatched] ¾ plain low-fat yogurt
+  - no exact match in reference vocabulary
+- row 1456 [unmatched] ¾ plain yogurt
+  - no exact match in reference vocabulary
+- row 1326 [unmatched] ¾ potato starch
+  - no exact match in reference vocabulary
+- row 967 [unmatched] ¾ pound beef tenderloin minced
+  - no exact match in reference vocabulary
+- row 1198 [unmatched] ¾ pound cubed beef stew meat
+  - no exact match in reference vocabulary
+- row 1183 [unmatched] ¾ pound flank steak thinly sliced across the grain then chopped
+  - no exact match in reference vocabulary
+- row 398 [unmatched] ¾ pound ground lamb
+  - no exact match in reference vocabulary
+- row 812 [unmatched] ¾ quick-cooking oats
+  - no exact match in reference vocabulary
+- row 429 [unmatched] ¾ ranch dressing
+  - no exact match in reference vocabulary
+- row 1129 [unmatched] ¾ regular rolled oats
+  - no exact match in reference vocabulary
+- row 224 [unmatched] ¾ salt
+  - no exact match in reference vocabulary
+- row 623 [unmatched] ¾ self-rising cornbread mix such as martha white
+  - no exact match in reference vocabulary
+- row 237 [unmatched] ¾ self-rising flour plus more for kneading
+  - no exact match in reference vocabulary
+- row 778 [unmatched] ¾ semisweet chocolate chips
+  - no exact match in reference vocabulary
+- row 1130 [unmatched] ¾ shredded carrot
+  - no exact match in reference vocabulary
+- row 1226 [unmatched] ¾ shredded carrots
+  - no exact match in reference vocabulary
+- row 88 [unmatched] ¾ shredded cheddar cheese
+  - no exact match in reference vocabulary
+- row 352 [unmatched] ¾ shredded monterey jack cheese
+  - no exact match in reference vocabulary
+- row 681 [unmatched] ¾ shredded mozzarella cheese
+  - no exact match in reference vocabulary
+- row 1130 [unmatched] ¾ shredded zucchini
+  - no exact match in reference vocabulary
+- row 88 [unmatched] ¾ sour manioc starch polvilho azedo such as yoki
+  - no exact match in reference vocabulary
+- row 1014 [unmatched] ¾ soy sauce
+  - no exact match in reference vocabulary
+- row 88 [unmatched] ¾ sweet manioc starch polvilho doce such as yoki
+  - no exact match in reference vocabulary
+- row 860 [unmatched] ¾ sweetened dried cranberries divided
+  - no exact match in reference vocabulary
+- row 367 [unmatched] ¾ tahini paste
+  - no exact match in reference vocabulary
+- row 231 [unmatched] ¾ tomato puree passata
+  - no exact match in reference vocabulary
+- row 762 [unmatched] ¾ unbleached all-purpose flour
+  - no exact match in reference vocabulary
+- row 1223 [unmatched] ¾ uncooked elbow macaroni
+  - no exact match in reference vocabulary
+- row 641 [unmatched] ¾ unpopped popcorn
+  - no exact match in reference vocabulary
+- row 789 [unmatched] ¾ unsalted butter
+  - no exact match in reference vocabulary
+- row 801 [unmatched] ¾ unsalted butter cut into
+  - no exact match in reference vocabulary
+- row 1383 [unmatched] ¾ vegetable broth more if needed
+  - no exact match in reference vocabulary
+- row 425 [unmatched] ¾ vegetable oil
+  - no exact match in reference vocabulary
+- row 810 [unmatched] ¾ vegetable shortening melted
+  - no exact match in reference vocabulary
+- row 404 [unmatched] ¾ very hot water
+  - no exact match in reference vocabulary
+- row 1429 [unmatched] ¾ warm water
+  - no exact match in reference vocabulary
+- row 1411 [unmatched] ¾ warm water - degrees f degrees c
+  - no exact match in reference vocabulary
+- row 809 [unmatched] ¾ water
+  - no exact match in reference vocabulary
+- row 89 [unmatched] ¾ white sugar
+  - no exact match in reference vocabulary
+- row 234 [unmatched] ¾ white vinegar
+  - no exact match in reference vocabulary
+- row 610 [unmatched] ¾ whole wheat flour
+  - no exact match in reference vocabulary
+- row 298 [unmatched] ¾-ounce slices american cheese
+  - no exact match in reference vocabulary
+- row 852 [unmatched] ⅜ lemon juice
+  - no exact match in reference vocabulary
+- row 1061 [unmatched] ⅜ raisins chopped
+  - no exact match in reference vocabulary
+- row 446 [unmatched] ⅜ water
+  - no exact match in reference vocabulary
+- row 1441 [unmatched] ⅞ warm water
+  - no exact match in reference vocabulary
+- row 808 [unmatched] ⅞ water
+  - no exact match in reference vocabulary
+- row 2 [unmatched] ablespoons verything bagel seasoning
+  - no exact match in reference vocabulary
+- row 900 [unmatched] achiote paste
+  - no exact match in reference vocabulary
+- row 442 [unmatched] active dry yeast
+  - no exact match in reference vocabulary
+- row 155 [unmatched] alamata olives
+  - no exact match in reference vocabulary
+- row 103 [unmatched] all purpose flour
+  - no exact match in reference vocabulary
+- row 2 [unmatched] all-purpose flour
+  - no exact match in reference vocabulary
+- row 499 [unmatched] all-purpose flour as needed
+  - no exact match in reference vocabulary
+- row 81 [unmatched] all-purpose flour divided
+  - no exact match in reference vocabulary
+- row 1417 [unmatched] all-purpose flour for dusting
+  - no exact match in reference vocabulary
+- row 604 [unmatched] all-purpose flour more as needed
+  - no exact match in reference vocabulary
+- row 1425 [unmatched] all-purpose flour plus more as needed
+  - no exact match in reference vocabulary
+- row 1410 [unmatched] all-purpose flour plus more for dusting
+  - no exact match in reference vocabulary
+- row 59 [unmatched] almond extract
+  - no exact match in reference vocabulary
+- row 89 [unmatched] almond flour
+  - no exact match in reference vocabulary
+- row 405 [unmatched] aluminum foil
+  - no exact match in reference vocabulary
+- row 1220 [unmatched] ancho chile powder
+  - no exact match in reference vocabulary
+- row 556 [unmatched] ancho chili pepper
+  - no exact match in reference vocabulary
+- row 154 [unmatched] anchovy paste
+  - no exact match in reference vocabulary
+- row 52 [unmatched] anchovy paste optional
+  - no exact match in reference vocabulary
+- row 1325 [unmatched] anise seed
+  - no exact match in reference vocabulary
+- row 112 [unmatched] apple cider
+  - no exact match in reference vocabulary
+- row 219 [unmatched] apple cider vinegar
+  - no exact match in reference vocabulary
+- row 245 [unmatched] apple jelly warmed
+  - no exact match in reference vocabulary
+- row 718 [matched] apples
+  - exact match in reference vocabulary
+- row 721 [unmatched] apples - peeled cored cut into thin wedges
+  - no exact match in reference vocabulary
+- row 717 [unmatched] apples - peeled cored sliced
+  - no exact match in reference vocabulary
+- row 759 [unmatched] applesauce
+  - no exact match in reference vocabulary
+- row 913 [unmatched] apricot preserves
+  - no exact match in reference vocabulary
+- row 384 [unmatched] armigiano-reggiano cheese
+  - no exact match in reference vocabulary
+- row 914 [unmatched] arugula
+  - no exact match in reference vocabulary
+- row 142 [matched] avocado
+  - exact match in reference vocabulary
+- row 146 [unmatched] avocado -
+  - no exact match in reference vocabulary
+- row 350 [unmatched] avocado - peeled pitted diced
+  - no exact match in reference vocabulary
+- row 421 [unmatched] avocado - peeled pitted sliced
+  - no exact match in reference vocabulary
+- row 246 [unmatched] avocado - peeled seeded sliced
+  - no exact match in reference vocabulary
+- row 139 [unmatched] avocado cubed avocado cubed
+  - no exact match in reference vocabulary
+- row 314 [unmatched] avocado cut into -inch cubes
+  - no exact match in reference vocabulary
+- row 956 [unmatched] avocado oil
+  - no exact match in reference vocabulary
+- row 34 [unmatched] avocado oil cooking spray
+  - no exact match in reference vocabulary
+- row 11 [unmatched] avocado oil nonstick cooking spray
+  - no exact match in reference vocabulary
+- row 248 [unmatched] avocado oil other vegetable oil
+  - no exact match in reference vocabulary
+- row 36 [unmatched] avocado peeled diced
+  - no exact match in reference vocabulary
+- row 1094 [unmatched] avocado sliced
+  - no exact match in reference vocabulary
+- row 169 [unmatched] avocados - peeled pitted diced
+  - no exact match in reference vocabulary
+- row 373 [unmatched] avocados - peeled pitted mashed
+  - no exact match in reference vocabulary
+- row 600 [unmatched] avocados halved lengthwise pitted
+  - no exact match in reference vocabulary
+- row 1237 [unmatched] avocados sliced
+  - no exact match in reference vocabulary
+- row 1246 [unmatched] baby carrots chopped
+  - no exact match in reference vocabulary
+- row 198 [unmatched] baby spinach
+  - no exact match in reference vocabulary
+- row 36 [unmatched] bags about ounces tortilla chips divided
+  - no exact match in reference vocabulary
+- row 505 [unmatched] baguette
+  - no exact match in reference vocabulary
+- row 1335 [unmatched] baking mix such as bisquick jiffy
+  - no exact match in reference vocabulary
+- row 59 [unmatched] baking powder
+  - no exact match in reference vocabulary
+- row 76 [unmatched] baking soda
+  - no exact match in reference vocabulary
+- row 708 [unmatched] ball kerr pint oz jars with lids bands
+  - no exact match in reference vocabulary
+- row 708 [unmatched] ball pickle crisp granules
+  - no exact match in reference vocabulary
+- row 430 [unmatched] balsamic glaze
+  - no exact match in reference vocabulary
+- row 510 [unmatched] balsamic glaze taste optional
+  - no exact match in reference vocabulary
+- row 45 [unmatched] balsamic vinegar
+  - no exact match in reference vocabulary
+- row 1019 [unmatched] balsamic vinegar divided
+  - no exact match in reference vocabulary
+- row 290 [unmatched] balsamic vinegar taste
+  - no exact match in reference vocabulary
+- row 682 [unmatched] balsamic vinegar taste optional
+  - no exact match in reference vocabulary
+- row 296 [unmatched] bamboo toothpicks
+  - no exact match in reference vocabulary
+- row 772 [unmatched] bananas mashed
+  - no exact match in reference vocabulary
+- row 514 [unmatched] bananas peeled chopped
+  - no exact match in reference vocabulary
+- row 96 [unmatched] bananas sliced
+  - no exact match in reference vocabulary
+- row 909 [unmatched] barbecue sauce
+  - no exact match in reference vocabulary
+- row 1234 [unmatched] barley
+  - no exact match in reference vocabulary
+- row 202 [unmatched] basil
+  - no exact match in reference vocabulary
+- row 127 [unmatched] basil leaves
+  - no exact match in reference vocabulary
+- row 212 [unmatched] basil leaves for garnish
+  - no exact match in reference vocabulary
+- row 515 [unmatched] basil leaves more taste
+  - no exact match in reference vocabulary
+- row 136 [unmatched] basil pesto store bought homemade
+  - no exact match in reference vocabulary
+- row 222 [unmatched] bay leaf
+  - no exact match in reference vocabulary
+- row 381 [unmatched] bay leaf crushed
+  - no exact match in reference vocabulary
+- row 915 [unmatched] bay leaves
+  - no exact match in reference vocabulary
+- row 1247 [unmatched] bay leaves more taste
+  - no exact match in reference vocabulary
+- row 130 [unmatched] bbq sauce as needed for basting
+  - no exact match in reference vocabulary
+- row 903 [unmatched] beef base
+  - no exact match in reference vocabulary
+- row 863 [unmatched] beef bone broth
+  - no exact match in reference vocabulary
+- row 283 [unmatched] beef bouillon cube
+  - no exact match in reference vocabulary
+- row 1225 [unmatched] beef bouillon cubes
+  - no exact match in reference vocabulary
+- row 1253 [unmatched] beef bouillon granules
+  - no exact match in reference vocabulary
+- row 1073 [unmatched] beef bouillon paste
+  - no exact match in reference vocabulary
+- row 1235 [unmatched] beef bouillon powder
+  - no exact match in reference vocabulary
+- row 53 [unmatched] beef broth
+  - no exact match in reference vocabulary
+- row 1014 [unmatched] beef broth as needed
+  - no exact match in reference vocabulary
+- row 877 [unmatched] beef broth more as needed divided
+  - no exact match in reference vocabulary
+- row 1237 [unmatched] beef broth optional
+  - no exact match in reference vocabulary
+- row 868 [unmatched] beef broth water
+  - no exact match in reference vocabulary
+- row 910 [unmatched] beef short ribs more taste
+  - no exact match in reference vocabulary
+- row 68 [unmatched] beef sloppy joe
+  - no exact match in reference vocabulary
+- row 1243 [unmatched] beef soup bones
+  - no exact match in reference vocabulary
+- row 919 [unmatched] beef stock
+  - no exact match in reference vocabulary
+- row 926 [unmatched] beef stock as needed
+  - no exact match in reference vocabulary
+- row 1228 [unmatched] beef stock base
+  - no exact match in reference vocabulary
+- row 287 [unmatched] beefsteak tomatoes
+  - no exact match in reference vocabulary
+- row 1380 [unmatched] beets including greens diced
+  - no exact match in reference vocabulary
+- row 1386 [unmatched] beets peeled
+  - no exact match in reference vocabulary
+- row 1385 [unmatched] beets peeled diced
+  - no exact match in reference vocabulary
+- row 883 [unmatched] bell pepper
+  - no exact match in reference vocabulary
+- row 93 [unmatched] bell pepper any color
+  - no exact match in reference vocabulary
+- row 39 [unmatched] bell peppers
+  - no exact match in reference vocabulary
+- row 600 [unmatched] bibb lettuce leaves
+  - no exact match in reference vocabulary
+- row 1355 [unmatched] bing cherries pitted halved
+  - no exact match in reference vocabulary
+- row 585 [unmatched] biscuit baking mix
+  - no exact match in reference vocabulary
+- row 478 [unmatched] bite-size cheddar cheese crackers
+  - no exact match in reference vocabulary
+- row 292 [unmatched] black cherry balsamic vinegar
+  - no exact match in reference vocabulary
+- row 466 [unmatched] black mission figs halved lengthwise
+  - no exact match in reference vocabulary
+- row 69 [unmatched] black olives
+  - no exact match in reference vocabulary
+- row 691 [unmatched] black olives chopped
+  - no exact match in reference vocabulary
+- row 564 [unmatched] black olives halved
+  - no exact match in reference vocabulary
+- row 231 [unmatched] black olives pitted
+  - no exact match in reference vocabulary
+- row 470 [unmatched] black olives pitted halved
+  - no exact match in reference vocabulary
+- row 41 [unmatched] black pepper
+  - no exact match in reference vocabulary
+- row 1402 [unmatched] black pepper for garnish
+  - no exact match in reference vocabulary
+- row 1377 [unmatched] black pepper taste
+  - no exact match in reference vocabulary
+- row 163 [unmatched] black sesame oil
+  - no exact match in reference vocabulary
+- row 163 [unmatched] black sesame seeds taste
+  - no exact match in reference vocabulary
+- row 293 [unmatched] black truffle salt
+  - no exact match in reference vocabulary
+- row 611 [unmatched] black truffle salt taste
+  - no exact match in reference vocabulary
+- row 611 [unmatched] black truffle-infused olive oil
+  - no exact match in reference vocabulary
+- row 102 [unmatched] blackberries
+  - no exact match in reference vocabulary
+- row 85 [unmatched] blanched almond flour
+  - no exact match in reference vocabulary
+- row 151 [unmatched] blue cheese
+  - no exact match in reference vocabulary
+- row 86 [unmatched] blueberries
+  - no exact match in reference vocabulary
+- row 1361 [unmatched] blueberries rinsed drained
+  - no exact match in reference vocabulary
+- row 933 [unmatched] boiling water
+  - no exact match in reference vocabulary
+- row 429 [unmatched] bone-in chicken breast halves
+  - no exact match in reference vocabulary
+- row 151 [unmatched] boneless chicken breasts
+  - no exact match in reference vocabulary
+- row 1243 [unmatched] bouqet garni spice balls
+  - no exact match in reference vocabulary
+- row 9 [unmatched] bread crumbs
+  - no exact match in reference vocabulary
+- row 83 [unmatched] bread flour
+  - no exact match in reference vocabulary
+- row 1431 [unmatched] bread flour divided as needed
+  - no exact match in reference vocabulary
+- row 1421 [unmatched] bread flour more as needed
+  - no exact match in reference vocabulary
+- row 1464 [unmatched] bread flour plus more for dusting
+  - no exact match in reference vocabulary
+- row 1454 [unmatched] bread machine yeast
+  - no exact match in reference vocabulary
+- row 1085 [unmatched] brioche burger buns
+  - no exact match in reference vocabulary
+- row 1014 [unmatched] brown mustard
+  - no exact match in reference vocabulary
+- row 54 [unmatched] brown sugar
+  - no exact match in reference vocabulary
+- row 730 [unmatched] brown sugar more taste
+  - no exact match in reference vocabulary
+- row 565 [unmatched] brown sugar taste
+  - no exact match in reference vocabulary
+- row 471 [unmatched] bunch arugula - rinsed dried chopped
+  - no exact match in reference vocabulary
+- row 174 [unmatched] bunch asparagus
+  - no exact match in reference vocabulary
+- row 907 [unmatched] bunch asparagus stemmed chopped
+  - no exact match in reference vocabulary
+- row 1381 [unmatched] bunch chopped fresh dill
+  - no exact match in reference vocabulary
+- row 348 [unmatched] bunch chopped green onions
+  - no exact match in reference vocabulary
+- row 351 [unmatched] bunch cilantro leaves finely chopped
+  - no exact match in reference vocabulary
+- row 1254 [unmatched] bunch cilantro minced taste
+  - no exact match in reference vocabulary
+- row 619 [unmatched] bunch curly kale torn
+  - no exact match in reference vocabulary
+- row 350 [unmatched] bunch finely chopped cilantro
+  - no exact match in reference vocabulary
+- row 995 [unmatched] bunch flat leaf parsley
+  - no exact match in reference vocabulary
+- row 234 [unmatched] bunch fresh basil chopped
+  - no exact match in reference vocabulary
+- row 498 [unmatched] bunch fresh basil julienned
+  - no exact match in reference vocabulary
+- row 954 [unmatched] bunch fresh cilantro chopped
+  - no exact match in reference vocabulary
+- row 219 [unmatched] bunch fresh parsley
+  - no exact match in reference vocabulary
+- row 522 [unmatched] bunch fresh parsley chives coarsely chopped
+  - no exact match in reference vocabulary
+- row 1384 [unmatched] bunch fresh sorrel chopped
+  - no exact match in reference vocabulary
+- row 1384 [unmatched] bunch fresh spinach leaves chopped
+  - no exact match in reference vocabulary
+- row 400 [unmatched] bunch fresh thyme leaves stripped chopped
+  - no exact match in reference vocabulary
+- row 248 [unmatched] bunch green onions
+  - no exact match in reference vocabulary
+- row 576 [unmatched] bunch green onions green portion only chopped
+  - no exact match in reference vocabulary
+- row 375 [unmatched] bunch green onions sliced
+  - no exact match in reference vocabulary
+- row 543 [unmatched] bunch green onions thinly sliced divided
+  - no exact match in reference vocabulary
+- row 483 [unmatched] bunch kale
+  - no exact match in reference vocabulary
+- row 375 [unmatched] bunch kale stems removed discarded
+  - no exact match in reference vocabulary
+- row 325 [unmatched] bunch radishes finely diced
+  - no exact match in reference vocabulary
+- row 1184 [unmatched] bunch radishes sliced into thin rounds
+  - no exact match in reference vocabulary
+- row 169 [unmatched] bunches cilantro chopped
+  - no exact match in reference vocabulary
+- row 169 [unmatched] bunches green onion sliced
+  - no exact match in reference vocabulary
+- row 1384 [unmatched] bunches green onions chopped
+  - no exact match in reference vocabulary
+- row 1070 [unmatched] butcher s twine
+  - no exact match in reference vocabulary
+- row 68 [unmatched] butter
+  - no exact match in reference vocabulary
+- row 499 [unmatched] butter as needed
+  - no exact match in reference vocabulary
+- row 759 [unmatched] butter at room temperature
+  - no exact match in reference vocabulary
+- row 1368 [unmatched] butter cold cut into cubes
+  - no exact match in reference vocabulary
+- row 1356 [unmatched] butter cut into pieces
+  - no exact match in reference vocabulary
+- row 1122 [unmatched] butter diced
+  - no exact match in reference vocabulary
+- row 64 [unmatched] butter divided
+  - no exact match in reference vocabulary
+- row 248 [unmatched] butter lettuce leaves
+  - no exact match in reference vocabulary
+- row 852 [unmatched] butter margarine chilled
+  - no exact match in reference vocabulary
+- row 292 [unmatched] butter melted
+  - no exact match in reference vocabulary
+- row 743 [unmatched] butter melted as needed
+  - no exact match in reference vocabulary
+- row 814 [unmatched] butter melted cooled
+  - no exact match in reference vocabulary
+- row 1455 [unmatched] butter melted more as needed
+  - no exact match in reference vocabulary
+- row 761 [unmatched] butter melted optional
+  - no exact match in reference vocabulary
+- row 73 [unmatched] butter olive oil
+  - no exact match in reference vocabulary
+- row 436 [unmatched] butter softened
+  - no exact match in reference vocabulary
+- row 1091 [unmatched] butter softened as needed
+  - no exact match in reference vocabulary
+- row 798 [unmatched] butter softened but not melted
+  - no exact match in reference vocabulary
+- row 893 [unmatched] butter softened divided
+  - no exact match in reference vocabulary
+- row 842 [unmatched] butter-flavored shortening
+  - no exact match in reference vocabulary
+- row 703 [unmatched] buttered rice
+  - no exact match in reference vocabulary
+- row 15 [unmatched] buttermilk
+  - no exact match in reference vocabulary
+- row 81 [unmatched] buttermilk at room temperature
+  - no exact match in reference vocabulary
+- row 195 [unmatched] butternut squash -
+  - no exact match in reference vocabulary
+- row 402 [unmatched] butternut squash seeds other hard squash seeds
+  - no exact match in reference vocabulary
+- row 576 [unmatched] buttery crackers such as keebler club crackers crushed
+  - no exact match in reference vocabulary
+- row 1128 [unmatched] buttery round crackers crushed
+  - no exact match in reference vocabulary
+- row 920 [unmatched] button mushrooms
+  - no exact match in reference vocabulary
+- row 134 [unmatched] cabbage
+  - no exact match in reference vocabulary
+- row 126 [unmatched] cajun seasoning
+  - no exact match in reference vocabulary
+- row 226 [unmatched] cake flour
+  - no exact match in reference vocabulary
+- row 881 [unmatched] can cream mushroom soup
+  - no exact match in reference vocabulary
+- row 1468 [unmatched] candied mixed fruit
+  - no exact match in reference vocabulary
+- row 551 [unmatched] canned black beans rinsed drained
+  - no exact match in reference vocabulary
+- row 364 [unmatched] canned chickpeas
+  - no exact match in reference vocabulary
+- row 376 [unmatched] canned chickpeas rinsed drained
+  - no exact match in reference vocabulary
+- row 528 [unmatched] canned chipotle chile peppers in adobo sauce finely chopped
+  - no exact match in reference vocabulary
+- row 368 [unmatched] canned garbanzo beans drained
+  - no exact match in reference vocabulary
+- row 566 [unmatched] canned jellied cranberry sauce
+  - no exact match in reference vocabulary
+- row 229 [unmatched] canned mushrooms
+  - no exact match in reference vocabulary
+- row 625 [unmatched] canned pumpkin
+  - no exact match in reference vocabulary
+- row 1207 [unmatched] canned red beans drained rinsed
+  - no exact match in reference vocabulary
+- row 42 [unmatched] canola oil
+  - no exact match in reference vocabulary
+- row 954 [unmatched] canola oil divided
+  - no exact match in reference vocabulary
+- row 293 [unmatched] canola oil for frying
+  - no exact match in reference vocabulary
+- row 582 [unmatched] canola oil more as needed
+  - no exact match in reference vocabulary
+- row 140 [matched] cantaloupe
+  - exact match in reference vocabulary
+- row 196 [unmatched] cantanzaro herbs
+  - no exact match in reference vocabulary
+- row 231 [unmatched] capers
+  - no exact match in reference vocabulary
+- row 964 [unmatched] carapelli premium italian extra-virgin olive oil divided
+  - no exact match in reference vocabulary
+- row 1377 [unmatched] caraway seed optional
+  - no exact match in reference vocabulary
+- row 1172 [unmatched] caraway seeds
+  - no exact match in reference vocabulary
+- row 929 [unmatched] caraway seeds crushed
+  - no exact match in reference vocabulary
+- row 219 [unmatched] carcass from a - pound turkey
+  - no exact match in reference vocabulary
+- row 1397 [matched] cardamom
+  - exact match in reference vocabulary
+- row 96 [unmatched] cardamom optional
+  - no exact match in reference vocabulary
+- row 1228 [unmatched] carrot
+  - no exact match in reference vocabulary
+- row 1170 [unmatched] carrot chopped
+  - no exact match in reference vocabulary
+- row 414 [unmatched] carrot cut into matchsticks
+  - no exact match in reference vocabulary
+- row 1251 [unmatched] carrot diced
+  - no exact match in reference vocabulary
+- row 967 [unmatched] carrot julienned
+  - no exact match in reference vocabulary
+- row 212 [unmatched] carrot peeled cut into -inch thick sticks
+  - no exact match in reference vocabulary
+- row 1459 [unmatched] carrot peeled shredded
+  - no exact match in reference vocabulary
+- row 1181 [unmatched] carrot peeled thinly sliced diagonally
+  - no exact match in reference vocabulary
+- row 549 [unmatched] carrot shredded
+  - no exact match in reference vocabulary
+- row 1262 [unmatched] carrot sliced
+  - no exact match in reference vocabulary
+- row 193 [matched] carrots
+  - exact match in reference vocabulary
+- row 229 [unmatched] carrots chopped
+  - no exact match in reference vocabulary
+- row 1244 [unmatched] carrots coarsely chopped
+  - no exact match in reference vocabulary
+- row 1379 [unmatched] carrots coarsely grated
+  - no exact match in reference vocabulary
+- row 1249 [unmatched] carrots cut into -inch pieces
+  - no exact match in reference vocabulary
+- row 923 [unmatched] carrots cut into -inch thick slices
+  - no exact match in reference vocabulary
+- row 1257 [unmatched] carrots cut into inch pieces
+  - no exact match in reference vocabulary
+- row 906 [unmatched] carrots diced
+  - no exact match in reference vocabulary
+- row 1240 [unmatched] carrots finely chopped
+  - no exact match in reference vocabulary
+- row 1231 [unmatched] carrots minced
+  - no exact match in reference vocabulary
+- row 1273 [unmatched] carrots peeled chopped
+  - no exact match in reference vocabulary
+- row 1245 [unmatched] carrots peeled cut into -inch pieces
+  - no exact match in reference vocabulary
+- row 909 [unmatched] carrots peeled cut into chunks
+  - no exact match in reference vocabulary
+- row 1385 [unmatched] carrots peeled diced
+  - no exact match in reference vocabulary
+- row 1263 [unmatched] carrots peeled quartered
+  - no exact match in reference vocabulary
+- row 1258 [unmatched] carrots peeled sliced
+  - no exact match in reference vocabulary
+- row 223 [unmatched] carrots shredded
+  - no exact match in reference vocabulary
+- row 1236 [unmatched] carrots sliced
+  - no exact match in reference vocabulary
+- row 1238 [unmatched] carrots thinly sliced
+  - no exact match in reference vocabulary
+- row 624 [unmatched] carrots washed
+  - no exact match in reference vocabulary
+- row 401 [unmatched] cashews
+  - no exact match in reference vocabulary
+- row 201 [matched] cauliflower
+  - exact match in reference vocabulary
+- row 6 [unmatched] cayenne pepper
+  - no exact match in reference vocabulary
+- row 357 [unmatched] cayenne pepper more taste
+  - no exact match in reference vocabulary
+- row 55 [unmatched] cayenne pepper optional
+  - no exact match in reference vocabulary
+- row 349 [unmatched] cayenne pepper taste
+  - no exact match in reference vocabulary
+- row 56 [unmatched] cayenne pepper taste optional
+  - no exact match in reference vocabulary
+- row 193 [matched] celery
+  - exact match in reference vocabulary
+- row 152 [unmatched] celery rib chopped
+  - no exact match in reference vocabulary
+- row 1386 [unmatched] celery ribs chopped
+  - no exact match in reference vocabulary
+- row 1262 [unmatched] celery ribs sliced
+  - no exact match in reference vocabulary
+- row 1231 [unmatched] celery ribs thinly sliced
+  - no exact match in reference vocabulary
+- row 1345 [unmatched] celery salt
+  - no exact match in reference vocabulary
+- row 708 [unmatched] celery seed
+  - no exact match in reference vocabulary
+- row 707 [unmatched] celery seeds
+  - no exact match in reference vocabulary
+- row 1377 [unmatched] celery stalk chopped
+  - no exact match in reference vocabulary
+- row 674 [unmatched] celery stalk diced
+  - no exact match in reference vocabulary
+- row 880 [unmatched] cheddar cheese
+  - no exact match in reference vocabulary
+- row 478 [unmatched] cheddar cheese crackers
+  - no exact match in reference vocabulary
+- row 478 [unmatched] cheddar cheese flavored snack mix
+  - no exact match in reference vocabulary
+- row 990 [unmatched] cheddar monterey jack cheese
+  - no exact match in reference vocabulary
+- row 78 [unmatched] cheese
+  - no exact match in reference vocabulary
+- row 1055 [unmatched] cheesecloth
+  - no exact match in reference vocabulary
+- row 67 [unmatched] cherry grape tomatoes
+  - no exact match in reference vocabulary
+- row 876 [unmatched] cherry pepper hoagie spread
+  - no exact match in reference vocabulary
+- row 819 [unmatched] cherry pie filling
+  - no exact match in reference vocabulary
+- row 455 [unmatched] cherry tomato halves
+  - no exact match in reference vocabulary
+- row 58 [unmatched] cherry tomatoes
+  - no exact match in reference vocabulary
+- row 151 [unmatched] cherry tomatoes halved
+  - no exact match in reference vocabulary
+- row 167 [unmatched] cherry tomatoes halved more taste
+  - no exact match in reference vocabulary
+- row 129 [unmatched] cherry tomatoes halved optional
+  - no exact match in reference vocabulary
+- row 515 [unmatched] cherry tomatoes more taste
+  - no exact match in reference vocabulary
+- row 480 [unmatched] chex
+  - no exact match in reference vocabulary
+- row 1455 [unmatched] chia seeds
+  - no exact match in reference vocabulary
+- row 195 [unmatched] chicken
+  - no exact match in reference vocabulary
+- row 128 [unmatched] chicken bone broth
+  - no exact match in reference vocabulary
+- row 203 [unmatched] chicken bouillon
+  - no exact match in reference vocabulary
+- row 219 [unmatched] chicken bouillon cubes
+  - no exact match in reference vocabulary
+- row 47 [unmatched] chicken bouillon powder
+  - no exact match in reference vocabulary
+- row 1071 [unmatched] chicken bouillon such as
+  - no exact match in reference vocabulary
+- row 1242 [unmatched] chicken bouillon such as knorr
+  - no exact match in reference vocabulary
+- row 134 [unmatched] chicken broth
+  - no exact match in reference vocabulary
+- row 1159 [unmatched] chicken broth as needed
+  - no exact match in reference vocabulary
+- row 929 [unmatched] chicken broth divided
+  - no exact match in reference vocabulary
+- row 1267 [unmatched] chicken broth more as needed
+  - no exact match in reference vocabulary
+- row 2 [unmatched] chicken cutlets about pound total
+  - no exact match in reference vocabulary
+- row 306 [unmatched] chicken legs
+  - no exact match in reference vocabulary
+- row 125 [unmatched] chicken soup base
+  - no exact match in reference vocabulary
+- row 220 [matched] chicken stock
+  - exact match in reference vocabulary
+- row 42 [unmatched] chicken tenders
+  - no exact match in reference vocabulary
+- row 702 [unmatched] chicken wings tips discarded
+  - no exact match in reference vocabulary
+- row 25 [unmatched] chickpea flour
+  - no exact match in reference vocabulary
+- row 191 [unmatched] chile garlic sauce
+  - no exact match in reference vocabulary
+- row 401 [unmatched] chile garlic sauce such as sriracha
+  - no exact match in reference vocabulary
+- row 283 [unmatched] chile pepper
+  - no exact match in reference vocabulary
+- row 1208 [unmatched] chile pepper chopped
+  - no exact match in reference vocabulary
+- row 315 [unmatched] chile pepper sliced taste
+  - no exact match in reference vocabulary
+- row 283 [unmatched] chile peppers
+  - no exact match in reference vocabulary
+- row 385 [unmatched] chili beans
+  - no exact match in reference vocabulary
+- row 556 [unmatched] chili de árbol peppers
+  - no exact match in reference vocabulary
+- row 9 [unmatched] chili powder
+  - no exact match in reference vocabulary
+- row 71 [unmatched] chili powder cumin
+  - no exact match in reference vocabulary
+- row 1186 [unmatched] chili powder more taste
+  - no exact match in reference vocabulary
+- row 294 [unmatched] chili powder taste
+  - no exact match in reference vocabulary
+- row 145 [unmatched] chili sauce
+  - no exact match in reference vocabulary
+- row 594 [unmatched] chili-garlic sauce
+  - no exact match in reference vocabulary
+- row 1071 [unmatched] chilies
+  - no exact match in reference vocabulary
+- row 1071 [unmatched] chilies seeded
+  - no exact match in reference vocabulary
+- row 1097 [unmatched] chipotle chile powder
+  - no exact match in reference vocabulary
+- row 1217 [unmatched] chipotle pepper chopped
+  - no exact match in reference vocabulary
+- row 930 [unmatched] chipotle peppers in adobo sauce
+  - no exact match in reference vocabulary
+- row 925 [unmatched] chipotle peppers in adobo sauce chopped
+  - no exact match in reference vocabulary
+- row 896 [unmatched] chipotle powder
+  - no exact match in reference vocabulary
+- row 33 [unmatched] chive onion cream cheese
+  - no exact match in reference vocabulary
+- row 52 [unmatched] chives
+  - no exact match in reference vocabulary
+- row 92 [unmatched] chocolate chips
+  - no exact match in reference vocabulary
+- row 92 [unmatched] chocolate protein shake
+  - no exact match in reference vocabulary
+- row 811 [unmatched] chopped almonds
+  - no exact match in reference vocabulary
+- row 579 [unmatched] chopped basil
+  - no exact match in reference vocabulary
+- row 217 [unmatched] chopped basil for garnish
+  - no exact match in reference vocabulary
+- row 907 [unmatched] chopped broccoli florets
+  - no exact match in reference vocabulary
+- row 221 [unmatched] chopped broccoli florets stalks
+  - no exact match in reference vocabulary
+- row 1248 [unmatched] chopped carrot
+  - no exact match in reference vocabulary
+- row 1225 [unmatched] chopped carrots
+  - no exact match in reference vocabulary
+- row 229 [unmatched] chopped cauliflower
+  - no exact match in reference vocabulary
+- row 144 [unmatched] chopped celery
+  - no exact match in reference vocabulary
+- row 1230 [unmatched] chopped celery leaves
+  - no exact match in reference vocabulary
+- row 741 [unmatched] chopped chives
+  - no exact match in reference vocabulary
+- row 999 [unmatched] chopped chives for garnish
+  - no exact match in reference vocabulary
+- row 77 [unmatched] chopped chopped parsley
+  - no exact match in reference vocabulary
+- row 285 [unmatched] chopped cilantro
+  - no exact match in reference vocabulary
+- row 1025 [unmatched] chopped cilantro divided
+  - no exact match in reference vocabulary
+- row 480 [unmatched] chopped creme de menthe candy such as andes
+  - no exact match in reference vocabulary
+- row 761 [unmatched] chopped dates
+  - no exact match in reference vocabulary
+- row 761 [unmatched] chopped dates divided
+  - no exact match in reference vocabulary
+- row 251 [unmatched] chopped dill pickles
+  - no exact match in reference vocabulary
+- row 692 [unmatched] chopped dried figs
+  - no exact match in reference vocabulary
+- row 246 [unmatched] chopped fresh basil
+  - no exact match in reference vocabulary
+- row 267 [unmatched] chopped fresh basil for garnish optional
+  - no exact match in reference vocabulary
+- row 690 [unmatched] chopped fresh basil leaves
+  - no exact match in reference vocabulary
+- row 1402 [unmatched] chopped fresh basil plus leaves for garnish
+  - no exact match in reference vocabulary
+- row 331 [unmatched] chopped fresh basil plus more for garnish
+  - no exact match in reference vocabulary
+- row 74 [unmatched] chopped fresh basil sliced green onion for garnish
+  - no exact match in reference vocabulary
+- row 377 [unmatched] chopped fresh chives
+  - no exact match in reference vocabulary
+- row 1189 [unmatched] chopped fresh chives optional
+  - no exact match in reference vocabulary
+- row 317 [unmatched] chopped fresh cilantro
+  - no exact match in reference vocabulary
+- row 373 [unmatched] chopped fresh cilantro optional
+  - no exact match in reference vocabulary
+- row 503 [unmatched] chopped fresh cilantro taste
+  - no exact match in reference vocabulary
+- row 168 [unmatched] chopped fresh dill
+  - no exact match in reference vocabulary
+- row 569 [unmatched] chopped fresh flat-leaf parsley
+  - no exact match in reference vocabulary
+- row 1276 [unmatched] chopped fresh ginger
+  - no exact match in reference vocabulary
+- row 1274 [unmatched] chopped fresh green beans
+  - no exact match in reference vocabulary
+- row 1258 [unmatched] chopped fresh green beans cut into -inch pieces
+  - no exact match in reference vocabulary
+- row 883 [unmatched] chopped fresh herbs such as parsley basil
+  - no exact match in reference vocabulary
+- row 273 [unmatched] chopped fresh italian parsley
+  - no exact match in reference vocabulary
+- row 235 [unmatched] chopped fresh mint
+  - no exact match in reference vocabulary
+- row 539 [unmatched] chopped fresh mint divided
+  - no exact match in reference vocabulary
+- row 317 [unmatched] chopped fresh mint leaves
+  - no exact match in reference vocabulary
+- row 507 [unmatched] chopped fresh mint taste
+  - no exact match in reference vocabulary
+- row 703 [unmatched] chopped fresh mixed herbs
+  - no exact match in reference vocabulary
+- row 31 [unmatched] chopped fresh oregano
+  - no exact match in reference vocabulary
+- row 44 [unmatched] chopped fresh parsley
+  - no exact match in reference vocabulary
+- row 206 [unmatched] chopped fresh parsley as needed for garnish
+  - no exact match in reference vocabulary
+- row 657 [unmatched] chopped fresh parsley divided
+  - no exact match in reference vocabulary
+- row 862 [unmatched] chopped fresh parsley for garnish
+  - no exact match in reference vocabulary
+- row 129 [unmatched] chopped fresh parsley for garnish optional
+  - no exact match in reference vocabulary
+- row 434 [unmatched] chopped fresh parsley optional
+  - no exact match in reference vocabulary
+- row 449 [unmatched] chopped fresh parsley taste
+  - no exact match in reference vocabulary
+- row 964 [unmatched] chopped fresh rosemary
+  - no exact match in reference vocabulary
+- row 501 [unmatched] chopped fresh sage
+  - no exact match in reference vocabulary
+- row 6 [unmatched] chopped fresh tarragon
+  - no exact match in reference vocabulary
+- row 1179 [unmatched] chopped fresh thai basil
+  - no exact match in reference vocabulary
+- row 290 [unmatched] chopped fresh thyme
+  - no exact match in reference vocabulary
+- row 938 [unmatched] chopped fresh thyme leaves
+  - no exact match in reference vocabulary
+- row 524 [unmatched] chopped fresh tomato
+  - no exact match in reference vocabulary
+- row 473 [unmatched] chopped garlic
+  - no exact match in reference vocabulary
+- row 1159 [unmatched] chopped giardiniera pickled italian vegetables
+  - no exact match in reference vocabulary
+- row 229 [unmatched] chopped green bell peppers
+  - no exact match in reference vocabulary
+- row 381 [unmatched] chopped green chile peppers
+  - no exact match in reference vocabulary
+- row 34 [unmatched] chopped green chiles such as ortega
+  - no exact match in reference vocabulary
+- row 1459 [unmatched] chopped green onions
+  - no exact match in reference vocabulary
+- row 333 [unmatched] chopped green onions leeks
+  - no exact match in reference vocabulary
+- row 1252 [unmatched] chopped italian flat leaf parsley optional
+  - no exact match in reference vocabulary
+- row 882 [unmatched] chopped italian parsley
+  - no exact match in reference vocabulary
+- row 868 [unmatched] chopped italian parsley other fresh herb
+  - no exact match in reference vocabulary
+- row 1027 [unmatched] chopped italian parsley plus more for garnish
+  - no exact match in reference vocabulary
+- row 1029 [unmatched] chopped multi-colored bell peppers
+  - no exact match in reference vocabulary
+- row 161 [unmatched] chopped onion
+  - no exact match in reference vocabulary
+- row 123 [unmatched] chopped parsley
+  - no exact match in reference vocabulary
+- row 68 [unmatched] chopped parsley for garnish
+  - no exact match in reference vocabulary
+- row 881 [unmatched] chopped parsley for garnish optional
+  - no exact match in reference vocabulary
+- row 79 [unmatched] chopped pecans
+  - no exact match in reference vocabulary
+- row 177 [unmatched] chopped pistachios
+  - no exact match in reference vocabulary
+- row 807 [unmatched] chopped pitted honey dates
+  - no exact match in reference vocabulary
+- row 229 [unmatched] chopped red bell peppers
+  - no exact match in reference vocabulary
+- row 662 [unmatched] chopped shallot
+  - no exact match in reference vocabulary
+- row 1123 [unmatched] chopped summer savory chubritsa
+  - no exact match in reference vocabulary
+- row 1228 [unmatched] chopped sweet onion
+  - no exact match in reference vocabulary
+- row 96 [unmatched] chopped toasted pecans taste
+  - no exact match in reference vocabulary
+- row 551 [unmatched] chopped tomato
+  - no exact match in reference vocabulary
+- row 1377 [unmatched] chopped tomatoes for garnish
+  - no exact match in reference vocabulary
+- row 751 [unmatched] chopped walnuts
+  - no exact match in reference vocabulary
+- row 761 [unmatched] chopped walnuts divided
+  - no exact match in reference vocabulary
+- row 766 [unmatched] chopped walnuts optional
+  - no exact match in reference vocabulary
+- row 998 [unmatched] chopped yellow onion
+  - no exact match in reference vocabulary
+- row 1248 [unmatched] chopped yukon gold potato
+  - no exact match in reference vocabulary
+- row 373 [unmatched] chunky salsa
+  - no exact match in reference vocabulary
+- row 68 [unmatched] ciabatta roll
+  - no exact match in reference vocabulary
+- row 1159 [unmatched] ciabatta rolls sliced in half
+  - no exact match in reference vocabulary
+- row 705 [unmatched] cider vinegar
+  - no exact match in reference vocabulary
+- row 36 [unmatched] cilantro
+  - no exact match in reference vocabulary
+- row 1109 [unmatched] cilantro for garnish optional
+  - no exact match in reference vocabulary
+- row 307 [unmatched] cilantro leaves
+  - no exact match in reference vocabulary
+- row 56 [unmatched] cilantro sprigs for garnish optional
+  - no exact match in reference vocabulary
+- row 308 [unmatched] cilantro stems
+  - no exact match in reference vocabulary
+- row 773 [matched] cinnamon
+  - exact match in reference vocabulary
+- row 715 [unmatched] cinnamon for garnish
+  - no exact match in reference vocabulary
+- row 730 [unmatched] cinnamon stick
+  - no exact match in reference vocabulary
+- row 1208 [unmatched] cinnamon sticks
+  - no exact match in reference vocabulary
+- row 1341 [unmatched] cinnamon sugar as needed
+  - no exact match in reference vocabulary
+- row 1326 [unmatched] cinnamon sugar taste
+  - no exact match in reference vocabulary
+- row 599 [unmatched] clam juice
+  - no exact match in reference vocabulary
+- row 1387 [matched] clove
+  - exact match in reference vocabulary
+- row 25 [unmatched] clove garlic
+  - no exact match in reference vocabulary
+- row 354 [unmatched] clove garlic crushed
+  - no exact match in reference vocabulary
+- row 384 [unmatched] clove garlic crushed optional
+  - no exact match in reference vocabulary
+- row 685 [unmatched] clove garlic finely chopped
+  - no exact match in reference vocabulary
+- row 342 [unmatched] clove garlic grated
+  - no exact match in reference vocabulary
+- row 500 [unmatched] clove garlic halved
+  - no exact match in reference vocabulary
+- row 34 [unmatched] clove garlic minced
+  - no exact match in reference vocabulary
+- row 393 [unmatched] clove garlic minced more taste
+  - no exact match in reference vocabulary
+- row 141 [unmatched] clove garlic peeled
+  - no exact match in reference vocabulary
+- row 473 [unmatched] clove garlic peeled halved
+  - no exact match in reference vocabulary
+- row 532 [unmatched] clove garlic peeled minced
+  - no exact match in reference vocabulary
+- row 273 [unmatched] cloves crushed garlic
+  - no exact match in reference vocabulary
+- row 325 [unmatched] cloves fresh garlic minced
+  - no exact match in reference vocabulary
+- row 39 [unmatched] cloves garlic
+  - no exact match in reference vocabulary
+- row 158 [unmatched] cloves garlic chopped
+  - no exact match in reference vocabulary
+- row 678 [unmatched] cloves garlic coarsely chopped
+  - no exact match in reference vocabulary
+- row 153 [unmatched] cloves garlic crushed
+  - no exact match in reference vocabulary
+- row 1214 [unmatched] cloves garlic finely chopped - more taste
+  - no exact match in reference vocabulary
+- row 337 [unmatched] cloves garlic finely crushed minced
+  - no exact match in reference vocabulary
+- row 308 [unmatched] cloves garlic finely minced crushed
+  - no exact match in reference vocabulary
+- row 368 [unmatched] cloves garlic halved
+  - no exact match in reference vocabulary
+- row 4 [unmatched] cloves garlic minced
+  - no exact match in reference vocabulary
+- row 1027 [unmatched] cloves garlic minced divided
+  - no exact match in reference vocabulary
+- row 948 [unmatched] cloves garlic minced more taste
+  - no exact match in reference vocabulary
+- row 1198 [unmatched] cloves garlic more taste minced
+  - no exact match in reference vocabulary
+- row 29 [unmatched] cloves garlic peeled
+  - no exact match in reference vocabulary
+- row 660 [unmatched] cloves garlic peeled minced
+  - no exact match in reference vocabulary
+- row 930 [unmatched] cloves garlic peeled more taste
+  - no exact match in reference vocabulary
+- row 202 [unmatched] cloves garlic pressed
+  - no exact match in reference vocabulary
+- row 1049 [unmatched] cloves garlic roughly chopped
+  - no exact match in reference vocabulary
+- row 315 [unmatched] cloves garlic sliced
+  - no exact match in reference vocabulary
+- row 1402 [unmatched] cloves garlic smashed
+  - no exact match in reference vocabulary
+- row 1116 [unmatched] cloves garlic thinly sliced
+  - no exact match in reference vocabulary
+- row 459 [unmatched] cloves minced garlic
+  - no exact match in reference vocabulary
+- row 400 [unmatched] cloves roasted garlic minced
+  - no exact match in reference vocabulary
+- row 1369 [unmatched] coarse gingersnap cookie crumbs
+  - no exact match in reference vocabulary
+- row 965 [unmatched] coarse salt
+  - no exact match in reference vocabulary
+- row 946 [unmatched] coarse sea salt coarsely ground black pepper taste
+  - no exact match in reference vocabulary
+- row 295 [unmatched] coarse sea salt taste
+  - no exact match in reference vocabulary
+- row 715 [unmatched] coarse sugar
+  - no exact match in reference vocabulary
+- row 616 [unmatched] coarsely chopped pecans
+  - no exact match in reference vocabulary
+- row 1377 [unmatched] coarsely chopped red cabbage
+  - no exact match in reference vocabulary
+- row 1042 [unmatched] coarsely cracked black pepper
+  - no exact match in reference vocabulary
+- row 446 [unmatched] coarsely ground black pepper
+  - no exact match in reference vocabulary
+- row 236 [unmatched] coarsely shredded carrot
+  - no exact match in reference vocabulary
+- row 58 [unmatched] cocktail sauce
+  - no exact match in reference vocabulary
+- row 178 [unmatched] coconut milk
+  - no exact match in reference vocabulary
+- row 583 [unmatched] coconut oil
+  - no exact match in reference vocabulary
+- row 584 [unmatched] cold baked potatoes
+  - no exact match in reference vocabulary
+- row 757 [unmatched] cold butter
+  - no exact match in reference vocabulary
+- row 844 [unmatched] cold butter cut into pieces
+  - no exact match in reference vocabulary
+- row 499 [unmatched] cold milk
+  - no exact match in reference vocabulary
+- row 729 [unmatched] cold unsalted butter cubed
+  - no exact match in reference vocabulary
+- row 356 [unmatched] cold water
+  - no exact match in reference vocabulary
+- row 316 [unmatched] cold water cover
+  - no exact match in reference vocabulary
+- row 1351 [unmatched] cold water more as needed
+  - no exact match in reference vocabulary
+- row 223 [unmatched] cold water optional
+  - no exact match in reference vocabulary
+- row 1336 [unmatched] cold whole milk
+  - no exact match in reference vocabulary
+- row 282 [unmatched] collard greens
+  - no exact match in reference vocabulary
+- row 1345 [unmatched] concentrated beef base paste
+  - no exact match in reference vocabulary
+- row 478 [unmatched] cone-shaped nacho cheese flavored corn snacks
+  - no exact match in reference vocabulary
+- row 480 [unmatched] confectioners sugar
+  - no exact match in reference vocabulary
+- row 856 [unmatched] confectioners sugar as needed
+  - no exact match in reference vocabulary
+- row 225 [unmatched] confectioners sugar for dusting
+  - no exact match in reference vocabulary
+- row 769 [unmatched] confectioners sugar taste
+  - no exact match in reference vocabulary
+- row 657 [unmatched] cooked boneless chicken breast half finely diced
+  - no exact match in reference vocabulary
+- row 163 [unmatched] cooked brown rice
+  - no exact match in reference vocabulary
+- row 124 [unmatched] cooked chicken
+  - no exact match in reference vocabulary
+- row 674 [unmatched] cooked chicken breasts shredded
+  - no exact match in reference vocabulary
+- row 298 [unmatched] cooked cooled white rice
+  - no exact match in reference vocabulary
+- row 43 [unmatched] cooked rice
+  - no exact match in reference vocabulary
+- row 539 [unmatched] cooked rice vermicelli divided
+  - no exact match in reference vocabulary
+- row 600 [unmatched] cooked salad shrimp
+  - no exact match in reference vocabulary
+- row 168 [unmatched] cooked shredded chicken
+  - no exact match in reference vocabulary
+- row 159 [unmatched] cooked skinless boneless chicken breast halves cut into cubes
+  - no exact match in reference vocabulary
+- row 1163 [unmatched] cooked warm mashed potatoes
+  - no exact match in reference vocabulary
+- row 899 [unmatched] cooked white rice
+  - no exact match in reference vocabulary
+- row 4 [unmatched] cooking spray
+  - no exact match in reference vocabulary
+- row 187 [matched] coriander
+  - exact match in reference vocabulary
+- row 1187 [unmatched] corn
+  - no exact match in reference vocabulary
+- row 1176 [unmatched] corn chips such as fritos taste
+  - no exact match in reference vocabulary
+- row 128 [unmatched] corn kernels
+  - no exact match in reference vocabulary
+- row 609 [unmatched] corn oil
+  - no exact match in reference vocabulary
+- row 1407 [unmatched] corn oil other vegetable oil
+  - no exact match in reference vocabulary
+- row 34 [unmatched] corn tortillas
+  - no exact match in reference vocabulary
+- row 1244 [unmatched] corn tortillas optional
+  - no exact match in reference vocabulary
+- row 331 [unmatched] cornmeal
+  - no exact match in reference vocabulary
+- row 1408 [unmatched] cornmeal for dusting
+  - no exact match in reference vocabulary
+- row 49 [unmatched] cornstarch
+  - no exact match in reference vocabulary
+- row 223 [unmatched] cornstarch optional
+  - no exact match in reference vocabulary
+- row 644 [unmatched] cotija cheese
+  - no exact match in reference vocabulary
+- row 144 [unmatched] cottage cheese
+  - no exact match in reference vocabulary
+- row 58 [unmatched] crab meat
+  - no exact match in reference vocabulary
+- row 334 [unmatched] cracked black cracked black
+  - no exact match in reference vocabulary
+- row 901 [unmatched] cracked black pepper
+  - no exact match in reference vocabulary
+- row 162 [unmatched] cracked black pepper taste
+  - no exact match in reference vocabulary
+- row 712 [unmatched] cracked ice as needed
+  - no exact match in reference vocabulary
+- row 284 [unmatched] crackers pita chips for serving
+  - no exact match in reference vocabulary
+- row 284 [unmatched] cranberries
+  - no exact match in reference vocabulary
+- row 212 [unmatched] cream
+  - no exact match in reference vocabulary
+- row 1438 [unmatched] cream cheese
+  - no exact match in reference vocabulary
+- row 165 [unmatched] cream cheese softened
+  - no exact match in reference vocabulary
+- row 225 [unmatched] cream tartar
+  - no exact match in reference vocabulary
+- row 1150 [unmatched] creamy salad dressing such as miracle whip taste
+  - no exact match in reference vocabulary
+- row 576 [unmatched] creole seasoning such as tony chachere s
+  - no exact match in reference vocabulary
+- row 244 [unmatched] crispy corn cereal squares
+  - no exact match in reference vocabulary
+- row 636 [unmatched] crispy corn cereal squares such as corn chex
+  - no exact match in reference vocabulary
+- row 635 [unmatched] crispy rice cereal squares such as rice chex
+  - no exact match in reference vocabulary
+- row 636 [unmatched] crispy wheat cereal squares such as wheat chex
+  - no exact match in reference vocabulary
+- row 279 [unmatched] crostini
+  - no exact match in reference vocabulary
+- row 287 [unmatched] crostini toast
+  - no exact match in reference vocabulary
+- row 573 [unmatched] crumbled cornbread
+  - no exact match in reference vocabulary
+- row 1025 [unmatched] crumbled cotija cheese divided
+  - no exact match in reference vocabulary
+- row 39 [unmatched] crumbled feta cheese
+  - no exact match in reference vocabulary
+- row 408 [unmatched] crunchy peanut butter
+  - no exact match in reference vocabulary
+- row 127 [unmatched] crushed aleppo chile flakes
+  - no exact match in reference vocabulary
+- row 1049 [unmatched] crushed dried rosemary
+  - no exact match in reference vocabulary
+- row 440 [unmatched] crushed garlic
+  - no exact match in reference vocabulary
+- row 96 [unmatched] crushed pineapple in pineapple juice
+  - no exact match in reference vocabulary
+- row 882 [unmatched] crushed puréed tomatoes
+  - no exact match in reference vocabulary
+- row 4 [unmatched] crushed red pepper
+  - no exact match in reference vocabulary
+- row 207 [unmatched] crushed red pepper flakes
+  - no exact match in reference vocabulary
+- row 212 [unmatched] crushed red pepper flakes for garnish optional
+  - no exact match in reference vocabulary
+- row 301 [unmatched] crushed red pepper flakes italian seasoning garlic powder minced garlic
+  - no exact match in reference vocabulary
+- row 198 [unmatched] crushed red pepper flakes optional
+  - no exact match in reference vocabulary
+- row 221 [unmatched] crushed red pepper flakes taste
+  - no exact match in reference vocabulary
+- row 1228 [unmatched] crushed red pepper plus more for garnish
+  - no exact match in reference vocabulary
+- row 364 [unmatched] crushed red pepper taste
+  - no exact match in reference vocabulary
+- row 328 [unmatched] crushed saltine crackers divided
+  - no exact match in reference vocabulary
+- row 510 [unmatched] crusty baguette cut into -inch slices
+  - no exact match in reference vocabulary
+- row 934 [unmatched] cube beef bouillon
+  - no exact match in reference vocabulary
+- row 1131 [unmatched] cube beef bouillon crumbled
+  - no exact match in reference vocabulary
+- row 1278 [unmatched] cube beef bouillon optional
+  - no exact match in reference vocabulary
+- row 1226 [unmatched] cubed cheddar cheese
+  - no exact match in reference vocabulary
+- row 1170 [unmatched] cubed cooked leftover beef
+  - no exact match in reference vocabulary
+- row 1226 [unmatched] cubed potatoes
+  - no exact match in reference vocabulary
+- row 938 [unmatched] cubed unpeeled yukon gold potatoes
+  - no exact match in reference vocabulary
+- row 1020 [unmatched] cubed white bread
+  - no exact match in reference vocabulary
+- row 1223 [unmatched] cubes beef bouillon
+  - no exact match in reference vocabulary
+- row 1257 [unmatched] cubes beef bouillon crumbled
+  - no exact match in reference vocabulary
+- row 1236 [unmatched] cubes beef bouillon cube
+  - no exact match in reference vocabulary
+- row 296 [unmatched] cubes feta cheese
+  - no exact match in reference vocabulary
+- row 137 [matched] cucumber
+  - exact match in reference vocabulary
+- row 1384 [unmatched] cucumber diced optional
+  - no exact match in reference vocabulary
+- row 967 [unmatched] cucumber julienned
+  - no exact match in reference vocabulary
+- row 325 [unmatched] cucumber peeled finely chopped
+  - no exact match in reference vocabulary
+- row 151 [unmatched] cucumber sliced
+  - no exact match in reference vocabulary
+- row 497 [unmatched] cucumber thinly sliced
+  - no exact match in reference vocabulary
+- row 229 [unmatched] cucumbers - peeled seeded chopped
+  - no exact match in reference vocabulary
+- row 710 [unmatched] cucumbers cut into -inch slices
+  - no exact match in reference vocabulary
+- row 711 [unmatched] cucumbers sliced
+  - no exact match in reference vocabulary
+- row 509 [unmatched] cucumbers thinly sliced
+  - no exact match in reference vocabulary
+- row 283 [unmatched] culantro leaves
+  - no exact match in reference vocabulary
+- row 204 [matched] cumin
+  - exact match in reference vocabulary
+- row 933 [unmatched] cumin seeds
+  - no exact match in reference vocabulary
+- row 304 [unmatched] curry powder
+  - no exact match in reference vocabulary
+- row 1021 [unmatched] curry powder optional
+  - no exact match in reference vocabulary
+- row 307 [unmatched] daikon radish
+  - no exact match in reference vocabulary
+- row 579 [unmatched] dannon oikos plain greek nonfat yogurt
+  - no exact match in reference vocabulary
+- row 107 [unmatched] dark brown sugar
+  - no exact match in reference vocabulary
+- row 761 [unmatched] dark brown sugar packed
+  - no exact match in reference vocabulary
+- row 798 [unmatched] dash almond extract taste
+  - no exact match in reference vocabulary
+- row 234 [unmatched] dash balsamic vinegar
+  - no exact match in reference vocabulary
+- row 1212 [unmatched] dash barbeque sauce
+  - no exact match in reference vocabulary
+- row 353 [unmatched] dash crushed red pepper
+  - no exact match in reference vocabulary
+- row 451 [unmatched] dash dried basil
+  - no exact match in reference vocabulary
+- row 451 [unmatched] dash dried oregano
+  - no exact match in reference vocabulary
+- row 451 [unmatched] dash ground black pepper
+  - no exact match in reference vocabulary
+- row 1096 [unmatched] dash ground cumin
+  - no exact match in reference vocabulary
+- row 321 [unmatched] dash hot pepper sauce
+  - no exact match in reference vocabulary
+- row 599 [unmatched] dash mexican-style hot sauce
+  - no exact match in reference vocabulary
+- row 1423 [unmatched] dash salt
+  - no exact match in reference vocabulary
+- row 1179 [unmatched] dash sesame oil
+  - no exact match in reference vocabulary
+- row 532 [unmatched] dash worcestershire sauce
+  - no exact match in reference vocabulary
+- row 594 [unmatched] dashes ground black pepper
+  - no exact match in reference vocabulary
+- row 373 [unmatched] dashes hot pepper sauce
+  - no exact match in reference vocabulary
+- row 1121 [unmatched] dashes hot pepper sauce more taste
+  - no exact match in reference vocabulary
+- row 356 [unmatched] dashes hot pepper sauce such as cholula
+  - no exact match in reference vocabulary
+- row 1072 [unmatched] dashes hot sauce
+  - no exact match in reference vocabulary
+- row 948 [unmatched] dashes worcestershire sauce
+  - no exact match in reference vocabulary
+- row 779 [unmatched] dates pitted chopped
+  - no exact match in reference vocabulary
+- row 30 [unmatched] day old bagel
+  - no exact match in reference vocabulary
+- row 490 [unmatched] day-old bagels
+  - no exact match in reference vocabulary
+- row 491 [unmatched] day-old french baguette
+  - no exact match in reference vocabulary
+- row 309 [unmatched] deli-roasted chicken meat removed shredded
+  - no exact match in reference vocabulary
+- row 1166 [unmatched] diced carrot
+  - no exact match in reference vocabulary
+- row 942 [unmatched] diced carrots
+  - no exact match in reference vocabulary
+- row 942 [unmatched] diced celery
+  - no exact match in reference vocabulary
+- row 599 [unmatched] diced english cucumber
+  - no exact match in reference vocabulary
+- row 716 [unmatched] diced granny smith apple
+  - no exact match in reference vocabulary
+- row 1132 [unmatched] diced green bell pepper
+  - no exact match in reference vocabulary
+- row 695 [unmatched] diced jalapeno peppers
+  - no exact match in reference vocabulary
+- row 352 [unmatched] diced jalapeño peppers
+  - no exact match in reference vocabulary
+- row 34 [unmatched] diced onion
+  - no exact match in reference vocabulary
+- row 501 [unmatched] diced raw pumpkin
+  - no exact match in reference vocabulary
+- row 1363 [unmatched] diced rhubarb
+  - no exact match in reference vocabulary
+- row 165 [unmatched] diced rotisserie chicken meat
+  - no exact match in reference vocabulary
+- row 1171 [unmatched] diced tomato as desired
+  - no exact match in reference vocabulary
+- row 298 [unmatched] diced white onion
+  - no exact match in reference vocabulary
+- row 6 [unmatched] dijon mustard
+  - no exact match in reference vocabulary
+- row 891 [unmatched] dijon-style mustard
+  - no exact match in reference vocabulary
+- row 989 [matched] dill
+  - exact match in reference vocabulary
+- row 998 [unmatched] dill pickle slices
+  - no exact match in reference vocabulary
+- row 58 [unmatched] dill pickles
+  - no exact match in reference vocabulary
+- row 1027 [unmatched] dinner rolls
+  - no exact match in reference vocabulary
+- row 229 [unmatched] distilled white vinegar
+  - no exact match in reference vocabulary
+- row 1373 [unmatched] double crust ready- -use pie crust
+  - no exact match in reference vocabulary
+- row 75 [unmatched] dough balls
+  - no exact match in reference vocabulary
+- row 502 [unmatched] drained capers
+  - no exact match in reference vocabulary
+- row 927 [unmatched] dried ancho chiles stemmed seeded
+  - no exact match in reference vocabulary
+- row 5 [unmatched] dried basil
+  - no exact match in reference vocabulary
+- row 650 [unmatched] dried basil leaves crushed
+  - no exact match in reference vocabulary
+- row 72 [unmatched] dried basil taste
+  - no exact match in reference vocabulary
+- row 19 [unmatched] dried bread crumbs
+  - no exact match in reference vocabulary
+- row 1329 [unmatched] dried cherries
+  - no exact match in reference vocabulary
+- row 484 [unmatched] dried chervil
+  - no exact match in reference vocabulary
+- row 1344 [unmatched] dried chile de arbol peppers
+  - no exact match in reference vocabulary
+- row 927 [unmatched] dried chile de arbol peppers stemmed seeded
+  - no exact match in reference vocabulary
+- row 636 [unmatched] dried chives
+  - no exact match in reference vocabulary
+- row 76 [unmatched] dried cranberries
+  - no exact match in reference vocabulary
+- row 57 [unmatched] dried dill
+  - no exact match in reference vocabulary
+- row 11 [unmatched] dried dill weed
+  - no exact match in reference vocabulary
+- row 291 [unmatched] dried figs
+  - no exact match in reference vocabulary
+- row 927 [unmatched] dried guajillo chile peppers seeded
+  - no exact match in reference vocabulary
+- row 900 [unmatched] dried guajillo chiles stemmed seeded
+  - no exact match in reference vocabulary
+- row 932 [unmatched] dried guajillo chilies
+  - no exact match in reference vocabulary
+- row 198 [unmatched] dried italian seasoning
+  - no exact match in reference vocabulary
+- row 440 [unmatched] dried italian-style seasoning
+  - no exact match in reference vocabulary
+- row 211 [unmatched] dried marjoram
+  - no exact match in reference vocabulary
+- row 644 [unmatched] dried mexican oregano
+  - no exact match in reference vocabulary
+- row 529 [unmatched] dried minced onion
+  - no exact match in reference vocabulary
+- row 244 [unmatched] dried mixed fruit chopped
+  - no exact match in reference vocabulary
+- row 610 [unmatched] dried onion flakes
+  - no exact match in reference vocabulary
+- row 4 [unmatched] dried oregano
+  - no exact match in reference vocabulary
+- row 1140 [unmatched] dried oregano divided
+  - no exact match in reference vocabulary
+- row 72 [unmatched] dried oregano taste
+  - no exact match in reference vocabulary
+- row 24 [unmatched] dried parsley
+  - no exact match in reference vocabulary
+- row 26 [unmatched] dried parsley flakes
+  - no exact match in reference vocabulary
+- row 1334 [unmatched] dried parsley optional
+  - no exact match in reference vocabulary
+- row 72 [unmatched] dried parsley taste
+  - no exact match in reference vocabulary
+- row 924 [unmatched] dried persian limes limoo amani more taste
+  - no exact match in reference vocabulary
+- row 692 [unmatched] dried rosemary
+  - no exact match in reference vocabulary
+- row 445 [unmatched] dried rosemary crushed
+  - no exact match in reference vocabulary
+- row 1454 [unmatched] dried rosemary leaves crushed
+  - no exact match in reference vocabulary
+- row 451 [unmatched] dried rosemary more taste
+  - no exact match in reference vocabulary
+- row 44 [unmatched] dried thyme
+  - no exact match in reference vocabulary
+- row 955 [unmatched] dried thyme leaves
+  - no exact match in reference vocabulary
+- row 362 [unmatched] dried whole peas
+  - no exact match in reference vocabulary
+- row 354 [unmatched] drops sesame oil taste optional
+  - no exact match in reference vocabulary
+- row 330 [unmatched] drops soy sauce
+  - no exact match in reference vocabulary
+- row 243 [unmatched] dry active rapid rise yeast
+  - no exact match in reference vocabulary
+- row 1407 [unmatched] dry active yeast packet
+  - no exact match in reference vocabulary
+- row 1457 [unmatched] dry black beans
+  - no exact match in reference vocabulary
+- row 529 [unmatched] dry bread crumbs
+  - no exact match in reference vocabulary
+- row 587 [unmatched] dry bread crumbs divided
+  - no exact match in reference vocabulary
+- row 25 [unmatched] dry garbanzo beans
+  - no exact match in reference vocabulary
+- row 367 [unmatched] dry garbanzo beans soaked overnight
+  - no exact match in reference vocabulary
+- row 23 [unmatched] dry italian-style salad dressing mix
+  - no exact match in reference vocabulary
+- row 1457 [unmatched] dry kidney beans
+  - no exact match in reference vocabulary
+- row 928 [unmatched] dry lentils
+  - no exact match in reference vocabulary
+- row 442 [unmatched] dry milk powder
+  - no exact match in reference vocabulary
+- row 581 [unmatched] dry mustard
+  - no exact match in reference vocabulary
+- row 1129 [unmatched] dry mustard powder
+  - no exact match in reference vocabulary
+- row 128 [unmatched] dry orzo
+  - no exact match in reference vocabulary
+- row 1397 [unmatched] dry yeast
+  - no exact match in reference vocabulary
+- row 1277 [unmatched] ear corn cut into -inch pieces
+  - no exact match in reference vocabulary
+- row 170 [unmatched] ears corn
+  - no exact match in reference vocabulary
+- row 1244 [unmatched] ears corn on the cob broken in half
+  - no exact match in reference vocabulary
+- row 1258 [unmatched] ears fresh corn sliced into pieces each
+  - no exact match in reference vocabulary
+- row 321 [unmatched] egg
+  - no exact match in reference vocabulary
+- row 328 [unmatched] egg beaten
+  - no exact match in reference vocabulary
+- row 1443 [unmatched] egg beaten at room temperature
+  - no exact match in reference vocabulary
+- row 394 [unmatched] egg lightly beaten
+  - no exact match in reference vocabulary
+- row 890 [unmatched] egg noodles
+  - no exact match in reference vocabulary
+- row 38 [unmatched] egg roll wrappers
+  - no exact match in reference vocabulary
+- row 578 [unmatched] egg white
+  - no exact match in reference vocabulary
+- row 1175 [unmatched] egg white beaten
+  - no exact match in reference vocabulary
+- row 798 [unmatched] egg white beaten until foamy
+  - no exact match in reference vocabulary
+- row 611 [unmatched] egg white lightly beaten
+  - no exact match in reference vocabulary
+- row 225 [unmatched] egg whites
+  - no exact match in reference vocabulary
+- row 226 [unmatched] egg whites at room temperature
+  - no exact match in reference vocabulary
+- row 549 [unmatched] egg yolk
+  - no exact match in reference vocabulary
+- row 523 [unmatched] egg yolk at room temperature
+  - no exact match in reference vocabulary
+- row 397 [unmatched] egg yolk beaten with water
+  - no exact match in reference vocabulary
+- row 798 [unmatched] egg yolks
+  - no exact match in reference vocabulary
+- row 721 [unmatched] egg yolks beaten
+  - no exact match in reference vocabulary
+- row 84 [unmatched] eggs
+  - no exact match in reference vocabulary
+- row 770 [unmatched] eggs at room temperature
+  - no exact match in reference vocabulary
+- row 526 [unmatched] eggs beaten
+  - no exact match in reference vocabulary
+- row 293 [unmatched] eggs divided
+  - no exact match in reference vocabulary
+- row 88 [unmatched] eggs lightly beaten
+  - no exact match in reference vocabulary
+- row 749 [unmatched] eggs room temperature beaten
+  - no exact match in reference vocabulary
+- row 759 [unmatched] eggs well beaten
+  - no exact match in reference vocabulary
+- row 751 [unmatched] eggs whisked
+  - no exact match in reference vocabulary
+- row 905 [unmatched] elbow macaroni
+  - no exact match in reference vocabulary
+- row 1175 [unmatched] empanada pastry discs
+  - no exact match in reference vocabulary
+- row 394 [unmatched] empanada pastry rounds
+  - no exact match in reference vocabulary
+- row 138 [unmatched] english cucumber
+  - no exact match in reference vocabulary
+- row 270 [unmatched] english cucumber minced
+  - no exact match in reference vocabulary
+- row 511 [unmatched] english cucumber thinly sliced
+  - no exact match in reference vocabulary
+- row 145 [unmatched] english cucumbers
+  - no exact match in reference vocabulary
+- row 470 [unmatched] english muffins split
+  - no exact match in reference vocabulary
+- row 493 [unmatched] english muffins split in half
+  - no exact match in reference vocabulary
+- row 93 [unmatched] english muffins toasted
+  - no exact match in reference vocabulary
+- row 1138 [unmatched] envelope dry onion soup dip mix
+  - no exact match in reference vocabulary
+- row 1414 [unmatched] envelope fleischmann s rapidrise yeast
+  - no exact match in reference vocabulary
+- row 107 [unmatched] espresso powder
+  - no exact match in reference vocabulary
+- row 127 [unmatched] evaporated milk
+  - no exact match in reference vocabulary
+- row 743 [unmatched] everything bagel seasoning taste
+  - no exact match in reference vocabulary
+- row 746 [unmatched] everything bagel thins
+  - no exact match in reference vocabulary
+- row 156 [unmatched] everything but the bagel seasoning
+  - no exact match in reference vocabulary
+- row 76 [unmatched] extra large eggs
+  - no exact match in reference vocabulary
+- row 29 [unmatched] extra virgin olive oil
+  - no exact match in reference vocabulary
+- row 468 [unmatched] extra virgin olive oil divided
+  - no exact match in reference vocabulary
+- row 367 [unmatched] extra virgin olive oil for drizzling
+  - no exact match in reference vocabulary
+- row 19 [unmatched] extra-virgin olive oil
+  - no exact match in reference vocabulary
+- row 235 [unmatched] extra-virgin olive oil as needed
+  - no exact match in reference vocabulary
+- row 386 [unmatched] extra-virgin olive oil divided
+  - no exact match in reference vocabulary
+- row 1415 [unmatched] extra-virgin olive oil plus more for oiling the bowl
+  - no exact match in reference vocabulary
+- row 35 [unmatched] farfalle pasta
+  - no exact match in reference vocabulary
+- row 684 [unmatched] fat-free cooking spray
+  - no exact match in reference vocabulary
+- row 1307 [unmatched] fat-free reduced-sodium beef broth
+  - no exact match in reference vocabulary
+- row 738 [unmatched] fat-free sour cream
+  - no exact match in reference vocabulary
+- row 291 [unmatched] fennel seeds
+  - no exact match in reference vocabulary
+- row 48 [unmatched] feta
+  - no exact match in reference vocabulary
+- row 57 [unmatched] feta cheese
+  - no exact match in reference vocabulary
+- row 213 [unmatched] feta cheese divided
+  - no exact match in reference vocabulary
+- row 896 [unmatched] filets trout
+  - no exact match in reference vocabulary
+- row 1043 [unmatched] finely chopped canned chipotle pepper
+  - no exact match in reference vocabulary
+- row 413 [unmatched] finely chopped cilantro
+  - no exact match in reference vocabulary
+- row 33 [unmatched] finely chopped cilantro taste
+  - no exact match in reference vocabulary
+- row 703 [unmatched] finely chopped dill pickles
+  - no exact match in reference vocabulary
+- row 587 [unmatched] finely chopped fresh cilantro
+  - no exact match in reference vocabulary
+- row 452 [unmatched] finely chopped fresh flat-leaf parsley
+  - no exact match in reference vocabulary
+- row 444 [unmatched] finely chopped fresh garlic
+  - no exact match in reference vocabulary
+- row 413 [unmatched] finely chopped fresh mint leaves
+  - no exact match in reference vocabulary
+- row 234 [unmatched] finely chopped fresh mushrooms
+  - no exact match in reference vocabulary
+- row 391 [unmatched] finely chopped fresh parsley
+  - no exact match in reference vocabulary
+- row 607 [unmatched] finely chopped fresh rosemary
+  - no exact match in reference vocabulary
+- row 903 [unmatched] finely chopped fresh rosemary leaves
+  - no exact match in reference vocabulary
+- row 1166 [unmatched] finely chopped fresh thyme
+  - no exact match in reference vocabulary
+- row 447 [unmatched] finely chopped garlic
+  - no exact match in reference vocabulary
+- row 895 [unmatched] finely chopped green bell pepper
+  - no exact match in reference vocabulary
+- row 397 [unmatched] finely chopped green onions
+  - no exact match in reference vocabulary
+- row 924 [unmatched] finely chopped green onions green part only
+  - no exact match in reference vocabulary
+- row 1196 [unmatched] finely chopped jalapeno chile peppers
+  - no exact match in reference vocabulary
+- row 1327 [unmatched] finely chopped lemon zest
+  - no exact match in reference vocabulary
+- row 550 [unmatched] finely chopped onion
+  - no exact match in reference vocabulary
+- row 1327 [unmatched] finely chopped orange zest
+  - no exact match in reference vocabulary
+- row 571 [unmatched] finely chopped pecans
+  - no exact match in reference vocabulary
+- row 165 [unmatched] finely chopped red onion
+  - no exact match in reference vocabulary
+- row 413 [unmatched] finely chopped thai basil
+  - no exact match in reference vocabulary
+- row 606 [unmatched] finely chopped walnuts
+  - no exact match in reference vocabulary
+- row 895 [unmatched] finely chopped yellow onion
+  - no exact match in reference vocabulary
+- row 547 [unmatched] finely diced fresno chile pepper
+  - no exact match in reference vocabulary
+- row 1160 [unmatched] finely diced onion
+  - no exact match in reference vocabulary
+- row 1160 [unmatched] finely diced red bell pepper
+  - no exact match in reference vocabulary
+- row 932 [unmatched] finely diced white onion
+  - no exact match in reference vocabulary
+- row 910 [unmatched] finely grated ginger
+  - no exact match in reference vocabulary
+- row 1426 [unmatched] finely grated parmigiano-reggiano cheese
+  - no exact match in reference vocabulary
+- row 579 [unmatched] finely grated zest one lemon
+  - no exact match in reference vocabulary
+- row 105 [unmatched] finely ground graham cracker crumbs
+  - no exact match in reference vocabulary
+- row 526 [unmatched] finely minced fresh parsley
+  - no exact match in reference vocabulary
+- row 657 [unmatched] finely shredded mozzarella parmesan cheese optional
+  - no exact match in reference vocabulary
+- row 673 [unmatched] finely shredded parmesan cheese
+  - no exact match in reference vocabulary
+- row 1252 [unmatched] finely sliced escarole spinach may be substituted
+  - no exact match in reference vocabulary
+- row 314 [unmatched] finely tomato
+  - no exact match in reference vocabulary
+- row 505 [unmatched] firm bartlett pear chopped more taste
+  - no exact match in reference vocabulary
+- row 292 [unmatched] firm green pear cored thinly sliced
+  - no exact match in reference vocabulary
+- row 508 [unmatched] firm pears peeled quartered sliced
+  - no exact match in reference vocabulary
+- row 796 [unmatched] firmly packed brown sugar
+  - no exact match in reference vocabulary
+- row 697 [unmatched] fl oz cans white meat chicken
+  - no exact match in reference vocabulary
+- row 95 [unmatched] flaked coconut
+  - no exact match in reference vocabulary
+- row 483 [unmatched] flaked sea salt
+  - no exact match in reference vocabulary
+- row 335 [unmatched] flaky salt
+  - no exact match in reference vocabulary
+- row 245 [unmatched] flaky salt for garnish
+  - no exact match in reference vocabulary
+- row 278 [unmatched] flaky sea salt
+  - no exact match in reference vocabulary
+- row 237 [unmatched] flaky sea salt for garnish
+  - no exact match in reference vocabulary
+- row 284 [unmatched] flaky sea salt such as
+  - no exact match in reference vocabulary
+- row 67 [unmatched] flatbreads
+  - no exact match in reference vocabulary
+- row 95 [unmatched] flax meal
+  - no exact match in reference vocabulary
+- row 760 [unmatched] flaxseed meal
+  - no exact match in reference vocabulary
+- row 8 [unmatched] flour
+  - no exact match in reference vocabulary
+- row 452 [unmatched] flour for dusting
+  - no exact match in reference vocabulary
+- row 1329 [unmatched] flour plus more for rolling
+  - no exact match in reference vocabulary
+- row 1029 [unmatched] flour tortillas -inch
+  - no exact match in reference vocabulary
+- row 1232 [unmatched] fluid ounce bottle tomato-vegetable juice cocktail
+  - no exact match in reference vocabulary
+- row 1194 [unmatched] fluid ounce can tomato juice
+  - no exact match in reference vocabulary
+- row 948 [unmatched] fluid ounces beef broth
+  - no exact match in reference vocabulary
+- row 194 [unmatched] fluid ounces bone broth
+  - no exact match in reference vocabulary
+- row 1050 [unmatched] fluid ounces lemon-lime flavored carbonated beverage
+  - no exact match in reference vocabulary
+- row 1440 [unmatched] fluid ounces lukewarm water
+  - no exact match in reference vocabulary
+- row 568 [unmatched] fluid ounces tomato-based chili sauce
+  - no exact match in reference vocabulary
+- row 459 [unmatched] french baguette
+  - no exact match in reference vocabulary
+- row 498 [unmatched] french baguette cut into
+  - no exact match in reference vocabulary
+- row 473 [unmatched] french baguette cut into -inch-thick slices
+  - no exact match in reference vocabulary
+- row 495 [unmatched] french baguette cut into diagonal inch slices
+  - no exact match in reference vocabulary
+- row 458 [unmatched] french baguette cut into inch thick circles
+  - no exact match in reference vocabulary
+- row 443 [unmatched] french baguette halved lengthwise
+  - no exact match in reference vocabulary
+- row 1144 [unmatched] french bread hoagie rolls
+  - no exact match in reference vocabulary
+- row 862 [unmatched] french-fried onions
+  - no exact match in reference vocabulary
+- row 162 [unmatched] fresh baby spinach
+  - no exact match in reference vocabulary
+- row 94 [unmatched] fresh basil
+  - no exact match in reference vocabulary
+- row 287 [unmatched] fresh basil leaves
+  - no exact match in reference vocabulary
+- row 228 [unmatched] fresh basil leaves chopped
+  - no exact match in reference vocabulary
+- row 456 [unmatched] fresh basil leaves for garnish optional
+  - no exact match in reference vocabulary
+- row 146 [unmatched] fresh basil leaves taste plus more for garnish optional
+  - no exact match in reference vocabulary
+- row 98 [unmatched] fresh basil minced
+  - no exact match in reference vocabulary
+- row 125 [unmatched] fresh basil sprigs
+  - no exact match in reference vocabulary
+- row 95 [unmatched] fresh berries
+  - no exact match in reference vocabulary
+- row 1364 [unmatched] fresh blackberries
+  - no exact match in reference vocabulary
+- row 82 [unmatched] fresh blueberries
+  - no exact match in reference vocabulary
+- row 1367 [unmatched] fresh blueberries divided
+  - no exact match in reference vocabulary
+- row 680 [unmatched] fresh bread crumbs
+  - no exact match in reference vocabulary
+- row 49 [unmatched] fresh cherries
+  - no exact match in reference vocabulary
+- row 550 [unmatched] fresh chile de arbol peppers taste
+  - no exact match in reference vocabulary
+- row 143 [unmatched] fresh cilantro
+  - no exact match in reference vocabulary
+- row 1003 [unmatched] fresh cilantro sprigs
+  - no exact match in reference vocabulary
+- row 579 [unmatched] fresh cracked pepper taste
+  - no exact match in reference vocabulary
+- row 52 [unmatched] fresh dill
+  - no exact match in reference vocabulary
+- row 126 [unmatched] fresh dill for garnish
+  - no exact match in reference vocabulary
+- row 1366 [unmatched] fresh figs sliced
+  - no exact match in reference vocabulary
+- row 48 [unmatched] fresh fresh
+  - no exact match in reference vocabulary
+- row 197 [unmatched] fresh ginger
+  - no exact match in reference vocabulary
+- row 398 [unmatched] fresh ginger root chopped
+  - no exact match in reference vocabulary
+- row 289 [unmatched] fresh grape leaves
+  - no exact match in reference vocabulary
+- row 1156 [unmatched] fresh ground black pepper
+  - no exact match in reference vocabulary
+- row 966 [unmatched] fresh ground black pepper taste
+  - no exact match in reference vocabulary
+- row 1093 [unmatched] fresh hamburger buns
+  - no exact match in reference vocabulary
+- row 1330 [unmatched] fresh herbs
+  - no exact match in reference vocabulary
+- row 288 [unmatched] fresh jalapeño chile pepper finely chopped
+  - no exact match in reference vocabulary
+- row 373 [unmatched] fresh jalapeno pepper finely diced
+  - no exact match in reference vocabulary
+- row 1276 [unmatched] fresh jalapeno peppers diced
+  - no exact match in reference vocabulary
+- row 954 [unmatched] fresh jalapeno peppers seeded
+  - no exact match in reference vocabulary
+- row 325 [unmatched] fresh jalapeño peppers seeded minced
+  - no exact match in reference vocabulary
+- row 54 [unmatched] fresh lemon juice
+  - no exact match in reference vocabulary
+- row 447 [unmatched] fresh lemon juice divided
+  - no exact match in reference vocabulary
+- row 76 [unmatched] fresh lemon zest
+  - no exact match in reference vocabulary
+- row 145 [unmatched] fresh lime juice
+  - no exact match in reference vocabulary
+- row 177 [unmatched] fresh mint
+  - no exact match in reference vocabulary
+- row 296 [unmatched] fresh mint leaves
+  - no exact match in reference vocabulary
+- row 660 [unmatched] fresh mushrooms stems removed
+  - no exact match in reference vocabulary
+- row 67 [unmatched] fresh oregano
+  - no exact match in reference vocabulary
+- row 137 [unmatched] fresh parsley
+  - no exact match in reference vocabulary
+- row 173 [unmatched] fresh parsley as needed for garnish
+  - no exact match in reference vocabulary
+- row 214 [unmatched] fresh parsley as needed optional
+  - no exact match in reference vocabulary
+- row 1072 [unmatched] fresh parsley for garnish
+  - no exact match in reference vocabulary
+- row 40 [unmatched] fresh parsley for garnish optional
+  - no exact match in reference vocabulary
+- row 533 [unmatched] fresh parsley optional
+  - no exact match in reference vocabulary
+- row 46 [unmatched] fresh parsley sprigs
+  - no exact match in reference vocabulary
+- row 627 [unmatched] fresh peach chopped
+  - no exact match in reference vocabulary
+- row 54 [unmatched] fresh peaches
+  - no exact match in reference vocabulary
+- row 1050 [unmatched] fresh pineapple - peeled cored cubed
+  - no exact match in reference vocabulary
+- row 1364 [unmatched] fresh raspberries
+  - no exact match in reference vocabulary
+- row 75 [unmatched] fresh rosemary
+  - no exact match in reference vocabulary
+- row 513 [unmatched] fresh rosemary chopped
+  - no exact match in reference vocabulary
+- row 951 [unmatched] fresh rosemary leaves
+  - no exact match in reference vocabulary
+- row 171 [unmatched] fresh sage
+  - no exact match in reference vocabulary
+- row 1274 [unmatched] fresh sliced mushrooms
+  - no exact match in reference vocabulary
+- row 1356 [unmatched] fresh sliced peaches
+  - no exact match in reference vocabulary
+- row 125 [unmatched] fresh spinach
+  - no exact match in reference vocabulary
+- row 1182 [unmatched] fresh spinach rinsed dried
+  - no exact match in reference vocabulary
+- row 793 [unmatched] fresh strawberries
+  - no exact match in reference vocabulary
+- row 627 [unmatched] fresh strawberries chopped
+  - no exact match in reference vocabulary
+- row 48 [unmatched] fresh thyme
+  - no exact match in reference vocabulary
+- row 510 [unmatched] fresh thyme leaves
+  - no exact match in reference vocabulary
+- row 219 [unmatched] fresh thyme sprigs
+  - no exact match in reference vocabulary
+- row 314 [unmatched] fresh tortilla chips for serving
+  - no exact match in reference vocabulary
+- row 609 [unmatched] fresh za atar
+  - no exact match in reference vocabulary
+- row 599 [unmatched] freshly chopped cilantro plus more for garnish
+  - no exact match in reference vocabulary
+- row 42 [unmatched] freshly chopped parsley for garnish
+  - no exact match in reference vocabulary
+- row 265 [unmatched] freshly cracked salt black pepper taste
+  - no exact match in reference vocabulary
+- row 106 [unmatched] freshly grated lemon zest
+  - no exact match in reference vocabulary
+- row 287 [unmatched] freshly grated parmesan cheese
+  - no exact match in reference vocabulary
+- row 1144 [unmatched] freshly grated parmesan cheese as needed for garnish
+  - no exact match in reference vocabulary
+- row 30 [unmatched] freshly grated parmesan cheese optional
+  - no exact match in reference vocabulary
+- row 639 [unmatched] freshly grated parmigiano cheese
+  - no exact match in reference vocabulary
+- row 386 [unmatched] freshly grated parmigiano-reggiano cheese
+  - no exact match in reference vocabulary
+- row 1267 [unmatched] freshly grated raw horseradish taste
+  - no exact match in reference vocabulary
+- row 32 [unmatched] freshly ground black pepper
+  - no exact match in reference vocabulary
+- row 298 [unmatched] freshly ground black pepper divided
+  - no exact match in reference vocabulary
+- row 137 [unmatched] freshly ground black pepper taste
+  - no exact match in reference vocabulary
+- row 157 [unmatched] freshly ground ground black pepper taste
+  - no exact match in reference vocabulary
+- row 396 [unmatched] freshly shredded parmigiano-reggiano cheese divided
+  - no exact match in reference vocabulary
+- row 89 [unmatched] freshly squeezed lemon juice
+  - no exact match in reference vocabulary
+- row 155 [unmatched] freshly-squeezed lemon juice
+  - no exact match in reference vocabulary
+- row 1347 [unmatched] frozen blueberries
+  - no exact match in reference vocabulary
+- row 352 [unmatched] frozen chopped spinach thawed drained
+  - no exact match in reference vocabulary
+- row 1169 [unmatched] frozen corn
+  - no exact match in reference vocabulary
+- row 1115 [unmatched] frozen cut green beans thawed
+  - no exact match in reference vocabulary
+- row 1238 [unmatched] frozen green beans
+  - no exact match in reference vocabulary
+- row 1166 [unmatched] frozen green peas
+  - no exact match in reference vocabulary
+- row 335 [unmatched] frozen hash brown patties
+  - no exact match in reference vocabulary
+- row 214 [unmatched] frozen mixed vegetables
+  - no exact match in reference vocabulary
+- row 1244 [unmatched] frozen mixed vegetables optional
+  - no exact match in reference vocabulary
+- row 1163 [unmatched] frozen mixed vegetables such as peas carrots
+  - no exact match in reference vocabulary
+- row 132 [unmatched] frozen peas
+  - no exact match in reference vocabulary
+- row 1167 [unmatched] frozen peas carrots
+  - no exact match in reference vocabulary
+- row 381 [unmatched] frozen peas thawed
+  - no exact match in reference vocabulary
+- row 245 [unmatched] frozen puff pastry sheet
+  - no exact match in reference vocabulary
+- row 731 [unmatched] frozen raspberries
+  - no exact match in reference vocabulary
+- row 1115 [unmatched] frozen sweet corn thawed
+  - no exact match in reference vocabulary
+- row 907 [unmatched] frozen sweet white corn
+  - no exact match in reference vocabulary
+- row 278 [unmatched] frozen thawed kataifi
+  - no exact match in reference vocabulary
+- row 1200 [unmatched] frozen white corn kernels
+  - no exact match in reference vocabulary
+- row 1179 [unmatched] frozen whole green beans partially thawed
+  - no exact match in reference vocabulary
+- row 1110 [unmatched] frozen yellow corn kernels
+  - no exact match in reference vocabulary
+- row 467 [unmatched] fuji apple - peeled cored chopped
+  - no exact match in reference vocabulary
+- row 66 [unmatched] full fat ricotta cheese
+  - no exact match in reference vocabulary
+- row 1330 [unmatched] full-fat ricotta cheese
+  - no exact match in reference vocabulary
+- row 1242 [unmatched] gallon water
+  - no exact match in reference vocabulary
+- row 308 [unmatched] garam masala
+  - no exact match in reference vocabulary
+- row 40 [unmatched] garlic
+  - no exact match in reference vocabulary
+- row 132 [unmatched] garlic clove
+  - no exact match in reference vocabulary
+- row 70 [unmatched] garlic clove quartered
+  - no exact match in reference vocabulary
+- row 43 [unmatched] garlic cloves
+  - no exact match in reference vocabulary
+- row 556 [unmatched] garlic cloves chopped
+  - no exact match in reference vocabulary
+- row 540 [unmatched] garlic cloves crushed
+  - no exact match in reference vocabulary
+- row 192 [unmatched] garlic cloves minced
+  - no exact match in reference vocabulary
+- row 47 [unmatched] garlic cloves peeled
+  - no exact match in reference vocabulary
+- row 1029 [unmatched] garlic finely chopped
+  - no exact match in reference vocabulary
+- row 53 [unmatched] garlic garlic paste
+  - no exact match in reference vocabulary
+- row 187 [unmatched] garlic granules
+  - no exact match in reference vocabulary
+- row 71 [unmatched] garlic paste
+  - no exact match in reference vocabulary
+- row 9 [unmatched] garlic powder
+  - no exact match in reference vocabulary
+- row 615 [unmatched] garlic powder more taste
+  - no exact match in reference vocabulary
+- row 1334 [unmatched] garlic powder optional
+  - no exact match in reference vocabulary
+- row 428 [unmatched] garlic salt
+  - no exact match in reference vocabulary
+- row 68 [unmatched] garlic salt taste
+  - no exact match in reference vocabulary
+- row 617 [unmatched] garlic-flavored olive oil
+  - no exact match in reference vocabulary
+- row 708 [matched] ginger
+  - exact match in reference vocabulary
+- row 935 [unmatched] ginger paste
+  - no exact match in reference vocabulary
+- row 766 [unmatched] gluten-free all-purpose baking flour such as bob s red mill
+  - no exact match in reference vocabulary
+- row 635 [unmatched] gluten-free pretzels
+  - no exact match in reference vocabulary
+- row 920 [unmatched] gochujang
+  - no exact match in reference vocabulary
+- row 993 [unmatched] gochujang red chile paste
+  - no exact match in reference vocabulary
+- row 1469 [unmatched] golden raisins
+  - no exact match in reference vocabulary
+- row 1019 [unmatched] golden raisins divided
+  - no exact match in reference vocabulary
+- row 1375 [unmatched] graham cracker crumbs
+  - no exact match in reference vocabulary
+- row 3 [unmatched] granulated garlic
+  - no exact match in reference vocabulary
+- row 46 [unmatched] granulated onion
+  - no exact match in reference vocabulary
+- row 718 [unmatched] granulated sugar
+  - no exact match in reference vocabulary
+- row 914 [unmatched] grape tomatoes halved
+  - no exact match in reference vocabulary
+- row 151 [unmatched] grapeseed oil
+  - no exact match in reference vocabulary
+- row 1020 [unmatched] grated carrot
+  - no exact match in reference vocabulary
+- row 591 [unmatched] grated fresh ginger
+  - no exact match in reference vocabulary
+- row 1034 [unmatched] grated fresh ginger root
+  - no exact match in reference vocabulary
+- row 1399 [unmatched] grated garlic
+  - no exact match in reference vocabulary
+- row 163 [unmatched] grated ginger
+  - no exact match in reference vocabulary
+- row 634 [unmatched] grated lemon peel
+  - no exact match in reference vocabulary
+- row 799 [unmatched] grated lemon zest
+  - no exact match in reference vocabulary
+- row 572 [unmatched] grated onion
+  - no exact match in reference vocabulary
+- row 965 [unmatched] grated orange zest
+  - no exact match in reference vocabulary
+- row 4 [unmatched] grated parmesan cheese
+  - no exact match in reference vocabulary
+- row 533 [unmatched] grated parmesan cheese divided
+  - no exact match in reference vocabulary
+- row 1252 [unmatched] grated parmesan cheese for topping
+  - no exact match in reference vocabulary
+- row 434 [unmatched] grated parmesan cheese optional
+  - no exact match in reference vocabulary
+- row 443 [unmatched] grated parmesan cheese taste
+  - no exact match in reference vocabulary
+- row 77 [unmatched] grated parmesan-romano
+  - no exact match in reference vocabulary
+- row 428 [unmatched] grated romano cheese
+  - no exact match in reference vocabulary
+- row 626 [unmatched] grated zucchini
+  - no exact match in reference vocabulary
+- row 357 [unmatched] greek olives
+  - no exact match in reference vocabulary
+- row 39 [unmatched] greek seasoning
+  - no exact match in reference vocabulary
+- row 743 [unmatched] greek yogurt
+  - no exact match in reference vocabulary
+- row 92 [unmatched] greek yogurt such as
+  - no exact match in reference vocabulary
+- row 1329 [unmatched] greek-style yogurt
+  - no exact match in reference vocabulary
+- row 1258 [unmatched] green banana peeled sliced into -inch pieces
+  - no exact match in reference vocabulary
+- row 55 [unmatched] green beans trimmed
+  - no exact match in reference vocabulary
+- row 938 [unmatched] green beans trimmed cut into -inch pieces
+  - no exact match in reference vocabulary
+- row 197 [unmatched] green bell pepper
+  - no exact match in reference vocabulary
+- row 351 [unmatched] green bell pepper - cored seeded finely chopped
+  - no exact match in reference vocabulary
+- row 234 [unmatched] green bell pepper chopped
+  - no exact match in reference vocabulary
+- row 236 [unmatched] green bell pepper cut into thin strips
+  - no exact match in reference vocabulary
+- row 1106 [unmatched] green bell pepper diced
+  - no exact match in reference vocabulary
+- row 1205 [unmatched] green bell pepper seeded chopped
+  - no exact match in reference vocabulary
+- row 1199 [unmatched] green bell pepper seeded chopped optional
+  - no exact match in reference vocabulary
+- row 531 [unmatched] green bell pepper seeded diced
+  - no exact match in reference vocabulary
+- row 525 [unmatched] green bell pepper thinly sliced
+  - no exact match in reference vocabulary
+- row 968 [unmatched] green bell peppers
+  - no exact match in reference vocabulary
+- row 1344 [unmatched] green bell peppers chopped
+  - no exact match in reference vocabulary
+- row 1050 [unmatched] green bell peppers cut into -inch pieces
+  - no exact match in reference vocabulary
+- row 1042 [unmatched] green bell peppers cut into chunks
+  - no exact match in reference vocabulary
+- row 416 [unmatched] green bell peppers cut into large chunks green bell peppers cut into large chunks
+  - no exact match in reference vocabulary
+- row 705 [unmatched] green bell peppers diced
+  - no exact match in reference vocabulary
+- row 333 [unmatched] green cabbage kale
+  - no exact match in reference vocabulary
+- row 1209 [unmatched] green chile pepper
+  - no exact match in reference vocabulary
+- row 398 [unmatched] green chile peppers chopped
+  - no exact match in reference vocabulary
+- row 936 [unmatched] green chile peppers finely sliced
+  - no exact match in reference vocabulary
+- row 627 [unmatched] green grapes some halved some whole
+  - no exact match in reference vocabulary
+- row 733 [unmatched] green hot pepper sauce
+  - no exact match in reference vocabulary
+- row 644 [unmatched] green jalapeno peppers
+  - no exact match in reference vocabulary
+- row 951 [unmatched] green onion
+  - no exact match in reference vocabulary
+- row 288 [unmatched] green onion chopped
+  - no exact match in reference vocabulary
+- row 990 [unmatched] green onion cilantro
+  - no exact match in reference vocabulary
+- row 414 [unmatched] green onion cut into matchsticks
+  - no exact match in reference vocabulary
+- row 1055 [unmatched] green onion diced
+  - no exact match in reference vocabulary
+- row 330 [unmatched] green onion finely chopped
+  - no exact match in reference vocabulary
+- row 899 [unmatched] green onion for garnish optional
+  - no exact match in reference vocabulary
+- row 191 [unmatched] green onion sliced
+  - no exact match in reference vocabulary
+- row 910 [unmatched] green onion tops thinly sliced
+  - no exact match in reference vocabulary
+- row 69 [unmatched] green onions
+  - no exact match in reference vocabulary
+- row 216 [unmatched] green onions chopped
+  - no exact match in reference vocabulary
+- row 284 [unmatched] green onions chopped green parts separated from whites
+  - no exact match in reference vocabulary
+- row 1179 [unmatched] green onions cut into inch pieces
+  - no exact match in reference vocabulary
+- row 328 [unmatched] green onions finely chopped
+  - no exact match in reference vocabulary
+- row 350 [unmatched] green onions finely sliced
+  - no exact match in reference vocabulary
+- row 464 [unmatched] green onions minced
+  - no exact match in reference vocabulary
+- row 1038 [unmatched] green onions sliced
+  - no exact match in reference vocabulary
+- row 1181 [unmatched] green onions sliced diagonally
+  - no exact match in reference vocabulary
+- row 1252 [unmatched] green onions sliced optional
+  - no exact match in reference vocabulary
+- row 73 [unmatched] green onions sliced white part only
+  - no exact match in reference vocabulary
+- row 163 [unmatched] green onions thinly sliced
+  - no exact match in reference vocabulary
+- row 892 [unmatched] green pepper
+  - no exact match in reference vocabulary
+- row 21 [unmatched] green tomatoes cut into ¼-inch slices
+  - no exact match in reference vocabulary
+- row 73 [unmatched] greens seasoning
+  - no exact match in reference vocabulary
+- row 16 [unmatched] grill seasoning such as montreal steak seasoning
+  - no exact match in reference vocabulary
+- row 107 [unmatched] ground allspice
+  - no exact match in reference vocabulary
+- row 7 [unmatched] ground black pepper
+  - no exact match in reference vocabulary
+- row 1166 [unmatched] ground black pepper divided
+  - no exact match in reference vocabulary
+- row 615 [unmatched] ground black pepper more taste
+  - no exact match in reference vocabulary
+- row 342 [unmatched] ground black pepper plus more for garnish
+  - no exact match in reference vocabulary
+- row 132 [unmatched] ground black pepper plus more taste
+  - no exact match in reference vocabulary
+- row 50 [unmatched] ground black pepper taste
+  - no exact match in reference vocabulary
+- row 395 [unmatched] ground cardamom
+  - no exact match in reference vocabulary
+- row 425 [unmatched] ground cayenne pepper
+  - no exact match in reference vocabulary
+- row 930 [unmatched] ground cayenne pepper more taste optional
+  - no exact match in reference vocabulary
+- row 1057 [unmatched] ground cayenne pepper taste
+  - no exact match in reference vocabulary
+- row 54 [unmatched] ground cinnamon
+  - no exact match in reference vocabulary
+- row 603 [unmatched] ground cinnamon optional
+  - no exact match in reference vocabulary
+- row 107 [unmatched] ground cloves
+  - no exact match in reference vocabulary
+- row 25 [unmatched] ground coriander
+  - no exact match in reference vocabulary
+- row 25 [unmatched] ground cumin
+  - no exact match in reference vocabulary
+- row 294 [unmatched] ground cumin taste
+  - no exact match in reference vocabulary
+- row 524 [unmatched] ground dried aji chile
+  - no exact match in reference vocabulary
+- row 6 [unmatched] ground dried chipotle pepper
+  - no exact match in reference vocabulary
+- row 50 [unmatched] ground ginger
+  - no exact match in reference vocabulary
+- row 54 [unmatched] ground nutmeg
+  - no exact match in reference vocabulary
+- row 1147 [unmatched] ground oregano
+  - no exact match in reference vocabulary
+- row 374 [unmatched] ground paprika
+  - no exact match in reference vocabulary
+- row 1270 [unmatched] ground paprika more taste
+  - no exact match in reference vocabulary
+- row 803 [unmatched] ground pecans
+  - no exact match in reference vocabulary
+- row 935 [unmatched] ground red pepper
+  - no exact match in reference vocabulary
+- row 933 [unmatched] ground thyme
+  - no exact match in reference vocabulary
+- row 308 [unmatched] ground turmeric
+  - no exact match in reference vocabulary
+- row 358 [unmatched] guacamole
+  - no exact match in reference vocabulary
+- row 556 [unmatched] guajillo chili pepper
+  - no exact match in reference vocabulary
+- row 246 [unmatched] habanero
+  - no exact match in reference vocabulary
+- row 47 [unmatched] habanero peppers
+  - no exact match in reference vocabulary
+- row 920 [unmatched] half half
+  - no exact match in reference vocabulary
+- row 511 [unmatched] half- -half
+  - no exact match in reference vocabulary
+- row 223 [unmatched] half- -half cream
+  - no exact match in reference vocabulary
+- row 234 [unmatched] half-pint canning jars with lids rings
+  - no exact match in reference vocabulary
+- row 164 [unmatched] halved cherry tomatoes
+  - no exact match in reference vocabulary
+- row 456 [unmatched] halved grape tomatoes well drained
+  - no exact match in reference vocabulary
+- row 876 [unmatched] hamburger buns
+  - no exact match in reference vocabulary
+- row 1092 [unmatched] hamburger buns lightly toasted
+  - no exact match in reference vocabulary
+- row 1094 [unmatched] hamburger buns split
+  - no exact match in reference vocabulary
+- row 1154 [unmatched] hamburger buns toasted if desired
+  - no exact match in reference vocabulary
+- row 192 [unmatched] handfu spinach
+  - no exact match in reference vocabulary
+- row 1151 [unmatched] hard rolls split
+  - no exact match in reference vocabulary
+- row 394 [unmatched] hard-cooked eggs
+  - no exact match in reference vocabulary
+- row 1384 [unmatched] hard-cooked eggs diced optional
+  - no exact match in reference vocabulary
+- row 346 [unmatched] hard-cooked eggs peeled sliced in half lengthwise
+  - no exact match in reference vocabulary
+- row 1184 [unmatched] hard-cooked eggs sliced
+  - no exact match in reference vocabulary
+- row 195 [unmatched] harissa paste
+  - no exact match in reference vocabulary
+- row 214 [unmatched] hash brown potatoes
+  - no exact match in reference vocabulary
+- row 433 [unmatched] hawaiian rolls
+  - no exact match in reference vocabulary
+- row 309 [unmatched] head boston lettuce leaves
+  - no exact match in reference vocabulary
+- row 234 [unmatched] head broccoli finely chopped
+  - no exact match in reference vocabulary
+- row 1244 [unmatched] head cabbage cored cut into wedges
+  - no exact match in reference vocabulary
+- row 1255 [unmatched] head cabbage cut into bite-size pieces
+  - no exact match in reference vocabulary
+- row 1378 [unmatched] head cabbage finely chopped
+  - no exact match in reference vocabulary
+- row 1247 [unmatched] head cabbage quartered more taste
+  - no exact match in reference vocabulary
+- row 1387 [unmatched] head cabbage shredded
+  - no exact match in reference vocabulary
+- row 180 [unmatched] head cauliflower
+  - no exact match in reference vocabulary
+- row 1439 [unmatched] head cauliflower broken into florets
+  - no exact match in reference vocabulary
+- row 1423 [unmatched] head cauliflower chopped
+  - no exact match in reference vocabulary
+- row 420 [unmatched] heads cauliflower cut into bite-size pieces
+  - no exact match in reference vocabulary
+- row 434 [unmatched] heads garlic
+  - no exact match in reference vocabulary
+- row 1184 [unmatched] heads red leaf lettuce torn into bite-sized pieces
+  - no exact match in reference vocabulary
+- row 875 [unmatched] heart romaine lettuce
+  - no exact match in reference vocabulary
+- row 82 [unmatched] heavy cream
+  - no exact match in reference vocabulary
+- row 213 [unmatched] heavy whipping cream
+  - no exact match in reference vocabulary
+- row 999 [unmatched] heddar cheese
+  - no exact match in reference vocabulary
+- row 1137 [unmatched] heinz tomato ketchup
+  - no exact match in reference vocabulary
+- row 1152 [unmatched] heinz worcestershire sauce
+  - no exact match in reference vocabulary
+- row 740 [unmatched] hemp seeds
+  - no exact match in reference vocabulary
+- row 898 [unmatched] herb mix such as trader joe s
+  - no exact match in reference vocabulary
+- row 193 [unmatched] herbes de provence
+  - no exact match in reference vocabulary
+- row 45 [unmatched] herbs
+  - no exact match in reference vocabulary
+- row 941 [unmatched] hickory wood chips soaked
+  - no exact match in reference vocabulary
+- row 192 [unmatched] high protein pasta
+  - no exact match in reference vocabulary
+- row 1153 [unmatched] hoagie rolls
+  - no exact match in reference vocabulary
+- row 307 [unmatched] hoisin sauce
+  - no exact match in reference vocabulary
+- row 3 [matched] honey
+  - exact match in reference vocabulary
+- row 284 [unmatched] honey agave nectar plus more for drizzling
+  - no exact match in reference vocabulary
+- row 513 [unmatched] honey for drizzling
+  - no exact match in reference vocabulary
+- row 140 [unmatched] honeydew melon
+  - no exact match in reference vocabulary
+- row 1307 [unmatched] hot cooked egg noodles
+  - no exact match in reference vocabulary
+- row 1305 [unmatched] hot cooked medium egg noodles
+  - no exact match in reference vocabulary
+- row 180 [unmatched] hot honey taste
+  - no exact match in reference vocabulary
+- row 6 [unmatched] hot pepper sauce
+  - no exact match in reference vocabulary
+- row 1246 [unmatched] hot pepper sauce such as tabasco
+  - no exact match in reference vocabulary
+- row 1279 [unmatched] hot pepper sauce such as tabasco optional
+  - no exact match in reference vocabulary
+- row 1192 [unmatched] hot pepper sauce taste
+  - no exact match in reference vocabulary
+- row 1278 [unmatched] hot red chile pepper donne sali chopped optional
+  - no exact match in reference vocabulary
+- row 151 [unmatched] hot sauce
+  - no exact match in reference vocabulary
+- row 377 [unmatched] hot sauce optional
+  - no exact match in reference vocabulary
+- row 145 [unmatched] hot sauce such as tabasco
+  - no exact match in reference vocabulary
+- row 934 [unmatched] hot strong black coffee
+  - no exact match in reference vocabulary
+- row 765 [unmatched] hot water
+  - no exact match in reference vocabulary
+- row 1157 [unmatched] hummus
+  - no exact match in reference vocabulary
+- row 428 [unmatched] hungarian hot peppers - halved cored seeded
+  - no exact match in reference vocabulary
+- row 929 [unmatched] hungarian paprika
+  - no exact match in reference vocabulary
+- row 1368 [unmatched] ice cold water
+  - no exact match in reference vocabulary
+- row 710 [unmatched] ice cubes
+  - no exact match in reference vocabulary
+- row 304 [unmatched] ice water
+  - no exact match in reference vocabulary
+- row 1357 [unmatched] ice water more as needed
+  - no exact match in reference vocabulary
+- row 876 [unmatched] iceberg lettuce
+  - no exact match in reference vocabulary
+- row 862 [unmatched] ijon mustard
+  - no exact match in reference vocabulary
+- row 142 [unmatched] imitation crab sticks
+  - no exact match in reference vocabulary
+- row 900 [unmatched] inch corn tortillas
+  - no exact match in reference vocabulary
+- row 296 [unmatched] inch cubes watermelon
+  - no exact match in reference vocabulary
+- row 352 [unmatched] inch flour tortillas
+  - no exact match in reference vocabulary
+- row 717 [unmatched] inch frozen pie crust
+  - no exact match in reference vocabulary
+- row 1055 [unmatched] inch metal skewers
+  - no exact match in reference vocabulary
+- row 719 [unmatched] inch pie shell
+  - no exact match in reference vocabulary
+- row 1376 [unmatched] inch pie shells baked
+  - no exact match in reference vocabulary
+- row 1071 [unmatched] inch piece dried ginger root
+  - no exact match in reference vocabulary
+- row 408 [unmatched] inch piece fresh ginger
+  - no exact match in reference vocabulary
+- row 542 [unmatched] inch piece fresh ginger grated
+  - no exact match in reference vocabulary
+- row 737 [unmatched] inch piece fresh ginger peeled chopped
+  - no exact match in reference vocabulary
+- row 1179 [unmatched] inch piece fresh ginger root minced
+  - no exact match in reference vocabulary
+- row 932 [unmatched] inch piece fresh ginger thinly sliced
+  - no exact match in reference vocabulary
+- row 1467 [unmatched] inch pizza crust
+  - no exact match in reference vocabulary
+- row 1348 [unmatched] inch refrigerated rolled pie pastry
+  - no exact match in reference vocabulary
+- row 507 [unmatched] inch slices french baguette
+  - no exact match in reference vocabulary
+- row 730 [unmatched] inch thick slice fresh ginger
+  - no exact match in reference vocabulary
+- row 466 [unmatched] inch thick slices italian bread toasted
+  - no exact match in reference vocabulary
+- row 943 [unmatched] inch thick steaks beef tenderloin
+  - no exact match in reference vocabulary
+- row 728 [unmatched] inch unbaked deep-dish pie crust
+  - no exact match in reference vocabulary
+- row 1359 [unmatched] inch unbaked pie crust
+  - no exact match in reference vocabulary
+- row 1371 [unmatched] inch unbaked pie crusts
+  - no exact match in reference vocabulary
+- row 6 [unmatched] inch whole-wheat hoagie rolls split toasted
+  - no exact match in reference vocabulary
+- row 132 [unmatched] instant rice
+  - no exact match in reference vocabulary
+- row 716 [unmatched] instant tapioca
+  - no exact match in reference vocabulary
+- row 203 [unmatched] instant white rice
+  - no exact match in reference vocabulary
+- row 1408 [unmatched] instant yeast
+  - no exact match in reference vocabulary
+- row 595 [unmatched] italian bread crumbs
+  - no exact match in reference vocabulary
+- row 40 [unmatched] italian herb seasoning
+  - no exact match in reference vocabulary
+- row 43 [unmatched] italian herb seasoning blend
+  - no exact match in reference vocabulary
+- row 919 [unmatched] italian hoagie rolls
+  - no exact match in reference vocabulary
+- row 992 [unmatched] italian sausage links
+  - no exact match in reference vocabulary
+- row 72 [unmatched] italian seasoned bread crumbs
+  - no exact match in reference vocabulary
+- row 949 [unmatched] italian seasoned dry bread crumbs
+  - no exact match in reference vocabulary
+- row 30 [unmatched] italian seasoning
+  - no exact match in reference vocabulary
+- row 318 [unmatched] italian-seasoned bread crumbs
+  - no exact match in reference vocabulary
+- row 660 [unmatched] italian-style seasoning
+  - no exact match in reference vocabulary
+- row 51 [unmatched] jalapeno
+  - no exact match in reference vocabulary
+- row 351 [unmatched] jalapeno chile pepper seeded finely chopped optional
+  - no exact match in reference vocabulary
+- row 50 [unmatched] jalapeno pepper
+  - no exact match in reference vocabulary
+- row 1344 [unmatched] jalapeño pepper chopped
+  - no exact match in reference vocabulary
+- row 1080 [unmatched] jalapeño pepper seeded chopped
+  - no exact match in reference vocabulary
+- row 365 [unmatched] jalapeno pepper seeded diced
+  - no exact match in reference vocabulary
+- row 1193 [unmatched] jalapeno pepper seeded finely chopped
+  - no exact match in reference vocabulary
+- row 561 [unmatched] jalapeño pepper seeded minced
+  - no exact match in reference vocabulary
+- row 643 [unmatched] jalapeno peppers halved lengthwise seeded
+  - no exact match in reference vocabulary
+- row 1219 [unmatched] jalapeño peppers minced optional
+  - no exact match in reference vocabulary
+- row 169 [unmatched] jalapeno peppers seeded diced
+  - no exact match in reference vocabulary
+- row 307 [unmatched] jalapeno peppers thinly sliced seeded if desired
+  - no exact match in reference vocabulary
+- row 892 [unmatched] jalapenos
+  - no exact match in reference vocabulary
+- row 314 [unmatched] jalapenos minced
+  - no exact match in reference vocabulary
+- row 73 [unmatched] jalapenos seeded chopped
+  - no exact match in reference vocabulary
+- row 545 [unmatched] jalapenos seeded diced
+  - no exact match in reference vocabulary
+- row 246 [unmatched] jasmine rice
+  - no exact match in reference vocabulary
+- row 1184 [unmatched] jicama peeled julienned
+  - no exact match in reference vocabulary
+- row 1391 [unmatched] juice
+  - no exact match in reference vocabulary
+- row 813 [unmatched] jumbo semisweet chocolate chips
+  - no exact match in reference vocabulary
+- row 488 [unmatched] just-ripe bananas sliced in -inch-thick rounds more as needed
+  - no exact match in reference vocabulary
+- row 1402 [unmatched] kalamata green olives
+  - no exact match in reference vocabulary
+- row 57 [unmatched] kalamata olives
+  - no exact match in reference vocabulary
+- row 1339 [unmatched] kelp powder
+  - no exact match in reference vocabulary
+- row 43 [unmatched] ketchup
+  - no exact match in reference vocabulary
+- row 298 [unmatched] ketchup divided
+  - no exact match in reference vocabulary
+- row 998 [unmatched] ketchup plus more for garnish
+  - no exact match in reference vocabulary
+- row 956 [unmatched] kiwi peeled quartered
+  - no exact match in reference vocabulary
+- row 53 [unmatched] kosher salt
+  - no exact match in reference vocabulary
+- row 246 [unmatched] kosher salt divided
+  - no exact match in reference vocabulary
+- row 1306 [unmatched] kosher salt divided taste
+  - no exact match in reference vocabulary
+- row 473 [unmatched] kosher salt ground black pepper taste
+  - no exact match in reference vocabulary
+- row 1221 [unmatched] kosher salt more taste
+  - no exact match in reference vocabulary
+- row 248 [unmatched] kosher salt plus more taste
+  - no exact match in reference vocabulary
+- row 273 [unmatched] kosher salt taste
+  - no exact match in reference vocabulary
+- row 191 [unmatched] large about pounds cauliflower cut into small florets
+  - no exact match in reference vocabulary
+- row 388 [unmatched] large apples
+  - no exact match in reference vocabulary
+- row 798 [unmatched] large apples - peeled cored sliced
+  - no exact match in reference vocabulary
+- row 500 [unmatched] large avocado halved pitted thinly sliced
+  - no exact match in reference vocabulary
+- row 1057 [unmatched] large avocado thinly sliced
+  - no exact match in reference vocabulary
+- row 678 [unmatched] large avocados - peeled pitted diced
+  - no exact match in reference vocabulary
+- row 1266 [unmatched] large bay leaf
+  - no exact match in reference vocabulary
+- row 925 [unmatched] large bay leaves
+  - no exact match in reference vocabulary
+- row 186 [unmatched] large beets
+  - no exact match in reference vocabulary
+- row 1109 [unmatched] large bell pepper any color diced
+  - no exact match in reference vocabulary
+- row 1219 [unmatched] large bell pepper minced
+  - no exact match in reference vocabulary
+- row 198 [unmatched] large carrot
+  - no exact match in reference vocabulary
+- row 211 [unmatched] large carrot chopped
+  - no exact match in reference vocabulary
+- row 1381 [unmatched] large carrot diced
+  - no exact match in reference vocabulary
+- row 654 [unmatched] large carrot finely chopped
+  - no exact match in reference vocabulary
+- row 1253 [unmatched] large carrot sliced
+  - no exact match in reference vocabulary
+- row 1279 [unmatched] large carrot sliced diagonally
+  - no exact match in reference vocabulary
+- row 928 [unmatched] large carrots chopped
+  - no exact match in reference vocabulary
+- row 1235 [unmatched] large carrots chopped more taste
+  - no exact match in reference vocabulary
+- row 1261 [unmatched] large carrots cut into rounds
+  - no exact match in reference vocabulary
+- row 524 [unmatched] large carrots peeled cubed
+  - no exact match in reference vocabulary
+- row 1258 [unmatched] large chayote squash - peeled cored sliced lengthwise
+  - no exact match in reference vocabulary
+- row 701 [unmatched] large chicken wings cut in tips discarded
+  - no exact match in reference vocabulary
+- row 657 [unmatched] large clove garlic minced
+  - no exact match in reference vocabulary
+- row 367 [unmatched] large clove garlic minced more taste
+  - no exact match in reference vocabulary
+- row 523 [unmatched] large cloves garlic minced
+  - no exact match in reference vocabulary
+- row 900 [unmatched] large cloves garlic peeled
+  - no exact match in reference vocabulary
+- row 317 [unmatched] large cooked shrimp - peeled deveined cut in half
+  - no exact match in reference vocabulary
+- row 504 [unmatched] large cucumber
+  - no exact match in reference vocabulary
+- row 525 [unmatched] large cucumber - peeled seeded thinly sliced
+  - no exact match in reference vocabulary
+- row 709 [unmatched] large cucumber sliced
+  - no exact match in reference vocabulary
+- row 7 [unmatched] large egg
+  - no exact match in reference vocabulary
+- row 1353 [unmatched] large egg at room temperature separated
+  - no exact match in reference vocabulary
+- row 11 [unmatched] large egg beaten
+  - no exact match in reference vocabulary
+- row 90 [unmatched] large egg lightly beaten
+  - no exact match in reference vocabulary
+- row 1137 [unmatched] large egg slightly beaten
+  - no exact match in reference vocabulary
+- row 24 [unmatched] large egg well beaten
+  - no exact match in reference vocabulary
+- row 304 [unmatched] large egg yolk
+  - no exact match in reference vocabulary
+- row 1372 [unmatched] large egg yolk beaten
+  - no exact match in reference vocabulary
+- row 1468 [unmatched] large egg yolks
+  - no exact match in reference vocabulary
+- row 236 [unmatched] large eggplant peeled coarsely chopped
+  - no exact match in reference vocabulary
+- row 273 [unmatched] large eggplants
+  - no exact match in reference vocabulary
+- row 2 [unmatched] large eggs
+  - no exact match in reference vocabulary
+- row 80 [unmatched] large eggs at room temperature
+  - no exact match in reference vocabulary
+- row 1399 [unmatched] large eggs at room temperature divided
+  - no exact match in reference vocabulary
+- row 565 [unmatched] large eggs beaten
+  - no exact match in reference vocabulary
+- row 333 [unmatched] large eggs divided
+  - no exact match in reference vocabulary
+- row 21 [unmatched] large eggs lightly beaten
+  - no exact match in reference vocabulary
+- row 1142 [unmatched] large eggs slightly beaten
+  - no exact match in reference vocabulary
+- row 656 [unmatched] large fresh morel mushrooms
+  - no exact match in reference vocabulary
+- row 661 [unmatched] large fresh mushrooms
+  - no exact match in reference vocabulary
+- row 900 [unmatched] large fresh pineapple - peeled cored sliced
+  - no exact match in reference vocabulary
+- row 1310 [unmatched] large fresh portobello mushrooms stems removed coarsely chopped
+  - no exact match in reference vocabulary
+- row 531 [unmatched] large fresh tomato chopped
+  - no exact match in reference vocabulary
+- row 468 [unmatched] large fresh tomatoes diced
+  - no exact match in reference vocabulary
+- row 470 [unmatched] large fresh tomatoes peeled chopped
+  - no exact match in reference vocabulary
+- row 1097 [unmatched] large garlic clove minced
+  - no exact match in reference vocabulary
+- row 999 [unmatched] large garlic cloves finely chopped
+  - no exact match in reference vocabulary
+- row 955 [unmatched] large garlic cloves minced
+  - no exact match in reference vocabulary
+- row 727 [unmatched] large granny smith apple - peeled cored sliced
+  - no exact match in reference vocabulary
+- row 722 [unmatched] large granny smith apples - peeled cored sliced
+  - no exact match in reference vocabulary
+- row 796 [unmatched] large granny smith apples - peeled cored thinly sliced
+  - no exact match in reference vocabulary
+- row 52 [unmatched] large hard boiled eggs
+  - no exact match in reference vocabulary
+- row 345 [unmatched] large hard-boiled eggs
+  - no exact match in reference vocabulary
+- row 1150 [unmatched] large hard-boiled eggs peeled chopped
+  - no exact match in reference vocabulary
+- row 599 [unmatched] large hass avocado cubed
+  - no exact match in reference vocabulary
+- row 1381 [unmatched] large head cabbage cored shredded
+  - no exact match in reference vocabulary
+- row 179 [unmatched] large head cauliflower
+  - no exact match in reference vocabulary
+- row 245 [unmatched] large honeycrisp apples
+  - no exact match in reference vocabulary
+- row 316 [unmatched] large lemon juiced
+  - no exact match in reference vocabulary
+- row 82 [unmatched] large lemon zested
+  - no exact match in reference vocabulary
+- row 325 [unmatched] large lemons juiced as needed
+  - no exact match in reference vocabulary
+- row 1254 [unmatched] large lime halved
+  - no exact match in reference vocabulary
+- row 1258 [unmatched] large llautias yautias peeled quartered
+  - no exact match in reference vocabulary
+- row 1144 [unmatched] large meatballs in marinara sauce
+  - no exact match in reference vocabulary
+- row 674 [unmatched] large mushrooms stems insides removed
+  - no exact match in reference vocabulary
+- row 341 [unmatched] large mushrooms stems removed more as needed
+  - no exact match in reference vocabulary
+- row 289 [unmatched] large onion chopped
+  - no exact match in reference vocabulary
+- row 1042 [unmatched] large onion cut into large squares
+  - no exact match in reference vocabulary
+- row 909 [unmatched] large onion cut into thick slices separated into rings
+  - no exact match in reference vocabulary
+- row 236 [unmatched] large onion diced
+  - no exact match in reference vocabulary
+- row 657 [unmatched] large onion finely chopped
+  - no exact match in reference vocabulary
+- row 1254 [unmatched] large onion minced
+  - no exact match in reference vocabulary
+- row 933 [unmatched] large onion quartered
+  - no exact match in reference vocabulary
+- row 932 [unmatched] large onion roughly chopped
+  - no exact match in reference vocabulary
+- row 1151 [unmatched] large onion sliced quartered
+  - no exact match in reference vocabulary
+- row 1179 [unmatched] large onion thinly sliced
+  - no exact match in reference vocabulary
+- row 176 [unmatched] large onions
+  - no exact match in reference vocabulary
+- row 380 [unmatched] large onions chopped
+  - no exact match in reference vocabulary
+- row 1250 [unmatched] large onions coarsely chopped
+  - no exact match in reference vocabulary
+- row 381 [unmatched] large onions finely chopped
+  - no exact match in reference vocabulary
+- row 915 [unmatched] large onions sliced
+  - no exact match in reference vocabulary
+- row 765 [unmatched] large overripe bananas mashed
+  - no exact match in reference vocabulary
+- row 1026 [unmatched] large parsnip peeled chopped
+  - no exact match in reference vocabulary
+- row 1253 [unmatched] large parsnip sliced
+  - no exact match in reference vocabulary
+- row 1381 [unmatched] large peeled diced red potatoes
+  - no exact match in reference vocabulary
+- row 1168 [unmatched] large pimento-stuffed olives diced
+  - no exact match in reference vocabulary
+- row 682 [unmatched] large portobello mushroom caps
+  - no exact match in reference vocabulary
+- row 677 [unmatched] large portobello mushroom caps stems gills removed
+  - no exact match in reference vocabulary
+- row 654 [unmatched] large portobello mushrooms
+  - no exact match in reference vocabulary
+- row 678 [unmatched] large portobello mushrooms stems reserved gills removed
+  - no exact match in reference vocabulary
+- row 1203 [unmatched] large potatoes cubed
+  - no exact match in reference vocabulary
+- row 381 [unmatched] large potatoes peeled
+  - no exact match in reference vocabulary
+- row 1105 [unmatched] large potatoes peeled chopped
+  - no exact match in reference vocabulary
+- row 1032 [unmatched] large potatoes peeled cubed
+  - no exact match in reference vocabulary
+- row 1235 [unmatched] large potatoes peeled cut into chunks more taste
+  - no exact match in reference vocabulary
+- row 1384 [unmatched] large potatoes peeled diced
+  - no exact match in reference vocabulary
+- row 522 [unmatched] large potatoes peeled thinly sliced
+  - no exact match in reference vocabulary
+- row 156 [unmatched] large radishes cut into matchsticks
+  - no exact match in reference vocabulary
+- row 678 [unmatched] large red bell pepper cut into -inch pieces
+  - no exact match in reference vocabulary
+- row 1402 [unmatched] large red bell peppers
+  - no exact match in reference vocabulary
+- row 162 [unmatched] large red onion minced
+  - no exact match in reference vocabulary
+- row 1157 [unmatched] large red onion sliced
+  - no exact match in reference vocabulary
+- row 804 [unmatched] large ripe banana mashed
+  - no exact match in reference vocabulary
+- row 760 [unmatched] large ripe bananas coarsely mashed more taste
+  - no exact match in reference vocabulary
+- row 386 [unmatched] large ripe tomato sliced into -inch rounds
+  - no exact match in reference vocabulary
+- row 162 [unmatched] large seedless cucumbers peeled minced
+  - no exact match in reference vocabulary
+- row 965 [unmatched] large shallot peeled quartered
+  - no exact match in reference vocabulary
+- row 505 [unmatched] large shallots chopped more taste
+  - no exact match in reference vocabulary
+- row 413 [unmatched] large shrimp peeled deveined
+  - no exact match in reference vocabulary
+- row 928 [unmatched] large stalks celery chopped
+  - no exact match in reference vocabulary
+- row 1255 [unmatched] large sweet onion diced
+  - no exact match in reference vocabulary
+- row 292 [unmatched] large sweet onions thinly sliced
+  - no exact match in reference vocabulary
+- row 323 [unmatched] large tomato chopped
+  - no exact match in reference vocabulary
+- row 325 [unmatched] large tomato seeded chopped
+  - no exact match in reference vocabulary
+- row 454 [unmatched] large tomato sliced
+  - no exact match in reference vocabulary
+- row 1057 [unmatched] large tomato thinly sliced
+  - no exact match in reference vocabulary
+- row 457 [unmatched] large tomatoes coarsely chopped
+  - no exact match in reference vocabulary
+- row 932 [unmatched] large tomatoes cored chopped
+  - no exact match in reference vocabulary
+- row 464 [unmatched] large tomatoes diced
+  - no exact match in reference vocabulary
+- row 295 [unmatched] large unpeeled navel oranges each cut into wedges
+  - no exact match in reference vocabulary
+- row 753 [unmatched] large very ripe bananas mashed
+  - no exact match in reference vocabulary
+- row 595 [unmatched] large white mushrooms stems removed
+  - no exact match in reference vocabulary
+- row 71 [unmatched] large white onion
+  - no exact match in reference vocabulary
+- row 234 [unmatched] large white onion finely chopped
+  - no exact match in reference vocabulary
+- row 1111 [unmatched] large white onion finely diced
+  - no exact match in reference vocabulary
+- row 652 [unmatched] large whole fresh mushrooms stems removed
+  - no exact match in reference vocabulary
+- row 926 [unmatched] large yellow onion chopped
+  - no exact match in reference vocabulary
+- row 924 [unmatched] large yellow onion finely chopped
+  - no exact match in reference vocabulary
+- row 863 [unmatched] large yukon gold potatoes
+  - no exact match in reference vocabulary
+- row 9 [unmatched] lb fresh green beans trimmed
+  - no exact match in reference vocabulary
+- row 1112 [unmatched] lb ground beef sirloin
+  - no exact match in reference vocabulary
+- row 562 [unmatched] lb ground sirloin
+  - no exact match in reference vocabulary
+- row 36 [unmatched] lbs ground sirloin
+  - no exact match in reference vocabulary
+- row 273 [unmatched] leaf fresh mint minced optional
+  - no exact match in reference vocabulary
+- row 231 [unmatched] leaves basil chopped
+  - no exact match in reference vocabulary
+- row 1092 [unmatched] leaves butter lettuce more as needed
+  - no exact match in reference vocabulary
+- row 967 [unmatched] leaves chard
+  - no exact match in reference vocabulary
+- row 462 [unmatched] leaves chopped fresh basil
+  - no exact match in reference vocabulary
+- row 511 [unmatched] leaves fresh basil
+  - no exact match in reference vocabulary
+- row 232 [unmatched] leaves fresh basil leaves finely sliced
+  - no exact match in reference vocabulary
+- row 317 [unmatched] leaves lettuce chopped
+  - no exact match in reference vocabulary
+- row 395 [unmatched] leek washed chopped
+  - no exact match in reference vocabulary
+- row 501 [unmatched] leek white light green parts only thinly sliced
+  - no exact match in reference vocabulary
+- row 127 [unmatched] lemon
+  - no exact match in reference vocabulary
+- row 215 [unmatched] lemon cut into wedges
+  - no exact match in reference vocabulary
+- row 897 [unmatched] lemon divided
+  - no exact match in reference vocabulary
+- row 226 [unmatched] lemon extract
+  - no exact match in reference vocabulary
+- row 18 [unmatched] lemon juice
+  - no exact match in reference vocabulary
+- row 1131 [unmatched] lemon juice divided
+  - no exact match in reference vocabulary
+- row 357 [unmatched] lemon juice more taste
+  - no exact match in reference vocabulary
+- row 719 [unmatched] lemon juice optional
+  - no exact match in reference vocabulary
+- row 488 [unmatched] lemon juice taste
+  - no exact match in reference vocabulary
+- row 182 [unmatched] lemon juiced
+  - no exact match in reference vocabulary
+- row 1278 [unmatched] lemon juiced divided
+  - no exact match in reference vocabulary
+- row 273 [unmatched] lemon juiced more taste
+  - no exact match in reference vocabulary
+- row 588 [unmatched] lemon lemon zested
+  - no exact match in reference vocabulary
+- row 425 [unmatched] lemon pepper
+  - no exact match in reference vocabulary
+- row 188 [unmatched] lemon pepper seasoning
+  - no exact match in reference vocabulary
+- row 328 [unmatched] lemon pepper taste
+  - no exact match in reference vocabulary
+- row 222 [unmatched] lemon sliced for garnish optional
+  - no exact match in reference vocabulary
+- row 55 [unmatched] lemon slices
+  - no exact match in reference vocabulary
+- row 945 [unmatched] lemon wedges
+  - no exact match in reference vocabulary
+- row 9 [unmatched] lemon wedges for serving
+  - no exact match in reference vocabulary
+- row 18 [unmatched] lemon wedges for serving optional
+  - no exact match in reference vocabulary
+- row 126 [unmatched] lemon wedges optional
+  - no exact match in reference vocabulary
+- row 4 [unmatched] lemon zest
+  - no exact match in reference vocabulary
+- row 293 [unmatched] lemon zest optional
+  - no exact match in reference vocabulary
+- row 46 [unmatched] lemon zested
+  - no exact match in reference vocabulary
+- row 84 [unmatched] lemon zested juiced
+  - no exact match in reference vocabulary
+- row 158 [unmatched] lemon-infused white balsamic vinegar
+  - no exact match in reference vocabulary
+- row 1277 [unmatched] lemons juiced
+  - no exact match in reference vocabulary
+- row 827 [unmatched] lemons zested juiced divided
+  - no exact match in reference vocabulary
+- row 151 [unmatched] lettuce
+  - no exact match in reference vocabulary
+- row 867 [unmatched] lettuce salsa sour cream cilantro for topping
+  - no exact match in reference vocabulary
+- row 105 [unmatched] light brown sugar
+  - no exact match in reference vocabulary
+- row 899 [unmatched] light mayonnaise
+  - no exact match in reference vocabulary
+- row 278 [unmatched] lightly salted pistachios
+  - no exact match in reference vocabulary
+- row 954 [matched] lime
+  - exact match in reference vocabulary
+- row 197 [unmatched] lime cut into wedges more as needed
+  - no exact match in reference vocabulary
+- row 1003 [unmatched] lime halved
+  - no exact match in reference vocabulary
+- row 139 [unmatched] lime juice
+  - no exact match in reference vocabulary
+- row 51 [unmatched] lime juiced
+  - no exact match in reference vocabulary
+- row 896 [unmatched] lime wedges as needed divided
+  - no exact match in reference vocabulary
+- row 246 [unmatched] lime zest
+  - no exact match in reference vocabulary
+- row 56 [unmatched] limes divided
+  - no exact match in reference vocabulary
+- row 907 [unmatched] links smoked beef sausage such as eckrich sliced into -inch pieces
+  - no exact match in reference vocabulary
+- row 215 [unmatched] liquid shrimp crab boil
+  - no exact match in reference vocabulary
+- row 528 [unmatched] liquid shrimp crab boil seasoning
+  - no exact match in reference vocabulary
+- row 1048 [unmatched] liquid smoke flavoring less taste optional
+  - no exact match in reference vocabulary
+- row 307 [unmatched] loaf baguette bread sliced into -inch rounds
+  - no exact match in reference vocabulary
+- row 69 [unmatched] loaf french bread
+  - no exact match in reference vocabulary
+- row 468 [unmatched] loaf french bread sliced
+  - no exact match in reference vocabulary
+- row 441 [unmatched] loaf italian bread
+  - no exact match in reference vocabulary
+- row 464 [unmatched] loaf italian bread cut into -inch thick slices
+  - no exact match in reference vocabulary
+- row 435 [unmatched] loaf unsliced italian bread
+  - no exact match in reference vocabulary
+- row 475 [unmatched] loaf whole grain artisan bread cut into -inch slices
+  - no exact match in reference vocabulary
+- row 882 [unmatched] long grain white rice
+  - no exact match in reference vocabulary
+- row 1255 [unmatched] long-grain brown rice
+  - no exact match in reference vocabulary
+- row 1116 [unmatched] loosely packed fresh basil leaves
+  - no exact match in reference vocabulary
+- row 206 [unmatched] low sodium chicken broth
+  - no exact match in reference vocabulary
+- row 90 [unmatched] low-fat vanilla greek yogurt
+  - no exact match in reference vocabulary
+- row 287 [unmatched] low-moisture part-skim mozzarella cheese
+  - no exact match in reference vocabulary
+- row 1345 [unmatched] low-salt worcestershire sauce
+  - no exact match in reference vocabulary
+- row 40 [unmatched] low-sodium chicken broth
+  - no exact match in reference vocabulary
+- row 138 [unmatched] low-sodium soy sauce
+  - no exact match in reference vocabulary
+- row 990 [unmatched] lower-sodium beef broth
+  - no exact match in reference vocabulary
+- row 291 [unmatched] lukewarm water
+  - no exact match in reference vocabulary
+- row 604 [unmatched] lukewarm water more as needed
+  - no exact match in reference vocabulary
+- row 288 [unmatched] mango - peeled seeded chopped
+  - no exact match in reference vocabulary
+- row 314 [unmatched] mango finely diced
+  - no exact match in reference vocabulary
+- row 46 [unmatched] mango ginger habanero sauce
+  - no exact match in reference vocabulary
+- row 548 [unmatched] manicotti shells more as desired
+  - no exact match in reference vocabulary
+- row 95 [unmatched] maple syrup
+  - no exact match in reference vocabulary
+- row 774 [unmatched] maple-flavored extract optional
+  - no exact match in reference vocabulary
+- row 790 [unmatched] maraschino cherries as needed stems removed
+  - no exact match in reference vocabulary
+- row 1170 [unmatched] margarine
+  - no exact match in reference vocabulary
+- row 1338 [unmatched] margarine melted
+  - no exact match in reference vocabulary
+- row 301 [unmatched] marinara sauce
+  - no exact match in reference vocabulary
+- row 534 [unmatched] marinara sauce heated
+  - no exact match in reference vocabulary
+- row 419 [unmatched] marinara sauce optional
+  - no exact match in reference vocabulary
+- row 331 [unmatched] marinara sauce warmed for serving
+  - no exact match in reference vocabulary
+- row 57 [unmatched] marinated artichoke hearts
+  - no exact match in reference vocabulary
+- row 302 [unmatched] marjoram
+  - no exact match in reference vocabulary
+- row 757 [unmatched] mashed banana
+  - no exact match in reference vocabulary
+- row 751 [unmatched] mashed bananas
+  - no exact match in reference vocabulary
+- row 763 [unmatched] mashed overripe bananas
+  - no exact match in reference vocabulary
+- row 916 [unmatched] mashed potatoes
+  - no exact match in reference vocabulary
+- row 5 [matched] mayonnaise
+  - exact match in reference vocabulary
+- row 189 [unmatched] mayonnaise as needed
+  - no exact match in reference vocabulary
+- row 298 [unmatched] mayonnaise divided
+  - no exact match in reference vocabulary
+- row 577 [unmatched] mayonnaise taste
+  - no exact match in reference vocabulary
+- row 939 [unmatched] meat tenderizer
+  - no exact match in reference vocabulary
+- row 301 [unmatched] meatballs
+  - no exact match in reference vocabulary
+- row 753 [unmatched] medium apples cubed
+  - no exact match in reference vocabulary
+- row 550 [unmatched] medium avocados - peeled pitted mashed one pit reserved
+  - no exact match in reference vocabulary
+- row 762 [unmatched] medium bananas mashed
+  - no exact match in reference vocabulary
+- row 613 [unmatched] medium beets scrubbed ends trimmed
+  - no exact match in reference vocabulary
+- row 684 [unmatched] medium button mushrooms
+  - no exact match in reference vocabulary
+- row 1200 [unmatched] medium carrot diced
+  - no exact match in reference vocabulary
+- row 1234 [unmatched] medium carrots chopped
+  - no exact match in reference vocabulary
+- row 222 [unmatched] medium carrots chopped more taste
+  - no exact match in reference vocabulary
+- row 1018 [unmatched] medium carrots cut into -inch pieces
+  - no exact match in reference vocabulary
+- row 1239 [unmatched] medium carrots cut into bite-sized pieces
+  - no exact match in reference vocabulary
+- row 922 [unmatched] medium carrots cut into chunks
+  - no exact match in reference vocabulary
+- row 938 [unmatched] medium carrots peeled cut in half lengthwise sliced
+  - no exact match in reference vocabulary
+- row 1270 [unmatched] medium carrots sliced more taste
+  - no exact match in reference vocabulary
+- row 561 [unmatched] medium cucumbers - peeled seeded chopped
+  - no exact match in reference vocabulary
+- row 231 [unmatched] medium eggplant chopped into bite-size pieces
+  - no exact match in reference vocabulary
+- row 97 [unmatched] medium eggs lightly beaten
+  - no exact match in reference vocabulary
+- row 525 [unmatched] medium fresh tomatoes - cored quartered sliced as thin as possible
+  - no exact match in reference vocabulary
+- row 348 [unmatched] medium green bell pepper chopped
+  - no exact match in reference vocabulary
+- row 1178 [unmatched] medium green bell peppers cut into inch pieces
+  - no exact match in reference vocabulary
+- row 1234 [unmatched] medium green onions chopped
+  - no exact match in reference vocabulary
+- row 820 [unmatched] medium lemon zested juiced
+  - no exact match in reference vocabulary
+- row 932 [unmatched] medium lime sliced
+  - no exact match in reference vocabulary
+- row 599 [unmatched] medium limes juiced
+  - no exact match in reference vocabulary
+- row 246 [unmatched] medium mango - peeled seeded chopped
+  - no exact match in reference vocabulary
+- row 222 [unmatched] medium onion chopped
+  - no exact match in reference vocabulary
+- row 540 [unmatched] medium onion finely chopped
+  - no exact match in reference vocabulary
+- row 877 [unmatched] medium onion halfed sliced divided
+  - no exact match in reference vocabulary
+- row 1311 [unmatched] medium onion halved thinly sliced
+  - no exact match in reference vocabulary
+- row 1153 [unmatched] medium onion sliced into petals
+  - no exact match in reference vocabulary
+- row 1306 [unmatched] medium onion thinly sliced
+  - no exact match in reference vocabulary
+- row 1018 [unmatched] medium onions cut into eighths
+  - no exact match in reference vocabulary
+- row 778 [unmatched] medium overripe bananas
+  - no exact match in reference vocabulary
+- row 394 [unmatched] medium potatoes
+  - no exact match in reference vocabulary
+- row 1253 [unmatched] medium potatoes cubed
+  - no exact match in reference vocabulary
+- row 1167 [unmatched] medium potatoes peeled
+  - no exact match in reference vocabulary
+- row 1261 [unmatched] medium potatoes peeled cubed
+  - no exact match in reference vocabulary
+- row 1379 [unmatched] medium potatoes peeled diced
+  - no exact match in reference vocabulary
+- row 1122 [unmatched] medium potatoes peeled thinly sliced
+  - no exact match in reference vocabulary
+- row 236 [unmatched] medium red bell pepper cut into thin strips
+  - no exact match in reference vocabulary
+- row 898 [unmatched] medium red onion
+  - no exact match in reference vocabulary
+- row 291 [unmatched] medium red onion thinly sliced
+  - no exact match in reference vocabulary
+- row 779 [unmatched] medium ripe bananas mashed
+  - no exact match in reference vocabulary
+- row 927 [unmatched] medium roma tomatoes
+  - no exact match in reference vocabulary
+- row 737 [unmatched] medium shallots roughly chopped
+  - no exact match in reference vocabulary
+- row 1003 [unmatched] medium shrimp peeled deveined
+  - no exact match in reference vocabulary
+- row 513 [unmatched] medium sweet potatoes sliced into -inch rounds
+  - no exact match in reference vocabulary
+- row 746 [unmatched] medium tomato sliced
+  - no exact match in reference vocabulary
+- row 561 [unmatched] medium tomatoes chopped
+  - no exact match in reference vocabulary
+- row 1200 [unmatched] medium yellow bell pepper chopped
+  - no exact match in reference vocabulary
+- row 1110 [unmatched] medium yellow onion chopped
+  - no exact match in reference vocabulary
+- row 64 [unmatched] medium yellow onion thinly sliced
+  - no exact match in reference vocabulary
+- row 623 [unmatched] medium yellow squash cut into -inch slices
+  - no exact match in reference vocabulary
+- row 1200 [unmatched] medium yellow squash diced
+  - no exact match in reference vocabulary
+- row 331 [unmatched] medium zucchini
+  - no exact match in reference vocabulary
+- row 1200 [unmatched] medium zucchini diced
+  - no exact match in reference vocabulary
+- row 611 [unmatched] melted butter
+  - no exact match in reference vocabulary
+- row 1042 [unmatched] metal skewers as needed
+  - no exact match in reference vocabulary
+- row 1057 [unmatched] mexican bolillo kaiser rolls split
+  - no exact match in reference vocabulary
+- row 143 [unmatched] mexican crema
+  - no exact match in reference vocabulary
+- row 896 [unmatched] mexican oregano
+  - no exact match in reference vocabulary
+- row 34 [unmatched] mexican-style hot tomato sauce such as el pato
+  - no exact match in reference vocabulary
+- row 1190 [unmatched] mild chili powder
+  - no exact match in reference vocabulary
+- row 2 [unmatched] milk
+  - no exact match in reference vocabulary
+- row 1355 [unmatched] milk as needed
+  - no exact match in reference vocabulary
+- row 1397 [unmatched] milk degrees f degrees c
+  - no exact match in reference vocabulary
+- row 725 [unmatched] milk optional
+  - no exact match in reference vocabulary
+- row 1202 [unmatched] minced chipotle peppers in adobo sauce
+  - no exact match in reference vocabulary
+- row 1142 [unmatched] minced dried onion
+  - no exact match in reference vocabulary
+- row 561 [unmatched] minced fresh cilantro
+  - no exact match in reference vocabulary
+- row 327 [unmatched] minced fresh ginger root
+  - no exact match in reference vocabulary
+- row 39 [unmatched] minced fresh mint
+  - no exact match in reference vocabulary
+- row 368 [unmatched] minced fresh parsley
+  - no exact match in reference vocabulary
+- row 601 [unmatched] minced fresh rosemary
+  - no exact match in reference vocabulary
+- row 1366 [unmatched] minced fresh tarragon leaves
+  - no exact match in reference vocabulary
+- row 292 [unmatched] minced fresh thyme leaves
+  - no exact match in reference vocabulary
+- row 566 [unmatched] minced fresno pepper
+  - no exact match in reference vocabulary
+- row 17 [unmatched] minced garlic
+  - no exact match in reference vocabulary
+- row 1275 [unmatched] minced garlic taste
+  - no exact match in reference vocabulary
+- row 1120 [unmatched] minced green bell pepper
+  - no exact match in reference vocabulary
+- row 352 [unmatched] minced green onion
+  - no exact match in reference vocabulary
+- row 566 [unmatched] minced jalapeno pepper
+  - no exact match in reference vocabulary
+- row 43 [unmatched] minced onion
+  - no exact match in reference vocabulary
+- row 540 [unmatched] minced pickled jalapeno pepper
+  - no exact match in reference vocabulary
+- row 352 [unmatched] minced red bell pepper
+  - no exact match in reference vocabulary
+- row 270 [unmatched] minced red onion
+  - no exact match in reference vocabulary
+- row 164 [unmatched] minced shallot
+  - no exact match in reference vocabulary
+- row 159 [unmatched] minced yellow onion
+  - no exact match in reference vocabulary
+- row 1098 [unmatched] mini sandwich rolls
+  - no exact match in reference vocabulary
+- row 763 [unmatched] miniature milk chocolate chips divided
+  - no exact match in reference vocabulary
+- row 762 [unmatched] miniature semisweet chocolate chips optional
+  - no exact match in reference vocabulary
+- row 480 [unmatched] mint extract
+  - no exact match in reference vocabulary
+- row 157 [unmatched] mint leaves
+  - no exact match in reference vocabulary
+- row 920 [unmatched] miso
+  - no exact match in reference vocabulary
+- row 125 [unmatched] mixed fresh vegetables
+  - no exact match in reference vocabulary
+- row 636 [unmatched] mixed nuts
+  - no exact match in reference vocabulary
+- row 945 [unmatched] moist grey sea salt freshly cracked pepper taste
+  - no exact match in reference vocabulary
+- row 107 [matched] molasses
+  - exact match in reference vocabulary
+- row 934 [unmatched] montreal-style steak seasoning
+  - no exact match in reference vocabulary
+- row 854 [unmatched] mott s original applesauce
+  - no exact match in reference vocabulary
+- row 146 [unmatched] mozzarella balls pearls drained
+  - no exact match in reference vocabulary
+- row 38 [unmatched] mozzarella string cheese sticks
+  - no exact match in reference vocabulary
+- row 1042 [unmatched] mushroom caps
+  - no exact match in reference vocabulary
+- row 1253 [unmatched] mushrooms quartered
+  - no exact match in reference vocabulary
+- row 675 [unmatched] mushrooms stems removed
+  - no exact match in reference vocabulary
+- row 651 [unmatched] mushrooms stems removed chopped
+  - no exact match in reference vocabulary
+- row 8 [unmatched] mustard
+  - no exact match in reference vocabulary
+- row 956 [unmatched] mustard oil
+  - no exact match in reference vocabulary
+- row 51 [unmatched] mustard powder
+  - no exact match in reference vocabulary
+- row 705 [unmatched] mustard seed
+  - no exact match in reference vocabulary
+- row 124 [unmatched] naan breads
+  - no exact match in reference vocabulary
+- row 870 [unmatched] nacho cheese
+  - no exact match in reference vocabulary
+- row 875 [unmatched] nacho cheese ranch flavor tortilla chips
+  - no exact match in reference vocabulary
+- row 1029 [unmatched] nacho cheese-flavored tortilla chips such as doritos
+  - no exact match in reference vocabulary
+- row 34 [unmatched] neufchâtel cheese
+  - no exact match in reference vocabulary
+- row 926 [unmatched] new mexico dry chiles - washed with stems seeds removed
+  - no exact match in reference vocabulary
+- row 124 [unmatched] nglish cucumber
+  - no exact match in reference vocabulary
+- row 769 [unmatched] nonfat plain yogurt
+  - no exact match in reference vocabulary
+- row 95 [unmatched] nonstick baking spray with flour such as baker s joy
+  - no exact match in reference vocabulary
+- row 265 [unmatched] nonstick cooking spray
+  - no exact match in reference vocabulary
+- row 194 [unmatched] nutritional yeast
+  - no exact match in reference vocabulary
+- row 773 [unmatched] oat flour
+  - no exact match in reference vocabulary
+- row 150 [unmatched] oil
+  - no exact match in reference vocabulary
+- row 536 [unmatched] oil for deep frying
+  - no exact match in reference vocabulary
+- row 1021 [unmatched] oil for frying
+  - no exact match in reference vocabulary
+- row 279 [unmatched] oil from sun-dried tomatoes jar
+  - no exact match in reference vocabulary
+- row 197 [unmatched] old bay
+  - no exact match in reference vocabulary
+- row 345 [unmatched] old bay seasoning
+  - no exact match in reference vocabulary
+- row 1171 [unmatched] old el paso taco seasoning mix from -oz package
+  - no exact match in reference vocabulary
+- row 95 [unmatched] old fashioned oats
+  - no exact match in reference vocabulary
+- row 96 [unmatched] old fashioned rolled oats
+  - no exact match in reference vocabulary
+- row 1142 [unmatched] old-fashioned oats
+  - no exact match in reference vocabulary
+- row 71 [unmatched] olive avocado oil
+  - no exact match in reference vocabulary
+- row 876 [unmatched] olive brine
+  - no exact match in reference vocabulary
+- row 6 [unmatched] olive oil
+  - no exact match in reference vocabulary
+- row 21 [unmatched] olive oil as needed
+  - no exact match in reference vocabulary
+- row 2 [unmatched] olive oil cooking spray
+  - no exact match in reference vocabulary
+- row 70 [unmatched] olive oil divided
+  - no exact match in reference vocabulary
+- row 510 [unmatched] olive oil divided as needed
+  - no exact match in reference vocabulary
+- row 905 [unmatched] olive oil divided more as needed
+  - no exact match in reference vocabulary
+- row 505 [unmatched] olive oil divided taste
+  - no exact match in reference vocabulary
+- row 944 [unmatched] olive oil for frying
+  - no exact match in reference vocabulary
+- row 473 [unmatched] olive oil more as needed
+  - no exact match in reference vocabulary
+- row 522 [unmatched] olive oil more if needed
+  - no exact match in reference vocabulary
+- row 1425 [unmatched] olive oil more taste
+  - no exact match in reference vocabulary
+- row 396 [unmatched] olive oil preferably drained from a tin anchovies
+  - no exact match in reference vocabulary
+- row 181 [unmatched] olive oil spray
+  - no exact match in reference vocabulary
+- row 350 [unmatched] olive oil taste
+  - no exact match in reference vocabulary
+- row 48 [unmatched] olives
+  - no exact match in reference vocabulary
+- row 36 [unmatched] oma tomatoes seeded diced
+  - no exact match in reference vocabulary
+- row 93 [unmatched] onion
+  - no exact match in reference vocabulary
+- row 215 [unmatched] onion chopped
+  - no exact match in reference vocabulary
+- row 221 [unmatched] onion chopped into -inch pieces
+  - no exact match in reference vocabulary
+- row 465 [unmatched] onion chopped optional
+  - no exact match in reference vocabulary
+- row 1263 [unmatched] onion coarsely chopped
+  - no exact match in reference vocabulary
+- row 923 [unmatched] onion cut into wedges
+  - no exact match in reference vocabulary
+- row 341 [unmatched] onion diced
+  - no exact match in reference vocabulary
+- row 36 [unmatched] onion divided
+  - no exact match in reference vocabulary
+- row 1136 [unmatched] onion finely diced
+  - no exact match in reference vocabulary
+- row 1231 [unmatched] onion minced
+  - no exact match in reference vocabulary
+- row 212 [unmatched] onion peeled
+  - no exact match in reference vocabulary
+- row 219 [unmatched] onion peeled quartered
+  - no exact match in reference vocabulary
+- row 9 [unmatched] onion powder
+  - no exact match in reference vocabulary
+- row 294 [unmatched] onion powder taste
+  - no exact match in reference vocabulary
+- row 1243 [unmatched] onion quartered
+  - no exact match in reference vocabulary
+- row 1146 [unmatched] onion salt
+  - no exact match in reference vocabulary
+- row 916 [unmatched] onion sliced
+  - no exact match in reference vocabulary
+- row 1268 [unmatched] onion sliced into long pieces
+  - no exact match in reference vocabulary
+- row 1276 [unmatched] onion sliced quartered
+  - no exact match in reference vocabulary
+- row 1184 [unmatched] onion sliced thin
+  - no exact match in reference vocabulary
+- row 950 [unmatched] onion slices
+  - no exact match in reference vocabulary
+- row 919 [unmatched] onion thickly sliced
+  - no exact match in reference vocabulary
+- row 231 [unmatched] onion thinly sliced
+  - no exact match in reference vocabulary
+- row 199 [unmatched] onions
+  - no exact match in reference vocabulary
+- row 929 [unmatched] onions chopped
+  - no exact match in reference vocabulary
+- row 912 [unmatched] onions finely chopped
+  - no exact match in reference vocabulary
+- row 1378 [unmatched] onions minced
+  - no exact match in reference vocabulary
+- row 1055 [unmatched] onions peeled
+  - no exact match in reference vocabulary
+- row 713 [unmatched] onions sliced
+  - no exact match in reference vocabulary
+- row 705 [unmatched] onions thinly sliced
+  - no exact match in reference vocabulary
+- row 999 [unmatched] onterey jack cheese
+  - no exact match in reference vocabulary
+- row 32 [unmatched] optional preferred seasoning blend
+  - no exact match in reference vocabulary
+- row 232 [unmatched] orange bell pepper
+  - no exact match in reference vocabulary
+- row 520 [unmatched] orange bell peppers halved seeded
+  - no exact match in reference vocabulary
+- row 79 [unmatched] orange juice
+  - no exact match in reference vocabulary
+- row 1329 [unmatched] orange juice more as needed
+  - no exact match in reference vocabulary
+- row 1456 [unmatched] orange oil
+  - no exact match in reference vocabulary
+- row 808 [unmatched] orange zest
+  - no exact match in reference vocabulary
+- row 1329 [unmatched] orange zest plus more for garnish
+  - no exact match in reference vocabulary
+- row 802 [unmatched] orange zested
+  - no exact match in reference vocabulary
+- row 1181 [unmatched] oranges zested juiced divided
+  - no exact match in reference vocabulary
+- row 862 [unmatched] orcestershire sauce
+  - no exact match in reference vocabulary
+- row 51 [unmatched] oregano
+  - no exact match in reference vocabulary
+- row 1028 [unmatched] oregano leaves
+  - no exact match in reference vocabulary
+- row 384 [unmatched] oregano optional
+  - no exact match in reference vocabulary
+- row 248 [unmatched] oregano preferably mexican oregano
+  - no exact match in reference vocabulary
+- row 109 [unmatched] oreo
+  - no exact match in reference vocabulary
+- row 503 [unmatched] original snack factory pretzel crisps
+  - no exact match in reference vocabulary
+- row 39 [unmatched] orzo
+  - no exact match in reference vocabulary
+- row 1112 [unmatched] osher salt divided
+  - no exact match in reference vocabulary
+- row 1363 [unmatched] ounce -count package pie crusts thawed
+  - no exact match in reference vocabulary
+- row 1399 [unmatched] ounce active dry yeast
+  - no exact match in reference vocabulary
+- row 223 [unmatched] ounce bag baby spinach leaves
+  - no exact match in reference vocabulary
+- row 73 [unmatched] ounce bag fresh spinach
+  - no exact match in reference vocabulary
+- row 678 [unmatched] ounce bags fresh spinach leaves
+  - no exact match in reference vocabulary
+- row 999 [unmatched] ounce beef bouillon cube
+  - no exact match in reference vocabulary
+- row 1074 [unmatched] ounce beef broth
+  - no exact match in reference vocabulary
+- row 921 [unmatched] ounce beef chuck steaks
+  - no exact match in reference vocabulary
+- row 932 [unmatched] ounce beef short ribs
+  - no exact match in reference vocabulary
+- row 1006 [unmatched] ounce beef top sirloin steaks
+  - no exact match in reference vocabulary
+- row 267 [unmatched] ounce block feta cheese
+  - no exact match in reference vocabulary
+- row 252 [unmatched] ounce block feta cheese crumbled divided
+  - no exact match in reference vocabulary
+- row 1058 [unmatched] ounce boneless rib-eye steaks
+  - no exact match in reference vocabulary
+- row 565 [unmatched] ounce bottle bbq sauce
+  - no exact match in reference vocabulary
+- row 702 [unmatched] ounce bottle blue cheese salad dressing
+  - no exact match in reference vocabulary
+- row 575 [unmatched] ounce bottle chile sauce
+  - no exact match in reference vocabulary
+- row 1345 [unmatched] ounce bottle clam juice
+  - no exact match in reference vocabulary
+- row 931 [unmatched] ounce bottle hot pepper sauce
+  - no exact match in reference vocabulary
+- row 417 [unmatched] ounce bottle hot pepper sauce such as frank s redhot
+  - no exact match in reference vocabulary
+- row 1251 [unmatched] ounce bottle tomato-vegetable juice cocktail such as v
+  - no exact match in reference vocabulary
+- row 1199 [unmatched] ounce bottles chili sauce
+  - no exact match in reference vocabulary
+- row 1106 [unmatched] ounce box corn muffin mix
+  - no exact match in reference vocabulary
+- row 363 [unmatched] ounce box frozen chopped spinach thawed drained well
+  - no exact match in reference vocabulary
+- row 1116 [unmatched] ounce box jumbo pasta shells
+  - no exact match in reference vocabulary
+- row 856 [unmatched] ounce box lemon cake mix
+  - no exact match in reference vocabulary
+- row 205 [unmatched] ounce boxes near east wild mushroom herb couscous mix
+  - no exact match in reference vocabulary
+- row 93 [unmatched] ounce breakfast sausage patties
+  - no exact match in reference vocabulary
+- row 211 [unmatched] ounce butter beans drained
+  - no exact match in reference vocabulary
+- row 732 [unmatched] ounce can artichoke hearts drained
+  - no exact match in reference vocabulary
+- row 733 [unmatched] ounce can artichoke hearts drained chopped
+  - no exact match in reference vocabulary
+- row 916 [unmatched] ounce can baked beans
+  - no exact match in reference vocabulary
+- row 365 [unmatched] ounce can bean dip
+  - no exact match in reference vocabulary
+- row 954 [unmatched] ounce can beef broth
+  - no exact match in reference vocabulary
+- row 1178 [unmatched] ounce can beef consomme
+  - no exact match in reference vocabulary
+- row 44 [unmatched] ounce can black beans
+  - no exact match in reference vocabulary
+- row 1206 [unmatched] ounce can black beans drained
+  - no exact match in reference vocabulary
+- row 369 [unmatched] ounce can black beans drained rinsed
+  - no exact match in reference vocabulary
+- row 294 [unmatched] ounce can black beans rinsed drained
+  - no exact match in reference vocabulary
+- row 147 [unmatched] ounce can black olives
+  - no exact match in reference vocabulary
+- row 173 [unmatched] ounce can butter beans
+  - no exact match in reference vocabulary
+- row 207 [unmatched] ounce can butter beans rinsed
+  - no exact match in reference vocabulary
+- row 1305 [unmatched] ounce can campbell s condensed cream mushroom soup campbell s condensed fat free cream mushroom soup
+  - no exact match in reference vocabulary
+- row 1138 [unmatched] ounce can campbell s condensed tomato soup regular healthy request less sodium divided
+  - no exact match in reference vocabulary
+- row 220 [unmatched] ounce can cannellini beans drained rinsed
+  - no exact match in reference vocabulary
+- row 1199 [unmatched] ounce can cannellini beans rinsed drained
+  - no exact match in reference vocabulary
+- row 1191 [unmatched] ounce can cannellini beans with liquid
+  - no exact match in reference vocabulary
+- row 1105 [unmatched] ounce can carrots drained
+  - no exact match in reference vocabulary
+- row 1251 [unmatched] ounce can chicken broth
+  - no exact match in reference vocabulary
+- row 740 [unmatched] ounce can chickpeas drained
+  - no exact match in reference vocabulary
+- row 354 [unmatched] ounce can chickpeas drained liquid reserved
+  - no exact match in reference vocabulary
+- row 349 [unmatched] ounce can chickpeas drained rinsed
+  - no exact match in reference vocabulary
+- row 361 [unmatched] ounce can chickpeas garbanzo beans drained mashed with fork
+  - no exact match in reference vocabulary
+- row 353 [unmatched] ounce can chickpeas rinsed drained
+  - no exact match in reference vocabulary
+- row 1109 [unmatched] ounce can chili beans
+  - no exact match in reference vocabulary
+- row 1117 [unmatched] ounce can chili beans drained
+  - no exact match in reference vocabulary
+- row 1185 [unmatched] ounce can chili beans not drained
+  - no exact match in reference vocabulary
+- row 1196 [unmatched] ounce can chili beans undrained
+  - no exact match in reference vocabulary
+- row 900 [unmatched] ounce can chipotle peppers in adobo sauce drained
+  - no exact match in reference vocabulary
+- row 683 [unmatched] ounce can chopped clams drained
+  - no exact match in reference vocabulary
+- row 739 [unmatched] ounce can chopped green chile peppers
+  - no exact match in reference vocabulary
+- row 351 [unmatched] ounce can chopped green chiles undrained
+  - no exact match in reference vocabulary
+- row 1278 [unmatched] ounce can coconut milk
+  - no exact match in reference vocabulary
+- row 1121 [unmatched] ounce can condensed cream celery soup
+  - no exact match in reference vocabulary
+- row 1010 [unmatched] ounce can condensed cream mushroom soup
+  - no exact match in reference vocabulary
+- row 1141 [unmatched] ounce can condensed french onion soup
+  - no exact match in reference vocabulary
+- row 840 [unmatched] ounce can condensed milk
+  - no exact match in reference vocabulary
+- row 1105 [unmatched] ounce can condensed tomato soup
+  - no exact match in reference vocabulary
+- row 1135 [unmatched] ounce can condensed tomato soup divided
+  - no exact match in reference vocabulary
+- row 1266 [unmatched] ounce can corned beef
+  - no exact match in reference vocabulary
+- row 916 [unmatched] ounce can corned beef chopped
+  - no exact match in reference vocabulary
+- row 680 [unmatched] ounce can crab meat drained
+  - no exact match in reference vocabulary
+- row 588 [unmatched] ounce can crab meat drained chunked
+  - no exact match in reference vocabulary
+- row 493 [unmatched] ounce can crabmeat drained
+  - no exact match in reference vocabulary
+- row 530 [unmatched] ounce can crabmeat drained flaked
+  - no exact match in reference vocabulary
+- row 390 [unmatched] ounce can crescent rolls
+  - no exact match in reference vocabulary
+- row 514 [unmatched] ounce can crushed pineapple in juice drained juice reserved
+  - no exact match in reference vocabulary
+- row 920 [unmatched] ounce can crushed tomatoes
+  - no exact match in reference vocabulary
+- row 1206 [unmatched] ounce can dark red beans drained
+  - no exact match in reference vocabulary
+- row 1201 [unmatched] ounce can dark red kidney beans
+  - no exact match in reference vocabulary
+- row 1218 [unmatched] ounce can dark red kidney beans drained rinsed
+  - no exact match in reference vocabulary
+- row 735 [unmatched] ounce can diced green chiles
+  - no exact match in reference vocabulary
+- row 928 [unmatched] ounce can diced tomatoes
+  - no exact match in reference vocabulary
+- row 1134 [unmatched] ounce can diced tomatoes drained
+  - no exact match in reference vocabulary
+- row 1212 [unmatched] ounce can diced tomatoes green chiles such as ro tel
+  - no exact match in reference vocabulary
+- row 198 [unmatched] ounce can diced tomatoes with basil garlic oregano
+  - no exact match in reference vocabulary
+- row 207 [unmatched] ounce can diced tomatoes with basil garlic oregano undrained
+  - no exact match in reference vocabulary
+- row 1206 [unmatched] ounce can diced tomatoes with green chile peppers
+  - no exact match in reference vocabulary
+- row 1176 [unmatched] ounce can diced tomatoes with green chile peppers such as ro tel
+  - no exact match in reference vocabulary
+- row 1188 [unmatched] ounce can diced tomatoes with green chiles such as ro tel
+  - no exact match in reference vocabulary
+- row 1029 [unmatched] ounce can diced tomatoes with green chilies drained
+  - no exact match in reference vocabulary
+- row 1249 [unmatched] ounce can diced tomatoes with juice
+  - no exact match in reference vocabulary
+- row 573 [unmatched] ounce can enchilada sauce divided
+  - no exact match in reference vocabulary
+- row 579 [unmatched] ounce can fancy lump crabmeat well drained picked through for cartilage
+  - no exact match in reference vocabulary
+- row 203 [unmatched] ounce can fire roasted diced tomatoes
+  - no exact match in reference vocabulary
+- row 44 [unmatched] ounce can fire roasted tomatoes
+  - no exact match in reference vocabulary
+- row 871 [unmatched] ounce can french onion soup
+  - no exact match in reference vocabulary
+- row 506 [unmatched] ounce can fully cooked luncheon meat such as spam cubed
+  - no exact match in reference vocabulary
+- row 363 [unmatched] ounce can garbanzo beans drained
+  - no exact match in reference vocabulary
+- row 366 [unmatched] ounce can garbanzo beans drained liquid reserved
+  - no exact match in reference vocabulary
+- row 378 [unmatched] ounce can garbanzo beans drained reserve liquid rinsed
+  - no exact match in reference vocabulary
+- row 356 [unmatched] ounce can garbanzo beans drained rinsed
+  - no exact match in reference vocabulary
+- row 202 [unmatched] ounce can great northern beans
+  - no exact match in reference vocabulary
+- row 1105 [unmatched] ounce can green beans drained
+  - no exact match in reference vocabulary
+- row 990 [unmatched] ounce can green chiles
+  - no exact match in reference vocabulary
+- row 7 [unmatched] ounce can hearts palm drained
+  - no exact match in reference vocabulary
+- row 477 [unmatched] ounce can hunt s petite diced tomatoes drained
+  - no exact match in reference vocabulary
+- row 350 [unmatched] ounce can italian-style diced tomatoes drained
+  - no exact match in reference vocabulary
+- row 1248 [unmatched] ounce can italian-style stewed tomatoes drained diced
+  - no exact match in reference vocabulary
+- row 563 [unmatched] ounce can jellied cranberry sauce
+  - no exact match in reference vocabulary
+- row 572 [unmatched] ounce can jellied cranberry sauce such as ocean spray
+  - no exact match in reference vocabulary
+- row 451 [unmatched] ounce can jumbo butter-flavored biscuits
+  - no exact match in reference vocabulary
+- row 1186 [unmatched] ounce can kidney beans
+  - no exact match in reference vocabulary
+- row 1185 [unmatched] ounce can kidney beans drained
+  - no exact match in reference vocabulary
+- row 220 [unmatched] ounce can kidney beans drained rinsed
+  - no exact match in reference vocabulary
+- row 1202 [unmatched] ounce can kidney beans optional
+  - no exact match in reference vocabulary
+- row 1192 [unmatched] ounce can kidney beans rinsed drained
+  - no exact match in reference vocabulary
+- row 1188 [unmatched] ounce can kidney beans undrained
+  - no exact match in reference vocabulary
+- row 1191 [unmatched] ounce can kidney beans with liquid
+  - no exact match in reference vocabulary
+- row 32 [unmatched] ounce can large butter beans drained rinsed
+  - no exact match in reference vocabulary
+- row 1206 [unmatched] ounce can light red beans drained
+  - no exact match in reference vocabulary
+- row 1201 [unmatched] ounce can light red kidney beans
+  - no exact match in reference vocabulary
+- row 1218 [unmatched] ounce can light red kidney beans drained rinsed
+  - no exact match in reference vocabulary
+- row 1264 [unmatched] ounce can low fat low sodium beef broth
+  - no exact match in reference vocabulary
+- row 739 [unmatched] ounce can marinated artichoke hearts drained chopped
+  - no exact match in reference vocabulary
+- row 1279 [unmatched] ounce can medium pitted ripe olives drained
+  - no exact match in reference vocabulary
+- row 369 [unmatched] ounce can mexican-style corn drained
+  - no exact match in reference vocabulary
+- row 1213 [unmatched] ounce can peeled diced tomatoes with juice
+  - no exact match in reference vocabulary
+- row 1246 [unmatched] ounce can petite diced tomatoes
+  - no exact match in reference vocabulary
+- row 1171 [unmatched] ounce can pillsbury refrigerated crescent dinner rolls
+  - no exact match in reference vocabulary
+- row 1211 [unmatched] ounce can pineapple chunks drained
+  - no exact match in reference vocabulary
+- row 555 [unmatched] ounce can pineapple chunks in juice
+  - no exact match in reference vocabulary
+- row 1279 [unmatched] ounce can pineapple chunks undrained
+  - no exact match in reference vocabulary
+- row 899 [unmatched] ounce can pink salmon skin bone removed drained flaked
+  - no exact match in reference vocabulary
+- row 1194 [unmatched] ounce can pinto beans drained rinsed
+  - no exact match in reference vocabulary
+- row 1192 [unmatched] ounce can pinto beans rinsed drained
+  - no exact match in reference vocabulary
+- row 1188 [unmatched] ounce can pinto beans undrained
+  - no exact match in reference vocabulary
+- row 234 [unmatched] ounce can pitted black olives drained coarsely chopped
+  - no exact match in reference vocabulary
+- row 924 [unmatched] ounce can red kidney beans drained rinsed
+  - no exact match in reference vocabulary
+- row 285 [unmatched] ounce can refried beans
+  - no exact match in reference vocabulary
+- row 1173 [unmatched] ounce can refrigerated buttermilk biscuit dough
+  - no exact match in reference vocabulary
+- row 86 [unmatched] ounce can refrigerated buttermilk biscuit dough such as pillsbury
+  - no exact match in reference vocabulary
+- row 444 [unmatched] ounce can refrigerated pizza crust dough
+  - no exact match in reference vocabulary
+- row 992 [unmatched] ounce can roasted garlic tomato sauce
+  - no exact match in reference vocabulary
+- row 320 [unmatched] ounce can salmon drained
+  - no exact match in reference vocabulary
+- row 11 [unmatched] ounce can salmon drained flaked
+  - no exact match in reference vocabulary
+- row 213 [unmatched] ounce can san marzano tomatoes
+  - no exact match in reference vocabulary
+- row 545 [unmatched] ounce can skinless boneless salmon
+  - no exact match in reference vocabulary
+- row 377 [unmatched] ounce can sliced black olives
+  - no exact match in reference vocabulary
+- row 348 [unmatched] ounce can sliced black olives drained
+  - no exact match in reference vocabulary
+- row 1121 [unmatched] ounce can sliced mushrooms drained
+  - no exact match in reference vocabulary
+- row 1278 [unmatched] ounce can sliced water chestnuts halved
+  - no exact match in reference vocabulary
+- row 1177 [unmatched] ounce can sliced water chestnuts undrained
+  - no exact match in reference vocabulary
+- row 595 [unmatched] ounce can small shrimp drained
+  - no exact match in reference vocabulary
+- row 1258 [unmatched] ounce can small white beans rinsed drained
+  - no exact match in reference vocabulary
+- row 595 [unmatched] ounce can snow crab drained
+  - no exact match in reference vocabulary
+- row 1023 [unmatched] ounce can stewed tomatoes
+  - no exact match in reference vocabulary
+- row 1376 [unmatched] ounce can sweetened condensed milk
+  - no exact match in reference vocabulary
+- row 954 [unmatched] ounce can tomatillos
+  - no exact match in reference vocabulary
+- row 220 [unmatched] ounce can tomato paste
+  - no exact match in reference vocabulary
+- row 1255 [unmatched] ounce can tomato puree
+  - no exact match in reference vocabulary
+- row 1190 [unmatched] ounce can tomato purée
+  - no exact match in reference vocabulary
+- row 573 [unmatched] ounce can tomato sauce
+  - no exact match in reference vocabulary
+- row 1128 [unmatched] ounce can tomato sauce divided
+  - no exact match in reference vocabulary
+- row 1233 [unmatched] ounce can tomato soup
+  - no exact match in reference vocabulary
+- row 531 [unmatched] ounce can tuna drained
+  - no exact match in reference vocabulary
+- row 530 [unmatched] ounce can water chestnuts drained sliced
+  - no exact match in reference vocabulary
+- row 375 [unmatched] ounce can white beans drained rinsed
+  - no exact match in reference vocabulary
+- row 350 [unmatched] ounce can white corn drained
+  - no exact match in reference vocabulary
+- row 551 [unmatched] ounce can whole kernel corn drained
+  - no exact match in reference vocabulary
+- row 199 [unmatched] ounce can whole peeled tomatoes
+  - no exact match in reference vocabulary
+- row 1079 [unmatched] ounce can whole peeled tomatoes chopped
+  - no exact match in reference vocabulary
+- row 1250 [unmatched] ounce can whole plum tomatoes coarsely chopped
+  - no exact match in reference vocabulary
+- row 350 [unmatched] ounce can yellow corn drained
+  - no exact match in reference vocabulary
+- row 209 [unmatched] ounce cans artichoke hearts
+  - no exact match in reference vocabulary
+- row 906 [unmatched] ounce cans beef broth
+  - no exact match in reference vocabulary
+- row 1204 [unmatched] ounce cans beef broth divided
+  - no exact match in reference vocabulary
+- row 871 [unmatched] ounce cans beef consomme
+  - no exact match in reference vocabulary
+- row 1217 [unmatched] ounce cans black beans drained
+  - no exact match in reference vocabulary
+- row 350 [unmatched] ounce cans black beans drained rinsed
+  - no exact match in reference vocabulary
+- row 351 [unmatched] ounce cans black beans rinsed drained
+  - no exact match in reference vocabulary
+- row 198 [unmatched] ounce cans cannellini beans
+  - no exact match in reference vocabulary
+- row 178 [unmatched] ounce cans chickpeas
+  - no exact match in reference vocabulary
+- row 374 [unmatched] ounce cans chickpeas drained
+  - no exact match in reference vocabulary
+- row 1212 [unmatched] ounce cans chili beans in sauce such as bush s
+  - no exact match in reference vocabulary
+- row 695 [unmatched] ounce cans chopped green chilies
+  - no exact match in reference vocabulary
+- row 1275 [unmatched] ounce cans chopped tomatoes
+  - no exact match in reference vocabulary
+- row 748 [unmatched] ounce cans chopped tomatoes with juice
+  - no exact match in reference vocabulary
+- row 1115 [unmatched] ounce cans condensed cream mushroom soup
+  - no exact match in reference vocabulary
+- row 1079 [unmatched] ounce cans condensed tomato soup
+  - no exact match in reference vocabulary
+- row 893 [unmatched] ounce cans condensed tomato soup such as campbell s
+  - no exact match in reference vocabulary
+- row 1214 [unmatched] ounce cans corn
+  - no exact match in reference vocabulary
+- row 324 [unmatched] ounce cans crabmeat
+  - no exact match in reference vocabulary
+- row 578 [unmatched] ounce cans crabmeat drained flaked
+  - no exact match in reference vocabulary
+- row 1193 [unmatched] ounce cans dark red kidney beans drained rinsed
+  - no exact match in reference vocabulary
+- row 1187 [unmatched] ounce cans diced stewed tomatoes with chili seasonings
+  - no exact match in reference vocabulary
+- row 217 [unmatched] ounce cans diced tomatoes
+  - no exact match in reference vocabulary
+- row 892 [unmatched] ounce cans diced tomatoes chilies such as ro tel
+  - no exact match in reference vocabulary
+- row 1195 [unmatched] ounce cans diced tomatoes drained
+  - no exact match in reference vocabulary
+- row 1193 [unmatched] ounce cans diced tomatoes undrained
+  - no exact match in reference vocabulary
+- row 1192 [unmatched] ounce cans diced tomatoes with green chile peppers
+  - no exact match in reference vocabulary
+- row 371 [unmatched] ounce cans garbanzo beans drained
+  - no exact match in reference vocabulary
+- row 152 [unmatched] ounce cans hunk white albacore tuna in water
+  - no exact match in reference vocabulary
+- row 1203 [unmatched] ounce cans kidney beans
+  - no exact match in reference vocabulary
+- row 1210 [unmatched] ounce cans kidney beans drained
+  - no exact match in reference vocabulary
+- row 1190 [unmatched] ounce cans kidney beans rinsed drained
+  - no exact match in reference vocabulary
+- row 1211 [unmatched] ounce cans kidney beans with liquid
+  - no exact match in reference vocabulary
+- row 1214 [unmatched] ounce cans light red kidney beans drained rinsed
+  - no exact match in reference vocabulary
+- row 203 [unmatched] ounce cans low-sodium chicken broth
+  - no exact match in reference vocabulary
+- row 373 [unmatched] ounce cans mexican-style corn drained
+  - no exact match in reference vocabulary
+- row 660 [unmatched] ounce cans minced clams drained
+  - no exact match in reference vocabulary
+- row 1219 [unmatched] ounce cans pinto beans
+  - no exact match in reference vocabulary
+- row 351 [unmatched] ounce cans pinto beans rinsed drained
+  - no exact match in reference vocabulary
+- row 301 [unmatched] ounce cans pizza dough
+  - no exact match in reference vocabulary
+- row 1176 [unmatched] ounce cans ranch-style beans
+  - no exact match in reference vocabulary
+- row 1208 [unmatched] ounce cans red kidney beans rinsed drained
+  - no exact match in reference vocabulary
+- row 445 [unmatched] ounce cans refrigerated biscuit dough
+  - no exact match in reference vocabulary
+- row 1002 [unmatched] ounce cans stewed tomatoes
+  - no exact match in reference vocabulary
+- row 905 [unmatched] ounce cans stewed tomatoes chopped juices reserved
+  - no exact match in reference vocabulary
+- row 1211 [unmatched] ounce cans stewed tomatoes with juice
+  - no exact match in reference vocabulary
+- row 1191 [unmatched] ounce cans tomato puree
+  - no exact match in reference vocabulary
+- row 203 [unmatched] ounce cans tomato sauce
+  - no exact match in reference vocabulary
+- row 548 [unmatched] ounce cans tomato sauce divided
+  - no exact match in reference vocabulary
+- row 942 [unmatched] ounce cans tomato-vegetable juice cocktail such as v
+  - no exact match in reference vocabulary
+- row 318 [unmatched] ounce cans tuna drained
+  - no exact match in reference vocabulary
+- row 1239 [unmatched] ounce cans water
+  - no exact match in reference vocabulary
+- row 351 [unmatched] ounce cans white corn rinsed drained
+  - no exact match in reference vocabulary
+- row 1383 [unmatched] ounce cans whole baby beets
+  - no exact match in reference vocabulary
+- row 1208 [unmatched] ounce cans whole peeled tomatoes with liquid chopped
+  - no exact match in reference vocabulary
+- row 1217 [unmatched] ounce cans yellow corn drained
+  - no exact match in reference vocabulary
+- row 98 [unmatched] ounce carton liquid egg whites
+  - no exact match in reference vocabulary
+- row 1310 [unmatched] ounce carton sour cream divided
+  - no exact match in reference vocabulary
+- row 938 [unmatched] ounce carton swanson lower sodium beef broth
+  - no exact match in reference vocabulary
+- row 928 [unmatched] ounce cartons chicken broth
+  - no exact match in reference vocabulary
+- row 222 [unmatched] ounce cartons fat-free low-sodium chicken broth
+  - no exact match in reference vocabulary
+- row 40 [unmatched] ounce chicken breast cutlets
+  - no exact match in reference vocabulary
+- row 737 [unmatched] ounce container alfredo sauce
+  - no exact match in reference vocabulary
+- row 727 [unmatched] ounce container blackberries halved - divided
+  - no exact match in reference vocabulary
+- row 230 [unmatched] ounce container cherry tomatoes halved
+  - no exact match in reference vocabulary
+- row 161 [unmatched] ounce container fat-free greek yogurt such as fage
+  - no exact match in reference vocabulary
+- row 373 [unmatched] ounce container fat-free sour cream
+  - no exact match in reference vocabulary
+- row 365 [unmatched] ounce container guacamole
+  - no exact match in reference vocabulary
+- row 514 [unmatched] ounce container low-fat vanilla yogurt
+  - no exact match in reference vocabulary
+- row 1307 [unmatched] ounce container reduced-fat sour cream
+  - no exact match in reference vocabulary
+- row 230 [unmatched] ounce container small fresh mozzarella balls
+  - no exact match in reference vocabulary
+- row 158 [unmatched] ounce container small mozzarella balls in oil halved
+  - no exact match in reference vocabulary
+- row 348 [unmatched] ounce container sour cream
+  - no exact match in reference vocabulary
+- row 746 [unmatched] ounce container whipped cream cheese
+  - no exact match in reference vocabulary
+- row 1116 [unmatched] ounce container whole milk ricotta cheese
+  - no exact match in reference vocabulary
+- row 192 [unmatched] ounce containers chicken bone broth
+  - no exact match in reference vocabulary
+- row 537 [unmatched] ounce cooked meatballs
+  - no exact match in reference vocabulary
+- row 1358 [unmatched] ounce count package ready- -bake pie crusts thawed
+  - no exact match in reference vocabulary
+- row 1057 [unmatched] ounce crumbled cotija cheese optional
+  - no exact match in reference vocabulary
+- row 1049 [unmatched] ounce delmonico rib-eye steaks
+  - no exact match in reference vocabulary
+- row 291 [unmatched] ounce envelope active dry yeast
+  - no exact match in reference vocabulary
+- row 1044 [unmatched] ounce envelope dry onion soup mix
+  - no exact match in reference vocabulary
+- row 946 [unmatched] ounce filet mignon steaks
+  - no exact match in reference vocabulary
+- row 55 [unmatched] ounce filets salmon with skin on about -inch thick at thickest part
+  - no exact match in reference vocabulary
+- row 182 [unmatched] ounce fresh basil
+  - no exact match in reference vocabulary
+- row 904 [unmatched] ounce fresh rosemary taste
+  - no exact match in reference vocabulary
+- row 904 [unmatched] ounce fresh thyme taste
+  - no exact match in reference vocabulary
+- row 947 [unmatched] ounce inch thick filet mignon steaks
+  - no exact match in reference vocabulary
+- row 994 [unmatched] ounce j marinara sauce
+  - no exact match in reference vocabulary
+- row 677 [unmatched] ounce jar alfredo sauce
+  - no exact match in reference vocabulary
+- row 746 [unmatched] ounce jar capers
+  - no exact match in reference vocabulary
+- row 506 [unmatched] ounce jar chopped pimiento peppers with liquid
+  - no exact match in reference vocabulary
+- row 1217 [unmatched] ounce jar diced nopales cactus
+  - no exact match in reference vocabulary
+- row 155 [unmatched] ounce jar diced pimento drained
+  - no exact match in reference vocabulary
+- row 696 [unmatched] ounce jar grape jelly
+  - no exact match in reference vocabulary
+- row 690 [unmatched] ounce jar grape leaves packed in brine
+  - no exact match in reference vocabulary
+- row 838 [unmatched] ounce jar lemon curd
+  - no exact match in reference vocabulary
+- row 1078 [unmatched] ounce jar marinara sauce
+  - no exact match in reference vocabulary
+- row 651 [unmatched] ounce jar marinated artichoke hearts drained chopped
+  - no exact match in reference vocabulary
+- row 737 [unmatched] ounce jar marinated artichoke hearts drained diced
+  - no exact match in reference vocabulary
+- row 532 [unmatched] ounce jar marinated artichoke hearts drained liquid reserved
+  - no exact match in reference vocabulary
+- row 465 [unmatched] ounce jar marinated roasted sweet red peppers
+  - no exact match in reference vocabulary
+- row 1218 [unmatched] ounce jar mild salsa
+  - no exact match in reference vocabulary
+- row 1233 [unmatched] ounce jar pasta sauce such as ragu
+  - no exact match in reference vocabulary
+- row 234 [unmatched] ounce jar pitted green olives drained coarsely chopped
+  - no exact match in reference vocabulary
+- row 533 [unmatched] ounce jar prepared marinara sauce
+  - no exact match in reference vocabulary
+- row 506 [unmatched] ounce jar processed cheese sauce such as cheez whiz
+  - no exact match in reference vocabulary
+- row 677 [unmatched] ounce jar quartered artichoke hearts drained chopped
+  - no exact match in reference vocabulary
+- row 348 [unmatched] ounce jar salsa
+  - no exact match in reference vocabulary
+- row 564 [unmatched] ounce jar spaghetti sauce
+  - no exact match in reference vocabulary
+- row 1038 [unmatched] ounce jar taco sauce
+  - no exact match in reference vocabulary
+- row 264 [unmatched] ounce jar tuna packed in olive oil
+  - no exact match in reference vocabulary
+- row 740 [unmatched] ounce jars artichoke hearts drained
+  - no exact match in reference vocabulary
+- row 829 [unmatched] ounce jars dickinson s lemon curd
+  - no exact match in reference vocabulary
+- row 574 [unmatched] ounce jars marinara sauce
+  - no exact match in reference vocabulary
+- row 526 [unmatched] ounce jars marinated artichoke hearts chopped
+  - no exact match in reference vocabulary
+- row 738 [unmatched] ounce jars marinated artichoke hearts drained chopped
+  - no exact match in reference vocabulary
+- row 1119 [unmatched] ounce jars spaghetti marinara sauce
+  - no exact match in reference vocabulary
+- row 77 [unmatched] ounce loaf french bread
+  - no exact match in reference vocabulary
+- row 474 [unmatched] ounce loaf french bread sliced -inch thick
+  - no exact match in reference vocabulary
+- row 501 [unmatched] ounce log goat cheese at room temperature
+  - no exact match in reference vocabulary
+- row 1328 [unmatched] ounce milk chocolate candy bar chopped
+  - no exact match in reference vocabulary
+- row 44 [unmatched] ounce new potatoes drained rinsed
+  - no exact match in reference vocabulary
+- row 914 [unmatched] ounce new york strip steaks
+  - no exact match in reference vocabulary
+- row 204 [unmatched] ounce no-salt black beans
+  - no exact match in reference vocabulary
+- row 1410 [unmatched] ounce package active dry yeast
+  - no exact match in reference vocabulary
+- row 240 [unmatched] ounce package au jus seasoning mix
+  - no exact match in reference vocabulary
+- row 685 [unmatched] ounce package baby portobello mushrooms
+  - no exact match in reference vocabulary
+- row 222 [unmatched] ounce package baby spinach leaves
+  - no exact match in reference vocabulary
+- row 1150 [unmatched] ounce package bologna
+  - no exact match in reference vocabulary
+- row 128 [unmatched] ounce package boursin garlic fine herbs
+  - no exact match in reference vocabulary
+- row 676 [unmatched] ounce package button mushrooms stemmed
+  - no exact match in reference vocabulary
+- row 612 [unmatched] ounce package cauliflower pizza crust
+  - no exact match in reference vocabulary
+- row 1189 [unmatched] ounce package chili seasoning mix
+  - no exact match in reference vocabulary
+- row 278 [unmatched] ounce package chocolate instant pudding pie filling
+  - no exact match in reference vocabulary
+- row 892 [unmatched] ounce package corn muffin mix such as jiffy
+  - no exact match in reference vocabulary
+- row 73 [unmatched] ounce package cream cheese
+  - no exact match in reference vocabulary
+- row 502 [unmatched] ounce package cream cheese as needed softened
+  - no exact match in reference vocabulary
+- row 57 [unmatched] ounce package cream cheese softened
+  - no exact match in reference vocabulary
+- row 369 [unmatched] ounce package crumbled feta cheese
+  - no exact match in reference vocabulary
+- row 530 [unmatched] ounce package dinner rolls
+  - no exact match in reference vocabulary
+- row 727 [unmatched] ounce package double-crust pie pastry thawed
+  - no exact match in reference vocabulary
+- row 748 [unmatched] ounce package dried lima beans
+  - no exact match in reference vocabulary
+- row 496 [unmatched] ounce package dry italian-style salad dressing mix
+  - no exact match in reference vocabulary
+- row 1311 [unmatched] ounce package dry onion mushroom soup mix
+  - no exact match in reference vocabulary
+- row 425 [unmatched] ounce package dry ranch-style dressing mix
+  - no exact match in reference vocabulary
+- row 377 [unmatched] ounce package dry taco seasoning mix
+  - no exact match in reference vocabulary
+- row 872 [unmatched] ounce package egg noodles
+  - no exact match in reference vocabulary
+- row 520 [unmatched] ounce package extra-firm tofu drained diced
+  - no exact match in reference vocabulary
+- row 1402 [unmatched] ounce package flatbreads
+  - no exact match in reference vocabulary
+- row 74 [unmatched] ounce package french cheese such as boursin
+  - no exact match in reference vocabulary
+- row 230 [unmatched] ounce package fresh basil leaves
+  - no exact match in reference vocabulary
+- row 737 [unmatched] ounce package fresh spinach chopped
+  - no exact match in reference vocabulary
+- row 1078 [unmatched] ounce package frozen cheese ravioli
+  - no exact match in reference vocabulary
+- row 734 [unmatched] ounce package frozen chopped spinach - thawed drained squeezed dry
+  - no exact match in reference vocabulary
+- row 733 [unmatched] ounce package frozen chopped spinach thawed
+  - no exact match in reference vocabulary
+- row 393 [unmatched] ounce package frozen chopped spinach thawed drained
+  - no exact match in reference vocabulary
+- row 677 [unmatched] ounce package frozen chopped spinach thawed squeezed dry
+  - no exact match in reference vocabulary
+- row 1078 [unmatched] ounce package frozen cooked meatballs thawed
+  - no exact match in reference vocabulary
+- row 1225 [unmatched] ounce package frozen corn kernels
+  - no exact match in reference vocabulary
+- row 279 [unmatched] ounce package frozen cut leaf spinach
+  - no exact match in reference vocabulary
+- row 360 [unmatched] ounce package frozen edamame soybeans in their pods
+  - no exact match in reference vocabulary
+- row 1311 [unmatched] ounce package frozen egg noodles
+  - no exact match in reference vocabulary
+- row 1264 [unmatched] ounce package frozen green peas thawed
+  - no exact match in reference vocabulary
+- row 540 [unmatched] ounce package frozen peas
+  - no exact match in reference vocabulary
+- row 397 [unmatched] ounce package frozen puff pastry thawed
+  - no exact match in reference vocabulary
+- row 355 [unmatched] ounce package frozen shelled edamame green soybeans
+  - no exact match in reference vocabulary
+- row 1177 [unmatched] ounce package frozen stir-fry vegetables
+  - no exact match in reference vocabulary
+- row 679 [unmatched] ounce package garlic herb cheese spread such as boursin
+  - no exact match in reference vocabulary
+- row 679 [unmatched] ounce package grated parmesan cheese divided
+  - no exact match in reference vocabulary
+- row 569 [unmatched] ounce package ground chicken breast
+  - no exact match in reference vocabulary
+- row 797 [unmatched] ounce package individually wrapped caramels unwrapped
+  - no exact match in reference vocabulary
+- row 763 [unmatched] ounce package instant chocolate fudge pudding mix
+  - no exact match in reference vocabulary
+- row 1459 [unmatched] ounce package instant yeast
+  - no exact match in reference vocabulary
+- row 661 [unmatched] ounce package johnsonville ground italian sausage
+  - no exact match in reference vocabulary
+- row 533 [unmatched] ounce package jumbo pasta shells
+  - no exact match in reference vocabulary
+- row 696 [unmatched] ounce package kielbasa sausage
+  - no exact match in reference vocabulary
+- row 833 [unmatched] ounce package lemon cake mix with pudding
+  - no exact match in reference vocabulary
+- row 528 [unmatched] ounce package linguine pasta
+  - no exact match in reference vocabulary
+- row 514 [unmatched] ounce package low-fat cream cheese softened
+  - no exact match in reference vocabulary
+- row 551 [unmatched] ounce package mccormick guacamole seasoning mix
+  - no exact match in reference vocabulary
+- row 633 [unmatched] ounce package microwave popcorn popped
+  - no exact match in reference vocabulary
+- row 223 [unmatched] ounce package mini potato gnocchi
+  - no exact match in reference vocabulary
+- row 1270 [unmatched] ounce package mushrooms quartered
+  - no exact match in reference vocabulary
+- row 270 [unmatched] ounce package original snack factory pretzel crisps
+  - no exact match in reference vocabulary
+- row 605 [unmatched] ounce package oyster crackers
+  - no exact match in reference vocabulary
+- row 1110 [unmatched] ounce package penne pasta
+  - no exact match in reference vocabulary
+- row 381 [unmatched] ounce package phyllo dough
+  - no exact match in reference vocabulary
+- row 440 [unmatched] ounce package pita bread cut in half
+  - no exact match in reference vocabulary
+- row 487 [unmatched] ounce package pretzels
+  - no exact match in reference vocabulary
+- row 388 [unmatched] ounce package puff pastry
+  - no exact match in reference vocabulary
+- row 602 [unmatched] ounce package ranch dressing mix
+  - no exact match in reference vocabulary
+- row 497 [unmatched] ounce package ranch dressing mix such as hidden valley ranch
+  - no exact match in reference vocabulary
+- row 486 [unmatched] ounce package ranch-style dressing mix
+  - no exact match in reference vocabulary
+- row 1436 [unmatched] ounce package rapid-rise yeast
+  - no exact match in reference vocabulary
+- row 429 [unmatched] ounce package reduced-fat cream cheese
+  - no exact match in reference vocabulary
+- row 31 [unmatched] ounce package reduced-fat cream cheese neufchâtel softened
+  - no exact match in reference vocabulary
+- row 1310 [unmatched] ounce package refrigerated beef roast au jus
+  - no exact match in reference vocabulary
+- row 536 [unmatched] ounce package refrigerated fresh cheese tortellini
+  - no exact match in reference vocabulary
+- row 1364 [unmatched] ounce package refrigerated pie crusts pie crusts
+  - no exact match in reference vocabulary
+- row 534 [unmatched] ounce package refrigerated spinach mozzarella ravioli
+  - no exact match in reference vocabulary
+- row 233 [unmatched] ounce package refrigerated tortellini
+  - no exact match in reference vocabulary
+- row 1168 [unmatched] ounce package sazòn seasoning with coriander achiote such as goya
+  - no exact match in reference vocabulary
+- row 905 [unmatched] ounce package shredded american cheese such as kraft melts
+  - no exact match in reference vocabulary
+- row 1250 [unmatched] ounce package shredded cabbage
+  - no exact match in reference vocabulary
+- row 365 [unmatched] ounce package shredded cheddar cheese
+  - no exact match in reference vocabulary
+- row 6 [unmatched] ounce package shredded coleslaw mix
+  - no exact match in reference vocabulary
+- row 453 [unmatched] ounce package shredded mozzarella cheese
+  - no exact match in reference vocabulary
+- row 677 [unmatched] ounce package shredded parmesan cheese divided
+  - no exact match in reference vocabulary
+- row 1380 [unmatched] ounce package silken tofu
+  - no exact match in reference vocabulary
+- row 1307 [unmatched] ounce package sliced fresh mushrooms
+  - no exact match in reference vocabulary
+- row 461 [unmatched] ounce package sliced mozzarella cheese
+  - no exact match in reference vocabulary
+- row 1306 [unmatched] ounce package sliced mushrooms
+  - no exact match in reference vocabulary
+- row 461 [unmatched] ounce package sliced provolone cheese
+  - no exact match in reference vocabulary
+- row 1340 [unmatched] ounce package small curd cottage cheese
+  - no exact match in reference vocabulary
+- row 906 [unmatched] ounce package smoked sausage
+  - no exact match in reference vocabulary
+- row 564 [unmatched] ounce package spaghetti
+  - no exact match in reference vocabulary
+- row 395 [unmatched] ounce package spring roll wrappers
+  - no exact match in reference vocabulary
+- row 695 [unmatched] ounce package taco seasoning
+  - no exact match in reference vocabulary
+- row 348 [unmatched] ounce package taco seasoning mix
+  - no exact match in reference vocabulary
+- row 377 [unmatched] ounce package tortilla chips
+  - no exact match in reference vocabulary
+- row 497 [unmatched] ounce package whipped cream cheese with chives
+  - no exact match in reference vocabulary
+- row 379 [unmatched] ounce package whole wheat phyllo dough
+  - no exact match in reference vocabulary
+- row 1306 [unmatched] ounce package wide egg noodles
+  - no exact match in reference vocabulary
+- row 540 [unmatched] ounce package wonton wrappers
+  - no exact match in reference vocabulary
+- row 609 [unmatched] ounce package yeast
+  - no exact match in reference vocabulary
+- row 1468 [unmatched] ounce packages active dry yeast
+  - no exact match in reference vocabulary
+- row 1188 [unmatched] ounce packages chili seasoning such as mccormick mild chili seasoning mix
+  - no exact match in reference vocabulary
+- row 1035 [unmatched] ounce packages corn chips
+  - no exact match in reference vocabulary
+- row 895 [unmatched] ounce packages corn muffin mix such as jiffy
+  - no exact match in reference vocabulary
+- row 292 [unmatched] ounce packages cream cheese softened
+  - no exact match in reference vocabulary
+- row 1037 [unmatched] ounce packages dried chipped beef
+  - no exact match in reference vocabulary
+- row 1263 [unmatched] ounce packages dry brown gravy mix
+  - no exact match in reference vocabulary
+- row 380 [unmatched] ounce packages feta cheese crumbled
+  - no exact match in reference vocabulary
+- row 741 [unmatched] ounce packages frozen artichoke hearts
+  - no exact match in reference vocabulary
+- row 529 [unmatched] ounce packages frozen chopped broccoli
+  - no exact match in reference vocabulary
+- row 1121 [unmatched] ounce packages frozen chopped spinach thawed drained
+  - no exact match in reference vocabulary
+- row 380 [unmatched] ounce packages frozen chopped spinach thawed drained squeezed dry
+  - no exact match in reference vocabulary
+- row 379 [unmatched] ounce packages frozen chopped spinach thawed well drained
+  - no exact match in reference vocabulary
+- row 1168 [unmatched] ounce packages frozen empanada dough such as goya discos
+  - no exact match in reference vocabulary
+- row 452 [unmatched] ounce packages frozen pizza dough thawed
+  - no exact match in reference vocabulary
+- row 514 [unmatched] ounce packages original snack factory pretzel crisps
+  - no exact match in reference vocabulary
+- row 602 [unmatched] ounce packages oyster crackers
+  - no exact match in reference vocabulary
+- row 820 [unmatched] ounce packages refrigerated crescent roll dough such as pillsbury
+  - no exact match in reference vocabulary
+- row 827 [unmatched] ounce packages refrigerated crescent roll dough such as pillsbury recipe creations divided
+  - no exact match in reference vocabulary
+- row 869 [unmatched] ounce packe au jus seasoning
+  - no exact match in reference vocabulary
+- row 881 [unmatched] ounce packet beef stroganoff sauce seasoning
+  - no exact match in reference vocabulary
+- row 948 [unmatched] ounce packet dry brown gravy mix
+  - no exact match in reference vocabulary
+- row 1092 [unmatched] ounce packet hidden valley original ranch salad dressing seasoning mix
+  - no exact match in reference vocabulary
+- row 343 [unmatched] ounce packet ranch seasoning
+  - no exact match in reference vocabulary
+- row 240 [unmatched] ounce packet ranch seasoning mix
+  - no exact match in reference vocabulary
+- row 373 [unmatched] ounce packet taco seasoning
+  - no exact match in reference vocabulary
+- row 1254 [unmatched] ounce packets taco seasoning mix
+  - no exact match in reference vocabulary
+- row 164 [unmatched] ounce pouch wild-caught pink salmon
+  - no exact match in reference vocabulary
+- row 1004 [unmatched] ounce ribeye steak
+  - no exact match in reference vocabulary
+- row 513 [unmatched] ounce round brie cheese cut into -inch chunks
+  - no exact match in reference vocabulary
+- row 868 [unmatched] ounce round steak
+  - no exact match in reference vocabulary
+- row 150 [unmatched] ounce salmon filet
+  - no exact match in reference vocabulary
+- row 875 [unmatched] ounce shredded mexican cheese blend
+  - no exact match in reference vocabulary
+- row 1151 [unmatched] ounce slices provolone cheese
+  - no exact match in reference vocabulary
+- row 225 [unmatched] ounce squares semisweet chocolate grated
+  - no exact match in reference vocabulary
+- row 564 [unmatched] ounce stick string cheese cut into slices
+  - no exact match in reference vocabulary
+- row 621 [unmatched] ounce sticks string cheese any type cut in half frozen
+  - no exact match in reference vocabulary
+- row 45 [unmatched] ounce strip steak
+  - no exact match in reference vocabulary
+- row 1331 [unmatched] ounce sweet potato
+  - no exact match in reference vocabulary
+- row 949 [unmatched] ounce t-bone steaks
+  - no exact match in reference vocabulary
+- row 1019 [unmatched] ounce thinly-sliced veal cutlets
+  - no exact match in reference vocabulary
+- row 1467 [unmatched] ounce tin sardines packed in olive oil
+  - no exact match in reference vocabulary
+- row 742 [unmatched] ounce tub almond cream cheese alternative spread
+  - no exact match in reference vocabulary
+- row 134 [unmatched] ounces apple chicken sausage links
+  - no exact match in reference vocabulary
+- row 337 [unmatched] ounces armigiano-reggiano cheese
+  - no exact match in reference vocabulary
+- row 137 [unmatched] ounces asparagus
+  - no exact match in reference vocabulary
+- row 265 [unmatched] ounces baby bella mushrooms chopped
+  - no exact match in reference vocabulary
+- row 292 [unmatched] ounces blue cheese crumbled
+  - no exact match in reference vocabulary
+- row 251 [unmatched] ounces bologna
+  - no exact match in reference vocabulary
+- row 1181 [unmatched] ounces boneless beef top sirloin steak
+  - no exact match in reference vocabulary
+- row 864 [unmatched] ounces bowtie pasta
+  - no exact match in reference vocabulary
+- row 881 [unmatched] ounces bowtie pasta farfalle
+  - no exact match in reference vocabulary
+- row 316 [unmatched] ounces bread crust removed
+  - no exact match in reference vocabulary
+- row 97 [unmatched] ounces breakfast sausage
+  - no exact match in reference vocabulary
+- row 218 [unmatched] ounces brie rind removed but into inch pieces
+  - no exact match in reference vocabulary
+- row 466 [unmatched] ounces burrata cheese thickly sliced
+  - no exact match in reference vocabulary
+- row 1264 [unmatched] ounces button mushrooms quartered
+  - no exact match in reference vocabulary
+- row 862 [unmatched] ounces button mushrooms sliced
+  - no exact match in reference vocabulary
+- row 319 [unmatched] ounces canned crabmeat rinsed
+  - no exact match in reference vocabulary
+- row 1277 [unmatched] ounces cassava peeled cubed
+  - no exact match in reference vocabulary
+- row 201 [unmatched] ounces cheddar cheese
+  - no exact match in reference vocabulary
+- row 388 [unmatched] ounces cheddar cheese grated
+  - no exact match in reference vocabulary
+- row 1112 [unmatched] ounces cheddar cheese grated divided
+  - no exact match in reference vocabulary
+- row 1335 [unmatched] ounces cheddar cheese shredded
+  - no exact match in reference vocabulary
+- row 968 [unmatched] ounces cheddar cheese shredded divided
+  - no exact match in reference vocabulary
+- row 212 [unmatched] ounces cherry tomatoes
+  - no exact match in reference vocabulary
+- row 222 [unmatched] ounces cooked chicken breast chopped
+  - no exact match in reference vocabulary
+- row 320 [unmatched] ounces crab meat
+  - no exact match in reference vocabulary
+- row 252 [unmatched] ounces cream cheese
+  - no exact match in reference vocabulary
+- row 862 [unmatched] ounces cream cheese cubed softened
+  - no exact match in reference vocabulary
+- row 221 [unmatched] ounces cream cheese softened
+  - no exact match in reference vocabulary
+- row 216 [unmatched] ounces crimini mushrooms minced
+  - no exact match in reference vocabulary
+- row 1095 [unmatched] ounces crumbled feta cheese
+  - no exact match in reference vocabulary
+- row 169 [unmatched] ounces crumbled garlic herb feta cheese
+  - no exact match in reference vocabulary
+- row 167 [unmatched] ounces crumbled reduced-fat feta cheese
+  - no exact match in reference vocabulary
+- row 810 [unmatched] ounces dried apricots cut into small pieces
+  - no exact match in reference vocabulary
+- row 476 [unmatched] ounces dried pinto beans
+  - no exact match in reference vocabulary
+- row 323 [unmatched] ounces dried salted cod fish
+  - no exact match in reference vocabulary
+- row 1109 [unmatched] ounces exican blend shredded cheese
+  - no exact match in reference vocabulary
+- row 179 [unmatched] ounces feta cheese
+  - no exact match in reference vocabulary
+- row 157 [unmatched] ounces feta cheese coarsely crumbled
+  - no exact match in reference vocabulary
+- row 397 [unmatched] ounces feta cheese crumbled
+  - no exact match in reference vocabulary
+- row 147 [unmatched] ounces feta crumbles
+  - no exact match in reference vocabulary
+- row 17 [unmatched] ounces fresh green beans ends trimmed
+  - no exact match in reference vocabulary
+- row 456 [unmatched] ounces fresh mozzarella cheese cut into -inch cubes
+  - no exact match in reference vocabulary
+- row 500 [unmatched] ounces fresh mozzarella cheese cut into thin slices
+  - no exact match in reference vocabulary
+- row 801 [unmatched] ounces fresh raspberries
+  - no exact match in reference vocabulary
+- row 39 [unmatched] ounces fresh spinach
+  - no exact match in reference vocabulary
+- row 292 [unmatched] ounces freshly shredded parmesan cheese
+  - no exact match in reference vocabulary
+- row 591 [unmatched] ounces frozen medium shrimp - thawed shelled deveined
+  - no exact match in reference vocabulary
+- row 291 [unmatched] ounces goat cheese
+  - no exact match in reference vocabulary
+- row 270 [unmatched] ounces goat cheese softened
+  - no exact match in reference vocabulary
+- row 937 [unmatched] ounces grated parmesan cheese
+  - no exact match in reference vocabulary
+- row 341 [unmatched] ounces grated parmesan cheese divided
+  - no exact match in reference vocabulary
+- row 1009 [unmatched] ounces green beans
+  - no exact match in reference vocabulary
+- row 880 [unmatched] ounces green chiles
+  - no exact match in reference vocabulary
+- row 39 [unmatched] ounces ground beef
+  - no exact match in reference vocabulary
+- row 298 [unmatched] ounces ground beef chuck
+  - no exact match in reference vocabulary
+- row 1145 [unmatched] ounces ground lamb
+  - no exact match in reference vocabulary
+- row 989 [unmatched] ounces ground sirloin
+  - no exact match in reference vocabulary
+- row 265 [unmatched] ounces gruyère cheese shredded
+  - no exact match in reference vocabulary
+- row 285 [unmatched] ounces guacamole
+  - no exact match in reference vocabulary
+- row 78 [unmatched] ounces gyro meat chopped
+  - no exact match in reference vocabulary
+- row 268 [unmatched] ounces halloumi cheese sliced into -inch pieces
+  - no exact match in reference vocabulary
+- row 741 [unmatched] ounces herbed goat cheese chevre
+  - no exact match in reference vocabulary
+- row 543 [unmatched] ounces imitation crabmeat
+  - no exact match in reference vocabulary
+- row 465 [unmatched] ounces italian bread
+  - no exact match in reference vocabulary
+- row 675 [unmatched] ounces italian sausage
+  - no exact match in reference vocabulary
+- row 375 [unmatched] ounces kielbasa sausage sliced thin
+  - no exact match in reference vocabulary
+- row 996 [unmatched] ounces marinara sauce
+  - no exact match in reference vocabulary
+- row 894 [unmatched] ounces meatballs
+  - no exact match in reference vocabulary
+- row 994 [unmatched] ounces medium pasta shells
+  - no exact match in reference vocabulary
+- row 107 [unmatched] ounces medjool dates
+  - no exact match in reference vocabulary
+- row 69 [unmatched] ounces monterey jack cheese shredded
+  - no exact match in reference vocabulary
+- row 430 [unmatched] ounces mozzarella cheese
+  - no exact match in reference vocabulary
+- row 228 [unmatched] ounces mozzarella cheese cubed
+  - no exact match in reference vocabulary
+- row 308 [unmatched] ounces mozzarella cheese divided
+  - no exact match in reference vocabulary
+- row 222 [unmatched] ounces orzo pasta
+  - no exact match in reference vocabulary
+- row 127 [unmatched] ounces pasta
+  - no exact match in reference vocabulary
+- row 431 [unmatched] ounces pizza dough
+  - no exact match in reference vocabulary
+- row 890 [unmatched] ounces plain greek yogurt
+  - no exact match in reference vocabulary
+- row 939 [unmatched] ounces porterhouse steak
+  - no exact match in reference vocabulary
+- row 871 [unmatched] ounces portobello mushrooms
+  - no exact match in reference vocabulary
+- row 1311 [unmatched] ounces portobello mushrooms quartered
+  - no exact match in reference vocabulary
+- row 155 [unmatched] ounces potatoes
+  - no exact match in reference vocabulary
+- row 1277 [unmatched] ounces potatoes peeled cubed
+  - no exact match in reference vocabulary
+- row 1277 [unmatched] ounces pumpkin peeled cubed
+  - no exact match in reference vocabulary
+- row 337 [unmatched] ounces rench fries
+  - no exact match in reference vocabulary
+- row 413 [unmatched] ounces rice vermicelli
+  - no exact match in reference vocabulary
+- row 317 [unmatched] ounces rice vermicelli noodles
+  - no exact match in reference vocabulary
+- row 384 [unmatched] ounces ricotta cheese
+  - no exact match in reference vocabulary
+- row 894 [unmatched] ounces ring-shaped pasta anelli siciliani
+  - no exact match in reference vocabulary
+- row 883 [unmatched] ounces rotini pasta
+  - no exact match in reference vocabulary
+- row 493 [unmatched] ounces sharp processed cheese spread
+  - no exact match in reference vocabulary
+- row 36 [unmatched] ounces shredded cheddar cheese divided
+  - no exact match in reference vocabulary
+- row 539 [unmatched] ounces shredded cooked chicken divided
+  - no exact match in reference vocabulary
+- row 441 [unmatched] ounces shredded italian cheese blend
+  - no exact match in reference vocabulary
+- row 905 [unmatched] ounces shredded monterey jack cheese
+  - no exact match in reference vocabulary
+- row 992 [unmatched] ounces shredded mozzarella cheese
+  - no exact match in reference vocabulary
+- row 499 [unmatched] ounces shredded provolone cheese more taste
+  - no exact match in reference vocabulary
+- row 905 [unmatched] ounces shredded sharp cheddar cheese
+  - no exact match in reference vocabulary
+- row 320 [unmatched] ounces shrimp peeled deveined
+  - no exact match in reference vocabulary
+- row 1153 [unmatched] ounces sliced baby portobello mushrooms
+  - no exact match in reference vocabulary
+- row 890 [unmatched] ounces sliced mushrooms
+  - no exact match in reference vocabulary
+- row 163 [unmatched] ounces smoked salmon chopped
+  - no exact match in reference vocabulary
+- row 215 [unmatched] ounces smoked sausage sliced
+  - no exact match in reference vocabulary
+- row 644 [unmatched] ounces soft goat cheese
+  - no exact match in reference vocabulary
+- row 36 [unmatched] ounces sour cream
+  - no exact match in reference vocabulary
+- row 537 [unmatched] ounces spaghetti
+  - no exact match in reference vocabulary
+- row 1021 [unmatched] ounces spiced gouda cheese cut into strips optional
+  - no exact match in reference vocabulary
+- row 193 [unmatched] ounces spinach
+  - no exact match in reference vocabulary
+- row 1277 [unmatched] ounces sweet potatoes peeled cubed
+  - no exact match in reference vocabulary
+- row 502 [unmatched] ounces thinly sliced smoked salmon
+  - no exact match in reference vocabulary
+- row 894 [unmatched] ounces tomato sauce
+  - no exact match in reference vocabulary
+- row 1119 [unmatched] ounces uncooked
+  - no exact match in reference vocabulary
+- row 890 [unmatched] ounces whipped cream cheese
+  - no exact match in reference vocabulary
+- row 859 [unmatched] ounces white chocolate finely chopped
+  - no exact match in reference vocabulary
+- row 110 [unmatched] ounces whole milk ricotta cheese
+  - no exact match in reference vocabulary
+- row 1277 [unmatched] ounces yams peeled cubed
+  - no exact match in reference vocabulary
+- row 125 [unmatched] ounces ziti
+  - no exact match in reference vocabulary
+- row 486 [unmatched] oyster crackers
+  - no exact match in reference vocabulary
+- row 562 [unmatched] oz mozzarella cheese cut into thin slices
+  - no exact match in reference vocabulary
+- row 287 [unmatched] package cream cheese
+  - no exact match in reference vocabulary
+- row 513 [unmatched] package grimm s fine foods sausage bites such as mennonite style farmer sausage bites
+  - no exact match in reference vocabulary
+- row 36 [unmatched] package taco seasoning
+  - no exact match in reference vocabulary
+- row 715 [unmatched] packed brown sugar
+  - no exact match in reference vocabulary
+- row 98 [unmatched] packed fresh spinach finely chopped
+  - no exact match in reference vocabulary
+- row 859 [unmatched] packed light brown sugar
+  - no exact match in reference vocabulary
+- row 1390 [unmatched] packet active dry yeast
+  - no exact match in reference vocabulary
+- row 1084 [unmatched] packet dry onion soup mix
+  - no exact match in reference vocabulary
+- row 285 [unmatched] packet taco seasoning
+  - no exact match in reference vocabulary
+- row 197 [unmatched] palm oil olive oil
+  - no exact match in reference vocabulary
+- row 577 [unmatched] pancake mix
+  - no exact match in reference vocabulary
+- row 4 [unmatched] panko bread crumbs
+  - no exact match in reference vocabulary
+- row 2 [unmatched] panko breadcrumbs
+  - no exact match in reference vocabulary
+- row 311 [unmatched] panko breadcrumbs divided
+  - no exact match in reference vocabulary
+- row 1090 [unmatched] paper muffin liners
+  - no exact match in reference vocabulary
+- row 4 [unmatched] paprika
+  - no exact match in reference vocabulary
+- row 324 [unmatched] paprika for garnish
+  - no exact match in reference vocabulary
+- row 878 [unmatched] paprika taste
+  - no exact match in reference vocabulary
+- row 2 [unmatched] parchment
+  - no exact match in reference vocabulary
+- row 53 [unmatched] parmesan cheese
+  - no exact match in reference vocabulary
+- row 52 [matched] parsley
+  - exact match in reference vocabulary
+- row 15 [unmatched] parsley flakes
+  - no exact match in reference vocabulary
+- row 205 [unmatched] parsley flakes dried dill
+  - no exact match in reference vocabulary
+- row 43 [unmatched] parsley for garnish optional
+  - no exact match in reference vocabulary
+- row 1386 [unmatched] parsley root with greens peeled diced greens finely chopped
+  - no exact match in reference vocabulary
+- row 193 [unmatched] parsley thyme snipped chives
+  - no exact match in reference vocabulary
+- row 46 [unmatched] peach preserves
+  - no exact match in reference vocabulary
+- row 92 [unmatched] peanut butter
+  - no exact match in reference vocabulary
+- row 1184 [unmatched] peanut oil
+  - no exact match in reference vocabulary
+- row 556 [matched] peanuts
+  - exact match in reference vocabulary
+- row 1240 [unmatched] pearl barley
+  - no exact match in reference vocabulary
+- row 229 [unmatched] pearl onions
+  - no exact match in reference vocabulary
+- row 292 [unmatched] pears - peeled cored chopped
+  - no exact match in reference vocabulary
+- row 149 [unmatched] pecan pieces
+  - no exact match in reference vocabulary
+- row 635 [unmatched] pecans
+  - no exact match in reference vocabulary
+- row 419 [unmatched] pecorino romano cheese
+  - no exact match in reference vocabulary
+- row 1026 [unmatched] peeled chopped butternut squash
+  - no exact match in reference vocabulary
+- row 616 [unmatched] peeled seeded shredded cucumber
+  - no exact match in reference vocabulary
+- row 1355 [unmatched] peeled sliced peaches
+  - no exact match in reference vocabulary
+- row 130 [unmatched] pepper
+  - no exact match in reference vocabulary
+- row 44 [unmatched] pepper bell pepper
+  - no exact match in reference vocabulary
+- row 285 [unmatched] pepper jack cheese
+  - no exact match in reference vocabulary
+- row 286 [unmatched] pepper jalapeno stems seeds removed
+  - no exact match in reference vocabulary
+- row 864 [unmatched] pepper thinly sliced red yellow bell
+  - no exact match in reference vocabulary
+- row 219 [unmatched] peppercorns
+  - no exact match in reference vocabulary
+- row 67 [unmatched] pepperoncini
+  - no exact match in reference vocabulary
+- row 240 [unmatched] pepperoncini brine
+  - no exact match in reference vocabulary
+- row 989 [unmatched] pepperoncini pepper slices
+  - no exact match in reference vocabulary
+- row 240 [unmatched] pepperoncini peppers
+  - no exact match in reference vocabulary
+- row 183 [unmatched] pesto
+  - no exact match in reference vocabulary
+- row 298 [unmatched] pickle relish divided
+  - no exact match in reference vocabulary
+- row 298 [unmatched] pickle slices for garnish
+  - no exact match in reference vocabulary
+- row 1106 [unmatched] pickle spears
+  - no exact match in reference vocabulary
+- row 142 [unmatched] pickled ginger
+  - no exact match in reference vocabulary
+- row 919 [unmatched] pickled italian vegetables
+  - no exact match in reference vocabulary
+- row 285 [unmatched] pickled jalapeno slices
+  - no exact match in reference vocabulary
+- row 36 [unmatched] pickled jalapenos plus more for garnish if desired
+  - no exact match in reference vocabulary
+- row 714 [unmatched] pickling spice
+  - no exact match in reference vocabulary
+- row 229 [unmatched] pickling spice wrapped in cheesecloth
+  - no exact match in reference vocabulary
+- row 1372 [unmatched] pie crust dough pastry for a double-crust -inch pie
+  - no exact match in reference vocabulary
+- row 730 [unmatched] piece cheesecloth
+  - no exact match in reference vocabulary
+- row 57 [unmatched] piece flatbread
+  - no exact match in reference vocabulary
+- row 327 [unmatched] pieces imitation crab legs
+  - no exact match in reference vocabulary
+- row 5 [unmatched] pimento cheese spread
+  - no exact match in reference vocabulary
+- row 69 [unmatched] pimento-stuffed green olives
+  - no exact match in reference vocabulary
+- row 504 [unmatched] pimento-stuffed green olives chopped
+  - no exact match in reference vocabulary
+- row 367 [unmatched] pinch baking soda optional
+  - no exact match in reference vocabulary
+- row 141 [unmatched] pinch black pepper
+  - no exact match in reference vocabulary
+- row 968 [unmatched] pinch cayenne
+  - no exact match in reference vocabulary
+- row 123 [unmatched] pinch cayenne pepper
+  - no exact match in reference vocabulary
+- row 248 [unmatched] pinch cayenne pepper taste
+  - no exact match in reference vocabulary
+- row 386 [unmatched] pinch chopped fresh oregano
+  - no exact match in reference vocabulary
+- row 386 [unmatched] pinch chopped fresh parsley
+  - no exact match in reference vocabulary
+- row 386 [unmatched] pinch chopped fresh thyme
+  - no exact match in reference vocabulary
+- row 1151 [unmatched] pinch coarse sea salt
+  - no exact match in reference vocabulary
+- row 1181 [unmatched] pinch crushed red pepper taste
+  - no exact match in reference vocabulary
+- row 927 [unmatched] pinch dried marjoram
+  - no exact match in reference vocabulary
+- row 416 [unmatched] pinch dried oregano
+  - no exact match in reference vocabulary
+- row 500 [unmatched] pinch flaked sea salt
+  - no exact match in reference vocabulary
+- row 97 [unmatched] pinch freshly grated parmesan cheese
+  - no exact match in reference vocabulary
+- row 1186 [unmatched] pinch garlic powder
+  - no exact match in reference vocabulary
+- row 1058 [unmatched] pinch garlic powder taste
+  - no exact match in reference vocabulary
+- row 493 [unmatched] pinch garlic salt
+  - no exact match in reference vocabulary
+- row 1367 [unmatched] pinch grated lemon zest
+  - no exact match in reference vocabulary
+- row 375 [unmatched] pinch grated parmesan cheese taste
+  - no exact match in reference vocabulary
+- row 228 [unmatched] pinch ground black pepper
+  - no exact match in reference vocabulary
+- row 375 [unmatched] pinch ground black pepper taste
+  - no exact match in reference vocabulary
+- row 352 [unmatched] pinch ground cayenne pepper
+  - no exact match in reference vocabulary
+- row 927 [unmatched] pinch ground cinnamon
+  - no exact match in reference vocabulary
+- row 908 [unmatched] pinch ground cloves
+  - no exact match in reference vocabulary
+- row 662 [unmatched] pinch ground coriander
+  - no exact match in reference vocabulary
+- row 927 [unmatched] pinch ground cumin
+  - no exact match in reference vocabulary
+- row 105 [unmatched] pinch ground nutmeg
+  - no exact match in reference vocabulary
+- row 927 [unmatched] pinch ground thyme
+  - no exact match in reference vocabulary
+- row 461 [unmatched] pinch ground white pepper
+  - no exact match in reference vocabulary
+- row 75 [unmatched] pinch kosher salt
+  - no exact match in reference vocabulary
+- row 1058 [unmatched] pinch montreal steak seasoning taste
+  - no exact match in reference vocabulary
+- row 1187 [unmatched] pinch onion powder
+  - no exact match in reference vocabulary
+- row 276 [unmatched] pinch paprika
+  - no exact match in reference vocabulary
+- row 347 [unmatched] pinch paprika for garnish
+  - no exact match in reference vocabulary
+- row 123 [unmatched] pinch red chili flakes
+  - no exact match in reference vocabulary
+- row 462 [unmatched] pinch red pepper flakes
+  - no exact match in reference vocabulary
+- row 1179 [unmatched] pinch red pepper flakes taste
+  - no exact match in reference vocabulary
+- row 309 [unmatched] pinch red pepper flakes taste optional
+  - no exact match in reference vocabulary
+- row 54 [unmatched] pinch salt
+  - no exact match in reference vocabulary
+- row 174 [unmatched] pinch salt freshly ground black pepper
+  - no exact match in reference vocabulary
+- row 566 [unmatched] pinch salt ground black pepper taste
+  - no exact match in reference vocabulary
+- row 1044 [unmatched] pinch salt pepper taste
+  - no exact match in reference vocabulary
+- row 137 [unmatched] pinch salt plus more taste
+  - no exact match in reference vocabulary
+- row 584 [unmatched] pinch salt taste
+  - no exact match in reference vocabulary
+- row 353 [unmatched] pinch sea salt
+  - no exact match in reference vocabulary
+- row 523 [unmatched] pinch spanish paprika
+  - no exact match in reference vocabulary
+- row 141 [unmatched] pinch sugar
+  - no exact match in reference vocabulary
+- row 1393 [unmatched] pinch white sugar
+  - no exact match in reference vocabulary
+- row 550 [unmatched] pinches garlic powder taste
+  - no exact match in reference vocabulary
+- row 386 [unmatched] pinches herbes de provence
+  - no exact match in reference vocabulary
+- row 39 [unmatched] pine nuts
+  - no exact match in reference vocabulary
+- row 189 [unmatched] pine nuts toasted see note
+  - no exact match in reference vocabulary
+- row 56 [unmatched] pineapple juice
+  - no exact match in reference vocabulary
+- row 56 [unmatched] pineapple pieces
+  - no exact match in reference vocabulary
+- row 914 [unmatched] pink himalayan salt taste
+  - no exact match in reference vocabulary
+- row 714 [unmatched] pint canning jars with lids rings
+  - no exact match in reference vocabulary
+- row 1050 [unmatched] pint cherry tomatoes
+  - no exact match in reference vocabulary
+- row 1373 [unmatched] pint fresh blueberries
+  - no exact match in reference vocabulary
+- row 1373 [unmatched] pint fresh strawberries sliced
+  - no exact match in reference vocabulary
+- row 138 [unmatched] pint grape tomatoes
+  - no exact match in reference vocabulary
+- row 233 [unmatched] pints cherry tomatoes
+  - no exact match in reference vocabulary
+- row 278 [unmatched] pistachio cream
+  - no exact match in reference vocabulary
+- row 105 [unmatched] pistachios
+  - no exact match in reference vocabulary
+- row 70 [unmatched] pistachios divided
+  - no exact match in reference vocabulary
+- row 484 [unmatched] pita bread pockets
+  - no exact match in reference vocabulary
+- row 1157 [unmatched] pita bread rounds
+  - no exact match in reference vocabulary
+- row 252 [unmatched] pita chips
+  - no exact match in reference vocabulary
+- row 515 [unmatched] pita chips more taste
+  - no exact match in reference vocabulary
+- row 989 [unmatched] pitas
+  - no exact match in reference vocabulary
+- row 1361 [unmatched] pitted cherries
+  - no exact match in reference vocabulary
+- row 806 [unmatched] pitted chopped dates taste
+  - no exact match in reference vocabulary
+- row 858 [unmatched] pitted deglet noor dates
+  - no exact match in reference vocabulary
+- row 229 [unmatched] pitted green olives
+  - no exact match in reference vocabulary
+- row 1467 [unmatched] pitted kalamata olives
+  - no exact match in reference vocabulary
+- row 167 [unmatched] pitted kalamata olives halved more taste
+  - no exact match in reference vocabulary
+- row 810 [unmatched] pitted medjool dates cut into small pieces
+  - no exact match in reference vocabulary
+- row 78 [unmatched] pizza dough
+  - no exact match in reference vocabulary
+- row 133 [unmatched] pizza seasoning
+  - no exact match in reference vocabulary
+- row 956 [unmatched] plain full fat yogurt
+  - no exact match in reference vocabulary
+- row 79 [unmatched] plain greek yogurt
+  - no exact match in reference vocabulary
+- row 21 [unmatched] plain panko bread crumbs
+  - no exact match in reference vocabulary
+- row 579 [unmatched] plain panko breadcrumbs divided
+  - no exact match in reference vocabulary
+- row 80 [unmatched] plain whole milk greek yogurt
+  - no exact match in reference vocabulary
+- row 95 [unmatched] plain whole milk greek yogurt as needed
+  - no exact match in reference vocabulary
+- row 703 [unmatched] plain whole milk yogurt
+  - no exact match in reference vocabulary
+- row 745 [unmatched] plain whole-milk greek yogurt
+  - no exact match in reference vocabulary
+- row 237 [unmatched] plain whole-milk greek-style yogurt
+  - no exact match in reference vocabulary
+- row 361 [unmatched] plain yogurt
+  - no exact match in reference vocabulary
+- row 458 [unmatched] plum tomatoes diced
+  - no exact match in reference vocabulary
+- row 498 [unmatched] plum tomatoes seeded chopped
+  - no exact match in reference vocabulary
+- row 79 [matched] plums
+  - exact match in reference vocabulary
+- row 102 [unmatched] plus all-purpose flour
+  - no exact match in reference vocabulary
+- row 177 [unmatched] plus olive oil
+  - no exact match in reference vocabulary
+- row 896 [unmatched] plus tapioca starch
+  - no exact match in reference vocabulary
+- row 864 [unmatched] poblano pepper green bell pepper thinly sliced
+  - no exact match in reference vocabulary
+- row 877 [unmatched] poblano pepper seeds removed sliced divided
+  - no exact match in reference vocabulary
+- row 637 [unmatched] popped popcorn
+  - no exact match in reference vocabulary
+- row 80 [unmatched] poppy seeds
+  - no exact match in reference vocabulary
+- row 1170 [unmatched] potato diced
+  - no exact match in reference vocabulary
+- row 524 [unmatched] potato peeled cubed
+  - no exact match in reference vocabulary
+- row 910 [unmatched] potato starch
+  - no exact match in reference vocabulary
+- row 1264 [unmatched] potatoes cubed
+  - no exact match in reference vocabulary
+- row 1246 [unmatched] potatoes cut into bite-sized pieces
+  - no exact match in reference vocabulary
+- row 906 [unmatched] potatoes diced
+  - no exact match in reference vocabulary
+- row 531 [unmatched] potatoes peeled cubed
+  - no exact match in reference vocabulary
+- row 892 [unmatched] potatoes peeled cut into -inch cubes
+  - no exact match in reference vocabulary
+- row 1127 [unmatched] potatoes peeled cut into chunks
+  - no exact match in reference vocabulary
+- row 942 [unmatched] potatoes peeled diced
+  - no exact match in reference vocabulary
+- row 1258 [unmatched] potatoes peeled quartered
+  - no exact match in reference vocabulary
+- row 1380 [unmatched] potatoes quartered
+  - no exact match in reference vocabulary
+- row 941 [unmatched] pound -inch-thick porterhouse steak at room temperature
+  - no exact match in reference vocabulary
+- row 208 [unmatched] pound andouille smoked sausage
+  - no exact match in reference vocabulary
+- row 66 [unmatched] pound asparagus
+  - no exact match in reference vocabulary
+- row 400 [unmatched] pound assorted wild mushrooms sliced
+  - no exact match in reference vocabulary
+- row 171 [unmatched] pound baby carrots
+  - no exact match in reference vocabulary
+- row 915 [unmatched] pound beef brisket
+  - no exact match in reference vocabulary
+- row 932 [unmatched] pound beef chuck
+  - no exact match in reference vocabulary
+- row 923 [unmatched] pound beef chuck cut into -inch cubes
+  - no exact match in reference vocabulary
+- row 920 [unmatched] pound beef chuck roast cut into -inch cubes
+  - no exact match in reference vocabulary
+- row 925 [unmatched] pound beef chuck roast cut into chunks
+  - no exact match in reference vocabulary
+- row 930 [unmatched] pound beef chuck roast trimmed cut into pieces
+  - no exact match in reference vocabulary
+- row 1013 [unmatched] pound beef cube steaks
+  - no exact match in reference vocabulary
+- row 1247 [unmatched] pound beef pot roast
+  - no exact match in reference vocabulary
+- row 903 [unmatched] pound beef prime rib roast at room temperature
+  - no exact match in reference vocabulary
+- row 1153 [unmatched] pound beef rib-eye steak thinly sliced
+  - no exact match in reference vocabulary
+- row 1177 [unmatched] pound beef round steak cut into thin strips
+  - no exact match in reference vocabulary
+- row 1184 [unmatched] pound beef sirloin steak sliced thinly across the grain
+  - no exact match in reference vocabulary
+- row 1074 [unmatched] pound beef stew meat
+  - no exact match in reference vocabulary
+- row 966 [unmatched] pound beef tenderloin
+  - no exact match in reference vocabulary
+- row 965 [unmatched] pound beef tenderloin roasts trimmed
+  - no exact match in reference vocabulary
+- row 886 [unmatched] pound beef tips
+  - no exact match in reference vocabulary
+- row 1307 [unmatched] pound beef top round steak cut into -inch strips
+  - no exact match in reference vocabulary
+- row 1098 [unmatched] pound beef top sirloin steaks
+  - no exact match in reference vocabulary
+- row 1158 [unmatched] pound beef top sirloin thinly sliced
+  - no exact match in reference vocabulary
+- row 139 [unmatched] pound beets peeled cut into -inch pieces
+  - no exact match in reference vocabulary
+- row 1382 [unmatched] pound beets peeled shredded
+  - no exact match in reference vocabulary
+- row 922 [unmatched] pound bone-in beef pot roast
+  - no exact match in reference vocabulary
+- row 904 [unmatched] pound bone-in prime rib trimmed retied the bone
+  - no exact match in reference vocabulary
+- row 933 [unmatched] pound boneless beef chuck roast
+  - no exact match in reference vocabulary
+- row 1305 [unmatched] pound boneless beef sirloin steak beef top round steak
+  - no exact match in reference vocabulary
+- row 303 [unmatched] pound boneless chicken breast tenderloins skinless boneless chicken breasts cut into -inch thick strips
+  - no exact match in reference vocabulary
+- row 901 [unmatched] pound boneless prime rib roast
+  - no exact match in reference vocabulary
+- row 313 [unmatched] pound boneless skinless salmon fillets
+  - no exact match in reference vocabulary
+- row 341 [unmatched] pound bulk hot italian sausage
+  - no exact match in reference vocabulary
+- row 177 [unmatched] pound bunch carrots
+  - no exact match in reference vocabulary
+- row 162 [unmatched] pound campari tomatoes seeded minced
+  - no exact match in reference vocabulary
+- row 174 [unmatched] pound carrots
+  - no exact match in reference vocabulary
+- row 964 [unmatched] pound center-cut beef tenderloin roast
+  - no exact match in reference vocabulary
+- row 992 [unmatched] pound cheese tortellini
+  - no exact match in reference vocabulary
+- row 898 [unmatched] pound chicken apple sausage sliced
+  - no exact match in reference vocabulary
+- row 945 [unmatched] pound choice prime porterhouse steak
+  - no exact match in reference vocabulary
+- row 931 [unmatched] pound chuck roast
+  - no exact match in reference vocabulary
+- row 1222 [unmatched] pound chuck roast more taste
+  - no exact match in reference vocabulary
+- row 896 [unmatched] pound coleslaw mix
+  - no exact match in reference vocabulary
+- row 581 [unmatched] pound cooked crabmeat
+  - no exact match in reference vocabulary
+- row 577 [unmatched] pound cooked crabmeat flaked
+  - no exact match in reference vocabulary
+- row 223 [unmatched] pound cooked cubed chicken breast
+  - no exact match in reference vocabulary
+- row 582 [unmatched] pound cooked jumbo lump crabmeat drained picked over for shells
+  - no exact match in reference vocabulary
+- row 917 [unmatched] pound corned beef brisket with spice packet
+  - no exact match in reference vocabulary
+- row 585 [unmatched] pound crabmeat
+  - no exact match in reference vocabulary
+- row 321 [unmatched] pound crabmeat shredded
+  - no exact match in reference vocabulary
+- row 1229 [unmatched] pound cubed beef stew meat
+  - no exact match in reference vocabulary
+- row 1244 [unmatched] pound cubed beef stew meat optional
+  - no exact match in reference vocabulary
+- row 1264 [unmatched] pound cubed beef stew meat trimmed
+  - no exact match in reference vocabulary
+- row 64 [unmatched] pound deli roast beef
+  - no exact match in reference vocabulary
+- row 276 [unmatched] pound eggplant
+  - no exact match in reference vocabulary
+- row 1130 [unmatched] pound extra-lean ground beef
+  - no exact match in reference vocabulary
+- row 1056 [unmatched] pound flank steak round steak
+  - no exact match in reference vocabulary
+- row 19 [unmatched] pound fresh asparagus trimmed
+  - no exact match in reference vocabulary
+- row 586 [unmatched] pound fresh crabmeat
+  - no exact match in reference vocabulary
+- row 587 [unmatched] pound fresh crabmeat well picked over
+  - no exact match in reference vocabulary
+- row 18 [unmatched] pound fresh green beans ends trimmed
+  - no exact match in reference vocabulary
+- row 946 [unmatched] pound fresh lump crabmeat
+  - no exact match in reference vocabulary
+- row 498 [unmatched] pound fresh mozzarella cheese sliced
+  - no exact match in reference vocabulary
+- row 319 [unmatched] pound fresh mushrooms
+  - no exact match in reference vocabulary
+- row 330 [unmatched] pound fresh shrimp peeled deveined finely minced
+  - no exact match in reference vocabulary
+- row 618 [unmatched] pound fresh strawberries
+  - no exact match in reference vocabulary
+- row 417 [unmatched] pound frozen chicken wing sections thawed
+  - no exact match in reference vocabulary
+- row 57 [unmatched] pound frozen spinach
+  - no exact match in reference vocabulary
+- row 995 [unmatched] pound fusilli pasta
+  - no exact match in reference vocabulary
+- row 898 [unmatched] pound green beans fresh
+  - no exact match in reference vocabulary
+- row 53 [unmatched] pound ground beef
+  - no exact match in reference vocabulary
+- row 130 [unmatched] pound ground beef fat higher preferred
+  - no exact match in reference vocabulary
+- row 1133 [unmatched] pound ground beef sirloin
+  - no exact match in reference vocabulary
+- row 50 [unmatched] pound ground chicken
+  - no exact match in reference vocabulary
+- row 999 [unmatched] pound ground chuck
+  - no exact match in reference vocabulary
+- row 1115 [unmatched] pound ground chuck beef lean
+  - no exact match in reference vocabulary
+- row 547 [unmatched] pound ground lamb
+  - no exact match in reference vocabulary
+- row 1218 [unmatched] pound ground sausage
+  - no exact match in reference vocabulary
+- row 994 [unmatched] pound ground sirloin
+  - no exact match in reference vocabulary
+- row 43 [unmatched] pound ground turkey
+  - no exact match in reference vocabulary
+- row 1024 [unmatched] pound ground veal
+  - no exact match in reference vocabulary
+- row 184 [unmatched] pound head cauliflower
+  - no exact match in reference vocabulary
+- row 584 [unmatched] pound imitation crabmeat flaked chopped
+  - no exact match in reference vocabulary
+- row 996 [unmatched] pound italian sausage
+  - no exact match in reference vocabulary
+- row 1116 [unmatched] pound italian sausage hot sweet
+  - no exact match in reference vocabulary
+- row 31 [unmatched] pound jalapeno peppers halved seeded
+  - no exact match in reference vocabulary
+- row 580 [unmatched] pound jumbo lump crabmeat
+  - no exact match in reference vocabulary
+- row 325 [unmatched] pound jumbo shrimp peeled deveined
+  - no exact match in reference vocabulary
+- row 680 [unmatched] pound large mushrooms
+  - no exact match in reference vocabulary
+- row 599 [unmatched] pound large shrimp peeled deveined
+  - no exact match in reference vocabulary
+- row 1171 [unmatched] pound lean at least ground beef
+  - no exact match in reference vocabulary
+- row 1274 [unmatched] pound lean beef chuck trimmed cut into inch cubes
+  - no exact match in reference vocabulary
+- row 71 [unmatched] pound lean ground beef
+  - no exact match in reference vocabulary
+- row 1164 [unmatched] pound lean ground beef lamb
+  - no exact match in reference vocabulary
+- row 44 [unmatched] pound lean ground turkey
+  - no exact match in reference vocabulary
+- row 1021 [unmatched] pound lean ground veal
+  - no exact match in reference vocabulary
+- row 504 [unmatched] pound loaf cocktail rye bread
+  - no exact match in reference vocabulary
+- row 462 [unmatched] pound loaf french italian-style bread
+  - no exact match in reference vocabulary
+- row 434 [unmatched] pound loaf italian bread
+  - no exact match in reference vocabulary
+- row 453 [unmatched] pound loaf italian bread cut into inch slices
+  - no exact match in reference vocabulary
+- row 695 [unmatched] pound loaf processed cheese food such as velveeta cut into cubes
+  - no exact match in reference vocabulary
+- row 1037 [unmatched] pound loaf rye bread
+  - no exact match in reference vocabulary
+- row 497 [unmatched] pound loaf thinly sliced white bread
+  - no exact match in reference vocabulary
+- row 1172 [unmatched] pound loaves frozen bread dough thawed
+  - no exact match in reference vocabulary
+- row 322 [unmatched] pound lump crab meat
+  - no exact match in reference vocabulary
+- row 576 [unmatched] pound lump crabmeat picked free shell
+  - no exact match in reference vocabulary
+- row 657 [unmatched] pound medium button mini-bella mushrooms
+  - no exact match in reference vocabulary
+- row 702 [unmatched] pound mesquite wood chips soaked in water
+  - no exact match in reference vocabulary
+- row 171 [unmatched] pound mushrooms
+  - no exact match in reference vocabulary
+- row 913 [unmatched] pound new york strip steaks inch thick
+  - no exact match in reference vocabulary
+- row 72 [unmatched] pound ounces lean ground beef
+  - no exact match in reference vocabulary
+- row 135 [unmatched] pound package bone-in skin-on chicken thighs
+  - no exact match in reference vocabulary
+- row 528 [unmatched] pound peeled deveined medium shrimp
+  - no exact match in reference vocabulary
+- row 706 [unmatched] pound persian cucumbers thinly sliced
+  - no exact match in reference vocabulary
+- row 802 [unmatched] pound pitted dates
+  - no exact match in reference vocabulary
+- row 193 [unmatched] pound portobello cremini mushrooms
+  - no exact match in reference vocabulary
+- row 683 [unmatched] pound portobello mushrooms
+  - no exact match in reference vocabulary
+- row 1009 [unmatched] pound potatoes
+  - no exact match in reference vocabulary
+- row 918 [unmatched] pound prepared coleslaw
+  - no exact match in reference vocabulary
+- row 1039 [unmatched] pound processed cheese food cubed
+  - no exact match in reference vocabulary
+- row 896 [unmatched] pound purple cabbage
+  - no exact match in reference vocabulary
+- row 898 [unmatched] pound red potatoes
+  - no exact match in reference vocabulary
+- row 1051 [unmatched] pound rib-eye steaks
+  - no exact match in reference vocabulary
+- row 819 [unmatched] pound ricotta cheese
+  - no exact match in reference vocabulary
+- row 920 [unmatched] pound rigatoni
+  - no exact match in reference vocabulary
+- row 1146 [unmatched] pound rump roast
+  - no exact match in reference vocabulary
+- row 22 [unmatched] pound russet potatoes peeled cut into -inch cubes
+  - no exact match in reference vocabulary
+- row 126 [unmatched] pound salmon
+  - no exact match in reference vocabulary
+- row 1039 [unmatched] pound sausage
+  - no exact match in reference vocabulary
+- row 314 [unmatched] pound sea bass cut into -inch cubes
+  - no exact match in reference vocabulary
+- row 215 [unmatched] pound shrimp peeled deveined
+  - no exact match in reference vocabulary
+- row 1009 [unmatched] pound sirloin steak
+  - no exact match in reference vocabulary
+- row 1003 [unmatched] pound sirloin steak sliced -inch thick across the grain
+  - no exact match in reference vocabulary
+- row 953 [unmatched] pound sirloin tip roast
+  - no exact match in reference vocabulary
+- row 41 [unmatched] pound skinless boneless chicken breasts
+  - no exact match in reference vocabulary
+- row 473 [unmatched] pound small heirloom tomatoes halved
+  - no exact match in reference vocabulary
+- row 905 [unmatched] pound smoked beef sausage cut into bite-size pieces
+  - no exact match in reference vocabulary
+- row 158 [unmatched] pound spaghetti
+  - no exact match in reference vocabulary
+- row 20 [unmatched] pound spaghetti squash
+  - no exact match in reference vocabulary
+- row 418 [unmatched] pound tomatillos husked
+  - no exact match in reference vocabulary
+- row 1126 [unmatched] pound tomatoes coarsely chopped
+  - no exact match in reference vocabulary
+- row 1182 [unmatched] pound top round steak thinly sliced
+  - no exact match in reference vocabulary
+- row 952 [unmatched] pound top-sirloin steak trimmed
+  - no exact match in reference vocabulary
+- row 1017 [unmatched] pound veal scallopini cut
+  - no exact match in reference vocabulary
+- row 157 [unmatched] pound watermelon cut into -inch cubes chilled
+  - no exact match in reference vocabulary
+- row 897 [unmatched] pound white fish fillets
+  - no exact match in reference vocabulary
+- row 955 [unmatched] pound whole beef tenderloin
+  - no exact match in reference vocabulary
+- row 1175 [unmatched] pound yellow onions chopped
+  - no exact match in reference vocabulary
+- row 481 [unmatched] pound yukon gold potatoes
+  - no exact match in reference vocabulary
+- row 171 [unmatched] pound zucchini
+  - no exact match in reference vocabulary
+- row 708 [unmatched] pounds - -inch cucumbers cut into -inch slices
+  - no exact match in reference vocabulary
+- row 730 [unmatched] pounds apples - peeled cored quartered
+  - no exact match in reference vocabulary
+- row 731 [unmatched] pounds apples cored sliced
+  - no exact match in reference vocabulary
+- row 218 [unmatched] pounds asparagus spears trimmed cut into inch pieces
+  - no exact match in reference vocabulary
+- row 171 [unmatched] pounds baby red potatoes
+  - no exact match in reference vocabulary
+- row 1189 [unmatched] pounds baking potatoes
+  - no exact match in reference vocabulary
+- row 877 [unmatched] pounds beef brisket flat cut fat trimmed
+  - no exact match in reference vocabulary
+- row 863 [unmatched] pounds beef chuck
+  - no exact match in reference vocabulary
+- row 1244 [unmatched] pounds beef oxtail cut into pieces
+  - no exact match in reference vocabulary
+- row 1178 [unmatched] pounds beef round steak cut into thin strips
+  - no exact match in reference vocabulary
+- row 911 [unmatched] pounds beef short ribs
+  - no exact match in reference vocabulary
+- row 1050 [unmatched] pounds beef sirloin steak cut into ½ inch cubes
+  - no exact match in reference vocabulary
+- row 1378 [unmatched] pounds beef soup bones
+  - no exact match in reference vocabulary
+- row 1275 [unmatched] pounds beef stew meat cut into -inch cubes
+  - no exact match in reference vocabulary
+- row 1250 [unmatched] pounds beef stew meat trimmed cut into -inch cubes
+  - no exact match in reference vocabulary
+- row 940 [unmatched] pounds beef tenderloin at room temperature
+  - no exact match in reference vocabulary
+- row 942 [unmatched] pounds beef tenderloin steaks diced
+  - no exact match in reference vocabulary
+- row 948 [unmatched] pounds beef tenderloin trimmed cut into chunks
+  - no exact match in reference vocabulary
+- row 951 [unmatched] pounds beef top sirloin
+  - no exact match in reference vocabulary
+- row 1034 [unmatched] pounds beef top sirloin trimmed
+  - no exact match in reference vocabulary
+- row 1277 [unmatched] pounds beef tripe trimmed fat cut into cubes
+  - no exact match in reference vocabulary
+- row 134 [unmatched] pounds bite-sized potatoes
+  - no exact match in reference vocabulary
+- row 1245 [unmatched] pounds bone-in beef shank
+  - no exact match in reference vocabulary
+- row 912 [unmatched] pounds bone-in beef short ribs
+  - no exact match in reference vocabulary
+- row 1381 [unmatched] pounds bone-in chicken pieces
+  - no exact match in reference vocabulary
+- row 936 [unmatched] pounds boneless beef chuck cut into --inch pieces
+  - no exact match in reference vocabulary
+- row 935 [unmatched] pounds boneless beef chuck cut into -inch cubes
+  - no exact match in reference vocabulary
+- row 1204 [unmatched] pounds boneless beef chuck roast - cut into inch cubes
+  - no exact match in reference vocabulary
+- row 926 [unmatched] pounds boneless beef chuck roast trimmed fat
+  - no exact match in reference vocabulary
+- row 908 [unmatched] pounds boneless beef short ribs trimmed cut into -inch pieces
+  - no exact match in reference vocabulary
+- row 205 [unmatched] pounds chicken breast
+  - no exact match in reference vocabulary
+- row 26 [unmatched] pounds chicken breast tenders
+  - no exact match in reference vocabulary
+- row 15 [unmatched] pounds chicken tenderloins cut into nugget size
+  - no exact match in reference vocabulary
+- row 698 [unmatched] pounds chicken wings
+  - no exact match in reference vocabulary
+- row 869 [unmatched] pounds chuck roast
+  - no exact match in reference vocabulary
+- row 197 [unmatched] pounds cod filets other firm white fish
+  - no exact match in reference vocabulary
+- row 871 [unmatched] pounds cube steak
+  - no exact match in reference vocabulary
+- row 1083 [unmatched] pounds cubed beef stew meat
+  - no exact match in reference vocabulary
+- row 1128 [unmatched] pounds extra-lean ground beef
+  - no exact match in reference vocabulary
+- row 1015 [unmatched] pounds flank steak
+  - no exact match in reference vocabulary
+- row 650 [unmatched] pounds fresh mushrooms-stems removed chopped reserved
+  - no exact match in reference vocabulary
+- row 345 [unmatched] pounds gold potatoes
+  - no exact match in reference vocabulary
+- row 715 [unmatched] pounds granny smith other tart apples
+  - no exact match in reference vocabulary
+- row 882 [unmatched] pounds green cabbage
+  - no exact match in reference vocabulary
+- row 395 [unmatched] pounds ground beef
+  - no exact match in reference vocabulary
+- row 895 [unmatched] pounds ground chuck
+  - no exact match in reference vocabulary
+- row 995 [unmatched] pounds ground round
+  - no exact match in reference vocabulary
+- row 1022 [unmatched] pounds ground veal
+  - no exact match in reference vocabulary
+- row 715 [unmatched] pounds jonathan other sweet cooking apples
+  - no exact match in reference vocabulary
+- row 326 [unmatched] pounds large shrimp peeled deveined with tails attached
+  - no exact match in reference vocabulary
+- row 909 [unmatched] pounds lean beef short ribs cut into -inch pieces
+  - no exact match in reference vocabulary
+- row 565 [unmatched] pounds lean ground beef
+  - no exact match in reference vocabulary
+- row 1012 [unmatched] pounds new york strip steak sliced thin
+  - no exact match in reference vocabulary
+- row 1344 [unmatched] pounds onions chopped
+  - no exact match in reference vocabulary
+- row 708 [unmatched] pounds onions thinly sliced
+  - no exact match in reference vocabulary
+- row 884 [unmatched] pounds oxtail
+  - no exact match in reference vocabulary
+- row 1253 [unmatched] pounds oxtails
+  - no exact match in reference vocabulary
+- row 707 [unmatched] pounds pickling cucumbers sliced
+  - no exact match in reference vocabulary
+- row 188 [unmatched] pounds red potatoes
+  - no exact match in reference vocabulary
+- row 215 [unmatched] pounds red potatoes chopped
+  - no exact match in reference vocabulary
+- row 1002 [unmatched] pounds round rump steak
+  - no exact match in reference vocabulary
+- row 1151 [unmatched] pounds round steak thinly sliced
+  - no exact match in reference vocabulary
+- row 870 [unmatched] pounds russet potatoes
+  - no exact match in reference vocabulary
+- row 1014 [unmatched] pounds sirloin steak tips
+  - no exact match in reference vocabulary
+- row 1179 [unmatched] pounds sirloin tip thinly sliced
+  - no exact match in reference vocabulary
+- row 4 [unmatched] pounds skinless boneless chicken thighs
+  - no exact match in reference vocabulary
+- row 900 [unmatched] pounds skinless boneless chicken thighs cut in half
+  - no exact match in reference vocabulary
+- row 1209 [unmatched] pounds steak - cut into inch cubes
+  - no exact match in reference vocabulary
+- row 187 [unmatched] pounds sweet potatoes
+  - no exact match in reference vocabulary
+- row 419 [unmatched] pounds talian chicken sausage
+  - no exact match in reference vocabulary
+- row 956 [unmatched] pounds tenderloin
+  - no exact match in reference vocabulary
+- row 1344 [unmatched] pounds tomatoes chopped
+  - no exact match in reference vocabulary
+- row 1018 [unmatched] pounds veal bones joint marrow bones
+  - no exact match in reference vocabulary
+- row 1020 [unmatched] pounds veal breast
+  - no exact match in reference vocabulary
+- row 1166 [unmatched] pounds yukon gold potatoes
+  - no exact match in reference vocabulary
+- row 774 [unmatched] powdered stevia baking blend
+  - no exact match in reference vocabulary
+- row 634 [unmatched] powdered sugar
+  - no exact match in reference vocabulary
+- row 896 [unmatched] prepared guacamole as needed
+  - no exact match in reference vocabulary
+- row 182 [unmatched] prepared horseradish
+  - no exact match in reference vocabulary
+- row 159 [unmatched] prepared mustard
+  - no exact match in reference vocabulary
+- row 1354 [unmatched] prepared pastry for a -inch double-crust pie
+  - no exact match in reference vocabulary
+- row 544 [unmatched] prepared stuffing
+  - no exact match in reference vocabulary
+- row 1024 [unmatched] prepared tomato sauce
+  - no exact match in reference vocabulary
+- row 346 [unmatched] prepared yellow mustard
+  - no exact match in reference vocabulary
+- row 478 [unmatched] pretzel twists
+  - no exact match in reference vocabulary
+- row 793 [unmatched] pretzels
+  - no exact match in reference vocabulary
+- row 864 [unmatched] provolone cheese divided
+  - no exact match in reference vocabulary
+- row 1213 [unmatched] pumpkin pie spice
+  - no exact match in reference vocabulary
+- row 770 [unmatched] pumpkin puree
+  - no exact match in reference vocabulary
+- row 773 [unmatched] pumpkin purée
+  - no exact match in reference vocabulary
+- row 1368 [unmatched] pure maple syrup
+  - no exact match in reference vocabulary
+- row 803 [unmatched] pureed dates
+  - no exact match in reference vocabulary
+- row 1370 [unmatched] quart fresh blueberries
+  - no exact match in reference vocabulary
+- row 278 [unmatched] quart fresh strawberries
+  - no exact match in reference vocabulary
+- row 352 [unmatched] quart oil for deep frying
+  - no exact match in reference vocabulary
+- row 395 [unmatched] quart oil for frying as needed
+  - no exact match in reference vocabulary
+- row 1344 [unmatched] quart sterilized canning jars with lids rings
+  - no exact match in reference vocabulary
+- row 1254 [unmatched] quart tomato juice
+  - no exact match in reference vocabulary
+- row 598 [unmatched] quart vegetable oil for frying
+  - no exact match in reference vocabulary
+- row 656 [unmatched] quart vegetable oil for frying as needed
+  - no exact match in reference vocabulary
+- row 1275 [unmatched] quartered fresh mushrooms
+  - no exact match in reference vocabulary
+- row 1277 [unmatched] quarts beef stock divided
+  - no exact match in reference vocabulary
+- row 289 [unmatched] quarts chicken broth divided
+  - no exact match in reference vocabulary
+- row 1018 [unmatched] quarts cold water
+  - no exact match in reference vocabulary
+- row 585 [unmatched] quarts vegetable oil for frying
+  - no exact match in reference vocabulary
+- row 710 [unmatched] quarts water
+  - no exact match in reference vocabulary
+- row 1258 [unmatched] quarts water as needed
+  - no exact match in reference vocabulary
+- row 1378 [unmatched] quarts water more as needed
+  - no exact match in reference vocabulary
+- row 92 [unmatched] quick oats
+  - no exact match in reference vocabulary
+- row 807 [unmatched] quick-cooking oats
+  - no exact match in reference vocabulary
+- row 804 [unmatched] quick-cooking rolled oats
+  - no exact match in reference vocabulary
+- row 1354 [unmatched] quick-cooking tapioca
+  - no exact match in reference vocabulary
+- row 1425 [unmatched] quick-rise yeast
+  - no exact match in reference vocabulary
+- row 147 [unmatched] quinoa
+  - no exact match in reference vocabulary
+- row 231 [matched] raisins
+  - exact match in reference vocabulary
+- row 892 [unmatched] raisins chopped optional
+  - no exact match in reference vocabulary
+- row 151 [unmatched] ranch dressing
+  - no exact match in reference vocabulary
+- row 343 [unmatched] ranch dressing for dipping optional
+  - no exact match in reference vocabulary
+- row 334 [unmatched] ranch dressing for serving
+  - no exact match in reference vocabulary
+- row 404 [unmatched] raw almonds
+  - no exact match in reference vocabulary
+- row 968 [unmatched] raw basmati other long grain white rice
+  - no exact match in reference vocabulary
+- row 406 [unmatched] raw whole pumpkin seeds washed dried
+  - no exact match in reference vocabulary
+- row 1366 [unmatched] ready- -use refrigerated pie crust
+  - no exact match in reference vocabulary
+- row 724 [unmatched] recipe pastry for a inch double crust pie
+  - no exact match in reference vocabulary
+- row 1170 [unmatched] recipe pastry for a inch single crust pie
+  - no exact match in reference vocabulary
+- row 126 [unmatched] red bell pepper
+  - no exact match in reference vocabulary
+- row 351 [unmatched] red bell pepper - cored seeded finely chopped
+  - no exact match in reference vocabulary
+- row 234 [unmatched] red bell pepper chopped
+  - no exact match in reference vocabulary
+- row 1042 [unmatched] red bell pepper cut into chunks
+  - no exact match in reference vocabulary
+- row 350 [unmatched] red bell pepper seeded chopped
+  - no exact match in reference vocabulary
+- row 212 [unmatched] red bell pepper seeded cut into strips
+  - no exact match in reference vocabulary
+- row 531 [unmatched] red bell pepper seeded diced
+  - no exact match in reference vocabulary
+- row 196 [unmatched] red bell pepper sliced
+  - no exact match in reference vocabulary
+- row 525 [unmatched] red bell pepper thinly sliced
+  - no exact match in reference vocabulary
+- row 182 [unmatched] red bell peppers
+  - no exact match in reference vocabulary
+- row 520 [unmatched] red bell peppers halved seeded
+  - no exact match in reference vocabulary
+- row 1211 [unmatched] red bell peppers seeded chopped
+  - no exact match in reference vocabulary
+- row 1023 [unmatched] red bell peppers sliced
+  - no exact match in reference vocabulary
+- row 231 [unmatched] red bell peppers thinly sliced
+  - no exact match in reference vocabulary
+- row 1181 [unmatched] red bell peppers thinly sliced into bite-sized strips
+  - no exact match in reference vocabulary
+- row 72 [unmatched] red chili flakes optional
+  - no exact match in reference vocabulary
+- row 290 [unmatched] red green grapes
+  - no exact match in reference vocabulary
+- row 644 [unmatched] red jalapeno peppers
+  - no exact match in reference vocabulary
+- row 707 [unmatched] red jalapeño peppers thinly sliced into rings
+  - no exact match in reference vocabulary
+- row 67 [unmatched] red onion
+  - no exact match in reference vocabulary
+- row 246 [unmatched] red onion pickled red onion see recipe tip
+  - no exact match in reference vocabulary
+- row 58 [unmatched] red onions
+  - no exact match in reference vocabulary
+- row 51 [unmatched] red pepper
+  - no exact match in reference vocabulary
+- row 43 [unmatched] red pepper flakes
+  - no exact match in reference vocabulary
+- row 1279 [unmatched] red potatoes diced
+  - no exact match in reference vocabulary
+- row 1238 [unmatched] red potatoes finely diced
+  - no exact match in reference vocabulary
+- row 907 [unmatched] red potatoes scrubbed quartered
+  - no exact match in reference vocabulary
+- row 50 [unmatched] reduced-sodium soy sauce
+  - no exact match in reference vocabulary
+- row 880 [unmatched] refried beans optional
+  - no exact match in reference vocabulary
+- row 718 [unmatched] refrigerated pie crust
+  - no exact match in reference vocabulary
+- row 80 [unmatched] rhubarb
+  - no exact match in reference vocabulary
+- row 16 [unmatched] rib-eye steaks cut - inch thick
+  - no exact match in reference vocabulary
+- row 222 [unmatched] ribs celery chopped
+  - no exact match in reference vocabulary
+- row 1018 [unmatched] ribs celery cut into -inch pieces
+  - no exact match in reference vocabulary
+- row 1239 [unmatched] ribs celery with leaves chopped
+  - no exact match in reference vocabulary
+- row 871 [unmatched] rice
+  - no exact match in reference vocabulary
+- row 634 [unmatched] rice chex cereal
+  - no exact match in reference vocabulary
+- row 414 [unmatched] rice paper wrappers
+  - no exact match in reference vocabulary
+- row 3 [unmatched] rice vinegar
+  - no exact match in reference vocabulary
+- row 317 [unmatched] rice wrappers inch diameter
+  - no exact match in reference vocabulary
+- row 533 [unmatched] ricotta cheese
+  - no exact match in reference vocabulary
+- row 551 [unmatched] ripe avocados - peeled pitted mashed
+  - no exact match in reference vocabulary
+- row 752 [unmatched] ripe banana
+  - no exact match in reference vocabulary
+- row 756 [unmatched] ripe bananas
+  - no exact match in reference vocabulary
+- row 764 [unmatched] ripe bananas mashed
+  - no exact match in reference vocabulary
+- row 766 [unmatched] ripe bananas pureed
+  - no exact match in reference vocabulary
+- row 542 [unmatched] ripe mango diced
+  - no exact match in reference vocabulary
+- row 777 [unmatched] ripe pear chopped
+  - no exact match in reference vocabulary
+- row 377 [unmatched] ripe tomato diced
+  - no exact match in reference vocabulary
+- row 152 [unmatched] riracha
+  - no exact match in reference vocabulary
+- row 25 [unmatched] riracha sauce
+  - no exact match in reference vocabulary
+- row 875 [unmatched] roasted corn
+  - no exact match in reference vocabulary
+- row 109 [unmatched] roasted hazelnuts
+  - no exact match in reference vocabulary
+- row 252 [unmatched] roasted red bell peppers
+  - no exact match in reference vocabulary
+- row 662 [unmatched] roasted red pepper peeled minced
+  - no exact match in reference vocabulary
+- row 625 [unmatched] rolled oats
+  - no exact match in reference vocabulary
+- row 373 [unmatched] roma plum tomato chopped
+  - no exact match in reference vocabulary
+- row 471 [unmatched] roma plum tomatoes
+  - no exact match in reference vocabulary
+- row 459 [unmatched] roma plum tomatoes chopped
+  - no exact match in reference vocabulary
+- row 169 [unmatched] roma plum tomatoes diced
+  - no exact match in reference vocabulary
+- row 462 [unmatched] roma plum tomatoes seeded chopped
+  - no exact match in reference vocabulary
+- row 461 [unmatched] roma plum tomatoes thinly sliced
+  - no exact match in reference vocabulary
+- row 875 [unmatched] roma tomato
+  - no exact match in reference vocabulary
+- row 893 [unmatched] roma tomato seeded chopped into ½-inch pieces
+  - no exact match in reference vocabulary
+- row 78 [unmatched] roma tomato sliced
+  - no exact match in reference vocabulary
+- row 989 [unmatched] roma tomato thinly sliced
+  - no exact match in reference vocabulary
+- row 47 [unmatched] roma tomatoes
+  - no exact match in reference vocabulary
+- row 898 [unmatched] rosemary
+  - no exact match in reference vocabulary
+- row 310 [unmatched] rotisserie chicken
+  - no exact match in reference vocabulary
+- row 193 [unmatched] rotisserie chicken white dark meat both
+  - no exact match in reference vocabulary
+- row 155 [unmatched] roughly chopped fresh dill
+  - no exact match in reference vocabulary
+- row 155 [unmatched] roughly crumbled feta cheese taste
+  - no exact match in reference vocabulary
+- row 703 [unmatched] round buttery cracker
+  - no exact match in reference vocabulary
+- row 868 [unmatched] rounded butter
+  - no exact match in reference vocabulary
+- row 1396 [unmatched] rounded dry yeast
+  - no exact match in reference vocabulary
+- row 1244 [unmatched] russet potatoes cut into bite-sized pieces
+  - no exact match in reference vocabulary
+- row 998 [unmatched] russet potatoes peeled chopped
+  - no exact match in reference vocabulary
+- row 333 [unmatched] russet potatoes peeled cut into chunks
+  - no exact match in reference vocabulary
+- row 1124 [unmatched] russet potatoes skin on
+  - no exact match in reference vocabulary
+- row 1274 [unmatched] russet potatoes sliced into inch slices
+  - no exact match in reference vocabulary
+- row 1424 [unmatched] rye flour
+  - no exact match in reference vocabulary
+- row 151 [matched] salad dressing
+  - exact match in reference vocabulary
+- row 311 [unmatched] salmon
+  - no exact match in reference vocabulary
+- row 36 [unmatched] salsa
+  - no exact match in reference vocabulary
+- row 1029 [unmatched] salsa taste
+  - no exact match in reference vocabulary
+- row 4 [unmatched] salt
+  - no exact match in reference vocabulary
+- row 400 [unmatched] salt black pepper taste
+  - no exact match in reference vocabulary
+- row 303 [unmatched] salt divided
+  - no exact match in reference vocabulary
+- row 43 [unmatched] salt divided taste
+  - no exact match in reference vocabulary
+- row 5 [unmatched] salt freshly ground black pepper
+  - no exact match in reference vocabulary
+- row 1076 [unmatched] salt freshly ground black pepper garlic powder taste
+  - no exact match in reference vocabulary
+- row 2 [unmatched] salt freshly ground black pepper taste
+  - no exact match in reference vocabulary
+- row 183 [unmatched] salt freshly ground pepper taste
+  - no exact match in reference vocabulary
+- row 23 [unmatched] salt ground black pepper taste
+  - no exact match in reference vocabulary
+- row 701 [unmatched] salt more as needed
+  - no exact match in reference vocabulary
+- row 615 [unmatched] salt more taste
+  - no exact match in reference vocabulary
+- row 166 [unmatched] salt pepper taste
+  - no exact match in reference vocabulary
+- row 51 [unmatched] salt taste
+  - no exact match in reference vocabulary
+- row 56 [unmatched] salt-free adobo seasoning
+  - no exact match in reference vocabulary
+- row 31 [unmatched] salt-free italian seasoning
+  - no exact match in reference vocabulary
+- row 123 [unmatched] salted butter
+  - no exact match in reference vocabulary
+- row 1166 [unmatched] salted butter divided
+  - no exact match in reference vocabulary
+- row 310 [unmatched] salted butter melted
+  - no exact match in reference vocabulary
+- row 635 [unmatched] salted cashews
+  - no exact match in reference vocabulary
+- row 478 [unmatched] saltine crackers
+  - no exact match in reference vocabulary
+- row 1152 [unmatched] sandwich buns
+  - no exact match in reference vocabulary
+- row 587 [unmatched] sauce
+  - no exact match in reference vocabulary
+- row 38 [unmatched] sauerkraut rinsed well drained
+  - no exact match in reference vocabulary
+- row 1253 [unmatched] sazon seasoning with annatto
+  - no exact match in reference vocabulary
+- row 1175 [unmatched] scallions chopped
+  - no exact match in reference vocabulary
+- row 188 [unmatched] sea salt
+  - no exact match in reference vocabulary
+- row 384 [unmatched] sea salt as needed for sprinkling top
+  - no exact match in reference vocabulary
+- row 941 [unmatched] sea salt freshly ground black pepper taste
+  - no exact match in reference vocabulary
+- row 329 [unmatched] sea salt ground black pepper taste
+  - no exact match in reference vocabulary
+- row 1396 [unmatched] sea salt kosher salt
+  - no exact match in reference vocabulary
+- row 515 [unmatched] sea salt such as diamond crystal divided
+  - no exact match in reference vocabulary
+- row 378 [unmatched] sea salt taste
+  - no exact match in reference vocabulary
+- row 215 [unmatched] seafood seasoning
+  - no exact match in reference vocabulary
+- row 11 [unmatched] seafood seasoning such as old bay
+  - no exact match in reference vocabulary
+- row 53 [unmatched] seasoned bread crumbs
+  - no exact match in reference vocabulary
+- row 562 [unmatched] seasoned breadcrumbs
+  - no exact match in reference vocabulary
+- row 1023 [unmatched] seasoned dry bread crumbs
+  - no exact match in reference vocabulary
+- row 17 [unmatched] seasoned salt
+  - no exact match in reference vocabulary
+- row 950 [unmatched] seasoned salt taste
+  - no exact match in reference vocabulary
+- row 192 [unmatched] seasoning
+  - no exact match in reference vocabulary
+- row 1054 [unmatched] seasoning salt
+  - no exact match in reference vocabulary
+- row 460 [unmatched] seasoning salt taste
+  - no exact match in reference vocabulary
+- row 599 [unmatched] seeded diced jalapeno peppers
+  - no exact match in reference vocabulary
+- row 544 [unmatched] seeded minced jalapeno pepper - taste
+  - no exact match in reference vocabulary
+- row 510 [unmatched] seedless grapes
+  - no exact match in reference vocabulary
+- row 448 [unmatched] self-rising flour
+  - no exact match in reference vocabulary
+- row 1426 [unmatched] self-rising flour more as needed
+  - no exact match in reference vocabulary
+- row 278 [unmatched] semisweet chocolate chips
+  - no exact match in reference vocabulary
+- row 85 [unmatched] semisweet chocolate chips divided
+  - no exact match in reference vocabulary
+- row 1435 [unmatched] semolina flour
+  - no exact match in reference vocabulary
+- row 930 [unmatched] serrano chile pepper chopped optional
+  - no exact match in reference vocabulary
+- row 418 [unmatched] serrano chile pepper minced
+  - no exact match in reference vocabulary
+- row 184 [unmatched] serrano peppers
+  - no exact match in reference vocabulary
+- row 541 [unmatched] serving cooking spray
+  - no exact match in reference vocabulary
+- row 185 [unmatched] sesame oil
+  - no exact match in reference vocabulary
+- row 142 [matched] sesame seeds
+  - exact match in reference vocabulary
+- row 543 [unmatched] sesame seeds optional
+  - no exact match in reference vocabulary
+- row 178 [unmatched] shallot
+  - no exact match in reference vocabulary
+- row 400 [unmatched] shallot minced
+  - no exact match in reference vocabulary
+- row 218 [unmatched] shallots minced
+  - no exact match in reference vocabulary
+- row 68 [unmatched] sharp cheddar cheese
+  - no exact match in reference vocabulary
+- row 894 [unmatched] shaved parmesan cheese
+  - no exact match in reference vocabulary
+- row 920 [unmatched] shaved parmesan cheese optional
+  - no exact match in reference vocabulary
+- row 1158 [unmatched] shawarma seasoning
+  - no exact match in reference vocabulary
+- row 265 [unmatched] sheet frozen puff pastry thawed
+  - no exact match in reference vocabulary
+- row 386 [unmatched] sheet frozen puff pastry thawed cut into quarters
+  - no exact match in reference vocabulary
+- row 396 [unmatched] sheet frozen puff pastry thawed just enough unfold
+  - no exact match in reference vocabulary
+- row 66 [unmatched] sheet puff pastry
+  - no exact match in reference vocabulary
+- row 393 [unmatched] sheets frozen puff pastry thawed
+  - no exact match in reference vocabulary
+- row 967 [unmatched] sheets nori dry seaweed
+  - no exact match in reference vocabulary
+- row 327 [unmatched] sheets nori seaweed sheets
+  - no exact match in reference vocabulary
+- row 611 [unmatched] sheets phyllo dough thawed
+  - no exact match in reference vocabulary
+- row 142 [unmatched] sheets seaweed
+  - no exact match in reference vocabulary
+- row 729 [unmatched] shortening
+  - no exact match in reference vocabulary
+- row 998 [unmatched] shredded c heddar cheese plus more for garnish
+  - no exact match in reference vocabulary
+- row 1262 [unmatched] shredded cabbage
+  - no exact match in reference vocabulary
+- row 307 [unmatched] shredded carrot
+  - no exact match in reference vocabulary
+- row 151 [unmatched] shredded carrots
+  - no exact match in reference vocabulary
+- row 285 [unmatched] shredded cheddar cheese
+  - no exact match in reference vocabulary
+- row 97 [unmatched] shredded cheddar cheese divided
+  - no exact match in reference vocabulary
+- row 1195 [unmatched] shredded cheddar cheese for garnish
+  - no exact match in reference vocabulary
+- row 503 [unmatched] shredded cheddar cheese taste
+  - no exact match in reference vocabulary
+- row 1113 [unmatched] shredded cheddar-jack cheese
+  - no exact match in reference vocabulary
+- row 282 [unmatched] shredded cheese blend - c
+  - no exact match in reference vocabulary
+- row 320 [unmatched] shredded colby-jack cheese divided
+  - no exact match in reference vocabulary
+- row 1402 [unmatched] shredded cooked chicken
+  - no exact match in reference vocabulary
+- row 916 [unmatched] shredded extra-sharp cheddar cheese
+  - no exact match in reference vocabulary
+- row 245 [unmatched] shredded fontina
+  - no exact match in reference vocabulary
+- row 1402 [unmatched] shredded fontina cheese
+  - no exact match in reference vocabulary
+- row 1027 [unmatched] shredded fontina cheese divided
+  - no exact match in reference vocabulary
+- row 1252 [unmatched] shredded fresh basil leaves
+  - no exact match in reference vocabulary
+- row 885 [unmatched] shredded gruyere cheese
+  - no exact match in reference vocabulary
+- row 298 [unmatched] shredded iceberg lettuce
+  - no exact match in reference vocabulary
+- row 893 [unmatched] shredded italian blend cheddar cheese
+  - no exact match in reference vocabulary
+- row 454 [unmatched] shredded italian cheese blend
+  - no exact match in reference vocabulary
+- row 285 [unmatched] shredded lettuce
+  - no exact match in reference vocabulary
+- row 1171 [unmatched] shredded lettuce as desired
+  - no exact match in reference vocabulary
+- row 279 [unmatched] shredded low-moisture part-skim mozzarella chees
+  - no exact match in reference vocabulary
+- row 373 [unmatched] shredded mexican cheese blend
+  - no exact match in reference vocabulary
+- row 573 [unmatched] shredded mexican cheese blend divided
+  - no exact match in reference vocabulary
+- row 1336 [unmatched] shredded mild cheddar cheese
+  - no exact match in reference vocabulary
+- row 248 [unmatched] shredded monterey jack cheddar cheese
+  - no exact match in reference vocabulary
+- row 43 [unmatched] shredded mozzarella cheese
+  - no exact match in reference vocabulary
+- row 883 [unmatched] shredded mozzarella cheese divided
+  - no exact match in reference vocabulary
+- row 733 [unmatched] shredded mozzarella cheese more taste
+  - no exact match in reference vocabulary
+- row 73 [unmatched] shredded parmesan plus more for topping
+  - no exact match in reference vocabulary
+- row 475 [unmatched] shredded part-skim mozzarella cheese
+  - no exact match in reference vocabulary
+- row 1119 [unmatched] shredded part-skim mozzarella cheese divided
+  - no exact match in reference vocabulary
+- row 1029 [unmatched] shredded pepper jack cheese divided
+  - no exact match in reference vocabulary
+- row 476 [unmatched] shredded queso blanco
+  - no exact match in reference vocabulary
+- row 989 [unmatched] shredded romaine lettuce
+  - no exact match in reference vocabulary
+- row 738 [unmatched] shredded romano cheese
+  - no exact match in reference vocabulary
+- row 34 [unmatched] shredded rotisserie chicken
+  - no exact match in reference vocabulary
+- row 358 [unmatched] shredded sharp cheddar cheese
+  - no exact match in reference vocabulary
+- row 1380 [unmatched] shredded swiss chard
+  - no exact match in reference vocabulary
+- row 532 [unmatched] shredded swiss cheese
+  - no exact match in reference vocabulary
+- row 1166 [unmatched] shredded white cheddar cheese
+  - no exact match in reference vocabulary
+- row 66 [unmatched] siago cheese
+  - no exact match in reference vocabulary
+- row 822 [unmatched] sifted all-purpose flour
+  - no exact match in reference vocabulary
+- row 847 [unmatched] sifted confectioners sugar
+  - no exact match in reference vocabulary
+- row 326 [unmatched] skewers
+  - no exact match in reference vocabulary
+- row 771 [unmatched] skim milk
+  - no exact match in reference vocabulary
+- row 1453 [unmatched] skim milk luke warm
+  - no exact match in reference vocabulary
+- row 192 [unmatched] skinless boneless chicken breast cut into -inch pieces
+  - no exact match in reference vocabulary
+- row 352 [unmatched] skinless boneless chicken breast half
+  - no exact match in reference vocabulary
+- row 1096 [unmatched] slice bread toasted crumbled
+  - no exact match in reference vocabulary
+- row 868 [unmatched] slice french bread
+  - no exact match in reference vocabulary
+- row 1139 [unmatched] slice soft bread blended into crumbs
+  - no exact match in reference vocabulary
+- row 95 [unmatched] sliced almonds
+  - no exact match in reference vocabulary
+- row 728 [unmatched] sliced apples
+  - no exact match in reference vocabulary
+- row 1274 [unmatched] sliced carrots
+  - no exact match in reference vocabulary
+- row 1372 [unmatched] sliced fresh peaches
+  - no exact match in reference vocabulary
+- row 876 [unmatched] sliced green olives with pimientos
+  - no exact match in reference vocabulary
+- row 530 [unmatched] sliced green onion
+  - no exact match in reference vocabulary
+- row 1226 [unmatched] sliced green onions for garnish
+  - no exact match in reference vocabulary
+- row 67 [unmatched] sliced kalamata olives
+  - no exact match in reference vocabulary
+- row 1020 [unmatched] sliced mushrooms
+  - no exact match in reference vocabulary
+- row 600 [unmatched] sliced pimento peppers for garnish
+  - no exact match in reference vocabulary
+- row 164 [unmatched] sliced quartered cucumber
+  - no exact match in reference vocabulary
+- row 1085 [unmatched] slices american cheese
+  - no exact match in reference vocabulary
+- row 346 [unmatched] slices black olives
+  - no exact match in reference vocabulary
+- row 507 [unmatched] slices blue cheese
+  - no exact match in reference vocabulary
+- row 307 [unmatched] slices bologna such as oscar mayer
+  - no exact match in reference vocabulary
+- row 1131 [unmatched] slices bread shredded
+  - no exact match in reference vocabulary
+- row 1128 [unmatched] slices bread toasted crumbled
+  - no exact match in reference vocabulary
+- row 235 [unmatched] slices ciabatta bread
+  - no exact match in reference vocabulary
+- row 1091 [unmatched] slices colby-jack cheese
+  - no exact match in reference vocabulary
+- row 38 [unmatched] slices deli corned beef
+  - no exact match in reference vocabulary
+- row 500 [unmatched] slices diagonally sliced baguette
+  - no exact match in reference vocabulary
+- row 5 [unmatched] slices french bread
+  - no exact match in reference vocabulary
+- row 64 [unmatched] slices gruyere cheese
+  - no exact match in reference vocabulary
+- row 93 [unmatched] slices halloumi cheese
+  - no exact match in reference vocabulary
+- row 454 [unmatched] slices italian bread inch thick
+  - no exact match in reference vocabulary
+- row 1093 [unmatched] slices mozzarella cheese
+  - no exact match in reference vocabulary
+- row 470 [unmatched] slices mozzarella cheese halved
+  - no exact match in reference vocabulary
+- row 1094 [unmatched] slices pepper jack cheese
+  - no exact match in reference vocabulary
+- row 893 [unmatched] slices pre-sliced cheddar cheese
+  - no exact match in reference vocabulary
+- row 1153 [unmatched] slices provolone cheese
+  - no exact match in reference vocabulary
+- row 511 [unmatched] slices rye bread
+  - no exact match in reference vocabulary
+- row 917 [unmatched] slices sourdough bread lightly toasted
+  - no exact match in reference vocabulary
+- row 876 [unmatched] slices swiss cheese
+  - no exact match in reference vocabulary
+- row 520 [unmatched] slices tomato
+  - no exact match in reference vocabulary
+- row 506 [unmatched] slices white bread
+  - no exact match in reference vocabulary
+- row 586 [unmatched] slices white bread crusts removed
+  - no exact match in reference vocabulary
+- row 476 [unmatched] slices white whole wheat bread
+  - no exact match in reference vocabulary
+- row 506 [unmatched] slices whole wheat bread
+  - no exact match in reference vocabulary
+- row 1402 [unmatched] slivered almonds toasted
+  - no exact match in reference vocabulary
+- row 342 [unmatched] small artichokes
+  - no exact match in reference vocabulary
+- row 1246 [unmatched] small bay leaves
+  - no exact match in reference vocabulary
+- row 1379 [unmatched] small beets peeled coarsely grated
+  - no exact match in reference vocabulary
+- row 184 [unmatched] small bunch cilantro stems discarded
+  - no exact match in reference vocabulary
+- row 184 [unmatched] small bunch flat leaf parsley stems discarded
+  - no exact match in reference vocabulary
+- row 682 [unmatched] small campari tomatoes sliced
+  - no exact match in reference vocabulary
+- row 152 [unmatched] small carrot
+  - no exact match in reference vocabulary
+- row 506 [unmatched] small cucumber thinly sliced
+  - no exact match in reference vocabulary
+- row 515 [unmatched] small eggplant cut into -inch rounds
+  - no exact match in reference vocabulary
+- row 1080 [unmatched] small garlic cloves chopped
+  - no exact match in reference vocabulary
+- row 1168 [unmatched] small garlic cloves minced crushed
+  - no exact match in reference vocabulary
+- row 1110 [unmatched] small green bell pepper chopped
+  - no exact match in reference vocabulary
+- row 1193 [unmatched] small green bell pepper finely chopped
+  - no exact match in reference vocabulary
+- row 1198 [unmatched] small green red bell pepper chopped
+  - no exact match in reference vocabulary
+- row 1172 [unmatched] small head cabbage chopped
+  - no exact match in reference vocabulary
+- row 348 [unmatched] small head iceberg lettuce shredded
+  - no exact match in reference vocabulary
+- row 1157 [unmatched] small head lettuce shredded
+  - no exact match in reference vocabulary
+- row 1181 [unmatched] small head purple cauliflower cut into florets
+  - no exact match in reference vocabulary
+- row 447 [unmatched] small inch pita bread rounds cut in half
+  - no exact match in reference vocabulary
+- row 204 [unmatched] small jalapeno
+  - no exact match in reference vocabulary
+- row 284 [unmatched] small jalapeno seeded membrane removed
+  - no exact match in reference vocabulary
+- row 1467 [unmatched] small lemon
+  - no exact match in reference vocabulary
+- row 136 [unmatched] small lemon juiced
+  - no exact match in reference vocabulary
+- row 1236 [unmatched] small meatballs
+  - no exact match in reference vocabulary
+- row 39 [unmatched] small onion
+  - no exact match in reference vocabulary
+- row 211 [unmatched] small onion chopped
+  - no exact match in reference vocabulary
+- row 1157 [unmatched] small onion cut into chunks
+  - no exact match in reference vocabulary
+- row 192 [unmatched] small onion diced
+  - no exact match in reference vocabulary
+- row 395 [unmatched] small onion finely chopped
+  - no exact match in reference vocabulary
+- row 316 [unmatched] small onion roughly chopped
+  - no exact match in reference vocabulary
+- row 948 [unmatched] small onion thinly sliced
+  - no exact match in reference vocabulary
+- row 711 [unmatched] small onions sliced
+  - no exact match in reference vocabulary
+- row 149 [unmatched] small peaches
+  - no exact match in reference vocabulary
+- row 507 [unmatched] small pears
+  - no exact match in reference vocabulary
+- row 334 [unmatched] small pimiento-stuffed green olives
+  - no exact match in reference vocabulary
+- row 1266 [unmatched] small potato peeled cubed
+  - no exact match in reference vocabulary
+- row 1110 [unmatched] small red bell pepper chopped
+  - no exact match in reference vocabulary
+- row 124 [unmatched] small red onion
+  - no exact match in reference vocabulary
+- row 350 [unmatched] small red onion finely chopped
+  - no exact match in reference vocabulary
+- row 25 [unmatched] small red onion quartered
+  - no exact match in reference vocabulary
+- row 264 [unmatched] small rib celery
+  - no exact match in reference vocabulary
+- row 1115 [unmatched] small scallions thinly sliced
+  - no exact match in reference vocabulary
+- row 956 [unmatched] small serrano chile pepper
+  - no exact match in reference vocabulary
+- row 230 [unmatched] small skewers as needed
+  - no exact match in reference vocabulary
+- row 71 [unmatched] small slices sharp cheddar cheese
+  - no exact match in reference vocabulary
+- row 94 [unmatched] small tomatoes
+  - no exact match in reference vocabulary
+- row 524 [unmatched] small tomatoes coarsely chopped
+  - no exact match in reference vocabulary
+- row 1263 [unmatched] small turnip peeled quartered
+  - no exact match in reference vocabulary
+- row 361 [unmatched] small unpeeled red potato shredded
+  - no exact match in reference vocabulary
+- row 1116 [unmatched] small yellow onion finely chopped
+  - no exact match in reference vocabulary
+- row 1092 [unmatched] small yellow onion peeled minced
+  - no exact match in reference vocabulary
+- row 737 [unmatched] small yellow onions chopped
+  - no exact match in reference vocabulary
+- row 220 [unmatched] small zucchini quartered lengthwise cut into inch slices
+  - no exact match in reference vocabulary
+- row 46 [unmatched] smoked paprika
+  - no exact match in reference vocabulary
+- row 282 [unmatched] smoked turkey
+  - no exact match in reference vocabulary
+- row 575 [unmatched] snipped fresh parsley
+  - no exact match in reference vocabulary
+- row 1266 [unmatched] sofrito
+  - no exact match in reference vocabulary
+- row 1168 [unmatched] sofrito such as goya
+  - no exact match in reference vocabulary
+- row 1137 [unmatched] soft fresh bread crumbs
+  - no exact match in reference vocabulary
+- row 29 [unmatched] soul food seasoning
+  - no exact match in reference vocabulary
+- row 59 [unmatched] sour cream
+  - no exact match in reference vocabulary
+- row 1383 [unmatched] sour cream as desired
+  - no exact match in reference vocabulary
+- row 1195 [unmatched] sour cream for garnish
+  - no exact match in reference vocabulary
+- row 1109 [unmatched] sour cream for garnish optional
+  - no exact match in reference vocabulary
+- row 1377 [unmatched] sour cream for topping
+  - no exact match in reference vocabulary
+- row 1379 [unmatched] sour cream more taste
+  - no exact match in reference vocabulary
+- row 1113 [unmatched] sour cream plus more for serving
+  - no exact match in reference vocabulary
+- row 358 [unmatched] sour cream room temperature
+  - no exact match in reference vocabulary
+- row 502 [unmatched] sourdough baguette
+  - no exact match in reference vocabulary
+- row 607 [unmatched] sourdough starter discard
+  - no exact match in reference vocabulary
+- row 3 [unmatched] soy sauce
+  - no exact match in reference vocabulary
+- row 967 [unmatched] soy sauce divided
+  - no exact match in reference vocabulary
+- row 525 [unmatched] spanish onion - peeled cut in half thinly sliced
+  - no exact match in reference vocabulary
+- row 1220 [unmatched] spanish paprika
+  - no exact match in reference vocabulary
+- row 91 [unmatched] spelt flour
+  - no exact match in reference vocabulary
+- row 346 [unmatched] spicy brown mustard
+  - no exact match in reference vocabulary
+- row 1027 [unmatched] spicy tomato sauce
+  - no exact match in reference vocabulary
+- row 202 [matched] spinach
+  - exact match in reference vocabulary
+- row 207 [unmatched] spinach leaves
+  - no exact match in reference vocabulary
+- row 153 [unmatched] splenda
+  - no exact match in reference vocabulary
+- row 919 [unmatched] sport pepper juice
+  - no exact match in reference vocabulary
+- row 1095 [unmatched] sprig fresh mint chopped
+  - no exact match in reference vocabulary
+- row 1095 [unmatched] sprig fresh parsley chopped
+  - no exact match in reference vocabulary
+- row 472 [unmatched] sprig fresh parsley optional
+  - no exact match in reference vocabulary
+- row 922 [unmatched] sprig fresh rosemary
+  - no exact match in reference vocabulary
+- row 1258 [unmatched] sprigs fresh cilantro chopped
+  - no exact match in reference vocabulary
+- row 78 [unmatched] sprigs fresh dill torn as needed optional
+  - no exact match in reference vocabulary
+- row 1384 [unmatched] sprigs fresh dill weed chopped optional
+  - no exact match in reference vocabulary
+- row 578 [unmatched] sprigs fresh parsley chopped
+  - no exact match in reference vocabulary
+- row 945 [unmatched] sprigs fresh rosemary chopped
+  - no exact match in reference vocabulary
+- row 737 [unmatched] sprigs fresh rosemary leaves stripped
+  - no exact match in reference vocabulary
+- row 922 [unmatched] sprigs fresh thyme
+  - no exact match in reference vocabulary
+- row 295 [unmatched] sprigs fresh thyme leaves removed
+  - no exact match in reference vocabulary
+- row 548 [unmatched] sprigs rosemary
+  - no exact match in reference vocabulary
+- row 921 [unmatched] sprigs thyme
+  - no exact match in reference vocabulary
+- row 345 [unmatched] sprinkle paprika
+  - no exact match in reference vocabulary
+- row 111 [unmatched] sprinkles
+  - no exact match in reference vocabulary
+- row 1415 [unmatched] sprouted spelt flour as needed divided
+  - no exact match in reference vocabulary
+- row 206 [unmatched] sraeli couscous
+  - no exact match in reference vocabulary
+- row 3 [unmatched] sriracha
+  - no exact match in reference vocabulary
+- row 69 [unmatched] sriracha sauce
+  - no exact match in reference vocabulary
+- row 414 [unmatched] sriracha sauce taste
+  - no exact match in reference vocabulary
+- row 1124 [unmatched] sriracha taste
+  - no exact match in reference vocabulary
+- row 24 [unmatched] stale bread cut into cubes
+  - no exact match in reference vocabulary
+- row 197 [unmatched] stalk celery chopped
+  - no exact match in reference vocabulary
+- row 155 [unmatched] stalk celery diagonally sliced
+  - no exact match in reference vocabulary
+- row 1251 [unmatched] stalk celery diced
+  - no exact match in reference vocabulary
+- row 654 [unmatched] stalk celery finely chopped
+  - no exact match in reference vocabulary
+- row 429 [unmatched] stalk celery finely diced
+  - no exact match in reference vocabulary
+- row 205 [unmatched] stalks celery
+  - no exact match in reference vocabulary
+- row 906 [unmatched] stalks celery chopped
+  - no exact match in reference vocabulary
+- row 1380 [unmatched] stalks celery chopped optional
+  - no exact match in reference vocabulary
+- row 219 [unmatched] stalks celery cut into -inch pieces
+  - no exact match in reference vocabulary
+- row 922 [unmatched] stalks celery cut into chunks
+  - no exact match in reference vocabulary
+- row 1257 [unmatched] stalks celery cut into inch pieces
+  - no exact match in reference vocabulary
+- row 223 [unmatched] stalks celery diced
+  - no exact match in reference vocabulary
+- row 1263 [unmatched] stalks celery each cut into pieces
+  - no exact match in reference vocabulary
+- row 234 [unmatched] stalks celery finely chopped
+  - no exact match in reference vocabulary
+- row 159 [unmatched] stalks celery finely diced
+  - no exact match in reference vocabulary
+- row 211 [unmatched] stalks celery sliced
+  - no exact match in reference vocabulary
+- row 1245 [unmatched] stalks celery with leaves
+  - no exact match in reference vocabulary
+- row 231 [unmatched] stalks stalk celery chopped into -inch pieces
+  - no exact match in reference vocabulary
+- row 730 [unmatched] star anise pod
+  - no exact match in reference vocabulary
+- row 1136 [unmatched] steak sauce
+  - no exact match in reference vocabulary
+- row 1049 [unmatched] steak sauce e a-
+  - no exact match in reference vocabulary
+- row 869 [unmatched] steak seasoning
+  - no exact match in reference vocabulary
+- row 1263 [unmatched] steak seasoning divided
+  - no exact match in reference vocabulary
+- row 1181 [unmatched] steamed cauliflower rice
+  - no exact match in reference vocabulary
+- row 1329 [unmatched] stick butter
+  - no exact match in reference vocabulary
+- row 773 [unmatched] stick butter softened
+  - no exact match in reference vocabulary
+- row 1330 [unmatched] stick very cold
+  - no exact match in reference vocabulary
+- row 1331 [unmatched] stick very cold butter
+  - no exact match in reference vocabulary
+- row 1001 [unmatched] stone ground dijon mustard
+  - no exact match in reference vocabulary
+- row 347 [unmatched] stone-ground mustard taste
+  - no exact match in reference vocabulary
+- row 1333 [matched] strawberries
+  - exact match in reference vocabulary
+- row 1371 [unmatched] sturdy cookie pop lollipop sticks
+  - no exact match in reference vocabulary
+- row 59 [unmatched] sugar
+  - no exact match in reference vocabulary
+- row 92 [unmatched] sugar-free peanut butter syrup
+  - no exact match in reference vocabulary
+- row 302 [unmatched] sumac
+  - no exact match in reference vocabulary
+- row 641 [unmatched] sumac powder
+  - no exact match in reference vocabulary
+- row 192 [unmatched] sun dried tomatoes
+  - no exact match in reference vocabulary
+- row 202 [unmatched] sun-dried tomatoes
+  - no exact match in reference vocabulary
+- row 48 [unmatched] sun-dried tomatoes in oil
+  - no exact match in reference vocabulary
+- row 471 [unmatched] sun-dried tomatoes packed in oil drained chopped
+  - no exact match in reference vocabulary
+- row 191 [unmatched] sweet chili sauce
+  - no exact match in reference vocabulary
+- row 331 [unmatched] sweet onion
+  - no exact match in reference vocabulary
+- row 1193 [unmatched] sweet onion chopped
+  - no exact match in reference vocabulary
+- row 1310 [unmatched] sweet onion cut into thin wedges
+  - no exact match in reference vocabulary
+- row 905 [unmatched] sweet onion diced small
+  - no exact match in reference vocabulary
+- row 508 [unmatched] sweet onions thinly sliced
+  - no exact match in reference vocabulary
+- row 347 [unmatched] sweet pickle relish
+  - no exact match in reference vocabulary
+- row 378 [unmatched] sweet potatoes
+  - no exact match in reference vocabulary
+- row 1187 [unmatched] sweet potatoes diced
+  - no exact match in reference vocabulary
+- row 522 [unmatched] sweet spanish onion thinly sliced
+  - no exact match in reference vocabulary
+- row 542 [unmatched] sweet thai chili sauce
+  - no exact match in reference vocabulary
+- row 455 [unmatched] swordfish steaks
+  - no exact match in reference vocabulary
+- row 335 [unmatched] tabasco
+  - no exact match in reference vocabulary
+- row 870 [unmatched] taco sauce
+  - no exact match in reference vocabulary
+- row 866 [unmatched] taco seasoning
+  - no exact match in reference vocabulary
+- row 503 [unmatched] taco seasoning mix taste
+  - no exact match in reference vocabulary
+- row 276 [unmatched] tahini
+  - no exact match in reference vocabulary
+- row 273 [unmatched] tahini more taste
+  - no exact match in reference vocabulary
+- row 371 [unmatched] tahini paste
+  - no exact match in reference vocabulary
+- row 362 [unmatched] tahini sesame-seed paste
+  - no exact match in reference vocabulary
+- row 7 [unmatched] talian bread crumbs
+  - no exact match in reference vocabulary
+- row 333 [unmatched] talian bread crumbs divided
+  - no exact match in reference vocabulary
+- row 337 [unmatched] talian parsley optional
+  - no exact match in reference vocabulary
+- row 212 [unmatched] talian seasoning
+  - no exact match in reference vocabulary
+- row 994 [unmatched] talian seasoning divided
+  - no exact match in reference vocabulary
+- row 278 [unmatched] tap water
+  - no exact match in reference vocabulary
+- row 942 [unmatched] tapioca
+  - no exact match in reference vocabulary
+- row 878 [unmatched] tapioca finely crushed
+  - no exact match in reference vocabulary
+- row 316 [unmatched] tarama cured carp cod mullet roe
+  - no exact match in reference vocabulary
+- row 1054 [unmatched] tarragon vinegar
+  - no exact match in reference vocabulary
+- row 112 [unmatched] tart apples
+  - no exact match in reference vocabulary
+- row 126 [unmatched] tartar sauce
+  - no exact match in reference vocabulary
+- row 994 [unmatched] teaspoonfreshly ground freshly ground
+  - no exact match in reference vocabulary
+- row 897 [unmatched] teaspoonscatanzaro catanzaro
+  - no exact match in reference vocabulary
+- row 1177 [unmatched] teriyaki sauce
+  - no exact match in reference vocabulary
+- row 69 [unmatched] thai sweet chili sauce
+  - no exact match in reference vocabulary
+- row 1267 [unmatched] thick slices beef shank
+  - no exact match in reference vocabulary
+- row 437 [unmatched] thick slices italian bread
+  - no exact match in reference vocabulary
+- row 480 [unmatched] thin mint cookies
+  - no exact match in reference vocabulary
+- row 1251 [unmatched] thin slice onion diced
+  - no exact match in reference vocabulary
+- row 467 [unmatched] thin slices french bread
+  - no exact match in reference vocabulary
+- row 719 [unmatched] thinly sliced apples
+  - no exact match in reference vocabulary
+- row 455 [unmatched] thinly sliced basil
+  - no exact match in reference vocabulary
+- row 1377 [unmatched] thinly sliced beets
+  - no exact match in reference vocabulary
+- row 712 [unmatched] thinly sliced cucumbers
+  - no exact match in reference vocabulary
+- row 1228 [unmatched] thinly sliced deli roast beef
+  - no exact match in reference vocabulary
+- row 539 [unmatched] thinly sliced english cucumber divided
+  - no exact match in reference vocabulary
+- row 456 [unmatched] thinly sliced fresh basil leaves
+  - no exact match in reference vocabulary
+- row 547 [unmatched] thinly sliced green onions
+  - no exact match in reference vocabulary
+- row 548 [matched] thyme
+  - exact match in reference vocabulary
+- row 196 [unmatched] thyme sprigs for garnish
+  - no exact match in reference vocabulary
+- row 920 [unmatched] thyme sprigs optional
+  - no exact match in reference vocabulary
+- row 507 [unmatched] toasted chopped walnuts
+  - no exact match in reference vocabulary
+- row 761 [unmatched] toasted flake coconut divided optional
+  - no exact match in reference vocabulary
+- row 138 [unmatched] toasted sesame oil
+  - no exact match in reference vocabulary
+- row 302 [unmatched] toasted sesame seeds
+  - no exact match in reference vocabulary
+- row 191 [unmatched] toasted sesame seeds for garnish optional
+  - no exact match in reference vocabulary
+- row 5 [unmatched] tomato
+  - no exact match in reference vocabulary
+- row 359 [unmatched] tomato chopped
+  - no exact match in reference vocabulary
+- row 325 [unmatched] tomato clam juice cocktail as needed
+  - no exact match in reference vocabulary
+- row 1038 [unmatched] tomato cubed
+  - no exact match in reference vocabulary
+- row 893 [unmatched] tomato juice
+  - no exact match in reference vocabulary
+- row 178 [unmatched] tomato paste
+  - no exact match in reference vocabulary
+- row 1160 [unmatched] tomato paste optional
+  - no exact match in reference vocabulary
+- row 916 [unmatched] tomato puree
+  - no exact match in reference vocabulary
+- row 1467 [unmatched] tomato roma tomato
+  - no exact match in reference vocabulary
+- row 39 [unmatched] tomato sauce
+  - no exact match in reference vocabulary
+- row 937 [unmatched] tomato sauce taste
+  - no exact match in reference vocabulary
+- row 968 [unmatched] tomato sauce tomato puree
+  - no exact match in reference vocabulary
+- row 465 [unmatched] tomato seeded chopped
+  - no exact match in reference vocabulary
+- row 1094 [unmatched] tomato sliced
+  - no exact match in reference vocabulary
+- row 472 [unmatched] tomato thinly sliced
+  - no exact match in reference vocabulary
+- row 892 [matched] tomatoes
+  - exact match in reference vocabulary
+- row 954 [unmatched] tomatoes chopped
+  - no exact match in reference vocabulary
+- row 460 [unmatched] tomatoes cubed
+  - no exact match in reference vocabulary
+- row 234 [unmatched] tomatoes peeled chopped
+  - no exact match in reference vocabulary
+- row 153 [unmatched] tomatoes sliced
+  - no exact match in reference vocabulary
+- row 228 [unmatched] toothpicks
+  - no exact match in reference vocabulary
+- row 880 [unmatched] toppings cilantro sour cream salsa guacamole hot sauce optional
+  - no exact match in reference vocabulary
+- row 682 [unmatched] torn fresh spinach
+  - no exact match in reference vocabulary
+- row 130 [unmatched] tortilla chips
+  - no exact match in reference vocabulary
+- row 1117 [unmatched] tortilla chips crushed
+  - no exact match in reference vocabulary
+- row 325 [unmatched] tortilla chips for serving optional
+  - no exact match in reference vocabulary
+- row 200 [unmatched] tortilla strips
+  - no exact match in reference vocabulary
+- row 210 [unmatched] truffle oil
+  - no exact match in reference vocabulary
+- row 473 [unmatched] truffle-infused olive oil such as olevano
+  - no exact match in reference vocabulary
+- row 1366 [unmatched] turbinado sugar
+  - no exact match in reference vocabulary
+- row 708 [unmatched] turmeric
+  - no exact match in reference vocabulary
+- row 945 [unmatched] tuscan olive oil
+  - no exact match in reference vocabulary
+- row 252 [unmatched] tzatziki
+  - no exact match in reference vocabulary
+- row 78 [unmatched] tzatziki sauce
+  - no exact match in reference vocabulary
+- row 539 [unmatched] tzatziki sauce divided
+  - no exact match in reference vocabulary
+- row 310 [unmatched] uffalo sauce
+  - no exact match in reference vocabulary
+- row 716 [unmatched] unbaked -inch pie crusts
+  - no exact match in reference vocabulary
+- row 1445 [unmatched] unbleached all-purpose flour
+  - no exact match in reference vocabulary
+- row 1433 [unmatched] unbleached all-purpose flour as needed
+  - no exact match in reference vocabulary
+- row 520 [unmatched] uncooked brown rice
+  - no exact match in reference vocabulary
+- row 1239 [unmatched] uncooked elbow macaroni
+  - no exact match in reference vocabulary
+- row 289 [unmatched] uncooked long-grain white rice
+  - no exact match in reference vocabulary
+- row 598 [unmatched] uncooked medium shrimp peeled deveined
+  - no exact match in reference vocabulary
+- row 967 [unmatched] uncooked short-grain white rice
+  - no exact match in reference vocabulary
+- row 327 [unmatched] uncooked white rice
+  - no exact match in reference vocabulary
+- row 639 [unmatched] unpopped popcorn
+  - no exact match in reference vocabulary
+- row 1306 [unmatched] unsalted beef broth more taste
+  - no exact match in reference vocabulary
+- row 24 [unmatched] unsalted butter
+  - no exact match in reference vocabulary
+- row 842 [unmatched] unsalted butter at room temperature
+  - no exact match in reference vocabulary
+- row 109 [unmatched] unsalted butter melted
+  - no exact match in reference vocabulary
+- row 1353 [unmatched] unsalted butter melted cooled
+  - no exact match in reference vocabulary
+- row 790 [unmatched] unsalted butter melted slightly cooled
+  - no exact match in reference vocabulary
+- row 80 [unmatched] unsalted butter softened
+  - no exact match in reference vocabulary
+- row 96 [unmatched] unsweetened almond milk
+  - no exact match in reference vocabulary
+- row 1193 [unmatched] unsweetened cocoa powder
+  - no exact match in reference vocabulary
+- row 303 [unmatched] unsweetened shredded coconut
+  - no exact match in reference vocabulary
+- row 54 [unmatched] vanilla extract
+  - no exact match in reference vocabulary
+- row 806 [unmatched] vanilla extract more taste
+  - no exact match in reference vocabulary
+- row 715 [unmatched] vanilla ice cream for serving
+  - no exact match in reference vocabulary
+- row 777 [unmatched] vanilla yogurt
+  - no exact match in reference vocabulary
+- row 1248 [unmatched] vegetable bouillon base such as better than bouillon
+  - no exact match in reference vocabulary
+- row 1386 [unmatched] vegetable bouillon such as better than bouillon optional
+  - no exact match in reference vocabulary
+- row 149 [unmatched] vegetable broth
+  - no exact match in reference vocabulary
+- row 34 [unmatched] vegetable oil
+  - no exact match in reference vocabulary
+- row 1012 [unmatched] vegetable oil as needed
+  - no exact match in reference vocabulary
+- row 1023 [unmatched] vegetable oil as needed divided
+  - no exact match in reference vocabulary
+- row 1168 [unmatched] vegetable oil as needed for frying
+  - no exact match in reference vocabulary
+- row 352 [unmatched] vegetable oil divided
+  - no exact match in reference vocabulary
+- row 333 [unmatched] vegetable oil for deep frying
+  - no exact match in reference vocabulary
+- row 323 [unmatched] vegetable oil for frying
+  - no exact match in reference vocabulary
+- row 555 [unmatched] vegetable oil for greasing pan
+  - no exact match in reference vocabulary
+- row 1057 [unmatched] vegetable oil for the grill
+  - no exact match in reference vocabulary
+- row 201 [unmatched] vegetable stock
+  - no exact match in reference vocabulary
+- row 1377 [unmatched] vegetable stock water
+  - no exact match in reference vocabulary
+- row 761 [unmatched] very ripe bananas mashed
+  - no exact match in reference vocabulary
+- row 1449 [unmatched] very warm water
+  - no exact match in reference vocabulary
+- row 1414 [unmatched] very warm water degrees f degrees f
+  - no exact match in reference vocabulary
+- row 287 [unmatched] vidalia onion
+  - no exact match in reference vocabulary
+- row 500 [unmatched] vine-ripened tomatoes cut into -inch slices
+  - no exact match in reference vocabulary
+- row 141 [unmatched] vinegar
+  - no exact match in reference vocabulary
+- row 999 [unmatched] w orcestershire sauce
+  - no exact match in reference vocabulary
+- row 399 [unmatched] warm water
+  - no exact match in reference vocabulary
+- row 442 [unmatched] warm water degrees f
+  - no exact match in reference vocabulary
+- row 1415 [unmatched] warm water degrees f degrees c
+  - no exact match in reference vocabulary
+- row 9 [unmatched] water
+  - no exact match in reference vocabulary
+- row 107 [unmatched] water as needed
+  - no exact match in reference vocabulary
+- row 748 [unmatched] water as needed optional
+  - no exact match in reference vocabulary
+- row 1407 [unmatched] water at about degrees f degrees c
+  - no exact match in reference vocabulary
+- row 1247 [unmatched] water cover
+  - no exact match in reference vocabulary
+- row 1234 [unmatched] water divided
+  - no exact match in reference vocabulary
+- row 1263 [unmatched] water divided as needed
+  - no exact match in reference vocabulary
+- row 1261 [unmatched] water more as needed
+  - no exact match in reference vocabulary
+- row 1428 [unmatched] water municipal
+  - no exact match in reference vocabulary
+- row 33 [unmatched] water oil for sealing
+  - no exact match in reference vocabulary
+- row 140 [unmatched] watermelon
+  - no exact match in reference vocabulary
+- row 1457 [unmatched] wheat germ
+  - no exact match in reference vocabulary
+- row 657 [unmatched] whipping cream
+  - no exact match in reference vocabulary
+- row 48 [unmatched] white balsamic vinegar
+  - no exact match in reference vocabulary
+- row 104 [unmatched] white chocolate chips
+  - no exact match in reference vocabulary
+- row 896 [unmatched] white corn tortillas
+  - no exact match in reference vocabulary
+- row 47 [unmatched] white onion
+  - no exact match in reference vocabulary
+- row 1223 [unmatched] white onion chopped
+  - no exact match in reference vocabulary
+- row 881 [unmatched] white onion finely diced
+  - no exact match in reference vocabulary
+- row 325 [unmatched] white onions finely chopped
+  - no exact match in reference vocabulary
+- row 712 [unmatched] white onions sliced thinly
+  - no exact match in reference vocabulary
+- row 185 [unmatched] white pepper
+  - no exact match in reference vocabulary
+- row 990 [unmatched] white rice
+  - no exact match in reference vocabulary
+- row 1458 [unmatched] white rice flour
+  - no exact match in reference vocabulary
+- row 49 [unmatched] white sugar
+  - no exact match in reference vocabulary
+- row 107 [unmatched] white sugar as needed
+  - no exact match in reference vocabulary
+- row 1371 [unmatched] white sugar for sprinkling
+  - no exact match in reference vocabulary
+- row 912 [unmatched] white sugar more taste
+  - no exact match in reference vocabulary
+- row 761 [unmatched] white sugar optional
+  - no exact match in reference vocabulary
+- row 820 [unmatched] white sugar taste
+  - no exact match in reference vocabulary
+- row 633 [unmatched] white truffle oil
+  - no exact match in reference vocabulary
+- row 211 [unmatched] white vinegar
+  - no exact match in reference vocabulary
+- row 1188 [unmatched] white vinegar more taste
+  - no exact match in reference vocabulary
+- row 1384 [unmatched] white vinegar taste
+  - no exact match in reference vocabulary
+- row 1378 [unmatched] whole allspice berries
+  - no exact match in reference vocabulary
+- row 1327 [unmatched] whole almonds
+  - no exact match in reference vocabulary
+- row 707 [unmatched] whole black peppercorns
+  - no exact match in reference vocabulary
+- row 936 [unmatched] whole cardamom seeds
+  - no exact match in reference vocabulary
+- row 730 [unmatched] whole cloves
+  - no exact match in reference vocabulary
+- row 152 [unmatched] whole dill pickle
+  - no exact match in reference vocabulary
+- row 448 [unmatched] whole fat plain greek yogurt
+  - no exact match in reference vocabulary
+- row 210 [unmatched] whole garlic bulb
+  - no exact match in reference vocabulary
+- row 59 [unmatched] whole milk
+  - no exact match in reference vocabulary
+- row 1130 [unmatched] whole wheat bread crumbs
+  - no exact match in reference vocabulary
+- row 603 [unmatched] whole wheat flour
+  - no exact match in reference vocabulary
+- row 609 [unmatched] whole wheat flour more if needed
+  - no exact match in reference vocabulary
+- row 6 [unmatched] whole wheat panko bread crumbs
+  - no exact match in reference vocabulary
+- row 770 [unmatched] whole-milk plain greek yogurt
+  - no exact match in reference vocabulary
+- row 994 [unmatched] whole-milk ricotta cheese
+  - no exact match in reference vocabulary
+- row 31 [unmatched] whole-wheat panko bread crumbs
+  - no exact match in reference vocabulary
+- row 104 [unmatched] wild blueberries
+  - no exact match in reference vocabulary
+- row 33 [unmatched] wonton wrappers
+  - no exact match in reference vocabulary
+- row 216 [unmatched] wonton wrappers more as needed
+  - no exact match in reference vocabulary
+- row 903 [unmatched] wood chips as needed optional
+  - no exact match in reference vocabulary
+- row 72 [unmatched] wooden skewers
+  - no exact match in reference vocabulary
+- row 64 [unmatched] worcestershire sauce
+  - no exact match in reference vocabulary
+- row 1468 [unmatched] x -inch round paper panettone molds
+  - no exact match in reference vocabulary
+- row 766 [unmatched] xanthan gum
+  - no exact match in reference vocabulary
+- row 1393 [unmatched] yeast
+  - no exact match in reference vocabulary
+- row 197 [unmatched] yellow bell pepper
+  - no exact match in reference vocabulary
+- row 234 [unmatched] yellow bell pepper chopped
+  - no exact match in reference vocabulary
+- row 525 [unmatched] yellow bell pepper thinly sliced
+  - no exact match in reference vocabulary
+- row 21 [unmatched] yellow cornmeal
+  - no exact match in reference vocabulary
+- row 345 [unmatched] yellow mustard
+  - no exact match in reference vocabulary
+- row 998 [unmatched] yellow mustard plus more for garnish
+  - no exact match in reference vocabulary
+- row 208 [unmatched] yellow onion
+  - no exact match in reference vocabulary
+- row 197 [unmatched] yellow onion chopped
+  - no exact match in reference vocabulary
+- row 1027 [unmatched] yellow onion diced
+  - no exact match in reference vocabulary
+- row 1242 [unmatched] yellow onion quartered
+  - no exact match in reference vocabulary
+- row 555 [unmatched] yellow onion roughly chopped
+  - no exact match in reference vocabulary
+- row 863 [unmatched] yellow onions
+  - no exact match in reference vocabulary
+- row 1258 [unmatched] yellow plantain peeled cut into -inch pieces
+  - no exact match in reference vocabulary
+- row 129 [unmatched] yellow squash
+  - no exact match in reference vocabulary
+- row 1331 [unmatched] yogurt
+  - no exact match in reference vocabulary
+- row 923 [unmatched] yukon gold potatoes cubed
+  - no exact match in reference vocabulary
+- row 615 [unmatched] yukon gold potatoes cut into thick fries
+  - no exact match in reference vocabulary
+- row 208 [unmatched] yukon gold potatoes peeled cut into chunks
+  - no exact match in reference vocabulary
+- row 854 [unmatched] zest lemon
+  - no exact match in reference vocabulary
+- row 44 [unmatched] zucchini
+  - no exact match in reference vocabulary
+- row 231 [unmatched] zucchini cubed
+  - no exact match in reference vocabulary
+- row 772 [unmatched] zucchini shredded
+  - no exact match in reference vocabulary
+- row 128 [unmatched] zucchini sliced into coins
+  - no exact match in reference vocabulary
+- row 617 [unmatched] zucchini thinly sliced
+  - no exact match in reference vocabulary

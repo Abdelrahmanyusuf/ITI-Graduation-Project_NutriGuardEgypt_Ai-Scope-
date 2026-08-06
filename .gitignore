@@ -1,9 +1,23 @@
+# Dependencies
 node_modules/
+
+# Build output
+dist/
+coverage/
+
+# Environment / secrets
 .env
 .env.*
 !.env.example
 
-*.log
+# Generated data (produced by data-processing scripts; raw inputs under data/raw are committed)
+data/processed/
+data/staging/
+
+# Caches and logs
 .cache/
+*.log
+
+# OS / editor
 .DS_Store
 Thumbs.db

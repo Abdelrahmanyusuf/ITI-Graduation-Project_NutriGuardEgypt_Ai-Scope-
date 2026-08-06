@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "1.0",
+  "sources": [
+    {
+      "file": "data/raw/WHO Guidelines.pdf",
+      "source_id": "who-healthy-diet-factsheet-2026",
+      "source_name": "WHO — World Health Organization",
+      "source_url": "https://www.who.int/news-room/fact-sheets/detail/healthy-diet",
+      "title": "Healthy diet",
+      "visible_date": "26 January 2026",
+      "source_version": "v1",
+      "access_date": "2026-01-26",
+      "license": "not yet assessed",
+      "license_url": null,
+      "review_status": "pending",
+      "reviewed_by": null,
+      "review_date": null,
+      "evidence_ids": ["EG-REF-WHO-001"]
+    }
+  ],
+  "evidenceReferences": [
+    {
+      "id": "EG-REF-WHO-001",
+      "purpose": "guideline_provenance",
+      "kind": "document",
+      "reference": "WHO healthy-diet fact sheet (title/date visible in the audited PDF)",
+      "status": "pending"
+    },
+    {
+      "id": "EG-KOSHARI-CULTURAL-001",
+      "purpose": "egyptian_recipe_cultural_evidence",
+      "kind": "reference",
+      "reference": "Koshari (kushari) is widely documented as a national Egyptian dish in published culinary references",
+      "applicableTo": ["koshari", "kushari", "koshery", "kosheri", "koshary", "koshariy"],
+      "status": "pending"
+    }
+  ]
+}

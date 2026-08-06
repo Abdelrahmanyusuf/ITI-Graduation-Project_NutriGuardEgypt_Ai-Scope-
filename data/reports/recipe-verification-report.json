@@ -1,0 +1,46 @@
+{
+  "blockers": [
+    "0 verified recipes available â€” the MVP verified-recipe target is not met and is not being fabricated.",
+    "Recipe source \"data/raw/Recipes For Eqyption Food.csv\" has no source record in data/manifest/sources.json â€” provenance/license coverage is incomplete (records stay pending/not_assessed).",
+    "Every imported recipe is unreviewed (needs_review). Verification requires a human review decision: reviewerId + strict ISO reviewDate + evidence that resolves against data/manifest/sources.json (docs/MANUAL_REVIEW_WORKFLOW.md).",
+    "Columns absent from the raw source and stored as null (never fabricated; must be curated by reviewers): Arabic names, region, servings, final-cooked-weight."
+  ],
+  "duplicateIds": [],
+  "eligibleForVerifiedDataset": 0,
+  "ignoredGlobalRecipeFiles": [
+    {
+      "exists": true,
+      "file": "data/processed/cleaned_recipes.json"
+    }
+  ],
+  "importStats": {
+    "carriedOverFromRegistry": 0,
+    "excludedMalformedOrInvalid": 0,
+    "excludedNoEgyptianEvidence": 1467,
+    "rowsTotal": 1468,
+    "sourceDriftRoutedToReview": 0,
+    "stagedNeedsReview": 1,
+    "stagedRejectedNonEgyptian": 0
+  },
+  "recipeSource": "data/raw/Recipes For Eqyption Food.csv",
+  "recordBlockers": [
+    {
+      "blockers": [
+        "verificationStatus is not verified (automation never verifies)"
+      ],
+      "eligible": false,
+      "originalTitle": "Air Fryer Falafel",
+      "recipeId": "EGR-389070B0550F4D25",
+      "status": "needs_review"
+    }
+  ],
+  "registryCounts": {
+    "needs_review": 1,
+    "rejected": 0,
+    "verified": 0
+  },
+  "schemaVersion": "2.0",
+  "tool": "nutriguard-egypt-recipe-staging",
+  "validationIssues": [],
+  "verifiedRecipes": []
+}
