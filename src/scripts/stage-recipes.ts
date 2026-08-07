@@ -21,7 +21,7 @@
  * (source drift), preserving the historical timeline.
  *
  * The pipeline NEVER writes under `data/raw/`, NEVER fabricates values (missing
- * fields stay null / "not assessed"), and NEVER marks anything `verified` â€” only a
+ * fields stay null / "not assessed"), and NEVER marks anything `verified` — only a
  * human review decision (see docs/MANUAL_REVIEW_WORKFLOW.md) may.
  *
  * The previous-step general-purpose global recipe dump
@@ -57,6 +57,9 @@ import {
   type RecipeReviewTrace,
   type RecipeVerificationStatus,
   type StagedRecipe,
+  type StaleReasonCode,
+  type CurrentSourceRow,
+  type TrustedCurrentImport,
 } from "../domain/recipes.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -167,6 +170,7 @@ function migrateRecord(r: Record<string, unknown>, importedFingerprint: string |
     snapshotFingerprint:
       typeof rawReview.snapshotFingerprint === "string" ? rawReview.snapshotFingerprint : null,
     staleReason: typeof rawReview.staleReason === "string" ? rawReview.staleReason : null,
+    staleCode: (rawReview.staleCode as StaleReasonCode | null | undefined) ?? null,
     timeline: migratedTimeline.length > 0
       ? migratedTimeline
       : [{ at: null, actor: "pipeline", action: "migrated_from_legacy", status: "needs_review" as const, note: "migrated from legacy registry (schema v1.0)", evidenceIds: [] }],
@@ -203,7 +207,8 @@ function migrateRecord(r: Record<string, unknown>, importedFingerprint: string |
     : importedFingerprint !== null ? importedFingerprint
     : existingFp; // keep (empty/invalid) so validation reports the right message
 
-  return {
+  // ---- build record ----
+  const record: StagedRecipe = {
     recipeId: typeof raw.recipeId === "string" ? raw.recipeId : "",
     names,
     category: typeof raw.category === "string" ? raw.category : null,
@@ -222,6 +227,57 @@ function migrateRecord(r: Record<string, unknown>, importedFingerprint: string |
     notes: Array.isArray(raw.notes) ? (raw.notes as string[]) : [],
     sourceFingerprint,
   };
+
+  // ---- FIX A: Route legacy verified/rejected records without documented
+  // snapshot fingerprint binding back to review so the binding can be re-created.
+  if (record.verificationStatus === "verified" || record.verificationStatus === "rejected") {
+    let latestHuman: RecipeReviewTrace | null = null;
+    const tl = record.review.timeline;
+    if (Array.isArray(tl)) {
+      for (let i = tl.length - 1; i >= 0; i -= 1) {
+        const t = tl[i];
+        if (isRecord(t) && typeof (t as RecipeReviewTrace).action === "string") {
+          if ((t as RecipeReviewTrace).action.startsWith("human_")) {
+            latestHuman = t as RecipeReviewTrace;
+            break;
+          }
+        }
+      }
+    }
+    if (latestHuman !== null) {
+      const snapFp = (latestHuman as unknown as Record<string, unknown>).snapshotFingerprint;
+      const hasValidSnap = typeof snapFp === "string" && isSha256Hex(snapFp);
+      if (!hasValidSnap) {
+        const staleReason = "legacy record migrated without a documented snapshot fingerprint; re-review required";
+        const preservedSnapshot = record.review.snapshotFingerprint;
+        record.verificationStatus = "needs_review";
+        record.review.decision = "unreviewed";
+        record.review.reviewerId = null;
+        record.review.reviewDate = null;
+        record.review.evidenceIds = [];
+        record.review.rationale = null;
+        record.review.autoRejected = false;
+        record.review.staleReason = staleReason;
+        record.review.staleCode = "legacy_snapshot_unbound";
+        record.review.snapshotFingerprint = preservedSnapshot;
+        record.review.timeline = [
+          ...record.review.timeline,
+          {
+            at: null,
+            actor: "pipeline",
+            action: "migrated_cannot_bind_snapshot",
+            status: "needs_review",
+            note: staleReason,
+            evidenceIds: [],
+            previousFingerprint: null,
+            currentFingerprint: null,
+          },
+        ];
+      }
+    }
+  }
+
+  return record;
 }
 
 /** Load and parse the source manifest; missing/malformed manifest is a hard error. */
@@ -412,6 +468,7 @@ function baseRecord(
       timeline: [],
       snapshotFingerprint: null,
       staleReason: null,
+      staleCode: null,
     },
     version: STAGING_SCHEMA_VERSION,
     original: buildOriginal(headers, row),
@@ -482,6 +539,7 @@ function buildAutoRejectedRecord(
     ],
     snapshotFingerprint: null,
     staleReason: null,
+    staleCode: null,
   };
   rec.notes.push(
     "automated import-time rejection on declared non-Egyptian cuisine evidence (no human verdict; requires confirmation)",
@@ -498,11 +556,20 @@ function buildAutoRejectedRecord(
  */
 function routeBackToReview(
   rec: StagedRecipe,
+  code: StaleReasonCode,
   reason: string,
   newOriginal?: Record<string, unknown>,
   newFingerprint?: string,
   newProv?: ReturnType<typeof provenanceFromManifest>,
 ): void {
+  const oldSnapshot =
+    typeof rec.review.snapshotFingerprint === "string" ? rec.review.snapshotFingerprint : null;
+  const oldSource = typeof rec.sourceFingerprint === "string" ? rec.sourceFingerprint : null;
+  // The reviewed fingerprint we're routing away from: prefer the snapshot (human-bound),
+  // fall back to source (if the record had a source fingerprint stored before review).
+  const previousReviewedFp = oldSnapshot ?? oldSource;
+  const currentFp =
+    newFingerprint !== undefined && newFingerprint !== "" ? newFingerprint : null;
   rec.verificationStatus = "needs_review";
   rec.review = {
     decision: "unreviewed",
@@ -513,19 +580,25 @@ function routeBackToReview(
     autoRejected: false,
     snapshotFingerprint: rec.review.snapshotFingerprint, // preserve old reviewed fingerprint in timeline
     staleReason: reason,
+    staleCode: code,
     timeline: [
       ...rec.review.timeline,
       {
         at: null,
         actor: "pipeline",
-        action: "source_drift_detected",
+        action:
+          code === "legacy_snapshot_unbound"
+            ? "migrated_cannot_bind_snapshot"
+            : "source_drift_detected",
         status: "needs_review",
         note: reason,
         evidenceIds: [],
+        previousFingerprint: previousReviewedFp,
+        currentFingerprint: currentFp,
       },
     ],
   };
-  rec.notes = [...(rec.notes ?? []), `source drift: ${reason}`];
+  rec.notes = [...(rec.notes ?? []), `${code}: ${reason}`];
 
   // Update machine-owned fields to the new snapshot (if available).
   if (newOriginal !== undefined) {
@@ -561,8 +634,8 @@ function renderStagingReportMarkdown(report: VerifiedRecipeReport): string {
   lines.push(`- Rows in source: ${report.importStats.rowsTotal}`);
   lines.push(`- Imported as \`needs_review\` (Egyptian-scope evidence): ${report.importStats.stagedNeedsReview}`);
   lines.push(`- Imported as \`rejected\` (clear non-Egyptian evidence): ${report.importStats.stagedRejectedNonEgyptian}`);
-  lines.push(`- Excluded â€” malformed/invalid rows: ${report.importStats.excludedMalformedOrInvalid}`);
-  lines.push(`- Excluded â€” no Egyptian evidence & not classifiable non-Egyptian: ${report.importStats.excludedNoEgyptianEvidence}`);
+  lines.push(`- Excluded — malformed/invalid rows: ${report.importStats.excludedMalformedOrInvalid}`);
+  lines.push(`- Excluded — no Egyptian evidence & not classifiable non-Egyptian: ${report.importStats.excludedNoEgyptianEvidence}`);
   lines.push(`- Preserved from existing registry (reviews kept): ${report.importStats.carriedOverFromRegistry}`);
   lines.push(`- Routed back to review (source drift): ${report.importStats.sourceDriftRoutedToReview}`);
   lines.push(``);
@@ -582,7 +655,7 @@ function renderStagingReportMarkdown(report: VerifiedRecipeReport): string {
     lines.push(`Nothing is fabricated to reach a target.`);
   } else {
     for (const v of report.verifiedRecipes) {
-      lines.push(`- \`${v.recipeId}\` ${v.originalTitle ?? "n/a"} â€” reviewed by ${v.reviewerId} on ${v.reviewDate}`);
+      lines.push(`- \`${v.recipeId}\` ${v.originalTitle ?? "n/a"} — reviewed by ${v.reviewerId} on ${v.reviewDate}`);
     }
   }
   lines.push(``);
@@ -615,7 +688,7 @@ function renderStagingReportMarkdown(report: VerifiedRecipeReport): string {
   lines.push(``);
   for (const g of report.ignoredGlobalRecipeFiles) {
     lines.push(
-      `- \`${g.file}\` ${g.exists ? "(exists â€” ignored)" : "(not present)"} â€” general-purpose dump, never treated as Egyptian`
+      `- \`${g.file}\` ${g.exists ? "(exists — ignored)" : "(not present)"} — general-purpose dump, never treated as Egyptian`
     );
   }
   lines.push(``);
@@ -637,7 +710,7 @@ async function runStageRecipes(root: string): Promise<StagingRunResult> {
       await fs.access(path.join(root, file));
       exists = true;
     } catch {
-      // not present â€” still reported as ignored
+      // not present — still reported as ignored
     }
     ignored.push({ file, exists });
   }
@@ -683,6 +756,11 @@ async function runStageRecipes(root: string): Promise<StagingRunResult> {
   }>();
   const importedIds = new Set<string>();
   const rowFingerprints = new Map<string, string>();
+  // Trusted current-source snapshot index built FRESH from the raw bytes being
+  // imported THIS run. This is the authority for "does a source row exist and
+  // what is its fingerprint right now". It is never read back from the editable
+  // registry, so a forged timeline `snapshot_rebound` event cannot influence it.
+  const trustedImportRows: CurrentSourceRow[] = [];
   const headersForBlocker: string[] = [];
   // Pending staged records from the CSV import (to be added after existing records,
   // so existing human-reviewed records always win the merge).
@@ -713,6 +791,13 @@ async function runStageRecipes(root: string): Promise<StagingRunResult> {
       const title = (row[headers.indexOf("recipe_title")] ?? "").trim();
       const stableId = generateStableRecipeId(recipeSource ?? "?", lineNumber, title);
       const prov = provenanceFromManifest(recipeSource ?? "?", manifest);
+      trustedImportRows.push({
+        sourceFile: recipeSource ?? "",
+        sourceRow: lineNumber,
+        recipeId: stableId,
+        originalTitle: title || null,
+        fingerprint,
+      });
       importedRowData.set(stableId, {
         fingerprint,
         original: buildOriginal(headers, row),
@@ -787,6 +872,139 @@ async function runStageRecipes(root: string): Promise<StagingRunResult> {
     (r) => isRecord(r) && typeof r.recipeId === "string" && !importedIds.has(r.recipeId as string)
   ).length;
 
+  // ---- FIX B: Current-row fingerprint binding check for all raw-backed records.
+  // Silently refreshes the machine-owned sourceFingerprint so it matches the
+  // freshly computed fingerprint of the raw row they point to. For needs_review
+  // records this corrects any pre-review fabrication (no human binding yet).
+  // For verified/rejected records the machine-owned field is refreshed and the
+  // HUMAN-binding snapshotFingerprint is then checked by the dedicated
+  // source-drift logic below, which correctly distinguishes deleted rows vs
+  // changed-in-place rows and uses the proper drift message.
+  if (recipeSource !== null) {
+    for (const rec of registry) {
+      if (!isRecord(rec)) continue;
+      if (typeof rec.source !== "object" || rec.source === null) continue;
+      if (rec.source.sourceFile !== recipeSource) continue;
+      const row = rec.source.sourceRow;
+      if (typeof row !== "number" || row < 1) continue;
+      const key = `${recipeSource}|${row}`;
+      const current = rowFingerprints.get(key);
+      if (current === undefined) continue;
+      const storedFp = rec.sourceFingerprint;
+      const storedNonBlank = typeof storedFp === "string" && storedFp.trim() !== "";
+      if (!storedNonBlank) continue;
+      const staleCode = (rec.review?.staleCode as StaleReasonCode | null | undefined) ?? null;
+      const orphanAttach = staleCode === "source_deleted";
+      const legacyUnbound =
+        staleCode === "legacy_snapshot_unbound" && rec.verificationStatus === "needs_review";
+      // For a plain record it is a no-op to see the stored fingerprint equal the
+      // current row. But an ORPHANED record must be re-attached even when the
+      // reappearing row computes to the same fingerprint, otherwise it would
+      // stay permanently blocked as source_deleted. Likewise a
+      // legacy_snapshot_unbound record must receive the pipeline's
+      // snapshot_rebound current-snapshot proof when a live row is present,
+      // even when the fingerprint is already correct.
+      if (current === storedFp && !orphanAttach && !legacyUnbound) continue;
+      if (rec.verificationStatus === "needs_review" && orphanAttach) {
+        // ---- Orphan re-attachment: a current source row has reappeared for a
+        // record the pipeline previously flagged source_deleted. Re-bind it to the
+        // live row and downgrade to "source_changed" so a reviewer may legitimately
+        // re-review it.
+        const acquired = importedRowData.get(rec.recipeId);
+        const previous = storedFp;
+        rec.sourceFingerprint = current;
+        const reattachReason = "orphaned record re-attached to a current source row after the row reappeared; the reviewed snapshot changed and requires re-review";
+        rec.review = {
+          ...rec.review,
+          staleCode: "source_changed",
+          staleReason: reattachReason,
+          snapshotFingerprint: null,
+          timeline: [
+            ...(rec.review.timeline ?? []),
+            {
+              at: null,
+              actor: "pipeline",
+              action: "source_drift_detected",
+              status: "needs_review",
+              note: reattachReason,
+              evidenceIds: [],
+              previousFingerprint: previous,
+              currentFingerprint: current,
+            },
+          ],
+        };
+        if (acquired) {
+          rec.original = acquired.original;
+          rec.source.sourceId = acquired.prov.sourceId;
+          rec.source.sourceVersion = acquired.prov.sourceVersion;
+          rec.source.accessDate = acquired.prov.accessDate;
+          rec.source.url = acquired.prov.url;
+          rec.license = acquired.prov.license;
+        }
+        if (!Array.isArray(rec.notes)) rec.notes = [];
+        rec.notes.push(`source_changed: ${reattachReason}`);
+      } else if (rec.verificationStatus === "needs_review") {
+        rec.sourceFingerprint = current;
+        if (staleCode === "legacy_snapshot_unbound") {
+          // ---- Legacy-unbound rebind proof. A legacy (schema v1.0) record whose
+          // row IS present in the current import gets bound to the live row. The
+          // pipeline records an explicit snapshot_rebound current-snapshot proof
+          // (the row exists, its fingerprint was computed by the pipeline) WITHOUT
+          // fabricating a historical fingerprint. This is the ONLY way a
+          // legacy_snapshot_unbound record can become legitimately re-reviewable.
+          // Idempotent across runs: a matching proof is never appended twice.
+          const tl = Array.isArray(rec.review?.timeline) ? rec.review.timeline : null;
+          const hasRebind =
+            tl !== null &&
+            tl.some(
+              (t) =>
+                isRecord(t) &&
+                (t as RecipeReviewTrace).action === "snapshot_rebound" &&
+                (t as RecipeReviewTrace).currentFingerprint === current
+            );
+          if (!hasRebind && tl !== null) {
+            rec.review = {
+              ...rec.review,
+              timeline: [
+                ...tl,
+                {
+                  at: null,
+                  actor: "pipeline",
+                  action: "snapshot_rebound",
+                  status: "needs_review",
+                  note: "legacy record bound to a currently imported source row; the pipeline computed the current row fingerprint (no historical fingerprint fabricated)",
+                  evidenceIds: [],
+                  sourceFingerprint: current,
+                  snapshotFingerprint: null,
+                  previousFingerprint: null,
+                  currentFingerprint: current,
+                },
+              ],
+            };
+            const acquiredLegacy = importedRowData.get(rec.recipeId);
+            if (acquiredLegacy) {
+              rec.original = acquiredLegacy.original;
+              rec.source.sourceId = acquiredLegacy.prov.sourceId;
+              rec.source.sourceVersion = acquiredLegacy.prov.sourceVersion;
+              rec.source.accessDate = acquiredLegacy.prov.accessDate;
+              rec.source.url = acquiredLegacy.prov.url;
+              rec.license = acquiredLegacy.prov.license;
+            }
+            if (!Array.isArray(rec.notes)) rec.notes = [];
+            rec.notes.push("snapshot_rebound: legacy record bound to a current imported source row");
+          }
+        } else {
+          if (!Array.isArray(rec.notes)) rec.notes = [];
+          rec.notes.push("pipeline corrected fabricated sourceFingerprint to match current raw row (needs_review, not yet human-reviewed)");
+        }
+      } else {
+        rec.sourceFingerprint = current;
+        if (!Array.isArray(rec.notes)) rec.notes = [];
+        rec.notes.push("pipeline refreshed machine-owned sourceFingerprint to match current raw row (human snapshot binding drift is checked separately)");
+      }
+    }
+  }
+
   // ---- Source-drift protection: compare every REVIEWED record's stored snapshot
   // fingerprint with the current raw row (or its disappearance).
   for (const rec of registry) {
@@ -812,26 +1030,36 @@ async function runStageRecipes(root: string): Promise<StagingRunResult> {
     const newRowData = current !== undefined ? importedRowData.get(rec.recipeId) : undefined;
     if (current === undefined) {
       // Row position no longer exists in current file
-      routeBackToReview(rec, "source row deleted from the raw source after review (orphaned record); re-review required");
+      routeBackToReview(rec, "source_deleted", "source row deleted from the raw source after review (orphaned record); re-review requires re-attaching the record to a current source row");
       importStats.sourceDriftRoutedToReview += 1;
     } else if (current !== snapshot) {
-      // Row at position exists but content differs
-      let reason: string;
+      // A row exists at the same position but its content differs.
       if (rowsDeleted) {
-        reason = "source row deleted from the raw source after review (orphaned record); re-review required";
+        // The file shrank: the original reviewed row at this position is gone and
+        // a DIFFERENT recipe now occupies it. This is an orphaned record — it must
+        // NOT be bound to the unrelated row that now sits at the same position, so
+        // no new row data is supplied.
+        routeBackToReview(rec, "source_deleted", "source row deleted from the raw source after review (orphaned record); re-review requires re-attaching the record to a current source row");
       } else if (snapshotFoundElsewhere) {
-        reason = "source row changed after review (canonical fingerprint mismatch); re-review required";
+        routeBackToReview(
+          rec,
+          "source_changed",
+          "source row changed after review (canonical fingerprint mismatch); re-review required",
+          newRowData?.original,
+          newRowData?.fingerprint,
+          newRowData?.prov,
+        );
       } else {
         // Same row count, snapshot not found elsewhere -> modified in place
-        reason = "source row changed after review (canonical fingerprint mismatch); re-review required";
+        routeBackToReview(
+          rec,
+          "source_changed",
+          "source row changed after review (canonical fingerprint mismatch); re-review required",
+          newRowData?.original,
+          newRowData?.fingerprint,
+          newRowData?.prov,
+        );
       }
-      routeBackToReview(
-        rec,
-        reason,
-        newRowData?.original,
-        newRowData?.fingerprint,
-        newRowData?.prov,
-      );
       importStats.sourceDriftRoutedToReview += 1;
     }
   }
@@ -842,7 +1070,11 @@ async function runStageRecipes(root: string): Promise<StagingRunResult> {
     return ka.localeCompare(kb);
   });
 
-  let validation = validateStagingRegistry(registry, manifest);
+  // The trusted current-source snapshot for THIS run, used as the authority for
+  // stale-lineage records in validation and eligibility. Immutable for this run.
+  const trustedCurrentImport: TrustedCurrentImport = { rows: trustedImportRows };
+
+  let validation = validateStagingRegistry(registry, manifest, trustedCurrentImport);
   if (cannotMerge) {
     validation = {
       duplicateIds: validation.duplicateIds,
@@ -867,7 +1099,7 @@ async function runStageRecipes(root: string): Promise<StagingRunResult> {
     if (!isRecord(r)) continue;
     const st = r.verificationStatus as RecipeVerificationStatus;
     if (RECIPE_VERIFICATION_STATUSES.includes(st)) counts[st] += 1;
-    const g = isEligibleForVerifiedDataset(r, manifest);
+    const g = isEligibleForVerifiedDataset(r, manifest, trustedCurrentImport);
     recordBlockers.push({
       recipeId: r.recipeId,
       originalTitle: r.originalTitle,
@@ -889,14 +1121,14 @@ async function runStageRecipes(root: string): Promise<StagingRunResult> {
   // Derived, manifest-truthful blockers (never unconditional).
   const blockers: string[] = [];
   if (eligible === 0) {
-    blockers.push("0 verified recipes available â€” the MVP verified-recipe target is not met and is not being fabricated.");
+    blockers.push("0 verified recipes available — the MVP verified-recipe target is not met and is not being fabricated.");
   }
   if (recipeFile === null) {
-    blockers.push("No raw recipe CSV found under data/raw â€” the staging registry cannot be seeded from a source.");
+    blockers.push("No raw recipe CSV found under data/raw — the staging registry cannot be seeded from a source.");
   } else {
     const sourceRecord = sourceRecordForSourceId(manifest, recipeSource, recipeSource);
     if (sourceRecord === null) {
-      blockers.push(`Recipe source "${recipeSource}" has no source record in data/manifest/sources.json â€” provenance/license coverage is incomplete (records stay pending/not_assessed).`);
+      blockers.push(`Recipe source "${recipeSource}" has no source record in data/manifest/sources.json — provenance/license coverage is incomplete (records stay pending/not_assessed).`);
     } else {
       if (!isSourceRecordApproved(sourceRecord)) {
         blockers.push(`Source record "${sourceRecord.sourceId ?? sourceRecord.file}" is not provenance-approved in data/manifest/sources.json (requires review_status=approved + reviewer + strict ISO review_date).`);

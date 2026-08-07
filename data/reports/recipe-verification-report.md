@@ -9,8 +9,8 @@
 - Rows in source: 1468
 - Imported as `needs_review` (Egyptian-scope evidence): 1
 - Imported as `rejected` (clear non-Egyptian evidence): 0
-- Excluded â€” malformed/invalid rows: 0
-- Excluded â€” no Egyptian evidence & not classifiable non-Egyptian: 1467
+- Excluded — malformed/invalid rows: 0
+- Excluded — no Egyptian evidence & not classifiable non-Egyptian: 1467
 - Preserved from existing registry (reviews kept): 0
 - Routed back to review (source drift): 0
 
@@ -28,8 +28,8 @@ Nothing is fabricated to reach a target.
 
 ## Blockers
 
-- 0 verified recipes available â€” the MVP verified-recipe target is not met and is not being fabricated.
-- Recipe source "data/raw/Recipes For Eqyption Food.csv" has no source record in data/manifest/sources.json â€” provenance/license coverage is incomplete (records stay pending/not_assessed).
+- 0 verified recipes available — the MVP verified-recipe target is not met and is not being fabricated.
+- Recipe source "data/raw/Recipes For Eqyption Food.csv" has no source record in data/manifest/sources.json — provenance/license coverage is incomplete (records stay pending/not_assessed).
 - Every imported recipe is unreviewed (needs_review). Verification requires a human review decision: reviewerId + strict ISO reviewDate + evidence that resolves against data/manifest/sources.json (docs/MANUAL_REVIEW_WORKFLOW.md).
 - Columns absent from the raw source and stored as null (never fabricated; must be curated by reviewers): Arabic names, region, servings, final-cooked-weight.
 
@@ -40,4 +40,4 @@ Nothing is fabricated to reach a target.
 
 ## Ignored global recipe files
 
-- `data/processed/cleaned_recipes.json` (exists â€” ignored) â€” general-purpose dump, never treated as Egyptian
+- `data/processed/cleaned_recipes.json` (exists — ignored) — general-purpose dump, never treated as Egyptian

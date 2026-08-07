@@ -18,12 +18,20 @@ import {
   type RecordLicense,
   type RecipeSourceRef,
   type StagedRecipe,
+  type TrustedCurrentImport,
 } from "../src/domain/recipes.js";
 import { parseManifest, type Manifest } from "../src/domain/manifest.js";
 import { stageRecipes } from "../src/scripts/stage-recipes.js";
+import { detectMojibake } from "../src/audit/text.js";
 
 const CSV_FILE = "data/raw/Recipes For Eqyption Food.csv";
 const FIXTURE_SOURCE_ID = "recipes-csv-fixture";
+
+const KOSHARI_FP = "83a79c623d602e26aaf06be71c6a46d1b81749dc496ec63fc5bc2ec488c5aabf";
+const MOLOKHIA_FP = "783494990f4d2d9220633d206a32b6a61e5c8e5ca87819af5ecd18c5382f0c30";
+const FP_A = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+const FP_B = "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb";
+const FP_ZEROS = "0000000000000000000000000000000000000000000000000000000000000000";
 
 /** Full manifest as a Manifest object (camelCase) for in-memory use. */
 function buildManifest(overrides: { sourceApproved?: boolean } = {}): Manifest {
@@ -213,7 +221,7 @@ function makeRecipe(overrides: Partial<StagedRecipe> = {}): StagedRecipe {
     original: { recipe_title: "Koshari", cuisine_list: '["Egyptian"]' },
     originalTitle: "Koshari",
     notes: ["automated import from raw source; original row preserved verbatim"],
-    sourceFingerprint: "fp-koshari-row-2",
+    sourceFingerprint: KOSHARI_FP,
   };
   return { ...base, ...overrides, review: { ...base.review, ...(overrides.review ?? {}) } };
 }
@@ -230,7 +238,7 @@ function makeVerifiedRecipe(overrides: Partial<StagedRecipe> = {}): StagedRecipe
       evidenceIds: ["EG-KOSHARI-CULTURAL-001"],
       rationale: "documented cultural reference",
       autoRejected: false,
-      snapshotFingerprint: "fp-koshari-row-2",
+      snapshotFingerprint: KOSHARI_FP,
       staleReason: null,
       timeline: [
         {
@@ -248,6 +256,8 @@ function makeVerifiedRecipe(overrides: Partial<StagedRecipe> = {}): StagedRecipe
           status: "verified",
           note: "documented cultural reference",
           evidenceIds: ["EG-KOSHARI-CULTURAL-001"],
+          sourceFingerprint: KOSHARI_FP,
+          snapshotFingerprint: KOSHARI_FP,
         },
       ],
     },
@@ -367,11 +377,13 @@ test("evidence: blank-after-trim evidence fails; whitespace around a valid ID is
           status: "verified",
           note: "documented cultural reference",
           evidenceIds: ["EG-KOSHARI-CULTURAL-001"],
+          sourceFingerprint: KOSHARI_FP,
+          snapshotFingerprint: KOSHARI_FP,
         },
       ],
     },
   });
-  assert.deepEqual(validateStagedRecipe(padded, FULL_MANIFEST), []);
+  assert.deepEqual(validateStagedRecipe(padded, FULL_MANIFEST, trustedImportFor(padded)), []);
 });
 
 test("evidence: URL references require valid http(s) AND a non-empty rationale", () => {
@@ -396,11 +408,13 @@ test("evidence: URL references require valid http(s) AND a non-empty rationale",
           status: "verified",
           note: "documented cultural reference",
           evidenceIds: [url],
+          sourceFingerprint: KOSHARI_FP,
+          snapshotFingerprint: KOSHARI_FP,
         },
       ],
     },
   });
-  assert.deepEqual(validateStagedRecipe(good, FULL_MANIFEST), []);
+  assert.deepEqual(validateStagedRecipe(good, FULL_MANIFEST, trustedImportFor(good)), []);
   const noRationale = makeVerifiedRecipe({
     review: {
       ...makeVerifiedRecipe().review,
@@ -422,6 +436,8 @@ test("evidence: URL references require valid http(s) AND a non-empty rationale",
           status: "verified",
           note: "documented cultural reference",
           evidenceIds: [url],
+          sourceFingerprint: KOSHARI_FP,
+          snapshotFingerprint: KOSHARI_FP,
         },
       ],
     },
@@ -447,11 +463,95 @@ test("evidence: URL references require valid http(s) AND a non-empty rationale",
           status: "verified",
           note: "documented cultural reference",
           evidenceIds: ["ftp://example.test/x"],
+          sourceFingerprint: KOSHARI_FP,
+          snapshotFingerprint: KOSHARI_FP,
         },
       ],
     },
   });
   assert.ok(validateStagedRecipe(badScheme, FULL_MANIFEST).some((i) => i.includes("not a valid http(s) URL")));
+});
+
+test("validation: missing sourceFingerprint is rejected", () => {
+  const r = makeRecipe({ sourceFingerprint: "" });
+  const issues = validateStagedRecipe(r, FULL_MANIFEST);
+  assert.ok(issues.some((i) => i.includes("sourceFingerprint is required")), `issues=${JSON.stringify(issues)}`);
+});
+
+test("validation: non-SHA sourceFingerprint is rejected (short/non-hex strings)", () => {
+  const rx = makeRecipe({ sourceFingerprint: "x" });
+  const ix = validateStagedRecipe(rx, FULL_MANIFEST);
+  assert.ok(
+    ix.some((i) => i.includes("isSha256Hex") || i.includes("64-character lowercase SHA-256")),
+    `x issues=${JSON.stringify(ix)}`
+  );
+  const rnh = makeRecipe({ sourceFingerprint: "not-a-hash" });
+  const inh = validateStagedRecipe(rnh, FULL_MANIFEST);
+  assert.ok(
+    inh.some((i) => i.includes("isSha256Hex") || i.includes("64-character lowercase SHA-256")),
+    `not-a-hash issues=${JSON.stringify(inh)}`
+  );
+});
+
+test("validation: non-SHA sourceFingerprint is rejected (uppercase / too short / too long)", () => {
+  const upper = makeRecipe({ sourceFingerprint: KOSHARI_FP.toUpperCase() });
+  const iup = validateStagedRecipe(upper, FULL_MANIFEST);
+  assert.ok(
+    iup.some((i) => i.includes("isSha256Hex") || i.includes("64-character lowercase SHA-256")),
+    `uppercase issues=${JSON.stringify(iup)}`
+  );
+  const short = makeRecipe({ sourceFingerprint: FP_A.slice(0, 63) });
+  const isho = validateStagedRecipe(short, FULL_MANIFEST);
+  assert.ok(
+    isho.some((i) => i.includes("isSha256Hex") || i.includes("64-character lowercase SHA-256")),
+    `short(63) issues=${JSON.stringify(isho)}`
+  );
+  const long = makeRecipe({ sourceFingerprint: FP_A + "a" });
+  const ilo = validateStagedRecipe(long, FULL_MANIFEST);
+  assert.ok(
+    ilo.some((i) => i.includes("isSha256Hex") || i.includes("64-character lowercase SHA-256")),
+    `long(65) issues=${JSON.stringify(ilo)}`
+  );
+});
+
+test("validation: non-SHA snapshotFingerprint is rejected", () => {
+  const base = makeVerifiedRecipe();
+  const badTimeline = base.review.timeline.map((t) =>
+    t.action === "human_verified" ? { ...t, snapshotFingerprint: "not-a-hash" } : t
+  );
+  const r = makeVerifiedRecipe({
+    review: {
+      ...base.review,
+      snapshotFingerprint: "not-a-hash",
+      timeline: badTimeline,
+    },
+  });
+  const issues = validateStagedRecipe(r, FULL_MANIFEST);
+  assert.ok(
+    issues.some((i) => i.includes("snapshotFingerprint") && (i.includes("isSha256Hex") || i.includes("64-character lowercase SHA-256"))),
+    `issues=${JSON.stringify(issues)}`
+  );
+});
+
+test("validation: valid-format but incorrect fingerprint passes format validation (adversarial syntactic)", () => {
+  for (const validFp of [FP_A, FP_B, FP_ZEROS, MOLOKHIA_FP]) {
+    const base = makeVerifiedRecipe();
+    const adversarialTimeline = base.review.timeline.map((t) =>
+      t.action === "human_verified"
+        ? { ...t, sourceFingerprint: validFp, snapshotFingerprint: validFp }
+        : t
+    );
+    const r = makeVerifiedRecipe({
+      sourceFingerprint: validFp,
+      review: {
+        ...base.review,
+        snapshotFingerprint: validFp,
+        timeline: adversarialTimeline,
+      },
+    });
+    const issues = validateStagedRecipe(r, FULL_MANIFEST, trustedImportFor(r));
+    assert.deepEqual(issues, [], `syntactically valid SHA-256 fingerprint ${validFp.slice(0,8)}... should pass format-only validation: ${JSON.stringify(issues)}`);
+  }
 });
 
 test("license: approved status without manifest backing fails (e)", () => {
@@ -497,11 +597,11 @@ test("rejection: blank human rejection reasons fail (g)", () => {
       evidenceIds: [],
       rationale: "   ",
       autoRejected: false,
-      snapshotFingerprint: "fp-koshari-row-2",
+      snapshotFingerprint: KOSHARI_FP,
       staleReason: null,
       timeline: [
         { at: null, actor: "pipeline", action: "imported_as_needs_review", status: "needs_review", note: "import", evidenceIds: [] },
-        { at: "2026-08-06", actor: "reviewer-1", action: "human_rejected", status: "rejected", note: "   ", evidenceIds: [] },
+        { at: "2026-08-06", actor: "reviewer-1", action: "human_rejected", status: "rejected", note: "   ", evidenceIds: [], sourceFingerprint: KOSHARI_FP, snapshotFingerprint: KOSHARI_FP },
       ],
     },
   });
@@ -510,20 +610,22 @@ test("rejection: blank human rejection reasons fail (g)", () => {
 
 test("review recorder: human verification requires reviewer + ISO date + manifest-valid evidence + rationale", () => {
   const r = makeRecipe();
-  assert.equal(applyReviewDecision(r, { decision: "verified", reviewerId: " ", reviewDate: "2026-08-06", evidenceIds: ["EG-KOSHARI-CULTURAL-001"], rationale: "x" }, FULL_MANIFEST).ok, false);
-  assert.equal(applyReviewDecision(r, { decision: "verified", reviewerId: "reviewer-1", reviewDate: "2026-02-30", evidenceIds: ["EG-KOSHARI-CULTURAL-001"], rationale: "x" }, FULL_MANIFEST).ok, false);
-  assert.equal(applyReviewDecision(r, { decision: "verified", reviewerId: "reviewer-1", reviewDate: "2026-08-06", evidenceIds: [], rationale: "x" }, FULL_MANIFEST).ok, false);
-  assert.equal(applyReviewDecision(r, { decision: "verified", reviewerId: "reviewer-1", reviewDate: "2026-08-06", evidenceIds: ["EG-MISSING-001"], rationale: "x" }, FULL_MANIFEST).ok, false);
-  assert.equal(applyReviewDecision(r, { decision: "verified", reviewerId: "reviewer-1", reviewDate: "2026-08-06", evidenceIds: ["EG-REF-WHO-001"], rationale: "x" }, FULL_MANIFEST).ok, false);
-  assert.equal(applyReviewDecision(r, { decision: "verified", reviewerId: "reviewer-1", reviewDate: "2026-08-06", evidenceIds: ["EG-KOSHARI-CULTURAL-002"], rationale: "x" }, FULL_MANIFEST).ok, false);
-  assert.equal(applyReviewDecision(r, { decision: "verified", reviewerId: "reviewer-1", reviewDate: "2026-08-06", evidenceIds: ["  "], rationale: "x" }, FULL_MANIFEST).ok, false);
-  assert.equal(applyReviewDecision(r, { decision: "verified", reviewerId: "reviewer-1", reviewDate: "2026-08-06", evidenceIds: ["https://example.test/ref"], rationale: " " }, FULL_MANIFEST).ok, false);
+  const authCtx = trustedImportFor(r);
+  assert.equal(applyReviewDecision(r, { decision: "verified", reviewerId: " ", reviewDate: "2026-08-06", evidenceIds: ["EG-KOSHARI-CULTURAL-001"], rationale: "x" }, FULL_MANIFEST, authCtx).ok, false);
+  assert.equal(applyReviewDecision(r, { decision: "verified", reviewerId: "reviewer-1", reviewDate: "2026-02-30", evidenceIds: ["EG-KOSHARI-CULTURAL-001"], rationale: "x" }, FULL_MANIFEST, authCtx).ok, false);
+  assert.equal(applyReviewDecision(r, { decision: "verified", reviewerId: "reviewer-1", reviewDate: "2026-08-06", evidenceIds: [], rationale: "x" }, FULL_MANIFEST, authCtx).ok, false);
+  assert.equal(applyReviewDecision(r, { decision: "verified", reviewerId: "reviewer-1", reviewDate: "2026-08-06", evidenceIds: ["EG-MISSING-001"], rationale: "x" }, FULL_MANIFEST, authCtx).ok, false);
+  assert.equal(applyReviewDecision(r, { decision: "verified", reviewerId: "reviewer-1", reviewDate: "2026-08-06", evidenceIds: ["EG-REF-WHO-001"], rationale: "x" }, FULL_MANIFEST, authCtx).ok, false);
+  assert.equal(applyReviewDecision(r, { decision: "verified", reviewerId: "reviewer-1", reviewDate: "2026-08-06", evidenceIds: ["EG-KOSHARI-CULTURAL-002"], rationale: "x" }, FULL_MANIFEST, authCtx).ok, false);
+  assert.equal(applyReviewDecision(r, { decision: "verified", reviewerId: "reviewer-1", reviewDate: "2026-08-06", evidenceIds: ["  "], rationale: "x" }, FULL_MANIFEST, authCtx).ok, false);
+  assert.equal(applyReviewDecision(r, { decision: "verified", reviewerId: "reviewer-1", reviewDate: "2026-08-06", evidenceIds: ["https://example.test/ref"], rationale: " " }, FULL_MANIFEST, authCtx).ok, false);
 
   // URL evidence with rationale is accepted; IDs are trimmed and deduplicated.
   const ok = applyReviewDecision(
     r,
     { decision: "verified", reviewerId: "reviewer-1", reviewDate: "2026-08-06", evidenceIds: ["  https://example.test/ref  "], rationale: "consulted a documented public reference" },
-    FULL_MANIFEST
+    FULL_MANIFEST,
+    authCtx
   );
   assert.equal(ok.ok, true);
   if (!ok.ok) return;
@@ -547,8 +649,8 @@ test("MVP gate: unreviewed/needs_review records are never eligible", () => {
 
 test("MVP gate: a fully verified+attributed+licensed+manifest-backed record is eligible (positive)", () => {
   const r = makeVerifiedRecipe();
-  assert.deepEqual(validateStagedRecipe(r, FULL_MANIFEST), []);
-  const g = isEligibleForVerifiedDataset(r, FULL_MANIFEST);
+  assert.deepEqual(validateStagedRecipe(r, FULL_MANIFEST, trustedImportFor(r)), []);
+  const g = isEligibleForVerifiedDataset(r, FULL_MANIFEST, trustedImportFor(r));
   assert.equal(g.eligible, true);
   assert.deepEqual(g.blockers, []);
 });
@@ -557,9 +659,10 @@ test("MVP gate: verified but unlicensed or unattributed is blocked", () => {
   const base = makeVerifiedRecipe();
   const unlicensed = { ...base, license: makeLicense("not_assessed") };
   const noReviewer = makeVerifiedRecipe({ review: { ...base.review, reviewerId: null } });
-  assert.equal(isEligibleForVerifiedDataset(unlicensed, FULL_MANIFEST).eligible, false);
-  assert.ok(isEligibleForVerifiedDataset(unlicensed, FULL_MANIFEST).blockers.some((b) => b.includes("license")));
-  assert.ok(isEligibleForVerifiedDataset(noReviewer, FULL_MANIFEST).blockers.some((b) => b.includes("reviewer")));
+  const baseCtx = trustedImportFor(base);
+  assert.equal(isEligibleForVerifiedDataset(unlicensed, FULL_MANIFEST, baseCtx).eligible, false);
+  assert.ok(isEligibleForVerifiedDataset(unlicensed, FULL_MANIFEST, baseCtx).blockers.some((b) => b.includes("license")));
+  assert.ok(isEligibleForVerifiedDataset(noReviewer, FULL_MANIFEST, baseCtx).blockers.some((b) => b.includes("reviewer")));
 });
 
 test("defensive: malformed registry objects yield issues, never crashes (j)", () => {
@@ -601,6 +704,32 @@ async function buildStagingRoot(dir: string): Promise<void> {
 
 function fixtureManifest(dir: string): Promise<Manifest> {
   return fs.readFile(path.join(dir, "data", "manifest", "sources.json"), "utf8").then(parseManifest);
+}
+
+/** A trusted current-source snapshot for the fixture CSV at source row 2.
+ * `fingerprint` is the freshly computed fingerprint of that row and
+ * `recipeId` is the record's NON-NULL stable recipe identity (identity
+ * authentication is mandatory and unconditional). */
+function currentImportFor(fingerprint: string, recipeId: string, row = 2, sourceFile = CSV_FILE): TrustedCurrentImport {
+  return { rows: [{ sourceFile, sourceRow: row, recipeId, originalTitle: null, fingerprint }] };
+}
+
+/** Build a trusted current-source snapshot that AUTHENTICATES `recipe` exactly
+ * (matching source file, row, non-null recipeId and freshly computed
+ * fingerprint = recipe.sourceFingerprint). Use when a record is genuinely
+ * present in the current import. */
+function trustedImportFor(recipe: StagedRecipe): TrustedCurrentImport {
+  return {
+    rows: [
+      {
+        sourceFile: recipe.source.sourceFile,
+        sourceRow: recipe.source.sourceRow ?? 2,
+        recipeId: recipe.recipeId,
+        originalTitle: recipe.originalTitle,
+        fingerprint: recipe.sourceFingerprint ?? "",
+      },
+    ],
+  };
 }
 
 async function hashRawFiles(dir: string): Promise<string[]> {
@@ -687,10 +816,12 @@ test("stage pipeline: deterministic; a preserved human review is validated again
 
   // Human review recorded through the decision recorder.
   const records = JSON.parse(await fs.readFile(registryPath, "utf8")) as StagedRecipe[];
+  const decidedTarget = records.find((r) => r.originalTitle === "Koshari Egyptian") as StagedRecipe;
   const decided = applyReviewDecision(
-    records.find((r) => r.originalTitle === "Koshari Egyptian") as StagedRecipe,
+    decidedTarget,
     { decision: "verified", reviewerId: "reviewer-1", reviewDate: "2026-08-06", evidenceIds: ["EG-KOSHARI-CULTURAL-001"], rationale: "documented cultural reference" },
-    manifest
+    manifest,
+    trustedImportFor(decidedTarget)
   );
   assert.equal(decided.ok, true);
   if (!decided.ok) return;
@@ -762,7 +893,7 @@ test("stage pipeline: deterministic; a preserved human review is validated again
     original: { header: "curated record added by reviewer" },
     originalTitle: "Koshari Traditional",
     notes: [],
-    sourceFingerprint: "fp-curated-1",
+    sourceFingerprint: FP_A,
   };
   await fs.writeFile(registryPath, JSON.stringify([...(JSON.parse(registry3) as StagedRecipe[]), curated]));
   const third = await stageRecipes(dir);
@@ -784,7 +915,8 @@ async function reviewKoshari(dir: string, registryPath: string): Promise<string>
   const decided = applyReviewDecision(
     koshari,
     { decision: "verified", reviewerId: "reviewer-1", reviewDate: "2026-08-06", evidenceIds: ["EG-KOSHARI-CULTURAL-001"], rationale: "documented cultural reference" },
-    manifest
+    manifest,
+    trustedImportFor(koshari)
   );
   if (!decided.ok) throw new Error(`review decision rejected: ${decided.errors.join("; ")}`);
   await fs.writeFile(registryPath, JSON.stringify(records.map((r) => (r.recipeId === koshari.recipeId ? decided.recipe : r)), null, 2));
@@ -975,6 +1107,7 @@ test("stage pipeline: full drift lifecycle — v1 reviewed → modify raw → dr
       rationale: "documented cultural reference",
     },
     manifest,
+    trustedImportFor(koshari),
   );
   assert.equal(decV1.ok, true);
   if (!decV1.ok) throw new Error("v1 review failed");
@@ -1081,6 +1214,9 @@ test("stage pipeline: full drift lifecycle — v1 reviewed → modify raw → dr
       rationale: "re-reviewed against updated source row; cultural evidence still applies",
     },
     manifest,
+    // The v2 fingerprint is the freshly computed fingerprint of the current row,
+    // and the record's non-null recipeId must match the trusted row identity.
+    currentImportFor(v2SourceFp, afterR3.recipeId),
   );
   if (decV2.ok !== true) {
     assert.fail(`v2 re-review rejected: ${(decV2 as { ok: false; errors: string[] }).errors.join("; ")}`);
@@ -1143,6 +1279,866 @@ test("stage pipeline: full drift lifecycle — v1 reviewed → modify raw → dr
   assert.equal(v2Verified1, v2Verified2, "final v2 verified registry is byte-identical across runs");
   assert.equal(r5.report.eligibleForVerifiedDataset, 1);
   assert.equal(r5.valid, true);
+
+  await fs.rm(dir, { recursive: true, force: true });
+});
+
+test("regression: legacy schema migration routes v1.0 verified records back to needs_review", async () => {
+  const dir = await mkdtemp(path.join(tmpdir(), "nutriguard-stage-"));
+  await buildStagingRoot(dir);
+  await stageRecipes(dir);
+  const registryPath = path.join(dir, "data", "staging", "recipes.json");
+  const current = JSON.parse(await fs.readFile(registryPath, "utf8")) as StagedRecipe[];
+  const koshari = current.find((r) => r.originalTitle === "Koshari Egyptian");
+  assert.ok(koshari, "fixture has Koshari Egyptian row");
+
+  const legacyV1 = {
+    recipeId: koshari.recipeId,
+    names: { ar: null, en: "Koshari Egyptian", eg: null, aliases: [] },
+    category: koshari.category,
+    subcategory: null,
+    region: null,
+    yield: { servings: null, finalCookedWeightG: null },
+    source: {
+      sourceId: FIXTURE_SOURCE_ID,
+      sourceFile: CSV_FILE,
+      sourceRow: 2,
+      sourceVersion: "v1",
+      accessDate: "2026-08-01",
+      url: "https://example.test/fixtures",
+    },
+    license: { status: "approved" as const, id: FIXTURE_SOURCE_ID, url: "https://creativecommons.org/licenses/by/4.0/", note: null },
+    verificationStatus: "verified" as const,
+    review: {
+      decision: "verified" as const,
+      reviewerId: "legacy-reviewer",
+      reviewDate: "2026-06-01",
+      evidenceIds: ["EG-KOSHARI-CULTURAL-001"],
+      rationale: "legacy review before v2.0 fingerprint schema",
+      autoRejected: false,
+      staleReason: null,
+      timeline: [
+        { at: null, actor: "pipeline", action: "imported_as_needs_review", status: "needs_review" as const, note: "legacy import", evidenceIds: [] as string[] },
+        { at: "2026-06-01", actor: "legacy-reviewer", action: "human_verified", status: "verified" as const, note: "legacy review before v2.0 fingerprint schema", evidenceIds: ["EG-KOSHARI-CULTURAL-001"] },
+      ],
+    },
+    version: "1.0",
+    original: koshari.original,
+    originalTitle: "Koshari Egyptian",
+    notes: [],
+  };
+
+  await fs.writeFile(registryPath, JSON.stringify([legacyV1], null, 2));
+  const result = await stageRecipes(dir);
+  const manifest = await fixtureManifest(dir);
+  const migrated = (JSON.parse(await fs.readFile(registryPath, "utf8")) as StagedRecipe[]).find((r) => r.recipeId === koshari.recipeId);
+  assert.ok(migrated);
+  assert.equal(migrated.verificationStatus, "needs_review", `legacy v1.0 verified record routed back to needs_review; staleReason=${String(migrated.review.staleReason)}`);
+  assert.equal(migrated.review.decision, "unreviewed", "decision cleared on legacy review re-routing");
+  assert.ok(
+    migrated.review.staleReason !== null,
+    `staleReason should be set after migration of a legacy reviewed record; got=${String(migrated.review.staleReason)}`
+  );
+  assert.equal(migrated.review.staleCode, "legacy_snapshot_unbound", "legacy unbound migration carries the machine-readable stale code");
+  assert.ok(
+    migrated.review.timeline.some((t) => t.action === "source_drift_detected" || t.action === "migrated_from_legacy" || t.action === "migrated_cannot_bind_snapshot"),
+    "timeline records the migration/drift transition"
+  );
+  assert.ok(migrated.review.timeline.some((t) => t.action === "migrated_cannot_bind_snapshot"), "migrated_cannot_bind_snapshot is a legitimate stale-transition event");
+  // Do NOT fabricate a historical reviewed fingerprint.
+  const legacyMigrationEvent = migrated.review.timeline.find((t) => t.action === "migrated_cannot_bind_snapshot");
+  assert.ok(legacyMigrationEvent);
+  assert.equal(legacyMigrationEvent.previousFingerprint, null, "legacy migration never fabricates previousFingerprint");
+  assert.equal(legacyMigrationEvent.currentFingerprint, null, "legacy migration never fabricates currentFingerprint");
+  assert.equal(migrated.version, STAGING_SCHEMA_VERSION, "migrated record bumped to current schema version");
+  // The migrated registry is structurally VALID (this is the key regression fix).
+  assert.equal(result.valid, true, "legacy migration yields a structurally valid registry");
+  assert.equal(result.report.validationIssues.length, 0, `no validation issues after legacy migration; issues=${JSON.stringify(result.report.validationIssues)}`);
+  const migratedIssues = validateStagedRecipe(migrated, manifest);
+  assert.deepEqual(migratedIssues, [], `migrated record validates cleanly; issues=${JSON.stringify(migratedIssues)}`);
+  assert.equal(result.report.eligibleForVerifiedDataset, 0, "migrated legacy review is not silently eligible");
+  assert.equal(result.report.registryCounts.verified, 0, "no fabricated verified recipes after legacy migration");
+  assert.equal(result.report.registryCounts.needs_review, 1, "migrated legacy record is a needs_review record");
+  await fs.rm(dir, { recursive: true, force: true });
+});
+
+test("stage pipeline: EOF orphaned (source_deleted) source is blocked from re-review and re-stays blocked after tampering + restore", async () => {
+  const dir = await mkdtemp(path.join(tmpdir(), "nutriguard-stage-"));
+  await buildStagingRoot(dir);
+  const registryPath = path.join(dir, "data", "staging", "recipes.json");
+  const csvPath = path.join(dir, "data", "raw", "Recipes For Eqyption Food.csv");
+  const manifest = await fixtureManifest(dir);
+
+  // ---- import and verify a recipe ----
+  await stageRecipes(dir);
+  const koshariId = await reviewKoshari(dir, registryPath);
+  const first = (JSON.parse(await fs.readFile(registryPath, "utf8")) as StagedRecipe[]).find((r) => r.recipeId === koshariId)!;
+  assert.equal(first.verificationStatus, "verified", "recipe was human-verified");
+
+  // ---- delete its raw row and re-stage -> orphaned source_deleted ----
+  await fs.writeFile(csvPath, Buffer.from(FIXTURE_HEADER + FIXTURE_ROWS.slice(1).join(""), "utf8"));
+  const second = await stageRecipes(dir);
+  const orphan = second.registry.find((r) => r.recipeId === koshariId)!;
+  assert.ok(orphan);
+  assert.equal(orphan.verificationStatus, "needs_review", "deleted reviewed row is routed back to review");
+  assert.equal(orphan.review.staleCode, "source_deleted", "deleted/orphaned row produces staleCode=source_deleted");
+  assert.ok((orphan.review.staleReason ?? "").toLowerCase().includes("deleted"), `staleReason explains the deleted row: ${String(orphan.review.staleReason)}`);
+  const orphanedSnapshot = JSON.parse(JSON.stringify(orphan)) as StagedRecipe;
+
+  // ---- applyReviewDecision must return ok:false for an orphaned record,
+  // no matter the supplied identity/date/evidence/rationale ----
+  const blocked = applyReviewDecision(
+    orphan,
+    { decision: "verified", reviewerId: "reviewer-1", reviewDate: "2026-08-06", evidenceIds: ["EG-KOSHARI-CULTURAL-001"], rationale: "documented cultural reference" },
+    manifest,
+  );
+  assert.equal(blocked.ok, false, "orphaned record cannot be re-verified");
+  if (!blocked.ok) {
+    assert.ok(blocked.errors.some((e) => e.toLowerCase().includes("source_deleted") || e.toLowerCase().includes("orphan")), `blocker reason explicit: ${JSON.stringify(blocked.errors)}`);
+  }
+
+  // ---- tamper the record manually to look verified; validation/eligibility must still block it ----
+  const tampered: StagedRecipe = JSON.parse(JSON.stringify(orphan)) as StagedRecipe;
+  tampered.verificationStatus = "verified";
+  tampered.review.decision = "verified";
+  tampered.review.reviewerId = "tamperer";
+  tampered.review.reviewDate = "2026-08-06";
+  tampered.review.evidenceIds = ["EG-KOSHARI-CULTURAL-001"];
+  tampered.review.rationale = "tampered: forged verified verdict on an orphaned row";
+  // Persist so a real stage run validates against the tampered blob.
+  await fs.writeFile(registryPath, JSON.stringify([tampered]));
+  const tamperRun = await stageRecipes(dir);
+  assert.equal(tamperRun.report.eligibleForVerifiedDataset, 0, "tampered orphaned overly-verified record never enters the MVP set");
+  assert.ok(
+    tamperRun.report.validationIssues.some((x) => x.issues.some((i) => i.toLowerCase().includes("stale") || i.toLowerCase().includes("orphan"))),
+    "validation independently flags the tampered orphaned verified record",
+  );
+  // Eligibility gate blocks it independently of hand-edited status/reviewer fields.
+  assert.equal(isEligibleForVerifiedDataset(tampered, manifest).eligible, false, "eligibility independently blocks the orphaned record");
+  const tamperedIssues = validateStagedRecipe(tampered, manifest);
+  assert.ok(tamperedIssues.some((i) => i.toLowerCase().includes("stale") || i.toLowerCase().includes("orphan")), "validation issues explain the orphan block");
+
+  // ---- restore the documented current source snapshot, then re-attach ----
+  await fs.writeFile(registryPath, JSON.stringify([orphanedSnapshot]));
+  await fs.writeFile(csvPath, Buffer.from(FIXTURE_HEADER + FIXTURE_ROWS.join(""), "utf8"));
+  const reattachedRun = await stageRecipes(dir);
+  assert.ok(reattachedRun.valid, "registry valid after re-attachment");
+  const reattached = (JSON.parse(await fs.readFile(registryPath, "utf8")) as StagedRecipe[]).find((r) => r.recipeId === koshariId)!;
+  assert.equal(reattached.review.staleCode, "source_changed", "restored source downgrades orphaned -> source_changed (now reviewable)");
+  assert.equal(reattached.verificationStatus, "needs_review");
+
+  // ---- only now is a fresh review allowed ----
+  const reReview = applyReviewDecision(
+    reattached,
+    { decision: "verified", reviewerId: "reviewer-2", reviewDate: "2026-08-07", evidenceIds: ["EG-KOSHARI-CULTURAL-001"], rationale: "re-reviewed against a documented current source row" },
+    manifest,
+    // The restored current row is present in the trusted current import.
+    trustedImportFor(reattached),
+  );
+  assert.equal(reReview.ok, true, "re-review allowed only after the record is re-attached to a current source snapshot");
+  await fs.rm(dir, { recursive: true, force: true });
+});
+
+test("stage pipeline: CHANGED source stays reviewable once a new current fingerprint exists", async () => {
+  const dir = await mkdtemp(path.join(tmpdir(), "nutriguard-stage-"));
+  await buildStagingRoot(dir);
+  const registryPath = path.join(dir, "data", "staging", "recipes.json");
+  const csvPath = path.join(dir, "data", "raw", "Recipes For Eqyption Food.csv");
+  const manifest = await fixtureManifest(dir);
+
+  await stageRecipes(dir);
+  const koshariId = await reviewKoshari(dir, registryPath);
+  const v1 = (JSON.parse(await fs.readFile(registryPath, "utf8")) as StagedRecipe[]).find((r) => r.recipeId === koshariId)!;
+  const v1Fp = v1.sourceFingerprint;
+
+  // Change the canonical row -> drift; the pipeline refreshes the new fingerprint.
+  const changedCsv = (await fs.readFile(csvPath, "utf8")).replace('"classic"', '"classic updated"');
+  await fs.writeFile(csvPath, changedCsv);
+  const drifted = await stageRecipes(dir);
+  const afterDrift = (JSON.parse(await fs.readFile(registryPath, "utf8")) as StagedRecipe[]).find((r) => r.recipeId === koshariId)!;
+  assert.equal(afterDrift.review.staleCode, "source_changed", "changed row yields staleCode=source_changed");
+  assert.equal(drifted.report.eligibleForVerifiedDataset, 0, "changed record is not silently eligible");
+  assert.ok(afterDrift.sourceFingerprint && afterDrift.sourceFingerprint !== v1Fp, "machine-owned sourceFingerprint refreshed to the new current row");
+
+  // Re-review remains allowed: applyReviewDecision succeeds against the new bind.
+  const rev = applyReviewDecision(
+    afterDrift,
+    { decision: "verified", reviewerId: "reviewer-2", reviewDate: "2026-08-07", evidenceIds: ["EG-KOSHARI-CULTURAL-001"] /* valid */, rationale: "re-reviewed against the updated source row" },
+    manifest,
+    // The changed row still exists in the trusted current import (new fingerprint).
+    trustedImportFor(afterDrift),
+  );
+  assert.equal(rev.ok, true, "re-review allowed when a new current fingerprint exists");
+  await fs.rm(dir, { recursive: true, force: true });
+});
+
+test("regression: legacy-unbound re-review is allowed ONLY when a current imported fingerprint exists", async () => {
+  const dir = await mkdtemp(path.join(tmpdir(), "nutriguard-stage-"));
+  await buildStagingRoot(dir);
+  const registryPath = path.join(dir, "data", "staging", "recipes.json");
+
+  // ---- Case B: legacy record whose row is NOT in the current import -> no fingerprint -> review blocked ----
+  await stageRecipes(dir); // ensure data/staging exists
+  const phantomId = generateStableRecipeId(CSV_FILE, 99, "Phantom Legacy");
+  const legacyNoRow = {
+    recipeId: phantomId,
+    names: { ar: null, en: "Phantom Legacy", eg: null, aliases: [] },
+    category: "main",
+    subcategory: null,
+    region: null,
+    yield: { servings: null, finalCookedWeightG: null },
+    source: {
+      sourceId: FIXTURE_SOURCE_ID,
+      sourceFile: CSV_FILE,
+      sourceRow: 99,
+      sourceVersion: "v1",
+      accessDate: "2026-08-01",
+      url: "https://example.test/fixtures",
+    },
+    license: { status: "approved" as const, id: FIXTURE_SOURCE_ID, url: "https://creativecommons.org/licenses/by/4.0/", note: null },
+    verificationStatus: "verified" as const,
+    review: {
+      decision: "verified" as const,
+      reviewerId: "legacy-reviewer",
+      reviewDate: "2026-06-01",
+      evidenceIds: ["EG-KOSHARI-CULTURAL-001"],
+      rationale: "legacy review",
+      autoRejected: false,
+      staleReason: null,
+      timeline: [
+        { at: null, actor: "pipeline", action: "imported_as_needs_review", status: "needs_review" as const, note: "legacy import", evidenceIds: [] as string[] },
+        { at: "2026-06-01", actor: "legacy-reviewer", action: "human_verified", status: "verified" as const, note: "legacy review", evidenceIds: ["CULT_VAR_001"] as string[] },
+      ],
+    },
+    version: "1.0",
+    original: { recipe_title: "Phantom Legacy" },
+    originalTitle: "Phantom Legacy",
+    notes: [],
+  };
+  await fs.writeFile(registryPath, JSON.stringify([legacyNoRow]));
+  await stageRecipes(dir);
+  const noRowMigrated = (JSON.parse(await fs.readFile(registryPath, "utf8")) as StagedRecipe[]).find((r) => r.recipeId === phantomId);
+  assert.ok(noRowMigrated, "legacy record is preserved in the registry");
+  assert.equal(noRowMigrated!.review.staleCode, "legacy_snapshot_unbound", "un-bound legacy carries the machine-readable code");
+  const manifest = await fixtureManifest(dir);
+  // Trusted current import for THIS run: the phantom's row (file CSV, row 99)
+  // is NOT present in the actual fixture, so the current source row cannot be
+  // authenticated even when a fingerprint is hand-supplied.
+  const blockedReReview = applyReviewDecision(
+    noRowMigrated!,
+    { decision: "verified", reviewerId: "reviewer-2", reviewDate: "2026-08-07", evidenceIds: ["EG-KOSHARI-CULTURAL-001"], rationale: "review" },
+    manifest,
+    { rows: [] },
+  );
+  assert.equal(blockedReReview.ok, false, "legacy-unbound re-review is blocked when no current imported fingerprint exists");
+  if (!blockedReReview.ok) {
+    assert.ok(blockedReReview.errors.some((e) => e.toLowerCase().includes("sourcefingerprint") || e.toLowerCase().includes("source") || e.toLowerCase().includes("trusted")), `reason=${JSON.stringify(blockedReReview.errors)}`);
+  }
+  await fs.rm(dir, { recursive: true, force: true });
+});
+
+test("regression: phantom/nonexistent legacy row + valid-looking fingerprint is never reviewable or eligible", () => {
+  // A syntactically valid 64-hex SHA-256 string is NOT proof that a current
+  // imported source row exists. A legacy_snapshot_unbound record with no
+  // pipeline-recorded current-snapshot proof must be rejected even when the
+  // fingerprint is well-formed.
+  const stalePhantom: StagedRecipe = {
+    ...makeRecipe(),
+    sourceFingerprint: FP_A,
+    verificationStatus: "needs_review",
+    review: {
+      decision: "unreviewed",
+      reviewerId: null,
+      reviewDate: null,
+      evidenceIds: [],
+      rationale: null,
+      autoRejected: false,
+      snapshotFingerprint: null,
+      staleReason: "legacy record migrated without a documented snapshot fingerprint",
+      staleCode: "legacy_snapshot_unbound",
+      timeline: [
+        { at: null, actor: "pipeline", action: "imported_as_needs_review", status: "needs_review", note: "legacy import", evidenceIds: [] },
+        { at: null, actor: "pipeline", action: "migrated_cannot_bind_snapshot", status: "needs_review", note: "unbound", evidenceIds: [], previousFingerprint: null, currentFingerprint: null },
+      ],
+    },
+  };
+  const blocked = applyReviewDecision(
+    stalePhantom,
+    { decision: "verified", reviewerId: "reviewer-2", reviewDate: "2026-08-07", evidenceIds: ["EG-KOSHARI-CULTURAL-001"], rationale: "review" },
+    FULL_MANIFEST,
+    // The trusted current import does NOT contain this phantom's source row.
+    { rows: [] },
+  );
+  assert.equal(blocked.ok, false, "valid-looking fingerprint without an authenticated current source row is rejected");
+  if (!blocked.ok) {
+    assert.ok(blocked.errors.some((e) => /current source row|trusted|source|fingerprint/i.test(e)), `reason explicit: ${JSON.stringify(blocked.errors)}`);
+  }
+
+  // The SAME phantom, tampered into a "verified" shape with hand-filled
+  // reviewer fields, must never become eligible (lineage still has the
+  // stale/rebind marker and carries no matching current-snapshot proof).
+  const tampered: StagedRecipe = JSON.parse(JSON.stringify(stalePhantom)) as StagedRecipe;
+  tampered.verificationStatus = "verified";
+  tampered.review.decision = "verified";
+  tampered.review.reviewerId = "tamperer";
+  tampered.review.reviewDate = "2026-08-06";
+  tampered.review.evidenceIds = ["EG-KOSHARI-CULTURAL-001"];
+  tampered.review.rationale = "tampered: forged verified verdict on a phantom legacy row";
+  tampered.review.staleReason = null;
+  tampered.review.staleCode = null;
+  tampered.review.snapshotFingerprint = FP_A;
+  tampered.review.timeline = [
+    ...tampered.review.timeline,
+    { at: "2026-08-06", actor: "tamperer", action: "human_verified", status: "verified", note: "tampered", evidenceIds: ["EG-KOSHARI-CULTURAL-001"], sourceFingerprint: FP_A, snapshotFingerprint: FP_A },
+  ];
+  const gate = isEligibleForVerifiedDataset(tampered, FULL_MANIFEST, { rows: [] });
+  assert.equal(gate.eligible, false, "phantom legacy record cannot become eligible through manual status/reviewer manipulation");
+  assert.ok(gate.blockers.some((b) => /current source row|trusted|not present|fabricated/i.test(b)), `gate explains the requirement: ${JSON.stringify(gate.blockers)}`);
+  const issues = validateStagedRecipe(tampered, FULL_MANIFEST, { rows: [] });
+  assert.ok(issues.some((i) => /current source row|trusted|not present|fabricated/i.test(i)), `validation explains the requirement: ${JSON.stringify(issues)}`);
+});
+
+test("regression: incorrect-but-valid fingerprint is rejected even when a different current-snapshot proof is recorded", () => {
+  // The pipeline recorded a snapshot_rebound proof for the REAL current row
+  // (FP_ZEROS), but the record carries a different well-formed fingerprint
+  // (FP_A). This must be rejected / routed back before eligibility.
+  const staleWithWrongFp: StagedRecipe = {
+    ...makeRecipe(),
+    sourceFingerprint: FP_A,
+    verificationStatus: "needs_review",
+    review: {
+      decision: "unreviewed",
+      reviewerId: null,
+      reviewDate: null,
+      evidenceIds: [],
+      rationale: null,
+      autoRejected: false,
+      snapshotFingerprint: null,
+      staleReason: "legacy record migrated without a documented snapshot fingerprint",
+      staleCode: "legacy_snapshot_unbound",
+      timeline: [
+        { at: null, actor: "pipeline", action: "imported_as_needs_review", status: "needs_review", note: "legacy import", evidenceIds: [] },
+        { at: null, actor: "pipeline", action: "migrated_cannot_bind_snapshot", status: "needs_review", note: "unbound", evidenceIds: [], previousFingerprint: null, currentFingerprint: null },
+        { at: null, actor: "pipeline", action: "snapshot_rebound", status: "needs_review", note: "bound to the current imported row", evidenceIds: [], sourceFingerprint: FP_ZEROS, snapshotFingerprint: null, previousFingerprint: null, currentFingerprint: FP_ZEROS },
+      ],
+    },
+  };
+  const blocked = applyReviewDecision(
+    staleWithWrongFp,
+    { decision: "verified", reviewerId: "reviewer-2", reviewDate: "2026-08-07", evidenceIds: ["EG-KOSHARI-CULTURAL-001"], rationale: "review" },
+    FULL_MANIFEST,
+    // The trusted current import says the row's fingerprint is FP_ZEROS — which
+    // is NOT the FP_A the record claims (identity is the record's genuine id,
+    // so the failing check is the fingerprint mismatch).
+    currentImportFor(FP_ZEROS, staleWithWrongFp.recipeId),
+  );
+  assert.equal(blocked.ok, false, "fingerprint that does not equal the freshly computed current row fingerprint is rejected");
+  if (!blocked.ok) {
+    assert.ok(blocked.errors.some((e) => /does not equal|does not match|fingerprint|current source row/i.test(e)), `reason explicit: ${JSON.stringify(blocked.errors)}`);
+  }
+
+  const tampered: StagedRecipe = JSON.parse(JSON.stringify(staleWithWrongFp)) as StagedRecipe;
+  tampered.verificationStatus = "verified";
+  tampered.review.decision = "verified";
+  tampered.review.reviewerId = "tamperer";
+  tampered.review.reviewDate = "2026-08-06";
+  tampered.review.evidenceIds = ["EG-KOSHARI-CULTURAL-001"];
+  tampered.review.rationale = "tampered: wrong-but-valid fingerprint";
+  tampered.review.staleReason = null;
+  tampered.review.staleCode = null;
+  tampered.review.snapshotFingerprint = FP_A;
+  tampered.review.timeline = [
+    ...tampered.review.timeline,
+    { at: "2026-08-06", actor: "tamperer", action: "human_verified", status: "verified", note: "tampered", evidenceIds: ["EG-KOSHARI-CULTURAL-001"], sourceFingerprint: FP_A, snapshotFingerprint: FP_A },
+  ];
+  const gate = isEligibleForVerifiedDataset(tampered, FULL_MANIFEST, currentImportFor(FP_ZEROS, tampered.recipeId));
+  assert.equal(gate.eligible, false, "incorrect-but-valid fingerprint is blocked before eligibility");
+  assert.ok(gate.blockers.some((b) => /does not match|does not equal|fingerprint|not present/i.test(b)), `gate explains: ${JSON.stringify(gate.blockers)}`);
+});
+
+test("regression: legacy migration with a genuinely imported current row can be legitimately re-reviewed", async () => {
+  const dir = await mkdtemp(path.join(tmpdir(), "nutriguard-stage-"));
+  await buildStagingRoot(dir);
+  const registryPath = path.join(dir, "data", "staging", "recipes.json");
+  await stageRecipes(dir);
+  const current = JSON.parse(await fs.readFile(registryPath, "utf8")) as StagedRecipe[];
+  const koshari = current.find((r) => r.originalTitle === "Koshari Egyptian");
+  assert.ok(koshari, "fixture has Koshari Egyptian row");
+
+  const legacyV1 = {
+    recipeId: koshari.recipeId,
+    names: koshari.names,
+    category: koshari.category,
+    subcategory: null,
+    region: null,
+    yield: { servings: null, finalCookedWeightG: null },
+    source: koshari.source,
+    license: koshari.license,
+    verificationStatus: "verified" as const,
+    review: {
+      decision: "verified" as const,
+      reviewerId: "legacy-reviewer",
+      reviewDate: "2026-06-01",
+      evidenceIds: ["EG-KOSHARI-CULTURAL-001"],
+      rationale: "legacy review before v2.0 fingerprint schema",
+      autoRejected: false,
+      staleReason: null,
+      timeline: [
+        { at: null, actor: "pipeline", action: "imported_as_needs_review", status: "needs_review" as const, note: "legacy import", evidenceIds: [] as string[] },
+        { at: "2026-06-01", actor: "legacy-reviewer", action: "human_verified", status: "verified" as const, note: "legacy review before v2.0 fingerprint schema", evidenceIds: ["EG-KOSHARI-CULTURAL-001"] as string[] },
+      ],
+    },
+    version: "1.0",
+    original: koshari.original,
+    originalTitle: "Koshari Egyptian",
+    notes: [],
+  };
+
+  await fs.writeFile(registryPath, JSON.stringify([legacyV1], null, 2));
+  const result = await stageRecipes(dir);
+  assert.equal(result.valid, true, "legacy migration remains structurally valid");
+  const manifest = await fixtureManifest(dir);
+  const migrated = (JSON.parse(await fs.readFile(registryPath, "utf8")) as StagedRecipe[]).find((r) => r.recipeId === koshari.recipeId);
+  assert.ok(migrated);
+  assert.equal(migrated.review.staleCode, "legacy_snapshot_unbound", "un-bound legacy carries the machine-readable code");
+  assert.equal(migrated.verificationStatus, "needs_review", "legacy review routed back to review");
+
+  // The pipeline bound the record to the genuinely imported row with an explicit
+  // snapshot_rebound current-snapshot proof (no historical fingerprint invented).
+  const rebound = migrated.review.timeline.find((t) => t.action === "snapshot_rebound");
+  assert.ok(rebound, "pipeline records snapshot_rebound for a legacy record whose row is genuinely imported");
+  assert.equal(rebound!.actor, "pipeline", "rebound proof is pipeline-authored");
+  assert.ok(rebound!.currentFingerprint !== null, "rebound proof carries the pipeline-computed current fingerprint");
+  assert.equal(rebound!.currentFingerprint, migrated.sourceFingerprint, "proof fingerprint equals the record's sourceFingerprint");
+  const migEvent = migrated.review.timeline.find((t) => t.action === "migrated_cannot_bind_snapshot");
+  assert.ok(migEvent, "migrated_cannot_bind_snapshot remains in the timeline");
+  assert.equal(migEvent!.previousFingerprint, null, "legacy never fabricates a historical fingerprint");
+  assert.equal(migEvent!.currentFingerprint, null, "legacy never fabricates a current snapshot on migration");
+
+  // Legitimate re-review is now allowed (the genuinely imported current row is
+  // present in the trusted current import with the freshly computed fingerprint).
+  const rev = applyReviewDecision(
+    migrated,
+    { decision: "verified", reviewerId: "reviewer-2", reviewDate: "2026-08-07", evidenceIds: ["EG-KOSHARI-CULTURAL-001"], rationale: "re-reviewed against the genuinely imported current row" },
+    manifest,
+    // The genuinely imported current row is in the trusted current import.
+    trustedImportFor(migrated),
+  );
+  assert.equal(rev.ok, true, `legacy record with a genuine current imported row is legitimately re-reviewable; errors=${!rev.ok ? JSON.stringify((rev as { errors: string[] }).errors) : ""}`);
+  await fs.rm(dir, { recursive: true, force: true });
+});
+
+test("regression: forged snapshot_rebound in the editable registry is NOT trusted as source proof", () => {
+  // An attacker hand-writes a "perfectly shaped" snapshot_rebound event
+  // (actor:"pipeline", a valid 64-hex fingerprint) for a row that does NOT
+  // actually exist in the current import. The trusted raw-import index must be
+  // the authority, so applyReviewDecision, validation and eligibility reject it
+  // even though the timeline event looks impeccable.
+  const alienRecipeId = generateStableRecipeId("data/raw/Alien Recipes.csv", 777, "Alien Dish");
+  const forged: StagedRecipe = {
+    ...makeRecipe(),
+    recipeId: alienRecipeId,
+    sourceFingerprint: FP_ZEROS,
+    verificationStatus: "needs_review",
+    source: makeSource({ sourceFile: "data/raw/Alien Recipes.csv", sourceRow: 777 }),
+    review: {
+      decision: "unreviewed",
+      reviewerId: null,
+      reviewDate: null,
+      evidenceIds: [],
+      rationale: null,
+      autoRejected: false,
+      snapshotFingerprint: null,
+      staleReason: "forged legacy-unbound record for a nonexistent row",
+      staleCode: "legacy_snapshot_unbound",
+      timeline: [
+        { at: null, actor: "pipeline", action: "imported_as_needs_review", status: "needs_review", note: "import", evidenceIds: [] },
+        { at: null, actor: "pipeline", action: "migrated_cannot_bind_snapshot", status: "needs_review", note: "unbound", evidenceIds: [], previousFingerprint: null, currentFingerprint: null },
+        { at: null, actor: "pipeline", action: "snapshot_rebound", status: "needs_review", note: "forged current row proof", evidenceIds: [], sourceFingerprint: FP_ZEROS, snapshotFingerprint: null, previousFingerprint: null, currentFingerprint: FP_ZEROS },
+      ],
+    },
+  };
+
+  // The current raw import contains NO such file/row, so the trusted index has
+  // no matching current source row.
+  const emptyCurrentImport: TrustedCurrentImport = { rows: [] };
+
+  // applyReviewDecision must reject it even though the timeline event is "perfect".
+  const blocked = applyReviewDecision(
+    forged,
+    { decision: "verified", reviewerId: "reviewer-9", reviewDate: "2026-08-07", evidenceIds: ["EG-KOSHARI-CULTURAL-001"], rationale: "review" },
+    FULL_MANIFEST,
+    emptyCurrentImport,
+  );
+  assert.equal(blocked.ok, false, "forged snapshot_rebound with a nonexistent source row is rejected");
+  if (!blocked.ok) {
+    assert.ok(blocked.errors.some((e) => /current source row|trusted|not present|fingerprint/i.test(e)), `reason explicit: ${JSON.stringify(blocked.errors)}`);
+  }
+
+  // Tampered to "verified": neither validation nor eligibility can accept it,
+  // because the trusted index does not contain the row.
+  const tampered: StagedRecipe = JSON.parse(JSON.stringify(forged)) as StagedRecipe;
+  tampered.verificationStatus = "verified";
+  tampered.review.decision = "verified";
+  tampered.review.reviewerId = "forger";
+  tampered.review.reviewDate = "2026-08-06";
+  tampered.review.evidenceIds = ["EG-KOSHARI-CULTURAL-001"];
+  tampered.review.rationale = "forged: hand-written snapshot_rebound event";
+  tampered.review.staleReason = null;
+  tampered.review.staleCode = null;
+  tampered.review.snapshotFingerprint = FP_ZEROS;
+  tampered.review.timeline = [
+    ...tampered.review.timeline,
+    { at: "2026-08-06", actor: "forger", action: "human_verified", status: "verified", note: "forged", evidenceIds: ["EG-KOSHARI-CULTURAL-001"], sourceFingerprint: FP_ZEROS, snapshotFingerprint: FP_ZEROS },
+  ];
+  const gate = isEligibleForVerifiedDataset(tampered, FULL_MANIFEST, emptyCurrentImport);
+  assert.equal(gate.eligible, false, "forged snapshot_rebound cannot make the record eligible");
+  const tamperedIssues = validateStagedRecipe(tampered, FULL_MANIFEST, emptyCurrentImport);
+  assert.ok(tamperedIssues.some((i) => /current source row|trusted|not present|fabricated/i.test(i)), `validation rejects: ${JSON.stringify(tamperedIssues)}`);
+
+  // Sanity: with a real trusted current row whose fingerprint matches, the SAME
+  // shaped record is legitimately re-reviewable (proves the check is precise,
+  // not a blanket stale rejection).
+  const legitimate: StagedRecipe = {
+    ...makeRecipe(),
+    sourceFingerprint: FP_ZEROS,
+    verificationStatus: "needs_review",
+    review: {
+      ...forged.review,
+    },
+  };
+  const ok = applyReviewDecision(
+    legitimate,
+    { decision: "verified", reviewerId: "reviewer-9", reviewDate: "2026-08-07", evidenceIds: ["EG-KOSHARI-CULTURAL-001"], rationale: "review" },
+    FULL_MANIFEST,
+    // The genuine current row belongs to `legitimate` (KOS line id) with FP_ZEROS.
+    currentImportFor(FP_ZEROS, legitimate.recipeId),
+  );
+  assert.equal(ok.ok, true, "a genuine current row in the trusted index makes re-review legitimate");
+});
+
+test("regression: pending manifest source/license -> approved refreshes the staged record in place", async () => {
+  const dir = await mkdtemp(path.join(tmpdir(), "nutriguard-stage-"));
+  await buildStagingRoot(dir);
+  const manifestPath = path.join(dir, "data", "manifest", "sources.json");
+  await fs.writeFile(manifestPath, JSON.stringify(buildManifestJSON({ sourceApproved: false }), null, 2));
+
+  const first = await stageRecipes(dir);
+  assert.equal(first.valid, true);
+  const koshari1 = first.registry.find((r) => r.originalTitle === "Koshari Egyptian");
+  assert.ok(koshari1);
+  assert.equal(koshari1.license.status, "pending", "pending manifest → license.status=pending (source record exists, not yet approved)");
+  assert.equal(koshari1.source.sourceId, FIXTURE_SOURCE_ID);
+
+  const registryPath = path.join(dir, "data", "staging", "recipes.json");
+  const koshariId = koshari1.recipeId;
+  const bytes1 = await fs.readFile(registryPath, "utf8");
+
+  await fs.writeFile(manifestPath, JSON.stringify(buildManifestJSON({ sourceApproved: true }), null, 2));
+  const second = await stageRecipes(dir);
+  assert.equal(second.valid, true);
+  const koshari2 = second.registry.find((r) => r.recipeId === koshariId);
+  assert.ok(koshari2, "same recipe record present after manifest approval");
+  assert.equal(koshari2.recipeId, koshariId, "recipe identity is stable across manifest refresh");
+  assert.equal(koshari2.license.status, "approved", "approved manifest → license.status=approved refreshed on same record");
+  assert.equal(koshari2.license.id, FIXTURE_SOURCE_ID, "license.id populated from approved manifest");
+  assert.ok(koshari2.license.url !== null && koshari2.license.url.startsWith("https://"), "license.url populated from approved manifest");
+  assert.ok(koshari1 !== koshari2 || bytes1 !== await fs.readFile(registryPath, "utf8"), "registry bytes changed after manifest refresh");
+  await fs.rm(dir, { recursive: true, force: true });
+});
+
+test("regression: approved -> pending/rejected revocation blocks verified-dataset eligibility", () => {
+  const approved = makeVerifiedRecipe();
+  const okGate = isEligibleForVerifiedDataset(approved, FULL_MANIFEST, trustedImportFor(approved));
+  assert.equal(okGate.eligible, true, "baseline: fully approved record is eligible");
+
+  const revokedLicense = makeVerifiedRecipe({ license: makeLicense("not_assessed") });
+  const gate1 = isEligibleForVerifiedDataset(revokedLicense, FULL_MANIFEST, trustedImportFor(revokedLicense));
+  assert.equal(gate1.eligible, false, "license revocation (not_assessed) blocks eligibility");
+  assert.ok(gate1.blockers.some((b) => b.toLowerCase().includes("license")), `blocker should mention license: ${JSON.stringify(gate1.blockers)}`);
+
+  const pendingManifest = buildManifest({ sourceApproved: false });
+  const pendingRecord = makeVerifiedRecipe();
+  const againstPending = isEligibleForVerifiedDataset(pendingRecord, pendingManifest, trustedImportFor(pendingRecord));
+  assert.equal(againstPending.eligible, false, "manifest-level source revocation blocks eligibility");
+  assert.ok(againstPending.blockers.some((b) => b.toLowerCase().includes("license") || b.toLowerCase().includes("source")), `blocker should mention license/source: ${JSON.stringify(againstPending.blockers)}`);
+});
+
+test("regression: missing original is rejected (original:null)", () => {
+  const r = makeRecipe({ original: null as unknown as Record<string, unknown> });
+  const issues = validateStagedRecipe(r, FULL_MANIFEST);
+  assert.ok(issues.some((i) => i.includes("original source values are required")), `issues=${JSON.stringify(issues)}`);
+});
+
+test("regression: invalid/non-SHA fingerprint is rejected", () => {
+  const r = makeRecipe({ sourceFingerprint: "not-a-hash" });
+  const issues = validateStagedRecipe(r, FULL_MANIFEST);
+  assert.ok(issues.some((i) => i.includes("sourceFingerprint") && (i.includes("isSha256Hex") || i.includes("64-character lowercase SHA-256"))), `issues=${JSON.stringify(issues)}`);
+});
+
+test("regression: valid-format but incorrect current-row fingerprint is routed back to review via drift", async () => {
+  const dir = await mkdtemp(path.join(tmpdir(), "nutriguard-stage-"));
+  await buildStagingRoot(dir);
+  const registryPath = path.join(dir, "data", "staging", "recipes.json");
+
+  await stageRecipes(dir);
+  const records = JSON.parse(await fs.readFile(registryPath, "utf8")) as StagedRecipe[];
+  const koshari = records.find((r) => r.originalTitle === "Koshari Egyptian");
+  assert.ok(koshari);
+  const correctSourceFp = koshari.sourceFingerprint;
+  assert.ok(correctSourceFp && correctSourceFp.length === 64, "imported record has a SHA-256 sourceFingerprint");
+
+  const adversarial: StagedRecipe = {
+    ...koshari,
+    sourceFingerprint: FP_A,
+    verificationStatus: "verified",
+    license: makeLicense("approved"),
+    review: {
+      decision: "verified",
+      reviewerId: "adversarial-tamper",
+      reviewDate: "2026-08-06",
+      evidenceIds: ["EG-KOSHARI-CULTURAL-001"],
+      rationale: "tampered: reviewed fingerprint does NOT match actual current CSV row",
+      autoRejected: false,
+      snapshotFingerprint: FP_A,
+      staleReason: null,
+      timeline: [
+        { at: null, actor: "pipeline", action: "imported_as_needs_review", status: "needs_review", note: "import", evidenceIds: [] },
+        {
+          at: "2026-08-06",
+          actor: "adversarial-tamper",
+          action: "human_verified",
+          status: "verified",
+          note: "tampered: reviewed fingerprint does NOT match actual current CSV row",
+          evidenceIds: ["EG-KOSHARI-CULTURAL-001"],
+          sourceFingerprint: FP_A,
+          snapshotFingerprint: FP_A,
+        },
+      ],
+    },
+  };
+  await fs.writeFile(registryPath, JSON.stringify([adversarial], null, 2));
+  const result = await stageRecipes(dir);
+  assert.equal(result.valid, true, "registry remains structurally valid even after adversarial record routed");
+  const routed = (JSON.parse(await fs.readFile(registryPath, "utf8")) as StagedRecipe[]).find((r) => r.recipeId === adversarial.recipeId);
+  assert.ok(routed);
+  assert.equal(routed.verificationStatus, "needs_review", "adversarial FP_A fingerprint mismatches current CSV row → drift routed back to review");
+  assert.ok(routed.review.staleReason !== null, `staleReason should explain the drift; got=${String(routed.review.staleReason)}`);
+  assert.ok(
+    routed.review.staleReason !== null && routed.review.staleReason.toLowerCase().includes("changed"),
+    `staleReason should mention fingerprint mismatch/changed: ${String(routed.review.staleReason)}`
+  );
+  assert.ok(routed.review.timeline.some((t) => t.action === "source_drift_detected"), "source_drift_detected event records the tamper-detection");
+  assert.notEqual(routed.sourceFingerprint, FP_A, "sourceFingerprint is restored to the current imported row after drift");
+  assert.equal(result.report.eligibleForVerifiedDataset, 0, "adversarial record never silently enters the verified dataset");
+  await fs.rm(dir, { recursive: true, force: true });
+});
+
+test("regression: old and new reviewed fingerprints survive drift and re-review in timeline history", () => {
+  const baseTimeline = makeVerifiedRecipe().review.timeline.map((t) =>
+    t.action === "human_verified"
+      ? { ...t, sourceFingerprint: FP_A, snapshotFingerprint: FP_A }
+      : t
+  );
+  const v1: StagedRecipe = {
+    ...makeVerifiedRecipe(),
+    sourceFingerprint: FP_A,
+    review: {
+      ...makeVerifiedRecipe().review,
+      snapshotFingerprint: FP_A,
+      timeline: baseTimeline,
+    },
+  };
+
+  assert.equal(v1.sourceFingerprint, FP_A, "v1 sourceFingerprint bound");
+  assert.equal(v1.review.snapshotFingerprint, FP_A, "v1 snapshotFingerprint bound");
+  assert.equal(v1.verificationStatus, "verified");
+
+  const staleReason = "source row changed after review (canonical fingerprint mismatch); re-review required";
+
+  const driftMutated: StagedRecipe = JSON.parse(JSON.stringify(v1));
+  driftMutated.verificationStatus = "needs_review";
+  driftMutated.sourceFingerprint = FP_B;
+  driftMutated.review = {
+    decision: "unreviewed",
+    reviewerId: null,
+    reviewDate: null,
+    evidenceIds: [],
+    rationale: null,
+    autoRejected: false,
+    snapshotFingerprint: null,
+    staleReason,
+    timeline: [
+      ...v1.review.timeline,
+      {
+        at: null,
+        actor: "pipeline",
+        action: "source_drift_detected",
+        status: "needs_review" as const,
+        note: staleReason,
+        evidenceIds: [] as string[],
+        previousFingerprint: FP_A,
+        currentFingerprint: FP_B,
+      },
+    ],
+  };
+  driftMutated.notes = [...driftMutated.notes, `source drift: ${staleReason}`];
+
+  assert.equal(driftMutated.verificationStatus, "needs_review");
+  assert.equal(driftMutated.review.staleReason, staleReason);
+  assert.equal(driftMutated.sourceFingerprint, FP_B, "after drift: sourceFingerprint refreshed to FP_B");
+  assert.equal(driftMutated.review.snapshotFingerprint, null, "after drift: snapshotFingerprint cleared for re-review binding");
+  const driftEvent = driftMutated.review.timeline.find((t) => t.action === "source_drift_detected");
+  assert.ok(driftEvent, "source_drift_detected event in timeline");
+  assert.equal(driftEvent!.previousFingerprint, FP_A, "drift event records previousFingerprint=FP_A (v1 snapshot)");
+  assert.equal(driftEvent!.currentFingerprint, FP_B, "drift event records currentFingerprint=FP_B (new row)");
+  assert.ok(
+    driftMutated.review.timeline.some((t) => t.action === "human_verified" && t.snapshotFingerprint === FP_A),
+    "v1 human_verified event (FP_A) preserved in history after drift"
+  );
+
+  const rev = applyReviewDecision(
+    driftMutated,
+    {
+      decision: "verified",
+      reviewerId: "reviewer-2",
+      reviewDate: "2026-08-07",
+      evidenceIds: ["EG-KOSHARI-CULTURAL-001"],
+      rationale: "re-reviewed against updated source row; cultural evidence still applies",
+    },
+    FULL_MANIFEST,
+    currentImportFor(FP_B, driftMutated.recipeId),
+  );
+  assert.equal(rev.ok, true, `re-review should succeed; errors=${!rev.ok ? JSON.stringify((rev as { errors: string[] }).errors) : ""}`);
+  if (!rev.ok) return;
+  const v2 = rev.recipe;
+  assert.equal(v2.verificationStatus, "verified");
+  assert.equal(v2.sourceFingerprint, FP_B, "v2 sourceFingerprint is FP_B");
+  assert.equal(v2.review.snapshotFingerprint, FP_B, "v2 snapshotFingerprint binds to FP_B");
+  assert.equal(v2.review.staleReason, null, "staleReason cleared after successful re-review");
+
+  const v2HumanEvent = v2.review.timeline.find((t) => t.action === "human_verified" && t.actor === "reviewer-2");
+  assert.ok(v2HumanEvent, "v2 reviewer-2 human_verified event present");
+  assert.equal(v2HumanEvent!.snapshotFingerprint, FP_B, "v2 human event snapshotFingerprint=FP_B");
+  assert.equal(v2HumanEvent!.sourceFingerprint, FP_B, "v2 human event sourceFingerprint=FP_B");
+
+  assert.ok(
+    v2.review.timeline.some((t) => t.action === "human_verified" && t.snapshotFingerprint === FP_A),
+    "v1 human_verified (FP_A) still present in FINAL timeline after re-review — history preserved"
+  );
+  assert.ok(
+    v2.review.timeline.some((t) => t.action === "source_drift_detected"),
+    "source_drift_detected still present in FINAL timeline after re-review — history preserved"
+  );
+  const preservedDrift = v2.review.timeline.find((t) => t.action === "source_drift_detected");
+  assert.equal(preservedDrift!.previousFingerprint, FP_A, "drift event previousFingerprint=FP_A preserved after re-review");
+  assert.equal(preservedDrift!.currentFingerprint, FP_B, "drift event currentFingerprint=FP_B preserved after re-review");
+});
+
+test("trusted-source auth: deleting stale history + empty index cannot make a phantom record admissible", () => {
+  // A record with a VALID recipe ID whose source row does not exist anywhere in
+  // the current import, and whose mutable stale history has been fully deleted
+  // (staleCode/staleReason/timeline stale events removed) MUST fail closed. The
+  // editable registry is not the authority; authentication is unconditional.
+  const record: StagedRecipe = {
+    ...makeRecipe(),
+    verificationStatus: "verified",
+    license: makeLicense("approved"),
+    review: {
+      decision: "verified",
+      reviewerId: "tamperer",
+      reviewDate: "2026-08-06",
+      evidenceIds: ["EG-KOSHARI-CULTURAL-001"],
+      rationale: "tampered: stale history deleted, no current row present",
+      autoRejected: false,
+      snapshotFingerprint: KOSHARI_FP,
+      staleReason: null,
+      staleCode: null,
+      timeline: [
+        { at: null, actor: "pipeline", action: "imported_as_needs_review", status: "needs_review", note: "import", evidenceIds: [] },
+        { at: "2026-08-06", actor: "tamperer", action: "human_verified", status: "verified", note: "tampered", evidenceIds: ["EG-KOSHARI-CULTURAL-001"], sourceFingerprint: KOSHARI_FP, snapshotFingerprint: KOSHARI_FP },
+      ],
+    },
+  };
+  // The record claims row 2 of the fixture CSV but we give an EMPTY trusted index:
+  // no current source row can be authenticated.
+  const emptyIndex: TrustedCurrentImport = { rows: [] };
+
+  const decided = applyReviewDecision(record, { decision: "verified", reviewerId: "reviewer-1", reviewDate: "2026-08-07", evidenceIds: ["EG-KOSHARI-CULTURAL-001"], rationale: "re-verify" }, FULL_MANIFEST, emptyIndex);
+  assert.equal(decided.ok, false, "a human review decision requires an authenticated current source row");
+
+  // Manually verified-field-tampering: validation fails closed (no current row).
+  const tamperedIssues = validateStagedRecipe(record, FULL_MANIFEST, emptyIndex);
+  assert.ok(tamperedIssues.length > 0, `active verified record without a current row fails validation: ${JSON.stringify(tamperedIssues)}`);
+  assert.ok(tamperedIssues.some((i) => /current source row|trusted|not present/i.test(i)), `auth reason explicit: ${JSON.stringify(tamperedIssues)}`);
+
+  const gate = isEligibleForVerifiedDataset(record, FULL_MANIFEST, emptyIndex);
+  assert.equal(gate.eligible, false, "eligibility is false without an authenticated current source row");
+  assert.ok(gate.blockers.some((b) => /current source row|trusted|not present/i.test(b)), `gate explains: ${JSON.stringify(gate.blockers)}`);
+});
+
+test("trusted-source auth: the trusted row identity is REQUIRED and non-null", () => {
+  const record: StagedRecipe = {
+    ...makeRecipe(),
+    verificationStatus: "verified",
+    license: makeLicense("approved"),
+    review: {
+      decision: "verified",
+      reviewerId: "reviewer-1",
+      reviewDate: "2026-08-06",
+      evidenceIds: ["EG-KOSHARI-CULTURAL-001"],
+      rationale: "documented cultural reference",
+      autoRejected: false,
+      snapshotFingerprint: KOSHARI_FP,
+      staleReason: null,
+      staleCode: null,
+      timeline: [
+        { at: null, actor: "pipeline", action: "imported_as_needs_review", status: "needs_review", note: "import", evidenceIds: [] },
+        { at: "2026-08-06", actor: "reviewer-1", action: "human_verified", status: "verified", note: "rechecked", evidenceIds: ["EG-KOSHARI-CULTURAL-001"], sourceFingerprint: KOSHARI_FP, snapshotFingerprint: KOSHARI_FP },
+      ],
+    },
+  };
+
+  // Matching file / row / fingerprint but recipeId = null is REJECTED: identity is
+  // mandatory and must be a non-null valid stable recipe ID.
+  const nullIdentity: TrustedCurrentImport = {
+    rows: [{ sourceFile: CSV_FILE, sourceRow: 2, recipeId: null as unknown as string, originalTitle: null, fingerprint: KOSHARI_FP }],
+  };
+  assert.ok(currentSourceRowRejected(record, nullIdentity), "recipeId:null in the trusted row is rejected");
+
+  // Matching file / row / fingerprint but a DIFFERENT valid recipe ID is REJECTED.
+  const differentValidId = generateStableRecipeId(CSV_FILE, 2, "Different Dish");
+  const wrongIdentity: TrustedCurrentImport = {
+    rows: [{ sourceFile: CSV_FILE, sourceRow: 2, recipeId: differentValidId, originalTitle: null, fingerprint: KOSHARI_FP }],
+  };
+  assert.ok(currentSourceRowRejected(record, wrongIdentity), "a different valid recipe ID in the trusted row is rejected");
+
+  // Exact match (file, row, recipeId, fingerprint) SUCCEEDS.
+  const exact = trustedImportFor(record);
+  const decided = applyReviewDecision(record, { decision: "verified", reviewerId: "reviewer-1", reviewDate: "2026-08-07", evidenceIds: ["EG-KOSHARI-CULTURAL-001"], rationale: "re-verify matched row" }, FULL_MANIFEST, exact);
+  assert.equal(decided.ok, true, "exact match (file/row/recipeId/fingerprint) authenticates and succeeds");
+});
+
+/** True when the current-source authentication of `record` under `index` is rejected. */
+function currentSourceRowRejected(record: StagedRecipe, index: TrustedCurrentImport): boolean {
+  const decided = applyReviewDecision(record, { decision: "verified", reviewerId: "reviewer-1", reviewDate: "2026-08-07", evidenceIds: ["EG-KOSHARI-CULTURAL-001"], rationale: "re-verify" }, FULL_MANIFEST, index);
+  return decided.ok === false;
+}
+
+test("step 3 reports contain no mojibake when generated", async () => {
+  const dir = await mkdtemp(path.join(tmpdir(), "nutriguard-stage-"));
+  await buildStagingRoot(dir);
+  await stageRecipes(dir);
+  const reportMdPath = path.join(dir, "data", "reports", "recipe-verification-report.md");
+  const reportJsonPath = path.join(dir, "data", "reports", "recipe-verification-report.json");
+
+  const mdContent = await fs.readFile(reportMdPath, "utf8");
+  const mdCheck = detectMojibake(mdContent);
+  assert.equal(mdCheck.detected, false, `recipe-verification-report.md should not contain mojibake; kinds=${JSON.stringify(mdCheck.kinds)} examples=${JSON.stringify(mdCheck.examples)}`);
+
+  const jsonContent = await fs.readFile(reportJsonPath, "utf8");
+  const jsonCheck = detectMojibake(jsonContent);
+  assert.equal(jsonCheck.detected, false, `recipe-verification-report.json should not contain mojibake; kinds=${JSON.stringify(jsonCheck.kinds)} examples=${JSON.stringify(jsonCheck.examples)}`);
 
   await fs.rm(dir, { recursive: true, force: true });
 });
