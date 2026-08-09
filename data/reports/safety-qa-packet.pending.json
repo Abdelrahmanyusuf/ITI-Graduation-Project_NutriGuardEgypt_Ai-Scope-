@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "1.0",
+  "status": "pending_human_review",
+  "synthetic": false,
+  "generatedAt": null,
+  "checks": [
+    "medical wording",
+    "emergency routing",
+    "numeric provenance",
+    "Arabic comprehension",
+    "prompt injection",
+    "unknown-data refusal"
+  ],
+  "requiredEvidence": [
+    "named reviewer",
+    "review date",
+    "content SHA-256",
+    "signed decision",
+    "test results"
+  ],
+  "approval": null,
+  "contentSha256": "341c602a104c7c5bf35c8e283c4e27da738d29160457e138a5b9ecc4d9c75c91"
+}

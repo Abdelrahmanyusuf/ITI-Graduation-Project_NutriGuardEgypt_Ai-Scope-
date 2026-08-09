@@ -1,0 +1,43 @@
+name: CI
+on:
+  pull_request:
+  push:
+    branches: [main, nutriguard-step3-review]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env: { POSTGRES_USER: nutriguard_test, POSTGRES_PASSWORD: synthetic_test_only, POSTGRES_DB: nutriguard_test }
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U nutriguard_test" --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      DATABASE_URL: postgres://nutriguard_test:synthetic_test_only@127.0.0.1:5432/nutriguard_test
+      NUTRIGUARD_RUN_DB_INTEGRATION: "1"
+      NUTRIGUARD_ALLOW_SYNTHETIC_SEED: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci --ignore-scripts
+      - run: npm run type-check
+      - run: npm run lint
+      - run: npm run docs:check
+      - run: npm run build
+      - run: npm test
+      - run: npm run db:migrate
+      - run: npm run db:validate
+      - run: npm run security:secrets
+      - run: npm audit --audit-level=high --omit=dev
+  container:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build --pull --tag nutriguard:${{ github.sha }} .
+      - run: docker inspect nutriguard:${{ github.sha }} --format '{{.Config.User}}' | grep -q nutriguard

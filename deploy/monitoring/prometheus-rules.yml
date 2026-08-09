@@ -1,0 +1,33 @@
+groups:
+  - name: nutriguard
+    rules:
+      - alert: NutriGuardNotReady
+        expr: up{job="nutriguard"} == 0
+        for: 5m
+        labels: { severity: critical }
+        annotations: { summary: "NutriGuard is unavailable or not scrapeable" }
+      - alert: NutriGuardHighServerErrorRate
+        expr: sum(rate(nutriguard_http_requests_total{status=~"5.."}[5m])) / clamp_min(sum(rate(nutriguard_http_requests_total[5m])), 1) > 0.02
+        for: 10m
+        labels: { severity: critical }
+        annotations: { summary: "Server error rate exceeds 2%" }
+      - alert: NutriGuardRateLimitingSpike
+        expr: sum(increase(nutriguard_rate_limited_total[10m])) > 100
+        for: 5m
+        labels: { severity: warning }
+        annotations: { summary: "Rate limiting has spiked" }
+      - alert: NutriGuardHighAverageLatency
+        expr: sum(rate(nutriguard_http_duration_milliseconds_total[5m])) / clamp_min(sum(rate(nutriguard_http_requests_total[5m])), 1) > 2000
+        for: 10m
+        labels: { severity: warning }
+        annotations: { summary: "Average HTTP latency exceeds two seconds" }
+      - alert: NutriGuardCalculationUnavailableSpike
+        expr: sum(increase(nutriguard_calculation_availability_total{outcome="unavailable"}[10m])) > 20
+        for: 5m
+        labels: { severity: warning }
+        annotations: { summary: "Deterministic nutrition calculations are frequently unavailable" }
+      - alert: NutriGuardSafetyRouteSpike
+        expr: sum(increase(nutriguard_safety_routes_total[10m])) > 20
+        for: 5m
+        labels: { severity: warning }
+        annotations: { summary: "Safety routing volume has increased" }

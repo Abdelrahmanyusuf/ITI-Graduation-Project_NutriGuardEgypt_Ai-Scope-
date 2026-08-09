@@ -5,10 +5,12 @@ import { after, before, test } from "node:test";
 import { InMemoryPilotFeedbackStore } from "../src/pilot/feedback.js";
 import { buildSyntheticDemoAgent } from "../src/runtime/synthetic-demo-agent.js";
 import { createNutriGuardHttpServer } from "../src/server/http-app.js";
+import { MetricsRegistry } from "../src/observability/metrics.js";
 
 const agent = await buildSyntheticDemoAgent("test");
 const feedback = new InMemoryPilotFeedbackStore();
-const server = createNutriGuardHttpServer({ agent, feedbackStore: feedback, mode: "test", releaseId: "TEST-RELEASE", allowedOrigins: ["https://allowed.test"], readiness: async () => ({ ready: true, blockers: [] }), pilotConsentReference: "SERVER-CONSENT-001", privacyNoticeVersion: "v1", rateLimit: { windowMs: 60_000, maxRequests: 20 } });
+const metrics = new MetricsRegistry();
+const server = createNutriGuardHttpServer({ agent, feedbackStore: feedback, mode: "test", releaseId: "TEST-RELEASE", allowedOrigins: ["https://allowed.test"], readiness: async () => ({ ready: true, blockers: [] }), pilotConsentReference: "SERVER-CONSENT-001", privacyNoticeVersion: "v1", rateLimit: { windowMs: 60_000, maxRequests: 20 }, metrics, metricsToken: "test-metrics-token-value-123" });
 let baseUrl = "";
 before(async () => { await new Promise<void>((resolve) => server.listen(0, "127.0.0.1", resolve)); baseUrl = `http://127.0.0.1:${(server.address() as AddressInfo).port}`; });
 after(async () => { await new Promise<void>((resolve, reject) => server.close((error) => error ? reject(error) : resolve())); });
@@ -32,6 +34,12 @@ test("Step 18 health, readiness, and real Agent chat work end to end", async () 
   assert.match(body.requestId, /^[0-9a-f-]{36}$/);
   assert.equal(body.result.status, "ok");
   assert.equal(body.result.data.sodiumMg, 700);
+  assert.equal((await fetch(`${baseUrl}/metrics`)).status,401);
+  const metricsResponse=await fetch(`${baseUrl}/metrics`,{headers:{authorization:"Bearer test-metrics-token-value-123"}});
+  assert.equal(metricsResponse.status,200);
+  const metricText=await metricsResponse.text();
+  assert.match(metricText,/nutriguard_agent_outcomes_total\{outcome="ok"\}/);
+  assert.match(metricText,/nutriguard_calculation_availability_total\{outcome="available"\}/);
 });
 
 test("Step 18 rejects foreign origins, wrong media types, unknown fields, and oversized bodies", async () => {

@@ -29,6 +29,9 @@
     "eval:adversarial": "node --import tsx src/scripts/run-adversarial-evaluation.ts",
     "release:check:staging": "node --import tsx src/scripts/check-release-readiness.ts staging",
     "release:check:production": "node --import tsx src/scripts/check-release-readiness.ts production",
+    "production:packets": "node --import tsx src/scripts/generate-production-packets.ts",
+    "ops": "node --import tsx src/scripts/ops.ts",
+    "security:secrets": "node scripts/secret-scan.mjs",
     "db:migrate": "node --import tsx src/scripts/migrate.ts up",
     "db:rollback": "node --import tsx src/scripts/migrate.ts down",
     "db:status": "node --import tsx src/scripts/migrate.ts status",
@@ -42,7 +45,6 @@
     "@types/node": "^24.0.0",
     "@types/pg": "^8.20.4",
     "eslint": "^9.17.0",
-    "pg": "^8.22.0",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.18.0"
@@ -50,6 +52,7 @@
   "dependencies": {
     "@langchain/core": "1.2.5",
     "@langchain/langgraph": "1.4.7",
+    "pg": "^8.22.0",
     "zod": "4.4.3"
   }
 }

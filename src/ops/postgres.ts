@@ -1,0 +1,8 @@
+import { createHash } from "node:crypto";
+import { execFile } from "node:child_process";
+import { readFile, writeFile } from "node:fs/promises";
+import { promisify } from "node:util";
+const run=promisify(execFile);
+function stagingGuard(env:NodeJS.ProcessEnv):string { if(env.DEPLOYMENT_TARGET!=="staging") throw new Error("operation is restricted to staging"); const url=env.DATABASE_URL?.trim(); if(!url) throw new Error("DATABASE_URL is required"); return url; }
+export async function backupPostgres(output:string,env:NodeJS.ProcessEnv=process.env):Promise<string>{ const url=stagingGuard(env); if(!output.endsWith(".dump")) throw new Error("backup path must end in .dump"); await run("pg_dump",["--format=custom","--no-owner","--no-privileges","--file",output,url]); const hash=createHash("sha256").update(await readFile(output)).digest("hex"); await writeFile(`${output}.sha256`,`${hash}  ${output.split(/[\\/]/).pop()}\n`,{flag:"wx"}); return hash; }
+export async function restorePostgres(input:string,targetUrl:string,env:NodeJS.ProcessEnv=process.env):Promise<void>{ stagingGuard(env); const target=new URL(targetUrl); if(!/^nutriguard_restore_[a-z0-9_]+$/.test(target.pathname.slice(1))) throw new Error("restore target must be a disposable nutriguard_restore_* database"); const expected=(await readFile(`${input}.sha256`,"utf8")).split(/\s+/)[0]; const actual=createHash("sha256").update(await readFile(input)).digest("hex"); if(expected!==actual) throw new Error("backup checksum mismatch"); await run("pg_restore",["--exit-on-error","--no-owner","--no-privileges","--dbname",targetUrl,input]); }

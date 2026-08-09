@@ -1,0 +1,18 @@
+DROP TRIGGER IF EXISTS retention_events_append_only ON retention_events;
+DROP TRIGGER IF EXISTS approval_records_append_only ON approval_records;
+DROP TRIGGER IF EXISTS reviewer_authorizations_append_only ON reviewer_authorizations;
+DROP TRIGGER IF EXISTS reviewer_authorization_revocations_append_only ON reviewer_authorization_revocations;
+DROP TRIGGER IF EXISTS approval_authorization_guard ON approval_records;
+DROP FUNCTION IF EXISTS validate_approval_authorization();
+DROP FUNCTION IF EXISTS prevent_audit_mutation();
+DROP TABLE IF EXISTS retention_events;
+DROP TABLE IF EXISTS recipe_cultural_evidence;
+DROP TABLE IF EXISTS cultural_evidence_records;
+DROP TABLE IF EXISTS recipe_alternative_rules;
+DROP TABLE IF EXISTS review_queue_items;
+DROP TABLE IF EXISTS approval_records;
+DROP TABLE IF EXISTS reviewer_authorization_revocations;
+DROP TABLE IF EXISTS reviewer_authorizations;
+ALTER TABLE sources DROP COLUMN IF EXISTS attribution_text;
+ALTER TABLE sources DROP COLUMN IF EXISTS redistribution_terms;
+ALTER TABLE sources DROP COLUMN IF EXISTS permitted_usage;

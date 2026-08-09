@@ -25,6 +25,15 @@ invents numbers, and every value carries provenance and versioning.
 
 ## Requirements
 
+The production-readiness package now also includes strict live
+PostgreSQL/Qdrant/embedding wiring, privacy-safe logs and metrics, immutable
+approval records, deterministic pending review queues, retention controls,
+backup/recovery/smoke tooling, CI Docker verification, monitoring rules,
+threat/privacy documentation, release checklists, and incident exercises. See
+[the production-readiness plan](docs/PLAN_PRODUCTION_READINESS.md). The deploy
+directory contains the platform-neutral environment/package templates. These controls do not claim that a
+human review, real-user pilot, hosting drill, or official deployment occurred.
+
 - Node.js **>= 22.6** (developed on v24)
 - npm **>= 10**
 
@@ -70,6 +79,9 @@ it to `.env` has no effect on the foundation unless your runtime loads it.
 | `npm run eval:adversarial` | Run deterministic Steps 16–17 synthetic adversarial evaluation |
 | `npm run release:check:staging` | Fail-closed Step 19 evidence gate |
 | `npm run release:check:production` | Fail-closed Step 20 evidence gate |
+| `npm run production:packets` | Generate deterministic pending reviewer and Safety/QA packets |
+| `npm run ops -- <command>` | Run staging-guarded backup, recovery and smoke operations |
+| `npm run security:secrets` | Scan tracked and untracked files for likely committed secrets |
 | `npm run db:validate`| Verify the live schema against the canonical contract (needs a live DB) |
 | `npm run db:migrate`| Apply pending migrations (needs a live DB)      |
 | `npm run db:rollback`| Roll back applied migrations (needs a live DB) |

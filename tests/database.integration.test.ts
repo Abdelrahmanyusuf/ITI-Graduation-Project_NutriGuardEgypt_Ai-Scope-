@@ -13,6 +13,7 @@ import { REQUIRED_TABLES } from "../src/data/schema.js";
 import { verifyDatabaseSchema } from "../src/data/schemaVerify.js";
 import { SYNTHETIC_SOURCE_KEY, applySyntheticSeed } from "../src/data/seed.js";
 import { PostgresPilotFeedbackStore } from "../src/pilot/feedback.js";
+import { PostgresNutritionService } from "../src/runtime/postgres-adapters.js";
 
 /**
  * Database integration tests. These REQUIRE a live, writable PostgreSQL
@@ -401,10 +402,55 @@ async function runSuite(): Promise<void> {
       const erased = await isolated.query("SELECT id FROM pilot_feedback WHERE id = $1", [savedFeedback.id]);
       assert.equal(erased.rowCount, 0, "explicit privacy erasure must remove withdrawn pilot feedback");
 
-      // 11. Rollback uses the ACTUAL down filenames and leaves the disposable
+      // 11. Production approvals require a separately authorized, in-scope,
+      //     unrevoked reviewer identity and remain append-only.
+      await assert.rejects(isolated.query(`INSERT INTO approval_records
+        (id,subject_type,subject_key,content_sha256,decision,reviewer_id,reviewer_role,authorization_id,reviewed_at,evidence_reference,rationale)
+        VALUES('APR-0000000000000001','recipe','R-1',$1,'approved','reviewer-1','nutrition_reviewer','AUT-0000000000000001',now(),'EVID-1','reviewed')`, ["a".repeat(64)]), /foreign|referenc|authorization|scope/i);
+      await isolated.query(`INSERT INTO reviewer_authorizations
+        (id,reviewer_id,reviewer_role,qualification,subject_type,subject_key_prefix,valid_from,authorization_evidence_reference,authorized_by)
+        VALUES('AUT-0000000000000001','reviewer-1','nutrition_reviewer','registered nutrition reviewer','recipe','R-','2026-01-01','AUTH-EVID-1','governance-owner')`);
+      await isolated.query(`INSERT INTO approval_records
+        (id,subject_type,subject_key,content_sha256,decision,reviewer_id,reviewer_role,authorization_id,reviewed_at,evidence_reference,rationale)
+        VALUES('APR-0000000000000001','recipe','R-1',$1,'approved','reviewer-1','nutrition_reviewer','AUT-0000000000000001','2026-08-09T10:00:00Z','EVID-1','reviewed')`, ["a".repeat(64)]);
+      await assert.rejects(isolated.query("UPDATE approval_records SET rationale='changed' WHERE id='APR-0000000000000001'"), /append-only/i);
+      await assert.rejects(isolated.query(`INSERT INTO approval_records
+        (id,subject_type,subject_key,content_sha256,decision,reviewer_id,reviewer_role,authorization_id,reviewed_at,evidence_reference,rationale)
+        VALUES('APR-0000000000000002','recipe','X-1',$1,'approved','reviewer-1','nutrition_reviewer','AUT-0000000000000001','2026-08-09T10:00:00Z','EVID-2','outside scope')`, ["b".repeat(64)]), /scope|validity/i);
+      await isolated.query(`INSERT INTO reviewer_authorization_revocations(id,authorization_id,revoked_at,revoked_by,evidence_reference,reason)
+        VALUES('REV-0000000000000001','AUT-0000000000000001','2026-08-10T00:00:00Z','governance-owner','REV-EVID-1','role ended')`);
+      await assert.rejects(isolated.query(`INSERT INTO approval_records
+        (id,subject_type,subject_key,content_sha256,decision,reviewer_id,reviewer_role,authorization_id,reviewed_at,evidence_reference,rationale)
+        VALUES('APR-0000000000000003','recipe','R-2',$1,'approved','reviewer-1','nutrition_reviewer','AUT-0000000000000001','2026-08-11T10:00:00Z','EVID-3','after revocation')`, ["c".repeat(64)]), /scope|validity/i);
+
+      // 12. Production SQL wiring parses and executes only after source,
+      // recipe, cultural evidence and ingredient mapping approvals exist.
+      await isolated.query(`UPDATE sources SET review_status='approved',license_review_status='approved',url='https://example.test/source',access_date='2026-08-09',license='synthetic-test-only'
+        WHERE source_key='SYNTHETIC-FIXTURE'`);
+      await isolated.query(`INSERT INTO reviewer_authorizations(id,reviewer_id,reviewer_role,qualification,subject_type,valid_from,authorization_evidence_reference,authorized_by) VALUES
+        ('AUT-0000000000000010','data-owner-test','data_owner','test only','source_license','2026-01-01','AUTH-10','test-governance'),
+        ('AUT-0000000000000011','recipe-reviewer-test','nutrition_reviewer','test only','recipe','2026-01-01','AUTH-11','test-governance'),
+        ('AUT-0000000000000012','culture-reviewer-test','egyptian_cultural_reviewer','test only','cultural_evidence','2026-01-01','AUTH-12','test-governance'),
+        ('AUT-0000000000000013','mapping-reviewer-test','nutrition_data_reviewer','test only','ingredient_mapping','2026-01-01','AUTH-13','test-governance')`);
+      await isolated.query(`INSERT INTO approval_records(id,subject_type,subject_key,content_sha256,decision,reviewer_id,reviewer_role,authorization_id,reviewed_at,evidence_reference,rationale) VALUES
+        ('APR-0000000000000010','source_license','SYNTHETIC-FIXTURE',$1,'approved','data-owner-test','data_owner','AUT-0000000000000010','2026-08-09T10:00:00Z','EVID-10','synthetic test approval'),
+        ('APR-0000000000000011','recipe','EGR-FIX-001',$1,'approved','recipe-reviewer-test','nutrition_reviewer','AUT-0000000000000011','2026-08-09T10:00:00Z','EVID-11','synthetic test approval'),
+        ('APR-0000000000000012','cultural_evidence','CULT-FIX',$1,'approved','culture-reviewer-test','egyptian_cultural_reviewer','AUT-0000000000000012','2026-08-09T10:00:00Z','EVID-12','synthetic test approval'),
+        ('APR-0000000000000013','ingredient_mapping','ING-FIX-001',$1,'approved','mapping-reviewer-test','nutrition_data_reviewer','AUT-0000000000000013','2026-08-09T10:00:00Z','EVID-13','synthetic test approval')`, ["d".repeat(64)]);
+      await isolated.query(`INSERT INTO cultural_evidence_records(id,evidence_key,source_id,data_version_id,covered_dish_names,rationale,status)
+        SELECT 'CUL-0000000000000001','CULT-FIX',s.id,dv.id,'["fixture koshari"]'::jsonb,'synthetic integration evidence','approved'
+        FROM sources s JOIN data_versions dv ON dv.source_id=s.id WHERE s.source_key='SYNTHETIC-FIXTURE' AND dv.version_label='v-synthetic-1'`);
+      await isolated.query(`INSERT INTO recipe_cultural_evidence(recipe_id,cultural_evidence_id) SELECT id,'CUL-0000000000000001' FROM recipes WHERE recipe_key='EGR-FIX-001'`);
+      await isolated.query(`INSERT INTO recipe_ingredients(recipe_id,ingredient_id,sort_order,original_text,quantity,unit_id,food_state,source_id,data_version_id)
+        SELECT r.id,i.id,0,'100 g synthetic lentils',100,u.id,'raw',s.id,dv.id FROM recipes r,ingredients i,units u,sources s,data_versions dv
+        WHERE r.recipe_key='EGR-FIX-001' AND i.ingredient_key='ING-FIX-001' AND u.unit_code='g' AND s.source_key='SYNTHETIC-FIXTURE' AND dv.source_id=s.id AND dv.version_label='v-synthetic-1'`);
+      const wiredResult=await new PostgresNutritionService(isolated).calculate("EGR-FIX-001",{});
+      assert.equal(wiredResult.blockers.includes("recipe_not_verified_or_not_found"),false,"fully gated recipe reaches the ingredient query");
+
+      // 13. Rollback uses the ACTUAL down filenames and leaves the disposable
       //    schema without domain tables; the ledger is empty afterwards.
       const rolled = await migrateDown(isolated);
-      assert.deepEqual(rolled, ["0002", "0001"], "migrateDown should roll back every migration newest-first");
+      assert.deepEqual(rolled, ["0003", "0002", "0001"], "migrateDown should roll back every migration newest-first");
       const afterDown = await isolated.query(
         `SELECT EXISTS (SELECT FROM information_schema.tables WHERE table_schema = current_schema() AND table_name = 'recipes') AS has_recipes`
       );

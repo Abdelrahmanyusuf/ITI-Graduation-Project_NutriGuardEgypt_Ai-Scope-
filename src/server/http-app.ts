@@ -5,6 +5,8 @@ import type { ExpandedAgentResponse } from "../agent/expanded-agent.js";
 import { NUTRIGUARD_SYSTEM_PROMPT_VERSION } from "../agent/system-prompt.js";
 import { parsePilotFeedbackSubmission, type PilotFeedbackStore } from "../pilot/feedback.js";
 import { renderChatPage } from "../web/chat-page.js";
+import type { StructuredLogger } from "../observability/logger.js";
+import type { MetricsRegistry } from "../observability/metrics.js";
 
 const ChatSchema = z.object({ message: z.string().trim().min(1).max(2_000), language: z.enum(["ar-EG", "ar", "en"]).default("ar-EG") }).strict();
 
@@ -19,6 +21,9 @@ export interface HttpAppOptions {
   privacyNoticeVersion: string | null;
   requestTimeoutMs?: number;
   rateLimit?: { windowMs: number; maxRequests: number };
+  logger?: StructuredLogger;
+  metrics?: MetricsRegistry;
+  metricsToken?: string;
 }
 
 interface Bucket { start: number; count: number }
@@ -66,11 +71,18 @@ export function createNutriGuardHttpServer(options: HttpAppOptions): Server {
   const rate = options.rateLimit ?? { windowMs: 60_000, maxRequests: 30 };
   const timeoutMs = options.requestTimeoutMs ?? 15_000;
   return createServer(async (request, response) => {
+    const startedAt = performance.now();
     const requestId = randomUUID();
     const nonce = randomBytes(18).toString("base64");
     response.setHeader("X-Request-Id", requestId);
     securityHeaders(response, options.mode, nonce);
     const url = new URL(request.url ?? "/", "http://localhost");
+    const route = ["/", "/health", "/ready", "/metrics", "/api/v1/chat", "/api/v1/feedback"].includes(url.pathname) ? url.pathname : "other";
+    response.once("finish", () => {
+      options.metrics?.increment("nutriguard_http_requests_total", { route, method: request.method ?? "UNKNOWN", status: String(response.statusCode) });
+      options.metrics?.increment("nutriguard_http_duration_milliseconds_total", { route }, Math.max(0, Math.round(performance.now() - startedAt)));
+      options.logger?.log("info", "http_request_completed", { requestId, route, method: request.method ?? "UNKNOWN", status: response.statusCode, durationMs: Math.round(performance.now() - startedAt) });
+    });
     const origin = request.headers.origin;
     if (origin) {
       if (!options.allowedOrigins.includes(origin)) return json(response, 403, { error: { code: "origin_forbidden", message: "Origin is not allowed." }, requestId });
@@ -88,6 +100,11 @@ export function createNutriGuardHttpServer(options: HttpAppOptions): Server {
     }
     if (request.method === "GET" && url.pathname === "/favicon.ico") { response.statusCode = 204; return response.end(); }
     if (request.method === "GET" && url.pathname === "/health") return json(response, 200, { status: "ok", releaseId: options.releaseId });
+    if (request.method === "GET" && url.pathname === "/metrics") {
+      if (!options.metrics || !options.metricsToken) return json(response, 404, { error: { code: "not_found", message: "Route not found." }, requestId });
+      if (request.headers.authorization !== `Bearer ${options.metricsToken}`) return json(response, 401, { error: { code: "unauthorized", message: "Authentication required." }, requestId });
+      response.statusCode = 200; response.setHeader("Content-Type", "text/plain; version=0.0.4; charset=utf-8"); response.setHeader("Cache-Control", "no-store"); return response.end(options.metrics.render());
+    }
     if (request.method === "GET" && url.pathname === "/ready") {
       const state = await options.readiness();
       return json(response, state.ready ? 200 : 503, { status: state.ready ? "ready" : "blocked", blockers: state.blockers, releaseId: options.releaseId });
@@ -98,7 +115,7 @@ export function createNutriGuardHttpServer(options: HttpAppOptions): Server {
       const current = buckets.get(key);
       const bucket = !current || now - current.start >= rate.windowMs ? { start: now, count: 0 } : current;
       bucket.count += 1; buckets.set(key, bucket);
-      if (bucket.count > rate.maxRequests) return json(response, 429, { error: { code: "rate_limited", message: "Too many requests. Try again later." }, requestId });
+      if (bucket.count > rate.maxRequests) { options.metrics?.increment("nutriguard_rate_limited_total", { route }); return json(response, 429, { error: { code: "rate_limited", message: "Too many requests. Try again later." }, requestId }); }
       try {
         const body = await readJson(request);
         if (url.pathname === "/api/v1/feedback") {
@@ -114,6 +131,14 @@ export function createNutriGuardHttpServer(options: HttpAppOptions): Server {
         let timer: NodeJS.Timeout | undefined;
         const timeout = new Promise<never>((_, reject) => { timer = setTimeout(() => reject(Object.assign(new Error("agent timeout"), { status: 504 })), timeoutMs); });
         const result = await Promise.race([options.agent.invoke(parsed.data), timeout]).finally(() => { if (timer) clearTimeout(timer); });
+        options.metrics?.increment("nutriguard_agent_outcomes_total", { outcome: result.status });
+        if (result.status === "no_result" || result.status === "clarification") options.metrics?.increment("nutriguard_retrieval_quality_events_total", { outcome: result.status });
+        for (const flag of result.safetyFlags) options.metrics?.increment("nutriguard_safety_routes_total", { outcome: flag });
+        for (const flag of result.integrityFlags) options.metrics?.increment("nutriguard_integrity_routes_total", { outcome: flag });
+        for (const trace of result.toolTrace) {
+          if (!trace.ok) options.metrics?.increment("nutriguard_tool_failures_total", { dependency: trace.tool, outcome: trace.code ?? "unknown" });
+          if (trace.tool === "calculate_nutrition") options.metrics?.increment("nutriguard_calculation_availability_total", { outcome: trace.ok ? "available" : "unavailable" });
+        }
         return json(response, 200, { requestId, result });
       } catch (error) {
         const safe = publicError(error);

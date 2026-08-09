@@ -1,0 +1,114 @@
+{
+  "schemaVersion": "1.0",
+  "status": "pending",
+  "items": [
+    {
+      "id": "QUE-394AC0C401D2849E",
+      "subjectType": "ingredient_mapping",
+      "subjectKey": "all-pending",
+      "contentSha256": "9fed5a136e48f8a0d874bb434cd5d97669771329fc3d9a730f8d21b79071ac15",
+      "requiredRole": "nutrition_data_reviewer",
+      "priority": 3,
+      "status": "pending",
+      "blockerCodes": [
+        "human_review_required"
+      ]
+    },
+    {
+      "id": "QUE-FDD85DB8D66DB50B",
+      "subjectType": "unit_conversion",
+      "subjectKey": "all-pending",
+      "contentSha256": "4fefad1bce0018f08585a2cb164acfd22af2f8e434a0491ecad70f21c0f51f88",
+      "requiredRole": "nutrition_data_reviewer",
+      "priority": 3,
+      "status": "pending",
+      "blockerCodes": [
+        "human_review_required"
+      ]
+    },
+    {
+      "id": "QUE-0BD00D435DC876D7",
+      "subjectType": "cooking_factor",
+      "subjectKey": "all-pending",
+      "contentSha256": "0884716371932844d87030f19bd76692cf6a520bbec7162c04e17c3c77e8c1a1",
+      "requiredRole": "nutrition_data_reviewer",
+      "priority": 3,
+      "status": "pending",
+      "blockerCodes": [
+        "human_review_required"
+      ]
+    },
+    {
+      "id": "QUE-49C3926A751853D9",
+      "subjectType": "retention_factor",
+      "subjectKey": "all-pending",
+      "contentSha256": "1d719775107365646a1a9451165e3efc815fa709165d874da50e0458d30bf57e",
+      "requiredRole": "nutrition_data_reviewer",
+      "priority": 3,
+      "status": "pending",
+      "blockerCodes": [
+        "human_review_required"
+      ]
+    },
+    {
+      "id": "QUE-EBDEE9D50D832477",
+      "subjectType": "nutrient_profile",
+      "subjectKey": "all-pending",
+      "contentSha256": "619944c220f8bfb5161b68a1054671b21f2eac1da89ffa01ffdee1a0a7a5d151",
+      "requiredRole": "nutrition_reviewer",
+      "priority": 3,
+      "status": "pending",
+      "blockerCodes": [
+        "human_review_required"
+      ]
+    },
+    {
+      "id": "QUE-31B594E50408543E",
+      "subjectType": "recipe_serving_yield",
+      "subjectKey": "all-pending",
+      "contentSha256": "bc8401a188bc0e5bbb0ad074c5aa6063c9f967a4645b2b81600528d64dd2aa0f",
+      "requiredRole": "nutrition_reviewer",
+      "priority": 3,
+      "status": "pending",
+      "blockerCodes": [
+        "human_review_required"
+      ]
+    },
+    {
+      "id": "QUE-089F131E27093AAB",
+      "subjectType": "source_license",
+      "subjectKey": "all-pending",
+      "contentSha256": "255cb843d4c147ecdd3a4e5fd5eed7db60da136443cbc1a6b6bf7516fe9849b1",
+      "requiredRole": "data_owner",
+      "priority": 3,
+      "status": "pending",
+      "blockerCodes": [
+        "license_approval_required"
+      ]
+    },
+    {
+      "id": "QUE-A2AA332433F4FFD7",
+      "subjectType": "cultural_evidence",
+      "subjectKey": "all-pending",
+      "contentSha256": "0f502c56d3ca6d63fcf4bfb66250ea22a952ae76972c82fb30165d33cab52fd3",
+      "requiredRole": "egyptian_cultural_reviewer",
+      "priority": 3,
+      "status": "pending",
+      "blockerCodes": [
+        "human_review_required"
+      ]
+    },
+    {
+      "id": "QUE-F5FC4601216BF8DF",
+      "subjectType": "safety_qa",
+      "subjectKey": "release-pending",
+      "contentSha256": "ae8d84f90c54eae5afae8ac7a8b51633631d0fc1398d410fd54746f3da966626",
+      "requiredRole": "safety_qa_reviewer",
+      "priority": 3,
+      "status": "pending",
+      "blockerCodes": [
+        "real_user_evidence_required"
+      ]
+    }
+  ]
+}

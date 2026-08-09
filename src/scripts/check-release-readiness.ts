@@ -1,6 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { evaluateReleaseReadiness, type ReleaseTarget } from "../release/readiness.js";
+import { evaluateReleaseReadiness, parseReleaseEvidence, verifyReleaseEvidenceFiles, type ReleaseTarget } from "../release/readiness.js";
 
 const target = process.argv[2] as ReleaseTarget | undefined;
 if (target !== "staging" && target !== "production") throw new Error("usage: check-release-readiness.ts staging|production");
@@ -12,6 +12,7 @@ if (!manifestPath) {
   try {
     const value = JSON.parse(await readFile(resolve(manifestPath), "utf8")) as unknown;
     const result = evaluateReleaseReadiness(value, target);
+    if(result.ready){const issues=await verifyReleaseEvidenceFiles(parseReleaseEvidence(value),resolve(manifestPath));if(issues.length)result.blockers.push(...issues);result.ready=result.blockers.length===0;}
     console.log(JSON.stringify(result, null, 2));
     process.exit(result.ready ? 0 : 1);
   } catch (error) {
