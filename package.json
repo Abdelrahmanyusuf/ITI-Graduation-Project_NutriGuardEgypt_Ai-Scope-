@@ -11,6 +11,8 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "dev": "tsx watch src/index.ts",
+    "dev:web": "node --import tsx src/server/start.ts --demo",
+    "serve": "node dist/server/start.js",
     "dev:smoke": "node --import tsx src/index.ts",
     "build": "tsc -p tsconfig.build.json",
     "start": "node dist/index.js",
@@ -21,11 +23,18 @@
     "stage": "node --import tsx src/scripts/stage-recipes.ts",
     "resolve:ingredients": "node --import tsx src/scripts/resolve-ingredients.ts",
     "normalize:units": "node --import tsx src/scripts/normalize-quantities.ts",
+    "benchmark:embeddings": "node --import tsx src/scripts/benchmark-embeddings.ts",
+    "ingest:retrieval": "node --import tsx src/scripts/ingest-retrieval.ts",
+    "eval:validate": "node --import tsx src/scripts/validate-agent-evaluation.ts",
+    "eval:adversarial": "node --import tsx src/scripts/run-adversarial-evaluation.ts",
+    "release:check:staging": "node --import tsx src/scripts/check-release-readiness.ts staging",
+    "release:check:production": "node --import tsx src/scripts/check-release-readiness.ts production",
     "db:migrate": "node --import tsx src/scripts/migrate.ts up",
     "db:rollback": "node --import tsx src/scripts/migrate.ts down",
     "db:status": "node --import tsx src/scripts/migrate.ts status",
     "db:validate": "node --import tsx src/scripts/migrate.ts validate",
     "db:seed:synthetic": "node --import tsx src/scripts/seed-db.ts",
+    "db:test": "node --import tsx --test tests/database.integration.test.ts",
     "test": "node --import tsx --test \"tests/**/*.test.ts\""
   },
   "devDependencies": {
@@ -37,5 +46,10 @@
     "tsx": "^4.19.2",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.18.0"
+  },
+  "dependencies": {
+    "@langchain/core": "1.2.5",
+    "@langchain/langgraph": "1.4.7",
+    "zod": "4.4.3"
   }
 }

@@ -36,10 +36,10 @@ legacy/         archived JavaScript prototype (reference only)
 - TypeScript + Node ESM foundation (`target ES2022`, `module NodeNext`).
 - Environment validation module (`src/config/env.ts`) with strict rules for
   `NODE_ENV` and `PORT`. The foundation reads no API keys.
-- Root `package.json` has **no runtime dependencies** — only TypeScript, ESLint,
-  tsx, and Node type definitions (development tooling). The archived prototype
-  runtime libraries (LangChain v1, @xenova/transformers, csv-parser, pdf-parse)
-  are **not** installed for the foundation.
+- Root runtime dependencies are pinned to LangGraph, LangChain Core, and Zod for
+  the Step 12 graph and strict schemas. TypeScript, ESLint, tsx, Node types, and
+  PostgreSQL integration support remain development tooling. The archived
+  prototype's other runtime libraries are not reactivated.
 - Scripts: `dev`, `dev:smoke`, `build`, `start`, `type-check`, `lint`, `test`.
 - Tests proving the toolchain, config validation, dev-entry boot, and Arabic
   UTF-8 integrity.
@@ -194,6 +194,50 @@ legacy/         archived JavaScript prototype (reference only)
   assembled. The golden registry under `tests/fixtures/nutrition/` is explicitly
   synthetic/test-only and cannot be used by the default production loader.
 
+## What is implemented (Steps 8–10 — retrieval and tools)
+
+- `src/retrieval/benchmark.ts` benchmarks exactly two or three configured
+  multilingual models with Recall@K and MRR. Ties and missed thresholds require
+  review; synthetic fixtures cannot select a production model.
+- `src/retrieval/ingestion.ts` accepts only an explicit approved corpus with
+  complete source/version provenance. Recipe documents must also be human
+  verified. `src/retrieval/qdrant.ts` provides the production vector-store
+  adapter and enforces approval filters at query time.
+- Ingredients and numeric nutrient values remain normalized structured data;
+  neither uses vector search as authority. Raw/staging data is never imported
+  automatically.
+- `src/tools/nutriguard-tools.ts` implements `search_recipes`,
+  `search_guidelines`, `calculate_nutrition`, and `compare_with_guideline`.
+  Calculation delegates to Step 7, while comparisons require one exact approved
+  structured rule. See [`RETRIEVAL_AND_TOOLS.md`](./RETRIEVAL_AND_TOOLS.md).
+
+## What is implemented (Steps 11–12 — prompt and one Agent scenario)
+
+- `src/agent/system-prompt.ts` contains a versioned Egyptian-Arabic prompt with
+  explicit scope, no-fabrication, medical-safety, and no-result rules.
+- `src/agent/safety.ts` applies deterministic blocking safety routes before any
+  planner or tool call; religious guarantees follow the non-medical refusal
+  rule.
+- `src/agent/sodium-prototype.ts` uses a compiled LangGraph workflow for one
+  scenario only: find exactly one verified Egyptian recipe, call the Step 7
+  calculator through the Step 10 tool, and return sourced sodium for one
+  available basis. Planner and response boundaries are strictly validated.
+- Details and limitations: [`AGENT_PROTOTYPE.md`](./AGENT_PROTOTYPE.md).
+
+## What is implemented (Steps 13–15 — scenarios and evaluation)
+
+- `src/agent/expanded-agent.ts` adds same-basis recipe comparison,
+  approved-rule-only healthier alternatives, and approved food-pyramid passage
+  retrieval while preserving safety-before-tools routing.
+- `src/evaluation/dataset.ts` validates a 50–100-question schema and rejects
+  synthetic data as production evidence. The committed 60-question set is
+  explicitly synthetic.
+- `src/evaluation/evaluate.ts` scores retrieval, exact numeric facts, and
+  wording/comprehension independently. Human wording scores stay pending until
+  every wording case is reviewed.
+- The real Agent passes all 60 synthetic cases, but real-user collection and
+  human review are still missing. See [`STEPS_13_15.md`](./STEPS_13_15.md).
+
 ## What is still prototype (NOT completed)
 
 The archived JavaScript prototype under `legacy/` is a **non-runnable
@@ -204,14 +248,29 @@ and its runtime dependencies were removed from the root project:
 - RAG-style guideline retrieval prototype (`Guidelines_Rag.js`).
 - Data-cleaning CSV/PDF scripts.
 
-## Explicitly NOT implemented (future work)
+## Production work that remains externally blocked
 
-- Production RAG / vector store and guideline ingestion
-- Workflows / agent orchestration
-- UI / HTTP API
+- Production embedding-model approval and approved production-corpus ingestion
+- Real-user Step 14–15 evaluation and human wording/comprehension review
+- The actual Step 19 limited-user staging pilot and signed feedback analysis
+- Owner-authorized Step 20 production infrastructure configuration and deployment
 - Importing verified nutrition data into the PostgreSQL schema (the schema and
   migrations exist; no production data is loaded automatically; the synthetic
   seed is test-only)
+
+## Steps 16–20 engineering layer
+
+- `src/evaluation/adversarial.ts` and `src/evaluation/iteration.ts` provide
+  deterministic, explicitly synthetic robustness and iteration evidence.
+- `src/agent/request-integrity.ts` blocks prompt injection, user numeric
+  overrides, and unapproved-data requests before planning or tools.
+- `src/server/http-app.ts` exposes the secure API and RTL web client using
+  injected Agent/feedback/readiness dependencies.
+- migration `0002` and `src/pilot/feedback.ts` provide server-consent-bound,
+  data-minimized, append-only pilot feedback.
+- `src/release/readiness.ts` separates engineering readiness from evidence of a
+  real staging pilot or production deployment and fails closed without it.
+- Details: [`STEPS_16_20.md`](./STEPS_16_20.md).
 
 ## Data provenance note (Step 0)
 

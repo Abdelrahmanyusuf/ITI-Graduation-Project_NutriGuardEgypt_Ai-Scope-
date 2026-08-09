@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "1.0",
+  "title": "SYNTHETIC TEST ONLY — Arabic retrieval smoke evaluation",
+  "language": "mixed",
+  "synthetic": true,
+  "documents": [
+    { "id": "TEST-DOC-KOSHARI", "text": "Synthetic Egyptian koshari recipe with rice, lentils and pasta." },
+    { "id": "TEST-DOC-MOLOKHIA", "text": "Synthetic molokhia recipe text for retrieval testing only." },
+    { "id": "TEST-DOC-SODIUM", "text": "Fictional test-only general sodium guideline text." }
+  ],
+  "queries": [
+    { "id": "TEST-Q-KOSHARI", "text": "عايز وصفة كشري", "relevantDocumentIds": ["TEST-DOC-KOSHARI"] },
+    { "id": "TEST-Q-MOLOKHIA", "text": "طريقة الملوخية", "relevantDocumentIds": ["TEST-DOC-MOLOKHIA"] },
+    { "id": "TEST-Q-SODIUM", "text": "إرشادات عامة عن الصوديوم", "relevantDocumentIds": ["TEST-DOC-SODIUM"] }
+  ]
+}

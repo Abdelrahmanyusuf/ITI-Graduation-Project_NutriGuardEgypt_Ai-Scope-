@@ -26,7 +26,9 @@ consequences / status.
   foundation.
 - **Alternatives considered:** a separate `legacy/package.json`; runnable legacy.
 - **Consequences:** legacy = reference only.
-- **Status:** Adopted (Step 0 approved).
+- **Status:** Adopted for the Step 0 foundation; the empty-runtime-dependency
+  portion is superseded by DEC-043 for the Step 12 LangGraph prototype. The
+  archived legacy application remains non-runnable.
 
 ## DEC‑003 · 2026-08-06 · Strict environment validation, no API keys (Step 0)
 - **Decision:** `src/config/env.ts` validates `NODE_ENV` and `PORT` strictly;
@@ -650,6 +652,171 @@ consequences / status.
   nutrient profiles/factors receive human approval and an immutable runtime
   snapshot is assembled. Test fixture values are never production data.
 - **Status:** Implemented for review; production data readiness remains blocked.
+
+---
+
+## DEC-039 · 2026-08-09 · Provider-neutral Arabic embedding evaluation (Step 8)
+
+- **Decision:** benchmark exactly two or three configured multilingual embedding
+  models through an OpenAI-compatible embeddings adapter. Rank models by
+  Recall@K and MRR over a versioned Arabic retrieval dataset.
+- **Selection gate:** a production model requires a unique threshold-meeting
+  winner. A tie, failure, or missed threshold requires human review. A dataset
+  marked synthetic may test the machinery but cannot select production.
+- **Status:** Implemented for review; production model selection remains blocked
+  until a reviewed, non-synthetic evaluation dataset is supplied.
+
+---
+
+## DEC-040 · 2026-08-09 · Approved-only Qdrant ingestion (Step 9)
+
+- **Decision:** use a Qdrant REST adapter for production vector storage and an
+  in-memory adapter only for deterministic tests. Ingestion requires an explicit
+  corpus manifest; raw and staging directories are never automatically imported.
+- **Data boundary:** recipes and guideline text may be embedded only with
+  approved license/review state and complete source/version provenance. Recipe
+  documents additionally require human verification. Ingredients and numeric
+  nutrition remain structured SQL/application data.
+- **Operational rule:** point IDs are deterministic and content-bound. A new
+  namespace is upserted before stale points are removed, and an empty corpus is
+  rejected. Query filters independently enforce the approval boundary.
+- **Status:** Implemented for review; no production corpus has been approved or
+  ingested.
+
+---
+
+## DEC-041 · 2026-08-09 · Deterministic application tools (Step 10)
+
+- **Decision:** expose four application services: `search_recipes`,
+  `search_guidelines`, `calculate_nutrition`, and `compare_with_guideline`.
+- **Numeric authority:** nutrition always delegates to the Step 7 deterministic
+  engine. Guideline comparison requires exactly one approved structured rule
+  matching nutrient, unit, and basis; prose retrieval cannot become a number.
+- **Failure and safety rule:** invalid inputs, missing trusted data, ambiguity,
+  pending rules, and unavailable calculations return explicit structured errors.
+  Guideline output is general information and not medical advice.
+- **Status:** Implemented for review. Agent routing/orchestration, safety intent
+  handling, HTTP API, and UI are later work and are not claimed complete.
+
+---
+
+## DEC-042 · 2026-08-09 · Versioned Agent prompt and application-side safety (Step 11)
+
+- **Decision:** keep the Egyptian-Arabic system prompt in executable, versioned
+  source. It defines the verified-Egyptian scope, tool boundaries, deterministic
+  numeric authority, no-fabrication rule, medical exclusions, and honest
+  no-result behavior.
+- **Enforcement:** blocking safety classification runs before planner/retrieval/
+  calculation. Prompt instructions are therefore not the sole control. A
+  religious-compliance guarantee follows the canonical unsupported route and
+  never causes a medical referral.
+- **Status:** Implemented and tested for the single Step 12 scenario; complete
+  safety-corpus evaluation and Safety/QA approval remain pending.
+
+---
+
+## DEC-043 · 2026-08-09 · LangGraph single-scenario prototype (Step 12)
+
+- **Decision:** select pinned LangGraph for explicit, inspectable nodes and
+  conditional edges. The first graph supports only sodium calculation for one
+  verified Egyptian recipe: safety → bounded plan → recipe search → unique-ID
+  gate → deterministic calculation → validated response.
+- **Trust boundary:** a planner can emit only the strict sodium plan schema and
+  never executes tools or SQL. The application invokes Step 10 tools; all
+  nutrition comes from Step 7. Ambiguity asks for clarification and missing/null
+  data fails closed without publishing a subtotal as the total.
+- **Privacy/provenance:** tool traces contain names/status codes, not raw user
+  text. Successful output carries recipe and nutrition source/version evidence
+  and the system-prompt version.
+- **Status:** Prototype implemented for review. Step 13 scenario expansion,
+  production data/model evaluation, API/UI, and release approvals remain future.
+
+---
+
+## DEC-044 · 2026-08-09 · Bounded multi-scenario Agent expansion (Step 13)
+
+- **Decision:** add three graph scenarios while keeping application-controlled
+  tools: same-basis comparison of two verified recipes, an approved-rule-bound
+  verified healthier alternative, and approved food-pyramid passage retrieval.
+- **Trust rules:** comparisons never mix bases; missing values produce `null`
+  differences. An alternative must match an approved rule and be proven lower
+  by deterministic calculations. Guidance preserves source text and citations.
+- **Resolution:** a deterministic top-score confidence band accepts a clear
+  recipe match; tied/near-tied IDs require clarification.
+- **Status:** Implemented with synthetic tests; production data/rules remain
+  approval-gated.
+
+---
+
+## DEC-045 · 2026-08-09 · Evaluation-set provenance gate (Step 14)
+
+- **Decision:** require a versioned 50–100-case Egyptian-Arabic dataset with
+  unique IDs and retrieval, numeric, and wording categories. Real-user origin
+  requires a recorded collection method and consent/provenance reference.
+- **Synthetic boundary:** commit 60 explicit synthetic questions for engineering
+  tests, but reject them in the production evaluation gate. Synthetic realism
+  cannot be relabelled as real-user evidence.
+- **Status:** Schema, validator, and synthetic set implemented. The roadmap's
+  real-user collection requirement remains externally blocked.
+
+---
+
+## DEC-046 · 2026-08-09 · Separated Agent evaluation metrics (Step 15)
+
+- **Decision:** report retrieval recall/intent accuracy, exact numeric-fact
+  accuracy, and wording/comprehension quality separately. One metric cannot
+  compensate for another.
+- **Human gate:** automated Egyptian-Arabic encoding/dialect/safety checks are
+  supportive only. Clarity and comprehension remain `null`/pending until every
+  wording case has a valid human review record.
+- **Synthetic baseline:** all 60 cases pass: retrieval recall 1.00, 37/37 numeric
+  facts exact, and automated wording pass rate 1.00. Human wording review is
+  pending and `productionEligible=false`.
+- **Status:** Evaluator and synthetic baseline implemented; no production
+  quality or release approval is claimed.
+
+---
+
+## DEC-047 · 2026-08-09 · Pre-planner request-integrity boundary (Steps 16–17)
+
+- **Decision:** classify prompt injection, user-supplied numeric overrides, and
+  requests for unapproved data before the planner, retrieval, or calculator.
+- **Evidence:** 18 deterministic synthetic adversarial cases cover nine edge
+  categories and map each accepted improvement to regression IDs.
+- **Status:** Proposed for human Safety/QA approval; implemented and tested.
+
+---
+
+## DEC-048 · 2026-08-09 · Dependency-injected secure HTTP boundary (Step 18)
+
+- **Decision:** expose health/readiness, chat, and feedback through a strict
+  Node HTTP boundary with schema, size, timeout, rate, origin, security-header,
+  request-ID, and error-redaction controls. Keep local synthetic data visibly
+  labelled and technically forbidden in production.
+- **Status:** Proposed for Security/Privacy approval; implemented, API-tested,
+  and browser-reviewed at desktop and mobile sizes.
+
+---
+
+## DEC-049 · 2026-08-09 · Server-owned consent provenance and append-only feedback (Step 19)
+
+- **Decision:** the browser may assert active consent but cannot choose the
+  consent-document identifier. The server attaches the reviewed consent/privacy
+  versions. Feedback excludes direct identifiers, questions, and answers and is
+  append-only in PostgreSQL.
+- **Status:** Proposed for Privacy/Security approval; engineering implemented.
+  A real pilot has not occurred.
+
+---
+
+## DEC-050 · 2026-08-09 · Evidence-gated production release (Step 20)
+
+- **Decision:** staging and production use machine-readable fail-closed evidence
+  gates. Production additionally requires a completed real pilot, zero critical
+  incidents, rollback and backup/restore drills, monitoring, and deployment
+  evidence. Synthetic reports cannot satisfy the real-user schema.
+- **Status:** Proposed for Release Owner approval; readiness tooling exists, but
+  no official deployment is claimed.
 
 ---
 

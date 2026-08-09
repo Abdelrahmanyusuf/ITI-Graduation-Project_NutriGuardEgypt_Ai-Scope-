@@ -12,6 +12,61 @@ export {
   type ServingRequest,
 } from "./domain/nutrition.js";
 
+export {
+  benchmarkEmbeddingModels,
+  type EmbeddingBenchmarkDataset,
+  type EmbeddingBenchmarkReport,
+} from "./retrieval/benchmark.js";
+export { OpenAICompatibleEmbeddingProvider } from "./retrieval/embeddings.js";
+export { ingestRetrievalCorpus, type RetrievalCorpus, type IngestionResult } from "./retrieval/ingestion.js";
+export { QdrantVectorStore } from "./retrieval/qdrant.js";
+export { InMemoryVectorStore } from "./retrieval/vector-store.js";
+export {
+  InMemoryGuidelineRuleRepository,
+  NUTRIGUARD_TOOL_DEFINITIONS,
+  NUTRIGUARD_TOOL_NAMES,
+  NutriGuardTools,
+  type GuidelineRule,
+  type ToolResult,
+} from "./tools/nutriguard-tools.js";
+export {
+  NutriGuardSodiumPrototypeAgent,
+  RuleBasedSodiumScenarioPlanner,
+  type AgentLanguage,
+  type SodiumAgentResponse,
+  type SodiumScenarioPlanner,
+} from "./agent/sodium-prototype.js";
+export { classifySafetyFlags, type SafetyFlag } from "./agent/safety.js";
+export { classifyRequestIntegrity, type RequestIntegrityFlag } from "./agent/request-integrity.js";
+export { NUTRIGUARD_SYSTEM_PROMPT, NUTRIGUARD_SYSTEM_PROMPT_VERSION } from "./agent/system-prompt.js";
+export {
+  InMemoryAlternativeRuleRepository,
+  NutriGuardExpandedAgent,
+  RuleBasedExpandedAgentPlanner,
+  type ApprovedAlternativeRule,
+  type ExpandedAgentResponse,
+} from "./agent/expanded-agent.js";
+export {
+  assertProductionEvaluationDataset,
+  parseAgentEvaluationDataset,
+  type AgentEvaluationDataset,
+} from "./evaluation/dataset.js";
+export {
+  evaluateAgentDataset,
+  type AgentEvaluationReport,
+  type HumanWordingReview,
+} from "./evaluation/evaluate.js";
+export {
+  evaluateAdversarialDataset,
+  parseAdversarialDataset,
+  type AdversarialDataset,
+  type AdversarialEvaluationReport,
+} from "./evaluation/adversarial.js";
+export { buildIterationEvidence, type IterationEvidence } from "./evaluation/iteration.js";
+export { parsePilotFeedback, parsePilotFeedbackSubmission, InMemoryPilotFeedbackStore, PostgresPilotFeedbackStore, type PilotFeedbackInput, type PilotFeedbackSubmission, type PilotFeedbackRecord, type PilotFeedbackStore } from "./pilot/feedback.js";
+export { evaluateReleaseReadiness, parseReleaseEvidence, type ReadinessResult, type ReleaseEvidenceManifest, type ReleaseTarget } from "./release/readiness.js";
+export { createNutriGuardHttpServer, type HttpAppOptions } from "./server/http-app.js";
+
 /**
  * Application entry point. It validates environment configuration and exposes
  * deterministic domain operations as module exports. No HTTP server starts in

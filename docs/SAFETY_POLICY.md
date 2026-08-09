@@ -1,6 +1,8 @@
 # NutriGuard — Safety Policy
 
-> **Status: Requirement — safety controls are planned, not implemented.**
+> **Status:** the policy remains the required release contract. Step 12 now
+> implements and tests its blocking overrides for one sodium prototype, but
+> complete safety evaluation and human Safety/QA approval are still pending.
 
 Defines the hard boundaries NutriGuard must never cross and the behavior of the
 `medical_safety_request` handling and safety flags (`SUPPORTED_INTENTS.md`).

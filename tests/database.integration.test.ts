@@ -12,6 +12,7 @@ import {
 import { REQUIRED_TABLES } from "../src/data/schema.js";
 import { verifyDatabaseSchema } from "../src/data/schemaVerify.js";
 import { SYNTHETIC_SOURCE_KEY, applySyntheticSeed } from "../src/data/seed.js";
+import { PostgresPilotFeedbackStore } from "../src/pilot/feedback.js";
 
 /**
  * Database integration tests. These REQUIRE a live, writable PostgreSQL
@@ -371,10 +372,39 @@ async function runSuite(): Promise<void> {
         "review target must reference an existing ingredient"
       );
 
-      // 9. Rollback uses the ACTUAL down filename and leaves the disposable
+      // 10. Step 19 feedback is consent-gated, data-minimized and append-only.
+      const feedbackStore = new PostgresPilotFeedbackStore(isolated);
+      const savedFeedback = await feedbackStore.save({
+        sessionId: "11111111-1111-4111-8111-111111111111",
+        responseRequestId: "22222222-2222-4222-8222-222222222222",
+        rating: 4,
+        understood: true,
+        comment: null,
+        consentReference: "CONSENT-INTEGRATION-TEST",
+        privacyNoticeVersion: "test-v1",
+      }, { releaseId: "TEST-RELEASE", promptVersion: "TEST-PROMPT" });
+      assert.ok(savedFeedback.id.length === 36);
+      await assert.rejects(isolated.query("UPDATE pilot_feedback SET rating = 1 WHERE id = $1", [savedFeedback.id]), /append-only/i);
+      await assert.rejects(isolated.query("DELETE FROM pilot_feedback WHERE id = $1", [savedFeedback.id]), /append-only/i);
+      const privacyClient = await isolated.connect();
+      try {
+        await privacyClient.query("BEGIN");
+        await privacyClient.query("SET LOCAL nutriguard.privacy_erasure = 'approved'");
+        await privacyClient.query("DELETE FROM pilot_feedback WHERE id = $1", [savedFeedback.id]);
+        await privacyClient.query("COMMIT");
+      } catch (error) {
+        await privacyClient.query("ROLLBACK");
+        throw error;
+      } finally {
+        privacyClient.release();
+      }
+      const erased = await isolated.query("SELECT id FROM pilot_feedback WHERE id = $1", [savedFeedback.id]);
+      assert.equal(erased.rowCount, 0, "explicit privacy erasure must remove withdrawn pilot feedback");
+
+      // 11. Rollback uses the ACTUAL down filenames and leaves the disposable
       //    schema without domain tables; the ledger is empty afterwards.
       const rolled = await migrateDown(isolated);
-      assert.deepEqual(rolled, ["0001"], "migrateDown should roll back 0001");
+      assert.deepEqual(rolled, ["0002", "0001"], "migrateDown should roll back every migration newest-first");
       const afterDown = await isolated.query(
         `SELECT EXISTS (SELECT FROM information_schema.tables WHERE table_schema = current_schema() AND table_name = 'recipes') AS has_recipes`
       );

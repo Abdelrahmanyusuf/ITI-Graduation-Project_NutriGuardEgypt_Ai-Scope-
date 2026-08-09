@@ -1,9 +1,9 @@
 # NutriGuard — MVP Requirements (Scope)
 
-> **Status: Requirements — NOT implemented.**
-> This document defines the planned MVP scope. Nothing described here exists in
-> the application yet. Capabilities are marked as requirements to be met in
-> later steps, not as implemented features.
+> **Status:** canonical MVP requirements. Steps 0–20 now have engineering or
+> release-readiness implementations for review. The full production MVP remains
+> blocked by real-user evaluation/pilot evidence, approved production data and
+> infrastructure, and the required human owner approvals.
 >
 > **Step 1 scope is reviewer-approved.** Scope decisions are Adopted; numerical
 > release thresholds remain **Proposed** until their responsible human owners

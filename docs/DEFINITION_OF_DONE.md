@@ -1,7 +1,9 @@
 # NutriGuard — Definition of Done & MVP Release Gates
 
-> **Status: Requirement — DoD is defined; Step 0 approved; Step 1 approved;
-> no Step 2+ deliverable is done.**
+> **Status:** the DoD and release gates are defined. Steps 0–20 have engineering
+> implementation or release-readiness controls for review. Synthetic verification,
+> a runnable demo, and deployment scaffolding do not constitute the required
+> real-user pilot, production approval, or release-gate sign-off.
 
 DoD is split into four distinct sections so that documentation/tooling,
 data‑processing, and user‑facing nutrition work are not blocked by one another,
@@ -81,7 +83,9 @@ A data‑processing feature is Done when:
 - **Step 1** — **reviewer-approved**. Scope decisions are Adopted; numerical
   release thresholds remain **Proposed** until their owners approve them
   (see §5 note).
-- **Step 2** — implemented for review; nothing beyond it is claimed done.
+- **Steps 2–15** — implemented for review. Steps 14–15 have synthetic evidence
+  only; real-user and human-review evidence remains pending. Production readiness remains blocked
+  by the human approvals, approved datasets, and release gates below.
 
 ## 5. MVP release gates (go/no‑go)
 

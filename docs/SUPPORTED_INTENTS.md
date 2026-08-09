@@ -1,6 +1,9 @@
 # NutriGuard — Supported Intents
 
-> **Status: Requirement — the intent model is planned, not implemented.**
+> **Status:** Steps 12–13 implement `recipe_nutrition`, `compare_recipes`,
+> approved-rule `lighter_recipe`, and `general_guidance` prototypes with
+> blocking safety overrides. Remaining intents and a user-facing API are not
+> implemented.
 
 Intents are identified by the canonical identifiers in
 [`MVP_REQUIREMENTS.md`](./MVP_REQUIREMENTS.md). This document defines routing,

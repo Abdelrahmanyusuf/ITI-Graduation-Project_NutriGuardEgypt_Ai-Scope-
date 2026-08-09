@@ -4,6 +4,8 @@ node_modules/
 # Build output
 dist/
 coverage/
+output/
+.playwright-cli/
 
 # Environment / secrets
 .env

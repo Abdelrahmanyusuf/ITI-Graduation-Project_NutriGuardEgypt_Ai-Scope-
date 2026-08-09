@@ -4,11 +4,20 @@ A nutrition assistant restricted to **verified Egyptian food**. Nutritional
 values and guidelines are deterministic application data — the assistant never
 invents numbers, and every value carries provenance and versioning.
 
-> **Status: Steps 0–7 implemented for review.** Steps 0–3 (foundation, scope
+> **Status: Steps 0–20 engineering and release-readiness implementation completed for review.** Steps 0–3 (foundation, scope
 > docs, data audit, recipe staging), Step 4 (PostgreSQL schema + migrations +
 > provenance), and Step 5 (ingredient dictionary + deterministic entity
-> resolution), Step 6 (deterministic quantities and units), and Step 7
-> (deterministic nutrition calculation) are complete enough to review. The
+> resolution), Step 6 (deterministic quantities and units), Step 7
+> (deterministic nutrition calculation), Step 8 (embedding evaluation), Step 9
+> (approved-only vector ingestion), and Step 10 (deterministic application
+> tools), Step 11 (versioned Egyptian-Arabic prompt and safety boundary), and
+> Step 12 (one bounded LangGraph sodium scenario), Step 13 (three expanded
+> scenarios), Steps 14–15 (60-question synthetic evaluation and separated
+> metrics), Steps 16–17 (adversarial evaluation and measured prompt iteration),
+> Step 18 (secure API and responsive chat), and the Step 19–20 staging/production
+> evidence gates and operational package are complete enough to review. The
+> required real-user question set, human wording review, actual staging pilot,
+> owner approvals, and official deployment remain external blockers. The
 > production ingredient records remain `unapproved`, and no approved production
 > nutrient snapshot exists, so the public calculator currently fails closed
 > rather than returning fabricated nutrition. See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
@@ -25,10 +34,11 @@ invents numbers, and every value carries provenance and versioning.
 npm ci
 ```
 
-`npm ci` performs a clean, reproducible install from the lockfile. The root
-project has **no runtime dependencies**; everything installed is development
-tooling (TypeScript, ESLint, tsx, Node types). No secrets are required for
-install, build, type-check, lint, or tests.
+`npm ci` performs a clean, reproducible install from the lockfile. LangGraph,
+LangChain Core, and Zod are pinned runtime dependencies for the Step 12 graph
+and strict boundaries; TypeScript, ESLint, tsx, Node types, and PostgreSQL test
+support remain development tooling. No secrets are required for install,
+build, type-check, lint, or tests.
 
 ## Environment configuration
 
@@ -43,6 +53,7 @@ it to `.env` has no effect on the foundation unless your runtime loads it.
 | Command             | Action                                        |
 | ------------------- | --------------------------------------------- |
 | `npm run dev`       | Run `src/index.ts` via `tsx watch`            |
+| `npm run dev:web`   | Run the explicit synthetic local chat demo     |
 | `npm run dev:smoke` | One-shot run of the dev entry (no watch)      |
 | `npm run build`     | TypeScript build → `dist/`                    |
 | `npm start`         | Run the built output (`node dist/index.js`)   |
@@ -53,11 +64,18 @@ it to `.env` has no effect on the foundation unless your runtime loads it.
 | `npm run stage`    | Run the Step 3 recipe staging pipeline           |
 | `npm run resolve:ingredients` | Run the Step 5 ingredient-dictionary resolver (writes coverage + review queue) |
 | `npm run normalize:units` | Run Step 6 quantity/unit normalization (writes coverage + review queue) |
+| `npm run benchmark:embeddings` | Benchmark 2–3 models on an explicit Arabic evaluation dataset |
+| `npm run ingest:retrieval` | Ingest one explicit approved corpus into Qdrant |
+| `npm run eval:validate` | Validate the Step 14 evaluation dataset (synthetic is blocked for production) |
+| `npm run eval:adversarial` | Run deterministic Steps 16–17 synthetic adversarial evaluation |
+| `npm run release:check:staging` | Fail-closed Step 19 evidence gate |
+| `npm run release:check:production` | Fail-closed Step 20 evidence gate |
 | `npm run db:validate`| Verify the live schema against the canonical contract (needs a live DB) |
 | `npm run db:migrate`| Apply pending migrations (needs a live DB)      |
 | `npm run db:rollback`| Roll back applied migrations (needs a live DB) |
 | `npm run db:status` | Show applied migrations (needs a live DB)      |
 | `npm run db:seed:synthetic`| Load test-only synthetic seed (opt-in, needs a live DB) |
+| `npm run db:test`   | Run the opt-in live PostgreSQL integration suite |
 | `npm run docs:check`| Verify links/anchors in `docs/` and `README.md`    |
 
 ## Testing
@@ -81,6 +99,13 @@ Step 7 golden tests cover exact and mixed-unit recipes, omissions, unknown
 quantities, food-state mismatches, edible/yield/retention factors, serving and
 per-100-g bases, zero versus null, repeatability, validation, and output-only
 rounding.
+Steps 8–10 tests cover true Recall@K/MRR model evaluation, synthetic-data
+selection blocking, approved-only deterministic ingestion, server- and
+client-side recipe verification filters, complete retrieval provenance, and
+all four deterministic application tools.
+Steps 11–12 tests cover the prompt contract, emergency/medical/religious safety
+precedence, the one-recipe sodium graph, ambiguity, null/unavailable results,
+malicious planner output, and strict validated responses.
 
 **Database tests:** the DB-less test file `tests/database-schema.test.ts`
 (enumerates migration files, resolves down migration names from disk, checks the
@@ -217,11 +242,46 @@ has zero human-approved mappings and production nutrient profiles have not been
 licensed/reviewed. The committed nutrition registry is synthetic and test-only;
 the production loader cannot enable it.
 
-**Future (NOT implemented):**
+**Implemented (Steps 8–10):** provider-neutral multilingual embedding
+evaluation, approval-gated Qdrant ingestion, and the application tools
+`search_recipes`, `search_guidelines`, `calculate_nutrition`, and
+`compare_with_guideline`. Retrieval is never numeric authority: nutrition
+delegates to Step 7, and guideline comparison requires one exact approved
+structured rule. Synthetic evaluation data cannot choose a production model;
+raw/staging directories cannot be ingested; and no corpus is loaded
+automatically. See
+[`docs/RETRIEVAL_AND_TOOLS.md`](docs/RETRIEVAL_AND_TOOLS.md).
+
+**Implemented (Steps 11–12):** a versioned Egyptian-Arabic system prompt,
+application-side safety routing, and one bounded LangGraph prototype that
+searches for exactly one verified recipe and reports sodium only from the Step
+7 deterministic calculator. It asks for clarification on ambiguity and fails
+closed on missing/unavailable data. See
+[`docs/AGENT_PROTOTYPE.md`](docs/AGENT_PROTOTYPE.md).
+
+**Implemented (Steps 13–15):** deterministic same-basis recipe comparison,
+approved-rule-only healthier alternatives, sourced food-pyramid guidance, a
+60-question synthetic Egyptian-Arabic evaluation set, and separate retrieval,
+numeric, and wording/comprehension metrics. The synthetic run is fully green,
+but is explicitly not production evidence; human wording review remains
+pending. See [`docs/STEPS_13_15.md`](docs/STEPS_13_15.md).
+
+The complete original 20-step status—including every open production blocker—is
+tracked in [`docs/ROADMAP_STATUS.md`](docs/ROADMAP_STATUS.md).
+
+**Implemented engineering/readiness (Steps 16–20):** deterministic adversarial
+evaluation, prompt-integrity iteration, a secure API and responsive RTL chat,
+append-only consent-bound feedback, strict staging/production evidence gates,
+container packaging, and operational/security documentation. See
+[`docs/STEPS_16_20.md`](docs/STEPS_16_20.md).
+
+**External production work still required:**
 - Production-scale dictionary and reviewed conversion-factor expansion
-- Production RAG / vector retrieval and guideline ingestion
-- Agent workflows, UI, and HTTP API
+- Production embedding-model approval and approved production-corpus ingestion
+- Real-user evaluation, human wording review, the actual staging pilot, and its signed feedback report
+- Approved infrastructure/credentials and owner-authorized official deployment
 - Importing verified nutrition data into the DB (import pipeline is future
   work; the schema and migrations exist but no production data is loaded)
 
-Do not assume any of the above "future" capabilities exist yet.
+Do not treat engineering readiness as evidence that the external pilot or
+production deployment has occurred.

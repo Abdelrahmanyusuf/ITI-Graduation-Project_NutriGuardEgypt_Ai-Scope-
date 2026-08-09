@@ -1,0 +1,126 @@
+import { randomBytes, randomUUID } from "node:crypto";
+import { createServer, type IncomingMessage, type Server, type ServerResponse } from "node:http";
+import { z } from "zod";
+import type { ExpandedAgentResponse } from "../agent/expanded-agent.js";
+import { NUTRIGUARD_SYSTEM_PROMPT_VERSION } from "../agent/system-prompt.js";
+import { parsePilotFeedbackSubmission, type PilotFeedbackStore } from "../pilot/feedback.js";
+import { renderChatPage } from "../web/chat-page.js";
+
+const ChatSchema = z.object({ message: z.string().trim().min(1).max(2_000), language: z.enum(["ar-EG", "ar", "en"]).default("ar-EG") }).strict();
+
+export interface HttpAppOptions {
+  agent: { invoke(input: { message: string; language?: "ar-EG" | "ar" | "en" }): Promise<ExpandedAgentResponse> };
+  feedbackStore: PilotFeedbackStore;
+  mode: "development" | "test" | "staging" | "production";
+  releaseId: string;
+  allowedOrigins: readonly string[];
+  readiness: () => Promise<{ ready: boolean; blockers: string[] }>;
+  pilotConsentReference: string | null;
+  privacyNoticeVersion: string | null;
+  requestTimeoutMs?: number;
+  rateLimit?: { windowMs: number; maxRequests: number };
+}
+
+interface Bucket { start: number; count: number }
+
+function securityHeaders(response: ServerResponse, mode: HttpAppOptions["mode"], nonce: string): void {
+  response.setHeader("X-Content-Type-Options", "nosniff");
+  response.setHeader("X-Frame-Options", "DENY");
+  response.setHeader("Referrer-Policy", "no-referrer");
+  response.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
+  response.setHeader("Content-Security-Policy", `default-src 'self'; script-src 'nonce-${nonce}'; style-src 'nonce-${nonce}'; connect-src 'self'; img-src 'self' data:; frame-ancestors 'none'; base-uri 'none'; form-action 'self'`);
+  if (mode === "production") response.setHeader("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
+}
+
+function json(response: ServerResponse, status: number, body: unknown): void {
+  response.statusCode = status;
+  response.setHeader("Content-Type", "application/json; charset=utf-8");
+  response.setHeader("Cache-Control", "no-store");
+  response.end(JSON.stringify(body));
+}
+
+async function readJson(request: IncomingMessage, maximumBytes = 16_384): Promise<unknown> {
+  const type = request.headers["content-type"]?.split(";", 1)[0]?.trim().toLowerCase();
+  if (type !== "application/json") throw Object.assign(new Error("Content-Type must be application/json"), { status: 415 });
+  let size = 0;
+  const chunks: Buffer[] = [];
+  for await (const chunk of request) {
+    const bytes = Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk);
+    size += bytes.length;
+    if (size > maximumBytes) throw Object.assign(new Error("request body is too large"), { status: 413 });
+    chunks.push(bytes);
+  }
+  try { return JSON.parse(Buffer.concat(chunks).toString("utf8")) as unknown; }
+  catch { throw Object.assign(new Error("request body must be valid JSON"), { status: 400 }); }
+}
+
+function publicError(error: unknown): { status: number; code: string; message: string } {
+  const status = typeof error === "object" && error !== null && "status" in error && typeof error.status === "number" ? error.status : 500;
+  if (status >= 500) return { status: 500, code: "internal_error", message: "The service could not complete the request." };
+  return { status, code: status === 413 ? "payload_too_large" : status === 415 ? "unsupported_media_type" : "invalid_request", message: error instanceof Error ? error.message : "Invalid request" };
+}
+
+export function createNutriGuardHttpServer(options: HttpAppOptions): Server {
+  if (!options.releaseId.trim()) throw new Error("releaseId is required");
+  const buckets = new Map<string, Bucket>();
+  const rate = options.rateLimit ?? { windowMs: 60_000, maxRequests: 30 };
+  const timeoutMs = options.requestTimeoutMs ?? 15_000;
+  return createServer(async (request, response) => {
+    const requestId = randomUUID();
+    const nonce = randomBytes(18).toString("base64");
+    response.setHeader("X-Request-Id", requestId);
+    securityHeaders(response, options.mode, nonce);
+    const url = new URL(request.url ?? "/", "http://localhost");
+    const origin = request.headers.origin;
+    if (origin) {
+      if (!options.allowedOrigins.includes(origin)) return json(response, 403, { error: { code: "origin_forbidden", message: "Origin is not allowed." }, requestId });
+      response.setHeader("Access-Control-Allow-Origin", origin);
+      response.setHeader("Vary", "Origin");
+    }
+    if (request.method === "OPTIONS") {
+      response.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
+      response.setHeader("Access-Control-Allow-Headers", "Content-Type");
+      response.statusCode = 204;
+      return response.end();
+    }
+    if (request.method === "GET" && url.pathname === "/") {
+      response.statusCode = 200; response.setHeader("Content-Type", "text/html; charset=utf-8"); response.setHeader("Cache-Control", "no-store"); return response.end(renderChatPage(nonce));
+    }
+    if (request.method === "GET" && url.pathname === "/favicon.ico") { response.statusCode = 204; return response.end(); }
+    if (request.method === "GET" && url.pathname === "/health") return json(response, 200, { status: "ok", releaseId: options.releaseId });
+    if (request.method === "GET" && url.pathname === "/ready") {
+      const state = await options.readiness();
+      return json(response, state.ready ? 200 : 503, { status: state.ready ? "ready" : "blocked", blockers: state.blockers, releaseId: options.releaseId });
+    }
+    if (request.method === "POST" && (url.pathname === "/api/v1/chat" || url.pathname === "/api/v1/feedback")) {
+      const key = request.socket.remoteAddress ?? "unknown";
+      const now = Date.now();
+      const current = buckets.get(key);
+      const bucket = !current || now - current.start >= rate.windowMs ? { start: now, count: 0 } : current;
+      bucket.count += 1; buckets.set(key, bucket);
+      if (bucket.count > rate.maxRequests) return json(response, 429, { error: { code: "rate_limited", message: "Too many requests. Try again later." }, requestId });
+      try {
+        const body = await readJson(request);
+        if (url.pathname === "/api/v1/feedback") {
+          if (!options.pilotConsentReference || !options.privacyNoticeVersion) throw Object.assign(new Error("pilot feedback collection is not configured"), { status: 503 });
+          const submission = parsePilotFeedbackSubmission(body);
+          const { consentAccepted: _consentAccepted, ...fields } = submission;
+          void _consentAccepted;
+          const saved = await options.feedbackStore.save({ ...fields, consentReference: options.pilotConsentReference, privacyNoticeVersion: options.privacyNoticeVersion }, { releaseId: options.releaseId, promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION });
+          return json(response, 201, { feedbackId: saved.id, requestId });
+        }
+        const parsed = ChatSchema.safeParse(body);
+        if (!parsed.success) throw Object.assign(new Error("message must contain 1–2000 characters and no unknown fields"), { status: 400 });
+        let timer: NodeJS.Timeout | undefined;
+        const timeout = new Promise<never>((_, reject) => { timer = setTimeout(() => reject(Object.assign(new Error("agent timeout"), { status: 504 })), timeoutMs); });
+        const result = await Promise.race([options.agent.invoke(parsed.data), timeout]).finally(() => { if (timer) clearTimeout(timer); });
+        return json(response, 200, { requestId, result });
+      } catch (error) {
+        const safe = publicError(error);
+        return json(response, safe.status, { error: { code: safe.code, message: safe.message }, requestId });
+      }
+    }
+    if (["/api/v1/chat", "/api/v1/feedback"].includes(url.pathname)) return json(response, 405, { error: { code: "method_not_allowed", message: "Method not allowed." }, requestId });
+    return json(response, 404, { error: { code: "not_found", message: "Route not found." }, requestId });
+  });
+}
