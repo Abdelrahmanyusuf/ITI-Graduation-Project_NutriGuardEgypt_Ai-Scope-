@@ -1,7 +1,7 @@
 {
   "name": "nutriguard-egypt",
   "version": "0.1.0",
-  "description": "NutriGuard - a nutrition assistant restricted to verified Egyptian food. Step 0: project foundation.",
+  "description": "NutriGuard - deterministic, provenance-first nutrition for verified Egyptian food.",
   "private": true,
   "type": "module",
   "engines": {
@@ -19,13 +19,21 @@
     "docs:check": "node scripts/docs-link-check.mjs",
     "audit": "node --import tsx src/scripts/run-audit.ts",
     "stage": "node --import tsx src/scripts/stage-recipes.ts",
+    "resolve:ingredients": "node --import tsx src/scripts/resolve-ingredients.ts",
+    "normalize:units": "node --import tsx src/scripts/normalize-quantities.ts",
+    "db:migrate": "node --import tsx src/scripts/migrate.ts up",
+    "db:rollback": "node --import tsx src/scripts/migrate.ts down",
+    "db:status": "node --import tsx src/scripts/migrate.ts status",
+    "db:validate": "node --import tsx src/scripts/migrate.ts validate",
+    "db:seed:synthetic": "node --import tsx src/scripts/seed-db.ts",
     "test": "node --import tsx --test \"tests/**/*.test.ts\""
   },
-  "dependencies": {},
   "devDependencies": {
     "@eslint/js": "^9.17.0",
     "@types/node": "^24.0.0",
+    "@types/pg": "^8.20.4",
     "eslint": "^9.17.0",
+    "pg": "^8.22.0",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.18.0"

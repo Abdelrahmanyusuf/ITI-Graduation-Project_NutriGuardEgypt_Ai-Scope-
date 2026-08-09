@@ -1,0 +1,182 @@
+{
+  "schemaVersion": "1.0",
+  "sources": [
+    {
+      "sourceId": "synthetic-step7-golden",
+      "versionId": "synthetic-step7-golden-v1",
+      "title": "Synthetic Step 7 golden arithmetic fixture — not food data",
+      "url": "tests/fixtures/nutrition/golden-registry.json",
+      "status": "approved",
+      "licenseStatus": "approved",
+      "syntheticTestOnly": true
+    }
+  ],
+  "profiles": [
+    {
+      "id": "synthetic-rice-raw-profile",
+      "ingredientKey": "rice",
+      "foodState": "raw",
+      "basis": "per_edible_100g",
+      "nutrients": {
+        "calories": 200,
+        "protein": 10.333,
+        "carbohydrate": 40,
+        "total_fat": 2,
+        "saturated_fat": 0.5,
+        "fiber": 3,
+        "sugar": null,
+        "sodium": 20
+      },
+      "sourceId": "synthetic-step7-golden",
+      "versionId": "synthetic-step7-golden-v1",
+      "originalContext": "Synthetic round-number profile for deterministic arithmetic tests only.",
+      "status": "approved"
+    },
+    {
+      "id": "synthetic-honey-profile",
+      "ingredientKey": "honey",
+      "foodState": null,
+      "basis": "per_edible_100g",
+      "nutrients": {
+        "calories": 300,
+        "protein": 0,
+        "carbohydrate": 75,
+        "total_fat": 0,
+        "saturated_fat": 0,
+        "fiber": 0,
+        "sugar": 75,
+        "sodium": 10
+      },
+      "sourceId": "synthetic-step7-golden",
+      "versionId": "synthetic-step7-golden-v1",
+      "originalContext": "Synthetic mixed-unit profile for deterministic arithmetic tests only.",
+      "status": "approved"
+    },
+    {
+      "id": "synthetic-sugar-profile",
+      "ingredientKey": "white-sugar",
+      "foodState": null,
+      "basis": "per_100g",
+      "nutrients": {
+        "calories": 400,
+        "protein": 0,
+        "carbohydrate": 100,
+        "total_fat": 0,
+        "saturated_fat": null,
+        "fiber": 0,
+        "sugar": 100,
+        "sodium": 0
+      },
+      "sourceId": "synthetic-step7-golden",
+      "versionId": "synthetic-step7-golden-v1",
+      "originalContext": "Synthetic zero-versus-null profile for deterministic arithmetic tests only.",
+      "status": "approved"
+    }
+  ],
+  "retentionFactors": [
+    {
+      "id": "synthetic-retention-calories-raw-cooked",
+      "ingredientKey": "rice",
+      "nutrient": "calories",
+      "foodStateFrom": "raw",
+      "foodStateTo": "cooked",
+      "factor": 0.9,
+      "sourceId": "synthetic-step7-golden",
+      "versionId": "synthetic-step7-golden-v1",
+      "originalValue": "90%",
+      "originalContext": "Synthetic retention fixture only.",
+      "status": "approved"
+    },
+    {
+      "id": "synthetic-retention-protein-raw-cooked",
+      "ingredientKey": "rice",
+      "nutrient": "protein",
+      "foodStateFrom": "raw",
+      "foodStateTo": "cooked",
+      "factor": 0.8,
+      "sourceId": "synthetic-step7-golden",
+      "versionId": "synthetic-step7-golden-v1",
+      "originalValue": "80%",
+      "originalContext": "Synthetic retention fixture only.",
+      "status": "approved"
+    },
+    {
+      "id": "synthetic-retention-carbohydrate-raw-cooked",
+      "ingredientKey": "rice",
+      "nutrient": "carbohydrate",
+      "foodStateFrom": "raw",
+      "foodStateTo": "cooked",
+      "factor": 0.9,
+      "sourceId": "synthetic-step7-golden",
+      "versionId": "synthetic-step7-golden-v1",
+      "originalValue": "90%",
+      "originalContext": "Synthetic retention fixture only.",
+      "status": "approved"
+    },
+    {
+      "id": "synthetic-retention-total-fat-raw-cooked",
+      "ingredientKey": "rice",
+      "nutrient": "total_fat",
+      "foodStateFrom": "raw",
+      "foodStateTo": "cooked",
+      "factor": 0.75,
+      "sourceId": "synthetic-step7-golden",
+      "versionId": "synthetic-step7-golden-v1",
+      "originalValue": "75%",
+      "originalContext": "Synthetic retention fixture only.",
+      "status": "approved"
+    },
+    {
+      "id": "synthetic-retention-saturated-fat-raw-cooked",
+      "ingredientKey": "rice",
+      "nutrient": "saturated_fat",
+      "foodStateFrom": "raw",
+      "foodStateTo": "cooked",
+      "factor": 0.75,
+      "sourceId": "synthetic-step7-golden",
+      "versionId": "synthetic-step7-golden-v1",
+      "originalValue": "75%",
+      "originalContext": "Synthetic retention fixture only.",
+      "status": "approved"
+    },
+    {
+      "id": "synthetic-retention-fiber-raw-cooked",
+      "ingredientKey": "rice",
+      "nutrient": "fiber",
+      "foodStateFrom": "raw",
+      "foodStateTo": "cooked",
+      "factor": 1,
+      "sourceId": "synthetic-step7-golden",
+      "versionId": "synthetic-step7-golden-v1",
+      "originalValue": "100%",
+      "originalContext": "Synthetic retention fixture only.",
+      "status": "approved"
+    },
+    {
+      "id": "synthetic-retention-sugar-raw-cooked",
+      "ingredientKey": "rice",
+      "nutrient": "sugar",
+      "foodStateFrom": "raw",
+      "foodStateTo": "cooked",
+      "factor": 0.9,
+      "sourceId": "synthetic-step7-golden",
+      "versionId": "synthetic-step7-golden-v1",
+      "originalValue": "90%",
+      "originalContext": "Synthetic retention fixture only.",
+      "status": "approved"
+    },
+    {
+      "id": "synthetic-retention-sodium-raw-cooked",
+      "ingredientKey": "rice",
+      "nutrient": "sodium",
+      "foodStateFrom": "raw",
+      "foodStateTo": "cooked",
+      "factor": 0.5,
+      "sourceId": "synthetic-step7-golden",
+      "versionId": "synthetic-step7-golden-v1",
+      "originalValue": "50%",
+      "originalContext": "Synthetic retention fixture only.",
+      "status": "approved"
+    }
+  ]
+}

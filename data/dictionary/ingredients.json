@@ -1,0 +1,1203 @@
+[
+  {
+    "key": "lentils",
+    "nameEn": "lentils",
+    "nameAr": "عدس",
+    "nameEg": "عدس",
+    "aliasesEn": [
+      "lentil",
+      "brown lentils"
+    ],
+    "aliasesAr": [
+      "العدس",
+      "عدس مصري"
+    ],
+    "aliasesEg": [],
+    "category": "grain",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    },
+    "notes": "Common Egyptian staple (koshari base)."
+  },
+  {
+    "key": "rice",
+    "nameEn": "rice",
+    "nameAr": "أرز",
+    "nameEg": "رز",
+    "aliasesEn": [
+      "white rice"
+    ],
+    "aliasesAr": [
+      "الأرز",
+      "الرز"
+    ],
+    "aliasesEg": [
+      "رز مصري"
+    ],
+    "category": "grain",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    }
+  },
+  {
+    "key": "rice-cooked",
+    "nameEn": "cooked rice",
+    "nameAr": "أرز مطبوخ",
+    "nameEg": "رز مستوي",
+    "aliasesEn": [
+      "cooked rice"
+    ],
+    "aliasesAr": [
+      "الأرز المطبوخ",
+      "رز مطبوخ"
+    ],
+    "aliasesEg": [],
+    "category": "grain",
+    "foodState": "cooked",
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    },
+    "notes": "Food-state variant of rice; kept separate from raw/dry rice."
+  },
+  {
+    "key": "chickpeas",
+    "nameEn": "chickpeas",
+    "nameAr": "حمص",
+    "nameEg": "حمص",
+    "aliasesEn": [
+      "chickpea",
+      "garbanzo beans",
+      "garbanzo"
+    ],
+    "aliasesAr": [
+      "الحمص",
+      "حمص الشام"
+    ],
+    "aliasesEg": [],
+    "category": "legume",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    }
+  },
+  {
+    "key": "fava-beans",
+    "nameEn": "fava beans",
+    "nameAr": "فول",
+    "nameEg": "فول مصري",
+    "aliasesEn": [
+      "fava bean",
+      "broad beans",
+      "broad bean"
+    ],
+    "aliasesAr": [
+      "الفول",
+      "فول بلدي"
+    ],
+    "aliasesEg": [],
+    "category": "legume",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    },
+    "notes": "Fresh fava. 'فول مدمس' (stewed dish) is a prepared dish -> review."
+  },
+  {
+    "key": "fava-beans-dried",
+    "nameEn": "dried fava beans",
+    "nameAr": "فول جاف",
+    "nameEg": "فول ناشف",
+    "aliasesEn": [
+      "dried fava beans",
+      "dry fava beans"
+    ],
+    "aliasesAr": [
+      "فول يابس"
+    ],
+    "aliasesEg": [],
+    "category": "legume",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    },
+    "notes": "Dry split fava for falafel; a SEPARATE entity from fresh/dried-neutral fava, never a 'drained' state."
+  },
+  {
+    "key": "peas-fresh",
+    "nameEn": "fresh peas",
+    "nameAr": "بازلاء خضراء",
+    "nameEg": "بسلة خضراء",
+    "aliasesEn": [
+      "peas",
+      "green peas",
+      "fresh peas"
+    ],
+    "aliasesAr": [
+      "بازلاء",
+      "بسلة",
+      "البازلاء الخضراء",
+      "بازلاء خضراء"
+    ],
+    "aliasesEg": [],
+    "category": "legume",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    },
+    "notes": "Bare 'peas' is AMBIGUOUS with dried peas -> review."
+  },
+  {
+    "key": "peas-dried",
+    "nameEn": "dried peas",
+    "nameAr": "بازلاء جافة",
+    "nameEg": "بسلة ناشفة",
+    "aliasesEn": [
+      "peas",
+      "dried peas",
+      "dry peas",
+      "split peas"
+    ],
+    "aliasesAr": [
+      "بازلاء",
+      "بسلة",
+      "بازلاء جافة",
+      "بسلة جافة"
+    ],
+    "aliasesEg": [],
+    "category": "legume",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    },
+    "notes": "Dried/split peas — SEPARATE entity from fresh peas; dried is NOT a food state."
+  },
+  {
+    "key": "onion",
+    "nameEn": "onion",
+    "nameAr": "بصل",
+    "nameEg": "بصل",
+    "aliasesEn": [
+      "onions",
+      "red onion",
+      "yellow onion"
+    ],
+    "aliasesAr": [
+      "البصل",
+      "بصل أحمر"
+    ],
+    "aliasesEg": [],
+    "category": "vegetable",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    }
+  },
+  {
+    "key": "garlic",
+    "nameEn": "garlic",
+    "nameAr": "ثوم",
+    "nameEg": "توم",
+    "aliasesEn": [
+      "garlic cloves",
+      "cloves of garlic"
+    ],
+    "aliasesAr": [
+      "الثوم",
+      "فصوص الثوم"
+    ],
+    "aliasesEg": [
+      "توم بلدي"
+    ],
+    "category": "vegetable",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    }
+  },
+  {
+    "key": "tomato",
+    "nameEn": "tomato",
+    "nameAr": "طماطم",
+    "nameEg": "طماطم",
+    "aliasesEn": [
+      "tomatoes",
+      "ripe tomato"
+    ],
+    "aliasesAr": [
+      "الطماطم",
+      "بندورة"
+    ],
+    "aliasesEg": [],
+    "category": "vegetable",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    }
+  },
+  {
+    "key": "tomato-paste",
+    "nameEn": "tomato paste",
+    "nameAr": "معجون الطماطم",
+    "nameEg": "صلصة طماطم",
+    "aliasesEn": [
+      "tomato concentrate"
+    ],
+    "aliasesAr": [
+      "معجون طماطم"
+    ],
+    "aliasesEg": [],
+    "category": "processed",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    },
+    "notes": "Processed concentrate — not the same entity as fresh tomato."
+  },
+  {
+    "key": "potato",
+    "nameEn": "potato",
+    "nameAr": "بطاطس",
+    "nameEg": "بطاطس",
+    "aliasesEn": [
+      "potatoes"
+    ],
+    "aliasesAr": [
+      "البطاطس",
+      "بطاطة"
+    ],
+    "aliasesEg": [],
+    "category": "vegetable",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    }
+  },
+  {
+    "key": "carrot",
+    "nameEn": "carrot",
+    "nameAr": "جزر",
+    "nameEg": "جزر",
+    "aliasesEn": [
+      "carrots"
+    ],
+    "aliasesAr": [
+      "الجزر"
+    ],
+    "aliasesEg": [],
+    "category": "vegetable",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    }
+  },
+  {
+    "key": "eggplant",
+    "nameEn": "eggplant",
+    "nameAr": "باذنجان",
+    "nameEg": "باذنجان",
+    "aliasesEn": [
+      "aubergine"
+    ],
+    "aliasesAr": [
+      "الباذنجان"
+    ],
+    "aliasesEg": [],
+    "category": "vegetable",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    }
+  },
+  {
+    "key": "zucchini",
+    "nameEn": "zucchini",
+    "nameAr": "كوسة",
+    "nameEg": "كوسة",
+    "aliasesEn": [
+      "courgette",
+      "zucchini squash"
+    ],
+    "aliasesAr": [
+      "الكوسة",
+      "كوسى"
+    ],
+    "aliasesEg": [],
+    "category": "vegetable",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    }
+  },
+  {
+    "key": "molokhia",
+    "nameEn": "molokhia leaves",
+    "nameAr": "ملوخية",
+    "nameEg": "ملوخية",
+    "aliasesEn": [
+      "molokhia",
+      "moluchea",
+      "jute leaves"
+    ],
+    "aliasesAr": [
+      "الملوخية",
+      "ورق الملوخية"
+    ],
+    "aliasesEg": [],
+    "category": "vegetable",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    },
+    "notes": "Corchorus olitorius leaves; a staple Egyptian green."
+  },
+  {
+    "key": "coriander-leaf",
+    "nameEn": "coriander leaves",
+    "nameAr": "كسبرة خضراء",
+    "nameEg": "كسبرة",
+    "aliasesEn": [
+      "coriander",
+      "coriander leaves",
+      "fresh coriander",
+      "cilantro"
+    ],
+    "aliasesAr": [
+      "الكسبرة",
+      "كسبرة",
+      "كسبرة خضراء",
+      "كزبرة خضراء"
+    ],
+    "aliasesEg": [],
+    "category": "herb",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    },
+    "notes": "'coriander' alone is AMBIGUOUS (leaves or seeds) -> review."
+  },
+  {
+    "key": "coriander-seed",
+    "nameEn": "coriander seeds",
+    "nameAr": "بذور الكسبرة",
+    "nameEg": "كسبرة يابسة",
+    "aliasesEn": [
+      "coriander",
+      "coriander seeds",
+      "coriander seed",
+      "dhaniya",
+      "ground coriander"
+    ],
+    "aliasesAr": [
+      "بذور كسبرة",
+      "كسبرة جافة",
+      "كزبرة حب"
+    ],
+    "aliasesEg": [],
+    "category": "spice",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    },
+    "notes": "Seed form. 'coriander' alone is ambiguous with coriander-leaf."
+  },
+  {
+    "key": "parsley",
+    "nameEn": "parsley",
+    "nameAr": "بقدونس",
+    "nameEg": "بقدونس",
+    "aliasesEn": [
+      "italian parsley",
+      "flat leaf parsley"
+    ],
+    "aliasesAr": [
+      "البقدونس"
+    ],
+    "aliasesEg": [],
+    "category": "herb",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    }
+  },
+  {
+    "key": "dill",
+    "nameEn": "dill",
+    "nameAr": "شبت",
+    "nameEg": "شبت",
+    "aliasesEn": [
+      "dill weed"
+    ],
+    "aliasesAr": [
+      "الشبث"
+    ],
+    "aliasesEg": [],
+    "category": "herb",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    }
+  },
+  {
+    "key": "mint",
+    "nameEn": "mint",
+    "nameAr": "نعناع",
+    "nameEg": "نعناعة",
+    "aliasesEn": [
+      "spearmint"
+    ],
+    "aliasesAr": [
+      "النعناع"
+    ],
+    "aliasesEg": [],
+    "category": "herb",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    }
+  },
+  {
+    "key": "cinnamon",
+    "nameEn": "cinnamon",
+    "nameAr": "قرفة",
+    "nameEg": "قرفة",
+    "aliasesEn": [
+      "cinnamon stick",
+      "ground cinnamon"
+    ],
+    "aliasesAr": [
+      "القرفة",
+      "دارسين"
+    ],
+    "aliasesEg": [],
+    "category": "spice",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    }
+  },
+  {
+    "key": "cumin",
+    "nameEn": "cumin",
+    "nameAr": "كمون",
+    "nameEg": "كمون",
+    "aliasesEn": [
+      "ground cumin",
+      "cumin seeds"
+    ],
+    "aliasesAr": [
+      "الكمون",
+      "كمّون"
+    ],
+    "aliasesEg": [],
+    "category": "spice",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    }
+  },
+  {
+    "key": "black-pepper",
+    "nameEn": "black pepper",
+    "nameAr": "فلفل أسود",
+    "nameEg": "فلفل أسود",
+    "aliasesEn": [
+      "black peppercorns",
+      "ground black pepper"
+    ],
+    "aliasesAr": [
+      "الفلفل الأسود",
+      "فلفل اسود"
+    ],
+    "aliasesEg": [],
+    "category": "spice",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    },
+    "notes": "'pepper' is ambiguous with chili pepper -> review."
+  },
+  {
+    "key": "chili-pepper",
+    "nameEn": "chili pepper",
+    "nameAr": "فلفل حار",
+    "nameEg": "شطة",
+    "aliasesEn": [
+      "chili",
+      "chilli",
+      "red chili",
+      "hot pepper"
+    ],
+    "aliasesAr": [
+      "فلفل حار",
+      "الشطة"
+    ],
+    "aliasesEg": [],
+    "category": "vegetable",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    }
+  },
+  {
+    "key": "olive-oil",
+    "nameEn": "olive oil",
+    "nameAr": "زيت زيتون",
+    "nameEg": "زيت زيتون",
+    "aliasesEn": [
+      "extra virgin olive oil",
+      "evoo",
+      "olive oil extra virgin"
+    ],
+    "aliasesAr": [
+      "زيت الزيتون"
+    ],
+    "aliasesEg": [],
+    "category": "oil",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    }
+  },
+  {
+    "key": "vegetable-oil",
+    "nameEn": "vegetable oil",
+    "nameAr": "زيت نباتي",
+    "nameEg": "زيت",
+    "aliasesEn": [
+      "cooking oil"
+    ],
+    "aliasesAr": [
+      "زيت نباتي"
+    ],
+    "aliasesEg": [],
+    "category": "oil",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    },
+    "notes": "Generic cooking oil; specific seed oils (canola/sunflower/corn) are separate records."
+  },
+  {
+    "key": "canola-oil",
+    "nameEn": "canola oil",
+    "nameAr": "زيت كانولا",
+    "nameEg": "زيت كانولا",
+    "aliasesEn": [],
+    "aliasesAr": [],
+    "aliasesEg": [],
+    "category": "oil",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    },
+    "notes": "Separate from vegetable-oil and sunflower-oil."
+  },
+  {
+    "key": "sunflower-oil",
+    "nameEn": "sunflower oil",
+    "nameAr": "زيت عباد الشمس",
+    "nameEg": "زيت عباد الشمس",
+    "aliasesEn": [],
+    "aliasesAr": [],
+    "aliasesEg": [],
+    "category": "oil",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    },
+    "notes": "Separate from canola-oil and vegetable-oil."
+  },
+  {
+    "key": "corn-oil",
+    "nameEn": "corn oil",
+    "nameAr": "زيت الذرة",
+    "nameEg": "زيت الذرة",
+    "aliasesEn": [],
+    "aliasesAr": [],
+    "aliasesEg": [],
+    "category": "oil",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    },
+    "notes": "Separate from other seed oils."
+  },
+  {
+    "key": "salt",
+    "nameEn": "salt",
+    "nameAr": "ملح",
+    "nameEg": "ملح",
+    "aliasesEn": [
+      "table salt",
+      "kosher salt",
+      "sea salt"
+    ],
+    "aliasesAr": [
+      "الملح",
+      "ملح الطعام"
+    ],
+    "aliasesEg": [],
+    "category": "seasoning",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    }
+  },
+  {
+    "key": "black-tea",
+    "nameEn": "black tea",
+    "nameAr": "شاي أسود",
+    "nameEg": "شاي",
+    "aliasesEn": [
+      "tea",
+      "loose leaf tea"
+    ],
+    "aliasesAr": [
+      "الشاي",
+      "شاي"
+    ],
+    "aliasesEg": [],
+    "category": "beverage",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    },
+    "notes": "Distinct from herbal infusions."
+  },
+  {
+    "key": "honey",
+    "nameEn": "honey",
+    "nameAr": "عسل",
+    "nameEg": "عسل نحل",
+    "aliasesEn": [
+      "raw honey"
+    ],
+    "aliasesAr": [
+      "العسل",
+      "عسل النحل"
+    ],
+    "aliasesEg": [],
+    "category": "sweetener",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    }
+  },
+  {
+    "key": "white-sugar",
+    "nameEn": "white sugar",
+    "nameAr": "سكر",
+    "nameEg": "سكر",
+    "aliasesEn": [
+      "sugar",
+      "granulated sugar"
+    ],
+    "aliasesAr": [
+      "السكر",
+      "سكر أبيض"
+    ],
+    "aliasesEg": [],
+    "category": "sweetener",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    }
+  },
+  {
+    "key": "yogurt",
+    "nameEn": "yogurt",
+    "nameAr": "زبادي",
+    "nameEg": "زبادي بلدي",
+    "aliasesEn": [
+      "yoghurt"
+    ],
+    "aliasesAr": [
+      "الزبادي",
+      "لبن زبادي"
+    ],
+    "aliasesEg": [],
+    "category": "dairy",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    },
+    "notes": "Generic yogurt. Greek vs plain are separate records (nutritionally different)."
+  },
+  {
+    "key": "greek-yogurt",
+    "nameEn": "greek yogurt",
+    "nameAr": "زبادي يوناني",
+    "nameEg": "زبادي يوناني",
+    "aliasesEn": [],
+    "aliasesAr": [],
+    "aliasesEg": [],
+    "category": "dairy",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    },
+    "notes": "Separate record: strained yogurt is nutritionally richer in protein than plain."
+  },
+  {
+    "key": "plain-yogurt",
+    "nameEn": "plain yogurt",
+    "nameAr": "زبادي عادي",
+    "nameEg": "زبادي بلدي عادي",
+    "aliasesEn": [],
+    "aliasesAr": [],
+    "aliasesEg": [],
+    "category": "dairy",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    },
+    "notes": "Separate record from greek-yogurt."
+  },
+  {
+    "key": "egg",
+    "nameEn": "egg",
+    "nameAr": "بيض",
+    "nameEg": "بيض بلدي",
+    "aliasesEn": [
+      "eggs",
+      "chicken egg",
+      "large egg"
+    ],
+    "aliasesAr": [
+      "البيض",
+      "بيضة"
+    ],
+    "aliasesEg": [],
+    "category": "protein",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    }
+  },
+  {
+    "key": "egg-fried",
+    "nameEn": "fried egg",
+    "nameAr": "بيض مقلي",
+    "nameEg": "بيض مقلي",
+    "aliasesEn": [
+      "fried eggs"
+    ],
+    "aliasesAr": [
+      "البيض المقلي"
+    ],
+    "aliasesEg": [],
+    "category": "protein",
+    "foodState": "fried",
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    },
+    "notes": "Cooking-state variant of egg."
+  },
+  {
+    "key": "chicken",
+    "nameEn": "chicken",
+    "nameAr": "دجاج",
+    "nameEg": "فراخ",
+    "aliasesEn": [],
+    "aliasesAr": [
+      "الدجاج",
+      "فرخ"
+    ],
+    "aliasesEg": [
+      "فراخ بلدي"
+    ],
+    "category": "protein",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    },
+    "notes": "Generic chicken. Breasts/thighs/whole are separate records."
+  },
+  {
+    "key": "chicken-breast",
+    "nameEn": "chicken breast",
+    "nameAr": "صدر الفراخ",
+    "nameEg": "صدر فراخ",
+    "aliasesEn": [],
+    "aliasesAr": [
+      "صدر الدجاج"
+    ],
+    "aliasesEg": [],
+    "category": "protein",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    },
+    "notes": "Separate from chicken (breast is leaner)."
+  },
+  {
+    "key": "chicken-thigh",
+    "nameEn": "chicken thigh",
+    "nameAr": "فخدة الفراخ",
+    "nameEg": "فخدة فراخ",
+    "aliasesEn": [
+      "chicken thighs"
+    ],
+    "aliasesAr": [
+      "فخد الدجاج"
+    ],
+    "aliasesEg": [],
+    "category": "protein",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    },
+    "notes": "Separate from chicken-breast."
+  },
+  {
+    "key": "whole-chicken",
+    "nameEn": "whole chicken",
+    "nameAr": "دجاجة كاملة",
+    "nameEg": "فرخة كاملة",
+    "aliasesEn": [],
+    "aliasesAr": [
+      "دجاجة"
+    ],
+    "aliasesEg": [],
+    "category": "protein",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    },
+    "notes": "Separate from specific cuts."
+  },
+  {
+    "key": "beef",
+    "nameEn": "beef",
+    "nameAr": "لحم بقري",
+    "nameEg": "لحمة",
+    "aliasesEn": [],
+    "aliasesAr": [
+      "اللحم",
+      "لحم البقر"
+    ],
+    "aliasesEg": [],
+    "category": "protein",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    },
+    "notes": "Generic beef. Ground/steak are separate records."
+  },
+  {
+    "key": "ground-beef",
+    "nameEn": "ground beef",
+    "nameAr": "لحم مفروم",
+    "nameEg": "لحم مفروم",
+    "aliasesEn": [
+      "minced beef"
+    ],
+    "aliasesAr": [
+      "لحمة مفرومة"
+    ],
+    "aliasesEg": [],
+    "category": "protein",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    },
+    "notes": "Separate from steak (different fat/moisture profile)."
+  },
+  {
+    "key": "steak",
+    "nameEn": "steak",
+    "nameAr": "استيك",
+    "nameEg": "استيك",
+    "aliasesEn": [],
+    "aliasesAr": [],
+    "aliasesEg": [],
+    "category": "protein",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    },
+    "notes": "Separate from ground-beef."
+  },
+  {
+    "key": "tilapia",
+    "nameEn": "tilapia",
+    "nameAr": "بلطي",
+    "nameEg": "سمك بلطي",
+    "aliasesEn": [
+      "tilapia fish"
+    ],
+    "aliasesAr": [
+      "سمك البلطي"
+    ],
+    "aliasesEg": [],
+    "category": "protein",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    },
+    "notes": "Separate from generic fish and from sea bass."
+  },
+  {
+    "key": "sea-bass",
+    "nameEn": "sea bass",
+    "nameAr": "قاروص",
+    "nameEg": "سمك قاروص",
+    "aliasesEn": [
+      "sea bass fish"
+    ],
+    "aliasesAr": [
+      "سمك القاروص"
+    ],
+    "aliasesEg": [],
+    "category": "protein",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    },
+    "notes": "Separate from tilapia."
+  },
+  {
+    "key": "fish",
+    "nameEn": "fish",
+    "nameAr": "سمك",
+    "nameEg": "سمكة",
+    "aliasesEn": [
+      "whole fish"
+    ],
+    "aliasesAr": [
+      "السمك"
+    ],
+    "aliasesEg": [],
+    "category": "protein",
+    "foodState": null,
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    },
+    "notes": "Generic fish. Species (tilapia, sea bass) are separate records."
+  },
+  {
+    "key": "lentil-soup",
+    "nameEn": "lentil soup",
+    "nameAr": "شوربة عدس",
+    "nameEg": "شوربة عدس",
+    "aliasesEn": [
+      "lentil soup"
+    ],
+    "aliasesAr": [
+      "شوربة العدس"
+    ],
+    "aliasesEg": [],
+    "category": "prepared",
+    "foodState": "cooked",
+    "provenance": {
+      "version": "2.0.0",
+      "reviewer": null,
+      "reviewDate": null,
+      "source": "data/dictionary/ingredients.json",
+      "status": "unapproved"
+    },
+    "notes": "A prepared dish, not the dry raw ingredient 'lentils'."
+  }
+]

@@ -1,0 +1,43 @@
+{
+  "acceptedIngredientMappings": 0,
+  "blockers": [
+    "No approved Step 5 ingredient mappings are available, so ingredient-specific factors cannot be applied to production rows.",
+    "No occurrence could be converted to grams."
+  ],
+  "byConversionId": {},
+  "byMeasureVariant": {
+    "standard": 10278
+  },
+  "byStatus": {
+    "converted": 0,
+    "invalid": 4,
+    "partial": 13470,
+    "unsupported": 1110
+  },
+  "byUnit": {
+    "clove": 374,
+    "cup": 3687,
+    "piece": 611,
+    "tablespoon": 2427,
+    "teaspoon": 3179
+  },
+  "countedOccurrences": 14584,
+  "gramConversionRate": 0,
+  "gramConverted": 0,
+  "occurrencesSeen": 14584,
+  "quantityParsed": 13470,
+  "quantityParsingRate": 0.923614920460779,
+  "registry": {
+    "cookingYieldFactors": 0,
+    "ediblePortionFactors": 0,
+    "file": "data/dictionary/unit-conversions.json",
+    "ingredientConversions": 12,
+    "units": 9
+  },
+  "reviewQueueRecords": 6238,
+  "schemaVersion": "1.0",
+  "source": "data/raw/Recipes For Eqyption Food.csv",
+  "tool": "nutriguard-unit-normalizer",
+  "unitNormalizationRate": 0.7047449259462425,
+  "unitNormalized": 10278
+}

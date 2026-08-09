@@ -1,0 +1,45 @@
+{
+  "blockers": [
+    "0 ingredient occurrences are mapped to an approved canonical record — acceptance target is not met and is not being fabricated.",
+    "14584 counted occurrences are routed to 3327 unique review records; approved mappings require a content-hash-verified record in data/dictionary/review-registry.json."
+  ],
+  "coverage": {
+    "ambiguous": 1,
+    "byCountRate": 0,
+    "byStage": {
+      "alias_exact": 0,
+      "normalized_exact": 0,
+      "reviewed_mapping": 0
+    },
+    "byUniqueCountRate": 0,
+    "byWeightRate": null,
+    "resolved": 0,
+    "resolvedKeys": [],
+    "resolvedSummary": [],
+    "resolvedWeightG": null,
+    "total": 14584,
+    "totalWeightG": null,
+    "uniqueResolved": 0,
+    "uniqueTotal": 3327,
+    "unresolved": 14583,
+    "weightedIssues": []
+  },
+  "dictionary": {
+    "entries": 51,
+    "file": "data/dictionary/ingredients.json"
+  },
+  "occurrencesSeen": 14584,
+  "queueRecords": 3327,
+  "resolvedSummary": [],
+  "reviewedMappings": {
+    "file": "data/dictionary/reviewed-mappings.json",
+    "mappings": 0
+  },
+  "reviewedRegistry": {
+    "file": "data/dictionary/review-registry.json",
+    "records": 0
+  },
+  "schemaVersion": "1.0",
+  "source": "data/raw/Recipes For Eqyption Food.csv",
+  "tool": "nutriguard-ingredient-dictionary"
+}

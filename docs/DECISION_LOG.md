@@ -414,6 +414,243 @@ consequences / status.
 - **Consequences:** the registry is reviewable and traceable; validation exits non-zero on duplicate IDs / missing sources / invalid statuses / unverifiable records; no unverified record can enter the verified MVP dataset.
 - **Status:** Proposed — awaiting Step 3 reviewer approval.
 
+## DEC‑035 · 2026-08-07 · PostgreSQL schema, migrations and provenance (Step 4)
+- **Decision:** implement the normalized PostgreSQL data model + provenance via
+  `migrations/` SQL and a migration runner (`src/data/database.ts`, `npm run
+  db:*`). Permanent constraints enforced at the DB layer:
+  - **Missing = NULL, never an invented zero**: optional numerics are NULLable
+    and a CHECK rejects only an impossible range — a real measured zero is
+    stored as `0` (distinct from NULL). `source_id` / `data_version_id` sit on
+    every numeric record table and are **pinned together** by a composite FK
+    against `data_versions(source_id, id)`, so a record's version always
+    belongs to the record's own source.
+  - **No impossible values:** `CHECK` blocks negative nutrient amounts,
+    weights, conversion/yield/retention factors and rule values; a legitimate
+    measured zero is allowed (e.g. a nutrient fully lost → retention 0).
+  - **Food states everywhere:** constrained `food_state`
+    (`raw/cooked/boiled/fried/baked/drained`) on ingredients, recipes,
+    recipe_ingredients, nutrient_values and ingredient_unit_conversions, plus
+    `food_state_from`/`food_state_to` on cooking_yield_factors. Uniqueness over
+    a nullable `food_state` uses `COALESCE(food_state,'')` expression indexes so
+    NULL behaves like one distinct value rather than Postgres's default.
+  - **Original values preserved:** conversions, yields, retentions, guideline
+    rules carry `original_value`/`original_unit`/`original_context` columns
+    verbatim next to normalized machine values.
+  - **Enforceable review records:** `review_records` reference stable, typed
+    foreign keys (source/ingredient/recipe/guideline_document/guideline_rule)
+    with an exactly-one-target CHECK and per-target FK — no orphanable
+    polymorphic `(reviewable_type, reviewable_key)` pair.
+  - **Quantitative guidance split from text:** guideline recommendations live
+    in `guideline_rules` (metric/operator/value/unit); explanatory text lives in
+    `guideline_chunks`.
+  - **No automatic import of unverified production data:** the schema is created
+    entirely from migrations; the only seed is an explicitly **synthetic,
+    rejected-source** fixture loaded only with `NUTRIGUARD_ALLOW_SYNTHETIC_SEED=1`
+    (test-only), never as production data.
+- **Scope decision:** the `pg` driver is a **dev dependency** (migration runner
+  + integration tests). Schema verification is **real**: `npm run db:validate`
+  and the DB integration test query the actual PostgreSQL catalog
+  (`src/data/schemaVerify.ts`) — there is no substring-based validator. The
+  DB-less file (`tests/database-schema.test.ts`) covers file enumeration,
+  filename-resolved down migrations, no embedded `BEGIN`/`COMMIT`, and the
+  test-only seed marker. The live integration test (`tests/database.integration.test.ts`)
+  requires `NUTRIGUARD_RUN_DB_INTEGRATION=1` + `NUTRIGUARD_ALLOW_SYNTHETIC_SEED=1`,
+  refuses non-`test` database names, creates its own disposable `ng_it_*`
+  schema, and is skipped — honestly, not faked — when `DATABASE_URL` is absent.
+- **Runner invariants:** the runner bootstraps `schema_migrations` before any
+  query (a completely empty PostgreSQL is a valid start), is the SINGLE
+  transaction owner (migration `.sql` files never `BEGIN`/`COMMIT`
+  themselves), and resolves down migrations from the actual `*.down.sql`
+  filenames instead of a hard-coded `<NNNN>_init` convention.
+- **Rationale:** Step 4 must establish a repeatable, provenance-aware database
+  without inventing thresholds. The disposable PostgreSQL (Docker
+  `postgres:16-alpine`) used for the live acceptance checks was confirmed
+  reachable by `pg`, and the whole DB-backed suite ran green against it.
+- **Alternatives considered:** embedding the schema into app code only (rejected
+  — migrations must be reviewable SQL); committing a real .env
+  connection (rejected — secrets never in source control); auto-seeding on
+  migrate (rejected — unverified data must not be imported automatically).
+- **Consequences:** `migrations/` is no longer "reserved"; `src/data/` now holds
+  DB access; a clean DB can be created from `npm run db:migrate`; rollback via
+  `npm run db:rollback`; `docs/ARCHITECTURE.md` and `README.md` updated; the
+  test database lives in a disposable Docker container (no real data).
+- **Status:** Proposed — awaiting the Step 4 (post-correction) reviewer decision.
+- **Corrections (2026-08-08, second reviewer round, now implemented and
+  verified):** (1) nullable provenance closure — the source/version composite FK
+  is `MATCH FULL` **and** each provenance-bearing table has an explicit
+  pair-nullability CHECK (both NULL **or** both non-NULL; a source without a
+  version and a version without a source are both rejected);
+  (2) `guideline_rules` chunk/document consistency — composite FK
+  `(document_id, chunk_id) → guideline_chunks (document_id, id)` plus
+  `UNIQUE (document_id, id)`, so a rule's chunk must belong to its own document;
+  (3) strict positivity — `ingredient_unit_conversions.factor > 0` and
+  `cooking_yield_factors.yield_factor > 0` (zero would silently zero conversions);
+  `>= 0` remains only where a real measured zero is valid (nutrients, retention,
+  quantitative rule values); (4) `db:status` bootstraps `schema_migrations`
+  before reading it, so an empty DB is safe; (5) `schemaVerify.ts` now verifies
+  the **exact** constraints (MATCH FULL + pair-nullability CHECK per table,
+  same-document chunk FK, strict positivity) against the live catalog, not just
+  the presence of a composite FK; (6) the live integration test exercises all
+  adversarial cases (both-NULL accepted; source-only / version-only /
+  non-existent-pair / mismatched-pair rejected; factor and yield factor of
+  0 or −1 rejected; cross-document chunk rejected).
+
+---
+
+## DEC-036 · 2026-08-08 · Ingredient dictionary + deterministic entity resolution (Step 5)
+- **Decision:** a curated AR/EN/EG ingredient dictionary plus a deterministic,
+  review-gated resolver (module `src/domain/ingredients.ts`, CLI `npm run
+  resolve:ingredients`) replaces any agent-time guessing about what a raw
+  ingredient term means.
+  - **No LLM, no embeddings, no fuzzy auto-accept:** every accepted mapping is
+    reproducible and carries exactly one stage — `normalized_exact`,
+    `alias_exact`, or `reviewed_mapping` (human review record in
+    `data/dictionary/reviewed-mappings.json`). `diceCoefficient` suggestions
+    (threshold 0.55) are surfaced in the review queue but never applied.
+  - **Ambiguity is honest, never merged:** duplicate terms (coriander leaf vs
+    seed, dry vs fresh peas) resolve to `ambiguous` with their candidate keys
+    and go to the review queue; the resolver never guesses on collision.
+  - **Food states are first-class data:** constrained
+    `raw/cooked/boiled/fried/baked/drained`, matching the Step 4 schema's
+    `food_state`. A two-pass matching (stateful full-text first, stripped as
+    fallback) maps `cooked rice` → `rice-cooked` and `fried eggs` →
+    `egg-fried`. Arabic natural forms such as "البيضة المقلية" / "بيضة مقلية"
+    resolve via definite-article ("ال") folding without merging food states.
+  - **Canonical records are repository-backed but unapproved:** the master
+    dictionary entries in `data/dictionary/ingredients.json` are present in the
+    repo for review, but they do not claim a human approval record. Their
+    provenance status is `unapproved`; a record resolves only when its
+    provenance status is `approved`.
+  - **Approval is content-bound, not ID-only:** the review registry
+    (`data/dictionary/review-registry.json`) stores immutable review records,
+    each carrying a deterministic SHA-256 `contentHash` over the exact mapping content
+    (id, normalized term, toKey, reviewer, date, evidence, source). A reviewed
+    mapping is approved only when a registry record with its id exists AND the
+    hash of the mapping's *current* content matches the stored hash — changing
+    any field after approval invalidates it. The registry verifies its own
+    stored hashes on load (registry-tamper detection). The resolver fails closed
+    when no registry is supplied, and every record sharing a duplicate registry
+    ID is rejected. There is no path that approves a record by copying its ID
+    into another file.
+  - **Original text preserved verbatim** next to `normalizedQuery` in every
+    resolution record and review-queue record; raw source files are never
+    rewritten.
+  - **Count/weight coverage is honest:** reports compute occurrence-based
+    by-count coverage and, when `--weighted` is supplied, by-weight coverage;
+    unique-term coverage is reported separately after removing quantity/unit from
+    identity while preserving every occurrence context. Weighted entries are validated
+    against the resolution inventory — every weighted occurrence must exist in
+    the inventory, its original text must match, and source identity
+    (recipeId/row/index) is required; foreign, mismatched and duplicate
+    weighted entries are rejected and reported. Unresolved counts and weights
+    are real nulls/0s, never invented numbers.
+  - **CLI exit contract:** the honest report + review queue are always written;
+    the CLI exits non-zero when zero occurrences are mapped to an approved
+    canonical record, or when dictionary, mapping, registry, occurrence-count,
+    or weighted-coverage validation fails.
+- **Scope controls:** dictionary is small (51 canonical records) and **explicitly
+  source-gated** to Egyptian food; fuzzy suggestions stay below-threshold by
+  design so humans own every new mapping.
+- **Alternatives considered:** agent-time LLM resolution (rejected — not
+  reproducible/provable); vector store during ingestion (rejected — future work,
+  Step remainder); auto-accepting fuzzy matches (rejected — violates
+  determinism); ID-only approval (rejected — approval must bind to content).
+- **Consequences:** golden artifacts
+  `data/reports/ingredient-dictionary-coverage.{json,md}` and the review queue
+  `data/review/ingredient-dictionary-review-queue.{json,md}` are regenerated by
+  the CLI; `data/dictionary/*` is committed and human-reviewable;
+  `package.json` gained `resolve:ingredients`; `README.md` /
+  `docs/ARCHITECTURE.md` updated; `tests/ingredients.test.ts` (52 cases) green.
+- **Status:** Proposed — awaiting the Step 5 reviewer decision; current coverage
+  is reported truthfully (**0/14584 occurrences resolved, 0.00%**; 3327 unique
+  terms; 0 approved mappings; 0 content-hash-verified registry records). No
+  human review record exists yet, so nothing is approved and nothing is
+  fabricated to reach a coverage target.
+
+---
+
+## DEC-037 · 2026-08-09 · Deterministic quantities, units and food-state conversions (Step 6)
+
+- **Decision:** quantity/unit parsing and conversion live in
+  `src/domain/quantities.ts`; the reviewable factor registry is
+  `data/dictionary/unit-conversions.json`; production coverage is generated by
+  `npm run normalize:units`.
+- **Parsing contract:** preserve the complete original text plus the exact
+  original quantity and unit substrings; separate ingredient text; accept
+  Western/Arabic digits, decimals, fractions, mixed/vulgar fractions and ranges;
+  reject invalid or descending ranges.
+- **Conversion contract:** `g`/`kg` normalize to grams and volume units normalize
+  to millilitres. A volume or count becomes grams only through an exact
+  ingredient + food-state + size factor. There is no universal cup weight and
+  raw/cooked records never substitute for each other.
+- **Provenance contract:** unit definitions and ingredient factors name their
+  source. Applied factors return source title/URL/access date, locator, original
+  value, original context, and uncertainty. NIST supplies standard US household
+  volumes; USDA Bulletin 72 supplies the committed ingredient/count examples.
+- **Missing-data contract:** `to taste`, `as needed`, frying-oil absorption,
+  unknown measures, and missing ingredient factors produce explicit
+  `unsupported` or `partial` results with `null` grams. Edible-portion and
+  cooking-yield structures are supported, but their production arrays stay empty
+  until a source is reviewed; test-only fixtures exercise both paths.
+- **Integration gate:** the CLI uses only Step 5 accepted mappings, always writes
+  the coverage and manual-review queue, and exits non-zero if validation fails,
+  no approved mapping exists, or no production occurrence converts to grams.
+- **Current production status:** blocked by the truthful Step 5 state: zero
+  human-approved ingredient mappings. The current report therefore records 0
+  gram conversions without inventing approvals or values.
+- **Status:** Implemented for review; production readiness remains blocked on
+  human approval of the Step 5 dictionary/mappings and reviewed expansion of
+  conversion factors.
+- **Corrections after Step 6 review:** raw-only USDA factors now require the
+  explicit `raw` state (an unspecified state cannot borrow them); aliases are
+  tagged as `standard` or `egyptian_household`, and Egyptian cups/spoons never
+  inherit US factors; registry validation enforces required unit semantics,
+  fails conversion closed on any registry issue, and requires globally unique
+  factor IDs; qualitative/frying lines retain any supplied original quantity
+  and unit while still returning no fabricated grams. The open Egyptian
+  [FAO Egyptian household-survey methodology](https://www.fao.org/4/a0442e/a0442e00.pdf)
+  confirms that NNI developed a household-measure weight list, but the values
+  are not present in the accessible report, so no Egyptian volume factor is
+  invented.
+
+---
+
+## DEC-038 · 2026-08-09 · Deterministic, version-pinned nutrition calculation (Step 7)
+
+- **Decision:** `calculateRecipeNutrition(recipeId, servingRequest)` is pure
+  deterministic application arithmetic over a repository-loaded versioned
+  snapshot. No LLM, fuzzy match, vector match, or generated numeric fallback is
+  part of the calculation path.
+- **Input gate:** only a `verified` structured recipe and registries that pass
+  fail-closed validation may calculate. Production sources must be approved,
+  licensed, and version-matched. Synthetic profiles require an explicit
+  test opt-in that the default repository never enables. Duplicate recipe IDs
+  invalidate both JSON and in-memory snapshots instead of being resolved by
+  array order.
+- **State/factor rule:** nutrient profiles match the resolved food state exactly.
+  A raw profile can cross to a cooked target only with the exact cooking-yield
+  and per-nutrient retention factors. Edible portions and count/volume weights
+  likewise require a unique sourced factor. Missing or ambiguous factors remain
+  omissions.
+- **Totals rule:** ingredient contributions aggregate at full JS numeric
+  precision; rounding happens once at the output boundary. A required unknown
+  contribution makes that nutrient's published amount `null`, while the known
+  subtotal remains visibly labelled. A true measured zero remains zero.
+- **Basis/status rule:** the operation returns full-recipe, per-serving, and
+  per-100-g bases. Per-serving requires a positive sourced/request serving
+  count; per-100-g requires a positive final-food weight. DEC-030 governs the
+  overall `unavailable`/`partial`/`complete` result.
+- **Audit rule:** every response includes ingredient arithmetic, exact mapping/
+  conversion/profile/factor IDs, source/version provenance, missing ingredients,
+  assumptions, blockers, and objective count/weight/per-nutrient coverage.
+  Weight coverage has a usable denominator only when every ingredient weight is
+  known; an incomplete denominator produces a `null` rate.
+- **Production status:** implemented and golden-tested, but intentionally
+  unavailable for production recipes until Step 5 mappings and production
+  nutrient profiles/factors receive human approval and an immutable runtime
+  snapshot is assembled. Test fixture values are never production data.
+- **Status:** Implemented for review; production data readiness remains blocked.
+
 ---
 
 *New decisions are appended and dated. Supersessions are recorded inline with
