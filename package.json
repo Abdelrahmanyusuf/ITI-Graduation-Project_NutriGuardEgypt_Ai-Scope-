@@ -39,7 +39,8 @@
     "db:validate": "node --import tsx src/scripts/migrate.ts validate",
     "db:seed:synthetic": "node --import tsx src/scripts/seed-db.ts",
     "db:test": "node --import tsx --test tests/database.integration.test.ts",
-    "test": "node --import tsx --test \"tests/**/*.test.ts\""
+    "test": "node --import tsx --test \"tests/**/*.test.ts\"",
+    "test:agent:wide": "node --import tsx --test tests/graduation-agent-wide.test.ts"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",

@@ -211,6 +211,15 @@ labels every answer `demoOnly` / `needs_review`, and refuses to start outside
 development or test. It does not weaken approved-only production ingestion,
 the Qdrant adapter, PostgreSQL runtime, or release evidence gates.
 
+The development graduation runtime also has a schema-validated,
+timeout-bounded adapter for the backend team's public `/api/Foods` and
+`/api/Recipes` catalog. Local candidate recipes remain the deterministic first
+source. The adapter augments foods or recipes absent locally and falls back to
+the local corpus on network, HTTP, timeout, or response-schema errors. It does
+not call authenticated profile, target, eligibility, or tracking endpoints;
+those require finalized response schemas, enum names, HTTPS bearer-token
+forwarding, and an explicit recipe nutrition-per-serving contract.
+
 ## What is implemented (Steps 8–10 — retrieval and tools)
 
 - `src/retrieval/benchmark.ts` benchmarks exactly two or three configured

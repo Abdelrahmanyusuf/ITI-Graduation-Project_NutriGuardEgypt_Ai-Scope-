@@ -16,8 +16,8 @@ const INJECTION_PATTERNS = [
 ] as const;
 
 const NUMERIC_OVERRIDE_PATTERNS = [
-  /(?:اعتبر|افترض|خلي|اكتب).{0,30}(?:الصوديوم|السعرات|الدهون|البروتين).{0,16}[0-9٠-٩]/u,
-  /(?:pretend|assume|say|override).{0,30}(?:sodium|calories|fat|protein).{0,16}\d/u,
+  /(?:^|[^\p{L}\p{N}])(?:اعتبر|افترض|خلي|اكتب)(?=[^\p{L}\p{N}]|$).{0,30}(?:الصوديوم|السعرات|الدهون|البروتين).{0,16}[0-9٠-٩]/u,
+  /\b(?:pretend|assume|say|override)\b.{0,30}(?:sodium|calories|fat|protein).{0,16}\d/u,
 ] as const;
 
 const UNAPPROVED_DATA_PATTERNS = [

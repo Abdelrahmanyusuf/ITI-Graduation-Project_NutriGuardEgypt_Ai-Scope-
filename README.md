@@ -119,6 +119,18 @@ blocked when `NODE_ENV=production`; the existing PostgreSQL/Qdrant production
 runtime, approved-only ingestion, release gates, and human-review requirements
 remain unchanged.
 
+In development, the graduation Agent also augments its local corpus from the
+backend team's public Foods and Recipes endpoints. This enables live food
+lookup, reported per-100-g food nutrition, calorie calculation for backend
+foods, and recipe instructions that are absent locally. Override the default
+backend URL with `NUTRIGUARD_BACKEND_BASE_URL`. Timeout, network, HTTP, or
+response-schema failures fall back to the local deterministic demo. The
+authenticated health-profile, nutrition-target, eligibility, and tracking
+endpoints remain disabled until the backend response DTOs, enum names,
+HTTPS/token-forwarding contract, and recipe nutrition basis are finalized.
+The handoff checklist and proposed contracts are documented in
+[`docs/BACKEND_AI_INTEGRATION_REQUIREMENTS.md`](docs/BACKEND_AI_INTEGRATION_REQUIREMENTS.md).
+
 ## Testing
 
 Tests live in `tests/` and use the Node built-in test runner:
@@ -126,6 +138,20 @@ Tests live in `tests/` and use the Node built-in test runner:
 ```powershell
 npm test
 ```
+
+Run the graduation Agent's focused wide-behavior suite with:
+
+```powershell
+npm run test:agent:wide
+```
+
+That suite executes more than one thousand deterministic Agent calls: every
+Arabic and English name in the 215-recipe demo corpus, nutrition and lighter
+requests across the full corpus, numerical comparisons, all 80 supplied RAG
+questions, ingredient weights and invalid quantities, safety routes, prompt
+injection, unrelated inputs, and fail-closed unsupported substitutions. It is
+synthetic graduation evidence, not a replacement for the required consented
+real-user and human-wording evaluation before production.
 
 They verify the toolchain compiles, environment validation behaves correctly
 (including strict `PORT` rules), the development entry boots via `tsx watch`,

@@ -65,6 +65,128 @@ test("graduation demo serves real candidate recipes with explicit demo-only labe
   assert.match(JSON.stringify(method.data), /EGY-RCP-003|طعمية/u);
 });
 
+test("graduation demo returns useful recipe methods and meal suggestions instead of a generic disclaimer", async () => {
+  const agent = await buildGraduationDemoAgent("test");
+  const koshary = await agent.invoke({ message: "ما طريقة عمل الكشري المصري؟", language: "ar-EG" });
+  assert.equal(koshary.status, "ok");
+  assert.match(koshary.message, /المكونات/);
+  assert.match(koshary.message, /طريقة التحضير/);
+  assert.match(koshary.message, /أرز أبيض|عدس بني/);
+  assert.equal((koshary.data?.recipe as { recipeId?: string } | undefined)?.recipeId, "EGY-RCP-001");
+
+  const arabicBreakfast = await agent.invoke({ message: "عاوز وجبة فطار", language: "ar-EG" });
+  assert.equal(arabicBreakfast.status, "ok");
+  assert.match(arabicBreakfast.message, /فول مدمس/);
+  assert.match(arabicBreakfast.message, /طعمية/);
+
+  const englishBreakfast = await agent.invoke({ message: "I want a breakfast meal", language: "ar-EG" });
+  assert.equal(englishBreakfast.status, "ok");
+  assert.equal(englishBreakfast.language, "en");
+  assert.match(englishBreakfast.message, /Ful Medames/);
+  assert.match(englishBreakfast.message, /Ta'ameya/);
+  assert.doesNotMatch(englishBreakfast.message, /Graduation-demo results from the unreviewed/);
+});
+
+test("graduation demo calculates recipe and supplied-ingredient calories and gives general advice", async () => {
+  const agent = await buildGraduationDemoAgent("test");
+
+  const recipeCalories = await agent.invoke({ message: "كام سعر حراري في الكشري؟", language: "ar-EG" });
+  assert.equal(recipeCalories.status, "ok");
+  assert.equal(recipeCalories.primaryIntent, "recipe_nutrition");
+  assert.equal(recipeCalories.data?.recipeId, "EGY-RCP-001");
+  assert.equal(typeof recipeCalories.data?.caloriesPerServingKcal, "number");
+  assert.match(recipeCalories.message, /للحصة/);
+  assert.match(recipeCalories.message, /لكل 100 جرام/);
+
+  const ingredients = await agent.invoke({ message: "احسب سعرات 150 جرام رز + 100 جرام صدور فراخ + 10 جرام زيت زيتون", language: "ar-EG" });
+  assert.equal(ingredients.status, "ok");
+  assert.equal(ingredients.data?.calculationType, "ingredient_weights");
+  assert.equal((ingredients.data?.ingredients as unknown[]).length, 3);
+  assert.equal(typeof ingredients.data?.totalCaloriesKcal, "number");
+  assert.ok((ingredients.data?.totalCaloriesKcal as number) > 0);
+  assert.match(ingredients.message, /إجمالي السعرات المحسوبة/);
+
+  const englishIngredients = await agent.invoke({ message: "Calculate calories for 150 g rice and 100 g chicken breast", language: "ar-EG" });
+  assert.equal(englishIngredients.status, "ok");
+  assert.equal(englishIngredients.language, "en");
+  assert.match(englishIngredients.message, /Total calculated calories/);
+
+  const missingWeights = await agent.invoke({ message: "احسب سعرات رز وفراخ", language: "ar-EG" });
+  assert.equal(missingWeights.status, "clarification");
+  assert.match(missingWeights.message, /وزنه بالجرام/);
+
+  const advice = await agent.invoke({ message: "اديني نصائح لأكل صحي", language: "ar-EG" });
+  assert.equal(advice.status, "ok");
+  assert.equal(advice.data?.adviceType, "general_non_medical");
+  assert.match(advice.message, /حجم الحصة/);
+});
+
+test("graduation router returns one matched answer for the six supported information intents", async () => {
+  const agent = await buildGraduationDemoAgent("test");
+
+  const recipe = await agent.invoke({ message: "عايز وصفة فول", language: "ar-EG" });
+  assert.equal(recipe.status, "ok");
+  assert.equal((recipe.data?.recipe as { recipeId?: string } | undefined)?.recipeId, "EGY-RCP-002");
+  assert.match(recipe.message, /فول مدمس/);
+  assert.doesNotMatch(recipe.message, /شاي كشري|Yellow Lentil Koshary/u);
+
+  const nutrition = await agent.invoke({ message: "كام سعرة في طبق الكشري؟", language: "ar-EG" });
+  assert.equal(nutrition.status, "ok");
+  assert.equal(nutrition.data?.intent, "recipe_nutrition");
+  assert.equal(nutrition.data?.recipeId, "EGY-RCP-001");
+  assert.match(nutrition.message, /الوصفة كاملة/);
+  assert.match(nutrition.message, /للحصة الواحدة/);
+  assert.match(nutrition.message, /لكل 100 جرام/);
+  assert.match(nutrition.message, /بروتين/);
+  assert.match(nutrition.message, /صوديوم/);
+
+  const ingredient = await agent.invoke({ message: "احسب سعرات 150 جرام رز + 100 جرام صدور فراخ", language: "ar-EG" });
+  assert.equal(ingredient.status, "ok");
+  assert.equal(ingredient.data?.calculationType, "ingredient_weights");
+
+  const comparison = await agent.invoke({ message: "الفول ولا الكشري أقل صوديوم؟", language: "ar-EG" });
+  assert.equal(comparison.status, "ok");
+  assert.equal(comparison.data?.intent, "compare_recipes");
+  assert.equal(comparison.data?.nutrient, "sodium");
+  assert.match(comparison.message, /فول مدمس/);
+  assert.match(comparison.message, /كشري/);
+
+  const guideline = await agent.invoke({ message: "ما توصيات منظمة الصحة العالمية عن الصوديوم؟", language: "ar-EG" });
+  assert.equal(guideline.status, "ok");
+  assert.equal(guideline.data?.intent, "general_guideline");
+  assert.equal(guideline.evidenceDocumentIds.length, 1);
+
+  const unsupported = await agent.invoke({ message: "ما حالة الطقس غدًا؟", language: "ar-EG" });
+  assert.equal(unsupported.status, "unsupported");
+  assert.equal(unsupported.data?.intent, "unsupported");
+  assert.equal(unsupported.evidenceDocumentIds.length, 0);
+});
+
+test("lower-calorie Koshary request uses one deterministic modification instead of raw RAG hits", async () => {
+  const agent = await buildGraduationDemoAgent("test");
+  const answer = await agent.invoke({ message: "عاوز اقلل السعرات الحراريه لوجبه الكشري", language: "ar-EG" });
+
+  assert.equal(answer.status, "ok");
+  assert.equal(answer.primaryIntent, "lighter_recipe");
+  assert.equal(answer.data?.intent, "lighter_modification");
+  assert.equal(answer.data?.recipeId, "EGY-RCP-001");
+  assert.deepEqual(answer.data?.modification, { ingredient: "vegetable_oil", originalGrams: 60, proposedGrams: 30 });
+  assert.match(answer.message, /قلّل الزيت النباتي المضاف من 60 جرام إلى 30 جرام/);
+  assert.match(answer.message, /تنخفض الحصة/);
+  assert.equal("passages" in (answer.data ?? {}), false);
+  assert.equal(answer.evidenceDocumentIds.length, 1);
+  assert.doesNotMatch(answer.message, /شاي كشري|Yellow Lentil Koshary/u);
+});
+
+test("medical requests retain the safety route and never enter recipe retrieval", async () => {
+  const agent = await buildGraduationDemoAgent("test");
+  const answer = await agent.invoke({ message: "شخص أغمي عليه ومش بيتنفس، أعمل إيه؟", language: "ar-EG" });
+  assert.equal(answer.status, "emergency");
+  assert.equal(answer.primaryIntent, "medical_safety_request");
+  assert.ok(answer.safetyFlags.includes("emergency"));
+  assert.equal(answer.evidenceDocumentIds.length, 0);
+});
+
 test("graduation demo cannot run in production mode", async () => {
   await assert.rejects(() => buildGraduationDemoAgent("production" as never), /forbidden outside development\/test/);
 });
