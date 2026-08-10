@@ -8,7 +8,7 @@ import { renderChatPage } from "../web/chat-page.js";
 import type { StructuredLogger } from "../observability/logger.js";
 import type { MetricsRegistry } from "../observability/metrics.js";
 
-const ConversationContextSchema = z.object({
+const CalorieTargetContextSchema = z.object({
   schemaVersion: z.literal("1.0"),
   lastIntent: z.literal("meal_calorie_target"),
   calorieTargetKcal: z.number().min(50).max(5_000),
@@ -16,6 +16,15 @@ const ConversationContextSchema = z.object({
   relation: z.enum(["closest", "below", "above"]),
   lastRecommendationCaloriesKcal: z.number().positive().max(5_000),
 }).strict();
+const LighterModificationContextSchema = z.object({
+  schemaVersion: z.literal("1.0"),
+  lastIntent: z.literal("lighter_modification"),
+  recipeId: z.string().regex(/^EGY-RCP-[0-9]{3}$/u),
+  ingredient: z.string().trim().min(1).max(100),
+  originalGrams: z.number().positive().max(10_000),
+  proposedGrams: z.number().positive().max(10_000),
+}).strict().refine((value) => value.proposedGrams <= value.originalGrams, { message: "proposedGrams must not exceed originalGrams" });
+const ConversationContextSchema = z.discriminatedUnion("lastIntent", [CalorieTargetContextSchema, LighterModificationContextSchema]);
 const ChatSchema = z.object({ message: z.string().trim().min(1).max(2_000), language: z.enum(["ar-EG", "ar", "en"]).default("ar-EG"), context: ConversationContextSchema.optional() }).strict();
 type ChatInput = z.infer<typeof ChatSchema>;
 

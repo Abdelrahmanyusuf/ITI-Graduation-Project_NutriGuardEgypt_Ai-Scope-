@@ -83,7 +83,7 @@ interface ParsedIngredientAmount {
   suppliedName: string;
 }
 
-export interface GraduationConversationContext {
+export interface CalorieTargetConversationContext {
   schemaVersion: "1.0";
   lastIntent: "meal_calorie_target";
   calorieTargetKcal: number;
@@ -91,6 +91,17 @@ export interface GraduationConversationContext {
   relation: "closest" | "below" | "above";
   lastRecommendationCaloriesKcal: number;
 }
+
+export interface LighterModificationConversationContext {
+  schemaVersion: "1.0";
+  lastIntent: "lighter_modification";
+  recipeId: string;
+  ingredient: string;
+  originalGrams: number;
+  proposedGrams: number;
+}
+
+export type GraduationConversationContext = CalorieTargetConversationContext | LighterModificationConversationContext;
 
 function answerLanguage(message: string, requested: "ar-EG" | "ar" | "en" | undefined): "ar-EG" | "ar" | "en" {
   if (/\p{Script=Arabic}/u.test(message)) return requested === "ar" ? "ar" : "ar-EG";
@@ -395,7 +406,9 @@ class GraduationDemoAgent {
     const namedRecipes = explicitlyNamedRecipes(this.dataset, query);
     const contextualCalorieFollowup = input.context?.lastIntent === "meal_calorie_target"
       && /^(?:لا\s*)?(?:عاوز|عايز|محتاج)?\s*(?:وجبة\s*)?(?:أقل|اقل|أكتر|اكتر|أكثر|more|less|lower|higher)/iu.test(query);
-    const deterministicIntent = contextualCalorieFollowup ? "find_recipe" : classifyGraduationIntent(query, namedRecipes);
+    const contextualLighterFollowup = input.context?.lastIntent === "lighter_modification"
+      && /(?:أقلل|اقلل|قلل|أقل|اقل|أكتر|اكتر|أكثر|تاني|تانب|more|again|further|lower)/iu.test(query);
+    const deterministicIntent = contextualCalorieFollowup ? "find_recipe" : contextualLighterFollowup ? "lighter_modification" : classifyGraduationIntent(query, namedRecipes);
 
     // The graduation UI exposes one answer, not raw retrieval candidates. Safety and
     // integrity always keep the authority of the production agent above this router.
@@ -405,8 +418,13 @@ class GraduationDemoAgent {
       return this.compareRecipes(namedRecipes[0]!, namedRecipes[1]!, query, language);
     }
     if (deterministicIntent === "lighter_modification") {
-      const recipe = namedRecipes[0] ?? explicitlyNamedRecipe(this.dataset, query);
-      return recipe ? this.lighterModification(recipe, language) : this.recipeClarification("lighter_modification", language);
+      const contextCandidate = input.context?.lastIntent === "lighter_modification" ? input.context : undefined;
+      const contextualRecipe = contextCandidate
+        ? this.dataset.recipes.find((candidate) => candidate.recipe_id === contextCandidate.recipeId)
+        : undefined;
+      const recipe = namedRecipes[0] ?? explicitlyNamedRecipe(this.dataset, query) ?? contextualRecipe;
+      const lighterContext = contextCandidate?.recipeId === recipe?.recipe_id ? contextCandidate : undefined;
+      return recipe ? this.lighterModification(recipe, language, lighterContext) : this.recipeClarification("lighter_modification", language);
     }
     if (deterministicIntent === "recipe_nutrition") return this.recipeNutrition(namedRecipes[0]!, language);
     if (deterministicIntent === "ingredient_nutrition") return this.ingredientCalories(query, language);
@@ -460,13 +478,14 @@ class GraduationDemoAgent {
 
   private recommendToCalorieTarget(query: string, language: "ar-EG" | "ar" | "en", context?: GraduationConversationContext): ExpandedAgentResponse | null {
     const normalized = normalizeNumberDigits(query);
+    const calorieContext = context?.lastIntent === "meal_calorie_target" ? context : undefined;
     const explicit = normalized.match(/(\d+(?:\.\d+)?)\s*(?:سعر(?:ة|ات)?(?:\s*حراري(?:ة|ه)?)?|كالوري|kcal|calories?)/iu);
     const lowerFollowup = /(?:أقل|اقل|تحت|less|lower|under)/iu.test(normalized);
     const higherFollowup = /(?:أكتر|اكتر|أكثر|اعلى|أعلى|more|higher|over)/iu.test(normalized);
-    if (!explicit && context?.lastIntent !== "meal_calorie_target") return null;
+    if (!explicit && !calorieContext) return null;
     if (!explicit && !lowerFollowup && !higherFollowup) return null;
     const explicitTarget = explicit ? Number(explicit[1]) : null;
-    const target = explicitTarget ?? context?.lastRecommendationCaloriesKcal ?? context?.calorieTargetKcal;
+    const target = explicitTarget ?? calorieContext?.lastRecommendationCaloriesKcal ?? calorieContext?.calorieTargetKcal;
     if (target === undefined || !Number.isFinite(target) || target < 50 || target > 5_000) return null;
     const relation: "closest" | "below" | "above" = lowerFollowup ? "below" : higherFollowup ? "above" : "closest";
     // A relative follow-up such as "عاوز أقل" should produce a meaningful step,
@@ -478,7 +497,7 @@ class GraduationDemoAgent {
         : relation === "above"
           ? Math.min(5_000, target + 50)
           : target;
-    const category = mealCategory(query) ?? context?.category ?? null;
+    const category = mealCategory(query) ?? calorieContext?.category ?? null;
     const mealCategories = new Set(["main_dish", "breakfast", "soup"]);
     const candidates = this.dataset.recipes
       .filter((recipe) => category ? recipe.category === category : mealCategories.has(recipe.category))
@@ -636,18 +655,40 @@ class GraduationDemoAgent {
     };
   }
 
-  private lighterModification(recipe: UnifiedDemoRecipe, language: "ar-EG" | "ar" | "en"): ExpandedAgentResponse {
+  private lighterModification(recipe: UnifiedDemoRecipe, language: "ar-EG" | "ar" | "en", context?: LighterModificationConversationContext): ExpandedAgentResponse {
     const oils = new Set(["vegetable_oil", "olive_oil", "ghee", "butter_raw"]);
     const candidate = recipe.ingredients.filter((item) => oils.has(item.ingredient) && item.state !== "frying" && item.grams >= 10).sort((a, b) => b.grams - a.grams)[0];
     if (!candidate) return this.recipeClarification("lighter_modification", language, recipe);
     const reference = this.dataset.ingredientNutrition[candidate.ingredient];
     const calculation = calculateUnifiedDemoNutrition(this.dataset, recipe);
     if (!reference || reference.kcal === null || calculation.totals.kcal === null || calculation.perServing.kcal === null) return this.recipeClarification("lighter_modification", language, recipe);
-    const proposedGrams = Math.round(candidate.grams / 2 * 10) / 10;
+    const continuing = context?.ingredient === candidate.ingredient && context.originalGrams === candidate.grams;
+    const currentGrams = continuing ? context.proposedGrams : candidate.grams;
+    const conversationContext: LighterModificationConversationContext = {
+      schemaVersion: "1.0", lastIntent: "lighter_modification", recipeId: recipe.recipe_id,
+      ingredient: candidate.ingredient, originalGrams: candidate.grams, proposedGrams: currentGrams,
+    };
+    if (currentGrams <= 5) {
+      const name = language === "en" ? recipe.name_en : recipe.name_ar;
+      return {
+        status: "no_result", primaryIntent: "lighter_recipe", language, safetyFlags: [], integrityFlags: [],
+        message: language === "en"
+          ? `${name} is already at the smallest measured added-fat amount this demo can recommend (${currentGrams} g). I will not assume removing it entirely or change another ingredient without a validated substitution rule.`
+          : `${name} وصل بالفعل لأقل كمية دهون مضافة يقدر العرض يحسبها بشكل موثوق (${currentGrams} جرام). مش هافترض حذفها تمامًا أو أغيّر مكوّن تاني من غير قاعدة بديل موثقة.`,
+        data: { intent: "lighter_modification", recipeId: recipe.recipe_id, limitReached: true, conversationContext },
+        evidenceDocumentIds: [`DEMO-${recipe.recipe_id}`], provenance: [this.recipeProvenance(recipe, language)],
+        toolTrace: [{ tool: "calculate_nutrition", ok: false, code: "minimum_measured_fat_reached" }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
+      };
+    }
+    const proposedGrams = Math.max(5, Math.round(currentGrams / 2 * 10) / 10);
     const savedFull = Math.round(reference.kcal * (candidate.grams - proposedGrams)) / 100;
     const savedPerServing = Math.round(savedFull / recipe.servings * 10) / 10;
+    const previousSavedFull = Math.round(reference.kcal * (candidate.grams - currentGrams)) / 100;
+    const previousSavedPerServing = Math.round(previousSavedFull / recipe.servings * 10) / 10;
+    const incrementalSavedPerServing = Math.round((savedPerServing - previousSavedPerServing) * 10) / 10;
     const newFull = Math.round((calculation.totals.kcal - savedFull) * 10) / 10;
     const newPerServing = Math.round((calculation.perServing.kcal - savedPerServing) * 10) / 10;
+    const previousPerServing = Math.round((calculation.perServing.kcal - previousSavedPerServing) * 10) / 10;
     const name = language === "en" ? recipe.name_en : recipe.name_ar;
     const ingredient = ingredientLabel(candidate.ingredient, language);
     const displayedIngredient = language === "en" ? ingredient
@@ -655,11 +696,12 @@ class GraduationDemoAgent {
       : candidate.ingredient === "olive_oil" ? "زيت الزيتون"
       : `ال${ingredient}`;
     const message = language === "en"
-      ? `A lower-calorie ${name}: reduce the added ${displayedIngredient} from ${candidate.grams} g to ${proposedGrams} g and keep the other recorded ingredients unchanged.\n\nEstimated effect: about ${Math.round(savedFull * 10) / 10} fewer kcal in the full recipe, or ${savedPerServing} fewer kcal per serving. The serving changes from about ${calculation.perServing.kcal} to ${newPerServing} kcal.\n\nThis is one deterministic modification based on the recorded oil quantity; taste and texture may change.`
-      : `نسخة أقل سعرات من ${name}: قلّل ${displayedIngredient} المضاف من ${candidate.grams} جرام إلى ${proposedGrams} جرام، مع إبقاء باقي المكونات المسجلة كما هي.\n\nالتأثير التقديري: خفض حوالي ${Math.round(savedFull * 10) / 10} سعر حراري من الوصفة كاملة، أو ${savedPerServing} سعر حراري من الحصة. وبذلك تنخفض الحصة من نحو ${calculation.perServing.kcal} إلى ${newPerServing} سعر حراري.\n\nده تعديل واحد محسوب من كمية الزيت المسجلة، وقد يغيّر الطعم أو القوام.`;
+      ? `${continuing ? "A further reduction for" : "A lower-calorie"} ${name}: reduce the added ${displayedIngredient} from ${currentGrams} g to ${proposedGrams} g and keep the other recorded ingredients unchanged.\n\nEstimated additional reduction: ${incrementalSavedPerServing} kcal per serving. The serving changes from about ${previousPerServing} to ${newPerServing} kcal; total reduction from the recorded recipe is ${savedPerServing} kcal per serving.\n\nThis is a deterministic change based on the recorded oil quantity; taste and texture may change.`
+      : `${continuing ? "تقليل إضافي لسعرات" : "نسخة أقل سعرات من"} ${name}: قلّل ${displayedIngredient} المضاف من ${currentGrams} جرام إلى ${proposedGrams} جرام، مع إبقاء باقي المكونات المسجلة كما هي.\n\nالتخفيض الإضافي التقديري ${incrementalSavedPerServing} سعر حراري للحصة. وبذلك تنخفض الحصة من نحو ${previousPerServing} إلى ${newPerServing} سعر حراري؛ وإجمالي التخفيض عن الوصفة المسجلة ${savedPerServing} سعر حراري للحصة.\n\nده تعديل محسوب من كمية الزيت المسجلة، وقد يغيّر الطعم أو القوام.`;
+    conversationContext.proposedGrams = proposedGrams;
     return {
       status: "ok", primaryIntent: "lighter_recipe", language, safetyFlags: [], integrityFlags: [], message,
-      data: { intent: "lighter_modification", demoOnly: true, reviewStatus: "needs_review", recipeId: recipe.recipe_id, modification: { ingredient: candidate.ingredient, originalGrams: candidate.grams, proposedGrams }, originalCalories: { fullRecipe: calculation.totals.kcal, perServing: calculation.perServing.kcal }, modifiedCalories: { fullRecipe: newFull, perServing: newPerServing }, caloriesSaved: { fullRecipe: Math.round(savedFull * 10) / 10, perServing: savedPerServing } },
+      data: { intent: "lighter_modification", demoOnly: true, reviewStatus: "needs_review", recipeId: recipe.recipe_id, modification: { ingredient: candidate.ingredient, originalGrams: candidate.grams, ...(continuing ? { previousGrams: currentGrams } : {}), proposedGrams }, originalCalories: { fullRecipe: calculation.totals.kcal, perServing: calculation.perServing.kcal }, previousModifiedCalories: { perServing: previousPerServing }, modifiedCalories: { fullRecipe: newFull, perServing: newPerServing }, caloriesSaved: { fullRecipe: Math.round(savedFull * 10) / 10, perServing: savedPerServing, additionalPerServing: incrementalSavedPerServing }, conversationContext },
       evidenceDocumentIds: [`DEMO-${recipe.recipe_id}`], provenance: [this.recipeProvenance(recipe, language)],
       toolTrace: [{ tool: "search_recipes", ok: true, code: null }, { tool: "calculate_nutrition", ok: true, code: null }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
     };

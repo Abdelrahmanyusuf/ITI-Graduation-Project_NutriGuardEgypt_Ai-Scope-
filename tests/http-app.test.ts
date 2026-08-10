@@ -52,6 +52,8 @@ test("Step 18 rejects foreign origins, wrong media types, unknown fields, and ov
   assert.equal(unknown.status, 400);
   const invalidContext = await fetch(`${baseUrl}/api/v1/chat`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ message: "less", context: { schemaVersion: "1.0", lastIntent: "meal_calorie_target", calorieTargetKcal: -1, category: "main_dish", relation: "below", lastRecommendationCaloriesKcal: 500 } }) });
   assert.equal(invalidContext.status, 400);
+  const impossibleLighterContext = await fetch(`${baseUrl}/api/v1/chat`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ message: "less again", context: { schemaVersion: "1.0", lastIntent: "lighter_modification", recipeId: "EGY-RCP-001", ingredient: "vegetable_oil", originalGrams: 30, proposedGrams: 60 } }) });
+  assert.equal(impossibleLighterContext.status, 400);
   const large = await fetch(`${baseUrl}/api/v1/chat`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ message: "x".repeat(20_000) }) });
   assert.equal(large.status, 413);
 });

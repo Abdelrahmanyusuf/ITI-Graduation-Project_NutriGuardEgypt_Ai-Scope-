@@ -234,3 +234,31 @@ test("wide graduation behavior: calorie-target meal selection follows exact and 
   assert.equal(Math.abs((exact400.data?.caloriesPerServingKcal as number) - 400) < 50, true);
   assert.doesNotMatch(exact400.message, /30\.9/);
 });
+
+test("wide graduation behavior: repeated lighter requests preserve recipe context and reduce progressively", async () => {
+  const first = await agent.invoke({ message: "عاوز أقلل السعرات الحرارية للكشري", language: "ar-EG" });
+  assert.equal(first.status, "ok");
+  assert.equal(first.data?.recipeId, "EGY-RCP-001");
+  assert.equal((first.data?.modification as { proposedGrams?: number }).proposedGrams, 30);
+
+  const second = await agent.invoke({ message: "عاوز اقلل تانب", language: "ar-EG", context: first.data?.conversationContext as GraduationConversationContext });
+  assert.equal(second.status, "ok");
+  assert.equal(second.data?.recipeId, "EGY-RCP-001");
+  assert.equal((second.data?.modification as { previousGrams?: number }).previousGrams, 30);
+  assert.equal((second.data?.modification as { proposedGrams?: number }).proposedGrams, 15);
+  assert.doesNotMatch(second.message, /اكتب اسم الأكلة/);
+
+  const third = await agent.invoke({ message: "ايوه اقلل من السعرات الحرارية للكشري", language: "ar-EG", context: second.data?.conversationContext as GraduationConversationContext });
+  assert.equal(third.status, "ok");
+  assert.equal((third.data?.modification as { proposedGrams?: number }).proposedGrams, 7.5);
+
+  const fourth = await agent.invoke({ message: "مش ممكن اقلل اكتر؟", language: "ar-EG", context: third.data?.conversationContext as GraduationConversationContext });
+  assert.equal(fourth.status, "ok");
+  assert.equal((fourth.data?.modification as { proposedGrams?: number }).proposedGrams, 5);
+  assert.doesNotMatch(fourth.message, /اكتب اسم الأكلة/);
+
+  const limit = await agent.invoke({ message: "أقل كمان", language: "ar-EG", context: fourth.data?.conversationContext as GraduationConversationContext });
+  assert.equal(limit.status, "no_result");
+  assert.equal(limit.data?.limitReached, true);
+  assert.match(limit.message, /أقل كمية/);
+});
