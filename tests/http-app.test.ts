@@ -19,6 +19,7 @@ test("Step 18 serves accessible chat HTML and security headers", async () => {
   const response = await fetch(baseUrl);
   assert.equal(response.status, 200);
   assert.match(await response.text(), /dir="rtl"/);
+  assert.match(await (await fetch(baseUrl)).text(), /conversationContext/);
   assert.equal(response.headers.get("x-frame-options"), "DENY");
   const csp = response.headers.get("content-security-policy") ?? "";
   assert.match(csp, /frame-ancestors 'none'/);
@@ -49,6 +50,8 @@ test("Step 18 rejects foreign origins, wrong media types, unknown fields, and ov
   assert.equal(media.status, 415);
   const unknown = await fetch(`${baseUrl}/api/v1/chat`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ message: "hello", admin: true }) });
   assert.equal(unknown.status, 400);
+  const invalidContext = await fetch(`${baseUrl}/api/v1/chat`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ message: "less", context: { schemaVersion: "1.0", lastIntent: "meal_calorie_target", calorieTargetKcal: -1, category: "main_dish", relation: "below", lastRecommendationCaloriesKcal: 500 } }) });
+  assert.equal(invalidContext.status, 400);
   const large = await fetch(`${baseUrl}/api/v1/chat`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ message: "x".repeat(20_000) }) });
   assert.equal(large.status, 413);
 });

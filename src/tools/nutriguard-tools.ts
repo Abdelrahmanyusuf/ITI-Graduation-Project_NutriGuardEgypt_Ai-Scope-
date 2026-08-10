@@ -85,6 +85,15 @@ export interface CompareWithGuidelineInput {
   ruleId?: string;
 }
 
+/** Structural contract used by Agents so retrieval can be wrapped by a
+ * fault-tolerant remote/local implementation without weakening tool results. */
+export interface NutriGuardToolset {
+  searchRecipes(input: SearchToolInput): Promise<ToolResult<SearchToolOutput>>;
+  searchGuidelines(input: SearchToolInput): Promise<ToolResult<SearchToolOutput>>;
+  calculateNutrition(input: CalculateNutritionToolInput): Promise<ToolResult<RecipeNutritionResult>>;
+  compareWithGuideline(input: CompareWithGuidelineInput): Promise<ToolResult<GuidelineComparison>>;
+}
+
 export interface GuidelineComparison {
   ruleId: string;
   nutrient: NutrientCode;
@@ -138,7 +147,7 @@ function validateApprovedRule(rule: GuidelineRule): string | null {
   return null;
 }
 
-export class NutriGuardTools {
+export class NutriGuardTools implements NutriGuardToolset {
   public constructor(private readonly dependencies: NutriGuardToolDependencies) {
     if (dependencies.corpusId.trim() === "") throw new Error("tool corpusId is required");
   }

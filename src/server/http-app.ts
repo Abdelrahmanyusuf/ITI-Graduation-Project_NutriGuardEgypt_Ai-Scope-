@@ -8,10 +8,19 @@ import { renderChatPage } from "../web/chat-page.js";
 import type { StructuredLogger } from "../observability/logger.js";
 import type { MetricsRegistry } from "../observability/metrics.js";
 
-const ChatSchema = z.object({ message: z.string().trim().min(1).max(2_000), language: z.enum(["ar-EG", "ar", "en"]).default("ar-EG") }).strict();
+const ConversationContextSchema = z.object({
+  schemaVersion: z.literal("1.0"),
+  lastIntent: z.literal("meal_calorie_target"),
+  calorieTargetKcal: z.number().min(50).max(5_000),
+  category: z.string().trim().min(1).max(40).nullable(),
+  relation: z.enum(["closest", "below", "above"]),
+  lastRecommendationCaloriesKcal: z.number().positive().max(5_000),
+}).strict();
+const ChatSchema = z.object({ message: z.string().trim().min(1).max(2_000), language: z.enum(["ar-EG", "ar", "en"]).default("ar-EG"), context: ConversationContextSchema.optional() }).strict();
+type ChatInput = z.infer<typeof ChatSchema>;
 
 export interface HttpAppOptions {
-  agent: { invoke(input: { message: string; language?: "ar-EG" | "ar" | "en" }): Promise<ExpandedAgentResponse> };
+  agent: { invoke(input: ChatInput): Promise<ExpandedAgentResponse> };
   feedbackStore: PilotFeedbackStore;
   mode: "development" | "test" | "staging" | "production";
   releaseId: string;

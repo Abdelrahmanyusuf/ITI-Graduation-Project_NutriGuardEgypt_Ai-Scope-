@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { loadUnifiedEgyptianDemoDataset, resolveDemoQuestionRecipe } from "../src/demo/unified-egyptian-dataset.js";
 import { buildGraduationDemoAgent } from "../src/runtime/graduation-demo-agent.js";
+import type { GraduationConversationContext } from "../src/runtime/graduation-demo-agent.js";
 
 const agent = await buildGraduationDemoAgent("test", null);
 const dataset = await loadUnifiedEgyptianDemoDataset();
@@ -203,4 +204,33 @@ test("wide graduation behavior: all substitution questions fail closed instead o
     assert.equal(response.data?.intent, "unsupported", question.id);
     assert.equal(response.evidenceDocumentIds.length, 0, question.id);
   }
+});
+
+test("wide graduation behavior: calorie-target meal selection follows exact and relative targets", async () => {
+  const first = await agent.invoke({ message: "عاوز وجبة غداء تتكون من 500 سعر حراري", language: "ar-EG" });
+  assert.equal(first.status, "ok");
+  assert.equal(first.data?.recommendationType, "calorie_target");
+  assert.equal(first.data?.targetCaloriesKcal, 500);
+  assert.equal((first.data?.conversationContext as { category?: string } | undefined)?.category, "main_dish");
+  const firstCalories = first.data?.caloriesPerServingKcal as number;
+  assert.equal(Math.abs(firstCalories - 500) < 50, true);
+  assert.doesNotMatch(first.message, /سلاطة خضراء/);
+
+  const firstContext = first.data?.conversationContext as GraduationConversationContext;
+  const lower = await agent.invoke({ message: "لا عاوز أقل", language: "ar-EG", context: firstContext });
+  assert.equal(lower.status, "ok");
+  assert.equal(lower.data?.relation, "below");
+  assert.equal((lower.data?.caloriesPerServingKcal as number) <= firstCalories - 25, true);
+
+  const lowerContext = lower.data?.conversationContext as GraduationConversationContext;
+  const lowerAgain = await agent.invoke({ message: "عاوز وجبة أقل من كدا في السعر الحراري", language: "ar-EG", context: lowerContext });
+  assert.equal(lowerAgain.status, "ok");
+  assert.equal((lowerAgain.data?.caloriesPerServingKcal as number) <= (lower.data?.caloriesPerServingKcal as number) - 25, true);
+
+  const exact400 = await agent.invoke({ message: "لا عاوز وجبة 400 سعر حراري", language: "ar-EG", context: lowerAgain.data?.conversationContext as GraduationConversationContext });
+  assert.equal(exact400.status, "ok");
+  assert.equal(exact400.data?.targetCaloriesKcal, 400);
+  assert.equal(exact400.data?.relation, "closest");
+  assert.equal(Math.abs((exact400.data?.caloriesPerServingKcal as number) - 400) < 50, true);
+  assert.doesNotMatch(exact400.message, /30\.9/);
 });

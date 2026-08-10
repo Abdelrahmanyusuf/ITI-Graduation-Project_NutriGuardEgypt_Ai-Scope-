@@ -12,6 +12,7 @@ export interface QdrantVectorStoreOptions {
   baseUrl: string;
   collection: string;
   apiKey?: string;
+  timeoutMs?: number;
   fetchImpl?: FetchLike;
 }
 
@@ -62,14 +63,17 @@ export class QdrantVectorStore implements VectorStore {
   private readonly baseUrl: string;
   private readonly collection: string;
   private readonly apiKey: string | undefined;
+  private readonly timeoutMs: number;
   private readonly fetchImpl: FetchLike;
 
   public constructor(options: QdrantVectorStoreOptions) {
     this.baseUrl = options.baseUrl.trim().replace(/\/+$/, "");
     this.collection = options.collection.trim();
     this.apiKey = options.apiKey?.trim() || undefined;
+    this.timeoutMs = options.timeoutMs ?? 10_000;
     this.fetchImpl = options.fetchImpl ?? fetch;
     if (this.baseUrl === "" || this.collection === "") throw new Error("Qdrant base URL and collection are required");
+    if (!Number.isFinite(this.timeoutMs) || this.timeoutMs <= 0) throw new Error("Qdrant timeoutMs must be positive");
     try {
       const url = new URL(this.baseUrl);
       if (url.protocol !== "http:" && url.protocol !== "https:") throw new Error("unsupported protocol");
@@ -81,6 +85,7 @@ export class QdrantVectorStore implements VectorStore {
   private async request(path: string, init: RequestInit): Promise<Response> {
     const response = await this.fetchImpl(`${this.baseUrl}${path}`, {
       ...init,
+      signal: init.signal ?? AbortSignal.timeout(this.timeoutMs),
       headers: {
         "content-type": "application/json",
         ...(this.apiKey ? { "api-key": this.apiKey } : {}),
@@ -94,6 +99,7 @@ export class QdrantVectorStore implements VectorStore {
   private async ensureCollection(dimension: number): Promise<void> {
     const existing = await this.fetchImpl(`${this.baseUrl}/collections/${encodeURIComponent(this.collection)}`, {
       headers: this.apiKey ? { "api-key": this.apiKey } : {},
+      signal: AbortSignal.timeout(this.timeoutMs),
     });
     if (existing.ok) {
       const body = (await existing.json()) as QdrantCollectionResponse;

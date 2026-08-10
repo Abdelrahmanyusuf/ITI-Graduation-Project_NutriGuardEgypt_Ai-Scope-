@@ -1,7 +1,7 @@
 import { END, START, StateGraph, StateSchema } from "@langchain/langgraph";
 import { z } from "zod";
 import type { NutrientCode, NutritionBasis, RecipeNutritionResult } from "../domain/nutrition.js";
-import type { NutriGuardTools, ToolResult } from "../tools/nutriguard-tools.js";
+import type { NutriGuardToolset, ToolResult } from "../tools/nutriguard-tools.js";
 import { classifySafetyFlags, type SafetyFlag } from "./safety.js";
 import { classifyRequestIntegrity, type RequestIntegrityFlag } from "./request-integrity.js";
 import { RuleBasedSodiumScenarioPlanner, type AgentLanguage } from "./sodium-prototype.js";
@@ -172,7 +172,7 @@ export class NutriGuardExpandedAgent {
   private readonly graph;
 
   public constructor(
-    private readonly tools: NutriGuardTools,
+    private readonly tools: NutriGuardToolset,
     private readonly alternativeRules: AlternativeRuleRepository = new InMemoryAlternativeRuleRepository([]),
     private readonly planner: ExpandedAgentPlanner = new RuleBasedExpandedAgentPlanner()
   ) {

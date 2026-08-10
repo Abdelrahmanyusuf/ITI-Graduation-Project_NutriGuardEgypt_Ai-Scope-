@@ -1,10 +1,13 @@
 import { loadConfig, loadProductionConfig } from "../config/env.js";
+import { loadLocalEnv } from "../config/load-local-env.js";
 import { InMemoryPilotFeedbackStore } from "../pilot/feedback.js";
 import { buildGraduationDemoAgent } from "../runtime/graduation-demo-agent.js";
 import { createNutriGuardHttpServer } from "./http-app.js";
 import { buildProductionRuntime } from "../runtime/production.js";
 import { JsonStructuredLogger } from "../observability/logger.js";
 import { MetricsRegistry } from "../observability/metrics.js";
+
+loadLocalEnv();
 
 const demo = process.argv.includes("--demo");
 const config = demo ? loadConfig() : loadProductionConfig();

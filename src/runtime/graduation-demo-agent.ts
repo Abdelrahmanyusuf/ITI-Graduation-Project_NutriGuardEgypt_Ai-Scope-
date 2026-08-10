@@ -11,15 +11,18 @@ import {
   type UnifiedEgyptianDemoDataset,
 } from "../demo/unified-egyptian-dataset.js";
 import { ingestRetrievalCorpus } from "../retrieval/ingestion.js";
+import { OpenAICompatibleEmbeddingProvider } from "../retrieval/embeddings.js";
+import { QdrantVectorStore } from "../retrieval/qdrant.js";
 import type { EmbeddingProvider } from "../retrieval/types.js";
 import { InMemoryVectorStore } from "../retrieval/vector-store.js";
-import { InMemoryGuidelineRuleRepository, NutriGuardTools } from "../tools/nutriguard-tools.js";
+import { InMemoryGuidelineRuleRepository, NutriGuardTools, type NutriGuardToolset } from "../tools/nutriguard-tools.js";
 import {
   NutriGuardBackendClient,
   type BackendFood,
   type BackendRecipe,
   type GraduationBackendDataSource,
 } from "./graduation-backend-client.js";
+import { HybridRetrievalTools } from "./hybrid-retrieval-tools.js";
 
 const DIMENSIONS = 16_384;
 
@@ -78,6 +81,15 @@ interface ParsedIngredientAmount {
   key: string;
   grams: number;
   suppliedName: string;
+}
+
+export interface GraduationConversationContext {
+  schemaVersion: "1.0";
+  lastIntent: "meal_calorie_target";
+  calorieTargetKcal: number;
+  category: string | null;
+  relation: "closest" | "below" | "above";
+  lastRecommendationCaloriesKcal: number;
 }
 
 function answerLanguage(message: string, requested: "ar-EG" | "ar" | "en" | undefined): "ar-EG" | "ar" | "en" {
@@ -369,19 +381,21 @@ export class GraduationDemoEmbeddingProvider implements EmbeddingProvider {
 class GraduationDemoAgent {
   public constructor(
     private readonly base: NutriGuardExpandedAgent,
-    private readonly tools: NutriGuardTools,
+    private readonly tools: NutriGuardToolset,
     private readonly dataset: UnifiedEgyptianDemoDataset,
     private readonly backend: GraduationBackendDataSource | null,
   ) {}
 
-  public async invoke(input: { message: string; language?: "ar-EG" | "ar" | "en" }): Promise<ExpandedAgentResponse> {
+  public async invoke(input: { message: string; language?: "ar-EG" | "ar" | "en"; context?: GraduationConversationContext }): Promise<ExpandedAgentResponse> {
     const result = await this.base.invoke(input);
     if (result.safetyFlags.length > 0 || result.integrityFlags.length > 0) return result;
     if (result.status === "emergency" || result.status === "refused") return result;
     const query = input.message.trim();
     const language = answerLanguage(query, input.language);
     const namedRecipes = explicitlyNamedRecipes(this.dataset, query);
-    const deterministicIntent = classifyGraduationIntent(query, namedRecipes);
+    const contextualCalorieFollowup = input.context?.lastIntent === "meal_calorie_target"
+      && /^(?:لا\s*)?(?:عاوز|عايز|محتاج)?\s*(?:وجبة\s*)?(?:أقل|اقل|أكتر|اكتر|أكثر|more|less|lower|higher)/iu.test(query);
+    const deterministicIntent = contextualCalorieFollowup ? "find_recipe" : classifyGraduationIntent(query, namedRecipes);
 
     // The graduation UI exposes one answer, not raw retrieval candidates. Safety and
     // integrity always keep the authority of the production agent above this router.
@@ -400,6 +414,8 @@ class GraduationDemoAgent {
     if (deterministicIntent === "find_recipe") {
       const recipe = namedRecipes[0];
       if (recipe) return this.recipeDetails(recipe, language, [{ documentId: `DEMO-${recipe.recipe_id}`, title: language === "en" ? recipe.name_en : recipe.name_ar, text: recipe.method_summary, score: 1 }], [this.recipeProvenance(recipe, language)]);
+      const calorieTargetRecommendation = this.recommendToCalorieTarget(query, language, input.context);
+      if (calorieTargetRecommendation) return calorieTargetRecommendation;
       const deterministicCategory = mealCategory(query);
       if (deterministicCategory) return this.recommendMeal(deterministicCategory, language);
       const nutritionRecommendation = this.recommendByNutrition(query, language);
@@ -442,6 +458,60 @@ class GraduationDemoAgent {
     };
   }
 
+  private recommendToCalorieTarget(query: string, language: "ar-EG" | "ar" | "en", context?: GraduationConversationContext): ExpandedAgentResponse | null {
+    const normalized = normalizeNumberDigits(query);
+    const explicit = normalized.match(/(\d+(?:\.\d+)?)\s*(?:سعر(?:ة|ات)?(?:\s*حراري(?:ة|ه)?)?|كالوري|kcal|calories?)/iu);
+    const lowerFollowup = /(?:أقل|اقل|تحت|less|lower|under)/iu.test(normalized);
+    const higherFollowup = /(?:أكتر|اكتر|أكثر|اعلى|أعلى|more|higher|over)/iu.test(normalized);
+    if (!explicit && context?.lastIntent !== "meal_calorie_target") return null;
+    if (!explicit && !lowerFollowup && !higherFollowup) return null;
+    const explicitTarget = explicit ? Number(explicit[1]) : null;
+    const target = explicitTarget ?? context?.lastRecommendationCaloriesKcal ?? context?.calorieTargetKcal;
+    if (target === undefined || !Number.isFinite(target) || target < 50 || target > 5_000) return null;
+    const relation: "closest" | "below" | "above" = lowerFollowup ? "below" : higherFollowup ? "above" : "closest";
+    // A relative follow-up such as "عاوز أقل" should produce a meaningful step,
+    // not a technically lower result that differs by only a fraction of a kcal.
+    const desiredTarget = explicitTarget !== null
+      ? target
+      : relation === "below"
+        ? Math.max(50, target - 50)
+        : relation === "above"
+          ? Math.min(5_000, target + 50)
+          : target;
+    const category = mealCategory(query) ?? context?.category ?? null;
+    const mealCategories = new Set(["main_dish", "breakfast", "soup"]);
+    const candidates = this.dataset.recipes
+      .filter((recipe) => category ? recipe.category === category : mealCategories.has(recipe.category))
+      .map((recipe) => ({ recipe, nutrition: calculateUnifiedDemoNutrition(this.dataset, recipe).perServing }))
+      .filter((entry): entry is typeof entry & { nutrition: typeof entry.nutrition & { kcal: number } } => entry.nutrition.kcal !== null)
+      .filter((entry) => relation === "below" ? entry.nutrition.kcal < target : relation === "above" ? entry.nutrition.kcal > target : true)
+      .sort((a, b) => {
+        const firstDistance = Math.abs(a.nutrition.kcal - desiredTarget);
+        const secondDistance = Math.abs(b.nutrition.kcal - desiredTarget);
+        return firstDistance - secondDistance || a.recipe.recipe_id.localeCompare(b.recipe.recipe_id);
+      });
+    const selected = candidates[0];
+    if (!selected) {
+      return {
+        status: "no_result", primaryIntent: "general_guidance", language, safetyFlags: [], integrityFlags: [],
+        message: language === "en" ? `I could not find a recorded meal ${relation === "below" ? "below" : relation === "above" ? "above" : "close to"} ${target} kcal per serving in the current dataset.` : `ملقتش وجبة مسجلة ${relation === "below" ? "أقل من" : relation === "above" ? "أعلى من" : "قريبة من"} ${target} سعر حراري للحصة في البيانات الحالية.`,
+        data: { intent: "find_recipe", recommendationType: "calorie_target", targetCaloriesKcal: target, relation }, evidenceDocumentIds: [], provenance: [], toolTrace: [{ tool: "calculate_nutrition", ok: false, code: "no_matching_meal" }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
+      };
+    }
+    const name = language === "en" ? selected.recipe.name_en : selected.recipe.name_ar;
+    const calories = selected.nutrition.kcal;
+    const difference = Math.round(Math.abs(calories - target) * 10) / 10;
+    const relationText = language === "en" ? relation === "below" ? `the closest meal below ${target}` : relation === "above" ? `the closest meal above ${target}` : `the closest meal to ${target}`
+      : relation === "below" ? `أقرب وجبة أقل من ${target}` : relation === "above" ? `أقرب وجبة أعلى من ${target}` : `أقرب وجبة لهدف ${target}`;
+    const conversationContext: GraduationConversationContext = { schemaVersion: "1.0", lastIntent: "meal_calorie_target", calorieTargetKcal: target, category, relation, lastRecommendationCaloriesKcal: calories };
+    return {
+      status: "ok", primaryIntent: "general_guidance", language, safetyFlags: [], integrityFlags: [],
+      message: language === "en" ? `${relationText} kcal per serving is ${name}: about ${calories} kcal, ${selected.nutrition.protein ?? "unknown"} g protein, ${selected.nutrition.carbs ?? "unknown"} g carbohydrates, and ${selected.nutrition.fat ?? "unknown"} g fat. Difference from the target: ${difference} kcal. Ask for the recipe name to see ingredients and preparation.` : `${relationText} سعر حراري للحصة هي ${name}: حوالي ${calories} سعر حراري، ${selected.nutrition.protein ?? "غير متوفر"} جم بروتين، ${selected.nutrition.carbs ?? "غير متوفر"} جم كربوهيدرات، و${selected.nutrition.fat ?? "غير متوفر"} جم دهون. الفرق عن الهدف ${difference} سعر حراري. اطلب اسم الوصفة لعرض المكونات والطريقة.`,
+      data: { intent: "find_recipe", recommendationType: "calorie_target", targetCaloriesKcal: target, relation, differenceCaloriesKcal: difference, recipeId: selected.recipe.recipe_id, recipeName: name, caloriesPerServingKcal: calories, perServing: selected.nutrition, conversationContext },
+      evidenceDocumentIds: [`DEMO-${selected.recipe.recipe_id}`], provenance: [this.recipeProvenance(selected.recipe, language)], toolTrace: [{ tool: "calculate_nutrition", ok: true, code: null }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
+    };
+  }
+
   private recommendByNutrition(query: string, language: "ar-EG" | "ar" | "en"): ExpandedAgentResponse | null {
     if (!/(?:رشح|اقترح|وجبة|أكلة|اكلة|ناقصني|عالي|عالية|غني|غنية|قليل|قليلة|high|rich|low|recommend|suggest)/iu.test(query)) return null;
     const target = /(?:بروتين|protein)/iu.test(query) ? "protein"
@@ -451,7 +521,7 @@ class GraduationDemoAgent {
     if (!target) return null;
     const wantsLow = /(?:قليل|قليلة|أقل|اقل|منخفض|low|lower)/iu.test(query) || target === "kcal";
     const candidates = this.dataset.recipes
-      .filter((recipe) => recipe.category !== "beverage")
+      .filter((recipe) => target === "kcal" ? new Set(["main_dish", "breakfast", "soup"]).has(recipe.category) : recipe.category !== "beverage")
       .map((recipe) => ({ recipe, nutrition: calculateUnifiedDemoNutrition(this.dataset, recipe).perServing }))
       .filter((entry) => entry.nutrition[target] !== null)
       .sort((a, b) => {
@@ -813,15 +883,45 @@ export async function buildGraduationDemoAgent(
   const embeddingProvider = new GraduationDemoEmbeddingProvider();
   const vectorStore = new InMemoryVectorStore();
   await ingestRetrievalCorpus(buildGraduationRetrievalCorpus(dataset), embeddingProvider, vectorStore);
-  const tools = new NutriGuardTools({
+  const calculateNutrition = async (recipeId: string) => {
+    const recipe = recipes.get(recipeId);
+    if (!recipe) throw new Error(`graduation demo recipe not found: ${recipeId}`);
+    return toRecipeNutritionResult(dataset, recipe);
+  };
+  const localTools = new NutriGuardTools({
     embeddingProvider, vectorStore, corpusId: GRADUATION_DEMO_CORPUS_ID,
-    calculateNutrition: async (recipeId) => {
-      const recipe = recipes.get(recipeId);
-      if (!recipe) throw new Error(`graduation demo recipe not found: ${recipeId}`);
-      return toRecipeNutritionResult(dataset, recipe);
-    },
+    calculateNutrition,
     guidelineRules: new InMemoryGuidelineRuleRepository([]),
   });
+  let tools: NutriGuardToolset = localTools;
+  const hybridEnabled = !/^(?:0|false|no|off)$/iu.test(process.env.HYBRID_RETRIEVAL_ENABLED?.trim() ?? "true");
+  const embeddingApiKey = process.env.GEMINI_API_KEY?.trim() || process.env.EMBEDDING_API_KEY?.trim();
+  const qdrantUrl = process.env.QDRANT_URL?.trim();
+  const qdrantCollection = process.env.QDRANT_COLLECTION?.trim();
+  if (hybridEnabled && embeddingApiKey && qdrantUrl && qdrantCollection) {
+    const seconds = Number(process.env.TIMEOUT_SECONDS ?? "2");
+    const timeoutMs = Math.round(Math.min(10, Math.max(0.25, Number.isFinite(seconds) ? seconds : 2)) * 1_000);
+    const cooldownSeconds = Number(process.env.RETRIEVAL_CIRCUIT_BREAKER_SECONDS ?? "30");
+    const circuitBreakerMs = Math.round(Math.min(300, Math.max(0, Number.isFinite(cooldownSeconds) ? cooldownSeconds : 30)) * 1_000);
+    const remoteTools = new NutriGuardTools({
+      embeddingProvider: new OpenAICompatibleEmbeddingProvider({
+        baseUrl: process.env.EMBEDDING_BASE_URL?.trim() || "https://generativelanguage.googleapis.com/v1beta/openai",
+        apiKey: embeddingApiKey,
+        modelId: process.env.EMBEDDING_MODEL?.trim() || "gemini-embedding-2",
+        timeoutMs,
+      }),
+      vectorStore: new QdrantVectorStore({
+        baseUrl: qdrantUrl,
+        collection: qdrantCollection,
+        apiKey: process.env.QDRANT_API_KEY?.trim() || undefined,
+        timeoutMs,
+      }),
+      corpusId: process.env.RETRIEVAL_CORPUS_ID?.trim() || GRADUATION_DEMO_CORPUS_ID,
+      calculateNutrition,
+      guidelineRules: new InMemoryGuidelineRuleRepository([]),
+    });
+    tools = new HybridRetrievalTools(remoteTools, localTools, { timeoutMs, circuitBreakerMs });
+  }
   const backend = backendDataSource === undefined
     ? nodeEnv === "development" ? new NutriGuardBackendClient(process.env.NUTRIGUARD_BACKEND_BASE_URL?.trim() || undefined) : null
     : backendDataSource;

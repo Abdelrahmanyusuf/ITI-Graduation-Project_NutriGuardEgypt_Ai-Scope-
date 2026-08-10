@@ -1,7 +1,7 @@
 import { END, START, StateGraph, StateSchema } from "@langchain/langgraph";
 import { z } from "zod";
 import type { RecipeNutritionResult } from "../domain/nutrition.js";
-import type { NutriGuardTools, SearchToolOutput, ToolResult } from "../tools/nutriguard-tools.js";
+import type { NutriGuardToolset, SearchToolOutput, ToolResult } from "../tools/nutriguard-tools.js";
 import { classifySafetyFlags, type SafetyFlag } from "./safety.js";
 import { NUTRIGUARD_SYSTEM_PROMPT, NUTRIGUARD_SYSTEM_PROMPT_VERSION } from "./system-prompt.js";
 
@@ -186,7 +186,7 @@ export class NutriGuardSodiumPrototypeAgent {
   private readonly graph;
 
   public constructor(
-    private readonly tools: NutriGuardTools,
+    private readonly tools: NutriGuardToolset,
     private readonly planner: SodiumScenarioPlanner = new RuleBasedSodiumScenarioPlanner()
   ) {
     const safetyNode: typeof AgentState.Node = (state) => {
