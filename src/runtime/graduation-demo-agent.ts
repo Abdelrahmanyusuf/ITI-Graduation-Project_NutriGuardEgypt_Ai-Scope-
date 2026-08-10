@@ -659,6 +659,40 @@ class GraduationDemoAgent {
     const firstCalculation = calculateUnifiedDemoNutrition(this.dataset, first);
     const secondCalculation = calculateUnifiedDemoNutrition(this.dataset, second);
     const basis = /(?:حصة|للحصه|للحصة|per serving)/iu.test(query) ? "perServing" : "per100g";
+    const hasExplicitNutrient = /(?:سعر|كالوري|صوديوم|ملح|بروتين|كربوهيدرات|كارب|دهون|ألياف|الياف|سكر|calorie|kcal|sodium|salt|protein|carb|fat|fiber|sugar)/iu.test(query);
+    const firstName = language === "en" ? first.name_en : first.name_ar;
+    const secondName = language === "en" ? second.name_en : second.name_ar;
+    const basisLabel = basis === "perServing" ? (language === "en" ? "per serving" : "للحصة") : (language === "en" ? "per 100 g" : "لكل 100 جرام");
+    if (!hasExplicitNutrient) {
+      const metrics = [
+        { key: "kcal", ar: "السعرات", en: "Calories", unitAr: "سعر", unitEn: "kcal" },
+        { key: "protein", ar: "البروتين", en: "Protein", unitAr: "جم", unitEn: "g" },
+        { key: "carbs", ar: "الكربوهيدرات", en: "Carbohydrates", unitAr: "جم", unitEn: "g" },
+        { key: "fat", ar: "الدهون", en: "Total fat", unitAr: "جم", unitEn: "g" },
+        { key: "fiber", ar: "الألياف", en: "Fiber", unitAr: "جم", unitEn: "g" },
+        { key: "sodium", ar: "الصوديوم", en: "Sodium", unitAr: "مجم", unitEn: "mg" },
+      ] as const;
+      const values = Object.fromEntries(metrics.map((metric) => [metric.key, {
+        first: firstCalculation[basis][metric.key], second: secondCalculation[basis][metric.key],
+        unit: language === "en" ? metric.unitEn : metric.unitAr,
+      }]));
+      const lines = metrics.map((metric) => {
+        const firstValue = firstCalculation[basis][metric.key] ?? (language === "en" ? "unknown" : "غير متوفر");
+        const secondValue = secondCalculation[basis][metric.key] ?? (language === "en" ? "unknown" : "غير متوفر");
+        const label = language === "en" ? metric.en : metric.ar;
+        const unit = language === "en" ? metric.unitEn : metric.unitAr;
+        return `• ${label}: ${firstName} ${firstValue} ${unit} — ${secondName} ${secondValue} ${unit}`;
+      });
+      return {
+        status: "ok", primaryIntent: "compare_recipes", language, safetyFlags: [], integrityFlags: [],
+        message: language === "en"
+          ? `Nutritional comparison ${basisLabel}:\n\n${lines.join("\n")}\n\nThere is no single overall winner: choose the relevant metric for your goal. This is a numerical comparison, not personalized medical advice.`
+          : `مقارنة غذائية ${basisLabel}:\n\n${lines.join("\n")}\n\nمفيش اختيار أفضل بشكل مطلق؛ الاختيار يعتمد على العنصر المهم لهدفك. دي مقارنة رقمية وليست نصيحة طبية شخصية.`,
+        data: { intent: "compare_recipes", comparisonType: "overview", demoOnly: true, reviewStatus: "needs_review", basis: basis === "perServing" ? "per_serving" : "per_100g", first: { recipeId: first.recipe_id, name: firstName }, second: { recipeId: second.recipe_id, name: secondName }, metrics: values },
+        evidenceDocumentIds: [`DEMO-${first.recipe_id}`, `DEMO-${second.recipe_id}`], provenance: [this.recipeProvenance(first, language), this.recipeProvenance(second, language)],
+        toolTrace: [{ tool: "calculate_nutrition", ok: true, code: null }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
+      };
+    }
     const nutrient = /(?:صوديوم|ملح|sodium|salt)/iu.test(query) ? "sodium"
       : /(?:بروتين|protein)/iu.test(query) ? "protein"
       : /(?:كربوهيدرات|كارب|carb)/iu.test(query) ? "carbs"
@@ -667,8 +701,6 @@ class GraduationDemoAgent {
       : /(?:سكر|sugar)/iu.test(query) ? "sugar" : "kcal";
     const firstValue = firstCalculation[basis][nutrient];
     const secondValue = secondCalculation[basis][nutrient];
-    const firstName = language === "en" ? first.name_en : first.name_ar;
-    const secondName = language === "en" ? second.name_en : second.name_ar;
     const unit = nutrient === "sodium" ? (language === "en" ? "mg" : "مجم") : nutrient === "kcal" ? (language === "en" ? "kcal" : "سعر حراري") : language === "en" ? "g" : "جم";
     const label = language === "en" ? ({ sodium: "sodium", protein: "protein", carbs: "carbohydrates", fat: "total fat", fiber: "fiber", sugar: "sugar", kcal: "calories" } as const)[nutrient]
       : ({ sodium: "الصوديوم", protein: "البروتين", carbs: "الكربوهيدرات", fat: "الدهون الكلية", fiber: "الألياف", sugar: "السكر", kcal: "السعرات" } as const)[nutrient];
@@ -678,7 +710,6 @@ class GraduationDemoAgent {
       conclusion = lower === null ? (language === "en" ? "Both values are equal." : "القيمتان متساويتان.")
         : language === "en" ? `${lower} is lower in ${label} on this basis.` : `${lower} هو الأقل في ${label} على نفس أساس المقارنة.`;
     }
-    const basisLabel = basis === "perServing" ? (language === "en" ? "per serving" : "للحصة") : (language === "en" ? "per 100 g" : "لكل 100 جرام");
     return {
       status: "ok", primaryIntent: "compare_recipes", language, safetyFlags: [], integrityFlags: [],
       message: language === "en" ? `${label} comparison ${basisLabel}:\n\n• ${firstName}: ${firstValue ?? "unknown"} ${unit}\n• ${secondName}: ${secondValue ?? "unknown"} ${unit}\n\n${conclusion}` : `مقارنة ${label} ${basisLabel}:\n\n• ${firstName}: ${firstValue ?? "غير متوفر"} ${unit}\n• ${secondName}: ${secondValue ?? "غير متوفر"} ${unit}\n\n${conclusion}`,

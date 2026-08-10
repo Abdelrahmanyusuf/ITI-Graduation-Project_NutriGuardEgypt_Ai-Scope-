@@ -281,3 +281,17 @@ test("wide graduation behavior: recipe nutrition answers only the nutrient and b
   assert.match(full.message, /بروتين/);
   assert.match(full.message, /صوديوم/);
 });
+
+test("wide graduation behavior: an unspecified recipe comparison covers core metrics without inventing an overall winner", async () => {
+  const overview = await agent.invoke({ message: "عاوز مقارنة بين الكشري و الفول", language: "ar-EG" });
+  assert.equal(overview.status, "ok");
+  assert.equal(overview.data?.comparisonType, "overview");
+  assert.match(overview.message, /السعرات/);
+  assert.match(overview.message, /البروتين/);
+  assert.match(overview.message, /الكربوهيدرات/);
+  assert.match(overview.message, /الدهون/);
+  assert.match(overview.message, /الألياف/);
+  assert.match(overview.message, /الصوديوم/);
+  assert.match(overview.message, /مفيش اختيار أفضل بشكل مطلق/);
+  assert.doesNotMatch(overview.message, /هو الأقل في السعرات/);
+});
