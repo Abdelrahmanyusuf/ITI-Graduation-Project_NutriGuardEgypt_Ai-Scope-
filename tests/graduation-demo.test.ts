@@ -17,7 +17,7 @@ test("graduation dataset validates the complete candidate corpus without product
   assert.equal(dataset.questions.length, 80);
   assert.ok(dataset.recipes.every((recipe) => recipe.status === "needs_review"));
   const corpus = buildGraduationRetrievalCorpus(dataset);
-  assert.equal(corpus.documents.length, 218);
+  assert.equal(corpus.documents.length, 219);
   assert.equal(corpus.documents.filter((document) => document.kind === "recipe").length, 215);
   assert.ok(corpus.documents.every((document) => document.metadata.demoOnly === true));
   assert.ok(corpus.documents.every((document) => document.metadata.reviewStatus === "needs_review"));

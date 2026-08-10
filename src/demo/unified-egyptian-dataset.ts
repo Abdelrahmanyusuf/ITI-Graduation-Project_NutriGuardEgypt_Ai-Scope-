@@ -306,7 +306,13 @@ function correctedGuidelines(dataset: UnifiedEgyptianDemoDataset): Array<{ id: s
     "WHO-SUGAR-2024": { url: "https://www.who.int/publications/i/item/9789241549028", title: "WHO Guideline: Sugars Intake for Adults and Children (2015)" },
     "WHO-FAT-2024": { url: "https://www.who.int/publications/i/item/9789240073630", title: "WHO Guideline: Saturated and Trans Fatty Acid Intake (2023)" },
   };
-  return dataset.guidelines.filter((item) => map[item.doc_id]).map((item) => ({ id: item.doc_id.replace("-2024", ""), title: map[item.doc_id]!.title, text: `${item.content_ar}\n\n${item.content_en}`, url: map[item.doc_id]!.url }));
+  const datasetGuidelines = dataset.guidelines.filter((item) => map[item.doc_id]).map((item) => ({ id: item.doc_id.replace("-2024", ""), title: map[item.doc_id]!.title, text: `${item.content_ar}\n\n${item.content_en}`, url: map[item.doc_id]!.url }));
+  return [...datasetGuidelines, {
+    id: "WHO-HEALTHY-DIET",
+    title: "WHO Healthy Diet Fact Sheet",
+    text: "منظمة الصحة العالمية لا تفرض شكلاً واحدًا للهرم الغذائي. وتصف النظام الصحي من خلال أربعة مبادئ: الكفاية، والتوازن، والاعتدال، والتنوع، مع الاعتماد على أغذية متنوعة قليلة التصنيع مثل الخضروات والفاكهة والبقول والحبوب الكاملة ومصادر البروتين قليلة الدهون، والحد من الصوديوم والسكريات الحرة والدهون غير الصحية.\n\nWHO describes healthy diets through adequacy, balance, moderation and diversity rather than one universal pyramid shape, emphasizing varied minimally processed foods and limiting sodium, free sugars and unhealthy fats.",
+    url: "https://www.who.int/news-room/fact-sheets/detail/healthy-diet",
+  }];
 }
 
 export function buildGraduationRetrievalCorpus(dataset: UnifiedEgyptianDemoDataset): RetrievalCorpus {

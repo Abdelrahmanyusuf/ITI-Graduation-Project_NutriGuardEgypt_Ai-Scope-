@@ -97,7 +97,7 @@ The local `--demo` runtime uses
 `unified_egyptian_rag_database_v2_final.json` as a **graduation-demo-only**
 candidate source. Run `npm run demo:prepare` before presenting the project; it
 validates 215 recipes and 169 ingredient references, generates 215 recipe plus
-3 corrected WHO retrieval documents under `data/demo/`, resolves the synthetic
+4 sourced WHO retrieval documents under `data/demo/`, resolves the synthetic
 question set to stable recipe IDs where unambiguous, and recalculates nutrition
 deterministically.
 

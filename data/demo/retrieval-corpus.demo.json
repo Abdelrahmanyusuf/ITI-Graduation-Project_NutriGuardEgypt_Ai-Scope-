@@ -5006,6 +5006,26 @@
         "reviewStatus": "needs_review",
         "chunkId": "WHO-FAT"
       }
+    },
+    {
+      "id": "DEMO-WHO-HEALTHY-DIET",
+      "kind": "guideline",
+      "title": "WHO Healthy Diet Fact Sheet",
+      "text": "منظمة الصحة العالمية لا تفرض شكلاً واحدًا للهرم الغذائي. وتصف النظام الصحي من خلال أربعة مبادئ: الكفاية، والتوازن، والاعتدال، والتنوع، مع الاعتماد على أغذية متنوعة قليلة التصنيع مثل الخضروات والفاكهة والبقول والحبوب الكاملة ومصادر البروتين قليلة الدهون، والحد من الصوديوم والسكريات الحرة والدهون غير الصحية.\n\nWHO describes healthy diets through adequacy, balance, moderation and diversity rather than one universal pyramid shape, emphasizing varied minimally processed foods and limiting sodium, free sugars and unhealthy fats.",
+      "language": "ar-EG",
+      "status": "approved",
+      "licenseStatus": "approved",
+      "sourceId": "DEMO-WHO-GUIDANCE",
+      "versionId": "2.0-final-demo-normalized",
+      "sourceTitle": "WHO guidance normalized for graduation demo",
+      "sourceUrl": "https://www.who.int/news-room/fact-sheets/detail/healthy-diet",
+      "sourceAccessedAt": "2026-08-10",
+      "sourceLocator": "WHO-HEALTHY-DIET",
+      "metadata": {
+        "demoOnly": true,
+        "reviewStatus": "needs_review",
+        "chunkId": "WHO-HEALTHY-DIET"
+      }
     }
   ]
 }

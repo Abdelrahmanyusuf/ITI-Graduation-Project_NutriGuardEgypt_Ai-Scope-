@@ -60,7 +60,7 @@ const routingCases: RoutingCase[] = [
   { name: "WHO sugar guideline", message: "إرشادات WHO عن السكر", status: "ok", intent: "general_guideline" },
   { name: "WHO fat guideline", message: "ما توصيات منظمة الصحة عن الدهون؟", status: "ok", intent: "general_guideline" },
   { name: "generic healthy advice", message: "اديني نصائح لأكل صحي بشكل عام", status: "ok", intent: undefined, includes: /نصائح غذائية عامة/ },
-  { name: "pending food pyramid is honest", message: "ما هو الهرم الغذائي؟", status: "no_result", intent: "general_guideline", includes: /لا تحتوي/ },
+  { name: "WHO healthy-diet principles answer the food-pyramid question honestly", message: "ما هو الهرم الغذائي؟", status: "ok", intent: "general_guideline", includes: /الكفاية/ },
 
   { name: "Koshary lower-calorie modification", message: "عاوز اقلل السعرات الحراريه لوجبه الكشري", status: "ok", intent: "lighter_modification", recipeId: "EGY-RCP-001", includes: /60 جرام إلى 30 جرام/ },
   { name: "Koshary diet shorthand", message: "عايز كشري دايت", status: "ok", intent: "lighter_modification", recipeId: "EGY-RCP-001" },

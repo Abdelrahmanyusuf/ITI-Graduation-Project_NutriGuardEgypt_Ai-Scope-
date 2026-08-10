@@ -199,7 +199,7 @@ legacy/         archived JavaScript prototype (reference only)
 `src/demo/unified-egyptian-dataset.ts` validates the supplied 215-recipe
 Egyptian candidate dataset and exposes a separate development/test-only model.
 `src/scripts/prepare-graduation-demo.ts` writes deterministic artifacts to
-`data/demo/`: a 218-document retrieval corpus, corrected nutrition calculations,
+`data/demo/`: a 219-document retrieval corpus, corrected nutrition calculations,
 question-to-recipe resolution evidence, a synthetic embedding-evaluation set,
 and a compact readiness report.
 
