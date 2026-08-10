@@ -1,0 +1,802 @@
+[
+  {
+    "id": "Q001",
+    "question": "إزاي أعمل كشري مصري أصيل؟",
+    "category": "recipe_lookup",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Egyptian Koshari",
+    "relevantRecipeId": "EGY-RCP-001",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q002",
+    "question": "عايز طريقة عمل الملوخية بالأرنب زي بتاعت ستنا",
+    "category": "recipe_lookup",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Molokhia with Rabbit",
+    "relevantRecipeId": "EGY-RCP-122",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q003",
+    "question": "إزاي أعمل طعمية مقرمشة زي اللي في العتبة؟",
+    "category": "recipe_lookup",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Ta'ameya",
+    "relevantRecipeId": "EGY-RCP-003",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q004",
+    "question": "طريقة عمل البامية باللحمة الضاني",
+    "category": "recipe_lookup",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Bamia with Lamb",
+    "relevantRecipeId": null,
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q005",
+    "question": "عايز أعمل محشي ورق عنب على الطريقة المصرية",
+    "category": "recipe_lookup",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Mahshi Warak Enab",
+    "relevantRecipeId": "EGY-RCP-014",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q006",
+    "question": "إزاي أعمل فتة مصرية باللحمة؟",
+    "category": "recipe_lookup",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Fattah with Meat",
+    "relevantRecipeId": "EGY-RCP-011",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q007",
+    "question": "طريقة عمل الكنافة بالقشطة",
+    "category": "recipe_lookup",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Konafa with Cream",
+    "relevantRecipeId": "EGY-RCP-106",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q008",
+    "question": "عايز أعمل بسبوسة بالمكسرات",
+    "category": "recipe_lookup",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Basbousa with Nuts",
+    "relevantRecipeId": "EGY-RCP-104",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q009",
+    "question": "إزاي أعمل شوربة عدس على الطريقة المصرية؟",
+    "category": "recipe_lookup",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Egyptian Lentil Soup",
+    "relevantRecipeId": "EGY-RCP-016",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q010",
+    "question": "طريقة عمل الحمام المحشي فراخ",
+    "category": "recipe_lookup",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Stuffed Pigeon with Chicken",
+    "relevantRecipeId": "EGY-RCP-005",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q011",
+    "question": "الطعمية فيها كام سعرة حرارية؟",
+    "category": "nutrition_query",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Ta'ameya",
+    "relevantRecipeId": "EGY-RCP-003",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q012",
+    "question": "الكشري ده سعراته قد إيه؟ أنا بعمل رجيم",
+    "category": "nutrition_query",
+    "expectedOutcome": "clarification",
+    "expectedRecipeText": "Egyptian Koshari",
+    "relevantRecipeId": "EGY-RCP-001",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q013",
+    "question": "الملوخية فيها دهون كتير؟",
+    "category": "nutrition_query",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Molokhia",
+    "relevantRecipeId": "EGY-RCP-010",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q014",
+    "question": "عايز أعرف البروتين في الفول المدمس قد إيه",
+    "category": "nutrition_query",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Ful Medames",
+    "relevantRecipeId": "EGY-RCP-002",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q015",
+    "question": "السكر في البسبوسة قد إيه؟",
+    "category": "nutrition_query",
+    "expectedOutcome": "referral",
+    "expectedRecipeText": "Basbousa",
+    "relevantRecipeId": "EGY-RCP-018",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q016",
+    "question": "الملح في المحشي كتير؟",
+    "category": "nutrition_query",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Mahshi",
+    "relevantRecipeId": null,
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q017",
+    "question": "الكبدة الإسكندراني سعراتها قد إيه؟",
+    "category": "nutrition_query",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Alexandrian Beef Liver",
+    "relevantRecipeId": "EGY-RCP-017",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q018",
+    "question": "الفتة فيها كربوهيدرات قد إيه؟",
+    "category": "nutrition_query",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Fattah",
+    "relevantRecipeId": "EGY-RCP-011",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q019",
+    "question": "الألياف في البامية قد إيه؟",
+    "category": "nutrition_query",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Bamia",
+    "relevantRecipeId": null,
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q020",
+    "question": "الدهون في السجق الشرقي قد إيه؟",
+    "category": "nutrition_query",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Oriental Sausage",
+    "relevantRecipeId": "EGY-RCP-094",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q021",
+    "question": "عايز أعمل كشري بس معايا رز بسمتي، ينفع؟",
+    "category": "ingredient_substitution",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Egyptian Koshari",
+    "relevantRecipeId": "EGY-RCP-001",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q022",
+    "question": "مش معايا فول صويا للطعمية، إيه البديل؟",
+    "category": "ingredient_substitution",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Ta'ameya",
+    "relevantRecipeId": "EGY-RCP-003",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q023",
+    "question": "عايز أعمل محشي بس معايا ورق كرومب مش عنب، ينفع؟",
+    "category": "ingredient_substitution",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Mahshi",
+    "relevantRecipeId": null,
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q024",
+    "question": "مش لاقي سمن بلدي، أستخدم زيت عادي؟",
+    "category": "ingredient_substitution",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Various",
+    "relevantRecipeId": null,
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q025",
+    "question": "عايز أعمل أم علي بس معايا كرواسان مش رقاق، ينفع؟",
+    "category": "ingredient_substitution",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Umm Ali",
+    "relevantRecipeId": "EGY-RCP-007",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q026",
+    "question": "مش معايا لحمة ضاني للبامية، أستخدم فراخ؟",
+    "category": "ingredient_substitution",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Bamia",
+    "relevantRecipeId": null,
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q027",
+    "question": "عايز أعمل كنافة بس معايا جبنة موزاريلا مش قشطة",
+    "category": "ingredient_substitution",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Konafa",
+    "relevantRecipeId": null,
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q028",
+    "question": "مش لاقي تمر هندي للخروب، إيه البديل؟",
+    "category": "ingredient_substitution",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Kharoub",
+    "relevantRecipeId": null,
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q029",
+    "question": "عايز أعمل فتة بس معايا عيش بلدي مش شامي",
+    "category": "ingredient_substitution",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Fattah",
+    "relevantRecipeId": "EGY-RCP-011",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q030",
+    "question": "مش معايا كزبرة نشفة للطعمية، ينفع كزبرة خضرا؟",
+    "category": "ingredient_substitution",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Ta'ameya",
+    "relevantRecipeId": "EGY-RCP-003",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q031",
+    "question": "إزاي أخلي الطعمية مقرمشة من برة وطرية من جوة؟",
+    "category": "cooking_method",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Ta'ameya",
+    "relevantRecipeId": "EGY-RCP-003",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q032",
+    "question": "الكشري بيتعمل إزاي عشان الرز ما يلزقش؟",
+    "category": "cooking_method",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Egyptian Koshari",
+    "relevantRecipeId": "EGY-RCP-001",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q033",
+    "question": "إزاي أعمل الملوخية من غير ما تبقى خيوطها مقطعة؟",
+    "category": "cooking_method",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Molokhia",
+    "relevantRecipeId": "EGY-RCP-010",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q034",
+    "question": "الحمام المحشي بيستوي على النار قد إيه؟",
+    "category": "cooking_method",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Stuffed Pigeon",
+    "relevantRecipeId": "EGY-RCP-005",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q035",
+    "question": "إزاي أعمل التسقية بتاعت الكشري في البيت؟",
+    "category": "cooking_method",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Egyptian Koshari",
+    "relevantRecipeId": "EGY-RCP-001",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q036",
+    "question": "البسبوسة بتدخل الفرن على درجة حرارة كام؟",
+    "category": "cooking_method",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Basbousa",
+    "relevantRecipeId": "EGY-RCP-018",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q037",
+    "question": "إزاي أقلي السمك البلطي من غير ما ينفش زيت؟",
+    "category": "cooking_method",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Fried Tilapia Egyptian Style",
+    "relevantRecipeId": "EGY-RCP-042",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q038",
+    "question": "العيش البلدي بيتخمر قد إيه؟",
+    "category": "cooking_method",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Baladi Bread",
+    "relevantRecipeId": "EGY-RCP-064",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q039",
+    "question": "إزاي أعمل الشربة الكدابة للمحشي؟",
+    "category": "cooking_method",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Mahshi",
+    "relevantRecipeId": null,
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q040",
+    "question": "الكنافة بتتقلب إزاي في الصينية؟",
+    "category": "cooking_method",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Konafa",
+    "relevantRecipeId": null,
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q041",
+    "question": "الكشري أصله منين؟",
+    "category": "cultural_origin",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Egyptian Koshari",
+    "relevantRecipeId": "EGY-RCP-001",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q042",
+    "question": "الطعمية جات لمصر منين؟",
+    "category": "cultural_origin",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Ta'ameya",
+    "relevantRecipeId": "EGY-RCP-003",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q043",
+    "question": "الملوخية فعلاً وصفة مصرية أصيلة ولا مستوردة؟",
+    "category": "cultural_origin",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Molokhia",
+    "relevantRecipeId": "EGY-RCP-010",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q044",
+    "question": "الفتة دي أكل فرعوني ولا إيه؟",
+    "category": "cultural_origin",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Fattah",
+    "relevantRecipeId": "EGY-RCP-011",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q045",
+    "question": "الكبدة الإسكندراني ليه اسمها كده؟",
+    "category": "cultural_origin",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Alexandrian Beef Liver",
+    "relevantRecipeId": "EGY-RCP-017",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q046",
+    "question": "السحلب بيتشرب فين في مصر بالذات؟",
+    "category": "cultural_origin",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Sahlab",
+    "relevantRecipeId": "EGY-RCP-115",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q047",
+    "question": "الحواوشي أصله إسكندراني ولا سيناوي؟",
+    "category": "cultural_origin",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Hawawshi",
+    "relevantRecipeId": "EGY-RCP-004",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q048",
+    "question": "العيش البلدي بيتعمل من قد إيه في مصر؟",
+    "category": "cultural_origin",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Baladi Bread",
+    "relevantRecipeId": "EGY-RCP-064",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q049",
+    "question": "الكباب المصري فرقه عن الكباب التركي إيه؟",
+    "category": "cultural_origin",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Egyptian Kebab",
+    "relevantRecipeId": "EGY-RCP-124",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q050",
+    "question": "القولقاس أصله مصري ولا شامي؟",
+    "category": "cultural_origin",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Colocasia",
+    "relevantRecipeId": "EGY-RCP-031",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q051",
+    "question": "أنا نباتي، ممكن آكل كشري؟",
+    "category": "dietary_restriction",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Egyptian Koshari",
+    "relevantRecipeId": "EGY-RCP-001",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q052",
+    "question": "عندي سكر، ممكن آكل بسبوسة؟",
+    "category": "dietary_restriction",
+    "expectedOutcome": "referral",
+    "expectedRecipeText": "Basbousa",
+    "relevantRecipeId": "EGY-RCP-018",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q053",
+    "question": "أنا بعمل كيتو، فيه وصفات مصرية تنفعني؟",
+    "category": "dietary_restriction",
+    "expectedOutcome": "clarification",
+    "expectedRecipeText": "Various",
+    "relevantRecipeId": null,
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q054",
+    "question": "عندي حساسية من الغلوتين، ممكن آكل عيش بلدي؟",
+    "category": "dietary_restriction",
+    "expectedOutcome": "referral",
+    "expectedRecipeText": "Baladi Bread",
+    "relevantRecipeId": "EGY-RCP-064",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q055",
+    "question": "أنا صايم، فيه حلويات مصرية بدون سمن؟",
+    "category": "dietary_restriction",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Various",
+    "relevantRecipeId": null,
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q056",
+    "question": "عندي ضغط، ممكن آكل فول مدمس؟",
+    "category": "dietary_restriction",
+    "expectedOutcome": "referral",
+    "expectedRecipeText": "Ful Medames",
+    "relevantRecipeId": "EGY-RCP-002",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q057",
+    "question": "أنا بعمل دايت، إزاي أقلل السعرات في الأكلة المصرية؟",
+    "category": "dietary_restriction",
+    "expectedOutcome": "clarification",
+    "expectedRecipeText": "Various",
+    "relevantRecipeId": null,
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q058",
+    "question": "ممكن آكل طعمية وأنا نباتي؟",
+    "category": "dietary_restriction",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Ta'ameya",
+    "relevantRecipeId": "EGY-RCP-003",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q059",
+    "question": "عندي حساسية من البيض، فيه كنافة بدون بيض؟",
+    "category": "dietary_restriction",
+    "expectedOutcome": "referral",
+    "expectedRecipeText": "Konafa",
+    "relevantRecipeId": null,
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q060",
+    "question": "أنا بعمل رجيم قاسي، فيه أكلات مصرية قليلة السعرات؟",
+    "category": "dietary_restriction",
+    "expectedOutcome": "clarification",
+    "expectedRecipeText": "Various",
+    "relevantRecipeId": null,
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q061",
+    "question": "عايز أعمل سحور مصري صحي في رمضان، إيه تنصحني؟",
+    "category": "meal_planning",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Various",
+    "relevantRecipeId": null,
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q062",
+    "question": "إيه أحسن وصفة مصرية للعزومات الكبيرة؟",
+    "category": "meal_planning",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Various",
+    "relevantRecipeId": null,
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q063",
+    "question": "عايز منيو كامل مصري لعزومة 10 أشخاص",
+    "category": "meal_planning",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Various",
+    "relevantRecipeId": null,
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q064",
+    "question": "إيه الحلويات المصرية اللي تنفع للعيد؟",
+    "category": "meal_planning",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Various",
+    "relevantRecipeId": null,
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q065",
+    "question": "عايز فطار مصري تقليدي، إيه المقترحات؟",
+    "category": "meal_planning",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Various",
+    "relevantRecipeId": null,
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q066",
+    "question": "إيه أحسن وصفة مصرية للغداء السريع؟",
+    "category": "meal_planning",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Various",
+    "relevantRecipeId": null,
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q067",
+    "question": "عايز أعمل عشا خفيف مصري، إيه تنصحني؟",
+    "category": "meal_planning",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Various",
+    "relevantRecipeId": null,
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q068",
+    "question": "إيه الأكلات المصرية اللي بتتعمل في الشتاء بالذات؟",
+    "category": "meal_planning",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Various",
+    "relevantRecipeId": null,
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q069",
+    "question": "عايز وصفات مصرية للأطفال، إيه المناسب؟",
+    "category": "meal_planning",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Various",
+    "relevantRecipeId": null,
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q070",
+    "question": "إيه الأكلات المصرية اللي بتتعمل في الأفراح؟",
+    "category": "meal_planning",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Various",
+    "relevantRecipeId": null,
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q071",
+    "question": "الفول المدمس بيتاكل من أيام الفراعنة ولا لأ؟",
+    "category": "historical_context",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Ful Medames",
+    "relevantRecipeId": "EGY-RCP-002",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q072",
+    "question": "الشاي المصري بالنعناع بقاله قد إيه؟",
+    "category": "historical_context",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Egyptian Mint Tea",
+    "relevantRecipeId": "EGY-RCP-191",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q073",
+    "question": "الكشري اتعمل في مصر من أيام محمد علي ولا أحدث؟",
+    "category": "historical_context",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Egyptian Koshari",
+    "relevantRecipeId": "EGY-RCP-001",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q074",
+    "question": "العيش البلدي كان شكله إزاي أيام الفراعنة؟",
+    "category": "historical_context",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Baladi Bread",
+    "relevantRecipeId": "EGY-RCP-064",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q075",
+    "question": "الملوخية كانت أكل ملوكي ولا شعبي؟",
+    "category": "historical_context",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Molokhia",
+    "relevantRecipeId": "EGY-RCP-010",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q076",
+    "question": "الكنافة جات لمصر منين بالظبط؟",
+    "category": "historical_context",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Konafa",
+    "relevantRecipeId": null,
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q077",
+    "question": "السحلب كان بيتشرب في أيام الخديوي إسماعيل؟",
+    "category": "historical_context",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Sahlab",
+    "relevantRecipeId": "EGY-RCP-115",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q078",
+    "question": "الفتة كانت أكل عيد ولا أكل يومي؟",
+    "category": "historical_context",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Fattah",
+    "relevantRecipeId": "EGY-RCP-011",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q079",
+    "question": "الطعمية كانت موجودة في مصر قبل الإسلام ولا لأ؟",
+    "category": "historical_context",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Ta'ameya",
+    "relevantRecipeId": "EGY-RCP-003",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  },
+  {
+    "id": "Q080",
+    "question": "الحواوشي اتعمل في مصر من قد إيه؟",
+    "category": "historical_context",
+    "expectedOutcome": "answer",
+    "expectedRecipeText": "Hawawshi",
+    "relevantRecipeId": "EGY-RCP-004",
+    "synthetic": true,
+    "reviewStatus": "pending_human_review"
+  }
+]

@@ -1,0 +1,198 @@
+{
+  "schemaVersion": "1.0",
+  "datasetVersion": "2.0-final",
+  "mode": "graduation_demo_only",
+  "reviewStatus": "needs_review",
+  "recipeCount": 215,
+  "ingredientReferenceCount": 169,
+  "retrievalDocumentCount": 218,
+  "syntheticQuestionCount": 80,
+  "resolvedQuestionCount": 54,
+  "retrievalEvaluation": {
+    "modelId": "LOCAL-HASHED-NGRAM-GRADUATION-DEMO",
+    "synthetic": true,
+    "queryCount": 54,
+    "recallAt1": 0.5741,
+    "recallAt3": 0.8519,
+    "mrrAt5": 0.7068,
+    "productionModelSelectionAllowed": false
+  },
+  "unresolvedQuestions": [
+    {
+      "id": "Q004",
+      "expectedRecipeText": "Bamia with Lamb"
+    },
+    {
+      "id": "Q016",
+      "expectedRecipeText": "Mahshi"
+    },
+    {
+      "id": "Q019",
+      "expectedRecipeText": "Bamia"
+    },
+    {
+      "id": "Q023",
+      "expectedRecipeText": "Mahshi"
+    },
+    {
+      "id": "Q024",
+      "expectedRecipeText": "Various"
+    },
+    {
+      "id": "Q026",
+      "expectedRecipeText": "Bamia"
+    },
+    {
+      "id": "Q027",
+      "expectedRecipeText": "Konafa"
+    },
+    {
+      "id": "Q028",
+      "expectedRecipeText": "Kharoub"
+    },
+    {
+      "id": "Q039",
+      "expectedRecipeText": "Mahshi"
+    },
+    {
+      "id": "Q040",
+      "expectedRecipeText": "Konafa"
+    },
+    {
+      "id": "Q053",
+      "expectedRecipeText": "Various"
+    },
+    {
+      "id": "Q055",
+      "expectedRecipeText": "Various"
+    },
+    {
+      "id": "Q057",
+      "expectedRecipeText": "Various"
+    },
+    {
+      "id": "Q059",
+      "expectedRecipeText": "Konafa"
+    },
+    {
+      "id": "Q060",
+      "expectedRecipeText": "Various"
+    },
+    {
+      "id": "Q061",
+      "expectedRecipeText": "Various"
+    },
+    {
+      "id": "Q062",
+      "expectedRecipeText": "Various"
+    },
+    {
+      "id": "Q063",
+      "expectedRecipeText": "Various"
+    },
+    {
+      "id": "Q064",
+      "expectedRecipeText": "Various"
+    },
+    {
+      "id": "Q065",
+      "expectedRecipeText": "Various"
+    },
+    {
+      "id": "Q066",
+      "expectedRecipeText": "Various"
+    },
+    {
+      "id": "Q067",
+      "expectedRecipeText": "Various"
+    },
+    {
+      "id": "Q068",
+      "expectedRecipeText": "Various"
+    },
+    {
+      "id": "Q069",
+      "expectedRecipeText": "Various"
+    },
+    {
+      "id": "Q070",
+      "expectedRecipeText": "Various"
+    },
+    {
+      "id": "Q076",
+      "expectedRecipeText": "Konafa"
+    }
+  ],
+  "friedRecipeCorrection": {
+    "correctedRecipeCount": 22,
+    "policy": "exclude bulk frying oil and add only declared fraction of that oil as absorbed",
+    "examples": [
+      {
+        "recipeId": "EGY-RCP-003",
+        "excludedFryingOilG": 200,
+        "absorbedFryingOilG": 30,
+        "correctedKcal": 1284.9
+      },
+      {
+        "recipeId": "EGY-RCP-006",
+        "excludedFryingOilG": 100,
+        "absorbedFryingOilG": 12,
+        "correctedKcal": 410.4
+      },
+      {
+        "recipeId": "EGY-RCP-026",
+        "excludedFryingOilG": 100,
+        "absorbedFryingOilG": 12,
+        "correctedKcal": 2125.8
+      },
+      {
+        "recipeId": "EGY-RCP-038",
+        "excludedFryingOilG": 100,
+        "absorbedFryingOilG": 12,
+        "correctedKcal": 1993
+      },
+      {
+        "recipeId": "EGY-RCP-042",
+        "excludedFryingOilG": 100,
+        "absorbedFryingOilG": 12,
+        "correctedKcal": 959.4
+      },
+      {
+        "recipeId": "EGY-RCP-046",
+        "excludedFryingOilG": 150,
+        "absorbedFryingOilG": 22.5,
+        "correctedKcal": 2887.3
+      },
+      {
+        "recipeId": "EGY-RCP-047",
+        "excludedFryingOilG": 100,
+        "absorbedFryingOilG": 15,
+        "correctedKcal": 3014.4
+      },
+      {
+        "recipeId": "EGY-RCP-048",
+        "excludedFryingOilG": 120,
+        "absorbedFryingOilG": 18,
+        "correctedKcal": 2365.4
+      },
+      {
+        "recipeId": "EGY-RCP-061",
+        "excludedFryingOilG": 150,
+        "absorbedFryingOilG": 22.5,
+        "correctedKcal": 1021.3
+      },
+      {
+        "recipeId": "EGY-RCP-083",
+        "excludedFryingOilG": 100,
+        "absorbedFryingOilG": 12,
+        "correctedKcal": 1423.4
+      }
+    ]
+  },
+  "warnings": [
+    "All recipes remain needs_review and are exposed only by the development/test graduation-demo runtime.",
+    "Nutrition references and conversion factors are estimates until human review.",
+    "The 80 questions are synthetic and cannot select a production embedding model.",
+    "Production ingestion and release gates remain unchanged."
+  ]
+}

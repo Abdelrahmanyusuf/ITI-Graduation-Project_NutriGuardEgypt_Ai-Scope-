@@ -194,6 +194,23 @@ legacy/         archived JavaScript prototype (reference only)
   assembled. The golden registry under `tests/fixtures/nutrition/` is explicitly
   synthetic/test-only and cannot be used by the default production loader.
 
+### Graduation-demo corpus
+
+`src/demo/unified-egyptian-dataset.ts` validates the supplied 215-recipe
+Egyptian candidate dataset and exposes a separate development/test-only model.
+`src/scripts/prepare-graduation-demo.ts` writes deterministic artifacts to
+`data/demo/`: a 218-document retrieval corpus, corrected nutrition calculations,
+question-to-recipe resolution evidence, a synthetic embedding-evaluation set,
+and a compact readiness report.
+
+The graduation calculation excludes bulk frying oil from the consumed mass and
+adds only the declared absorbed fraction of the oil used. Missing nutrient
+reference values propagate as `null`. `src/runtime/graduation-demo-agent.ts`
+uses a deterministic local hashed n-gram embedding only for the offline demo,
+labels every answer `demoOnly` / `needs_review`, and refuses to start outside
+development or test. It does not weaken approved-only production ingestion,
+the Qdrant adapter, PostgreSQL runtime, or release evidence gates.
+
 ## What is implemented (Steps 8–10 — retrieval and tools)
 
 - `src/retrieval/benchmark.ts` benchmarks exactly two or three configured

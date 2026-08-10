@@ -24,6 +24,7 @@
     "resolve:ingredients": "node --import tsx src/scripts/resolve-ingredients.ts",
     "normalize:units": "node --import tsx src/scripts/normalize-quantities.ts",
     "benchmark:embeddings": "node --import tsx src/scripts/benchmark-embeddings.ts",
+    "demo:prepare": "node --import tsx src/scripts/prepare-graduation-demo.ts",
     "ingest:retrieval": "node --import tsx src/scripts/ingest-retrieval.ts",
     "eval:validate": "node --import tsx src/scripts/validate-agent-evaluation.ts",
     "eval:adversarial": "node --import tsx src/scripts/run-adversarial-evaluation.ts",

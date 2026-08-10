@@ -62,7 +62,7 @@ it to `.env` has no effect on the foundation unless your runtime loads it.
 | Command             | Action                                        |
 | ------------------- | --------------------------------------------- |
 | `npm run dev`       | Run `src/index.ts` via `tsx watch`            |
-| `npm run dev:web`   | Run the explicit synthetic local chat demo     |
+| `npm run dev:web`   | Run the graduation demo with the 215-recipe candidate corpus |
 | `npm run dev:smoke` | One-shot run of the dev entry (no watch)      |
 | `npm run build`     | TypeScript build → `dist/`                    |
 | `npm start`         | Run the built output (`node dist/index.js`)   |
@@ -74,6 +74,7 @@ it to `.env` has no effect on the foundation unless your runtime loads it.
 | `npm run resolve:ingredients` | Run the Step 5 ingredient-dictionary resolver (writes coverage + review queue) |
 | `npm run normalize:units` | Run Step 6 quantity/unit normalization (writes coverage + review queue) |
 | `npm run benchmark:embeddings` | Benchmark 2–3 models on an explicit Arabic evaluation dataset |
+| `npm run demo:prepare` | Validate and deterministically generate the graduation-demo corpus, calculations, and synthetic evaluation files |
 | `npm run ingest:retrieval` | Ingest one explicit approved corpus into Qdrant |
 | `npm run eval:validate` | Validate the Step 14 evaluation dataset (synthetic is blocked for production) |
 | `npm run eval:adversarial` | Run deterministic Steps 16–17 synthetic adversarial evaluation |
@@ -89,6 +90,34 @@ it to `.env` has no effect on the foundation unless your runtime loads it.
 | `npm run db:seed:synthetic`| Load test-only synthetic seed (opt-in, needs a live DB) |
 | `npm run db:test`   | Run the opt-in live PostgreSQL integration suite |
 | `npm run docs:check`| Verify links/anchors in `docs/` and `README.md`    |
+
+## Graduation demo dataset
+
+The local `--demo` runtime uses
+`unified_egyptian_rag_database_v2_final.json` as a **graduation-demo-only**
+candidate source. Run `npm run demo:prepare` before presenting the project; it
+validates 215 recipes and 169 ingredient references, generates 215 recipe plus
+3 corrected WHO retrieval documents under `data/demo/`, resolves the synthetic
+question set to stable recipe IDs where unambiguous, and recalculates nutrition
+deterministically.
+
+For the 22 fried recipes, bulk frying oil is excluded from the consumed recipe
+and only the declared 10–15% fraction of that oil is counted as absorbed. A
+regression test fixes the Ta'ameya example at 30 g absorbed from 200 g frying
+oil, preventing the earlier double count. Missing reference nutrients stay
+`null`; they never become zero.
+
+Start the presentation UI with:
+
+```powershell
+npm run demo:prepare
+npm run dev:web
+```
+
+The UI labels returned data as estimated and `needs_review`. This mode is
+blocked when `NODE_ENV=production`; the existing PostgreSQL/Qdrant production
+runtime, approved-only ingestion, release gates, and human-review requirements
+remain unchanged.
 
 ## Testing
 
