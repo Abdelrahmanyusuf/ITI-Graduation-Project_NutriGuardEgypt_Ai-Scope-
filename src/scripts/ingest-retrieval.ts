@@ -1,8 +1,11 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
+import { loadLocalEnv } from "../config/load-local-env.js";
 import { OpenAICompatibleEmbeddingProvider } from "../retrieval/embeddings.js";
 import { ingestRetrievalCorpus, type RetrievalCorpus } from "../retrieval/ingestion.js";
 import { QdrantVectorStore } from "../retrieval/qdrant.js";
+
+loadLocalEnv();
 
 function requiredEnvironment(name: string): string {
   const value = process.env[name]?.trim() ?? "";
@@ -23,7 +26,7 @@ async function main(): Promise<void> {
   const corpus = JSON.parse(await readFile(corpusPath, "utf8")) as RetrievalCorpus;
   const provider = new OpenAICompatibleEmbeddingProvider({
     baseUrl: requiredEnvironment("EMBEDDING_BASE_URL"),
-    apiKey: process.env.EMBEDDING_API_KEY,
+    apiKey: process.env.EMBEDDING_API_KEY?.trim() || process.env.GEMINI_API_KEY?.trim(),
     modelId: requiredEnvironment("EMBEDDING_MODEL"),
     batchSize: Number(process.env.EMBEDDING_BATCH_SIZE ?? "32"),
     batchDelayMs: Number(process.env.EMBEDDING_BATCH_DELAY_MS ?? "10000"),
