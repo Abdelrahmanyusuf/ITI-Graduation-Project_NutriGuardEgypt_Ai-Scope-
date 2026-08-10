@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { benchmarkEmbeddingModels, type EmbeddingBenchmarkDataset } from "../src/retrieval/benchmark.js";
+import { OpenAICompatibleEmbeddingProvider } from "../src/retrieval/embeddings.js";
 import { ingestRetrievalCorpus, type RetrievalCorpus } from "../src/retrieval/ingestion.js";
 import { QdrantVectorStore } from "../src/retrieval/qdrant.js";
 import type { EmbeddingProvider } from "../src/retrieval/types.js";
@@ -13,6 +14,69 @@ class MappedEmbeddingProvider implements EmbeddingProvider {
     return texts.map((text) => [...(this.values.get(text) ?? [0.1, 0.1, 0.1])]);
   }
 }
+
+test("OpenAI-compatible embeddings accept Gemini's ordered response without index fields", async () => {
+  const provider = new OpenAICompatibleEmbeddingProvider({
+    baseUrl: "https://embedding.example.test/v1",
+    modelId: "synthetic-gemini-compatible",
+    fetchImpl: async () => Response.json({ data: [{ embedding: [1, 0] }, { embedding: [0, 1] }] }),
+  });
+  assert.deepEqual(await provider.embed(["first", "second"]), [[1, 0], [0, 1]]);
+});
+
+test("OpenAI-compatible embeddings accept Gemini's omitted protobuf default index zero", async () => {
+  const provider = new OpenAICompatibleEmbeddingProvider({
+    baseUrl: "https://embedding.example.test/v1",
+    modelId: "synthetic-gemini-compatible",
+    fetchImpl: async () => Response.json({ data: [{ embedding: [1, 0] }, { index: 1, embedding: [0, 1] }] }),
+  });
+  assert.deepEqual(await provider.embed(["first", "second"]), [[1, 0], [0, 1]]);
+});
+
+test("OpenAI-compatible embeddings reject ambiguous duplicate indexing", async () => {
+  const provider = new OpenAICompatibleEmbeddingProvider({
+    baseUrl: "https://embedding.example.test/v1",
+    modelId: "synthetic-invalid",
+    fetchImpl: async () => Response.json({ data: [{ index: 0, embedding: [1, 0] }, { embedding: [0, 1] }] }),
+  });
+  await assert.rejects(() => provider.embed(["first", "second"]), /duplicate or missing indices/);
+});
+
+test("OpenAI-compatible embeddings split large corpora into ordered bounded batches", async () => {
+  const batchSizes: number[] = [];
+  const requestedDimensions: number[] = [];
+  const provider = new OpenAICompatibleEmbeddingProvider({
+    baseUrl: "https://embedding.example.test/v1",
+    modelId: "synthetic-batched",
+    batchSize: 2,
+    dimensions: 768,
+    fetchImpl: async (_input, init) => {
+      const request = JSON.parse(String(init?.body)) as { input: string[]; dimensions?: number };
+      batchSizes.push(request.input.length);
+      requestedDimensions.push(request.dimensions ?? 0);
+      return Response.json({ data: request.input.map((text, index) => ({ index: index || undefined, embedding: [Number(text), 1] })) });
+    },
+  });
+  assert.deepEqual(await provider.embed(["1", "2", "3", "4", "5"]), [[1, 1], [2, 1], [3, 1], [4, 1], [5, 1]]);
+  assert.deepEqual(batchSizes, [2, 2, 1]);
+  assert.deepEqual(requestedDimensions, [768, 768, 768]);
+});
+
+test("OpenAI-compatible embeddings retry only bounded transient provider failures", async () => {
+  let attempts = 0;
+  const provider = new OpenAICompatibleEmbeddingProvider({
+    baseUrl: "https://embedding.example.test/v1",
+    modelId: "synthetic-retry",
+    maxRetries: 2,
+    retryBaseDelayMs: 100,
+    fetchImpl: async () => {
+      attempts += 1;
+      return attempts < 3 ? new Response("", { status: 429 }) : Response.json({ data: [{ embedding: [1, 1] }] });
+    },
+  });
+  assert.deepEqual(await provider.embed(["one"]), [[1, 1]]);
+  assert.equal(attempts, 3);
+});
 
 const dataset: EmbeddingBenchmarkDataset = {
   schemaVersion: "1.0",
@@ -169,6 +233,10 @@ test("Qdrant adapter replaces a namespace and sends approved-only search filters
   await store.replaceNamespace("TEST-CORPUS", corpus.documents.map((document, index) => ({
     ...document, pointId: `00000000-0000-5000-8000-00000000000${index}`, contentHash: "a".repeat(64), embeddingModel: provider.modelId, vector: vectors[index] ?? [],
   })));
+  const indexBodies = requests
+    .filter((request) => request.url.includes("/index?wait=true"))
+    .map((request) => JSON.parse(String(request.init?.body)) as { field_name: string; field_schema: string });
+  assert.deepEqual(indexBodies, ["namespace", "kind", "status", "licenseStatus", "egyptianVerificationStatus"].map((field_name) => ({ field_name, field_schema: "keyword" })));
   const hits = await store.search("TEST-CORPUS", [1, 0], { kind: "recipe", limit: 5 });
   assert.deepEqual(hits, [], "client-side validation also drops a forged non-verified recipe response");
   const searchBody = JSON.parse(String(requests.find((request) => request.url.endsWith("/points/search"))?.init?.body)) as { filter: { must: unknown[] } };

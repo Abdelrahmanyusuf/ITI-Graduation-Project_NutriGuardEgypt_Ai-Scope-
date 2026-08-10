@@ -24,6 +24,8 @@ interface QdrantCollectionResponse {
   result?: { config?: { params?: { vectors?: { size?: number } } } };
 }
 
+const REQUIRED_KEYWORD_INDEXES = ["namespace", "kind", "status", "licenseStatus", "egyptianVerificationStatus"] as const;
+
 function isObject(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
 }
@@ -116,6 +118,15 @@ export class QdrantVectorStore implements VectorStore {
     });
   }
 
+  private async ensurePayloadIndexes(): Promise<void> {
+    for (const fieldName of REQUIRED_KEYWORD_INDEXES) {
+      await this.request(`/collections/${encodeURIComponent(this.collection)}/index?wait=true`, {
+        method: "PUT",
+        body: JSON.stringify({ field_name: fieldName, field_schema: "keyword" }),
+      });
+    }
+  }
+
   public async replaceNamespace(namespace: string, documents: readonly EmbeddedRetrievalDocument[]): Promise<void> {
     if (namespace.trim() === "") throw new Error("vector namespace is required");
     if (documents.length === 0) throw new Error("refusing to replace a namespace with an empty corpus");
@@ -124,6 +135,7 @@ export class QdrantVectorStore implements VectorStore {
       throw new Error("all Qdrant vectors must share a non-zero dimension");
     }
     await this.ensureCollection(dimension);
+    await this.ensurePayloadIndexes();
     await this.request(`/collections/${encodeURIComponent(this.collection)}/points?wait=true`, {
       method: "PUT",
       body: JSON.stringify({

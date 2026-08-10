@@ -25,6 +25,11 @@ async function main(): Promise<void> {
     baseUrl: requiredEnvironment("EMBEDDING_BASE_URL"),
     apiKey: process.env.EMBEDDING_API_KEY,
     modelId: requiredEnvironment("EMBEDDING_MODEL"),
+    batchSize: Number(process.env.EMBEDDING_BATCH_SIZE ?? "32"),
+    batchDelayMs: Number(process.env.EMBEDDING_BATCH_DELAY_MS ?? "10000"),
+    maxRetries: Number(process.env.EMBEDDING_MAX_RETRIES ?? "4"),
+    retryBaseDelayMs: Number(process.env.EMBEDDING_RETRY_BASE_DELAY_MS ?? "5000"),
+    dimensions: process.env.EMBEDDING_DIMENSIONS ? Number(process.env.EMBEDDING_DIMENSIONS) : undefined,
   });
   const store = new QdrantVectorStore({
     baseUrl: requiredEnvironment("QDRANT_URL"),

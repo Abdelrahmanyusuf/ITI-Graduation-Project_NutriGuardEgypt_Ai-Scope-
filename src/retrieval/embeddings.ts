@@ -5,6 +5,11 @@ export interface OpenAICompatibleEmbeddingOptions {
   apiKey?: string;
   modelId: string;
   timeoutMs?: number;
+  batchSize?: number;
+  batchDelayMs?: number;
+  maxRetries?: number;
+  retryBaseDelayMs?: number;
+  dimensions?: number;
   fetchImpl?: typeof fetch;
 }
 
@@ -38,6 +43,11 @@ export class OpenAICompatibleEmbeddingProvider implements EmbeddingProvider {
   private readonly baseUrl: string;
   private readonly apiKey: string | undefined;
   private readonly timeoutMs: number;
+  private readonly batchSize: number;
+  private readonly batchDelayMs: number;
+  private readonly maxRetries: number;
+  private readonly retryBaseDelayMs: number;
+  private readonly dimensions: number | undefined;
   private readonly fetchImpl: typeof fetch;
 
   public constructor(options: OpenAICompatibleEmbeddingOptions) {
@@ -54,13 +64,46 @@ export class OpenAICompatibleEmbeddingProvider implements EmbeddingProvider {
     this.apiKey = options.apiKey?.trim() || undefined;
     this.modelId = options.modelId.trim();
     this.timeoutMs = options.timeoutMs ?? 60_000;
+    this.batchSize = options.batchSize ?? 32;
+    this.batchDelayMs = options.batchDelayMs ?? 0;
+    this.maxRetries = options.maxRetries ?? 0;
+    this.retryBaseDelayMs = options.retryBaseDelayMs ?? 1_000;
+    this.dimensions = options.dimensions;
     if (!Number.isFinite(this.timeoutMs) || this.timeoutMs <= 0) throw new Error("embedding timeoutMs must be positive");
+    if (!Number.isInteger(this.batchSize) || this.batchSize < 1 || this.batchSize > 2_048) throw new Error("embedding batchSize must be an integer between 1 and 2048");
+    if (!Number.isFinite(this.batchDelayMs) || this.batchDelayMs < 0 || this.batchDelayMs > 60_000) throw new Error("embedding batchDelayMs must be between 0 and 60000");
+    if (!Number.isInteger(this.maxRetries) || this.maxRetries < 0 || this.maxRetries > 8) throw new Error("embedding maxRetries must be an integer between 0 and 8");
+    if (!Number.isFinite(this.retryBaseDelayMs) || this.retryBaseDelayMs < 100 || this.retryBaseDelayMs > 60_000) throw new Error("embedding retryBaseDelayMs must be between 100 and 60000");
+    if (this.dimensions !== undefined && (!Number.isInteger(this.dimensions) || this.dimensions < 1 || this.dimensions > 65_536)) throw new Error("embedding dimensions must be an integer between 1 and 65536");
     this.fetchImpl = options.fetchImpl ?? fetch;
   }
 
   public async embed(texts: readonly string[]): Promise<number[][]> {
     if (texts.length === 0) return [];
     if (texts.some((text) => text.trim() === "")) throw new Error("embedding text must be non-empty");
+    const vectors: number[][] = [];
+    for (let start = 0; start < texts.length; start += this.batchSize) {
+      if (start > 0 && this.batchDelayMs > 0) await new Promise((resolve) => setTimeout(resolve, this.batchDelayMs));
+      vectors.push(...await this.embedBatch(texts.slice(start, start + this.batchSize)));
+    }
+    validateEmbeddingBatch(vectors, texts.length);
+    return vectors;
+  }
+
+  private async embedBatch(texts: readonly string[]): Promise<number[][]> {
+    for (let attempt = 0; ; attempt += 1) {
+      try {
+        return await this.requestBatch(texts);
+      } catch (error) {
+        const retryable = error instanceof Error && /HTTP (?:429|503)$/.test(error.message);
+        if (!retryable || attempt >= this.maxRetries) throw error;
+        const delayMs = Math.min(60_000, this.retryBaseDelayMs * (2 ** attempt));
+        await new Promise((resolve) => setTimeout(resolve, delayMs));
+      }
+    }
+  }
+
+  private async requestBatch(texts: readonly string[]): Promise<number[][]> {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), this.timeoutMs);
     try {
@@ -70,18 +113,31 @@ export class OpenAICompatibleEmbeddingProvider implements EmbeddingProvider {
           "content-type": "application/json",
           ...(this.apiKey ? { authorization: `Bearer ${this.apiKey}` } : {}),
         },
-        body: JSON.stringify({ model: this.modelId, input: texts }),
+        body: JSON.stringify({ model: this.modelId, input: texts, ...(this.dimensions ? { dimensions: this.dimensions } : {}) }),
         signal: controller.signal,
       });
       if (!response.ok) throw new Error(`embedding endpoint returned HTTP ${response.status}`);
       const body = (await response.json()) as EmbeddingResponse;
       if (!Array.isArray(body.data)) throw new Error("embedding endpoint response has no data array");
-      const indices = body.data.map((entry) => entry.index);
-      if (indices.some((index) => !Number.isInteger(index) || (index ?? -1) < 0 || (index ?? -1) >= texts.length)) {
-        throw new Error("embedding endpoint returned an invalid index");
+      if (body.data.length !== texts.length) {
+        throw new Error(`embedding provider returned ${body.data.length} vectors for ${texts.length} texts`);
       }
-      if (new Set(indices).size !== texts.length) throw new Error("embedding endpoint returned duplicate or missing indices");
-      const ordered = [...body.data].sort((a, b) => (a.index ?? 0) - (b.index ?? 0));
+      const indices = body.data.map((entry) => entry.index);
+      const allIndicesOmitted = indices.every((index) => index === undefined);
+      const normalizedIndices = indices.map((index) => index ?? 0);
+      if (!allIndicesOmitted) {
+        if (normalizedIndices.some((index) => !Number.isInteger(index) || index < 0 || index >= texts.length)) {
+          throw new Error("embedding endpoint returned an invalid index");
+        }
+        if (new Set(normalizedIndices).size !== texts.length) throw new Error("embedding endpoint returned duplicate or missing indices");
+      }
+      // Gemini's protobuf-backed OpenAI endpoint omits the default numeric
+      // value for index 0. Other compatible endpoints may omit all indices
+      // while preserving order. Both complete shapes are deterministic;
+      // duplicates, gaps and out-of-range indices still fail closed.
+      const ordered = allIndicesOmitted
+        ? [...body.data]
+        : [...body.data].sort((a, b) => (a.index ?? 0) - (b.index ?? 0));
       const vectors = ordered.map((entry, index) => validateVector(entry.embedding, `embedding[${index}]`));
       validateEmbeddingBatch(vectors, texts.length);
       return vectors;

@@ -1017,6 +1017,7 @@ export async function buildGraduationDemoAgent(
         baseUrl: process.env.EMBEDDING_BASE_URL?.trim() || "https://generativelanguage.googleapis.com/v1beta/openai",
         apiKey: embeddingApiKey,
         modelId: process.env.EMBEDDING_MODEL?.trim() || "gemini-embedding-2",
+        dimensions: Number(process.env.EMBEDDING_DIMENSIONS ?? "3072"),
         timeoutMs,
       }),
       vectorStore: new QdrantVectorStore({

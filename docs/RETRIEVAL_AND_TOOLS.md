@@ -77,6 +77,13 @@ QDRANT_API_KEY=...
 QDRANT_COLLECTION=nutriguard_retrieval
 ```
 
+The embedding adapter supports bounded batches, deterministic retry/backoff for
+transient `429`/`503` responses, and an explicit output dimension. Qdrant
+ingestion creates the required keyword payload indexes (`namespace`, `kind`,
+approval fields, and Egyptian-verification status) before writing points, so
+strict-mode Qdrant Cloud collections can enforce the approved-only filters.
+Graduation data must use a collection separate from future production data.
+
 Paths inside `data/raw/` and `data/staging/` are rejected by the CLI.
 
 ## Step 10 — application tools
