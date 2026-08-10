@@ -426,7 +426,7 @@ class GraduationDemoAgent {
       const lighterContext = contextCandidate?.recipeId === recipe?.recipe_id ? contextCandidate : undefined;
       return recipe ? this.lighterModification(recipe, language, lighterContext) : this.recipeClarification("lighter_modification", language);
     }
-    if (deterministicIntent === "recipe_nutrition") return this.recipeNutrition(namedRecipes[0]!, language);
+    if (deterministicIntent === "recipe_nutrition") return this.recipeNutrition(namedRecipes[0]!, query, language);
     if (deterministicIntent === "ingredient_nutrition") return this.ingredientCalories(query, language);
     if (deterministicIntent === "general_guideline") return this.guidelineAnswer(query, language);
     if (deterministicIntent === "find_recipe") {
@@ -604,16 +604,49 @@ class GraduationDemoAgent {
     };
   }
 
-  private recipeNutrition(recipe: UnifiedDemoRecipe, language: "ar-EG" | "ar" | "en"): ExpandedAgentResponse {
+  private recipeNutrition(recipe: UnifiedDemoRecipe, query: string, language: "ar-EG" | "ar" | "en"): ExpandedAgentResponse {
     const calculation = calculateUnifiedDemoNutrition(this.dataset, recipe);
     const name = language === "en" ? recipe.name_en : recipe.name_ar;
     const value = (amount: number | null, unit: string) => amount === null ? (language === "en" ? "unknown" : "غير متوفر") : `${amount} ${unit}`;
     const line = (label: string, nutrition: typeof calculation.totals) => language === "en"
       ? `${label}: ${value(nutrition.kcal, "kcal")}; protein ${value(nutrition.protein, "g")}; carbs ${value(nutrition.carbs, "g")}; total fat ${value(nutrition.fat, "g")}; fiber ${value(nutrition.fiber, "g")}; sugar ${value(nutrition.sugar, "g")}; sodium ${value(nutrition.sodium, "mg")}.`
       : `${label}: ${value(nutrition.kcal, "سعر حراري")}؛ بروتين ${value(nutrition.protein, "جم")}؛ كربوهيدرات ${value(nutrition.carbs, "جم")}؛ دهون كلية ${value(nutrition.fat, "جم")}؛ ألياف ${value(nutrition.fiber, "جم")}؛ سكر ${value(nutrition.sugar, "جم")}؛ صوديوم ${value(nutrition.sodium, "مجم")}.`;
-    const message = language === "en"
-      ? `${name}\n\n${line("Full recipe", calculation.totals)}\n${line(`Per serving (${recipe.servings} servings)`, calculation.perServing)}\n${line("Per 100 g", calculation.per100g)}\n\nSaturated fat is not available in the current dataset. Values are graduation-demo estimates, not medical advice.`
-      : `${name}\n\n${line("الوصفة كاملة", calculation.totals)}\n${line(`القيم للحصة الواحدة (${recipe.servings} حصص)`, calculation.perServing)}\n${line("لكل 100 جرام", calculation.per100g)}\n\nالدهون المشبعة غير متوفرة في البيانات الحالية. القيم تقديرية لعرض مشروع التخرج وليست نصيحة طبية.`;
+    const wantsFull = /(?:القيم(?:ة)?\s+الغذائية\s+الكاملة|كل\s+القيم|ماكروز|تفاصيل\s+غذائية|full\s+(?:nutrition|nutritional)|all\s+nutrients|macros?)/iu.test(query);
+    const asksSaturatedFat = /(?:دهون\s+مشبعة|الدهون\s+المشبعة|saturated\s+fat)/iu.test(query);
+    const requested = [
+      /(?:سعر|كالوري|calorie|kcal)/iu.test(query) ? "kcal" : null,
+      /(?:بروتين|protein)/iu.test(query) ? "protein" : null,
+      /(?:كربوهيدرات|كارب|carb)/iu.test(query) ? "carbs" : null,
+      /(?:دهون|fat)/iu.test(query) && !asksSaturatedFat ? "fat" : null,
+      /(?:ألياف|الياف|fiber)/iu.test(query) ? "fiber" : null,
+      /(?:سكر|sugar)/iu.test(query) ? "sugar" : null,
+      /(?:صوديوم|ملح|sodium|salt)/iu.test(query) ? "sodium" : null,
+    ].filter((item): item is "kcal" | "protein" | "carbs" | "fat" | "fiber" | "sugar" | "sodium" => item !== null);
+    const explicitPer100g = /(?:100\s*(?:جرام|جم)|لكل\s*100|per\s*100\s*g)/iu.test(normalizeNumberDigits(query));
+    const explicitFullRecipe = /(?:الوصفة\s+كاملة|كامل\s+الوصفة|full\s+recipe|whole\s+recipe)/iu.test(query);
+    const basis = explicitPer100g ? "per100g" : explicitFullRecipe ? "totals" : "perServing";
+    const basisLabel = language === "en" ? basis === "per100g" ? "per 100 g" : basis === "totals" ? "in the full recipe" : `per serving (${recipe.servings} servings recorded)`
+      : basis === "per100g" ? "لكل 100 جرام" : basis === "totals" ? "في الوصفة كاملة" : `للحصة الواحدة (${recipe.servings} حصص مسجلة)`;
+    const labels = language === "en"
+      ? { kcal: ["calories", "kcal"], protein: ["protein", "g"], carbs: ["carbohydrates", "g"], fat: ["total fat", "g"], fiber: ["fiber", "g"], sugar: ["sugar", "g"], sodium: ["sodium", "mg"] } as const
+      : { kcal: ["السعرات", "سعر حراري"], protein: ["البروتين", "جم"], carbs: ["الكربوهيدرات", "جم"], fat: ["الدهون الكلية", "جم"], fiber: ["الألياف", "جم"], sugar: ["السكر", "جم"], sodium: ["الصوديوم", "مجم"] } as const;
+    let message: string;
+    if (asksSaturatedFat) {
+      message = language === "en" ? `${name}: saturated fat is not available in the current dataset; missing means unknown, not zero.` : `${name}: الدهون المشبعة غير متوفرة في البيانات الحالية؛ القيمة الناقصة معناها غير معروفة، مش صفر.`;
+    } else if (!wantsFull && requested.length === 1) {
+      const nutrient = requested[0]!;
+      const [label, unit] = labels[nutrient];
+      const amount = calculation[basis][nutrient];
+      message = language === "en" ? `${name}: ${label} ${basisLabel} are ${value(amount, unit)}.` : `${name}: ${label} ${basisLabel} هي ${value(amount, unit)}.`;
+      if (nutrient === "kcal" && basis === "perServing" && calculation.per100g.kcal !== null) {
+        message += language === "en" ? ` For reference, it is ${calculation.per100g.kcal} kcal per 100 g.` : ` وللمقارنة: ${calculation.per100g.kcal} سعر حراري لكل 100 جرام.`;
+      }
+      message += language === "en" ? " Values are graduation-demo estimates." : " القيم تقديرية لعرض مشروع التخرج.";
+    } else {
+      message = language === "en"
+        ? `${name}\n\n${line("Full recipe", calculation.totals)}\n${line(`Per serving (${recipe.servings} servings)`, calculation.perServing)}\n${line("Per 100 g", calculation.per100g)}\n\nSaturated fat is not available in the current dataset. Values are graduation-demo estimates, not medical advice.`
+        : `${name}\n\n${line("الوصفة كاملة", calculation.totals)}\n${line(`القيم للحصة الواحدة (${recipe.servings} حصص)`, calculation.perServing)}\n${line("لكل 100 جرام", calculation.per100g)}\n\nالدهون المشبعة غير متوفرة في البيانات الحالية. القيم تقديرية لعرض مشروع التخرج وليست نصيحة طبية.`;
+    }
     return {
       status: "ok", primaryIntent: "recipe_nutrition", language, safetyFlags: [], integrityFlags: [], message,
       data: { intent: "recipe_nutrition", demoOnly: true, reviewStatus: "needs_review", recipeId: recipe.recipe_id, recipeName: name, servings: recipe.servings, finalWeightG: calculation.finalWeightG, fullRecipe: calculation.totals, perServing: calculation.perServing, per100g: calculation.per100g, caloriesPerServingKcal: calculation.perServing.kcal, caloriesPer100gKcal: calculation.per100g.kcal, totalRecipeCaloriesKcal: calculation.totals.kcal, saturatedFat: null },

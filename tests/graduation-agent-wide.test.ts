@@ -262,3 +262,22 @@ test("wide graduation behavior: repeated lighter requests preserve recipe contex
   assert.equal(limit.data?.limitReached, true);
   assert.match(limit.message, /أقل كمية/);
 });
+
+test("wide graduation behavior: recipe nutrition answers only the nutrient and basis requested", async () => {
+  const calories = await agent.invoke({ message: "كم سعر حراري للكشري", language: "ar-EG" });
+  assert.equal(calories.status, "ok");
+  assert.match(calories.message, /543\.7 سعر حراري/);
+  assert.match(calories.message, /219\.2 سعر حراري لكل 100 جرام/);
+  assert.doesNotMatch(calories.message, /بروتين|صوديوم|الوصفة كاملة/);
+
+  const sodium = await agent.invoke({ message: "الصوديوم في الكشري لكل 100 جرام", language: "ar-EG" });
+  assert.equal(sodium.status, "ok");
+  assert.match(sodium.message, /99\.6 مجم/);
+  assert.doesNotMatch(sodium.message, /بروتين|كربوهيدرات|سعر حراري/);
+
+  const full = await agent.invoke({ message: "القيمة الغذائية الكاملة للكشري", language: "ar-EG" });
+  assert.equal(full.status, "ok");
+  assert.match(full.message, /الوصفة كاملة/);
+  assert.match(full.message, /بروتين/);
+  assert.match(full.message, /صوديوم/);
+});

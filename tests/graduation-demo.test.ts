@@ -134,11 +134,9 @@ test("graduation router returns one matched answer for the six supported informa
   assert.equal(nutrition.status, "ok");
   assert.equal(nutrition.data?.intent, "recipe_nutrition");
   assert.equal(nutrition.data?.recipeId, "EGY-RCP-001");
-  assert.match(nutrition.message, /الوصفة كاملة/);
   assert.match(nutrition.message, /للحصة الواحدة/);
   assert.match(nutrition.message, /لكل 100 جرام/);
-  assert.match(nutrition.message, /بروتين/);
-  assert.match(nutrition.message, /صوديوم/);
+  assert.doesNotMatch(nutrition.message, /بروتين|صوديوم|الوصفة كاملة/);
 
   const ingredient = await agent.invoke({ message: "احسب سعرات 150 جرام رز + 100 جرام صدور فراخ", language: "ar-EG" });
   assert.equal(ingredient.status, "ok");
