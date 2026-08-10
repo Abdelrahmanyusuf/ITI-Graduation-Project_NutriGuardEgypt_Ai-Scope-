@@ -90,6 +90,8 @@ export interface CalorieTargetConversationContext {
   category: string | null;
   relation: "closest" | "below" | "above";
   lastRecommendationCaloriesKcal: number;
+  excludedIngredientKeys?: string[];
+  recipeId?: string;
 }
 
 export interface LighterModificationConversationContext {
@@ -101,7 +103,21 @@ export interface LighterModificationConversationContext {
   proposedGrams: number;
 }
 
-export type GraduationConversationContext = CalorieTargetConversationContext | LighterModificationConversationContext;
+export interface RecipeReferenceConversationContext {
+  schemaVersion: "1.0";
+  lastIntent: "recipe_reference";
+  recipeId: string;
+}
+
+export interface MealPlanConversationContext {
+  schemaVersion: "1.0";
+  lastIntent: "meal_plan";
+  calorieTargetKcal: number;
+  excludedIngredientKeys: string[];
+  recipeIds: string[];
+}
+
+export type GraduationConversationContext = CalorieTargetConversationContext | LighterModificationConversationContext | RecipeReferenceConversationContext | MealPlanConversationContext;
 
 function answerLanguage(message: string, requested: "ar-EG" | "ar" | "en" | undefined): "ar-EG" | "ar" | "en" {
   if (/\p{Script=Arabic}/u.test(message)) return requested === "ar" ? "ar" : "ar-EG";
@@ -117,6 +133,28 @@ function mealCategory(message: string): string | null {
   if (/(?:soup|شوربة)/iu.test(message)) return "soup";
   if (/(?:lunch|dinner|غدا|غداء|عشا|عشاء)/iu.test(message)) return "main_dish";
   return null;
+}
+
+const DAIRY_INGREDIENT_KEYS = new Set(["butter_raw", "cheese_feta", "cream_heavy", "ghee", "ice_cream_vanilla", "milk_whole", "yogurt_plain"]);
+
+function excludedIngredientKeys(message: string): string[] {
+  const normalized = normalizedLookupText(message);
+  const excluded = new Set<string>();
+  if (/(?:بدون|من غير|مفيهاش|مافيهاش|حساسيه من|حساسيه|استبعد).{0,18}(?:البان|بان|لبن|حليب|منتجات البان|منتجات بان)|(?:dairy[ -]?free|no dairy|milk allergy)/iu.test(normalized)) {
+    for (const key of DAIRY_INGREDIENT_KEYS) excluded.add(key);
+  }
+  const marker = normalized.match(/(?:بدون|من غير|مفيهاش|مافيهاش|استبعد|without|\bno\b)/iu);
+  const exclusionText = marker ? normalized.slice((marker.index ?? 0) + marker[0].length) : "";
+  if (exclusionText) {
+    for (const entry of INGREDIENT_ALIASES) {
+      if (entry.aliases.some((alias) => exclusionText.includes(normalizedLookupText(alias)))) excluded.add(entry.key);
+    }
+  }
+  return [...excluded].sort();
+}
+
+function recipeContainsExcludedIngredient(recipe: UnifiedDemoRecipe, excluded: ReadonlySet<string>): boolean {
+  return recipe.ingredients.some((item) => excluded.has(item.ingredient));
 }
 
 function normalizeNumberDigits(value: string): string {
@@ -204,6 +242,9 @@ function normalizedLookupText(value: string): string {
     .replace(/ى/gu, "ي")
     .replace(/ة/gu, "ه")
     .replace(/ـ/gu, "")
+    // Collapse only repeated Arabic long-vowel letters. Collapsing every repeated
+    // letter would corrupt meaningful prefixes such as "للكشري".
+    .replace(/([اوي])\1+/gu, "$1")
     .replace(/[^\p{L}\p{N}]+/gu, " ")
     .trim()
     .split(/\s+/u)
@@ -331,19 +372,24 @@ function explicitlyNamedRecipes(dataset: UnifiedEgyptianDemoDataset, query: stri
 
 function classifyGraduationIntent(query: string, namedRecipes: readonly UnifiedDemoRecipe[]): GraduationIntent {
   const text = normalizeNumberDigits(query);
-  if (/(?:طوارئ|نزيف|إغماء|أغمي|اغمي|مش\s*بيتنفس|لا\s*يتنفس|اختناق|جرعة زائدة|suicid|emergency|overdose|diagnos|شخّص|شخص(?:\s*لي|لي)|تشخيص|دواء|علاج|مريض|حامل|سكري|ضغط|عندي\s*حساسي|allergic|اعمل\s*لي\s*نظام|نظام\s*غذائي\s*ليا|وزني.{0,20}طولي|عايز\s*اخس|رجيم\s*قاسي)/iu.test(text)) return "medical_safety";
+  if (/(?:طوارئ|نزيف|إغماء|أغمي|اغمي|مش\s*بيتنفس|لا\s*يتنفس|اختناق|جرعة زائدة|suicid|emergency|overdose|diagnos|شخّص|شخص(?:\s*لي|لي)|تشخيص|دواء|علاج|مريض|حامل|سكري|ضغط|allergic|وزني.{0,20}طولي|عايز\s*اخس|اعمل\s+لي\s+نظام|نظام\s+غذائي\s+ليا|رجيم\s*قاسي)/iu.test(text)) return "medical_safety";
   const explicitComparison = /(?:قارن|مقارنة|compare|versus|\bvs\b)/iu.test(text);
   const comparativeQuestion = /(?:ولا|أيهما|ايهما|مين\s+(?:أقل|اقل|اكتر|أكثر)|أقل من|اكتر من|أكثر من)/iu.test(text)
     && /(?:سعر|بروتين|كربوهيدرات|دهون|ألياف|الياف|سكر|صوديوم|ملح|calorie|protein|carb|fat|fiber|sugar|sodium)/iu.test(text);
   if (explicitComparison || comparativeQuestion) return "compare_recipes";
-  const explicitModification = /(?:نسخة\s+(?:أخف|اخف|دايت)|(?:أ|ا)?قلل|خفض|تقليل|خفف|تعديل|بديل\s+(?:أخف|اخف)|lighter\s+(?:version|alternative)|reduce.{0,20}(?:calorie|fat|oil))/iu.test(text);
+  const explicitModification = /(?:بدون|من\s*غير|نسخة\s+(?:أخف|اخف|دايت)|(?:أ|ا)?قلل|خفض|تقليل|خفف|تعديل|بديل\s+(?:أخف|اخف)|lighter\s+(?:version|alternative)|reduce.{0,20}(?:calorie|fat|oil))/iu.test(text);
+  if (namedRecipes.length > 0 && /(?:هل|is).{0,30}(?:صحي|صحيه|healthy)|(?:صحي|صحيه).{0,20}(?:ولا|ام)/iu.test(text)) return "general_guideline";
+  if (namedRecipes.length > 0 && /(?:طريقة\s+عمل|مكونات|عايز\s+وصفه|اريد\s+وصفه|how.{0,20}\bmake|ingredients)/iu.test(text)) return "find_recipe";
+  const namedNutritionRequest = /(?:سعر|كالوري|طاقة|بروتين|كربوهيدرات|كارب|ماكروز|دهون|ألياف|الياف|سكر|صوديوم|ملح|قيمه\s+غذائيه|nutrition|macro|calorie|kcal|protein|carb|fat|fiber|sugar|sodium)/iu.test(text);
+  const startsWithNutritionRequest = /^(?:السعرات|سعرات|القيمه\s+الغذائيه|قيمه\s+غذائيه|البروتين|الصوديوم|الدهون|nutrition|calories?)/iu.test(text);
+  if (namedRecipes.length > 0 && namedNutritionRequest && (!explicitModification || startsWithNutritionRequest)) return "recipe_nutrition";
   const namedDietRequest = namedRecipes.length > 0 && /(?:دايت|خفيف|صحي|أخف|اخف|قليل(?:ة)?\s+(?:السعرات|الدهون)|lower[ -]?calorie|healthier)/iu.test(text);
   if (explicitModification || namedDietRequest) return "lighter_modification";
   if (/(?:مش\s*معايا|مش\s*لاقي|معايا.{0,40}(?:ينفع|مش)|بديل|استبدل|استبدال|ينفع.{0,24}(?:بدل|مكان)|أستخدم.{0,24}بدل|substitute|replacement|swap)/iu.test(text)) return "unsupported";
   if (/(?:أصل(?:ه|ها)?|أصله|اصلها|جات\s*لمصر|من\s*أيام|من\s*قد\s*إيه|بقاله|فرعوني|مستوردة|الخديوي|قبل\s*الإسلام|مين\s+(?:اخترع|عمل)|ليه\s+(?:اسمها|اتسمت)|فرق(?:ه|ها)?\s+عن|histor(?:y|ical)|origin of|who invented)/iu.test(text)) return "unsupported";
   if (/(?:أنا|انا|وأنا|وانا|هل|ممكن|ينفع|وصفات|أكلات|اكلات|for\s+(?:a\s+)?|i\s+am|i'm|suitable).{0,24}(?:نباتي|فيجن|كيتو|جلوتين|صيامي|vegetarian|vegan|keto|gluten[ -]?free)|(?:أنا\s*صايم|صيام)/iu.test(text)) return "unsupported";
   if (/(?:إزاي\s*أخلي|ازاي\s*اخلي|عشان.{0,30}(?:ما|مي)|بيستوي.{0,20}قد\s*إيه|درجة\s*حرارة|من\s*غير\s*ما|بيتخمر.{0,20}قد\s*إيه|بتتقلب\s*إزاي)/iu.test(text)) return "unsupported";
-  if (/(?:هرم غذائي|الهرم الغذائي|منظمة الصحة|إرشاد|ارشاد|توصيات|الحد اليومي|guideline|food pyramid|\bWHO\b)/iu.test(text)) return "general_guideline";
+  if (/(?:هرم غذائي|الهرم الغذائي|منظمة الصحة|إرشاد|ارشاد|توصيات|الحد اليومي|دهون مشبعه|مضر|مضره|guideline|food pyramid|\bWHO\b)/iu.test(text)) return "general_guideline";
   const nutrientTerms = /(?:سعر|كالوري|طاقة|بروتين|كربوهيدرات|كارب|ماكروز|دهون|ألياف|الياف|سكر|صوديوم|ملح|غذائي|nutrition|macro|calorie|kcal|protein|carb|fat|fiber|sugar|sodium)/iu;
   if (namedRecipes.length > 0 && nutrientTerms.test(text)) return "recipe_nutrition";
   if (namedRecipes.length === 0 && nutrientTerms.test(text) && /(?:رشح|اقترح|وجبة|أكلة|اكلة|ناقصني|عالي|عالية|غني|غنية|قليل|قليلة|high|rich|low|recommend|suggest)/iu.test(text)) return "find_recipe";
@@ -404,15 +450,33 @@ class GraduationDemoAgent {
     const query = input.message.trim();
     const language = answerLanguage(query, input.language);
     const namedRecipes = explicitlyNamedRecipes(this.dataset, query);
+    const referencedId = input.context?.lastIntent === "recipe_reference" ? input.context.recipeId
+      : input.context?.lastIntent === "lighter_modification" ? input.context.recipeId
+        : input.context?.lastIntent === "meal_calorie_target" ? input.context.recipeId ?? null : null;
+    const referencedRecipe = referencedId ? this.dataset.recipes.find((recipe) => recipe.recipe_id === referencedId) : undefined;
+    const usesImplicitReference = /(?:هي|دي|ده|ها\b|قارنها|خففها|قللها|زودها|الوصفه اللي فاتت|الاكله اللي فاتت|it|that recipe|same recipe)/iu.test(query);
+    if (referencedRecipe && usesImplicitReference && !namedRecipes.some((recipe) => recipe.recipe_id === referencedRecipe.recipe_id)) namedRecipes.unshift(referencedRecipe);
     const contextualCalorieFollowup = input.context?.lastIntent === "meal_calorie_target"
       && /^(?:لا\s*)?(?:عاوز|عايز|محتاج)?\s*(?:وجبة\s*)?(?:أقل|اقل|أكتر|اكتر|أكثر|more|less|lower|higher)/iu.test(query);
     const contextualLighterFollowup = input.context?.lastIntent === "lighter_modification"
       && /(?:أقلل|اقلل|قلل|أقل|اقل|أكتر|اكتر|أكثر|تاني|تانب|more|again|further|lower)/iu.test(query);
-    const deterministicIntent = contextualCalorieFollowup ? "find_recipe" : contextualLighterFollowup ? "lighter_modification" : classifyGraduationIntent(query, namedRecipes);
+    const contextualMealPlanFollowup = input.context?.lastIntent === "meal_plan"
+      && /(?:قلل|خفض|زود|ارفع|غير|بدل|اقل|اكتر|reduce|increase|change)/iu.test(query);
+    const deterministicIntent = contextualCalorieFollowup || contextualMealPlanFollowup ? "find_recipe" : contextualLighterFollowup ? "lighter_modification" : classifyGraduationIntent(query, namedRecipes);
+
+    if (/(?:احتياجي اليومي|احتياج(?:ي)?.{0,20}سعر|daily calorie needs|\bTDEE\b|\bBMR\b)/iu.test(query)) {
+      return this.personalCalorieRequirementUnsupported(language);
+    }
 
     // The graduation UI exposes one answer, not raw retrieval candidates. Safety and
     // integrity always keep the authority of the production agent above this router.
     if (deterministicIntent === "medical_safety") return this.medicalSafetyFallback(query, language, result);
+    const directMealPlan = this.recommendMealPlan(query, language, input.context);
+    if (directMealPlan) return directMealPlan;
+    if (mealCategory(query) || input.context?.lastIntent === "meal_calorie_target") {
+      const directCalorieTarget = this.recommendToCalorieTarget(query, language, input.context);
+      if (directCalorieTarget) return directCalorieTarget;
+    }
     if (deterministicIntent === "compare_recipes") {
       if (namedRecipes.length < 2) return this.comparisonClarification(namedRecipes, language);
       return this.compareRecipes(namedRecipes[0]!, namedRecipes[1]!, query, language);
@@ -424,11 +488,14 @@ class GraduationDemoAgent {
         : undefined;
       const recipe = namedRecipes[0] ?? explicitlyNamedRecipe(this.dataset, query) ?? contextualRecipe;
       const lighterContext = contextCandidate?.recipeId === recipe?.recipe_id ? contextCandidate : undefined;
-      return recipe ? this.lighterModification(recipe, language, lighterContext) : this.recipeClarification("lighter_modification", language);
+      return recipe ? this.lighterModification(recipe, query, language, lighterContext) : this.recipeClarification("lighter_modification", language);
     }
     if (deterministicIntent === "recipe_nutrition") return this.recipeNutrition(namedRecipes[0]!, query, language);
     if (deterministicIntent === "ingredient_nutrition") return this.ingredientCalories(query, language);
-    if (deterministicIntent === "general_guideline") return this.guidelineAnswer(query, language);
+    if (deterministicIntent === "general_guideline") {
+      if (namedRecipes[0] && /(?:صحي|صحيه|healthy)/iu.test(query)) return this.recipeHealthSummary(namedRecipes[0], language);
+      return this.guidelineAnswer(query, language);
+    }
     if (deterministicIntent === "find_recipe") {
       const recipe = namedRecipes[0];
       if (recipe) return this.recipeDetails(recipe, language, [{ documentId: `DEMO-${recipe.recipe_id}`, title: language === "en" ? recipe.name_en : recipe.name_ar, text: recipe.method_summary, score: 1 }], [this.recipeProvenance(recipe, language)]);
@@ -476,6 +543,67 @@ class GraduationDemoAgent {
     };
   }
 
+  private recommendMealPlan(query: string, language: "ar-EG" | "ar" | "en", context?: GraduationConversationContext): ExpandedAgentResponse | null {
+    const normalized = normalizeNumberDigits(query);
+    const previous = context?.lastIntent === "meal_plan" ? context : undefined;
+    const isPlanRequest = /(?:وجبات (?:اليوم|يوم|طول اليوم)|طول اليوم|خطة وجبات|نظام يوم|meal plan|meals for the day)/iu.test(normalized);
+    const isPlanFollowup = Boolean(previous && /(?:قلل|خفض|زود|ارفع|غير|بدل|اقل|اكتر|reduce|increase|change)/iu.test(normalized));
+    if (!isPlanRequest && !isPlanFollowup) return null;
+    const explicit = normalized.match(/(\d+(?:\.\d+)?)\s*(?:سعر(?:ة|ات)?(?:\s*حراري(?:ة|ه)?)?|كالوري|kcal|calories?)/iu);
+    const amount = explicit ? Number(explicit[1]) : null;
+    let target = isPlanRequest ? amount : previous?.calorieTargetKcal;
+    if (isPlanFollowup && previous) {
+      const delta = amount ?? 200;
+      target = /(?:زود|ارفع|اكتر|increase)/iu.test(normalized) ? previous.calorieTargetKcal + delta : previous.calorieTargetKcal - delta;
+    }
+    if (target === null || target === undefined || !Number.isFinite(target) || target < 600 || target > 5_000) {
+      return {
+        status: "clarification", primaryIntent: "general_guidance", language, safetyFlags: [], integrityFlags: [],
+        message: language === "en" ? "Give me a daily calorie target between 600 and 5000 kcal so I can build a deterministic three-meal example." : "اكتب هدف سعرات يومي بين 600 و5000 سعر حراري علشان أجهز مثالًا محسوبًا من 3 وجبات.",
+        data: { intent: "meal_plan", requiredInput: "daily_calorie_target" }, evidenceDocumentIds: [], provenance: [], toolTrace: [], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
+      };
+    }
+    const exclusions = new Set([...previous?.excludedIngredientKeys ?? [], ...excludedIngredientKeys(query)]);
+    const used = new Set<string>();
+    const choose = (categories: ReadonlySet<string>, desired: number) => this.dataset.recipes
+      .filter((recipe) => categories.has(recipe.category) && !used.has(recipe.recipe_id) && !recipeContainsExcludedIngredient(recipe, exclusions))
+      .map((recipe) => ({ recipe, nutrition: calculateUnifiedDemoNutrition(this.dataset, recipe).perServing }))
+      .filter((entry): entry is typeof entry & { nutrition: typeof entry.nutrition & { kcal: number } } => entry.nutrition.kcal !== null)
+      .sort((a, b) => Math.abs(a.nutrition.kcal - desired) - Math.abs(b.nutrition.kcal - desired) || a.recipe.recipe_id.localeCompare(b.recipe.recipe_id))[0];
+    const requestedSlots = [
+      { key: "breakfast", share: 0.25, categories: new Set(["breakfast"]) },
+      { key: "lunch", share: 0.4, categories: new Set(["main_dish"]) },
+      { key: "dinner", share: 0.35, categories: new Set(["main_dish", "soup"]) },
+    ] as const;
+    const meals = requestedSlots.flatMap((slot) => {
+      const selected = choose(slot.categories, target * slot.share);
+      if (!selected) return [];
+      used.add(selected.recipe.recipe_id);
+      return [{ slot: slot.key, recipe: selected.recipe, nutrition: selected.nutrition }];
+    });
+    if (meals.length !== requestedSlots.length) {
+      return {
+        status: "no_result", primaryIntent: "general_guidance", language, safetyFlags: [], integrityFlags: [],
+        message: language === "en" ? "The current recorded recipes cannot satisfy all three meal slots with those exclusions. I will not silently ignore a rule." : "الوصفات المسجلة حاليًا لا تكفي لتجهيز 3 وجبات مع كل الاستبعادات دي. مش هاتجاهل أي شرط من غير ما أوضح.",
+        data: { intent: "meal_plan", reasonCode: "rules_cannot_be_satisfied", targetCaloriesKcal: target, excludedIngredientKeys: [...exclusions], rulesUnmet: ["three_distinct_meals"] }, evidenceDocumentIds: [], provenance: [], toolTrace: [{ tool: "calculate_nutrition", ok: false, code: "rules_cannot_be_satisfied" }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
+      };
+    }
+    const total = Math.round(meals.reduce((sum, meal) => sum + meal.nutrition.kcal, 0) * 10) / 10;
+    const difference = Math.round((total - target) * 10) / 10;
+    const labels = language === "en" ? { breakfast: "Breakfast", lunch: "Lunch", dinner: "Dinner" } : { breakfast: "الإفطار", lunch: "الغداء", dinner: "العشاء" };
+    const lines = meals.map((meal) => `• ${labels[meal.slot]}: ${language === "en" ? meal.recipe.name_en : meal.recipe.name_ar} — ${meal.nutrition.kcal} ${language === "en" ? "kcal" : "سعر حراري"}`);
+    const exclusionNote = exclusions.size === 0 ? "" : language === "en"
+      ? "\n\nI excluded recipes whose recorded ingredients match your exclusions. This is not an allergy or cross-contamination guarantee."
+      : "\n\nاستبعدت الوصفات التي تحتوي مكوناتها المسجلة على العناصر المطلوبة. ده مش ضمان خلو من مسببات الحساسية أو التلوث التبادلي.";
+    const conversationContext: MealPlanConversationContext = { schemaVersion: "1.0", lastIntent: "meal_plan", calorieTargetKcal: target, excludedIngredientKeys: [...exclusions], recipeIds: meals.map((meal) => meal.recipe.recipe_id) };
+    return {
+      status: "ok", primaryIntent: "general_guidance", language, safetyFlags: [], integrityFlags: [],
+      message: language === "en" ? `Three-meal example for a ${target} kcal daily target:\n\n${lines.join("\n")}\n\nCalculated total: ${total} kcal (${difference >= 0 ? "+" : ""}${difference} from target).${exclusionNote}\n\nThis is a general dataset-based example, not a personal prescription.` : `مثال 3 وجبات لهدف يومي ${target} سعر حراري:\n\n${lines.join("\n")}\n\nالإجمالي المحسوب: ${total} سعر حراري (${difference >= 0 ? "+" : ""}${difference} عن الهدف).${exclusionNote}\n\nده مثال عام مبني على بيانات المشروع، مش وصفة علاجية أو نظام شخصي.`,
+      data: { intent: "meal_plan", recommendationType: "daily_calorie_plan", targetCaloriesKcal: target, totalCaloriesKcal: total, differenceCaloriesKcal: difference, excludedIngredientKeys: [...exclusions], meals: meals.map((meal) => ({ slot: meal.slot, recipeId: meal.recipe.recipe_id, name: language === "en" ? meal.recipe.name_en : meal.recipe.name_ar, perServing: meal.nutrition })), conversationContext },
+      evidenceDocumentIds: meals.map((meal) => `DEMO-${meal.recipe.recipe_id}`), provenance: meals.map((meal) => this.recipeProvenance(meal.recipe, language)), toolTrace: [{ tool: "calculate_nutrition", ok: true, code: null }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
+    };
+  }
+
   private recommendToCalorieTarget(query: string, language: "ar-EG" | "ar" | "en", context?: GraduationConversationContext): ExpandedAgentResponse | null {
     const normalized = normalizeNumberDigits(query);
     const calorieContext = context?.lastIntent === "meal_calorie_target" ? context : undefined;
@@ -498,9 +626,11 @@ class GraduationDemoAgent {
           ? Math.min(5_000, target + 50)
           : target;
     const category = mealCategory(query) ?? calorieContext?.category ?? null;
+    const exclusions = new Set([...calorieContext?.excludedIngredientKeys ?? [], ...excludedIngredientKeys(query)]);
     const mealCategories = new Set(["main_dish", "breakfast", "soup"]);
     const candidates = this.dataset.recipes
       .filter((recipe) => category ? recipe.category === category : mealCategories.has(recipe.category))
+      .filter((recipe) => !recipeContainsExcludedIngredient(recipe, exclusions))
       .map((recipe) => ({ recipe, nutrition: calculateUnifiedDemoNutrition(this.dataset, recipe).perServing }))
       .filter((entry): entry is typeof entry & { nutrition: typeof entry.nutrition & { kcal: number } } => entry.nutrition.kcal !== null)
       .filter((entry) => relation === "below" ? entry.nutrition.kcal < target : relation === "above" ? entry.nutrition.kcal > target : true)
@@ -522,11 +652,14 @@ class GraduationDemoAgent {
     const difference = Math.round(Math.abs(calories - target) * 10) / 10;
     const relationText = language === "en" ? relation === "below" ? `the closest meal below ${target}` : relation === "above" ? `the closest meal above ${target}` : `the closest meal to ${target}`
       : relation === "below" ? `أقرب وجبة أقل من ${target}` : relation === "above" ? `أقرب وجبة أعلى من ${target}` : `أقرب وجبة لهدف ${target}`;
-    const conversationContext: GraduationConversationContext = { schemaVersion: "1.0", lastIntent: "meal_calorie_target", calorieTargetKcal: target, category, relation, lastRecommendationCaloriesKcal: calories };
+    const conversationContext: GraduationConversationContext = { schemaVersion: "1.0", lastIntent: "meal_calorie_target", calorieTargetKcal: target, category, relation, lastRecommendationCaloriesKcal: calories, excludedIngredientKeys: [...exclusions], recipeId: selected.recipe.recipe_id };
+    const exclusionNote = exclusions.size === 0 ? "" : language === "en"
+      ? " The recorded ingredients matching your exclusions were filtered out; this is not an allergy or cross-contamination guarantee."
+      : " تم استبعاد الوصفات التي تحتوي مكوناتها المسجلة على العناصر المطلوبة، لكن ده مش ضمان حساسية أو خلو من التلوث التبادلي.";
     return {
       status: "ok", primaryIntent: "general_guidance", language, safetyFlags: [], integrityFlags: [],
-      message: language === "en" ? `${relationText} kcal per serving is ${name}: about ${calories} kcal, ${selected.nutrition.protein ?? "unknown"} g protein, ${selected.nutrition.carbs ?? "unknown"} g carbohydrates, and ${selected.nutrition.fat ?? "unknown"} g fat. Difference from the target: ${difference} kcal. Ask for the recipe name to see ingredients and preparation.` : `${relationText} سعر حراري للحصة هي ${name}: حوالي ${calories} سعر حراري، ${selected.nutrition.protein ?? "غير متوفر"} جم بروتين، ${selected.nutrition.carbs ?? "غير متوفر"} جم كربوهيدرات، و${selected.nutrition.fat ?? "غير متوفر"} جم دهون. الفرق عن الهدف ${difference} سعر حراري. اطلب اسم الوصفة لعرض المكونات والطريقة.`,
-      data: { intent: "find_recipe", recommendationType: "calorie_target", targetCaloriesKcal: target, relation, differenceCaloriesKcal: difference, recipeId: selected.recipe.recipe_id, recipeName: name, caloriesPerServingKcal: calories, perServing: selected.nutrition, conversationContext },
+      message: language === "en" ? `${relationText} kcal per serving is ${name}: about ${calories} kcal, ${selected.nutrition.protein ?? "unknown"} g protein, ${selected.nutrition.carbs ?? "unknown"} g carbohydrates, and ${selected.nutrition.fat ?? "unknown"} g fat. Difference from the target: ${difference} kcal. Ask for the recipe name to see ingredients and preparation.${exclusionNote}` : `${relationText} سعر حراري للحصة هي ${name}: حوالي ${calories} سعر حراري، ${selected.nutrition.protein ?? "غير متوفر"} جم بروتين، ${selected.nutrition.carbs ?? "غير متوفر"} جم كربوهيدرات، و${selected.nutrition.fat ?? "غير متوفر"} جم دهون. الفرق عن الهدف ${difference} سعر حراري. اطلب اسم الوصفة لعرض المكونات والطريقة.${exclusionNote}`,
+      data: { intent: "find_recipe", recommendationType: "calorie_target", targetCaloriesKcal: target, relation, differenceCaloriesKcal: difference, excludedIngredientKeys: [...exclusions], recipeId: selected.recipe.recipe_id, recipeName: name, caloriesPerServingKcal: calories, perServing: selected.nutrition, conversationContext },
       evidenceDocumentIds: [`DEMO-${selected.recipe.recipe_id}`], provenance: [this.recipeProvenance(selected.recipe, language)], toolTrace: [{ tool: "calculate_nutrition", ok: true, code: null }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
     };
   }
@@ -589,7 +722,7 @@ class GraduationDemoAgent {
     return {
       status: "no_result", primaryIntent: "general_guidance", language, safetyFlags: [], integrityFlags: [],
       message: language === "en" ? "I could not find a sufficiently matching Egyptian recipe in the current project dataset. Write the exact Egyptian dish name; I will not substitute an unrelated recipe." : "ملقتش وصفة مصرية مطابقة بدرجة كافية في بيانات المشروع الحالية. اكتب اسم الطبق المصري بدقة؛ مش هبدّل طلبك بوصفة غير مرتبطة.",
-      data: { intent: "find_recipe", reason: "no_sufficiently_matching_recipe" }, evidenceDocumentIds: [], provenance: [], toolTrace: [{ tool: "search_recipes", ok: true, code: "no_result" }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
+      data: { intent: "find_recipe", reason: "no_sufficiently_matching_recipe", reasonCode: "recipe_not_in_verified_dataset" }, evidenceDocumentIds: [], provenance: [], toolTrace: [{ tool: "search_recipes", ok: true, code: "no_result" }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
     };
   }
 
@@ -649,7 +782,7 @@ class GraduationDemoAgent {
     }
     return {
       status: "ok", primaryIntent: "recipe_nutrition", language, safetyFlags: [], integrityFlags: [], message,
-      data: { intent: "recipe_nutrition", demoOnly: true, reviewStatus: "needs_review", recipeId: recipe.recipe_id, recipeName: name, servings: recipe.servings, finalWeightG: calculation.finalWeightG, fullRecipe: calculation.totals, perServing: calculation.perServing, per100g: calculation.per100g, caloriesPerServingKcal: calculation.perServing.kcal, caloriesPer100gKcal: calculation.per100g.kcal, totalRecipeCaloriesKcal: calculation.totals.kcal, saturatedFat: null },
+      data: { intent: "recipe_nutrition", demoOnly: true, reviewStatus: "needs_review", recipeId: recipe.recipe_id, recipeName: name, servings: recipe.servings, finalWeightG: calculation.finalWeightG, fullRecipe: calculation.totals, perServing: calculation.perServing, per100g: calculation.per100g, caloriesPerServingKcal: calculation.perServing.kcal, caloriesPer100gKcal: calculation.per100g.kcal, totalRecipeCaloriesKcal: calculation.totals.kcal, saturatedFat: null, conversationContext: { schemaVersion: "1.0", lastIntent: "recipe_reference", recipeId: recipe.recipe_id } },
       evidenceDocumentIds: [`DEMO-${recipe.recipe_id}`], provenance: [this.recipeProvenance(recipe, language)],
       toolTrace: [{ tool: "calculate_nutrition", ok: true, code: null }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
     };
@@ -688,7 +821,7 @@ class GraduationDemoAgent {
         message: language === "en"
           ? `Nutritional comparison ${basisLabel}:\n\n${lines.join("\n")}\n\nThere is no single overall winner: choose the relevant metric for your goal. This is a numerical comparison, not personalized medical advice.`
           : `مقارنة غذائية ${basisLabel}:\n\n${lines.join("\n")}\n\nمفيش اختيار أفضل بشكل مطلق؛ الاختيار يعتمد على العنصر المهم لهدفك. دي مقارنة رقمية وليست نصيحة طبية شخصية.`,
-        data: { intent: "compare_recipes", comparisonType: "overview", demoOnly: true, reviewStatus: "needs_review", basis: basis === "perServing" ? "per_serving" : "per_100g", first: { recipeId: first.recipe_id, name: firstName }, second: { recipeId: second.recipe_id, name: secondName }, metrics: values },
+        data: { intent: "compare_recipes", comparisonType: "overview", demoOnly: true, reviewStatus: "needs_review", basis: basis === "perServing" ? "per_serving" : "per_100g", first: { recipeId: first.recipe_id, name: firstName }, second: { recipeId: second.recipe_id, name: secondName }, metrics: values, conversationContext: { schemaVersion: "1.0", lastIntent: "recipe_reference", recipeId: first.recipe_id } },
         evidenceDocumentIds: [`DEMO-${first.recipe_id}`, `DEMO-${second.recipe_id}`], provenance: [this.recipeProvenance(first, language), this.recipeProvenance(second, language)],
         toolTrace: [{ tool: "calculate_nutrition", ok: true, code: null }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
       };
@@ -713,13 +846,46 @@ class GraduationDemoAgent {
     return {
       status: "ok", primaryIntent: "compare_recipes", language, safetyFlags: [], integrityFlags: [],
       message: language === "en" ? `${label} comparison ${basisLabel}:\n\n• ${firstName}: ${firstValue ?? "unknown"} ${unit}\n• ${secondName}: ${secondValue ?? "unknown"} ${unit}\n\n${conclusion}` : `مقارنة ${label} ${basisLabel}:\n\n• ${firstName}: ${firstValue ?? "غير متوفر"} ${unit}\n• ${secondName}: ${secondValue ?? "غير متوفر"} ${unit}\n\n${conclusion}`,
-      data: { intent: "compare_recipes", demoOnly: true, reviewStatus: "needs_review", basis: basis === "perServing" ? "per_serving" : "per_100g", nutrient, first: { recipeId: first.recipe_id, name: firstName, value: firstValue }, second: { recipeId: second.recipe_id, name: secondName, value: secondValue }, unit },
+      data: { intent: "compare_recipes", demoOnly: true, reviewStatus: "needs_review", basis: basis === "perServing" ? "per_serving" : "per_100g", nutrient, first: { recipeId: first.recipe_id, name: firstName, value: firstValue }, second: { recipeId: second.recipe_id, name: secondName, value: secondValue }, unit, conversationContext: { schemaVersion: "1.0", lastIntent: "recipe_reference", recipeId: first.recipe_id } },
       evidenceDocumentIds: [`DEMO-${first.recipe_id}`, `DEMO-${second.recipe_id}`], provenance: [this.recipeProvenance(first, language), this.recipeProvenance(second, language)],
       toolTrace: [{ tool: "calculate_nutrition", ok: true, code: null }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
     };
   }
 
-  private lighterModification(recipe: UnifiedDemoRecipe, language: "ar-EG" | "ar" | "en", context?: LighterModificationConversationContext): ExpandedAgentResponse {
+  private lighterModification(recipe: UnifiedDemoRecipe, query: string, language: "ar-EG" | "ar" | "en", context?: LighterModificationConversationContext): ExpandedAgentResponse {
+    const asksForExclusion = /(?:بدون|من\s*غير|without|no\s+)/iu.test(query)
+      && !/(?:نسخ(?:ه|ة)\s+(?:اخف|أخف)|(?:ا|أ)?قلل|قلل|خفف|lighter\s+(?:version|alternative))/iu.test(query);
+    if (asksForExclusion) {
+      const requested = new Set(excludedIngredientKeys(query));
+      const genericOil = /(?:بدون|من\s*غير|without|no\s+).{0,12}(?:زيت|oil)/iu.test(query);
+      const removable = recipe.ingredients
+        .filter((item) => requested.has(item.ingredient) || (genericOil && /(?:oil|ghee|butter)/iu.test(item.ingredient)))
+        .sort((a, b) => b.grams - a.grams)[0];
+      if (!removable) {
+        const name = language === "en" ? recipe.name_en : recipe.name_ar;
+        return {
+          status: "no_result", primaryIntent: "lighter_recipe", language, safetyFlags: [], integrityFlags: [],
+          message: language === "en" ? `I found ${name}, but I could not match the excluded ingredient to an ingredient recorded in that recipe. I will not return the original recipe as if the exclusion were applied.` : `وجدت ${name}، لكن ما قدرتش أطابق المكوّن المطلوب استبعاده مع مكوّن مسجل في الوصفة. مش هاعرض الوصفة الأصلية كأن الاستبعاد اتطبق.`,
+          data: { intent: "lighter_modification", reasonCode: "excluded_ingredient_not_resolved", recipeId: recipe.recipe_id }, evidenceDocumentIds: [`DEMO-${recipe.recipe_id}`], provenance: [this.recipeProvenance(recipe, language)], toolTrace: [{ tool: "calculate_nutrition", ok: false, code: "excluded_ingredient_not_resolved" }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
+        };
+      }
+      const original = calculateUnifiedDemoNutrition(this.dataset, recipe);
+      const modifiedRecipe: UnifiedDemoRecipe = {
+        ...recipe,
+        ingredients: recipe.ingredients.filter((item) => item !== removable),
+        final_yield_weight_grams: Math.max(1, recipe.final_yield_weight_grams - removable.grams),
+      };
+      const modified = calculateUnifiedDemoNutrition(this.dataset, modifiedRecipe);
+      const name = language === "en" ? recipe.name_en : recipe.name_ar;
+      const removedName = ingredientLabel(removable.ingredient, language);
+      const saved = original.perServing.kcal === null || modified.perServing.kcal === null ? null : Math.round((original.perServing.kcal - modified.perServing.kcal) * 10) / 10;
+      const remaining = modifiedRecipe.ingredients.map((item) => `• ${item.quantity} ${localizedUnit(item.unit, language)} ${ingredientLabel(item.ingredient, language)}`).join("\n");
+      return {
+        status: "ok", primaryIntent: "lighter_recipe", language, safetyFlags: [], integrityFlags: [],
+        message: language === "en" ? `${name} without ${removedName}:\n\n${remaining}\n\nEstimated serving: ${modified.perServing.kcal ?? "unknown"} kcal (${saved === null ? "change unknown" : `${saved} kcal less than the recorded recipe`}). Removing an ingredient may change feasibility, taste and texture; this is not an allergy or cross-contamination guarantee.` : `${name} بدون ${removedName}:\n\n${remaining}\n\nتقدير الحصة بعد الاستبعاد: ${modified.perServing.kcal ?? "غير متوفر"} سعر حراري${saved === null ? "" : `، أقل بحوالي ${saved} سعر من الوصفة المسجلة`}. حذف المكوّن قد يغيّر قابلية التنفيذ والطعم والقوام؛ وده مش ضمان حساسية أو خلو من التلوث التبادلي.`,
+        data: { intent: "lighter_modification", modificationType: "ingredient_exclusion", recipeId: recipe.recipe_id, removedIngredient: { key: removable.ingredient, grams: removable.grams }, remainingIngredients: modifiedRecipe.ingredients, originalNutrition: original, modifiedNutrition: modified, caloriesSavedPerServingKcal: saved, conversationContext: { schemaVersion: "1.0", lastIntent: "recipe_reference", recipeId: recipe.recipe_id } }, evidenceDocumentIds: [`DEMO-${recipe.recipe_id}`], provenance: [this.recipeProvenance(recipe, language)], toolTrace: [{ tool: "calculate_nutrition", ok: true, code: null }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
+      };
+    }
     const oils = new Set(["vegetable_oil", "olive_oil", "ghee", "butter_raw"]);
     const candidate = recipe.ingredients.filter((item) => oils.has(item.ingredient) && item.state !== "frying" && item.grams >= 10).sort((a, b) => b.grams - a.grams)[0];
     if (!candidate) return this.recipeClarification("lighter_modification", language, recipe);
@@ -783,6 +949,15 @@ class GraduationDemoAgent {
         toolTrace: [{ tool: "search_guidelines", ok: true, code: null }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
       };
     }
+    if (/(?:صوديوم|ملح|sodium|salt)/iu.test(query)) {
+      return {
+        status: "ok", primaryIntent: "general_guidance", language, safetyFlags: [], integrityFlags: [],
+        message: language === "en"
+          ? "WHO recommends adults consume less than 2,000 mg of sodium per day (equivalent to less than 5 g of salt). This is a general population limit; it does not by itself classify any NutriGuard recipe as high-sodium. A recipe must be assessed from its own recorded value on the same basis, such as per serving or per 100 g. This is general guidance, not personalized medical advice."
+          : "توصي منظمة الصحة العالمية بأن يستهلك البالغون أقل من 2000 مجم صوديوم يوميًا (ما يعادل أقل من 5 جرام ملح). ده حد عام للسكان، ولا يصنّف وحده أي وصفة في NutriGuard بأنها عالية الصوديوم؛ لازم نحكم من القيمة المسجلة للوصفة وعلى نفس الأساس: للحصة أو لكل 100 جرام. ده إرشاد عام، مش نصيحة طبية شخصية.",
+        data: { intent: "general_guideline", demoOnly: true, reviewStatus: "needs_review", guideline: { documentId: "DEMO-WHO-SODIUM", title: "WHO Sodium Reduction Fact Sheet" } }, evidenceDocumentIds: ["DEMO-WHO-SODIUM"], provenance: [{ sourceId: "DEMO-WHO-GUIDANCE", versionId: "2.0-final-demo-normalized", title: "WHO Sodium Reduction Fact Sheet", url: "https://www.who.int/news-room/fact-sheets/detail/salt-reduction", accessedAt: this.dataset.metadata.created_date, locator: "WHO-SODIUM" }], toolTrace: [{ tool: "search_guidelines", ok: true, code: null }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
+      };
+    }
     if (asksForAdvice(query) && !/(?:صوديوم|ملح|سكر|دهون|sodium|salt|sugar|fat)/iu.test(query)) return this.generalAdvice(language);
     const searchQuery = /(?:صوديوم|ملح|sodium|salt)/iu.test(query) ? `${query} WHO sodium salt intake`
       : /(?:سكر|sugar)/iu.test(query) ? `${query} WHO free sugars intake`
@@ -810,11 +985,34 @@ class GraduationDemoAgent {
     return { status: "clarification", primaryIntent: intent === "lighter_modification" ? "lighter_recipe" : "general_guidance", language, safetyFlags: [], integrityFlags: [], message, data: { intent, requiredInput: "exact_recipe_name" }, evidenceDocumentIds: [], provenance: [], toolTrace: [], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION };
   }
 
+  private personalCalorieRequirementUnsupported(language: "ar-EG" | "ar" | "en"): ExpandedAgentResponse {
+    return {
+      status: "unsupported", primaryIntent: "unsupported_request", language, safetyFlags: [], integrityFlags: [],
+      message: language === "en"
+        ? "I can calculate calories in foods and build a general example around a calorie target you provide, but I cannot determine your personal daily calorie requirement. That requires validated personal inputs and professional interpretation. If you already have a target, say: “three meals for 2000 kcal.”"
+        : "أقدر أحسب سعرات الأطعمة وأجهّز مثالًا عامًا على هدف سعرات أنت تحدده، لكن ما ينفعش أحدد احتياجك الشخصي اليومي من السعرات؛ ده يحتاج بيانات شخصية موثقة وتقييم مختص. لو عندك هدف محدد، اكتب مثلًا: «3 وجبات في اليوم على 2000 سعر حراري».",
+      data: { intent: "unsupported", reasonCode: "personal_calorie_requirement_not_supported" }, evidenceDocumentIds: [], provenance: [], toolTrace: [], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
+    };
+  }
+
+  private recipeHealthSummary(recipe: UnifiedDemoRecipe, language: "ar-EG" | "ar" | "en"): ExpandedAgentResponse {
+    const nutrition = calculateUnifiedDemoNutrition(this.dataset, recipe).perServing;
+    const name = language === "en" ? recipe.name_en : recipe.name_ar;
+    const conversationContext: RecipeReferenceConversationContext = { schemaVersion: "1.0", lastIntent: "recipe_reference", recipeId: recipe.recipe_id };
+    return {
+      status: "ok", primaryIntent: "general_guidance", language, safetyFlags: [], integrityFlags: [],
+      message: language === "en"
+        ? `${name} cannot be labelled simply “healthy” or “unhealthy” without a goal and portion context. One recorded serving is about ${nutrition.kcal ?? "unknown"} kcal, ${nutrition.protein ?? "unknown"} g protein, ${nutrition.carbs ?? "unknown"} g carbohydrates, ${nutrition.fat ?? "unknown"} g total fat, ${nutrition.fiber ?? "unknown"} g fiber, and ${nutrition.sodium ?? "unknown"} mg sodium. Saturated fat is unavailable, so it must not be assumed to be zero. This is a numeric context, not personalized medical advice.`
+        : `ما ينفعش نحكم على ${name} إنها «صحية» أو «غير صحية» بشكل مطلق من غير هدف وحجم حصة. الحصة المسجلة حوالي ${nutrition.kcal ?? "غير متوفر"} سعر حراري، ${nutrition.protein ?? "غير متوفر"} جم بروتين، ${nutrition.carbs ?? "غير متوفر"} جم كربوهيدرات، ${nutrition.fat ?? "غير متوفر"} جم دهون كلية، ${nutrition.fiber ?? "غير متوفر"} جم ألياف، و${nutrition.sodium ?? "غير متوفر"} مجم صوديوم. الدهون المشبعة غير متوفرة، فلا يصح اعتبارها صفرًا. ده سياق رقمي عام، مش نصيحة طبية شخصية.`,
+      data: { intent: "general_guideline", assessmentType: "recipe_numeric_context", recipeId: recipe.recipe_id, perServing: nutrition, saturatedFat: null, conversationContext }, evidenceDocumentIds: [`DEMO-${recipe.recipe_id}`], provenance: [this.recipeProvenance(recipe, language)], toolTrace: [{ tool: "calculate_nutrition", ok: true, code: null }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
+    };
+  }
+
   private unsupported(language: "ar-EG" | "ar" | "en", intent: GraduationIntent = "unsupported"): ExpandedAgentResponse {
     return {
       status: "unsupported", primaryIntent: "unsupported_request", language, safetyFlags: [], integrityFlags: [],
       message: language === "en" ? "I can help with Egyptian recipes, recipe or ingredient nutrition, numerical comparisons, general nutrition guidance, and lower-calorie recipe modifications. This request is outside the current scope." : "أقدر أساعدك في وصفات مصرية، القيم الغذائية للوصفات أو المكونات، المقارنات الرقمية، الإرشادات الغذائية العامة، أو نسخة أقل سعرات من وصفة. الطلب ده خارج نطاق النسخة الحالية.",
-      data: { intent }, evidenceDocumentIds: [], provenance: [], toolTrace: [], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
+      data: { intent, reasonCode: "out_of_scope" }, evidenceDocumentIds: [], provenance: [], toolTrace: [], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
     };
   }
 
@@ -868,8 +1066,9 @@ class GraduationDemoAgent {
     const total = Math.round(known.reduce((sum, item) => sum + (item.caloriesKcal ?? 0), 0) * 10) / 10;
     const lines = allCalculated.map((item) => {
       const name = "backendFood" in item ? item.suppliedName : ingredientLabel(item.key, language);
+      const state = "backendFood" in item ? null : item.key.endsWith("_raw") ? (language === "en" ? "raw" : "نيء") : item.key.endsWith("_cooked") ? (language === "en" ? "cooked" : "مطبوخ") : null;
       const calories = item.caloriesKcal === null ? (language === "en" ? "unknown" : "غير معروفة") : `${item.caloriesKcal} ${language === "en" ? "kcal" : "سعر حراري"}`;
-      return `• ${name}: ${item.grams} ${language === "en" ? "g" : "جرام"} = ${calories}`;
+      return `• ${name}${state ? ` (${state})` : ""}: ${item.grams} ${language === "en" ? "g" : "جرام"} = ${calories}`;
     });
     const unknownNote = stillUnknown.length === 0 ? "" : language === "en"
       ? `\n\nNot counted because the ingredient was not recognized: ${stillUnknown.join(" | ")}`
@@ -880,7 +1079,7 @@ class GraduationDemoAgent {
       message: language === "en"
         ? `Estimated calories from the supplied weights:\n\n${lines.join("\n")}\n\nTotal calculated calories: ${total} kcal.${unknownNote}`
         : `تقدير السعرات من الأوزان اللي كتبتها:\n\n${lines.join("\n")}\n\nإجمالي السعرات المحسوبة: ${total} سعر حراري.${unknownNote}`,
-      data: { intent: "ingredient_nutrition", demoOnly: true, reviewStatus: "needs_review", calculationType: "ingredient_weights", ingredients: allCalculated.map(({ key, grams, suppliedName, caloriesKcal }) => ({ key, grams, suppliedName, caloriesKcal })), totalCaloriesKcal: total, partial: stillUnknown.length > 0 || known.length !== allCalculated.length, backendFoodsUsed: backendCalculated.length },
+      data: { intent: "ingredient_nutrition", demoOnly: true, reviewStatus: "needs_review", calculationType: "ingredient_weights", ingredients: allCalculated.map(({ key, grams, suppliedName, caloriesKcal }) => ({ key, grams, suppliedName, caloriesKcal, foodState: key.endsWith("_raw") ? "raw" : key.endsWith("_cooked") ? "cooked" : null })), totalCaloriesKcal: total, partial: stillUnknown.length > 0 || known.length !== allCalculated.length, backendFoodsUsed: backendCalculated.length },
       evidenceDocumentIds: [], provenance: [{ sourceId: "DEMO-UNIFIED-EGYPTIAN-DATASET", versionId: "2.0-final-demo-normalized", title: language === "en" ? "Ingredient nutrition reference" : "مرجع القيم الغذائية للمكونات", url: null, accessedAt: this.dataset.metadata.created_date, locator: "ingredient_nutrition_reference" }, ...backendProvenance],
       toolTrace: [{ tool: "calculate_nutrition", ok: true, code: stillUnknown.length > 0 ? "partial" : null }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
     };
@@ -974,7 +1173,7 @@ class GraduationDemoAgent {
       : `${title}\n\nالمكونات (${recipe.servings} حصص):\n${ingredients}\n\nطريقة التحضير:\n${recipe.method_summary}\n\nتقدير الحصة: ${nutrition.kcal ?? "غير معروف"} سعر حراري، ${nutrition.protein ?? "غير معروف"} جم بروتين، ${nutrition.fat ?? "غير معروف"} جم دهون، و${nutrition.carbs ?? "غير معروف"} جم كربوهيدرات.`;
     return {
       status: "ok", primaryIntent: "general_guidance", language, safetyFlags: [], integrityFlags: [], message,
-      data: { demoOnly: true, reviewStatus: "needs_review", recipe: { recipeId: recipe.recipe_id, nameAr: recipe.name_ar, nameEn: recipe.name_en, servings: recipe.servings, ingredients: recipe.ingredients, method: recipe.method_summary, nutritionPerServing: nutrition }, passages },
+      data: { demoOnly: true, reviewStatus: "needs_review", recipe: { recipeId: recipe.recipe_id, nameAr: recipe.name_ar, nameEn: recipe.name_en, servings: recipe.servings, ingredients: recipe.ingredients, method: recipe.method_summary, nutritionPerServing: nutrition }, passages, conversationContext: { schemaVersion: "1.0", lastIntent: "recipe_reference", recipeId: recipe.recipe_id } },
       evidenceDocumentIds: passages.map((passage) => passage.documentId), provenance,
       toolTrace: [{ tool: "search_recipes", ok: true, code: null }, { tool: "calculate_nutrition", ok: true, code: null }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
     };

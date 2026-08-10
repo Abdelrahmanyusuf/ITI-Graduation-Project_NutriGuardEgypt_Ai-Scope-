@@ -15,6 +15,8 @@ const CalorieTargetContextSchema = z.object({
   category: z.string().trim().min(1).max(40).nullable(),
   relation: z.enum(["closest", "below", "above"]),
   lastRecommendationCaloriesKcal: z.number().positive().max(5_000),
+  excludedIngredientKeys: z.array(z.string().trim().min(1).max(100)).max(30).optional(),
+  recipeId: z.string().regex(/^EGY-RCP-[0-9]{3}$/u).optional(),
 }).strict();
 const LighterModificationContextSchema = z.object({
   schemaVersion: z.literal("1.0"),
@@ -24,7 +26,9 @@ const LighterModificationContextSchema = z.object({
   originalGrams: z.number().positive().max(10_000),
   proposedGrams: z.number().positive().max(10_000),
 }).strict().refine((value) => value.proposedGrams <= value.originalGrams, { message: "proposedGrams must not exceed originalGrams" });
-const ConversationContextSchema = z.discriminatedUnion("lastIntent", [CalorieTargetContextSchema, LighterModificationContextSchema]);
+const RecipeReferenceContextSchema = z.object({ schemaVersion: z.literal("1.0"), lastIntent: z.literal("recipe_reference"), recipeId: z.string().regex(/^EGY-RCP-[0-9]{3}$/u) }).strict();
+const MealPlanContextSchema = z.object({ schemaVersion: z.literal("1.0"), lastIntent: z.literal("meal_plan"), calorieTargetKcal: z.number().min(300).max(5_000), excludedIngredientKeys: z.array(z.string().trim().min(1).max(100)).max(30), recipeIds: z.array(z.string().regex(/^EGY-RCP-[0-9]{3}$/u)).min(1).max(6) }).strict();
+const ConversationContextSchema = z.discriminatedUnion("lastIntent", [CalorieTargetContextSchema, LighterModificationContextSchema, RecipeReferenceContextSchema, MealPlanContextSchema]);
 const ChatSchema = z.object({ message: z.string().trim().min(1).max(2_000), language: z.enum(["ar-EG", "ar", "en"]).default("ar-EG"), context: ConversationContextSchema.optional() }).strict();
 type ChatInput = z.infer<typeof ChatSchema>;
 

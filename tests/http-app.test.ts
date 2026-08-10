@@ -58,6 +58,17 @@ test("Step 18 rejects foreign origins, wrong media types, unknown fields, and ov
   assert.equal(large.status, 413);
 });
 
+test("Step 18 accepts only bounded structured short-term conversation contexts", async () => {
+  const recipeReference = await fetch(`${baseUrl}/api/v1/chat`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ message: "هل هي صحية؟", context: { schemaVersion: "1.0", lastIntent: "recipe_reference", recipeId: "EGY-RCP-001" } }) });
+  assert.equal(recipeReference.status, 200);
+  const mealPlan = await fetch(`${baseUrl}/api/v1/chat`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ message: "قللها 200 سعر", context: { schemaVersion: "1.0", lastIntent: "meal_plan", calorieTargetKcal: 1800, excludedIngredientKeys: ["milk_whole"], recipeIds: ["EGY-RCP-001", "EGY-RCP-002", "EGY-RCP-003"] } }) });
+  assert.equal(mealPlan.status, 200);
+  const forgedRecipeId = await fetch(`${baseUrl}/api/v1/chat`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ message: "هل هي صحية؟", context: { schemaVersion: "1.0", lastIntent: "recipe_reference", recipeId: "../../secret" } }) });
+  assert.equal(forgedRecipeId.status, 400);
+  const oversizedExclusions = await fetch(`${baseUrl}/api/v1/chat`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ message: "خطة", context: { schemaVersion: "1.0", lastIntent: "meal_plan", calorieTargetKcal: 1800, excludedIngredientKeys: Array.from({ length: 31 }, (_, index) => `ingredient-${index}`), recipeIds: ["EGY-RCP-001"] } }) });
+  assert.equal(oversizedExclusions.status, 400);
+});
+
 test("Step 19 feedback endpoint requires consent fields and stores no name, email, or question", async () => {
   const responseRequestId = randomUUID();
   const response = await fetch(`${baseUrl}/api/v1/feedback`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ sessionId: randomUUID(), responseRequestId, rating: 5, understood: true, comment: "واضح", consentAccepted: true }) });
