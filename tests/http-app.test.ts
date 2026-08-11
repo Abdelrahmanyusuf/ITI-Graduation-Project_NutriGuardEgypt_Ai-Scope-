@@ -20,6 +20,7 @@ test("Step 18 serves accessible chat HTML and security headers", async () => {
   assert.equal(response.status, 200);
   assert.match(await response.text(), /dir="rtl"/);
   assert.match(await (await fetch(baseUrl)).text(), /conversationContext/);
+  assert.match(await (await fetch(baseUrl)).text(), /MAX_CONTEXT_FOLLOWUPS=12/);
   assert.equal(response.headers.get("x-frame-options"), "DENY");
   const csp = response.headers.get("content-security-policy") ?? "";
   assert.match(csp, /frame-ancestors 'none'/);
@@ -63,6 +64,17 @@ test("Step 18 accepts only bounded structured short-term conversation contexts",
   assert.equal(recipeReference.status, 200);
   const mealPlan = await fetch(`${baseUrl}/api/v1/chat`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ message: "قللها 200 سعر", context: { schemaVersion: "1.0", lastIntent: "meal_plan", calorieTargetKcal: 1800, excludedIngredientKeys: ["milk_whole"], recipeIds: ["EGY-RCP-001", "EGY-RCP-002", "EGY-RCP-003"] } }) });
   assert.equal(mealPlan.status, 200);
+  const mealPlanDraft = await fetch(`${baseUrl}/api/v1/chat`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ message: "هدفي 2000 سعر", context: { schemaVersion: "1.0", lastIntent: "meal_plan_draft", mealCount: 5, excludedIngredientKeys: ["milk_whole", "yogurt_plain"], calorieConstraint: "target" } }) });
+  assert.equal(mealPlanDraft.status, 200);
+  const invalidMealPlanDraft = await fetch(`${baseUrl}/api/v1/chat`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ message: "هدفي 2000 سعر", context: { schemaVersion: "1.0", lastIntent: "meal_plan_draft", mealCount: 50, excludedIngredientKeys: [], calorieConstraint: "target" } }) });
+  assert.equal(invalidMealPlanDraft.status, 400);
+  const safeMemory = { schemaVersion: "1.0", turnCount: 2, activeRecipeId: "EGY-RCP-001", recentRecipeIds: ["EGY-RCP-001"], mealPlan: { phase: "draft", mealCount: 3, calorieTargetKcal: null, calorieConstraint: "target", excludedIngredientKeys: ["yogurt_plain"], recipeIds: [] }, singleMealTarget: null, lighterModification: null };
+  const sharedMemory = await fetch(`${baseUrl}/api/v1/chat`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ message: "هدفي 2000 سعر", context: { schemaVersion: "1.0", lastIntent: "recipe_reference", recipeId: "EGY-RCP-001", memory: safeMemory } }) });
+  assert.equal(sharedMemory.status, 200);
+  const forgedMemory = await fetch(`${baseUrl}/api/v1/chat`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ message: "هل هي صحية؟", context: { schemaVersion: "1.0", lastIntent: "recipe_reference", recipeId: "EGY-RCP-001", memory: { ...safeMemory, activeRecipeId: "../../secret" } } }) });
+  assert.equal(forgedMemory.status, 400);
+  const oversizedMemory = await fetch(`${baseUrl}/api/v1/chat`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ message: "هل هي صحية؟", context: { schemaVersion: "1.0", lastIntent: "recipe_reference", recipeId: "EGY-RCP-001", memory: { ...safeMemory, recentRecipeIds: Array.from({ length: 9 }, (_, index) => `EGY-RCP-${String(index + 1).padStart(3, "0")}`) } } }) });
+  assert.equal(oversizedMemory.status, 400);
   const forgedRecipeId = await fetch(`${baseUrl}/api/v1/chat`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ message: "هل هي صحية؟", context: { schemaVersion: "1.0", lastIntent: "recipe_reference", recipeId: "../../secret" } }) });
   assert.equal(forgedRecipeId.status, 400);
   const oversizedExclusions = await fetch(`${baseUrl}/api/v1/chat`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ message: "خطة", context: { schemaVersion: "1.0", lastIntent: "meal_plan", calorieTargetKcal: 1800, excludedIngredientKeys: Array.from({ length: 31 }, (_, index) => `ingredient-${index}`), recipeIds: ["EGY-RCP-001"] } }) });

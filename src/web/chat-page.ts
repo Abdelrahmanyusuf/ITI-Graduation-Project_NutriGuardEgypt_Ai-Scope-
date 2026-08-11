@@ -51,6 +51,8 @@ export function renderChatPage(nonce: string): string {
     const count=document.querySelector('#charCount');
     let pending=false;
     let conversationContext=null;
+    let contextTurnsRemaining=0;
+    const MAX_CONTEXT_FOLLOWUPS=12;
 
     function safeUrl(value){try{const url=new URL(value);return url.protocol==='http:'||url.protocol==='https:'?url:null}catch{return null}}
     function text(value,fallback='—'){return typeof value==='string'&&value.trim()?value.trim():fallback}
@@ -72,7 +74,7 @@ export function renderChatPage(nonce: string): string {
     function removeTyping(){document.querySelector('#typing')?.remove();messages.setAttribute('aria-busy','false')}
     function addError(value){const article=append(messages,'article','message assistant error');const inner=append(article,'div','message-inner');addAvatar(inner,'assistant');append(append(inner,'div','content'),'div','answer','حصلت مشكلة أثناء تنفيذ السؤال. '+value);messages.append(article);messages.scrollTop=messages.scrollHeight}
     function resize(){const lines=input.value.split('\\n').length+Math.floor(input.value.length/85);input.rows=Math.max(1,Math.min(5,lines));count.textContent=input.value.length+' / 2000';count.classList.toggle('warn',input.value.length>1800)}
-    async function ask(value){const question=value.trim();if(!question||pending)return;pending=true;addUser(question);addTyping();send.disabled=true;input.disabled=true;try{const request={message:question,language:'ar-EG'};if(conversationContext)request.context=conversationContext;const response=await fetch('/api/v1/chat',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(request)});const payload=await response.json();if(!response.ok)throw new Error(text(payload?.error?.message,'الخدمة غير متاحة حاليًا.'));removeTyping();addAssistant(payload.result);const nextContext=payload?.result?.data?.conversationContext;conversationContext=nextContext&&typeof nextContext==='object'?nextContext:null}catch(error){removeTyping();addError(error instanceof Error?error.message:'خطأ غير متوقع.')}finally{pending=false;send.disabled=false;input.disabled=false;input.value='';resize();input.focus()}}
+    async function ask(value){const question=value.trim();if(!question||pending)return;pending=true;addUser(question);addTyping();send.disabled=true;input.disabled=true;try{const request={message:question,language:'ar-EG'};if(conversationContext)request.context=conversationContext;const response=await fetch('/api/v1/chat',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(request)});const payload=await response.json();if(!response.ok)throw new Error(text(payload?.error?.message,'الخدمة غير متاحة حاليًا.'));removeTyping();addAssistant(payload.result);const nextContext=payload?.result?.data?.conversationContext;if(nextContext&&typeof nextContext==='object'){conversationContext=nextContext;contextTurnsRemaining=MAX_CONTEXT_FOLLOWUPS}else if(conversationContext){contextTurnsRemaining-=1;if(contextTurnsRemaining<=0)conversationContext=null}}catch(error){removeTyping();addError(error instanceof Error?error.message:'خطأ غير متوقع.')}finally{pending=false;send.disabled=false;input.disabled=false;input.value='';resize();input.focus()}}
     form.addEventListener('submit',event=>{event.preventDefault();ask(input.value)});
     input.addEventListener('input',resize);
     input.addEventListener('keydown',event=>{if(event.key==='Enter'&&!event.shiftKey&&!event.isComposing){event.preventDefault();form.requestSubmit()}});
