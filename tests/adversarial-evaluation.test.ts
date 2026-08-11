@@ -14,7 +14,7 @@ test("Step 16 runs every adversarial category through the real expanded Agent", 
   assert.equal(first.caseCount, 18);
   assert.equal(first.passRate, 1, JSON.stringify(first.failures));
   assert.equal(first.productionEligible, false);
-  assert.equal(first.promptVersion, "1.2.0");
+  assert.equal(first.promptVersion, "1.3.0");
 });
 
 test("Step 16 dataset rejects missing categories and duplicate IDs", () => {

@@ -127,7 +127,7 @@ function answerLanguage(message: string, requested: "ar-EG" | "ar" | "en" | unde
 
 function mealCategory(message: string): string | null {
   if (/(?:breakfast|فطار|إفطار|افطار)/iu.test(message)) return "breakfast";
-  if (/(?:dessert|sweet|حلو|حلويات)/iu.test(message)) return "dessert";
+  if (/(?:dessert|sweet|حلوى|حلويات|(?:حاجة|حاجه|أكلة|اكله|طبق).{0,10}حلوة|(?:حاجة|حاجه|أكلة|اكله|طبق).{0,10}حلوه)/iu.test(message)) return "dessert";
   if (/(?:drink|beverage|مشروب|عصير)/iu.test(message)) return "beverage";
   if (/(?:salad|سلطة)/iu.test(message)) return "salad";
   if (/(?:soup|شوربة)/iu.test(message)) return "soup";
@@ -136,21 +136,46 @@ function mealCategory(message: string): string | null {
 }
 
 const DAIRY_INGREDIENT_KEYS = new Set(["butter_raw", "cheese_feta", "cream_heavy", "ghee", "ice_cream_vanilla", "milk_whole", "yogurt_plain"]);
+const EXCLUSION_MARKER_PATTERN = /(?:بدون|من دون|من غير|خالي(?:ه)?(?: تماما| كليا| 100)? من|مفيهاش|مافيهاش|شيل(?:لي)?|احذف(?:لي)?|استبعد|بلاش|ما\s*تحطش|ماتحطش|without|free of|free from|remove|delete|omit|\bno\b)/iu;
+
+function exclusionTargetText(message: string): string {
+  const normalized = normalizedLookupText(message);
+  // Use the final marker so a parenthetical recipe name such as
+  // "مسقعة ... (بدون لحمة)" cannot override the user's later exclusion.
+  const markers = [...normalized.matchAll(new RegExp(EXCLUSION_MARKER_PATTERN.source, "giu"))];
+  const marker = markers.at(-1);
+  if (marker) {
+    const afterMarker = normalized.slice((marker.index ?? 0) + marker[0].length).trim();
+    return afterMarker.split(/\s+(?:من|from)\s+/iu, 1)[0]?.trim() ?? "";
+  }
+  const suffixFree = normalized.match(/\bfree\b/iu);
+  if (suffixFree) return normalized.slice(0, suffixFree.index).split(/\s+/u).slice(-4).join(" ");
+  return "";
+}
+
+function hasIngredientExclusionRequest(message: string): boolean {
+  const normalized = normalizedLookupText(message);
+  return EXCLUSION_MARKER_PATTERN.test(normalized) || /\bfree\b/iu.test(normalized);
+}
 
 function excludedIngredientKeys(message: string): string[] {
   const normalized = normalizedLookupText(message);
   const excluded = new Set<string>();
-  if (/(?:بدون|من غير|مفيهاش|مافيهاش|حساسيه من|حساسيه|استبعد).{0,18}(?:البان|بان|لبن|حليب|منتجات البان|منتجات بان)|(?:dairy[ -]?free|no dairy|milk allergy)/iu.test(normalized)) {
+  if (/(?:بدون|من دون|من غير|خالي(?:ه)?(?: تماما| كليا| 100)? من|مفيهاش|مافيهاش|حساسيه من|حساسيه|استبعد|بلاش|ما\s*تحطش|ماتحطش).{0,24}(?:البان|بان|لبن|حليب|منتجات البان|منتجات بان)|(?:dairy[ -]?free|no dairy|milk allergy)/iu.test(normalized)) {
     for (const key of DAIRY_INGREDIENT_KEYS) excluded.add(key);
   }
-  const marker = normalized.match(/(?:بدون|من غير|مفيهاش|مافيهاش|استبعد|without|\bno\b)/iu);
-  const exclusionText = marker ? normalized.slice((marker.index ?? 0) + marker[0].length) : "";
+  const exclusionText = exclusionTargetText(message);
   if (exclusionText) {
-    for (const entry of INGREDIENT_ALIASES) {
-      if (entry.aliases.some((alias) => exclusionText.includes(normalizedLookupText(alias)))) excluded.add(entry.key);
+    const matches = INGREDIENT_ALIASES.flatMap((entry) => entry.aliases.flatMap((alias) => {
+      const normalizedAlias = normalizedLookupText(alias);
+      const index = exclusionText.indexOf(normalizedAlias);
+      return index < 0 ? [] : [{ key: entry.key, index, length: normalizedAlias.length }];
+    })).sort((a, b) => a.index - b.index || b.length - a.length || a.key.localeCompare(b.key));
+    for (const match of matches) {
+      excluded.add(match.key);
     }
   }
-  return [...excluded].sort();
+  return [...excluded];
 }
 
 function recipeContainsExcludedIngredient(recipe: UnifiedDemoRecipe, excluded: ReadonlySet<string>): boolean {
@@ -377,13 +402,13 @@ function classifyGraduationIntent(query: string, namedRecipes: readonly UnifiedD
   const comparativeQuestion = /(?:ولا|أيهما|ايهما|مين\s+(?:أقل|اقل|اكتر|أكثر)|أقل من|اكتر من|أكثر من)/iu.test(text)
     && /(?:سعر|بروتين|كربوهيدرات|دهون|ألياف|الياف|سكر|صوديوم|ملح|calorie|protein|carb|fat|fiber|sugar|sodium)/iu.test(text);
   if (explicitComparison || comparativeQuestion) return "compare_recipes";
-  const explicitModification = /(?:بدون|من\s*غير|نسخة\s+(?:أخف|اخف|دايت)|(?:أ|ا)?قلل|خفض|تقليل|خفف|تعديل|بديل\s+(?:أخف|اخف)|lighter\s+(?:version|alternative)|reduce.{0,20}(?:calorie|fat|oil))/iu.test(text);
+  const explicitModification = hasIngredientExclusionRequest(text) || /(?:نسخة\s+(?:أخف|اخف|دايت)|(?:أ|ا)?قلل|خفض|تقليل|خفف|تعديل|بديل\s+(?:أخف|اخف)|lighter\s+(?:version|alternative)|reduce.{0,20}(?:calorie|fat|oil))/iu.test(text);
   if (namedRecipes.length > 0 && /(?:هل|is).{0,30}(?:صحي|صحيه|healthy)|(?:صحي|صحيه).{0,20}(?:ولا|ام)/iu.test(text)) return "general_guideline";
   if (namedRecipes.length > 0 && /(?:طريقة\s+عمل|مكونات|عايز\s+وصفه|اريد\s+وصفه|how.{0,20}\bmake|ingredients)/iu.test(text)) return "find_recipe";
   const namedNutritionRequest = /(?:سعر|كالوري|طاقة|بروتين|كربوهيدرات|كارب|ماكروز|دهون|ألياف|الياف|سكر|صوديوم|ملح|قيمه\s+غذائيه|nutrition|macro|calorie|kcal|protein|carb|fat|fiber|sugar|sodium)/iu.test(text);
   const startsWithNutritionRequest = /^(?:السعرات|سعرات|القيمه\s+الغذائيه|قيمه\s+غذائيه|البروتين|الصوديوم|الدهون|nutrition|calories?)/iu.test(text);
   if (namedRecipes.length > 0 && namedNutritionRequest && (!explicitModification || startsWithNutritionRequest)) return "recipe_nutrition";
-  const namedDietRequest = namedRecipes.length > 0 && /(?:دايت|خفيف|صحي|أخف|اخف|قليل(?:ة)?\s+(?:السعرات|الدهون)|lower[ -]?calorie|healthier)/iu.test(text);
+  const namedDietRequest = namedRecipes.length > 0 && /(?:دايت|خفيف|صحي|أخف|اخف|قليل(?:ة)?\s+(?:السعرات|الدهون|الزيت)|زيت\s+قليل|(?:زيت|دهون).{0,10}(?:اقل|أقل)|(?:اقل|أقل).{0,10}(?:زيت|دهون)|lower[ -]?calorie|healthier)/iu.test(text);
   if (explicitModification || namedDietRequest) return "lighter_modification";
   if (/(?:مش\s*معايا|مش\s*لاقي|معايا.{0,40}(?:ينفع|مش)|بديل|استبدل|استبدال|ينفع.{0,24}(?:بدل|مكان)|أستخدم.{0,24}بدل|substitute|replacement|swap)/iu.test(text)) return "unsupported";
   if (/(?:أصل(?:ه|ها)?|أصله|اصلها|جات\s*لمصر|من\s*أيام|من\s*قد\s*إيه|بقاله|فرعوني|مستوردة|الخديوي|قبل\s*الإسلام|مين\s+(?:اخترع|عمل)|ليه\s+(?:اسمها|اتسمت)|فرق(?:ه|ها)?\s+عن|histor(?:y|ical)|origin of|who invented)/iu.test(text)) return "unsupported";
@@ -467,6 +492,9 @@ class GraduationDemoAgent {
     if (/(?:احتياجي اليومي|احتياج(?:ي)?.{0,20}سعر|daily calorie needs|\bTDEE\b|\bBMR\b)/iu.test(query)) {
       return this.personalCalorieRequirementUnsupported(language);
     }
+
+    const conversationalResponse = this.scopedConversationResponse(query, language);
+    if (conversationalResponse) return conversationalResponse;
 
     // The graduation UI exposes one answer, not raw retrieval candidates. Safety and
     // integrity always keep the authority of the production agent above this router.
@@ -853,15 +881,15 @@ class GraduationDemoAgent {
   }
 
   private lighterModification(recipe: UnifiedDemoRecipe, query: string, language: "ar-EG" | "ar" | "en", context?: LighterModificationConversationContext): ExpandedAgentResponse {
-    const asksForExclusion = /(?:بدون|من\s*غير|without|no\s+)/iu.test(query)
-      && !/(?:نسخ(?:ه|ة)\s+(?:اخف|أخف)|(?:ا|أ)?قلل|قلل|خفف|lighter\s+(?:version|alternative))/iu.test(query);
+    const asksForExclusion = hasIngredientExclusionRequest(query)
+      && !/(?:نسخ(?:ه|ة)\s+(?:اخف|أخف)|(?:ا|أ)?قلل|قلل|خفف|كتير|زياده|زيادة|lighter\s+(?:version|alternative))/iu.test(query);
     if (asksForExclusion) {
       const requested = new Set(excludedIngredientKeys(query));
-      const genericOil = /(?:بدون|من\s*غير|without|no\s+).{0,12}(?:زيت|oil)/iu.test(query);
-      const removable = recipe.ingredients
-        .filter((item) => requested.has(item.ingredient) || (genericOil && /(?:oil|ghee|butter)/iu.test(item.ingredient)))
-        .sort((a, b) => b.grams - a.grams)[0];
-      if (!removable) {
+      const targetText = exclusionTargetText(query);
+      const genericOil = /(?:زيت|دهون|oil|added fat)/iu.test(targetText);
+      const oilKeys = new Set(["vegetable_oil", "olive_oil", "ghee", "butter_raw"]);
+      const removable = recipe.ingredients.filter((item) => requested.has(item.ingredient) || (genericOil && oilKeys.has(item.ingredient)));
+      if (removable.length === 0) {
         const name = language === "en" ? recipe.name_en : recipe.name_ar;
         return {
           status: "no_result", primaryIntent: "lighter_recipe", language, safetyFlags: [], integrityFlags: [],
@@ -870,20 +898,23 @@ class GraduationDemoAgent {
         };
       }
       const original = calculateUnifiedDemoNutrition(this.dataset, recipe);
+      const removableItems = new Set(removable);
+      const removedWeight = removable.reduce((sum, item) => sum + item.grams, 0);
       const modifiedRecipe: UnifiedDemoRecipe = {
         ...recipe,
-        ingredients: recipe.ingredients.filter((item) => item !== removable),
-        final_yield_weight_grams: Math.max(1, recipe.final_yield_weight_grams - removable.grams),
+        ingredients: recipe.ingredients.filter((item) => !removableItems.has(item)),
+        final_yield_weight_grams: Math.max(1, recipe.final_yield_weight_grams - removedWeight),
       };
       const modified = calculateUnifiedDemoNutrition(this.dataset, modifiedRecipe);
       const name = language === "en" ? recipe.name_en : recipe.name_ar;
-      const removedName = ingredientLabel(removable.ingredient, language);
+      const removedNames = removable.map((item) => ingredientLabel(item.ingredient, language));
+      const removedName = removedNames.join(language === "en" ? ", " : " و");
       const saved = original.perServing.kcal === null || modified.perServing.kcal === null ? null : Math.round((original.perServing.kcal - modified.perServing.kcal) * 10) / 10;
       const remaining = modifiedRecipe.ingredients.map((item) => `• ${item.quantity} ${localizedUnit(item.unit, language)} ${ingredientLabel(item.ingredient, language)}`).join("\n");
       return {
         status: "ok", primaryIntent: "lighter_recipe", language, safetyFlags: [], integrityFlags: [],
         message: language === "en" ? `${name} without ${removedName}:\n\n${remaining}\n\nEstimated serving: ${modified.perServing.kcal ?? "unknown"} kcal (${saved === null ? "change unknown" : `${saved} kcal less than the recorded recipe`}). Removing an ingredient may change feasibility, taste and texture; this is not an allergy or cross-contamination guarantee.` : `${name} بدون ${removedName}:\n\n${remaining}\n\nتقدير الحصة بعد الاستبعاد: ${modified.perServing.kcal ?? "غير متوفر"} سعر حراري${saved === null ? "" : `، أقل بحوالي ${saved} سعر من الوصفة المسجلة`}. حذف المكوّن قد يغيّر قابلية التنفيذ والطعم والقوام؛ وده مش ضمان حساسية أو خلو من التلوث التبادلي.`,
-        data: { intent: "lighter_modification", modificationType: "ingredient_exclusion", recipeId: recipe.recipe_id, removedIngredient: { key: removable.ingredient, grams: removable.grams }, remainingIngredients: modifiedRecipe.ingredients, originalNutrition: original, modifiedNutrition: modified, caloriesSavedPerServingKcal: saved, conversationContext: { schemaVersion: "1.0", lastIntent: "recipe_reference", recipeId: recipe.recipe_id } }, evidenceDocumentIds: [`DEMO-${recipe.recipe_id}`], provenance: [this.recipeProvenance(recipe, language)], toolTrace: [{ tool: "calculate_nutrition", ok: true, code: null }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
+        data: { intent: "lighter_modification", modificationType: "ingredient_exclusion", recipeId: recipe.recipe_id, removedIngredient: { key: removable[0]!.ingredient, grams: removable[0]!.grams }, removedIngredients: removable.map((item) => ({ key: item.ingredient, grams: item.grams })), remainingIngredients: modifiedRecipe.ingredients, originalNutrition: original, modifiedNutrition: modified, caloriesSavedPerServingKcal: saved, conversationContext: { schemaVersion: "1.0", lastIntent: "recipe_reference", recipeId: recipe.recipe_id } }, evidenceDocumentIds: [`DEMO-${recipe.recipe_id}`], provenance: [this.recipeProvenance(recipe, language)], toolTrace: [{ tool: "calculate_nutrition", ok: true, code: null }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
       };
     }
     const oils = new Set(["vegetable_oil", "olive_oil", "ghee", "butter_raw"]);
@@ -995,6 +1026,58 @@ class GraduationDemoAgent {
     };
   }
 
+  private scopedConversationResponse(query: string, language: "ar-EG" | "ar" | "en"): ExpandedAgentResponse | null {
+    const normalized = normalizedLookupText(query);
+    const compact = normalized.replace(/\s+/gu, " ").trim();
+    const response = (
+      responseType: "greeting" | "acknowledgement" | "capabilities" | "food_clarification",
+      message: string,
+      status: "ok" | "clarification" = "ok",
+    ): ExpandedAgentResponse => ({
+      status,
+      primaryIntent: "general_guidance",
+      language,
+      safetyFlags: [],
+      integrityFlags: [],
+      message,
+      data: { intent: "scoped_conversation", responseType },
+      evidenceDocumentIds: [],
+      provenance: [],
+      toolTrace: [],
+      promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
+    });
+
+    const isGreeting = /^(?:السلام عليكم|سلام عليكم|وعليكم السلام|وعليكم سلام|اهلا|اهلين|مرحبا|ازيك|عامل ايه|صباح الخير|صباح خير|مساء الخير|مساء خير|hello|hi|hey|good morning|good evening)[!?.\s]*$/iu.test(compact);
+    if (isGreeting) {
+      return response("greeting", language === "en"
+        ? "Hello! I’m NutriGuard, your Egyptian-food nutrition assistant. Ask me about an Egyptian recipe, its ingredients or calories, a numerical comparison, or a general nutrition guideline."
+        : "أهلًا بيك! أنا NutriGuard، مساعدك للتغذية والأكل المصري. اسألني عن وصفة مصرية، مكوناتها أو سعراتها، مقارنة رقمية، أو إرشاد غذائي عام.");
+    }
+
+    const isAcknowledgement = /^(?:شكرا|متشكر|تسلم|تمام|اوك|اوكي|ماشي|حلو|thanks|thank you|great|okay|ok)[!?.\s]*$/iu.test(compact);
+    if (isAcknowledgement) {
+      return response("acknowledgement", language === "en"
+        ? "You’re welcome. Send me the Egyptian dish, ingredient and weight, comparison, or calorie target you want to check."
+        : "العفو! ابعتلي اسم الأكلة المصرية، أو المكوّن ووزنه، أو المقارنة، أو هدف السعرات اللي عايز تحققه.");
+    }
+
+    const asksCapabilities = /^(?:مين انت|انت مين|بتعمل ايه|تقدر تعمل ايه|ممكن تساعدني|ساعدني|ايه خدماتك|ايه امكانياتك|who are you|what can you do|help|help me)[!?.\s]*$/iu.test(compact);
+    if (asksCapabilities) {
+      return response("capabilities", language === "en"
+        ? "I specialize in Egyptian food. I can find recorded recipes, show ingredients and methods, calculate recipe or ingredient nutrition, compare two dishes on the same basis, suggest a meal around a calorie target, make a recorded recipe lighter with deterministic calculations, and provide sourced general nutrition guidance. I don’t diagnose conditions or answer unrelated topics."
+        : "أنا متخصص في الأكل المصري والتغذية: أقدر أبحث عن وصفة مسجلة، أعرض المكونات والطريقة، أحسب قيم الوصفة أو مكونات بأوزانها، أقارن أكلتين على نفس الأساس، أرشح وجبة حول هدف سعرات، وأعمل تعديل أخف بحساب واضح، أو أقدّم إرشادًا غذائيًا عامًا بمصدره. ما بشخّصش حالات مرضية وما بجاوبش في موضوعات خارج النطاق.");
+    }
+
+    const vagueFoodRequest = /^(?:انا جعان|انا جوعان|جعان|جوعان|عايز اكل|عاوز اكل|رشحلي حاجه|اقترحلي حاجه|اختارلي اكله|i am hungry|im hungry|i want food|suggest something to eat)[!?.\s]*$/iu.test(compact);
+    if (vagueFoodRequest) {
+      return response("food_clarification", language === "en"
+        ? "Sure—do you want breakfast, lunch, dinner, or a snack? You can also give me a calorie target, such as: “an Egyptian lunch around 500 kcal.”"
+        : "تمام—عايز فطار، غدا، عشا، ولا سناك؟ وممكن تحدد هدف سعرات، مثل: «وجبة غدا مصرية حوالي 500 سعر حراري».", "clarification");
+    }
+
+    return null;
+  }
+
   private recipeHealthSummary(recipe: UnifiedDemoRecipe, language: "ar-EG" | "ar" | "en"): ExpandedAgentResponse {
     const nutrition = calculateUnifiedDemoNutrition(this.dataset, recipe).perServing;
     const name = language === "en" ? recipe.name_en : recipe.name_ar;
@@ -1011,7 +1094,9 @@ class GraduationDemoAgent {
   private unsupported(language: "ar-EG" | "ar" | "en", intent: GraduationIntent = "unsupported"): ExpandedAgentResponse {
     return {
       status: "unsupported", primaryIntent: "unsupported_request", language, safetyFlags: [], integrityFlags: [],
-      message: language === "en" ? "I can help with Egyptian recipes, recipe or ingredient nutrition, numerical comparisons, general nutrition guidance, and lower-calorie recipe modifications. This request is outside the current scope." : "أقدر أساعدك في وصفات مصرية، القيم الغذائية للوصفات أو المكونات، المقارنات الرقمية، الإرشادات الغذائية العامة، أو نسخة أقل سعرات من وصفة. الطلب ده خارج نطاق النسخة الحالية.",
+      message: language === "en"
+        ? "I’m NutriGuard, specialized in Egyptian food and nutrition. I won’t answer that part because it is outside the project’s verified scope, but I can help with an Egyptian recipe, calories or ingredients, a numerical comparison, general nutrition guidance, or a calculated lighter modification."
+        : "أنا NutriGuard ومتخصص في الأكل المصري والتغذية. مش هجاوب على الجزء ده علشان أفضل ملتزم بنطاق ومصادر المشروع، لكن أقدر أساعدك في وصفة مصرية، سعرات أو مكونات، مقارنة رقمية، إرشاد غذائي عام، أو تعديل أخف بحساب واضح.",
       data: { intent, reasonCode: "out_of_scope" }, evidenceDocumentIds: [], provenance: [], toolTrace: [], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
     };
   }
@@ -1173,7 +1258,7 @@ class GraduationDemoAgent {
       : `${title}\n\nالمكونات (${recipe.servings} حصص):\n${ingredients}\n\nطريقة التحضير:\n${recipe.method_summary}\n\nتقدير الحصة: ${nutrition.kcal ?? "غير معروف"} سعر حراري، ${nutrition.protein ?? "غير معروف"} جم بروتين، ${nutrition.fat ?? "غير معروف"} جم دهون، و${nutrition.carbs ?? "غير معروف"} جم كربوهيدرات.`;
     return {
       status: "ok", primaryIntent: "general_guidance", language, safetyFlags: [], integrityFlags: [], message,
-      data: { demoOnly: true, reviewStatus: "needs_review", recipe: { recipeId: recipe.recipe_id, nameAr: recipe.name_ar, nameEn: recipe.name_en, servings: recipe.servings, ingredients: recipe.ingredients, method: recipe.method_summary, nutritionPerServing: nutrition }, passages, conversationContext: { schemaVersion: "1.0", lastIntent: "recipe_reference", recipeId: recipe.recipe_id } },
+      data: { intent: "find_recipe", demoOnly: true, reviewStatus: "needs_review", recipe: { recipeId: recipe.recipe_id, nameAr: recipe.name_ar, nameEn: recipe.name_en, servings: recipe.servings, ingredients: recipe.ingredients, method: recipe.method_summary, nutritionPerServing: nutrition }, passages, conversationContext: { schemaVersion: "1.0", lastIntent: "recipe_reference", recipeId: recipe.recipe_id } },
       evidenceDocumentIds: passages.map((passage) => passage.documentId), provenance,
       toolTrace: [{ tool: "search_recipes", ok: true, code: null }, { tool: "calculate_nutrition", ok: true, code: null }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
     };

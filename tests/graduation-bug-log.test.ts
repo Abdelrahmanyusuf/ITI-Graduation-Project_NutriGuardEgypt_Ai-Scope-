@@ -1,8 +1,10 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { loadUnifiedEgyptianDemoDataset } from "../src/demo/unified-egyptian-dataset.js";
 import { buildGraduationDemoAgent, type GraduationConversationContext } from "../src/runtime/graduation-demo-agent.js";
 
 const agent = await buildGraduationDemoAgent("test", null);
+const dataset = await loadUnifiedEgyptianDemoDataset();
 const object = (value: unknown): Record<string, unknown> => {
   assert.equal(typeof value, "object");
   assert.notEqual(value, null);
@@ -35,6 +37,62 @@ test("BUG-03: an exclusion removes the matched ingredient instead of returning t
   assert.equal(object(data.removedIngredient).key, "olive_oil");
   assert.ok((data.caloriesSavedPerServingKcal as number) > 0);
   assert.ok(!(data.remainingIngredients as Array<{ ingredient: string }>).some((item) => item.ingredient === "olive_oil"));
+});
+
+for (const wording of [
+  "عاوز منك وجبه فول خاليه من الزيت خالص",
+  "عاوز منك وجبة فول خالية من الزيت خالص",
+  "عايز فول خالي تماما من الزيت",
+  "فول من دون زيت",
+  "شيل زيت الزيتون من الفول",
+  "احذف الزيت من وصفة الفول",
+  "بلاش زيت في الفول",
+  "ما تحطش زيت في الفول",
+  "عايز فول مافيهاش نقطة زيت",
+  "Ful without oil",
+  "oil-free Ful",
+]) {
+  test(`BUG-03 exclusion wording: ${wording}`, async () => {
+    const language = /\p{Script=Arabic}/u.test(wording) ? "ar-EG" : "en";
+    const response = await agent.invoke({ message: wording, language });
+    assert.equal(response.status, "ok");
+    const data = object(response.data);
+    assert.equal(data.modificationType, "ingredient_exclusion");
+    assert.ok(!(data.remainingIngredients as Array<{ ingredient: string }>).some((item) => item.ingredient === "olive_oil"));
+    assert.ok((data.caloriesSavedPerServingKcal as number) > 0);
+  });
+}
+
+test("BUG-03: multiple exclusions are all applied in one deterministic recalculation", async () => {
+  const response = await agent.invoke({ message: "عايز كشري من غير زيت وبصل", language: "ar-EG" });
+  assert.equal(response.status, "ok");
+  const data = object(response.data);
+  const removed = data.removedIngredients as Array<{ key: string }>;
+  assert.ok(removed.some((item) => item.key === "vegetable_oil"));
+  assert.ok(removed.some((item) => item.key === "onion_raw"));
+  const remaining = data.remainingIngredients as Array<{ ingredient: string }>;
+  assert.ok(!remaining.some((item) => item.ingredient === "vegetable_oil" || item.ingredient === "onion_raw"));
+});
+
+test("BUG-03: asking for less oil reduces it instead of treating it as a zero-oil guarantee", async () => {
+  const response = await agent.invoke({ message: "عايز فول بزيت أقل", language: "ar-EG" });
+  assert.equal(response.status, "ok");
+  assert.equal(object(response.data).modificationType, undefined);
+  assert.equal(object(object(response.data).modification).ingredient, "olive_oil");
+  assert.equal(object(object(response.data).modification).proposedGrams, 20);
+});
+
+test("BUG-03: zero-oil wording removes every recorded added-fat ingredient across the corpus", async () => {
+  const oilKeys = new Set(["vegetable_oil", "olive_oil", "ghee", "butter_raw"]);
+  const recipesWithOil = dataset.recipes.filter((recipe) => recipe.ingredients.some((item) => oilKeys.has(item.ingredient)));
+  assert.ok(recipesWithOil.length > 20);
+  for (const recipe of recipesWithOil) {
+    const response = await agent.invoke({ message: `عايز ${recipe.name_ar} خالية من الزيت خالص`, language: "ar-EG" });
+    assert.equal(response.status, "ok", recipe.name_ar);
+    const data = object(response.data);
+    assert.equal(data.recipeId, recipe.recipe_id, recipe.name_ar);
+    assert.ok(!(data.remainingIngredients as Array<{ ingredient: string }>).some((item) => oilKeys.has(item.ingredient)), recipe.name_ar);
+  }
 });
 
 test("BUG-04 and BUG-09: recipe reference context keeps consistent health follow-ups", async () => {

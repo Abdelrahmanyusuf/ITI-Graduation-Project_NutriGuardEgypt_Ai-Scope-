@@ -28,7 +28,7 @@ function datasetValue(origin: "synthetic" | "real_user" = "synthetic"): unknown 
 function response(overrides: Partial<ExpandedAgentResponse>): ExpandedAgentResponse {
   return {
     status: "ok", primaryIntent: "general_guidance", language: "ar-EG", safetyFlags: [], integrityFlags: [], message: "دي إجابة موثقة",
-    data: null, evidenceDocumentIds: [], provenance: [], toolTrace: [], promptVersion: "1.2.0", ...overrides,
+    data: null, evidenceDocumentIds: [], provenance: [], toolTrace: [], promptVersion: "1.3.0", ...overrides,
   };
 }
 

@@ -113,6 +113,10 @@ test("Step 11 prompt defines Egyptian Arabic, deterministic numbers, safety, and
   assert.match(NUTRIGUARD_SYSTEM_PROMPT, /معنديش معلومة موثوقة كفاية/u);
   assert.match(NUTRIGUARD_SYSTEM_PROMPT, /search_recipes/u);
   assert.match(NUTRIGUARD_SYSTEM_PROMPT, /calculate_nutrition/u);
+  assert.match(NUTRIGUARD_SYSTEM_PROMPT, /كل رسالة مستخدم صالحة/u);
+  assert.match(NUTRIGUARD_SYSTEM_PROMPT, /نصوص RAG/u);
+  assert.match(NUTRIGUARD_SYSTEM_PROMPT, /fallback المحلي/u);
+  assert.match(NUTRIGUARD_SYSTEM_PROMPT, /candidate أو needs_review/u);
 });
 
 test("Step 11 safety classification preserves emergency and medical override precedence", () => {

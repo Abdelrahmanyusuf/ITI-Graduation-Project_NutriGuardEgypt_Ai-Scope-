@@ -124,7 +124,7 @@ test("Step 13 refuses to invent a healthier alternative when no approved rule ex
 
 test("Step 13 default planner recognizes the three expanded scenario shapes", async () => {
   const subject = new RuleBasedExpandedAgentPlanner();
-  const common = { systemPrompt: "calculate_nutrition", promptVersion: "1.2.0", language: "ar-EG" as const };
+  const common = { systemPrompt: "calculate_nutrition", promptVersion: "1.3.0", language: "ar-EG" as const };
   assert.equal((await subject.plan({ ...common, userMessage: "قارن بين كشري وملوخية لكل 100 جرام" }) as { intent: string }).intent, "compare_recipes");
   assert.equal((await subject.plan({ ...common, userMessage: "اقترح بديل أخف للكشري" }) as { intent: string }).intent, "lighter_recipe");
   assert.equal((await subject.plan({ ...common, userMessage: "اشرحلي الهرم الغذائي" }) as { intent: string }).intent, "general_guidance");
