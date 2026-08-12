@@ -1,9 +1,18 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import type { RecipeNutritionResult } from "../domain/nutrition.js";
+import {
+  isLicenseApprovedByManifest,
+  isSourceRecordApproved,
+  parseManifest,
+  sourceRecordForSourceId,
+} from "../domain/manifest.js";
 import type { RetrievalCorpus } from "../retrieval/ingestion.js";
+import type { MealCategory } from "../services/dashboard/dashboard-client.js";
 
 const DEMO_DATASET_NAME = "unified_egyptian_rag_database_v2_final.json";
+const DEMO_MANIFEST_NAME = path.join("data", "manifest", "sources.json");
+export const GRADUATION_RECIPE_SOURCE_ID = "graduation-unified-egyptian-recipes-v2";
 export const GRADUATION_DEMO_CORPUS_ID = "NUTRIGUARD-EGYPT-GRADUATION-DEMO-V2";
 export const GRADUATION_DEMO_VERSION = "2.0-final-demo-normalized";
 
@@ -20,12 +29,15 @@ interface DemoIngredient {
   unit: string;
 }
 
+type DemoRecipeReviewStatus = "needs_review" | "verified" | "rejected";
+
 export interface UnifiedDemoRecipe {
   recipe_id: string;
   name_en: string;
   name_ar: string;
   alt_names: string[];
   category: string;
+  meal_categories: MealCategory[];
   origin: string;
   servings: number;
   ingredients: DemoIngredient[];
@@ -36,7 +48,9 @@ export interface UnifiedDemoRecipe {
   final_yield_weight_grams: number;
   source_culinary: string;
   source_url: string;
-  status: string;
+  status: DemoRecipeReviewStatus;
+  cultural_reviewer_id: string | null;
+  cultural_review_date: string | null;
 }
 
 interface NutritionReference extends DemoNutrition {
@@ -71,6 +85,7 @@ export interface UnifiedEgyptianDemoDataset {
   retentionFactors: Record<string, DemoRetention>;
   guidelines: DemoGuideline[];
   questions: UnifiedDemoQuestion[];
+  sourceApproval: { sourceStatus: "approved" | "pending"; licenseStatus: "approved" | "pending" };
 }
 
 export interface DemoNutritionCalculation {
@@ -112,6 +127,19 @@ function strings(value: unknown, label: string): string[] {
   return value.map((item) => item.trim()).filter(Boolean);
 }
 
+function nullableString(value: unknown, label: string): string | null {
+  if (value === null) return null;
+  return string(value, label);
+}
+
+function recipeReviewStatus(value: unknown, label: string): DemoRecipeReviewStatus {
+  const status = string(value, label);
+  if (status !== "needs_review" && status !== "verified" && status !== "rejected") {
+    throw new Error(`${label} must be needs_review, verified or rejected`);
+  }
+  return status;
+}
+
 function nutrition(value: unknown, label: string): NutritionReference {
   const item = record(value, label);
   const parsed = {} as DemoNutrition;
@@ -142,12 +170,21 @@ function parseRecipe(value: unknown, index: number): UnifiedDemoRecipe {
   const oilFactor = item.oil_absorption_factor === null ? null : positive(item.oil_absorption_factor, `recipes[${index}].oil_absorption_factor`);
   if (oilFactor !== null && oilFactor > 1) throw new Error(`recipes[${index}].oil_absorption_factor cannot exceed 1`);
   if (oilApplied && oilFactor === null) throw new Error(`recipes[${index}] applies oil absorption without a factor`);
+  const mealCategories = strings(item.meal_categories, `recipes[${index}].meal_categories`);
+  if (
+    mealCategories.length === 0 ||
+    mealCategories.some((category) => category !== "breakfast" && category !== "lunch" && category !== "dinner") ||
+    new Set(mealCategories).size !== mealCategories.length
+  ) {
+    throw new Error(`recipes[${index}].meal_categories must contain unique breakfast/lunch/dinner review decisions`);
+  }
   return {
     recipe_id: recipeId,
     name_en: string(item.name_en, `recipes[${index}].name_en`),
     name_ar: string(item.name_ar, `recipes[${index}].name_ar`),
     alt_names: strings(item.alt_names, `recipes[${index}].alt_names`),
     category: string(item.category, `recipes[${index}].category`),
+    meal_categories: mealCategories as MealCategory[],
     origin: string(item.origin, `recipes[${index}].origin`),
     servings: positive(item.servings, `recipes[${index}].servings`),
     ingredients,
@@ -158,7 +195,9 @@ function parseRecipe(value: unknown, index: number): UnifiedDemoRecipe {
     final_yield_weight_grams: positive(item.final_yield_weight_grams, `recipes[${index}].final_yield_weight_grams`),
     source_culinary: string(item.source_culinary, `recipes[${index}].source_culinary`),
     source_url: string(item.source_url, `recipes[${index}].source_url`),
-    status: string(item.status, `recipes[${index}].status`),
+    status: recipeReviewStatus(item.status, `recipes[${index}].status`),
+    cultural_reviewer_id: nullableString(item.cultural_reviewer_id, `recipes[${index}].cultural_reviewer_id`),
+    cultural_review_date: nullableString(item.cultural_review_date, `recipes[${index}].cultural_review_date`),
   };
 }
 
@@ -215,11 +254,27 @@ export function parseUnifiedEgyptianDemoDataset(value: unknown): UnifiedEgyptian
   return {
     metadata: { version: string(metadata.version, "metadata.version"), created_date: string(metadata.created_date, "metadata.created_date"), review_status: string(metadata.review_status, "metadata.review_status") },
     recipes, ingredientNutrition, retentionFactors, guidelines, questions,
+    sourceApproval: { sourceStatus: "pending", licenseStatus: "pending" },
   };
 }
 
-export async function loadUnifiedEgyptianDemoDataset(file = process.env.NUTRIGUARD_DEMO_DATASET_PATH?.trim() || path.resolve(DEMO_DATASET_NAME)): Promise<UnifiedEgyptianDemoDataset> {
-  return parseUnifiedEgyptianDemoDataset(JSON.parse(await readFile(path.resolve(file), "utf8")) as unknown);
+export async function loadUnifiedEgyptianDemoDataset(
+  file = process.env.NUTRIGUARD_DEMO_DATASET_PATH?.trim() || path.resolve(DEMO_DATASET_NAME),
+  manifestFile = path.resolve(DEMO_MANIFEST_NAME),
+): Promise<UnifiedEgyptianDemoDataset> {
+  const [datasetRaw, manifestRaw] = await Promise.all([
+    readFile(path.resolve(file), "utf8"),
+    readFile(path.resolve(manifestFile), "utf8"),
+  ]);
+  const dataset = parseUnifiedEgyptianDemoDataset(JSON.parse(datasetRaw) as unknown);
+  const sourceRecord = sourceRecordForSourceId(parseManifest(manifestRaw), GRADUATION_RECIPE_SOURCE_ID, DEMO_DATASET_NAME);
+  return {
+    ...dataset,
+    sourceApproval: {
+      sourceStatus: sourceRecord && isSourceRecordApproved(sourceRecord) ? "approved" : "pending",
+      licenseStatus: sourceRecord && isLicenseApprovedByManifest(sourceRecord) ? "approved" : "pending",
+    },
+  };
 }
 
 function round(value: number, decimals = 1): number {
@@ -254,7 +309,7 @@ export function calculateUnifiedDemoNutrition(dataset: UnifiedEgyptianDemoDatase
   const finalWeightG = round(recipe.oil_absorption_applied ? correctedFriedWeightG : recipe.final_yield_weight_grams);
   const perServing = Object.fromEntries(NUTRIENTS.map((key) => [key, totals[key] === null ? null : round(totals[key] / recipe.servings)])) as DemoNutrition;
   const per100g = Object.fromEntries(NUTRIENTS.map((key) => [key, totals[key] === null ? null : round(totals[key] * 100 / finalWeightG)])) as DemoNutrition;
-  const assumptions = ["graduation_demo_only_not_human_approved", "ingredient_reference_values_are_demo_estimates"];
+  const assumptions = ["graduation_project_recipe_source_approved", "ingredient_reference_values_are_estimates"];
   if (excludedFryingOilG > 0) assumptions.push("frying_oil_counted_only_at_declared_absorption_fraction");
   return { totals, perServing, per100g, finalWeightG, absorbedFryingOilG: round(absorbedFryingOilG), excludedFryingOilG: round(excludedFryingOilG), assumptions };
 }
@@ -291,7 +346,7 @@ export function toRecipeNutritionResult(dataset: UnifiedEgyptianDemoDataset, rec
         return [key, { coveredRequiredIngredients: covered ? recipe.ingredients.length : 0, requiredIngredients: recipe.ingredients.length, rate: covered ? 1 : 0 }];
       })) as RecipeNutritionResult["coverage"]["byNutrient"],
     },
-    provenance: [{ sourceId: "DEMO-UNIFIED-EGYPTIAN-DATASET", versionId: GRADUATION_DEMO_VERSION, roles: ["graduation_demo", "nutrition_estimate"] }], trace: [], blockers: [],
+    provenance: [{ sourceId: GRADUATION_RECIPE_SOURCE_ID, versionId: GRADUATION_DEMO_VERSION, roles: ["recipe_source", "graduation_project", "nutrition_estimate"] }], trace: [], blockers: [],
     roundingPolicy: {
       calories: { unit: "kcal", decimals: 0, stage: "output_only" }, protein: { unit: "g", decimals: 1, stage: "output_only" }, carbohydrate: { unit: "g", decimals: 1, stage: "output_only" },
       total_fat: { unit: "g", decimals: 1, stage: "output_only" }, saturated_fat: { unit: "g", decimals: 1, stage: "output_only" }, fiber: { unit: "g", decimals: 1, stage: "output_only" },
@@ -319,11 +374,25 @@ export function buildGraduationRetrievalCorpus(dataset: UnifiedEgyptianDemoDatas
   const recipeDocuments = dataset.recipes.map((recipe) => {
     const calculation = calculateUnifiedDemoNutrition(dataset, recipe);
     const ingredientText = recipe.ingredients.map((item) => `${item.quantity} ${item.unit} ${item.ingredient} (${item.grams} g, ${item.state})`).join("; ");
+    const status = recipe.status === "rejected"
+      ? "rejected" as const
+      : recipe.status === "verified" && dataset.sourceApproval.sourceStatus === "approved"
+        ? "approved" as const
+        : "pending" as const;
+    const hasCompletedCulturalReview = recipe.status === "verified"
+      && recipe.cultural_reviewer_id !== null
+      && recipe.cultural_review_date !== null;
+    const egyptianVerificationStatus = recipe.status === "rejected"
+      ? "rejected" as const
+      : hasCompletedCulturalReview ? "verified" as const : "pending" as const;
     return {
       id: `DEMO-${recipe.recipe_id}`, kind: "recipe" as const, title: `${recipe.name_ar} | ${recipe.name_en}${recipe.alt_names.length > 0 ? ` | ${recipe.alt_names.join(" | ")}` : ""}`,
-      text: [`بيانات مشروع تخرج تجريبية وغير مراجعة بشريًا.`, `الأسماء البديلة: ${recipe.alt_names.join(", ") || "—"}`, `المكونات: ${ingredientText}`, `الطريقة: ${recipe.method_summary}`, `تقدير الحصة: ${calculation.perServing.kcal} kcal، بروتين ${calculation.perServing.protein} g، دهون ${calculation.perServing.fat} g، كربوهيدرات ${calculation.perServing.carbs} g، صوديوم ${calculation.perServing.sodium} mg.`].join("\n"),
-      language: "ar-EG" as const, status: "approved" as const, licenseStatus: "approved" as const, egyptianVerificationStatus: "verified" as const,
-      sourceId: "DEMO-UNIFIED-EGYPTIAN-DATASET", versionId: GRADUATION_DEMO_VERSION, sourceTitle: "GRADUATION DEMO — UNREVIEWED DATA",
+      text: [`وصفة معتمدة للاستخدام داخل مشروع تخرج NutriGuard.`, `الأسماء البديلة: ${recipe.alt_names.join(", ") || "—"}`, `المكونات: ${ingredientText}`, `الطريقة: ${recipe.method_summary}`, `تقدير الحصة: ${calculation.perServing.kcal} kcal، بروتين ${calculation.perServing.protein} g، دهون ${calculation.perServing.fat} g، كربوهيدرات ${calculation.perServing.carbs} g، صوديوم ${calculation.perServing.sodium} mg.`].join("\n"),
+      language: "ar-EG" as const,
+      status,
+      licenseStatus: dataset.sourceApproval.licenseStatus,
+      egyptianVerificationStatus,
+      sourceId: GRADUATION_RECIPE_SOURCE_ID, versionId: GRADUATION_DEMO_VERSION, sourceTitle: "NutriGuard graduation-project approved recipeSource",
       sourceUrl: recipe.source_url, sourceAccessedAt: dataset.metadata.created_date, sourceLocator: recipe.recipe_id,
       metadata: { recipeId: recipe.recipe_id, demoOnly: true, reviewStatus: recipe.status, category: recipe.category, cookingMethod: recipe.cooking_method },
     };
@@ -332,7 +401,7 @@ export function buildGraduationRetrievalCorpus(dataset: UnifiedEgyptianDemoDatas
     id: `DEMO-${item.id}`, kind: "guideline" as const, title: item.title, text: item.text, language: "ar-EG" as const,
     status: "approved" as const, licenseStatus: "approved" as const, sourceId: "DEMO-WHO-GUIDANCE", versionId: GRADUATION_DEMO_VERSION,
     sourceTitle: "WHO guidance normalized for graduation demo", sourceUrl: item.url, sourceAccessedAt: dataset.metadata.created_date, sourceLocator: item.id,
-    metadata: { demoOnly: true, reviewStatus: "needs_review", chunkId: item.id },
+    metadata: { demoOnly: true, reviewStatus: dataset.metadata.review_status, chunkId: item.id },
   }));
   return { schemaVersion: "1.0", corpusId: GRADUATION_DEMO_CORPUS_ID, documents: [...recipeDocuments, ...guidelineDocuments] };
 }

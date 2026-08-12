@@ -2,41 +2,249 @@
 
 - Tool: nutriguard-egypt-recipe-staging
 - Schema version: 2.0
-- Recipe source: data/raw/Recipes For Eqyption Food.csv
+- Recipe source: unified_egyptian_rag_database_v2_final.json
 
 ## Import statistics
 
-- Rows in source: 1468
-- Imported as `needs_review` (Egyptian-scope evidence): 1
+- Rows in source: 215
+- Imported as `needs_review` (Egyptian-scope evidence): 0
 - Imported as `rejected` (clear non-Egyptian evidence): 0
 - Excluded — malformed/invalid rows: 0
-- Excluded — no Egyptian evidence & not classifiable non-Egyptian: 1467
+- Excluded — no Egyptian evidence & not classifiable non-Egyptian: 0
 - Preserved from existing registry (reviews kept): 0
 - Routed back to review (source drift): 0
 
 ## Registry status
 
-- needs_review: 1
-- verified: 0
+- needs_review: 0
+- verified: 215
 - rejected: 0
-- Eligible for the verified MVP dataset: **0**
+- Eligible for the verified MVP dataset: **215**
 
 ## Verified recipes available for the MVP
 
-**None.** No recipe is available for the verified MVP dataset.
-Nothing is fabricated to reach a target.
+- `EGR-009A7928EE52A1AB` Egyptian Kunafa with Nuts — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-02595CDF7F919D90` Chicken Orzo Soup — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-037198DFA4387022` Clay Pot Beef with Mixed Vegetables — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-03BBE5068C1DCB4E` Chicken Vegetable Soup — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-048B05ED7A5DB87E` Egyptian Freetah / Sadeeda — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-04959ECEA89A9C78` Ful with Yogurt & Tahini — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-0577B252EE4217FA` Egyptian Trotters Soup — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-058BB6D1F1B776B4` Trotters Soup with Vinegar & Garlic Sauce — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-06D26B7BF5BBB3E1` Okra Stew with Beef — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-06E6B1EA25B33593` Egyptian French Coffee with Milk — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-07091838C1A1700E` Egyptian Garlic Potato Salad — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-080EAFBE5C8D134A` Feteer Meshaltet — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-089536B6058F5F8B` Rawani Semolina Cake — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-0A69778A017EE685` Stuffed Onions Egyptian Style — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-0B023BA3A31F1EC6` Orange and Carrot Juice — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-0B4EE257E9A26FBA` Grilled Mullet with Wheat Bran — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-0BCA821D6FD41D74` Basbousa with Cream & Nuts — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-0C0BBD83040AE488` Creamy Tomato Soup — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-0C680B3F5E117F30` Taro with Taro Greens/Taro Soup — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-0D5AF74393C027A1` Date Filled Meneen — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-0DE1E9E57E19A931` Stuffed Ta'ameya — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-0DE8E2C49A73833D` Garlic & Vinegar Moussaka (Vegan) — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-0E47435C6354A60D` Savory Egyptian Golash — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-0E5AA61D7CD597F1` Egyptian Mango Juice — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-0E72ED3303BB6852` Dawood Pasha Meatballs — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-1218E556B5D79121` Minced Meat Shakshouka — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-1237740A22833946` Koshary — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-12D17A6B70A07206` Mahshi Betenjan w Febel — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-1522B5535454C357` Egyptian Shakshouka — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-15466B6399ACDE71` Ful with Eggs and Ghee — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-162C20F852D4AF3A` Zalabia / Luqmat Al-Qadi — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-1943AC7685FE3F07` Ta'ameya — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-19B5D6CFE3390C19` Sa'idi Fayesh Rusk — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-19DD2812C48A2C16` Guava Juice with Milk — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-1CEB19849CA3DA29` Egyptian Tahini Dip — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-1E79BE801D675677` Egyptian Lentil Fattah — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-1EB8E8824FA55B99` Egyptian Ammonia Biscuits — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-20752EFBCD6F8EB3` Kunafa with Cream — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-23BDBDD65B2BE069` Mackerel with Oil & Lemon — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-2501CFDF3A97697E` Egyptian Rolled Eggs (Bed Modahraj) — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-271F86B2B438BEB2` Chicken Macaroni Casserole — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-2727E46752C14A53` Azizia Egyptian Noodle Pudding — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-28FBB18961667648` Egyptian Rice Pudding — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-2952C070E63A533F` Qatayef with Nuts — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-2BFBC99994C344D9` Baked Potato Tray with Oriental Sausage — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-2F19323D33EF5D35` Kebab Hilla (Beef and Onion Stew) — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-3447984C3A93F213` Calamari Tagine with Tomato Sauce — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-34668B1F2278A1FF` Egyptian Chicken Panne — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-3506ADDBF7E4A848` Egyptian Sahlab — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-353F0C81A8FA08DA` Cantaloupe Juice with Milk — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-357F11F65B540D71` Sugarcane Juice with Lemon & Mint — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-358B40D8A946428D` Breaded Fried Brains — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-35E7C5000E846C6B` Ful Medames with Flaxseed Oil — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-3739299EEC1AD889` Savory Egyptian Rice Pudding with Chicken — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-37460B7A459831FF` Egyptian Kishk — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-3757C3A1DDF921CF` Beef Head Meat in Tomato Sauce — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-393DF88BEB483458` Egyptian Potato Tray with Beef — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-3A811F1901A07DCA` Carob Drink with Milk — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-3B487BB27D4E43B7` Plain Okra Tagine (Vegan) — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-3C48AC9E8FE3ECE8` Egyptian Seafood Soup — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-3CDF271D2388E199` Port Said Shrimp Kofta — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-3E4A8B058A384CC1` Alexandrian Liver — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-3F57EDA843C5CCFD` Egyptian Garlic Dip (Tomeya) — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-3F7400B5D3B0270C` Tourlit / Mixed Vegetable Stew with Beef — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-41DF87368892B3B9` Alexandrian Boiled Shrimp — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-4249FC2C8777FA83` Koshary Shop Macaroni Casserole — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-42A4A98BF7ACABB7` Cauliflower Eggah (Omelette) — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-44E1EE2ADB9FCAEE` Egyptian Smoked Herring with Tahini — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-45E6D5F60B46133A` Fish Hawawshi — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-467CDF71F1ED5A91` Mombar — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-4779C071F173D0AC` Hawawshi — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-4874391848836D4E` Phyllo Pie with Cheese — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-48B8C5497E82E233` Egyptian Pomegranate Juice — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-4AD22FA3F014FF8F` Egyptian Qaraqeesh / Meneen — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-4B781FA6103E4DE8` Egyptian Pickled Eggplant — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-4B78F9C345CEBDDB` Strawberry Milkshake Egyptian Style — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-4C30A71F8BC6928D` Alexandrian Hawawshi — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-4C73914DDF52D7E3` Damietta Meshabbak — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-4D2F495F77B6C7FF` Balah El Sham — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-4EB7B9A4A0506D3B` Ful with Tomato & Garlic Sauce — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-4F122C7712D84474` Eggs with Pastirma in Ghee — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-4F2937993C57D3A9` Black-Eyed Pea Stew with Beef — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-53FC6030F1CC5722` Egyptian Koshary Tea — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-548183B5482C2279` Sausage Macaroni Casserole — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-55673DEF55F5B561` Fried Fish Fillet — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-5691AA75FABA89E8` Pan-Fried Chicken in Ghee — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-5707192E17CF83C5` Sayadieh Rice / Fishermen Rice — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-58E4A5ADA1E5A75D` Halabesa / Chickpea Drink — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-5B641D6DE0EF8D38` Sa'idi Boiled Tea — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-5C32A982FBB2EFDC` Cape Gooseberry Tea — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-5CC5F2828C055735` Pickled Tomatoes — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-5D856017253288A4` Mahshi Waraq Enab — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-5DA0F8E1EC748773` Port Said Shrimp Kishk — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-5E8B82641FF33CFF` Liquorice Drink — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-6025740EA4F42E01` Orzo Soup with Bone Marrow — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-63AA0D5ADB89AA99` Spicy Halabesa Drink — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-64895B28D6BE98FA` Oxtail Tagine — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-66AF9915DF7A7190` Chicken Vegetable Tagine — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-67992466A6FE30C1` Kishk with Rice and Chicken — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-68B0F80A3C7DBDBE` Egyptian Petit Four — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-6A8608502FBBC204` Mazalika — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-6CA512E6732032FD` Ful Nabet — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-6E0CBAF3D6CE19F8` Mixed Egyptian Offal Platter — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-6EDFC4A7BF0587D9` Stuffed Lettuce Leaves — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-74587AAE9A3FE4B3` Duck Soup Egyptian Style — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-74965D6293EA1EB8` Stuffed Artichoke Bottoms — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-76E290F6C437BBBC` Chicken Liver & Gizzards Tagine — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-799DA9DA65A7CEDB` Plain Egyptian Tea Cake — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-79F4CD8B51FDC698` Shakshouka / Shirkasiya — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-7ADFD2B72E32C89A` Baked Potato Tray with Chicken — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-7C23DFC9B4D9017A` Egyptian Spinach with Meat & Chickpeas — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-7C738B569DC7B874` Tilapia Fish Tray with Tomato Sauce — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-7CE8E530272A7887` Savory Roz Muammar with Beef — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-7FB8547F2DCC22E5` Stuffed Potatoes with Minced Beef — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-7FED1D8CC1B151AE` Om Ali — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-7FF633FB154C6BA2` Molokhia with Rabbits — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-803BF2B3E3CE263F` Egyptian Kibbeh — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-8203624CE4A3E790` Sweet Golash with Milk — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-8234FE4454F45F29` Yellow Lentil Koshary — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-85D47D056FE94C20` White Bean Stew with Beef — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-86102DE71A75CE5F` Egyptian Orange Cake — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-89AFD311CFCBF92A` Egyptian Baba Ghanoush — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-8A4721B4FF008043` Lemon Mint Juice (Limon bel Na'na') — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-8E4A13E668194836` Sowabe' Zainab — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-8FA72C063DC8BF59` Ful Medames with Ghee & Egyptian Dqqa — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-9067AB96BD7508EA` Egyptian Sesame Breadsticks (Baqsamad) — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-9116C5E9131EAC7C` Egyptian Grilled Kofta — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-92C9C4B87780A8DA` Egyptian Rice with Liver, Gizzards & Nuts — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-94B417D0BE3288E7` Fried Tilapia Egyptian Style — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-95BDFCDE02C593AF` Egyptian Baladi Salad — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-96333FE371AB2074` Fresh Watermelon Mint Juice — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-98F5B74924269651` Asafiri Qatayef with Cream — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-9D30E5749C5C154B` Mahshi Kousa — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-A1A5D4C37B757335` Orzo Soup with Minced Meat — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-A38DB72829BB8591` Green Beans Stew with Beef — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-A4283F7D7139E863` Egyptian Sugarcane Juice — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-A44771C4C732081F` Cream Filled Golash — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-A541F1E608851DC1` Egyptian Roasted Duck with Merta Onions — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-A5D580FB28B0C139` Chicken Liver & Gizzards with Onions — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-A64EBA851AA37357` Ful Medames — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-A72D08679A28913B` Egyptian Mahalabia — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-A7737EE969B415D3` Prickly Pear Juice — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-A81BD5672BB86402` Egyptian Charcoal Grilled Chicken — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-AB7DC35B5133CC85` Mahshi Koronb — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-AB8AD9637CA1365D` Egyptian Lentil Soup — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-AE9158443569CCEE` Mulukhiyah — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-B0614FF2A2153FF5` Marrow Bone & Trotter Soup — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-B0EF8F88A1226652` Egyptian Macaroni Bechamel — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-B14F456B1EEEFC36` Feseekh (Fermented Mullet) — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-B23892B91235B17A` Egyptian Onion Soup — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-B48DE7A1931DFF0D` Rice with Vermicelli — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-B5001F08BB962DE4` Khobeiza — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-B57904DC77FC7E45` Lentil Soup with Vermicelli — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-B62E0505F7A2C34B` Egyptian Moghat Drink — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-B69B0759362C3540` Banana Milkshake Egyptian Style — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-B7237B577946747D` Egyptian Cornmeal Cake (Bessisa) — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-B88B0178254117CF` Egyptian Ghorayeba — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-BB91F2CEA0E64758` Egyptian Egg Omelet (Egah) — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-BBC0EF3089B2E5E0` Egyptian Tamarind Drink — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-BC8E3CE6BF5F43FA` Freekeh with Chicken — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-BFAFB36196912AEB` Soft Egyptian Bakery Buns — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-BFFDA250C8662903` Fried Cauliflower Egyptian Style — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-C0F41BC5C96BA263` Egyptian Style Coleslaw — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-C2F3A1B276657EDB` Egyptian Beef Kofta with Bulgur — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-C3975A7F50168E45` Smoked Herring Salad with Corn — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-C484F9ADBD96EEAA` Singari Mullet Fish — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-C7FAEE723A682012` Egyptian Anise Tea — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-CBC098F85B2B6712` Hamam Mahshi — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-CDE635A22E072360` Sweet Roz Muammar — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-D3003C1A0A942C38` Dawood Pasha with Potato Cubes — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-D4073AA0AA5A9EBE` Ta'ameya Omelette (Egah Ta'ameya) — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-D4FD7898E220E402` Roqaq with Minced Meat — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-D5824335A6DF30B0` Peas and Carrots Stew with Beef — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-D7E184C739C6E841` Fattah — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-D8FA19F0DF8E46A5` Boneless Trotters Soup — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-D97321637303DD54` Egyptian Basbousa — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-D9D1CF5A264318B4` Orzo Tagine with Beef — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-DB8F3E9C8537E992` Fakhfakhina (Egyptian Fruit Cocktail) — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-DC9A4128BC11AB52` Egyptian Pickled Beetroot Salad — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-DCC27A1C05F8B276` Pastirma and Cheese Golash — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-DDD2BAC0287C220F` Carob Juice — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-DF88F79B2B47E996` Egyptian Turkish Coffee — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-DFF244FAD91AB000` Egyptian Roasted Goose — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-E0DC34AC9877BB36` Fried Beef Liver with Wheat Bran — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-E127DFBAC8F90A39` Bissara — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-E1DE01DFE03DE12B` Mesaqa'ah — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-E24891FBA09B15C3` Egyptian Rice Kofta — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-E24EA6F844C2A749` Egyptian Karkadeh (Hibiscus Tea) — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-E255F6D87162FE78` Makhorouta with Milk & Sugar — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-E277BD0254E7DC8D` Egyptian Potato Kofta — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-E32FBC02563ED2DE` Egyptian Sweet Couscous — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-E3511C52587B5C69` Moussaka Bechamel — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-E35F0E08F06FB0FE` Oxtail Tagine with Potato Cubes — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-E472B007A42B074E` Zucchini Bechamel — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-E5FA86634D1BF9CD` Sweet Vermicelli with Ghee — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-E795DCEADC201EB5` Egyptian Ennab Drink — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-E79D8FB1EDC48E68` Alexandrian Oriental Sausage — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-E88A46A8099E0ED5` Beef Head Meat Casserole — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-E8DEC9A71E563961` Egyptian Macaroni with Tomato Sauce — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-EC2D51A9564D03F4` Plain Kahk El Eid — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-EDD21CAB144DB68A` Stewed Zucchini with Minced Beef — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-EE25319F75BC198A` Ful with Oriental Sausage — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-EFB90195B96E379A` Baked Sardine Tray — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-F0847CEACF37AF37` Tarb (Kofta wrapped in Caul Fat) — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-F0D53F4C9EC659C2` Baked Mombar Casserole — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-F12EF42576F81D75` Egyptian Mint Tea — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-F2F060930553AB48` Plain Baladi Hawawshi — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-F4857CD7445C9A75` Doum Fruit Juice with Milk — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-F5FEA556BA472A7F` Egyptian Sobia Drink — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-F820814603CC5307` Baked Ful with Pastirma — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-F84FAC6FB4A96D0A` Fried Alexandrian Sardines — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-FB579383D02B5763` Grilled Pigeon — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-FB89BAE1112A4B5F` Roasted Rabbit with Mastic & Cardamom — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-FB90013BE2B204C2` Stuffed Kahk with Malban or Dates — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+- `EGR-FCC5E72203AA94D1` Pan-Fried Beef Spleen — reviewed by egyptian_food_reviewer_01 on 2026-08-12
+
+## Human meal-category review queue
+
+**None.** Every verified recipe has a human-assigned meal category.
 
 ## Blockers
 
-- 0 verified recipes available — the MVP verified-recipe target is not met and is not being fabricated.
-- Recipe source "data/raw/Recipes For Eqyption Food.csv" has no source record in data/manifest/sources.json — provenance/license coverage is incomplete (records stay pending/not_assessed).
-- Every imported recipe is unreviewed (needs_review). Verification requires a human review decision: reviewerId + strict ISO reviewDate + evidence that resolves against data/manifest/sources.json (docs/MANUAL_REVIEW_WORKFLOW.md).
-- Columns absent from the raw source and stored as null (never fabricated; must be curated by reviewers): Arabic names, region, servings, final-cooked-weight.
-
-## Per-record eligibility blockers
-
-- `EGR-389070B0550F4D25` (Air Fryer Falafel, needs_review):
-  - verificationStatus is not verified (automation never verifies)
 
 ## Ignored global recipe files
 

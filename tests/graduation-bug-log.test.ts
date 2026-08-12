@@ -350,6 +350,82 @@ test("BUG-10: colloquial 'must not contain dairy' excludes yogurt and every dair
   assert.doesNotMatch(response.message, /بالزبادي/u);
 });
 
+test("critical audit: breakfast, dairy allergy, recipe identity, oil exclusion, and energy basis stay synchronized", async () => {
+  const breakfast = await agent.invoke({
+    message: "عاوز وجبة افطار من 500 سعر حراري بس ميكنش فيها منتجات ألبان لأنى عندى حساسية منها",
+    language: "ar-EG",
+  });
+  assert.equal(breakfast.status, "ok");
+  const breakfastData = object(breakfast.data);
+  const breakfastRecipe = dataset.recipes.find((recipe) => recipe.recipe_id === breakfastData.recipeId);
+  assert.ok(breakfastRecipe);
+  assert.equal(breakfastRecipe.category, "breakfast");
+  const excludedDairy = new Set(breakfastData.excludedIngredientKeys as string[]);
+  assert.ok(excludedDairy.has("yogurt_plain"));
+  assert.ok(excludedDairy.has("milk_whole"));
+  assert.ok(!breakfastRecipe.ingredients.some((item) => excludedDairy.has(item.ingredient)));
+  assert.doesNotMatch(breakfast.message, /بالزبادي/u);
+
+  const oilFree = await agent.invoke({ message: "عاوز منك وجبه فول خاليه من الزيت خالص", language: "ar-EG" });
+  assert.equal(oilFree.status, "ok");
+  const oilFreeData = object(oilFree.data);
+  const remaining = oilFreeData.remainingIngredients as Array<{ ingredient: string }>;
+  assert.ok(!remaining.some((item) => ["olive_oil", "vegetable_oil", "ghee", "butter_raw"].includes(item.ingredient)));
+  assert.equal(object(object(oilFreeData.modifiedNutrition).perServing).fat, 1.4);
+  assert.ok(object(object(oilFreeData.modifiedNutrition).perServing));
+
+  const ful = await agent.invoke({ message: "عايز وصفة فول", language: "ar-EG" });
+  assert.equal(ful.status, "ok");
+  assert.match(ful.message, /^فول مدمس/u);
+
+  const saturated = await agent.invoke({ message: "هل الدهون المشبعة مضرة؟", language: "ar-EG" });
+  assert.equal(saturated.status, "ok");
+  assert.equal(object(saturated.data).concept, "saturated_fat");
+  assert.match(saturated.message, /10%/u);
+
+  const target = await agent.invoke({ message: "عاوز وجبة غداء 600 سعر حراري", language: "ar-EG" });
+  assert.equal(target.status, "ok");
+  const targetData = object(target.data);
+  assert.equal(targetData.recipeName, "فتة");
+  assert.doesNotMatch(target.message, /هي فئة/u);
+  assert.equal(object(targetData.energyReconciliation).macroEstimateKcal, 566);
+  assert.equal(targetData.macroDifferenceFromTargetKcal, 34);
+  assert.match(target.message, /4\/4\/9/u);
+  assert.match(target.message, /حسب طاقة المكونات المسجلة/u);
+});
+
+test("critical audit: a short dairy follow-up updates the previous meal target instead of losing context", async () => {
+  const first = await agent.invoke({ message: "عاوز وجبة افطار من 500 سعر حراري", language: "ar-EG" });
+  assert.equal(first.status, "ok");
+  const context = object(first.data).conversationContext as GraduationConversationContext;
+  const followup = await agent.invoke({
+    message: "بس ميكنش فيها منتجات ألبان لأنى عندى حساسية منها",
+    language: "ar-EG",
+    context,
+  });
+  assert.equal(followup.status, "ok");
+  const data = object(followup.data);
+  assert.equal(data.targetCaloriesKcal, 500);
+  const excluded = new Set(data.excludedIngredientKeys as string[]);
+  assert.ok(excluded.has("yogurt_plain"));
+  const recipe = dataset.recipes.find((candidate) => candidate.recipe_id === data.recipeId);
+  assert.ok(recipe);
+  assert.equal(recipe.category, "breakfast");
+  assert.ok(!recipe.ingredients.some((item) => excluded.has(item.ingredient)));
+
+  const explicitOilFreeFul = await agent.invoke({
+    message: "عاوز منك وجبه فول خاليه من الزيت خالص",
+    language: "ar-EG",
+    context: object(followup.data).conversationContext as GraduationConversationContext,
+  });
+  assert.equal(explicitOilFreeFul.status, "ok");
+  const oilData = object(explicitOilFreeFul.data);
+  assert.equal(oilData.modificationType, "ingredient_exclusion");
+  assert.equal(oilData.recipeId, "EGY-RCP-002");
+  const remaining = oilData.remainingIngredients as Array<{ ingredient: string }>;
+  assert.ok(!remaining.some((item) => ["olive_oil", "vegetable_oil", "flaxseed_oil", "ghee", "butter_raw"].includes(item.ingredient)));
+});
+
 test("BUG-09 and BUG-10: a constrained single meal remains the subject of a pronoun follow-up", async () => {
   const first = await agent.invoke({ message: "عاوز وجبة إفطار 500 سعر ومفيهاش منتجات ألبان عشان عندي حساسية منها", language: "ar-EG" });
   assert.equal(first.status, "ok");

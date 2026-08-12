@@ -13,6 +13,12 @@ Run `npm run eval:adversarial`. It writes:
 - `data/reports/step16-adversarial.synthetic.json`;
 - `data/reports/step17-iteration.synthetic.json`.
 
+The later dashboard-integration contract also labels its meal-selection feature
+as "Step 16". That separate, mocked-only extension is documented in
+[Dashboard meal selection](./DASHBOARD_MEAL_SELECTION.md). It does not replace
+the adversarial-evaluation work above and does not implement a real dashboard
+write.
+
 ## Step 17 — measured iteration
 
 Prompt version 1.2.0 adds a pre-planner request-integrity gate. It blocks

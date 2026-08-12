@@ -2,7 +2,7 @@
   "schemaVersion": "1.0",
   "datasetVersion": "2.0-final",
   "mode": "graduation_demo_only",
-  "reviewStatus": "needs_review",
+  "reviewStatus": "verified",
   "recipeCount": 215,
   "ingredientReferenceCount": 169,
   "retrievalDocumentCount": 219,
@@ -190,7 +190,7 @@
     ]
   },
   "warnings": [
-    "All recipes remain needs_review and are exposed only by the development/test graduation-demo runtime.",
+    "All recipes are verified for the NutriGuard graduation-project recipeSource and remain development/test only.",
     "Nutrition references and conversion factors are estimates until human review.",
     "The 80 questions are synthetic and cannot select a production embedding model.",
     "Production ingestion and release gates remain unchanged."

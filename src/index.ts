@@ -40,6 +40,29 @@ export { classifySafetyFlags, type SafetyFlag } from "./agent/safety.js";
 export { classifyRequestIntegrity, type RequestIntegrityFlag } from "./agent/request-integrity.js";
 export { NUTRIGUARD_SYSTEM_PROMPT, NUTRIGUARD_SYSTEM_PROMPT_VERSION } from "./agent/system-prompt.js";
 export {
+  DatasetVerifiedMealRecipeRepository,
+  apportionCalorieCeiling,
+  applyPerMealCalorieCeiling,
+  InMemoryVerifiedMealRecipeRepository,
+  MealSelectionFlow,
+  MAX_MEAL_SELECTION_SESSIONS,
+  PENDING_OPERATION_TTL_SECONDS,
+  confirm_and_log_meal_selection,
+  search_recipes_by_meal_category,
+  type MealSelectionConversationContext,
+  type VerifiedMealRecipe,
+  type VerifiedMealRecipeRepository,
+} from "./agent/meal-selection-flow.js";
+export {
+  type DashboardClient,
+  type DashboardErrorCode,
+  type DashboardResponse,
+  type LogMealSelectionsRequest,
+  type MealCategory,
+  type NutritionSnapshot,
+} from "./services/dashboard/dashboard-client.js";
+export { MockDashboardClient, type MockDashboardScenario } from "./services/dashboard/mock-dashboard-client.js";
+export {
   InMemoryAlternativeRuleRepository,
   NutriGuardExpandedAgent,
   RuleBasedExpandedAgentPlanner,

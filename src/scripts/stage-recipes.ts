@@ -3,7 +3,8 @@
  *
  * Usage: node --import tsx src/scripts/stage-recipes.ts [--root <dir>]
  *
- * Reads the read-only raw recipe CSV and the curated source manifest
+ * Reads the project-approved unified Egyptian JSON recipe source (falling back
+ * to the legacy raw CSV for isolated fixtures) and the curated source manifest
  * (`data/manifest/sources.json`) and produces the curated Egyptian recipe
  * registry (`data/staging/recipes.json`):
  *   - rows carrying explicit Egyptian-scope evidence -> staged as `needs_review`;
@@ -20,9 +21,10 @@
  * route the record back to review when its source row changed or disappeared
  * (source drift), preserving the historical timeline.
  *
- * The pipeline NEVER writes under `data/raw/`, NEVER fabricates values (missing
- * fields stay null / "not assessed"), and NEVER marks anything `verified` — only a
- * human review decision (see docs/MANUAL_REVIEW_WORKFLOW.md) may.
+ * The pipeline NEVER writes its recipe source and NEVER fabricates values
+ * (missing fields stay null / "not assessed"). It never independently decides
+ * that a recipe is verified: it only mirrors a matching human decision already
+ * recorded in the unified source (see docs/MANUAL_REVIEW_WORKFLOW.md).
  *
  * The previous-step general-purpose global recipe dump
  * (`data/processed/cleaned_recipes.json`) is explicitly ignored and reported.
@@ -66,6 +68,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = path.resolve(__dirname, "..", "..");
 
 const TOOL_NAME = "nutriguard-egypt-recipe-staging";
+const UNIFIED_RECIPE_SOURCE_FILE = "unified_egyptian_rag_database_v2_final.json";
 
 /** General-purpose global recipe dump that must NEVER be treated as Egyptian. */
 const IGNORED_GLOBAL_RECIPE_FILES = ["data/processed/cleaned_recipes.json"];
@@ -107,6 +110,8 @@ export interface VerifiedRecipeReport {
     reviewerId: string | null;
     reviewDate: string | null;
   }>;
+  /** Verified source records still awaiting a human meal-category decision. */
+  mealCategoryReviewQueue: Array<{ recipeId: string; originalTitle: string | null }>;
   /** Per-record eligibility blockers (truthful, record-specific). */
   recordBlockers: RecordEligibility[];
   blockers: string[];
@@ -125,6 +130,23 @@ export interface StagingRunResult {
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
 }
+
+interface UnifiedRecipeSource {
+  recipes: Record<string, unknown>[];
+  human_review_log: Record<string, unknown>[];
+}
+
+const UNIFIED_FINGERPRINT_HEADERS = [
+  "recipe_title",
+  "description",
+  "category",
+  "subcategory",
+  "cuisine_list",
+  "main_ingredient",
+  "ingredients",
+  "ingredients_canonical",
+  "directions",
+];
 
 /**
  * Migrate a legacy registry record (schema v1.0) to v2.0 shape, filling in
@@ -166,6 +188,9 @@ function migrateRecord(r: Record<string, unknown>, importedFingerprint: string |
     reviewDate: (rawReview.reviewDate as string | null) ?? null,
     evidenceIds: Array.isArray(rawReview.evidenceIds) ? (rawReview.evidenceIds as string[]) : [],
     rationale: (rawReview.rationale as string | null) ?? null,
+    mealCategories: Array.isArray(rawReview.mealCategories)
+      ? (rawReview.mealCategories as StagedRecipe["review"]["mealCategories"])
+      : [],
     autoRejected: typeof rawReview.autoRejected === "boolean" ? rawReview.autoRejected : false,
     snapshotFingerprint:
       typeof rawReview.snapshotFingerprint === "string" ? rawReview.snapshotFingerprint : null,
@@ -313,6 +338,176 @@ async function findRecipeCsv(rawRoot: string): Promise<string | null> {
   }
   const f = list.find((n) => n.toLowerCase().includes("recipes") && n.toLowerCase().endsWith(".csv"));
   return f ? path.join(rawRoot, f) : null;
+}
+
+/** Prefer the reviewed unified graduation source when it is present. */
+async function findUnifiedRecipeSource(root: string): Promise<string | null> {
+  const candidate = path.join(root, UNIFIED_RECIPE_SOURCE_FILE);
+  try {
+    await fs.access(candidate);
+    return candidate;
+  } catch {
+    return null;
+  }
+}
+
+async function loadUnifiedRecipeSource(file: string): Promise<UnifiedRecipeSource> {
+  const parsed = JSON.parse(await fs.readFile(file, "utf8")) as unknown;
+  if (!isRecord(parsed) || !Array.isArray(parsed.recipes) || !Array.isArray(parsed.human_review_log)) {
+    throw new Error(`${UNIFIED_RECIPE_SOURCE_FILE} must contain recipes[] and human_review_log[]`);
+  }
+  return {
+    recipes: parsed.recipes.filter(isRecord),
+    human_review_log: parsed.human_review_log.filter(isRecord),
+  };
+}
+
+function unifiedFingerprintRow(recipe: Record<string, unknown>): string[] {
+  const ingredients = Array.isArray(recipe.ingredients) ? recipe.ingredients : [];
+  const canonical = ingredients
+    .filter(isRecord)
+    .map((ingredient) => ingredient.ingredient)
+    .filter((value): value is string => typeof value === "string");
+  const proof = isRecord(recipe.egyptian_proof) ? recipe.egyptian_proof : {};
+  return [
+    typeof recipe.name_en === "string" ? recipe.name_en : "",
+    typeof proof.description === "string" ? proof.description : "",
+    typeof recipe.category === "string" ? recipe.category : "",
+    "",
+    JSON.stringify(["Egyptian"]),
+    canonical[0] ?? "",
+    JSON.stringify(ingredients),
+    JSON.stringify(canonical),
+    typeof recipe.method_summary === "string" ? recipe.method_summary : "",
+  ];
+}
+
+/**
+ * Convert one explicitly reviewed unified-source recipe into the staging
+ * registry. This mirrors a documented source decision; it never infers or
+ * manufactures a verified verdict from recipe content.
+ */
+function buildUnifiedReviewedRecord(
+  recipe: Record<string, unknown>,
+  reviewLog: Record<string, unknown>,
+  sourceRow: number,
+  sourceRowCount: number,
+  relPath: string,
+  manifest: Manifest
+): StagedRecipe | null {
+  const sourceRecipeId = typeof recipe.recipe_id === "string" ? recipe.recipe_id.trim() : "";
+  const title = typeof recipe.name_en === "string" ? recipe.name_en.trim() : "";
+  const nameAr = typeof recipe.name_ar === "string" && recipe.name_ar.trim() !== "" ? recipe.name_ar.trim() : null;
+  const aliases = Array.isArray(recipe.alt_names)
+    ? recipe.alt_names.filter((value): value is string => typeof value === "string" && value.trim() !== "").map((value) => value.trim())
+    : [];
+  const reviewerId = typeof recipe.cultural_reviewer_id === "string" ? recipe.cultural_reviewer_id.trim() : "";
+  const reviewDate = typeof recipe.cultural_review_date === "string" ? recipe.cultural_review_date.trim() : "";
+  const sourceUrl = typeof recipe.source_url === "string" ? recipe.source_url.trim() : "";
+  const loggedRecipeId = typeof reviewLog.recipe_id === "string" ? reviewLog.recipe_id.trim() : "";
+  const loggedDecision = typeof reviewLog.decision === "string" ? reviewLog.decision.trim() : "";
+  const loggedDate = typeof reviewLog.review_date === "string" ? reviewLog.review_date.trim() : "";
+  const loggedReviewers = Array.isArray(reviewLog.reviewer_ids)
+    ? reviewLog.reviewer_ids.filter((value): value is string => typeof value === "string")
+    : [];
+  const mealCategories = Array.isArray(recipe.meal_categories)
+    ? recipe.meal_categories.filter((value): value is "breakfast" | "lunch" | "dinner" =>
+        value === "breakfast" || value === "lunch" || value === "dinner"
+      )
+    : [];
+  const loggedMealCategories = Array.isArray(reviewLog.meal_categories)
+    ? reviewLog.meal_categories.filter((value): value is string => typeof value === "string")
+    : [];
+
+  const explicitlyVerified =
+    recipe.status === "verified" &&
+    sourceRecipeId !== "" &&
+    title !== "" &&
+    loggedRecipeId === sourceRecipeId &&
+    loggedDecision === "verified" &&
+    loggedDate === reviewDate &&
+    reviewerId !== "" &&
+    loggedReviewers.includes(reviewerId) &&
+    mealCategories.length > 0 &&
+    new Set(mealCategories).size === mealCategories.length &&
+    JSON.stringify([...mealCategories].sort()) === JSON.stringify([...loggedMealCategories].sort()) &&
+    /^https?:\/\//i.test(sourceUrl);
+  if (!explicitlyVerified) return null;
+
+  const row = unifiedFingerprintRow(recipe);
+  const fingerprint = computeRowFingerprint(relPath, sourceRow, UNIFIED_FINGERPRINT_HEADERS, row);
+  const recipeId = generateStableRecipeId(relPath, sourceRow, title);
+  const prov = provenanceFromManifest(relPath, manifest);
+  const proof = isRecord(recipe.egyptian_proof) ? recipe.egyptian_proof : {};
+  const proofDescription = typeof proof.description === "string" && proof.description.trim() !== ""
+    ? proof.description.trim()
+    : `Reviewed as Egyptian in ${UNIFIED_RECIPE_SOURCE_FILE}`;
+  const rationale = `${proofDescription}; graduation-project review log ${sourceRecipeId} confirms verified status.`;
+  const evidenceIds = [sourceUrl];
+
+  return {
+    recipeId,
+    names: { ar: nameAr, en: title, eg: null, aliases },
+    category: typeof recipe.category === "string" && recipe.category.trim() !== "" ? recipe.category.trim() : null,
+    subcategory: null,
+    region: typeof recipe.origin === "string" && recipe.origin.trim() !== "" ? recipe.origin.trim() : null,
+    yield: {
+      servings: typeof recipe.servings === "number" ? recipe.servings : null,
+      finalCookedWeightG: typeof recipe.final_yield_weight_grams === "number" ? recipe.final_yield_weight_grams : null,
+    },
+    source: {
+      sourceId: prov.sourceId,
+      sourceFile: relPath,
+      sourceRow,
+      sourceVersion: prov.sourceVersion,
+      accessDate: prov.accessDate,
+      url: sourceUrl,
+      sourceRowCount,
+    },
+    license: prov.license,
+    verificationStatus: "verified",
+    review: {
+      decision: "verified",
+      reviewerId,
+      reviewDate,
+      evidenceIds,
+      rationale,
+      mealCategories,
+      autoRejected: false,
+      snapshotFingerprint: fingerprint,
+      staleReason: null,
+      staleCode: null,
+      timeline: [
+        {
+          at: null,
+          actor: "pipeline",
+          action: "imported_from_unified_reviewed_source",
+          status: "needs_review",
+          note: `Imported from ${UNIFIED_RECIPE_SOURCE_FILE}; source review decision is mirrored separately.`,
+          evidenceIds: [],
+        },
+        {
+          at: reviewDate,
+          actor: reviewerId,
+          action: "human_verified",
+          status: "verified",
+          note: rationale,
+          evidenceIds,
+          mealCategories,
+          sourceFingerprint: fingerprint,
+          snapshotFingerprint: fingerprint,
+        },
+      ],
+    },
+    version: STAGING_SCHEMA_VERSION,
+    original: structuredClone(recipe),
+    originalTitle: title,
+    notes: [
+      `Imported from project-approved recipeSource ${UNIFIED_RECIPE_SOURCE_FILE}.`,
+      `Source recipe identity preserved as ${sourceRecipeId}.`,
+    ],
+    sourceFingerprint: fingerprint,
+  };
 }
 
 /** Load the registry array; `null` when the file's content is malformed (never throws on content). */
@@ -464,6 +659,7 @@ function baseRecord(
       reviewDate: null,
       evidenceIds: [],
       rationale: null,
+      mealCategories: [],
       autoRejected: false,
       timeline: [],
       snapshotFingerprint: null,
@@ -526,6 +722,7 @@ function buildAutoRejectedRecord(
     reviewDate: null,
     evidenceIds: [],
     rationale: null,
+    mealCategories: [],
     autoRejected: true,
     timeline: [
       {
@@ -577,6 +774,7 @@ function routeBackToReview(
     reviewDate: null,
     evidenceIds: [],
     rationale: null,
+    mealCategories: [],
     autoRejected: false,
     snapshotFingerprint: rec.review.snapshotFingerprint, // preserve old reviewed fingerprint in timeline
     staleReason: reason,
@@ -626,7 +824,7 @@ function renderStagingReportMarkdown(report: VerifiedRecipeReport): string {
   lines.push(``);
   lines.push(`- Tool: ${report.tool}`);
   lines.push(`- Schema version: ${report.schemaVersion}`);
-  lines.push(`- Recipe source: ${report.recipeSource ?? "n/a (no raw recipe CSV found)"}`);
+  lines.push(`- Recipe source: ${report.recipeSource ?? "n/a (no recipe source found)"}`);
   lines.push(``);
 
   lines.push(`## Import statistics`);
@@ -656,6 +854,19 @@ function renderStagingReportMarkdown(report: VerifiedRecipeReport): string {
   } else {
     for (const v of report.verifiedRecipes) {
       lines.push(`- \`${v.recipeId}\` ${v.originalTitle ?? "n/a"} — reviewed by ${v.reviewerId} on ${v.reviewDate}`);
+    }
+  }
+  lines.push(``);
+
+  lines.push(`## Human meal-category review queue`);
+  lines.push(``);
+  if (report.mealCategoryReviewQueue.length === 0) {
+    lines.push(`**None.** Every verified recipe has a human-assigned meal category.`);
+  } else {
+    lines.push(`${report.mealCategoryReviewQueue.length} verified recipes still require a human assignment of breakfast, lunch, and/or dinner:`);
+    lines.push(``);
+    for (const recipe of report.mealCategoryReviewQueue) {
+      lines.push(`- \`${recipe.recipeId}\` — ${recipe.originalTitle ?? "n/a"}`);
     }
   }
   lines.push(``);
@@ -726,12 +937,16 @@ async function runStageRecipes(root: string): Promise<StagingRunResult> {
   };
 
   const manifest = await loadSourceManifest(root);
-  const recipeFile = await findRecipeCsv(rawRoot);
+  const unifiedRecipeFile = await findUnifiedRecipeSource(root);
+  const recipeFile = unifiedRecipeFile ?? await findRecipeCsv(rawRoot);
   const recipeSource = recipeFile ? rel(recipeFile) : null;
 
   const existing = await loadRegistry(root);
   const cannotMerge = existing === null;
-  const safeExisting = cannotMerge ? [] : (existing as StagedRecipe[]);
+  // The unified file contains the authoritative review decisions, so rebuild
+  // that registry deterministically and do not mix in records from the retired
+  // CSV source. Legacy CSV fixture runs retain the historic merge behavior.
+  const safeExisting = cannotMerge || unifiedRecipeFile !== null ? [] : (existing as StagedRecipe[]);
 
   const seenCounts = new Map<string, number>();
   for (const r of safeExisting) {
@@ -766,7 +981,55 @@ async function runStageRecipes(root: string): Promise<StagingRunResult> {
   // so existing human-reviewed records always win the merge).
   const pendingStaged: StagedRecipe[] = [];
 
-  if (recipeFile) {
+  if (unifiedRecipeFile !== null && recipeSource !== null) {
+    const unified = await loadUnifiedRecipeSource(unifiedRecipeFile);
+    const reviewsByRecipeId = new Map<string, Record<string, unknown>>();
+    for (const review of unified.human_review_log) {
+      if (typeof review.recipe_id === "string") reviewsByRecipeId.set(review.recipe_id, review);
+    }
+    importStats.rowsTotal = unified.recipes.length;
+    const prov = provenanceFromManifest(recipeSource, manifest);
+
+    for (let i = 0; i < unified.recipes.length; i += 1) {
+      const recipe = unified.recipes[i];
+      const sourceRow = i + 1;
+      const sourceRecipeId = typeof recipe.recipe_id === "string" ? recipe.recipe_id : "";
+      const review = reviewsByRecipeId.get(sourceRecipeId);
+      if (review === undefined) {
+        importStats.excludedMalformedOrInvalid += 1;
+        continue;
+      }
+      const rec = buildUnifiedReviewedRecord(
+        recipe,
+        review,
+        sourceRow,
+        unified.recipes.length,
+        recipeSource,
+        manifest
+      );
+      if (rec === null) {
+        importStats.excludedMalformedOrInvalid += 1;
+        continue;
+      }
+      const fingerprint = rec.sourceFingerprint ?? "";
+      rowFingerprints.set(`${recipeSource}|${sourceRow}`, fingerprint);
+      trustedImportRows.push({
+        sourceFile: recipeSource,
+        sourceRow,
+        recipeId: rec.recipeId,
+        originalTitle: rec.originalTitle,
+        fingerprint,
+      });
+      importedRowData.set(rec.recipeId, {
+        fingerprint,
+        original: rec.original,
+        prov,
+        sourceRowCount: unified.recipes.length,
+      });
+      importedIds.add(rec.recipeId);
+      pendingStaged.push(rec);
+    }
+  } else if (recipeFile) {
     const buf = await fs.readFile(recipeFile);
     const enc = decodeText(buf);
     const parsed = parseDelimited(enc.text, "\t");
@@ -1124,7 +1387,7 @@ async function runStageRecipes(root: string): Promise<StagingRunResult> {
     blockers.push("0 verified recipes available — the MVP verified-recipe target is not met and is not being fabricated.");
   }
   if (recipeFile === null) {
-    blockers.push("No raw recipe CSV found under data/raw — the staging registry cannot be seeded from a source.");
+    blockers.push(`No ${UNIFIED_RECIPE_SOURCE_FILE} or legacy raw recipe CSV was found — the staging registry cannot be seeded from a source.`);
   } else {
     const sourceRecord = sourceRecordForSourceId(manifest, recipeSource, recipeSource);
     if (sourceRecord === null) {
@@ -1163,6 +1426,10 @@ async function runStageRecipes(root: string): Promise<StagingRunResult> {
     registryCounts: counts,
     eligibleForVerifiedDataset: eligible,
     verifiedRecipes,
+    mealCategoryReviewQueue: registry
+      .filter((recipe) => isRecord(recipe) && recipe.verificationStatus === "verified")
+      .filter((recipe) => !Array.isArray(recipe.review?.mealCategories) || recipe.review.mealCategories.length === 0)
+      .map((recipe) => ({ recipeId: recipe.recipeId, originalTitle: recipe.originalTitle })),
     recordBlockers,
     blockers,
     validationIssues: validation.issues,

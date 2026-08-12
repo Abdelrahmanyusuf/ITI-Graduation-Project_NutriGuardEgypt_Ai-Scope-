@@ -122,6 +122,8 @@ test("Step 11 prompt defines Egyptian Arabic, deterministic numbers, safety, and
 test("Step 11 safety classification preserves emergency and medical override precedence", () => {
   assert.deepEqual(classifySafetyFlags("مش قادر اتنفس وعايز صوديوم الكشري"), ["emergency"]);
   assert.ok(classifySafetyFlags("عندي سكر، آكل إيه؟").includes("medical_advice_request"));
+  assert.deepEqual(classifySafetyFlags("ما هي السكريات الحرة؟"), [], "nutrition terms containing سكري are not diabetes requests");
+  assert.ok(classifySafetyFlags("أنا مريض سكري، آكل إيه؟").includes("medical_advice_request"));
   assert.ok(classifySafetyFlags("الوصفة دي آمنة 100% للحساسية؟").includes("allergen_safety_guarantee"));
   assert.deepEqual(classifySafetyFlags("اعمل وجبات من غير ألبان لأني عندي حساسية منها"), [], "an exclusion reason is not diagnosis, treatment, or a safety guarantee");
   assert.ok(classifySafetyFlags("هل ده حلال مضمون 100%؟").includes("religious_compliance_guarantee"));

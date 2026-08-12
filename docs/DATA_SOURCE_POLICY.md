@@ -47,18 +47,20 @@ Before a source is used, the Data Steward must confirm and record each:
 
 A source fails the gate if any required line is “no/unknown.”
 
-## 4. Current source inventory (status: NOT approved)
+## 4. Current source inventory
 
-| File (in `data/raw/`) | Kind | Provenance / identity | License review | Status |
+| File | Kind | Provenance / identity | License review | Status |
 | --- | --- | --- | --- | --- |
+| `unified_egyptian_rag_database_v2_final.json` | recipes + nutrition + review log | NutriGuard graduation-project unified recipe source; documented in `data/manifest/sources.json` | approved for educational graduation-project use | `approved` |
 | `Egyptian_Food_Categorized.csv` | ingredient nutrition | not yet documented | not yet done | `pending` |
-| `Recipes For Eqyption Food.csv` | recipes + metadata | not yet documented | not yet done | `pending` |
+| `data/raw/Recipes For Eqyption Food.csv` | legacy recipe candidate; not the active `recipeSource` | not yet documented | not yet done | `pending` / excluded from the project recipe registry |
 | `WHO Guidelines.pdf` | general guidance | WHO healthy‑diet factsheet (see audit source manifest `data/manifest/sources.json`) | not yet done | `pending` |
 | `food_pyramid.json` | servings guidance | **unapproved candidate; evidence points to the Harvard Healthy Eating Pyramid** — not WHO and not Egyptian | not yet done | `pending` |
 | `Food Pyramid/*.jpg` | pyramid images | not yet documented | not yet done | `pending` |
 
-None of the above may be surfaced to users until reviewed and approved. This
-table is the current, honest state — not a claim of compliance.
+Only the unified JSON recipe source is approved for the graduation-project
+RAG, Agent, and verified-recipe registry. Every other candidate above remains
+blocked until it is separately reviewed and approved.
 
 ### Audit source manifest
 

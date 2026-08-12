@@ -3,7 +3,7 @@
     "recipeId": "EGY-RCP-001",
     "nameEn": "Koshary",
     "nameAr": "كشري",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 2174.7,
@@ -36,8 +36,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -45,7 +45,7 @@
     "recipeId": "EGY-RCP-002",
     "nameEn": "Ful Medames",
     "nameAr": "فول مدمس",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1434.7,
@@ -78,8 +78,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -87,7 +87,7 @@
     "recipeId": "EGY-RCP-003",
     "nameEn": "Ta'ameya",
     "nameAr": "طعمية",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1284.9,
@@ -120,8 +120,8 @@
       "absorbedFryingOilG": 30,
       "excludedFryingOilG": 200,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates",
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates",
         "frying_oil_counted_only_at_declared_absorption_fraction"
       ]
     }
@@ -130,7 +130,7 @@
     "recipeId": "EGY-RCP-004",
     "nameEn": "Hawawshi",
     "nameAr": "حواوشي",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 2194.7,
@@ -163,8 +163,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -172,7 +172,7 @@
     "recipeId": "EGY-RCP-005",
     "nameEn": "Hamam Mahshi",
     "nameAr": "حمام محشي",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 2279.9,
@@ -205,8 +205,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -214,7 +214,7 @@
     "recipeId": "EGY-RCP-006",
     "nameEn": "Mesaqa'ah",
     "nameAr": "مسقعة مصرية",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 410.4,
@@ -247,8 +247,8 @@
       "absorbedFryingOilG": 12,
       "excludedFryingOilG": 100,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates",
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates",
         "frying_oil_counted_only_at_declared_absorption_fraction"
       ]
     }
@@ -257,7 +257,7 @@
     "recipeId": "EGY-RCP-007",
     "nameEn": "Om Ali",
     "nameAr": "أم علي",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 3264.5,
@@ -290,8 +290,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -299,7 +299,7 @@
     "recipeId": "EGY-RCP-008",
     "nameEn": "Mazalika",
     "nameAr": "مزاليكا",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 605.2,
@@ -332,8 +332,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -341,7 +341,7 @@
     "recipeId": "EGY-RCP-009",
     "nameEn": "Ful Nabet",
     "nameAr": "فول نابت",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1254.8,
@@ -374,8 +374,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -383,7 +383,7 @@
     "recipeId": "EGY-RCP-010",
     "nameEn": "Mulukhiyah",
     "nameAr": "ملوخية",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1926.7,
@@ -416,8 +416,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -425,7 +425,7 @@
     "recipeId": "EGY-RCP-011",
     "nameEn": "Fattah",
     "nameAr": "فتة",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 3608.9,
@@ -458,8 +458,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -467,7 +467,7 @@
     "recipeId": "EGY-RCP-012",
     "nameEn": "Feteer Meshaltet",
     "nameAr": "فطير مشلتت",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 4482,
@@ -500,8 +500,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -509,7 +509,7 @@
     "recipeId": "EGY-RCP-013",
     "nameEn": "Bissara",
     "nameAr": "بصارة",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1209.8,
@@ -542,8 +542,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -551,7 +551,7 @@
     "recipeId": "EGY-RCP-014",
     "nameEn": "Mahshi Waraq Enab",
     "nameAr": "محشي ورق عنب",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 2300.3,
@@ -584,8 +584,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -593,7 +593,7 @@
     "recipeId": "EGY-RCP-015",
     "nameEn": "Egyptian Kishk",
     "nameAr": "كشك مصري",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 796.4,
@@ -626,8 +626,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -635,7 +635,7 @@
     "recipeId": "EGY-RCP-016",
     "nameEn": "Egyptian Lentil Soup",
     "nameAr": "شوربة عدس مصرية",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1018.7,
@@ -668,8 +668,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -677,7 +677,7 @@
     "recipeId": "EGY-RCP-017",
     "nameEn": "Alexandrian Liver",
     "nameAr": "كبدة اسكندراني",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1006.9,
@@ -710,8 +710,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -719,7 +719,7 @@
     "recipeId": "EGY-RCP-018",
     "nameEn": "Egyptian Basbousa",
     "nameAr": "بسبوسة مصرية",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 3661.1,
@@ -752,8 +752,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -761,7 +761,7 @@
     "recipeId": "EGY-RCP-019",
     "nameEn": "Egyptian Potato Tray with Beef",
     "nameAr": "صينية بطاطس باللحمة",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1660.4,
@@ -794,8 +794,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -803,7 +803,7 @@
     "recipeId": "EGY-RCP-020",
     "nameEn": "Egyptian Rice Pudding",
     "nameAr": "أرز باللبن مصري",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1316.8,
@@ -836,8 +836,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -845,7 +845,7 @@
     "recipeId": "EGY-RCP-021",
     "nameEn": "Egyptian Macaroni Bechamel",
     "nameAr": "صينية مكرونة بشاميل",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 3681.8,
@@ -878,8 +878,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -887,7 +887,7 @@
     "recipeId": "EGY-RCP-022",
     "nameEn": "Egyptian Trotters Soup",
     "nameAr": "شوربة كوارع",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1887.2,
@@ -920,8 +920,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -929,7 +929,7 @@
     "recipeId": "EGY-RCP-023",
     "nameEn": "Mahshi Koronb",
     "nameAr": "محشي كرنب",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 2256.8,
@@ -962,8 +962,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -971,7 +971,7 @@
     "recipeId": "EGY-RCP-024",
     "nameEn": "Mahshi Kousa",
     "nameAr": "محشي كوسة",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1388.6,
@@ -1004,8 +1004,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -1013,7 +1013,7 @@
     "recipeId": "EGY-RCP-025",
     "nameEn": "Mahshi Betenjan w Febel",
     "nameAr": "محشي باذنجان وفلفل",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1706.3,
@@ -1046,8 +1046,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -1055,7 +1055,7 @@
     "recipeId": "EGY-RCP-026",
     "nameEn": "Mombar",
     "nameAr": "ممبار",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 2125.8,
@@ -1088,8 +1088,8 @@
       "absorbedFryingOilG": 12,
       "excludedFryingOilG": 100,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates",
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates",
         "frying_oil_counted_only_at_declared_absorption_fraction"
       ]
     }
@@ -1098,7 +1098,7 @@
     "recipeId": "EGY-RCP-027",
     "nameEn": "Roqaq with Minced Meat",
     "nameAr": "رقاق باللحمة المفرومة",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 2683,
@@ -1131,8 +1131,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -1140,7 +1140,7 @@
     "recipeId": "EGY-RCP-028",
     "nameEn": "Okra Stew with Beef",
     "nameAr": "طاجن بامية باللحمة",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1297.1,
@@ -1173,8 +1173,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -1182,7 +1182,7 @@
     "recipeId": "EGY-RCP-029",
     "nameEn": "Orzo Tagine with Beef",
     "nameAr": "طاجن لسان عصفور باللحمة",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 2309.1,
@@ -1215,8 +1215,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -1224,7 +1224,7 @@
     "recipeId": "EGY-RCP-030",
     "nameEn": "Oxtail Tagine",
     "nameAr": "طاجن عكاوي",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 2613.3,
@@ -1257,8 +1257,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -1266,7 +1266,7 @@
     "recipeId": "EGY-RCP-031",
     "nameEn": "Taro with Taro Greens/Taro Soup",
     "nameAr": "قلقاس بالسلق",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1202.3,
@@ -1299,8 +1299,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -1308,7 +1308,7 @@
     "recipeId": "EGY-RCP-032",
     "nameEn": "Egyptian Spinach with Meat & Chickpeas",
     "nameAr": "سبانخ بالحمص واللحمة",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1318.8,
@@ -1341,8 +1341,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -1350,7 +1350,7 @@
     "recipeId": "EGY-RCP-033",
     "nameEn": "Khobeiza",
     "nameAr": "خبيزة",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 601.3,
@@ -1383,8 +1383,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -1392,7 +1392,7 @@
     "recipeId": "EGY-RCP-034",
     "nameEn": "Shakshouka / Shirkasiya",
     "nameAr": "شركسية بالدجاج",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 3639,
@@ -1425,8 +1425,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -1434,7 +1434,7 @@
     "recipeId": "EGY-RCP-035",
     "nameEn": "Egyptian Shakshouka",
     "nameAr": "شكشوكة مصرية",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 633.2,
@@ -1467,8 +1467,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -1476,7 +1476,7 @@
     "recipeId": "EGY-RCP-036",
     "nameEn": "Egyptian Egg Omelet (Egah)",
     "nameAr": "عجة بيض مصرية",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1061.6,
@@ -1509,8 +1509,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -1518,7 +1518,7 @@
     "recipeId": "EGY-RCP-037",
     "nameEn": "Moussaka Bechamel",
     "nameAr": "صينية مسقعة بالبشاميل واللحمة المفرومة",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1930.5,
@@ -1551,8 +1551,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -1560,7 +1560,7 @@
     "recipeId": "EGY-RCP-038",
     "nameEn": "Egyptian Rice Kofta",
     "nameAr": "كفتة رز مصرية",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1993,
@@ -1593,8 +1593,8 @@
       "absorbedFryingOilG": 12,
       "excludedFryingOilG": 100,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates",
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates",
         "frying_oil_counted_only_at_declared_absorption_fraction"
       ]
     }
@@ -1603,7 +1603,7 @@
     "recipeId": "EGY-RCP-039",
     "nameEn": "Egyptian Grilled Kofta",
     "nameAr": "كفتة الحاتي",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 2214.7,
@@ -1636,8 +1636,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -1645,7 +1645,7 @@
     "recipeId": "EGY-RCP-040",
     "nameEn": "Alexandrian Hawawshi",
     "nameAr": "حواوشي إسكندراني",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 2824,
@@ -1678,8 +1678,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -1687,7 +1687,7 @@
     "recipeId": "EGY-RCP-041",
     "nameEn": "Mackerel with Oil & Lemon",
     "nameAr": "صينية سمك ماكريل بالزيت والليمون",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1684.1,
@@ -1720,8 +1720,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -1729,7 +1729,7 @@
     "recipeId": "EGY-RCP-042",
     "nameEn": "Fried Tilapia Egyptian Style",
     "nameAr": "سمك بولطي مقلي",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 959.4,
@@ -1762,8 +1762,8 @@
       "absorbedFryingOilG": 12,
       "excludedFryingOilG": 100,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates",
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates",
         "frying_oil_counted_only_at_declared_absorption_fraction"
       ]
     }
@@ -1772,7 +1772,7 @@
     "recipeId": "EGY-RCP-043",
     "nameEn": "Sayadieh Rice / Fishermen Rice",
     "nameAr": "أرز صيادية",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1749.9,
@@ -1805,8 +1805,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -1814,7 +1814,7 @@
     "recipeId": "EGY-RCP-044",
     "nameEn": "Makhorouta with Milk & Sugar",
     "nameAr": "مخروطة بسكر ولبن",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 2751,
@@ -1847,8 +1847,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -1856,7 +1856,7 @@
     "recipeId": "EGY-RCP-045",
     "nameEn": "Egyptian Sweet Couscous",
     "nameAr": "سكسونية / كسكسي مصري بالسكر",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 2746.4,
@@ -1889,8 +1889,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -1898,7 +1898,7 @@
     "recipeId": "EGY-RCP-046",
     "nameEn": "Balah El Sham",
     "nameAr": "بلح الشام",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 2887.3,
@@ -1931,8 +1931,8 @@
       "absorbedFryingOilG": 22.5,
       "excludedFryingOilG": 150,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates",
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates",
         "frying_oil_counted_only_at_declared_absorption_fraction"
       ]
     }
@@ -1941,7 +1941,7 @@
     "recipeId": "EGY-RCP-047",
     "nameEn": "Sowabe' Zainab",
     "nameAr": "صوابع زينب",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 3014.4,
@@ -1974,8 +1974,8 @@
       "absorbedFryingOilG": 15,
       "excludedFryingOilG": 100,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates",
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates",
         "frying_oil_counted_only_at_declared_absorption_fraction"
       ]
     }
@@ -1984,7 +1984,7 @@
     "recipeId": "EGY-RCP-048",
     "nameEn": "Zalabia / Luqmat Al-Qadi",
     "nameAr": "زلابية / لقمة القاضي",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 2365.4,
@@ -2017,8 +2017,8 @@
       "absorbedFryingOilG": 18,
       "excludedFryingOilG": 120,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates",
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates",
         "frying_oil_counted_only_at_declared_absorption_fraction"
       ]
     }
@@ -2027,7 +2027,7 @@
     "recipeId": "EGY-RCP-049",
     "nameEn": "Egyptian Mahalabia",
     "nameAr": "مهلبية مصري",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1177.5,
@@ -2060,8 +2060,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -2069,7 +2069,7 @@
     "recipeId": "EGY-RCP-050",
     "nameEn": "Azizia Egyptian Noodle Pudding",
     "nameAr": "عزيزية (مكرونة باللبن في الفرن)",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 2169.4,
@@ -2102,8 +2102,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -2111,7 +2111,7 @@
     "recipeId": "EGY-RCP-051",
     "nameEn": "Tourlit / Mixed Vegetable Stew with Beef",
     "nameAr": "طاجن تورلي باللحمة",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1412,
@@ -2144,8 +2144,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -2153,7 +2153,7 @@
     "recipeId": "EGY-RCP-052",
     "nameEn": "Dawood Pasha Meatballs",
     "nameAr": "كفتة داوود باشا مصرية",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1644.1,
@@ -2186,8 +2186,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -2195,7 +2195,7 @@
     "recipeId": "EGY-RCP-053",
     "nameEn": "Plain Baladi Hawawshi",
     "nameAr": "حواوشي سادة بلدي",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1270,
@@ -2228,8 +2228,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -2237,7 +2237,7 @@
     "recipeId": "EGY-RCP-054",
     "nameEn": "Zucchini Bechamel",
     "nameAr": "صينية كوسة بالبشاميل",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1749,
@@ -2270,8 +2270,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -2279,7 +2279,7 @@
     "recipeId": "EGY-RCP-055",
     "nameEn": "Fish Hawawshi",
     "nameAr": "حواوشي سمك اسكندراني",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1453,
@@ -2312,8 +2312,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -2321,7 +2321,7 @@
     "recipeId": "EGY-RCP-056",
     "nameEn": "Sweet Golash with Milk",
     "nameAr": "صينية جلاش بالحليب والسكر",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 2330.4,
@@ -2354,8 +2354,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -2363,7 +2363,7 @@
     "recipeId": "EGY-RCP-057",
     "nameEn": "Savory Egyptian Golash",
     "nameAr": "جلاش باللحمة المفرومة",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 2599.8,
@@ -2396,8 +2396,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -2405,7 +2405,7 @@
     "recipeId": "EGY-RCP-058",
     "nameEn": "Orzo Soup with Bone Marrow",
     "nameAr": "شوربة لسان عصفور بالمواسر",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 860.4,
@@ -2438,8 +2438,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -2447,7 +2447,7 @@
     "recipeId": "EGY-RCP-059",
     "nameEn": "Ful with Eggs and Ghee",
     "nameAr": "فول بالبيض والسمن البلدي",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 913.1,
@@ -2480,8 +2480,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -2489,7 +2489,7 @@
     "recipeId": "EGY-RCP-060",
     "nameEn": "Ful with Tomato & Garlic Sauce",
     "nameAr": "فول بالصلصة والثوم",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 758,
@@ -2522,8 +2522,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -2531,7 +2531,7 @@
     "recipeId": "EGY-RCP-061",
     "nameEn": "Stuffed Ta'ameya",
     "nameAr": "طعمية محشية شطة وبصل",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1021.3,
@@ -2564,8 +2564,8 @@
       "absorbedFryingOilG": 22.5,
       "excludedFryingOilG": 150,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates",
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates",
         "frying_oil_counted_only_at_declared_absorption_fraction"
       ]
     }
@@ -2574,7 +2574,7 @@
     "recipeId": "EGY-RCP-062",
     "nameEn": "Egyptian Pickled Eggplant",
     "nameAr": "باذنجان مخلل بالثوم والخل",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 173.8,
@@ -2607,8 +2607,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -2616,7 +2616,7 @@
     "recipeId": "EGY-RCP-063",
     "nameEn": "Pickled Tomatoes",
     "nameAr": "طماطم مخللة بالثوم والكمون",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 110.8,
@@ -2649,8 +2649,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -2658,7 +2658,7 @@
     "recipeId": "EGY-RCP-064",
     "nameEn": "Egyptian Baladi Salad",
     "nameAr": "سلاطة خضراء بلدي",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 123.6,
@@ -2691,8 +2691,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -2700,7 +2700,7 @@
     "recipeId": "EGY-RCP-065",
     "nameEn": "Egyptian Baba Ghanoush",
     "nameAr": "بابا غنوج مصري",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 690.5,
@@ -2733,8 +2733,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -2742,7 +2742,7 @@
     "recipeId": "EGY-RCP-066",
     "nameEn": "Egyptian Tahini Dip",
     "nameAr": "سلاطة طحينة بلدي",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 634.7,
@@ -2775,8 +2775,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -2784,7 +2784,7 @@
     "recipeId": "EGY-RCP-067",
     "nameEn": "Chicken Liver & Gizzards with Onions",
     "nameAr": "كبدة وقوانص بالبصل",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 732,
@@ -2817,8 +2817,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -2826,7 +2826,7 @@
     "recipeId": "EGY-RCP-068",
     "nameEn": "Freekeh with Chicken",
     "nameAr": "صينية فريكة بالدجاج",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 2432.4,
@@ -2859,8 +2859,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -2868,7 +2868,7 @@
     "recipeId": "EGY-RCP-069",
     "nameEn": "Kishk with Rice and Chicken",
     "nameAr": "كشك بأرز ودجاج",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1043.6,
@@ -2901,8 +2901,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -2910,7 +2910,7 @@
     "recipeId": "EGY-RCP-070",
     "nameEn": "Chicken Orzo Soup",
     "nameAr": "شوربة لسان عصفور بالدجاج",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1186.4,
@@ -2943,8 +2943,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -2952,7 +2952,7 @@
     "recipeId": "EGY-RCP-071",
     "nameEn": "Chicken Vegetable Tagine",
     "nameAr": "طاجن خضار بالدجاج",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1647,
@@ -2985,8 +2985,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -2994,7 +2994,7 @@
     "recipeId": "EGY-RCP-072",
     "nameEn": "Savory Egyptian Rice Pudding with Chicken",
     "nameAr": "أرز معمر حادق بالدجاج",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 3598,
@@ -3027,8 +3027,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -3036,7 +3036,7 @@
     "recipeId": "EGY-RCP-073",
     "nameEn": "Sweet Roz Muammar",
     "nameAr": "أرز معمر حلو بالقشطة",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 3155.5,
@@ -3069,8 +3069,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -3078,7 +3078,7 @@
     "recipeId": "EGY-RCP-074",
     "nameEn": "Grilled Pigeon",
     "nameAr": "حمام مشوي على الفحم",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1712.4,
@@ -3111,8 +3111,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -3120,7 +3120,7 @@
     "recipeId": "EGY-RCP-075",
     "nameEn": "Tilapia Fish Tray with Tomato Sauce",
     "nameAr": "صينية سمك بلطي بالصلصة والفرن",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1082.2,
@@ -3153,8 +3153,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -3162,7 +3162,7 @@
     "recipeId": "EGY-RCP-076",
     "nameEn": "Alexandrian Boiled Shrimp",
     "nameAr": "جمبري إسكندراني بالثوم والليمون",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 546.3,
@@ -3195,8 +3195,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -3204,7 +3204,7 @@
     "recipeId": "EGY-RCP-077",
     "nameEn": "Egyptian Seafood Soup",
     "nameAr": "شوربة سي فود مصري",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1008,
@@ -3237,8 +3237,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -3246,7 +3246,7 @@
     "recipeId": "EGY-RCP-078",
     "nameEn": "Calamari Tagine with Tomato Sauce",
     "nameAr": "طاجن كالماري بالصلصة",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 884.1,
@@ -3279,8 +3279,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -3288,7 +3288,7 @@
     "recipeId": "EGY-RCP-079",
     "nameEn": "Singari Mullet Fish",
     "nameAr": "سمك بوري سنجاري بالخضار",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1219.4,
@@ -3321,8 +3321,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -3330,7 +3330,7 @@
     "recipeId": "EGY-RCP-080",
     "nameEn": "Grilled Mullet with Wheat Bran",
     "nameAr": "سمك بوري مشوي بالرداء (الردة)",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 996.4,
@@ -3363,8 +3363,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -3372,7 +3372,7 @@
     "recipeId": "EGY-RCP-081",
     "nameEn": "Feseekh (Fermented Mullet)",
     "nameAr": "فسيخ مصري بالزيت والليمون",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1794.8,
@@ -3405,8 +3405,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -3414,7 +3414,7 @@
     "recipeId": "EGY-RCP-082",
     "nameEn": "Egyptian Smoked Herring with Tahini",
     "nameAr": "رنجة مخلية بالزيت والطحينة",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1992.6,
@@ -3447,8 +3447,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -3456,7 +3456,7 @@
     "recipeId": "EGY-RCP-083",
     "nameEn": "Fried Alexandrian Sardines",
     "nameAr": "سردين مقلي اسكندراني",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1423.4,
@@ -3489,8 +3489,8 @@
       "absorbedFryingOilG": 12,
       "excludedFryingOilG": 100,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates",
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates",
         "frying_oil_counted_only_at_declared_absorption_fraction"
       ]
     }
@@ -3499,7 +3499,7 @@
     "recipeId": "EGY-RCP-084",
     "nameEn": "Baked Sardine Tray",
     "nameAr": "صينية سردين بالفرن (صينية سردين طازج)",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1452.4,
@@ -3532,8 +3532,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -3541,7 +3541,7 @@
     "recipeId": "EGY-RCP-085",
     "nameEn": "Port Said Shrimp Kofta",
     "nameAr": "كفتة جمبري بورسعيدية",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1087.2,
@@ -3574,8 +3574,8 @@
       "absorbedFryingOilG": 9.6,
       "excludedFryingOilG": 80,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates",
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates",
         "frying_oil_counted_only_at_declared_absorption_fraction"
       ]
     }
@@ -3584,7 +3584,7 @@
     "recipeId": "EGY-RCP-086",
     "nameEn": "Stuffed Onions Egyptian Style",
     "nameAr": "محشي بصل مصري",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1860.4,
@@ -3617,8 +3617,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -3626,7 +3626,7 @@
     "recipeId": "EGY-RCP-087",
     "nameEn": "Stuffed Lettuce Leaves",
     "nameAr": "محشي خرفيش / خس مصري",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1527.4,
@@ -3659,8 +3659,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -3668,7 +3668,7 @@
     "recipeId": "EGY-RCP-088",
     "nameEn": "Marrow Bone & Trotter Soup",
     "nameAr": "شوربة مواسر وكوارع",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": null,
@@ -3701,8 +3701,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -3710,7 +3710,7 @@
     "recipeId": "EGY-RCP-089",
     "nameEn": "Beef Head Meat in Tomato Sauce",
     "nameAr": "لحمة رأس بالصلصة والثوم",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1060.2,
@@ -3743,8 +3743,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -3752,7 +3752,7 @@
     "recipeId": "EGY-RCP-090",
     "nameEn": "Pan-Fried Beef Spleen",
     "nameAr": "طحال محمر بالسمنة البلدي",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 881.1,
@@ -3785,8 +3785,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -3794,7 +3794,7 @@
     "recipeId": "EGY-RCP-091",
     "nameEn": "Mixed Egyptian Offal Platter",
     "nameAr": "حلويات المسمط (فواكه اللحوم المشكلة)",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1156.3,
@@ -3827,8 +3827,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -3836,7 +3836,7 @@
     "recipeId": "EGY-RCP-092",
     "nameEn": "Ful with Yogurt & Tahini",
     "nameAr": "فول بالزبادي والطحينة",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 935.3,
@@ -3869,8 +3869,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -3878,7 +3878,7 @@
     "recipeId": "EGY-RCP-093",
     "nameEn": "Ful with Oriental Sausage",
     "nameAr": "فول بالسجق الشرقي",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1339.8,
@@ -3911,8 +3911,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -3920,7 +3920,7 @@
     "recipeId": "EGY-RCP-094",
     "nameEn": "Alexandrian Oriental Sausage",
     "nameAr": "سجق شرقي بالإسكندراني (سجق بلدي بالخضار)",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1450.4,
@@ -3953,8 +3953,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -3962,7 +3962,7 @@
     "recipeId": "EGY-RCP-095",
     "nameEn": "Fried Beef Liver with Wheat Bran",
     "nameAr": "كبدة بالردة مقلية",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 856.4,
@@ -3995,8 +3995,8 @@
       "absorbedFryingOilG": 10,
       "excludedFryingOilG": 100,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates",
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates",
         "frying_oil_counted_only_at_declared_absorption_fraction"
       ]
     }
@@ -4005,7 +4005,7 @@
     "recipeId": "EGY-RCP-096",
     "nameEn": "Garlic & Vinegar Moussaka (Vegan)",
     "nameAr": "مسقعة بالخل والثوم سادة (بدون لحمة)",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 392.7,
@@ -4038,8 +4038,8 @@
       "absorbedFryingOilG": 8,
       "excludedFryingOilG": 80,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates",
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates",
         "frying_oil_counted_only_at_declared_absorption_fraction"
       ]
     }
@@ -4048,7 +4048,7 @@
     "recipeId": "EGY-RCP-097",
     "nameEn": "Dawood Pasha with Potato Cubes",
     "nameAr": "كفتة داوود باشا بالبطاطس",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1628,
@@ -4081,8 +4081,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -4090,7 +4090,7 @@
     "recipeId": "EGY-RCP-098",
     "nameEn": "Baked Potato Tray with Chicken",
     "nameAr": "صينية بطاطس بالفراخ",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 2169,
@@ -4123,8 +4123,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -4132,7 +4132,7 @@
     "recipeId": "EGY-RCP-099",
     "nameEn": "Stewed Zucchini with Minced Beef",
     "nameAr": "صينية كوسة باللحمة المفرومة (مسبكة)",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1081.5,
@@ -4165,8 +4165,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -4174,7 +4174,7 @@
     "recipeId": "EGY-RCP-100",
     "nameEn": "Clay Pot Beef with Mixed Vegetables",
     "nameAr": "طاجن خضار باللحمة (طاجن مشكل)",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1456.5,
@@ -4207,8 +4207,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -4216,7 +4216,7 @@
     "recipeId": "EGY-RCP-101",
     "nameEn": "Trotters Soup with Vinegar & Garlic Sauce",
     "nameAr": "شوربة كوارع بالخليط والصلصة (فتة كوارع)",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 2700.7,
@@ -4249,8 +4249,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -4258,7 +4258,7 @@
     "recipeId": "EGY-RCP-102",
     "nameEn": "Oxtail Tagine with Potato Cubes",
     "nameAr": "طاجن عكاوي بالبطاطس والبصل",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 2513,
@@ -4291,8 +4291,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -4300,7 +4300,7 @@
     "recipeId": "EGY-RCP-103",
     "nameEn": "Egyptian Beef Kofta with Bulgur",
     "nameAr": "كفتة برغل مصرية (كفتة مشوية بالبرغل)",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1404.7,
@@ -4333,8 +4333,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -4342,7 +4342,7 @@
     "recipeId": "EGY-RCP-104",
     "nameEn": "Basbousa with Cream & Nuts",
     "nameAr": "بسبوسة بالمكسرات والقشطة",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 4495,
@@ -4375,8 +4375,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -4384,7 +4384,7 @@
     "recipeId": "EGY-RCP-105",
     "nameEn": "Egyptian Kunafa with Nuts",
     "nameAr": "كنافة بالسمن البلدي والمكسرات",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 4374.5,
@@ -4417,8 +4417,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -4426,7 +4426,7 @@
     "recipeId": "EGY-RCP-106",
     "nameEn": "Kunafa with Cream",
     "nameAr": "كنافة بالقشطة والمهلبية",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 4148.4,
@@ -4459,8 +4459,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -4468,7 +4468,7 @@
     "recipeId": "EGY-RCP-107",
     "nameEn": "Qatayef with Nuts",
     "nameAr": "قطايف بالمكسرات وشربات",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 2636.3,
@@ -4501,8 +4501,8 @@
       "absorbedFryingOilG": 14.4,
       "excludedFryingOilG": 120,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates",
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates",
         "frying_oil_counted_only_at_declared_absorption_fraction"
       ]
     }
@@ -4511,7 +4511,7 @@
     "recipeId": "EGY-RCP-108",
     "nameEn": "Asafiri Qatayef with Cream",
     "nameAr": "قطايف بالقشطة (قطايف عصافيري)",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1872.8,
@@ -4544,8 +4544,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -4553,7 +4553,7 @@
     "recipeId": "EGY-RCP-109",
     "nameEn": "Egyptian Ghorayeba",
     "nameAr": "غريبة مصري بالسمن البلدي",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 3818.7,
@@ -4586,8 +4586,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -4595,7 +4595,7 @@
     "recipeId": "EGY-RCP-110",
     "nameEn": "Plain Kahk El Eid",
     "nameAr": "كحك العيد السادة بالملمس الناعم",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": null,
@@ -4628,8 +4628,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -4637,7 +4637,7 @@
     "recipeId": "EGY-RCP-111",
     "nameEn": "Stuffed Kahk with Malban or Dates",
     "nameAr": "كحك العيد بالحشوة (ملبن / عجوة)",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 5184.9,
@@ -4670,8 +4670,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -4679,7 +4679,7 @@
     "recipeId": "EGY-RCP-112",
     "nameEn": "Egyptian Ammonia Biscuits",
     "nameAr": "بسكويت النشادر المصري (بسكويت العيد)",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 4161.6,
@@ -4712,8 +4712,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -4721,7 +4721,7 @@
     "recipeId": "EGY-RCP-113",
     "nameEn": "Egyptian Petit Four",
     "nameAr": "بيتي فور مصري مشكل",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 4423.5,
@@ -4754,8 +4754,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -4763,7 +4763,7 @@
     "recipeId": "EGY-RCP-114",
     "nameEn": "Damietta Meshabbak",
     "nameAr": "مفروكة / مشبك دمياطي",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 2695.7,
@@ -4796,8 +4796,8 @@
       "absorbedFryingOilG": 22.5,
       "excludedFryingOilG": 150,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates",
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates",
         "frying_oil_counted_only_at_declared_absorption_fraction"
       ]
     }
@@ -4806,7 +4806,7 @@
     "recipeId": "EGY-RCP-115",
     "nameEn": "Egyptian Sahlab",
     "nameAr": "سحلب مصري باللبن والمكسرات",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 905.9,
@@ -4839,8 +4839,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -4848,7 +4848,7 @@
     "recipeId": "EGY-RCP-116",
     "nameEn": "Halabesa / Chickpea Drink",
     "nameAr": "مشروب حمص الشام (حلبسة)",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 832.3,
@@ -4881,8 +4881,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -4890,7 +4890,7 @@
     "recipeId": "EGY-RCP-117",
     "nameEn": "Egyptian Tamarind Drink",
     "nameAr": "مشروب تمر هندي مصري بلدي",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1132.5,
@@ -4923,8 +4923,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -4932,7 +4932,7 @@
     "recipeId": "EGY-RCP-118",
     "nameEn": "Egyptian Karkadeh (Hibiscus Tea)",
     "nameAr": "مشروب كركديه مصري (مغلي أو نقع بارد)",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 715.1,
@@ -4965,8 +4965,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -4974,7 +4974,7 @@
     "recipeId": "EGY-RCP-119",
     "nameEn": "Carob Juice",
     "nameAr": "مشروب الخروب المصري",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1029.6,
@@ -5007,8 +5007,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -5016,7 +5016,7 @@
     "recipeId": "EGY-RCP-120",
     "nameEn": "Egyptian Sobia Drink",
     "nameAr": "مشروب السوبيا المصرية باللبن والجوهر",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1103.2,
@@ -5049,8 +5049,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -5058,7 +5058,7 @@
     "recipeId": "EGY-RCP-121",
     "nameEn": "Liquorice Drink",
     "nameAr": "مشروب العرقسوس المصفى",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 140,
@@ -5091,8 +5091,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -5100,7 +5100,7 @@
     "recipeId": "EGY-RCP-122",
     "nameEn": "Molokhia with Rabbits",
     "nameAr": "ملوخية بالأرانب",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1680.1,
@@ -5133,8 +5133,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -5142,7 +5142,7 @@
     "recipeId": "EGY-RCP-123",
     "nameEn": "Yellow Lentil Koshary",
     "nameAr": "كشري أصفر إسكندراني",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 2544.2,
@@ -5175,8 +5175,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -5184,7 +5184,7 @@
     "recipeId": "EGY-RCP-124",
     "nameEn": "Kebab Hilla (Beef and Onion Stew)",
     "nameAr": "كباب حلة مصري",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1816,
@@ -5217,8 +5217,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -5226,7 +5226,7 @@
     "recipeId": "EGY-RCP-125",
     "nameEn": "Tarb (Kofta wrapped in Caul Fat)",
     "nameAr": "طرب مشوي",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 2495.4,
@@ -5259,8 +5259,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -5268,7 +5268,7 @@
     "recipeId": "EGY-RCP-126",
     "nameEn": "Rice with Vermicelli",
     "nameAr": "أرز بالشعيرية",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1877.6,
@@ -5301,8 +5301,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -5310,7 +5310,7 @@
     "recipeId": "EGY-RCP-127",
     "nameEn": "Egyptian Macaroni with Tomato Sauce",
     "nameAr": "مكرونة بالصلصة المصرية",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1883.1,
@@ -5343,8 +5343,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -5352,7 +5352,7 @@
     "recipeId": "EGY-RCP-128",
     "nameEn": "Stuffed Potatoes with Minced Beef",
     "nameAr": "بطاطس محشية باللحمة المفرومة",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1703.5,
@@ -5385,8 +5385,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -5394,7 +5394,7 @@
     "recipeId": "EGY-RCP-129",
     "nameEn": "Stuffed Artichoke Bottoms",
     "nameAr": "خرشوف محشي لحمة مفرومة",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1162.5,
@@ -5427,8 +5427,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -5436,7 +5436,7 @@
     "recipeId": "EGY-RCP-130",
     "nameEn": "Peas and Carrots Stew with Beef",
     "nameAr": "بسلة بالجزر واللحمة",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1447,
@@ -5469,8 +5469,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -5478,7 +5478,7 @@
     "recipeId": "EGY-RCP-131",
     "nameEn": "Green Beans Stew with Beef",
     "nameAr": "فاصوليا خضراء باللحمة",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1225.4,
@@ -5511,8 +5511,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -5520,7 +5520,7 @@
     "recipeId": "EGY-RCP-132",
     "nameEn": "Fried Cauliflower Egyptian Style",
     "nameAr": "قرنبيط مقلي مقرمش",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 933.2,
@@ -5553,8 +5553,8 @@
       "absorbedFryingOilG": 14.4,
       "excludedFryingOilG": 120,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates",
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates",
         "frying_oil_counted_only_at_declared_absorption_fraction"
       ]
     }
@@ -5563,7 +5563,7 @@
     "recipeId": "EGY-RCP-133",
     "nameEn": "Plain Okra Tagine (Vegan)",
     "nameAr": "طاجن بامية سادة (أرديحي)",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 536,
@@ -5596,8 +5596,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -5605,7 +5605,7 @@
     "recipeId": "EGY-RCP-134",
     "nameEn": "Phyllo Pie with Cheese",
     "nameAr": "صينية جلاش بالجبنة",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 2263.8,
@@ -5638,8 +5638,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -5647,7 +5647,7 @@
     "recipeId": "EGY-RCP-135",
     "nameEn": "Breaded Fried Brains",
     "nameAr": "مخ بانيه مقلي",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1155,
@@ -5680,8 +5680,8 @@
       "absorbedFryingOilG": 8,
       "excludedFryingOilG": 80,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates",
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates",
         "frying_oil_counted_only_at_declared_absorption_fraction"
       ]
     }
@@ -5690,7 +5690,7 @@
     "recipeId": "EGY-RCP-136",
     "nameEn": "Fried Fish Fillet",
     "nameAr": "سمك فيليه مقلي",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 985,
@@ -5723,8 +5723,8 @@
       "absorbedFryingOilG": 12,
       "excludedFryingOilG": 100,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates",
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates",
         "frying_oil_counted_only_at_declared_absorption_fraction"
       ]
     }
@@ -5733,7 +5733,7 @@
     "recipeId": "EGY-RCP-137",
     "nameEn": "Egyptian Rice with Liver, Gizzards & Nuts",
     "nameAr": "أرز بالخلطة والكبد والقوانص",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 2704.1,
@@ -5766,8 +5766,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -5775,7 +5775,7 @@
     "recipeId": "EGY-RCP-138",
     "nameEn": "Egyptian Potato Kofta",
     "nameAr": "كفتة بطاطس مصرية",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1252.1,
@@ -5808,8 +5808,8 @@
       "absorbedFryingOilG": 9.6,
       "excludedFryingOilG": 80,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates",
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates",
         "frying_oil_counted_only_at_declared_absorption_fraction"
       ]
     }
@@ -5818,7 +5818,7 @@
     "recipeId": "EGY-RCP-139",
     "nameEn": "Cauliflower Eggah (Omelette)",
     "nameAr": "عجة قرنبيط بالفرن",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 779.6,
@@ -5851,8 +5851,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -5860,7 +5860,7 @@
     "recipeId": "EGY-RCP-140",
     "nameEn": "Egyptian Garlic Dip (Tomeya)",
     "nameAr": "تومية مصرية سريعة (بالنشا)",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 707.7,
@@ -5893,8 +5893,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -5902,7 +5902,7 @@
     "recipeId": "EGY-RCP-141",
     "nameEn": "Egyptian Sugarcane Juice",
     "nameAr": "عصير قصب مصري",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 210,
@@ -5935,8 +5935,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -5944,7 +5944,7 @@
     "recipeId": "EGY-RCP-142",
     "nameEn": "Carob Drink with Milk",
     "nameAr": "عصير خروب باللبن",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1052.4,
@@ -5977,8 +5977,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -5986,7 +5986,7 @@
     "recipeId": "EGY-RCP-143",
     "nameEn": "Banana Milkshake Egyptian Style",
     "nameAr": "مشروب موز باللبن مصري",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 543.9,
@@ -6019,8 +6019,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -6028,7 +6028,7 @@
     "recipeId": "EGY-RCP-144",
     "nameEn": "Guava Juice with Milk",
     "nameAr": "عصير جوافة باللبن والليمون",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 683.5,
@@ -6061,8 +6061,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -6070,7 +6070,7 @@
     "recipeId": "EGY-RCP-145",
     "nameEn": "Egyptian Mango Juice",
     "nameAr": "عصير مانجو زبدية مصري",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 433.5,
@@ -6103,8 +6103,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -6112,7 +6112,7 @@
     "recipeId": "EGY-RCP-146",
     "nameEn": "Strawberry Milkshake Egyptian Style",
     "nameAr": "عصير فراولة باللبن",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 572.2,
@@ -6145,8 +6145,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -6154,7 +6154,7 @@
     "recipeId": "EGY-RCP-147",
     "nameEn": "Orange and Carrot Juice",
     "nameAr": "عصير برتقال بالجزر مصري",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 396.3,
@@ -6187,8 +6187,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -6196,7 +6196,7 @@
     "recipeId": "EGY-RCP-148",
     "nameEn": "Egyptian Chicken Panne",
     "nameAr": "فراخ بانيه مقرمشة",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1471.8,
@@ -6229,8 +6229,8 @@
       "absorbedFryingOilG": 15,
       "excludedFryingOilG": 100,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates",
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates",
         "frying_oil_counted_only_at_declared_absorption_fraction"
       ]
     }
@@ -6239,7 +6239,7 @@
     "recipeId": "EGY-RCP-149",
     "nameEn": "Pan-Fried Chicken in Ghee",
     "nameAr": "فراخ محمرة بالسمن البلدي",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 2177.5,
@@ -6272,8 +6272,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -6281,7 +6281,7 @@
     "recipeId": "EGY-RCP-150",
     "nameEn": "Egyptian Charcoal Grilled Chicken",
     "nameAr": "فراخ مشوية على الفحم بالتتبيلة المصرية",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 2247.2,
@@ -6314,8 +6314,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -6323,7 +6323,7 @@
     "recipeId": "EGY-RCP-151",
     "nameEn": "Egyptian Roasted Duck with Merta Onions",
     "nameAr": "صينية بط بالمرتة والدقيق",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 3061.3,
@@ -6356,8 +6356,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -6365,7 +6365,7 @@
     "recipeId": "EGY-RCP-152",
     "nameEn": "Egyptian Roasted Goose",
     "nameAr": "صينية وز محمر بالفرن",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 4769.3,
@@ -6398,8 +6398,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -6407,7 +6407,7 @@
     "recipeId": "EGY-RCP-153",
     "nameEn": "Duck Soup Egyptian Style",
     "nameAr": "شوربة بط بالدماء والمطيبات",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": null,
@@ -6440,8 +6440,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -6449,7 +6449,7 @@
     "recipeId": "EGY-RCP-154",
     "nameEn": "Egyptian Kibbeh",
     "nameAr": "كبيبة شامية بلمسة مصرية",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 2593,
@@ -6482,8 +6482,8 @@
       "absorbedFryingOilG": 18,
       "excludedFryingOilG": 120,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates",
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates",
         "frying_oil_counted_only_at_declared_absorption_fraction"
       ]
     }
@@ -6492,7 +6492,7 @@
     "recipeId": "EGY-RCP-155",
     "nameEn": "Orzo Soup with Minced Meat",
     "nameAr": "شوربة لسان عصفور باللحمة المفرومة",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1263,
@@ -6525,8 +6525,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -6534,7 +6534,7 @@
     "recipeId": "EGY-RCP-156",
     "nameEn": "Chicken Liver & Gizzards Tagine",
     "nameAr": "طاجن كبدة وقوانص بالبصل المكرمل",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 837,
@@ -6567,8 +6567,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -6576,7 +6576,7 @@
     "recipeId": "EGY-RCP-157",
     "nameEn": "Roasted Rabbit with Mastic & Cardamom",
     "nameAr": "صينية أرنب بالمستكة والحبهان بالفرن",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": null,
@@ -6609,8 +6609,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -6618,7 +6618,7 @@
     "recipeId": "EGY-RCP-158",
     "nameEn": "Chicken Vegetable Soup",
     "nameAr": "شوربة خضار بالدجاج",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 555.5,
@@ -6651,8 +6651,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -6660,7 +6660,7 @@
     "recipeId": "EGY-RCP-159",
     "nameEn": "Creamy Tomato Soup",
     "nameAr": "شوربة طماطم بالكريمة مصرية",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 631.4,
@@ -6693,8 +6693,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -6702,7 +6702,7 @@
     "recipeId": "EGY-RCP-160",
     "nameEn": "Egyptian Onion Soup",
     "nameAr": "شوربة بصل بالتوست والجبنة",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 600.3,
@@ -6735,8 +6735,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -6744,7 +6744,7 @@
     "recipeId": "EGY-RCP-161",
     "nameEn": "Lemon Mint Juice (Limon bel Na'na')",
     "nameAr": "مشروب موهيتو ليمون ونعناع مصري",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 215.5,
@@ -6777,8 +6777,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -6786,7 +6786,7 @@
     "recipeId": "EGY-RCP-162",
     "nameEn": "Fakhfakhina (Egyptian Fruit Cocktail)",
     "nameAr": "عصير كوكتيل طبقات (فخفخينا)",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 444.6,
@@ -6819,8 +6819,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -6828,7 +6828,7 @@
     "recipeId": "EGY-RCP-163",
     "nameEn": "Egyptian Koshary Tea",
     "nameAr": "شاي كشري مصري",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 59.4,
@@ -6861,8 +6861,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -6870,7 +6870,7 @@
     "recipeId": "EGY-RCP-164",
     "nameEn": "Sa'idi Boiled Tea",
     "nameAr": "شاي مغلي صعيدي (شاي ثقيل)",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 96.8,
@@ -6903,8 +6903,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -6912,7 +6912,7 @@
     "recipeId": "EGY-RCP-165",
     "nameEn": "Egyptian Turkish Coffee",
     "nameAr": "قهوة مضبوطة على الريحة",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 19.6,
@@ -6945,8 +6945,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -6954,7 +6954,7 @@
     "recipeId": "EGY-RCP-166",
     "nameEn": "Egyptian Anise Tea",
     "nameAr": "ينسون دافئ بالمربى",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 55.6,
@@ -6987,8 +6987,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -6996,7 +6996,7 @@
     "recipeId": "EGY-RCP-167",
     "nameEn": "Cream Filled Golash",
     "nameAr": "حلويات صينية جلاش بالقشطة",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 2825.8,
@@ -7029,8 +7029,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -7038,7 +7038,7 @@
     "recipeId": "EGY-RCP-168",
     "nameEn": "Sweet Vermicelli with Ghee",
     "nameAr": "شعرية بالسمن البلدي والسكر",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1553.2,
@@ -7071,8 +7071,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -7080,7 +7080,7 @@
     "recipeId": "EGY-RCP-169",
     "nameEn": "Egyptian Freetah / Sadeeda",
     "nameAr": "مفروكة العسل والسمنة (سديدة)",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 2176.8,
@@ -7113,8 +7113,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -7122,7 +7122,7 @@
     "recipeId": "EGY-RCP-170",
     "nameEn": "Egyptian Rolled Eggs (Bed Modahraj)",
     "nameAr": "بيض مدحرج بالسمن البلدي",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 625.7,
@@ -7155,8 +7155,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -7164,7 +7164,7 @@
     "recipeId": "EGY-RCP-171",
     "nameEn": "Port Said Shrimp Kishk",
     "nameAr": "كشك بالجمبري بورسعيدي",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 901.3,
@@ -7197,8 +7197,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -7206,7 +7206,7 @@
     "recipeId": "EGY-RCP-172",
     "nameEn": "Baked Potato Tray with Oriental Sausage",
     "nameAr": "صينية بطاطس بالسجق الشرقي",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1615.3,
@@ -7239,8 +7239,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -7248,7 +7248,7 @@
     "recipeId": "EGY-RCP-173",
     "nameEn": "Savory Roz Muammar with Beef",
     "nameAr": "صينية أرز معمر باللحمة",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 3610,
@@ -7281,8 +7281,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -7290,7 +7290,7 @@
     "recipeId": "EGY-RCP-174",
     "nameEn": "Koshary Shop Macaroni Casserole",
     "nameAr": "طاجن مكرونة باللحمة المفرومة (مكرونة محلات الكشري)",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 2020.1,
@@ -7323,8 +7323,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -7332,7 +7332,7 @@
     "recipeId": "EGY-RCP-175",
     "nameEn": "Chicken Macaroni Casserole",
     "nameAr": "طاجن مكرونة بالفراخ",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1773,
@@ -7365,8 +7365,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -7374,7 +7374,7 @@
     "recipeId": "EGY-RCP-176",
     "nameEn": "Sausage Macaroni Casserole",
     "nameAr": "طاجن مكرونة بالسجق",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1968.8,
@@ -7407,8 +7407,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -7416,7 +7416,7 @@
     "recipeId": "EGY-RCP-177",
     "nameEn": "Lentil Soup with Vermicelli",
     "nameAr": "شوربة عدس أصفر بالشرائح والمكرونة (عدس بالشعيرية)",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1379,
@@ -7449,8 +7449,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -7458,7 +7458,7 @@
     "recipeId": "EGY-RCP-178",
     "nameEn": "Egyptian Lentil Fattah",
     "nameAr": "فتة عدس مصري بالعيش المحمص والطشة",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1644.4,
@@ -7491,8 +7491,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -7500,7 +7500,7 @@
     "recipeId": "EGY-RCP-179",
     "nameEn": "Minced Meat Shakshouka",
     "nameAr": "شكشوكة باللحمة المفرومة",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 888.4,
@@ -7533,8 +7533,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -7542,7 +7542,7 @@
     "recipeId": "EGY-RCP-180",
     "nameEn": "Eggs with Pastirma in Ghee",
     "nameAr": "بيض بالبسطرمة والسمن البلدي",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 687.4,
@@ -7575,8 +7575,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -7584,7 +7584,7 @@
     "recipeId": "EGY-RCP-181",
     "nameEn": "Pastirma and Cheese Golash",
     "nameAr": "صينية جلاش بالبسطرمة والجبنة",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 2415.8,
@@ -7617,8 +7617,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -7626,7 +7626,7 @@
     "recipeId": "EGY-RCP-182",
     "nameEn": "White Bean Stew with Beef",
     "nameAr": "طاجن فاصوليا بيضاء باللحمة",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1902.9,
@@ -7659,8 +7659,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -7668,7 +7668,7 @@
     "recipeId": "EGY-RCP-183",
     "nameEn": "Black-Eyed Pea Stew with Beef",
     "nameAr": "طاجن لوبيا بالعين السوداء باللحمة",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1895.5,
@@ -7701,8 +7701,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -7710,7 +7710,7 @@
     "recipeId": "EGY-RCP-184",
     "nameEn": "Boneless Trotters Soup",
     "nameAr": "شوربة كوارع مخلية بالخل والثوم",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1370.7,
@@ -7743,8 +7743,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -7752,7 +7752,7 @@
     "recipeId": "EGY-RCP-185",
     "nameEn": "Beef Head Meat Casserole",
     "nameAr": "طاجن لحمة راس بالبسطرمة والفرن",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1041.5,
@@ -7785,8 +7785,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -7794,7 +7794,7 @@
     "recipeId": "EGY-RCP-186",
     "nameEn": "Baked Mombar Casserole",
     "nameAr": "طاجن ممبار بالصلصة في الفرن",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 866.9,
@@ -7827,8 +7827,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -7836,7 +7836,7 @@
     "recipeId": "EGY-RCP-187",
     "nameEn": "Egyptian Pickled Beetroot Salad",
     "nameAr": "سلاطة بنجر مخلل حلو وشارب",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 501.4,
@@ -7869,8 +7869,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -7878,7 +7878,7 @@
     "recipeId": "EGY-RCP-188",
     "nameEn": "Egyptian Style Coleslaw",
     "nameAr": "سلاطة كول سلو مصري (بالعسل والزبادي)",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 608.2,
@@ -7911,8 +7911,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -7920,7 +7920,7 @@
     "recipeId": "EGY-RCP-189",
     "nameEn": "Egyptian Garlic Potato Salad",
     "nameAr": "سلاطة بطاطس بالثوم والمايونيز",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 684.2,
@@ -7953,8 +7953,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -7962,7 +7962,7 @@
     "recipeId": "EGY-RCP-190",
     "nameEn": "Smoked Herring Salad with Corn",
     "nameAr": "سلاطة رنجة بالذرة والطماطم",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1067.8,
@@ -7995,8 +7995,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -8004,7 +8004,7 @@
     "recipeId": "EGY-RCP-191",
     "nameEn": "Egyptian Mint Tea",
     "nameAr": "شاي بالنعناع البلدي",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 60.3,
@@ -8037,8 +8037,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -8046,7 +8046,7 @@
     "recipeId": "EGY-RCP-192",
     "nameEn": "Cape Gooseberry Tea",
     "nameAr": "شاي بالحرنكش والليمون",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 68.6,
@@ -8079,8 +8079,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -8088,7 +8088,7 @@
     "recipeId": "EGY-RCP-193",
     "nameEn": "Egyptian French Coffee with Milk",
     "nameAr": "قهوة فرنساوي باللبن والوش",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 130.4,
@@ -8121,8 +8121,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -8130,7 +8130,7 @@
     "recipeId": "EGY-RCP-194",
     "nameEn": "Egyptian Moghat Drink",
     "nameAr": "مشروب مغات مصري بالسمن والسمسم",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 855.7,
@@ -8163,8 +8163,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -8172,7 +8172,7 @@
     "recipeId": "EGY-RCP-195",
     "nameEn": "Spicy Halabesa Drink",
     "nameAr": "مشروب حلبسة حارة بالشطة والليمون",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 613.3,
@@ -8205,8 +8205,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -8214,7 +8214,7 @@
     "recipeId": "EGY-RCP-196",
     "nameEn": "Doum Fruit Juice with Milk",
     "nameAr": "عصير دوم باللبن مصري",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1113,
@@ -8247,8 +8247,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -8256,7 +8256,7 @@
     "recipeId": "EGY-RCP-197",
     "nameEn": "Egyptian Ennab Drink",
     "nameAr": "عصير عناب مصري (كركديه بالتمر هندي)",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 976.3,
@@ -8289,8 +8289,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -8298,7 +8298,7 @@
     "recipeId": "EGY-RCP-198",
     "nameEn": "Sugarcane Juice with Lemon & Mint",
     "nameAr": "عصير أصب بالليمون والنعناع",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 214.6,
@@ -8331,8 +8331,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -8340,7 +8340,7 @@
     "recipeId": "EGY-RCP-199",
     "nameEn": "Prickly Pear Juice",
     "nameAr": "عصير تين شوكي مثلج",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 239.1,
@@ -8373,8 +8373,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -8382,7 +8382,7 @@
     "recipeId": "EGY-RCP-200",
     "nameEn": "Fresh Watermelon Mint Juice",
     "nameAr": "عصير بطيخ بالنعناع فريش",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 229.6,
@@ -8415,8 +8415,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -8424,7 +8424,7 @@
     "recipeId": "EGY-RCP-201",
     "nameEn": "Cantaloupe Juice with Milk",
     "nameAr": "عصير خربز / شمام باللبن",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 357.1,
@@ -8457,8 +8457,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -8466,7 +8466,7 @@
     "recipeId": "EGY-RCP-202",
     "nameEn": "Egyptian Pomegranate Juice",
     "nameAr": "عصير رمان بالسكر وماء الورد",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 403.8,
@@ -8499,8 +8499,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -8508,7 +8508,7 @@
     "recipeId": "EGY-RCP-203",
     "nameEn": "Egyptian Cornmeal Cake (Bessisa)",
     "nameAr": "كيكة الذرة المصرية (بسيشة)",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 3508.4,
@@ -8541,8 +8541,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -8550,7 +8550,7 @@
     "recipeId": "EGY-RCP-204",
     "nameEn": "Plain Egyptian Tea Cake",
     "nameAr": "كيكة الشاي البيتي السادة",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 3144.4,
@@ -8583,8 +8583,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -8592,7 +8592,7 @@
     "recipeId": "EGY-RCP-205",
     "nameEn": "Egyptian Orange Cake",
     "nameAr": "كيكة البرتقال المصرية",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 3289.1,
@@ -8625,8 +8625,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -8634,7 +8634,7 @@
     "recipeId": "EGY-RCP-206",
     "nameEn": "Rawani Semolina Cake",
     "nameAr": "كيكة الرواني (كيكة السميد والشراب)",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 2846.4,
@@ -8667,8 +8667,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -8676,7 +8676,7 @@
     "recipeId": "EGY-RCP-207",
     "nameEn": "Soft Egyptian Bakery Buns",
     "nameAr": "قرص طرية بالسمسم والسكر (قرص المخابز)",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 3433.4,
@@ -8709,8 +8709,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -8718,7 +8718,7 @@
     "recipeId": "EGY-RCP-208",
     "nameEn": "Sa'idi Fayesh Rusk",
     "nameAr": "فايش صعيدي حمصي",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 3761.5,
@@ -8751,8 +8751,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -8760,7 +8760,7 @@
     "recipeId": "EGY-RCP-209",
     "nameEn": "Egyptian Qaraqeesh / Meneen",
     "nameAr": "شريحة قراقيش باليعسون والسمسم (منين)",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 4313.9,
@@ -8793,8 +8793,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -8802,7 +8802,7 @@
     "recipeId": "EGY-RCP-210",
     "nameEn": "Date Filled Meneen",
     "nameAr": "منين بالعجوة (قراقيش محشية تمر)",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 4336.9,
@@ -8835,8 +8835,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -8844,7 +8844,7 @@
     "recipeId": "EGY-RCP-211",
     "nameEn": "Egyptian Sesame Breadsticks (Baqsamad)",
     "nameAr": "بقسماط بالسمسم والكمون",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 2482.2,
@@ -8877,8 +8877,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -8886,7 +8886,7 @@
     "recipeId": "EGY-RCP-212",
     "nameEn": "Ful Medames with Ghee & Egyptian Dqqa",
     "nameAr": "فول مدمس بالسمنة البلدي والدقة",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 805.8,
@@ -8919,8 +8919,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -8928,7 +8928,7 @@
     "recipeId": "EGY-RCP-213",
     "nameEn": "Ful Medames with Flaxseed Oil",
     "nameAr": "فول مدمس بالزيت الحار (زيت الكتان)",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 771.9,
@@ -8961,8 +8961,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -8970,7 +8970,7 @@
     "recipeId": "EGY-RCP-214",
     "nameEn": "Baked Ful with Pastirma",
     "nameAr": "فول بالبسطرمة والفرن",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 1150.9,
@@ -9003,8 +9003,8 @@
       "absorbedFryingOilG": 0,
       "excludedFryingOilG": 0,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates"
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates"
       ]
     }
   },
@@ -9012,7 +9012,7 @@
     "recipeId": "EGY-RCP-215",
     "nameEn": "Ta'ameya Omelette (Egah Ta'ameya)",
     "nameAr": "طعمية بالبيض (عجة طعمية)",
-    "reviewStatus": "needs_review",
+    "reviewStatus": "verified",
     "calculation": {
       "totals": {
         "kcal": 764.1,
@@ -9045,8 +9045,8 @@
       "absorbedFryingOilG": 6,
       "excludedFryingOilG": 60,
       "assumptions": [
-        "graduation_demo_only_not_human_approved",
-        "ingredient_reference_values_are_demo_estimates",
+        "graduation_project_recipe_source_approved",
+        "ingredient_reference_values_are_estimates",
         "frying_oil_counted_only_at_declared_absorption_fraction"
       ]
     }

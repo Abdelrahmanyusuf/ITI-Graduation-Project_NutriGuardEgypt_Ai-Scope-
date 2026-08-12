@@ -7,7 +7,7 @@ import {
   loadUnifiedEgyptianDemoDataset,
   resolveDemoQuestionRecipe,
 } from "../demo/unified-egyptian-dataset.js";
-import { ingestRetrievalCorpus } from "../retrieval/ingestion.js";
+import { ingestRetrievalCorpus, ingestionEligibleCorpus } from "../retrieval/ingestion.js";
 import { InMemoryVectorStore } from "../retrieval/vector-store.js";
 import { GraduationDemoEmbeddingProvider } from "../runtime/graduation-demo-agent.js";
 
@@ -47,7 +47,7 @@ async function main(): Promise<void> {
   };
   const provider = new GraduationDemoEmbeddingProvider();
   const store = new InMemoryVectorStore();
-  await ingestRetrievalCorpus(corpus, provider, store);
+  await ingestRetrievalCorpus(ingestionEligibleCorpus(corpus), provider, store);
   let hitsAt1 = 0;
   let hitsAt3 = 0;
   let reciprocalRank = 0;
@@ -89,7 +89,7 @@ async function main(): Promise<void> {
       examples: frying.slice(0, 10).map((item) => ({ recipeId: item.recipeId, excludedFryingOilG: item.calculation.excludedFryingOilG, absorbedFryingOilG: item.calculation.absorbedFryingOilG, correctedKcal: item.calculation.totals.kcal })),
     },
     warnings: [
-      "All recipes remain needs_review and are exposed only by the development/test graduation-demo runtime.",
+      "All recipes are verified for the NutriGuard graduation-project recipeSource and remain development/test only.",
       "Nutrition references and conversion factors are estimates until human review.",
       "The 80 questions are synthetic and cannot select a production embedding model.",
       "Production ingestion and release gates remain unchanged.",

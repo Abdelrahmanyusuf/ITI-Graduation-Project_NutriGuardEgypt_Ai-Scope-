@@ -203,6 +203,7 @@ function makeRecipe(overrides: Partial<StagedRecipe> = {}): StagedRecipe {
       reviewDate: null,
       evidenceIds: [],
       rationale: null,
+      mealCategories: [],
       autoRejected: false,
       snapshotFingerprint: null,
       staleReason: null,
@@ -237,6 +238,7 @@ function makeVerifiedRecipe(overrides: Partial<StagedRecipe> = {}): StagedRecipe
       reviewDate: "2026-08-06",
       evidenceIds: ["EG-KOSHARI-CULTURAL-001"],
       rationale: "documented cultural reference",
+      mealCategories: ["breakfast"],
       autoRejected: false,
       snapshotFingerprint: KOSHARI_FP,
       staleReason: null,
@@ -256,6 +258,7 @@ function makeVerifiedRecipe(overrides: Partial<StagedRecipe> = {}): StagedRecipe
           status: "verified",
           note: "documented cultural reference",
           evidenceIds: ["EG-KOSHARI-CULTURAL-001"],
+          mealCategories: ["breakfast"],
           sourceFingerprint: KOSHARI_FP,
           snapshotFingerprint: KOSHARI_FP,
         },
@@ -623,7 +626,7 @@ test("review recorder: human verification requires reviewer + ISO date + manifes
   // URL evidence with rationale is accepted; IDs are trimmed and deduplicated.
   const ok = applyReviewDecision(
     r,
-    { decision: "verified", reviewerId: "reviewer-1", reviewDate: "2026-08-06", evidenceIds: ["  https://example.test/ref  "], rationale: "consulted a documented public reference" },
+    { decision: "verified", reviewerId: "reviewer-1", reviewDate: "2026-08-06", evidenceIds: ["  https://example.test/ref  "], rationale: "consulted a documented public reference", mealCategories: ["breakfast"] },
     FULL_MANIFEST,
     authCtx
   );
@@ -653,6 +656,39 @@ test("MVP gate: a fully verified+attributed+licensed+manifest-backed record is e
   const g = isEligibleForVerifiedDataset(r, FULL_MANIFEST, trustedImportFor(r));
   assert.equal(g.eligible, true);
   assert.deepEqual(g.blockers, []);
+});
+
+test("MVP gate: a verified recipe with human-assigned mealCategories is eligible", () => {
+  const recipe = makeVerifiedRecipe({
+    review: { ...makeVerifiedRecipe().review, mealCategories: ["lunch", "dinner"] },
+  });
+  recipe.review.timeline = recipe.review.timeline.map((event) =>
+    event.action === "human_verified" ? { ...event, mealCategories: ["lunch", "dinner"] } : event
+  );
+  assert.equal(isEligibleForVerifiedDataset(recipe, FULL_MANIFEST, trustedImportFor(recipe)).eligible, true);
+});
+
+test("MVP gate: a verified recipe with empty or missing mealCategories is blocked", () => {
+  for (const mealCategories of [[] as Array<"breakfast" | "lunch" | "dinner">, undefined]) {
+    const recipe = makeVerifiedRecipe({ review: { ...makeVerifiedRecipe().review, mealCategories } });
+    recipe.review.timeline = recipe.review.timeline.map((event) =>
+      event.action === "human_verified" ? { ...event, mealCategories } : event
+    );
+    const result = isEligibleForVerifiedDataset(recipe, FULL_MANIFEST, trustedImportFor(recipe));
+    assert.equal(result.eligible, false);
+    assert.ok(result.blockers.some((blocker) => blocker.includes("human-assigned review.mealCategories")));
+  }
+});
+
+test("mealCategories are never derived from raw category or main_dish fields", () => {
+  const original = makeRecipe();
+  const changed = {
+    ...original,
+    category: "main_dish",
+    original: { ...original.original, category: "breakfast", main_dish: true },
+  };
+  assert.deepEqual(original.review.mealCategories, []);
+  assert.deepEqual(changed.review.mealCategories, []);
 });
 
 test("MVP gate: verified but unlicensed or unattributed is blocked", () => {
@@ -819,7 +855,7 @@ test("stage pipeline: deterministic; a preserved human review is validated again
   const decidedTarget = records.find((r) => r.originalTitle === "Koshari Egyptian") as StagedRecipe;
   const decided = applyReviewDecision(
     decidedTarget,
-    { decision: "verified", reviewerId: "reviewer-1", reviewDate: "2026-08-06", evidenceIds: ["EG-KOSHARI-CULTURAL-001"], rationale: "documented cultural reference" },
+    { decision: "verified", reviewerId: "reviewer-1", reviewDate: "2026-08-06", evidenceIds: ["EG-KOSHARI-CULTURAL-001"], rationale: "documented cultural reference", mealCategories: ["breakfast"] },
     manifest,
     trustedImportFor(decidedTarget)
   );
@@ -914,7 +950,7 @@ async function reviewKoshari(dir: string, registryPath: string): Promise<string>
   assert.ok(koshari);
   const decided = applyReviewDecision(
     koshari,
-    { decision: "verified", reviewerId: "reviewer-1", reviewDate: "2026-08-06", evidenceIds: ["EG-KOSHARI-CULTURAL-001"], rationale: "documented cultural reference" },
+    { decision: "verified", reviewerId: "reviewer-1", reviewDate: "2026-08-06", evidenceIds: ["EG-KOSHARI-CULTURAL-001"], rationale: "documented cultural reference", mealCategories: ["breakfast"] },
     manifest,
     trustedImportFor(koshari)
   );
@@ -1105,6 +1141,7 @@ test("stage pipeline: full drift lifecycle — v1 reviewed → modify raw → dr
       reviewDate: "2026-08-06",
       evidenceIds: ["EG-KOSHARI-CULTURAL-001"],
       rationale: "documented cultural reference",
+      mealCategories: ["breakfast"],
     },
     manifest,
     trustedImportFor(koshari),
@@ -1212,6 +1249,7 @@ test("stage pipeline: full drift lifecycle — v1 reviewed → modify raw → dr
       reviewDate: "2026-08-07",
       evidenceIds: ["EG-KOSHARI-CULTURAL-001"],
       rationale: "re-reviewed against updated source row; cultural evidence still applies",
+      mealCategories: ["breakfast"],
     },
     manifest,
     // The v2 fingerprint is the freshly computed fingerprint of the current row,
@@ -1430,7 +1468,7 @@ test("stage pipeline: EOF orphaned (source_deleted) source is blocked from re-re
   // ---- only now is a fresh review allowed ----
   const reReview = applyReviewDecision(
     reattached,
-    { decision: "verified", reviewerId: "reviewer-2", reviewDate: "2026-08-07", evidenceIds: ["EG-KOSHARI-CULTURAL-001"], rationale: "re-reviewed against a documented current source row" },
+    { decision: "verified", reviewerId: "reviewer-2", reviewDate: "2026-08-07", evidenceIds: ["EG-KOSHARI-CULTURAL-001"], rationale: "re-reviewed against a documented current source row", mealCategories: ["breakfast"] },
     manifest,
     // The restored current row is present in the trusted current import.
     trustedImportFor(reattached),
@@ -1463,7 +1501,7 @@ test("stage pipeline: CHANGED source stays reviewable once a new current fingerp
   // Re-review remains allowed: applyReviewDecision succeeds against the new bind.
   const rev = applyReviewDecision(
     afterDrift,
-    { decision: "verified", reviewerId: "reviewer-2", reviewDate: "2026-08-07", evidenceIds: ["EG-KOSHARI-CULTURAL-001"] /* valid */, rationale: "re-reviewed against the updated source row" },
+    { decision: "verified", reviewerId: "reviewer-2", reviewDate: "2026-08-07", evidenceIds: ["EG-KOSHARI-CULTURAL-001"] /* valid */, rationale: "re-reviewed against the updated source row", mealCategories: ["breakfast"] },
     manifest,
     // The changed row still exists in the trusted current import (new fingerprint).
     trustedImportFor(afterDrift),
@@ -1719,7 +1757,7 @@ test("regression: legacy migration with a genuinely imported current row can be 
   // present in the trusted current import with the freshly computed fingerprint).
   const rev = applyReviewDecision(
     migrated,
-    { decision: "verified", reviewerId: "reviewer-2", reviewDate: "2026-08-07", evidenceIds: ["EG-KOSHARI-CULTURAL-001"], rationale: "re-reviewed against the genuinely imported current row" },
+    { decision: "verified", reviewerId: "reviewer-2", reviewDate: "2026-08-07", evidenceIds: ["EG-KOSHARI-CULTURAL-001"], rationale: "re-reviewed against the genuinely imported current row", mealCategories: ["breakfast"] },
     manifest,
     // The genuinely imported current row is in the trusted current import.
     trustedImportFor(migrated),
@@ -1766,7 +1804,7 @@ test("regression: forged snapshot_rebound in the editable registry is NOT truste
   // applyReviewDecision must reject it even though the timeline event is "perfect".
   const blocked = applyReviewDecision(
     forged,
-    { decision: "verified", reviewerId: "reviewer-9", reviewDate: "2026-08-07", evidenceIds: ["EG-KOSHARI-CULTURAL-001"], rationale: "review" },
+    { decision: "verified", reviewerId: "reviewer-9", reviewDate: "2026-08-07", evidenceIds: ["EG-KOSHARI-CULTURAL-001"], rationale: "review", mealCategories: ["breakfast"] },
     FULL_MANIFEST,
     emptyCurrentImport,
   );
@@ -1809,7 +1847,7 @@ test("regression: forged snapshot_rebound in the editable registry is NOT truste
   };
   const ok = applyReviewDecision(
     legitimate,
-    { decision: "verified", reviewerId: "reviewer-9", reviewDate: "2026-08-07", evidenceIds: ["EG-KOSHARI-CULTURAL-001"], rationale: "review" },
+    { decision: "verified", reviewerId: "reviewer-9", reviewDate: "2026-08-07", evidenceIds: ["EG-KOSHARI-CULTURAL-001"], rationale: "review", mealCategories: ["breakfast"] },
     FULL_MANIFEST,
     // The genuine current row belongs to `legitimate` (KOS line id) with FP_ZEROS.
     currentImportFor(FP_ZEROS, legitimate.recipeId),
@@ -2005,6 +2043,7 @@ test("regression: old and new reviewed fingerprints survive drift and re-review 
       reviewDate: "2026-08-07",
       evidenceIds: ["EG-KOSHARI-CULTURAL-001"],
       rationale: "re-reviewed against updated source row; cultural evidence still applies",
+      mealCategories: ["breakfast"],
     },
     FULL_MANIFEST,
     currentImportFor(FP_B, driftMutated.recipeId),
@@ -2115,7 +2154,7 @@ test("trusted-source auth: the trusted row identity is REQUIRED and non-null", (
 
   // Exact match (file, row, recipeId, fingerprint) SUCCEEDS.
   const exact = trustedImportFor(record);
-  const decided = applyReviewDecision(record, { decision: "verified", reviewerId: "reviewer-1", reviewDate: "2026-08-07", evidenceIds: ["EG-KOSHARI-CULTURAL-001"], rationale: "re-verify matched row" }, FULL_MANIFEST, exact);
+  const decided = applyReviewDecision(record, { decision: "verified", reviewerId: "reviewer-1", reviewDate: "2026-08-07", evidenceIds: ["EG-KOSHARI-CULTURAL-001"], rationale: "re-verify matched row", mealCategories: ["breakfast"] }, FULL_MANIFEST, exact);
   assert.equal(decided.ok, true, "exact match (file/row/recipeId/fingerprint) authenticates and succeeds");
 });
 

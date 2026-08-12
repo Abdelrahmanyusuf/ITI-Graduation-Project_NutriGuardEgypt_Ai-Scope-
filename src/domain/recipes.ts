@@ -31,6 +31,7 @@
  */
 
 import { createHash } from "node:crypto";
+import type { MealCategory } from "../services/dashboard/dashboard-client.js";
 
 import { detectMojibake, normalizeTerm } from "../audit/text.js";
 import { containsAtTokenBoundary, isValidIsoDate } from "../audit/egyptian-evidence.js";
@@ -151,6 +152,8 @@ export interface RecipeReviewTrace {
   note: string;
   /** Evidence IDs referenced by THIS event (trimmed). Human_verified requires non-empty. */
   evidenceIds: string[];
+  /** Human-assigned meal use; never inferred from the raw recipe category. */
+  mealCategories?: MealCategory[];
   /** For human decisions: the exact sourceFingerprint that was reviewed. */
   sourceFingerprint?: string | null;
   /** For human decisions: the exact snapshotFingerprint that was reviewed. */
@@ -168,6 +171,8 @@ export interface StagedRecipeReview {
   /** Documented evidence references (validated against the manifest). */
   evidenceIds: string[];
   rationale: string | null;
+  /** Assigned by the human reviewer as part of the review decision. */
+  mealCategories?: MealCategory[];
   /** True when the record was rejected by the import pipeline on non-Egyptian
    * evidence (not a human verdict); reviewer fields then stay null. */
   autoRejected: boolean;
@@ -457,6 +462,9 @@ function checkHumanEventAgreement(recipe: StagedRecipe, review: StagedRecipeRevi
   if (!sameStringSet(trimmedEvidenceIds(human.evidenceIds), trimmedEvidenceIds(review.evidenceIds))) {
     issues.push("latest human event evidence IDs do not match review.evidenceIds");
   }
+  if (human.mealCategories !== undefined && !sameStringSet(human.mealCategories, review.mealCategories ?? [])) {
+    issues.push("latest human event mealCategories do not match review.mealCategories");
+  }
   if (recipe.verificationStatus === "verified" && trimmedEvidenceIds(human.evidenceIds).length === 0) {
     issues.push("human_verified event must record the evidence IDs used");
   }
@@ -621,6 +629,14 @@ function validateStagedRecipeInternal(
     issues.push("review.evidenceIds must contain only non-blank strings (trim before checking)");
   }
   const trimmedEvidence = trimmedEvidenceIds(review.evidenceIds);
+  const mealCategories = review.mealCategories;
+  if (mealCategories !== undefined && (
+    !Array.isArray(mealCategories) ||
+    mealCategories.some((category) => !["breakfast", "lunch", "dinner"].includes(category)) ||
+    new Set(mealCategories).size !== mealCategories.length
+  )) {
+    issues.push("review.mealCategories must contain unique values from breakfast, lunch, dinner");
+  }
 
   if (review.rationale !== null && review.rationale !== undefined && !isNonBlankString(review.rationale)) {
     issues.push("review.rationale must be a non-empty string or null");
@@ -745,6 +761,9 @@ function validateStagedRecipeInternal(
 
   // ---- status-specific rules (mirror applyReviewDecision + the gate).
   if (recipe.verificationStatus === "verified") {
+    if (!Array.isArray(mealCategories) || mealCategories.length === 0) {
+      issues.push("unverifiable: verified recipe requires at least one human-assigned review.mealCategories value");
+    }
     if (isBlank(String(review.reviewerId ?? ""))) issues.push("unverifiable: verified recipe lacks reviewerId (human reviewer identity)");
     if (!isValidIsoDate(String(review.reviewDate ?? ""))) issues.push("unverifiable: verified recipe lacks a strict ISO reviewDate");
     if (trimmedEvidence.length === 0) {
@@ -955,6 +974,7 @@ export interface ReviewDecisionInput {
   reviewDate: string;
   evidenceIds: string[];
   rationale: string;
+  mealCategories?: MealCategory[];
 }
 
 /**
@@ -984,6 +1004,14 @@ export function applyReviewDecision(
   }
   const cleanedEvidence = trimmedEvidenceIds(input.evidenceIds);
   if (input.decision === "verified") {
+    if (!Array.isArray(input.mealCategories) || input.mealCategories.length === 0) {
+      errors.push("verified decisions require at least one human-assigned mealCategories value");
+    } else if (
+      input.mealCategories.some((category) => !["breakfast", "lunch", "dinner"].includes(category)) ||
+      new Set(input.mealCategories).size !== input.mealCategories.length
+    ) {
+      errors.push("mealCategories must contain unique values from breakfast, lunch, dinner");
+    }
     if (cleanedEvidence.length === 0) {
       errors.push("verified decisions require documented evidence references");
     } else {
@@ -1027,6 +1055,7 @@ export function applyReviewDecision(
     status: input.decision,
     note: input.rationale.trim(),
     evidenceIds: [...new Set(cleanedEvidence)],
+    mealCategories: [...new Set(input.mealCategories ?? [])],
     sourceFingerprint: recipe.sourceFingerprint,
     snapshotFingerprint: recipe.sourceFingerprint,
   };
@@ -1042,6 +1071,7 @@ export function applyReviewDecision(
         reviewDate: input.reviewDate,
         evidenceIds: [...new Set(cleanedEvidence)],
         rationale: input.rationale.trim(),
+        mealCategories: [...new Set(input.mealCategories ?? [])],
         autoRejected: false,
         snapshotFingerprint: recipe.sourceFingerprint,
         staleReason: null,

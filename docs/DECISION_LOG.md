@@ -820,5 +820,23 @@ consequences / status.
 
 ---
 
+## DEC-051 · 2026-08-12 · Unified graduation recipeSource for staging
+
+- **Decision:** `unified_egyptian_rag_database_v2_final.json` supersedes the
+  legacy recipe CSV as the active staging `recipeSource`. The unified file and
+  its manifest entry are approved for this educational graduation project.
+- **Review integrity:** staging mirrors `verified` only when a recipe has a
+  matching explicit `human_review_log` decision, reviewer identity/date, and a
+  valid source URL. It fingerprints and binds all 215 imported source records;
+  it does not infer verification from recipe names or ingredients.
+- **Legacy boundary:** the CSV importer remains only as a fallback for isolated
+  staging fixtures and its automation still cannot verify recipes.
+- **Result:** all 215 recipes are culturally verified, licensed for the project
+  scope, carry stored meal-category review decisions, and pass the verified
+  dataset eligibility gate.
+- **Status:** Implemented and regression-tested.
+
+---
+
 *New decisions are appended and dated. Supersessions are recorded inline with
 “supersedes / superseded by”.*

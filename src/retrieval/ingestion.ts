@@ -71,6 +71,22 @@ function validateCorpus(corpus: RetrievalCorpus): RetrievalDocument[] {
   });
 }
 
+/**
+ * Select documents that already satisfy the production ingestion gates.
+ * This never upgrades a document's status; demo callers use it to keep
+ * pending candidate documents out of the approved retrieval namespace.
+ */
+export function ingestionEligibleCorpus(corpus: RetrievalCorpus): RetrievalCorpus {
+  return {
+    ...corpus,
+    documents: corpus.documents.filter((document) =>
+      document.status === "approved"
+      && document.licenseStatus === "approved"
+      && (document.kind !== "recipe" || document.egyptianVerificationStatus === "verified")
+    ),
+  };
+}
+
 export async function ingestRetrievalCorpus(
   corpus: RetrievalCorpus,
   provider: EmbeddingProvider,

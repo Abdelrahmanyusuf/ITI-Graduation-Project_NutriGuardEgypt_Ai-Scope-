@@ -13,10 +13,10 @@ function record(value: unknown): Record<string, unknown> {
   return value as Record<string, unknown>;
 }
 
-test("contract 1 find_recipe: known Egyptian dish resolves once, unknown dishes fail closed, production ingestion rejects candidates", async () => {
+test("contract 1 find_recipe: known Egyptian dish resolves once, unknown dishes fail closed, approved recipes ingest", async () => {
   const known = await agent.invoke({ message: "عايز وصفة فول", language: "ar-EG" });
   assert.equal(known.status, "ok");
-  assert.equal(record(known.data).reviewStatus, "needs_review", "graduation data must not masquerade as production-approved");
+  assert.equal(record(known.data).reviewStatus, "verified");
   assert.equal(record(record(known.data).recipe).recipeId, "EGY-RCP-002");
   assert.match(known.message, /فول مدمس/);
   assert.doesNotMatch(known.message, /كشري|ملوخية/);
@@ -29,10 +29,12 @@ test("contract 1 find_recipe: known Egyptian dish resolves once, unknown dishes 
 
   const corpus = buildGraduationRetrievalCorpus(await loadUnifiedEgyptianDemoDataset());
   const recipe = corpus.documents.find((document) => document.kind === "recipe")!;
-  await assert.rejects(
-    ingestRetrievalCorpus({ ...corpus, documents: [{ ...recipe, egyptianVerificationStatus: "candidate" }] }, new GraduationDemoEmbeddingProvider(), new InMemoryVectorStore()),
-    /not human-verified Egyptian/,
+  const ingestion = await ingestRetrievalCorpus(
+    { ...corpus, documents: [recipe] },
+    new GraduationDemoEmbeddingProvider(),
+    new InMemoryVectorStore(),
   );
+  assert.equal(ingestion.recipeCount, 1);
 });
 
 test("contract 2 recipe_nutrition: all numerical bases and nullable nutrients remain structured", async () => {

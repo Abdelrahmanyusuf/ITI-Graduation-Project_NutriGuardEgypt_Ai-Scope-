@@ -11,16 +11,26 @@ import { buildGraduationDemoAgent } from "../src/runtime/graduation-demo-agent.j
 
 const dataset = await loadUnifiedEgyptianDemoDataset();
 
-test("graduation dataset validates the complete candidate corpus without production approval", () => {
+test("graduation recipeSource validates as project-approved and retrieval-ready", () => {
   assert.equal(dataset.recipes.length, 215);
   assert.equal(Object.keys(dataset.ingredientNutrition).length, 169);
   assert.equal(dataset.questions.length, 80);
-  assert.ok(dataset.recipes.every((recipe) => recipe.status === "needs_review"));
+  assert.ok(dataset.recipes.every((recipe) => recipe.status === "verified"));
+  assert.deepEqual(dataset.sourceApproval, { sourceStatus: "approved", licenseStatus: "approved" });
   const corpus = buildGraduationRetrievalCorpus(dataset);
   assert.equal(corpus.documents.length, 219);
   assert.equal(corpus.documents.filter((document) => document.kind === "recipe").length, 215);
   assert.ok(corpus.documents.every((document) => document.metadata.demoOnly === true));
-  assert.ok(corpus.documents.every((document) => document.metadata.reviewStatus === "needs_review"));
+  assert.ok(corpus.documents.every((document) => document.metadata.reviewStatus === "verified"));
+});
+
+test("graduation recipeSource RAG documents are approved and verified", () => {
+  const corpus = buildGraduationRetrievalCorpus(dataset);
+  const recipes = corpus.documents.filter((document) => document.kind === "recipe");
+  assert.equal(recipes.length, 215);
+  assert.ok(recipes.every((recipe) => recipe.status === "approved"));
+  assert.ok(recipes.every((recipe) => recipe.licenseStatus === "approved"));
+  assert.ok(recipes.every((recipe) => recipe.egyptianVerificationStatus === "verified"));
 });
 
 test("fried recipes exclude bulk frying oil and add only the declared absorbed fraction", () => {
@@ -35,13 +45,24 @@ test("fried recipes exclude bulk frying oil and add only the declared absorbed f
   assert.ok(result.assumptions.includes("frying_oil_counted_only_at_declared_absorption_fraction"));
 });
 
-test("missing nutrient reference values remain null rather than becoming zero", () => {
+test("all approved graduation recipes now have complete calculated nutrition snapshots", () => {
+  for (const recipe of dataset.recipes) {
+    const calculated = calculateUnifiedDemoNutrition(dataset, recipe);
+    assert.ok(Object.values(calculated.totals).every((value) => value !== null), recipe.recipe_id);
+    assert.equal(toRecipeNutritionResult(dataset, recipe).calculationStatus, "complete");
+  }
+});
+
+test("a future missing nutrient reference remains null rather than becoming zero", () => {
   const recipe = dataset.recipes.find((candidate) => candidate.ingredients.some((ingredient) => ingredient.ingredient === "kahk_essence"));
   assert.ok(recipe);
-  const calculated = calculateUnifiedDemoNutrition(dataset, recipe);
+  const incompleteDataset = structuredClone(dataset);
+  incompleteDataset.ingredientNutrition.kahk_essence.kcal = null;
+  incompleteDataset.ingredientNutrition.kahk_essence.sodium = null;
+  const calculated = calculateUnifiedDemoNutrition(incompleteDataset, recipe);
   assert.equal(calculated.totals.kcal, null);
   assert.equal(calculated.totals.sodium, null);
-  assert.equal(toRecipeNutritionResult(dataset, recipe).calculationStatus, "partial");
+  assert.equal(toRecipeNutritionResult(incompleteDataset, recipe).calculationStatus, "partial");
 });
 
 test("synthetic RAG questions resolve deterministically and generic questions remain unbound", () => {

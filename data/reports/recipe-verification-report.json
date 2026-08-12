@@ -1,12 +1,7 @@
 {
-  "blockers": [
-    "0 verified recipes available — the MVP verified-recipe target is not met and is not being fabricated.",
-    "Recipe source \"data/raw/Recipes For Eqyption Food.csv\" has no source record in data/manifest/sources.json — provenance/license coverage is incomplete (records stay pending/not_assessed).",
-    "Every imported recipe is unreviewed (needs_review). Verification requires a human review decision: reviewerId + strict ISO reviewDate + evidence that resolves against data/manifest/sources.json (docs/MANUAL_REVIEW_WORKFLOW.md).",
-    "Columns absent from the raw source and stored as null (never fabricated; must be curated by reviewers): Arabic names, region, servings, final-cooked-weight."
-  ],
+  "blockers": [],
   "duplicateIds": [],
-  "eligibleForVerifiedDataset": 0,
+  "eligibleForVerifiedDataset": 215,
   "ignoredGlobalRecipeFiles": [
     {
       "exists": true,
@@ -16,31 +11,2819 @@
   "importStats": {
     "carriedOverFromRegistry": 0,
     "excludedMalformedOrInvalid": 0,
-    "excludedNoEgyptianEvidence": 1467,
-    "rowsTotal": 1468,
+    "excludedNoEgyptianEvidence": 0,
+    "rowsTotal": 215,
     "sourceDriftRoutedToReview": 0,
-    "stagedNeedsReview": 1,
+    "stagedNeedsReview": 0,
     "stagedRejectedNonEgyptian": 0
   },
-  "recipeSource": "data/raw/Recipes For Eqyption Food.csv",
+  "mealCategoryReviewQueue": [],
+  "recipeSource": "unified_egyptian_rag_database_v2_final.json",
   "recordBlockers": [
     {
-      "blockers": [
-        "verificationStatus is not verified (automation never verifies)"
-      ],
-      "eligible": false,
-      "originalTitle": "Air Fryer Falafel",
-      "recipeId": "EGR-389070B0550F4D25",
-      "status": "needs_review"
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Kunafa with Nuts",
+      "recipeId": "EGR-009A7928EE52A1AB",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Chicken Orzo Soup",
+      "recipeId": "EGR-02595CDF7F919D90",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Clay Pot Beef with Mixed Vegetables",
+      "recipeId": "EGR-037198DFA4387022",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Chicken Vegetable Soup",
+      "recipeId": "EGR-03BBE5068C1DCB4E",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Freetah / Sadeeda",
+      "recipeId": "EGR-048B05ED7A5DB87E",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Ful with Yogurt & Tahini",
+      "recipeId": "EGR-04959ECEA89A9C78",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Trotters Soup",
+      "recipeId": "EGR-0577B252EE4217FA",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Trotters Soup with Vinegar & Garlic Sauce",
+      "recipeId": "EGR-058BB6D1F1B776B4",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Okra Stew with Beef",
+      "recipeId": "EGR-06D26B7BF5BBB3E1",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian French Coffee with Milk",
+      "recipeId": "EGR-06E6B1EA25B33593",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Garlic Potato Salad",
+      "recipeId": "EGR-07091838C1A1700E",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Feteer Meshaltet",
+      "recipeId": "EGR-080EAFBE5C8D134A",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Rawani Semolina Cake",
+      "recipeId": "EGR-089536B6058F5F8B",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Stuffed Onions Egyptian Style",
+      "recipeId": "EGR-0A69778A017EE685",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Orange and Carrot Juice",
+      "recipeId": "EGR-0B023BA3A31F1EC6",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Grilled Mullet with Wheat Bran",
+      "recipeId": "EGR-0B4EE257E9A26FBA",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Basbousa with Cream & Nuts",
+      "recipeId": "EGR-0BCA821D6FD41D74",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Creamy Tomato Soup",
+      "recipeId": "EGR-0C0BBD83040AE488",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Taro with Taro Greens/Taro Soup",
+      "recipeId": "EGR-0C680B3F5E117F30",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Date Filled Meneen",
+      "recipeId": "EGR-0D5AF74393C027A1",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Stuffed Ta'ameya",
+      "recipeId": "EGR-0DE1E9E57E19A931",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Garlic & Vinegar Moussaka (Vegan)",
+      "recipeId": "EGR-0DE8E2C49A73833D",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Savory Egyptian Golash",
+      "recipeId": "EGR-0E47435C6354A60D",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Mango Juice",
+      "recipeId": "EGR-0E5AA61D7CD597F1",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Dawood Pasha Meatballs",
+      "recipeId": "EGR-0E72ED3303BB6852",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Minced Meat Shakshouka",
+      "recipeId": "EGR-1218E556B5D79121",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Koshary",
+      "recipeId": "EGR-1237740A22833946",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Mahshi Betenjan w Febel",
+      "recipeId": "EGR-12D17A6B70A07206",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Shakshouka",
+      "recipeId": "EGR-1522B5535454C357",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Ful with Eggs and Ghee",
+      "recipeId": "EGR-15466B6399ACDE71",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Zalabia / Luqmat Al-Qadi",
+      "recipeId": "EGR-162C20F852D4AF3A",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Ta'ameya",
+      "recipeId": "EGR-1943AC7685FE3F07",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Sa'idi Fayesh Rusk",
+      "recipeId": "EGR-19B5D6CFE3390C19",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Guava Juice with Milk",
+      "recipeId": "EGR-19DD2812C48A2C16",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Tahini Dip",
+      "recipeId": "EGR-1CEB19849CA3DA29",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Lentil Fattah",
+      "recipeId": "EGR-1E79BE801D675677",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Ammonia Biscuits",
+      "recipeId": "EGR-1EB8E8824FA55B99",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Kunafa with Cream",
+      "recipeId": "EGR-20752EFBCD6F8EB3",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Mackerel with Oil & Lemon",
+      "recipeId": "EGR-23BDBDD65B2BE069",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Rolled Eggs (Bed Modahraj)",
+      "recipeId": "EGR-2501CFDF3A97697E",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Chicken Macaroni Casserole",
+      "recipeId": "EGR-271F86B2B438BEB2",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Azizia Egyptian Noodle Pudding",
+      "recipeId": "EGR-2727E46752C14A53",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Rice Pudding",
+      "recipeId": "EGR-28FBB18961667648",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Qatayef with Nuts",
+      "recipeId": "EGR-2952C070E63A533F",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Baked Potato Tray with Oriental Sausage",
+      "recipeId": "EGR-2BFBC99994C344D9",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Kebab Hilla (Beef and Onion Stew)",
+      "recipeId": "EGR-2F19323D33EF5D35",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Calamari Tagine with Tomato Sauce",
+      "recipeId": "EGR-3447984C3A93F213",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Chicken Panne",
+      "recipeId": "EGR-34668B1F2278A1FF",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Sahlab",
+      "recipeId": "EGR-3506ADDBF7E4A848",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Cantaloupe Juice with Milk",
+      "recipeId": "EGR-353F0C81A8FA08DA",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Sugarcane Juice with Lemon & Mint",
+      "recipeId": "EGR-357F11F65B540D71",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Breaded Fried Brains",
+      "recipeId": "EGR-358B40D8A946428D",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Ful Medames with Flaxseed Oil",
+      "recipeId": "EGR-35E7C5000E846C6B",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Savory Egyptian Rice Pudding with Chicken",
+      "recipeId": "EGR-3739299EEC1AD889",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Kishk",
+      "recipeId": "EGR-37460B7A459831FF",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Beef Head Meat in Tomato Sauce",
+      "recipeId": "EGR-3757C3A1DDF921CF",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Potato Tray with Beef",
+      "recipeId": "EGR-393DF88BEB483458",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Carob Drink with Milk",
+      "recipeId": "EGR-3A811F1901A07DCA",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Plain Okra Tagine (Vegan)",
+      "recipeId": "EGR-3B487BB27D4E43B7",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Seafood Soup",
+      "recipeId": "EGR-3C48AC9E8FE3ECE8",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Port Said Shrimp Kofta",
+      "recipeId": "EGR-3CDF271D2388E199",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Alexandrian Liver",
+      "recipeId": "EGR-3E4A8B058A384CC1",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Garlic Dip (Tomeya)",
+      "recipeId": "EGR-3F57EDA843C5CCFD",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Tourlit / Mixed Vegetable Stew with Beef",
+      "recipeId": "EGR-3F7400B5D3B0270C",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Alexandrian Boiled Shrimp",
+      "recipeId": "EGR-41DF87368892B3B9",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Koshary Shop Macaroni Casserole",
+      "recipeId": "EGR-4249FC2C8777FA83",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Cauliflower Eggah (Omelette)",
+      "recipeId": "EGR-42A4A98BF7ACABB7",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Smoked Herring with Tahini",
+      "recipeId": "EGR-44E1EE2ADB9FCAEE",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Fish Hawawshi",
+      "recipeId": "EGR-45E6D5F60B46133A",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Mombar",
+      "recipeId": "EGR-467CDF71F1ED5A91",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Hawawshi",
+      "recipeId": "EGR-4779C071F173D0AC",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Phyllo Pie with Cheese",
+      "recipeId": "EGR-4874391848836D4E",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Pomegranate Juice",
+      "recipeId": "EGR-48B8C5497E82E233",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Qaraqeesh / Meneen",
+      "recipeId": "EGR-4AD22FA3F014FF8F",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Pickled Eggplant",
+      "recipeId": "EGR-4B781FA6103E4DE8",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Strawberry Milkshake Egyptian Style",
+      "recipeId": "EGR-4B78F9C345CEBDDB",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Alexandrian Hawawshi",
+      "recipeId": "EGR-4C30A71F8BC6928D",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Damietta Meshabbak",
+      "recipeId": "EGR-4C73914DDF52D7E3",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Balah El Sham",
+      "recipeId": "EGR-4D2F495F77B6C7FF",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Ful with Tomato & Garlic Sauce",
+      "recipeId": "EGR-4EB7B9A4A0506D3B",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Eggs with Pastirma in Ghee",
+      "recipeId": "EGR-4F122C7712D84474",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Black-Eyed Pea Stew with Beef",
+      "recipeId": "EGR-4F2937993C57D3A9",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Koshary Tea",
+      "recipeId": "EGR-53FC6030F1CC5722",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Sausage Macaroni Casserole",
+      "recipeId": "EGR-548183B5482C2279",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Fried Fish Fillet",
+      "recipeId": "EGR-55673DEF55F5B561",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Pan-Fried Chicken in Ghee",
+      "recipeId": "EGR-5691AA75FABA89E8",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Sayadieh Rice / Fishermen Rice",
+      "recipeId": "EGR-5707192E17CF83C5",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Halabesa / Chickpea Drink",
+      "recipeId": "EGR-58E4A5ADA1E5A75D",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Sa'idi Boiled Tea",
+      "recipeId": "EGR-5B641D6DE0EF8D38",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Cape Gooseberry Tea",
+      "recipeId": "EGR-5C32A982FBB2EFDC",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Pickled Tomatoes",
+      "recipeId": "EGR-5CC5F2828C055735",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Mahshi Waraq Enab",
+      "recipeId": "EGR-5D856017253288A4",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Port Said Shrimp Kishk",
+      "recipeId": "EGR-5DA0F8E1EC748773",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Liquorice Drink",
+      "recipeId": "EGR-5E8B82641FF33CFF",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Orzo Soup with Bone Marrow",
+      "recipeId": "EGR-6025740EA4F42E01",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Spicy Halabesa Drink",
+      "recipeId": "EGR-63AA0D5ADB89AA99",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Oxtail Tagine",
+      "recipeId": "EGR-64895B28D6BE98FA",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Chicken Vegetable Tagine",
+      "recipeId": "EGR-66AF9915DF7A7190",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Kishk with Rice and Chicken",
+      "recipeId": "EGR-67992466A6FE30C1",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Petit Four",
+      "recipeId": "EGR-68B0F80A3C7DBDBE",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Mazalika",
+      "recipeId": "EGR-6A8608502FBBC204",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Ful Nabet",
+      "recipeId": "EGR-6CA512E6732032FD",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Mixed Egyptian Offal Platter",
+      "recipeId": "EGR-6E0CBAF3D6CE19F8",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Stuffed Lettuce Leaves",
+      "recipeId": "EGR-6EDFC4A7BF0587D9",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Duck Soup Egyptian Style",
+      "recipeId": "EGR-74587AAE9A3FE4B3",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Stuffed Artichoke Bottoms",
+      "recipeId": "EGR-74965D6293EA1EB8",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Chicken Liver & Gizzards Tagine",
+      "recipeId": "EGR-76E290F6C437BBBC",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Plain Egyptian Tea Cake",
+      "recipeId": "EGR-799DA9DA65A7CEDB",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Shakshouka / Shirkasiya",
+      "recipeId": "EGR-79F4CD8B51FDC698",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Baked Potato Tray with Chicken",
+      "recipeId": "EGR-7ADFD2B72E32C89A",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Spinach with Meat & Chickpeas",
+      "recipeId": "EGR-7C23DFC9B4D9017A",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Tilapia Fish Tray with Tomato Sauce",
+      "recipeId": "EGR-7C738B569DC7B874",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Savory Roz Muammar with Beef",
+      "recipeId": "EGR-7CE8E530272A7887",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Stuffed Potatoes with Minced Beef",
+      "recipeId": "EGR-7FB8547F2DCC22E5",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Om Ali",
+      "recipeId": "EGR-7FED1D8CC1B151AE",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Molokhia with Rabbits",
+      "recipeId": "EGR-7FF633FB154C6BA2",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Kibbeh",
+      "recipeId": "EGR-803BF2B3E3CE263F",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Sweet Golash with Milk",
+      "recipeId": "EGR-8203624CE4A3E790",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Yellow Lentil Koshary",
+      "recipeId": "EGR-8234FE4454F45F29",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "White Bean Stew with Beef",
+      "recipeId": "EGR-85D47D056FE94C20",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Orange Cake",
+      "recipeId": "EGR-86102DE71A75CE5F",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Baba Ghanoush",
+      "recipeId": "EGR-89AFD311CFCBF92A",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Lemon Mint Juice (Limon bel Na'na')",
+      "recipeId": "EGR-8A4721B4FF008043",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Sowabe' Zainab",
+      "recipeId": "EGR-8E4A13E668194836",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Ful Medames with Ghee & Egyptian Dqqa",
+      "recipeId": "EGR-8FA72C063DC8BF59",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Sesame Breadsticks (Baqsamad)",
+      "recipeId": "EGR-9067AB96BD7508EA",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Grilled Kofta",
+      "recipeId": "EGR-9116C5E9131EAC7C",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Rice with Liver, Gizzards & Nuts",
+      "recipeId": "EGR-92C9C4B87780A8DA",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Fried Tilapia Egyptian Style",
+      "recipeId": "EGR-94B417D0BE3288E7",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Baladi Salad",
+      "recipeId": "EGR-95BDFCDE02C593AF",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Fresh Watermelon Mint Juice",
+      "recipeId": "EGR-96333FE371AB2074",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Asafiri Qatayef with Cream",
+      "recipeId": "EGR-98F5B74924269651",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Mahshi Kousa",
+      "recipeId": "EGR-9D30E5749C5C154B",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Orzo Soup with Minced Meat",
+      "recipeId": "EGR-A1A5D4C37B757335",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Green Beans Stew with Beef",
+      "recipeId": "EGR-A38DB72829BB8591",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Sugarcane Juice",
+      "recipeId": "EGR-A4283F7D7139E863",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Cream Filled Golash",
+      "recipeId": "EGR-A44771C4C732081F",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Roasted Duck with Merta Onions",
+      "recipeId": "EGR-A541F1E608851DC1",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Chicken Liver & Gizzards with Onions",
+      "recipeId": "EGR-A5D580FB28B0C139",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Ful Medames",
+      "recipeId": "EGR-A64EBA851AA37357",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Mahalabia",
+      "recipeId": "EGR-A72D08679A28913B",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Prickly Pear Juice",
+      "recipeId": "EGR-A7737EE969B415D3",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Charcoal Grilled Chicken",
+      "recipeId": "EGR-A81BD5672BB86402",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Mahshi Koronb",
+      "recipeId": "EGR-AB7DC35B5133CC85",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Lentil Soup",
+      "recipeId": "EGR-AB8AD9637CA1365D",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Mulukhiyah",
+      "recipeId": "EGR-AE9158443569CCEE",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Marrow Bone & Trotter Soup",
+      "recipeId": "EGR-B0614FF2A2153FF5",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Macaroni Bechamel",
+      "recipeId": "EGR-B0EF8F88A1226652",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Feseekh (Fermented Mullet)",
+      "recipeId": "EGR-B14F456B1EEEFC36",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Onion Soup",
+      "recipeId": "EGR-B23892B91235B17A",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Rice with Vermicelli",
+      "recipeId": "EGR-B48DE7A1931DFF0D",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Khobeiza",
+      "recipeId": "EGR-B5001F08BB962DE4",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Lentil Soup with Vermicelli",
+      "recipeId": "EGR-B57904DC77FC7E45",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Moghat Drink",
+      "recipeId": "EGR-B62E0505F7A2C34B",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Banana Milkshake Egyptian Style",
+      "recipeId": "EGR-B69B0759362C3540",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Cornmeal Cake (Bessisa)",
+      "recipeId": "EGR-B7237B577946747D",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Ghorayeba",
+      "recipeId": "EGR-B88B0178254117CF",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Egg Omelet (Egah)",
+      "recipeId": "EGR-BB91F2CEA0E64758",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Tamarind Drink",
+      "recipeId": "EGR-BBC0EF3089B2E5E0",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Freekeh with Chicken",
+      "recipeId": "EGR-BC8E3CE6BF5F43FA",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Soft Egyptian Bakery Buns",
+      "recipeId": "EGR-BFAFB36196912AEB",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Fried Cauliflower Egyptian Style",
+      "recipeId": "EGR-BFFDA250C8662903",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Style Coleslaw",
+      "recipeId": "EGR-C0F41BC5C96BA263",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Beef Kofta with Bulgur",
+      "recipeId": "EGR-C2F3A1B276657EDB",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Smoked Herring Salad with Corn",
+      "recipeId": "EGR-C3975A7F50168E45",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Singari Mullet Fish",
+      "recipeId": "EGR-C484F9ADBD96EEAA",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Anise Tea",
+      "recipeId": "EGR-C7FAEE723A682012",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Hamam Mahshi",
+      "recipeId": "EGR-CBC098F85B2B6712",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Sweet Roz Muammar",
+      "recipeId": "EGR-CDE635A22E072360",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Dawood Pasha with Potato Cubes",
+      "recipeId": "EGR-D3003C1A0A942C38",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Ta'ameya Omelette (Egah Ta'ameya)",
+      "recipeId": "EGR-D4073AA0AA5A9EBE",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Roqaq with Minced Meat",
+      "recipeId": "EGR-D4FD7898E220E402",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Peas and Carrots Stew with Beef",
+      "recipeId": "EGR-D5824335A6DF30B0",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Fattah",
+      "recipeId": "EGR-D7E184C739C6E841",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Boneless Trotters Soup",
+      "recipeId": "EGR-D8FA19F0DF8E46A5",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Basbousa",
+      "recipeId": "EGR-D97321637303DD54",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Orzo Tagine with Beef",
+      "recipeId": "EGR-D9D1CF5A264318B4",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Fakhfakhina (Egyptian Fruit Cocktail)",
+      "recipeId": "EGR-DB8F3E9C8537E992",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Pickled Beetroot Salad",
+      "recipeId": "EGR-DC9A4128BC11AB52",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Pastirma and Cheese Golash",
+      "recipeId": "EGR-DCC27A1C05F8B276",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Carob Juice",
+      "recipeId": "EGR-DDD2BAC0287C220F",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Turkish Coffee",
+      "recipeId": "EGR-DF88F79B2B47E996",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Roasted Goose",
+      "recipeId": "EGR-DFF244FAD91AB000",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Fried Beef Liver with Wheat Bran",
+      "recipeId": "EGR-E0DC34AC9877BB36",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Bissara",
+      "recipeId": "EGR-E127DFBAC8F90A39",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Mesaqa'ah",
+      "recipeId": "EGR-E1DE01DFE03DE12B",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Rice Kofta",
+      "recipeId": "EGR-E24891FBA09B15C3",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Karkadeh (Hibiscus Tea)",
+      "recipeId": "EGR-E24EA6F844C2A749",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Makhorouta with Milk & Sugar",
+      "recipeId": "EGR-E255F6D87162FE78",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Potato Kofta",
+      "recipeId": "EGR-E277BD0254E7DC8D",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Sweet Couscous",
+      "recipeId": "EGR-E32FBC02563ED2DE",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Moussaka Bechamel",
+      "recipeId": "EGR-E3511C52587B5C69",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Oxtail Tagine with Potato Cubes",
+      "recipeId": "EGR-E35F0E08F06FB0FE",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Zucchini Bechamel",
+      "recipeId": "EGR-E472B007A42B074E",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Sweet Vermicelli with Ghee",
+      "recipeId": "EGR-E5FA86634D1BF9CD",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Ennab Drink",
+      "recipeId": "EGR-E795DCEADC201EB5",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Alexandrian Oriental Sausage",
+      "recipeId": "EGR-E79D8FB1EDC48E68",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Beef Head Meat Casserole",
+      "recipeId": "EGR-E88A46A8099E0ED5",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Macaroni with Tomato Sauce",
+      "recipeId": "EGR-E8DEC9A71E563961",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Plain Kahk El Eid",
+      "recipeId": "EGR-EC2D51A9564D03F4",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Stewed Zucchini with Minced Beef",
+      "recipeId": "EGR-EDD21CAB144DB68A",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Ful with Oriental Sausage",
+      "recipeId": "EGR-EE25319F75BC198A",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Baked Sardine Tray",
+      "recipeId": "EGR-EFB90195B96E379A",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Tarb (Kofta wrapped in Caul Fat)",
+      "recipeId": "EGR-F0847CEACF37AF37",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Baked Mombar Casserole",
+      "recipeId": "EGR-F0D53F4C9EC659C2",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Mint Tea",
+      "recipeId": "EGR-F12EF42576F81D75",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Plain Baladi Hawawshi",
+      "recipeId": "EGR-F2F060930553AB48",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Doum Fruit Juice with Milk",
+      "recipeId": "EGR-F4857CD7445C9A75",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Egyptian Sobia Drink",
+      "recipeId": "EGR-F5FEA556BA472A7F",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Baked Ful with Pastirma",
+      "recipeId": "EGR-F820814603CC5307",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Fried Alexandrian Sardines",
+      "recipeId": "EGR-F84FAC6FB4A96D0A",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Grilled Pigeon",
+      "recipeId": "EGR-FB579383D02B5763",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Roasted Rabbit with Mastic & Cardamom",
+      "recipeId": "EGR-FB89BAE1112A4B5F",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Stuffed Kahk with Malban or Dates",
+      "recipeId": "EGR-FB90013BE2B204C2",
+      "status": "verified"
+    },
+    {
+      "blockers": [],
+      "eligible": true,
+      "originalTitle": "Pan-Fried Beef Spleen",
+      "recipeId": "EGR-FCC5E72203AA94D1",
+      "status": "verified"
     }
   ],
   "registryCounts": {
-    "needs_review": 1,
+    "needs_review": 0,
     "rejected": 0,
-    "verified": 0
+    "verified": 215
   },
   "schemaVersion": "2.0",
   "tool": "nutriguard-egypt-recipe-staging",
   "validationIssues": [],
-  "verifiedRecipes": []
+  "verifiedRecipes": [
+    {
+      "originalTitle": "Egyptian Kunafa with Nuts",
+      "recipeId": "EGR-009A7928EE52A1AB",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Chicken Orzo Soup",
+      "recipeId": "EGR-02595CDF7F919D90",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Clay Pot Beef with Mixed Vegetables",
+      "recipeId": "EGR-037198DFA4387022",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Chicken Vegetable Soup",
+      "recipeId": "EGR-03BBE5068C1DCB4E",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Freetah / Sadeeda",
+      "recipeId": "EGR-048B05ED7A5DB87E",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Ful with Yogurt & Tahini",
+      "recipeId": "EGR-04959ECEA89A9C78",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Trotters Soup",
+      "recipeId": "EGR-0577B252EE4217FA",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Trotters Soup with Vinegar & Garlic Sauce",
+      "recipeId": "EGR-058BB6D1F1B776B4",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Okra Stew with Beef",
+      "recipeId": "EGR-06D26B7BF5BBB3E1",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian French Coffee with Milk",
+      "recipeId": "EGR-06E6B1EA25B33593",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Garlic Potato Salad",
+      "recipeId": "EGR-07091838C1A1700E",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Feteer Meshaltet",
+      "recipeId": "EGR-080EAFBE5C8D134A",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Rawani Semolina Cake",
+      "recipeId": "EGR-089536B6058F5F8B",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Stuffed Onions Egyptian Style",
+      "recipeId": "EGR-0A69778A017EE685",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Orange and Carrot Juice",
+      "recipeId": "EGR-0B023BA3A31F1EC6",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Grilled Mullet with Wheat Bran",
+      "recipeId": "EGR-0B4EE257E9A26FBA",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Basbousa with Cream & Nuts",
+      "recipeId": "EGR-0BCA821D6FD41D74",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Creamy Tomato Soup",
+      "recipeId": "EGR-0C0BBD83040AE488",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Taro with Taro Greens/Taro Soup",
+      "recipeId": "EGR-0C680B3F5E117F30",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Date Filled Meneen",
+      "recipeId": "EGR-0D5AF74393C027A1",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Stuffed Ta'ameya",
+      "recipeId": "EGR-0DE1E9E57E19A931",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Garlic & Vinegar Moussaka (Vegan)",
+      "recipeId": "EGR-0DE8E2C49A73833D",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Savory Egyptian Golash",
+      "recipeId": "EGR-0E47435C6354A60D",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Mango Juice",
+      "recipeId": "EGR-0E5AA61D7CD597F1",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Dawood Pasha Meatballs",
+      "recipeId": "EGR-0E72ED3303BB6852",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Minced Meat Shakshouka",
+      "recipeId": "EGR-1218E556B5D79121",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Koshary",
+      "recipeId": "EGR-1237740A22833946",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Mahshi Betenjan w Febel",
+      "recipeId": "EGR-12D17A6B70A07206",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Shakshouka",
+      "recipeId": "EGR-1522B5535454C357",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Ful with Eggs and Ghee",
+      "recipeId": "EGR-15466B6399ACDE71",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Zalabia / Luqmat Al-Qadi",
+      "recipeId": "EGR-162C20F852D4AF3A",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Ta'ameya",
+      "recipeId": "EGR-1943AC7685FE3F07",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Sa'idi Fayesh Rusk",
+      "recipeId": "EGR-19B5D6CFE3390C19",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Guava Juice with Milk",
+      "recipeId": "EGR-19DD2812C48A2C16",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Tahini Dip",
+      "recipeId": "EGR-1CEB19849CA3DA29",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Lentil Fattah",
+      "recipeId": "EGR-1E79BE801D675677",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Ammonia Biscuits",
+      "recipeId": "EGR-1EB8E8824FA55B99",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Kunafa with Cream",
+      "recipeId": "EGR-20752EFBCD6F8EB3",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Mackerel with Oil & Lemon",
+      "recipeId": "EGR-23BDBDD65B2BE069",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Rolled Eggs (Bed Modahraj)",
+      "recipeId": "EGR-2501CFDF3A97697E",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Chicken Macaroni Casserole",
+      "recipeId": "EGR-271F86B2B438BEB2",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Azizia Egyptian Noodle Pudding",
+      "recipeId": "EGR-2727E46752C14A53",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Rice Pudding",
+      "recipeId": "EGR-28FBB18961667648",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Qatayef with Nuts",
+      "recipeId": "EGR-2952C070E63A533F",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Baked Potato Tray with Oriental Sausage",
+      "recipeId": "EGR-2BFBC99994C344D9",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Kebab Hilla (Beef and Onion Stew)",
+      "recipeId": "EGR-2F19323D33EF5D35",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Calamari Tagine with Tomato Sauce",
+      "recipeId": "EGR-3447984C3A93F213",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Chicken Panne",
+      "recipeId": "EGR-34668B1F2278A1FF",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Sahlab",
+      "recipeId": "EGR-3506ADDBF7E4A848",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Cantaloupe Juice with Milk",
+      "recipeId": "EGR-353F0C81A8FA08DA",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Sugarcane Juice with Lemon & Mint",
+      "recipeId": "EGR-357F11F65B540D71",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Breaded Fried Brains",
+      "recipeId": "EGR-358B40D8A946428D",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Ful Medames with Flaxseed Oil",
+      "recipeId": "EGR-35E7C5000E846C6B",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Savory Egyptian Rice Pudding with Chicken",
+      "recipeId": "EGR-3739299EEC1AD889",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Kishk",
+      "recipeId": "EGR-37460B7A459831FF",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Beef Head Meat in Tomato Sauce",
+      "recipeId": "EGR-3757C3A1DDF921CF",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Potato Tray with Beef",
+      "recipeId": "EGR-393DF88BEB483458",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Carob Drink with Milk",
+      "recipeId": "EGR-3A811F1901A07DCA",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Plain Okra Tagine (Vegan)",
+      "recipeId": "EGR-3B487BB27D4E43B7",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Seafood Soup",
+      "recipeId": "EGR-3C48AC9E8FE3ECE8",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Port Said Shrimp Kofta",
+      "recipeId": "EGR-3CDF271D2388E199",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Alexandrian Liver",
+      "recipeId": "EGR-3E4A8B058A384CC1",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Garlic Dip (Tomeya)",
+      "recipeId": "EGR-3F57EDA843C5CCFD",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Tourlit / Mixed Vegetable Stew with Beef",
+      "recipeId": "EGR-3F7400B5D3B0270C",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Alexandrian Boiled Shrimp",
+      "recipeId": "EGR-41DF87368892B3B9",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Koshary Shop Macaroni Casserole",
+      "recipeId": "EGR-4249FC2C8777FA83",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Cauliflower Eggah (Omelette)",
+      "recipeId": "EGR-42A4A98BF7ACABB7",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Smoked Herring with Tahini",
+      "recipeId": "EGR-44E1EE2ADB9FCAEE",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Fish Hawawshi",
+      "recipeId": "EGR-45E6D5F60B46133A",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Mombar",
+      "recipeId": "EGR-467CDF71F1ED5A91",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Hawawshi",
+      "recipeId": "EGR-4779C071F173D0AC",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Phyllo Pie with Cheese",
+      "recipeId": "EGR-4874391848836D4E",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Pomegranate Juice",
+      "recipeId": "EGR-48B8C5497E82E233",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Qaraqeesh / Meneen",
+      "recipeId": "EGR-4AD22FA3F014FF8F",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Pickled Eggplant",
+      "recipeId": "EGR-4B781FA6103E4DE8",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Strawberry Milkshake Egyptian Style",
+      "recipeId": "EGR-4B78F9C345CEBDDB",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Alexandrian Hawawshi",
+      "recipeId": "EGR-4C30A71F8BC6928D",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Damietta Meshabbak",
+      "recipeId": "EGR-4C73914DDF52D7E3",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Balah El Sham",
+      "recipeId": "EGR-4D2F495F77B6C7FF",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Ful with Tomato & Garlic Sauce",
+      "recipeId": "EGR-4EB7B9A4A0506D3B",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Eggs with Pastirma in Ghee",
+      "recipeId": "EGR-4F122C7712D84474",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Black-Eyed Pea Stew with Beef",
+      "recipeId": "EGR-4F2937993C57D3A9",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Koshary Tea",
+      "recipeId": "EGR-53FC6030F1CC5722",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Sausage Macaroni Casserole",
+      "recipeId": "EGR-548183B5482C2279",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Fried Fish Fillet",
+      "recipeId": "EGR-55673DEF55F5B561",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Pan-Fried Chicken in Ghee",
+      "recipeId": "EGR-5691AA75FABA89E8",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Sayadieh Rice / Fishermen Rice",
+      "recipeId": "EGR-5707192E17CF83C5",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Halabesa / Chickpea Drink",
+      "recipeId": "EGR-58E4A5ADA1E5A75D",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Sa'idi Boiled Tea",
+      "recipeId": "EGR-5B641D6DE0EF8D38",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Cape Gooseberry Tea",
+      "recipeId": "EGR-5C32A982FBB2EFDC",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Pickled Tomatoes",
+      "recipeId": "EGR-5CC5F2828C055735",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Mahshi Waraq Enab",
+      "recipeId": "EGR-5D856017253288A4",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Port Said Shrimp Kishk",
+      "recipeId": "EGR-5DA0F8E1EC748773",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Liquorice Drink",
+      "recipeId": "EGR-5E8B82641FF33CFF",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Orzo Soup with Bone Marrow",
+      "recipeId": "EGR-6025740EA4F42E01",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Spicy Halabesa Drink",
+      "recipeId": "EGR-63AA0D5ADB89AA99",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Oxtail Tagine",
+      "recipeId": "EGR-64895B28D6BE98FA",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Chicken Vegetable Tagine",
+      "recipeId": "EGR-66AF9915DF7A7190",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Kishk with Rice and Chicken",
+      "recipeId": "EGR-67992466A6FE30C1",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Petit Four",
+      "recipeId": "EGR-68B0F80A3C7DBDBE",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Mazalika",
+      "recipeId": "EGR-6A8608502FBBC204",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Ful Nabet",
+      "recipeId": "EGR-6CA512E6732032FD",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Mixed Egyptian Offal Platter",
+      "recipeId": "EGR-6E0CBAF3D6CE19F8",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Stuffed Lettuce Leaves",
+      "recipeId": "EGR-6EDFC4A7BF0587D9",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Duck Soup Egyptian Style",
+      "recipeId": "EGR-74587AAE9A3FE4B3",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Stuffed Artichoke Bottoms",
+      "recipeId": "EGR-74965D6293EA1EB8",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Chicken Liver & Gizzards Tagine",
+      "recipeId": "EGR-76E290F6C437BBBC",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Plain Egyptian Tea Cake",
+      "recipeId": "EGR-799DA9DA65A7CEDB",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Shakshouka / Shirkasiya",
+      "recipeId": "EGR-79F4CD8B51FDC698",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Baked Potato Tray with Chicken",
+      "recipeId": "EGR-7ADFD2B72E32C89A",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Spinach with Meat & Chickpeas",
+      "recipeId": "EGR-7C23DFC9B4D9017A",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Tilapia Fish Tray with Tomato Sauce",
+      "recipeId": "EGR-7C738B569DC7B874",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Savory Roz Muammar with Beef",
+      "recipeId": "EGR-7CE8E530272A7887",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Stuffed Potatoes with Minced Beef",
+      "recipeId": "EGR-7FB8547F2DCC22E5",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Om Ali",
+      "recipeId": "EGR-7FED1D8CC1B151AE",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Molokhia with Rabbits",
+      "recipeId": "EGR-7FF633FB154C6BA2",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Kibbeh",
+      "recipeId": "EGR-803BF2B3E3CE263F",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Sweet Golash with Milk",
+      "recipeId": "EGR-8203624CE4A3E790",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Yellow Lentil Koshary",
+      "recipeId": "EGR-8234FE4454F45F29",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "White Bean Stew with Beef",
+      "recipeId": "EGR-85D47D056FE94C20",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Orange Cake",
+      "recipeId": "EGR-86102DE71A75CE5F",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Baba Ghanoush",
+      "recipeId": "EGR-89AFD311CFCBF92A",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Lemon Mint Juice (Limon bel Na'na')",
+      "recipeId": "EGR-8A4721B4FF008043",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Sowabe' Zainab",
+      "recipeId": "EGR-8E4A13E668194836",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Ful Medames with Ghee & Egyptian Dqqa",
+      "recipeId": "EGR-8FA72C063DC8BF59",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Sesame Breadsticks (Baqsamad)",
+      "recipeId": "EGR-9067AB96BD7508EA",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Grilled Kofta",
+      "recipeId": "EGR-9116C5E9131EAC7C",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Rice with Liver, Gizzards & Nuts",
+      "recipeId": "EGR-92C9C4B87780A8DA",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Fried Tilapia Egyptian Style",
+      "recipeId": "EGR-94B417D0BE3288E7",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Baladi Salad",
+      "recipeId": "EGR-95BDFCDE02C593AF",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Fresh Watermelon Mint Juice",
+      "recipeId": "EGR-96333FE371AB2074",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Asafiri Qatayef with Cream",
+      "recipeId": "EGR-98F5B74924269651",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Mahshi Kousa",
+      "recipeId": "EGR-9D30E5749C5C154B",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Orzo Soup with Minced Meat",
+      "recipeId": "EGR-A1A5D4C37B757335",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Green Beans Stew with Beef",
+      "recipeId": "EGR-A38DB72829BB8591",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Sugarcane Juice",
+      "recipeId": "EGR-A4283F7D7139E863",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Cream Filled Golash",
+      "recipeId": "EGR-A44771C4C732081F",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Roasted Duck with Merta Onions",
+      "recipeId": "EGR-A541F1E608851DC1",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Chicken Liver & Gizzards with Onions",
+      "recipeId": "EGR-A5D580FB28B0C139",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Ful Medames",
+      "recipeId": "EGR-A64EBA851AA37357",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Mahalabia",
+      "recipeId": "EGR-A72D08679A28913B",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Prickly Pear Juice",
+      "recipeId": "EGR-A7737EE969B415D3",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Charcoal Grilled Chicken",
+      "recipeId": "EGR-A81BD5672BB86402",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Mahshi Koronb",
+      "recipeId": "EGR-AB7DC35B5133CC85",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Lentil Soup",
+      "recipeId": "EGR-AB8AD9637CA1365D",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Mulukhiyah",
+      "recipeId": "EGR-AE9158443569CCEE",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Marrow Bone & Trotter Soup",
+      "recipeId": "EGR-B0614FF2A2153FF5",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Macaroni Bechamel",
+      "recipeId": "EGR-B0EF8F88A1226652",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Feseekh (Fermented Mullet)",
+      "recipeId": "EGR-B14F456B1EEEFC36",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Onion Soup",
+      "recipeId": "EGR-B23892B91235B17A",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Rice with Vermicelli",
+      "recipeId": "EGR-B48DE7A1931DFF0D",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Khobeiza",
+      "recipeId": "EGR-B5001F08BB962DE4",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Lentil Soup with Vermicelli",
+      "recipeId": "EGR-B57904DC77FC7E45",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Moghat Drink",
+      "recipeId": "EGR-B62E0505F7A2C34B",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Banana Milkshake Egyptian Style",
+      "recipeId": "EGR-B69B0759362C3540",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Cornmeal Cake (Bessisa)",
+      "recipeId": "EGR-B7237B577946747D",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Ghorayeba",
+      "recipeId": "EGR-B88B0178254117CF",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Egg Omelet (Egah)",
+      "recipeId": "EGR-BB91F2CEA0E64758",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Tamarind Drink",
+      "recipeId": "EGR-BBC0EF3089B2E5E0",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Freekeh with Chicken",
+      "recipeId": "EGR-BC8E3CE6BF5F43FA",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Soft Egyptian Bakery Buns",
+      "recipeId": "EGR-BFAFB36196912AEB",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Fried Cauliflower Egyptian Style",
+      "recipeId": "EGR-BFFDA250C8662903",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Style Coleslaw",
+      "recipeId": "EGR-C0F41BC5C96BA263",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Beef Kofta with Bulgur",
+      "recipeId": "EGR-C2F3A1B276657EDB",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Smoked Herring Salad with Corn",
+      "recipeId": "EGR-C3975A7F50168E45",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Singari Mullet Fish",
+      "recipeId": "EGR-C484F9ADBD96EEAA",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Anise Tea",
+      "recipeId": "EGR-C7FAEE723A682012",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Hamam Mahshi",
+      "recipeId": "EGR-CBC098F85B2B6712",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Sweet Roz Muammar",
+      "recipeId": "EGR-CDE635A22E072360",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Dawood Pasha with Potato Cubes",
+      "recipeId": "EGR-D3003C1A0A942C38",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Ta'ameya Omelette (Egah Ta'ameya)",
+      "recipeId": "EGR-D4073AA0AA5A9EBE",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Roqaq with Minced Meat",
+      "recipeId": "EGR-D4FD7898E220E402",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Peas and Carrots Stew with Beef",
+      "recipeId": "EGR-D5824335A6DF30B0",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Fattah",
+      "recipeId": "EGR-D7E184C739C6E841",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Boneless Trotters Soup",
+      "recipeId": "EGR-D8FA19F0DF8E46A5",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Basbousa",
+      "recipeId": "EGR-D97321637303DD54",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Orzo Tagine with Beef",
+      "recipeId": "EGR-D9D1CF5A264318B4",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Fakhfakhina (Egyptian Fruit Cocktail)",
+      "recipeId": "EGR-DB8F3E9C8537E992",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Pickled Beetroot Salad",
+      "recipeId": "EGR-DC9A4128BC11AB52",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Pastirma and Cheese Golash",
+      "recipeId": "EGR-DCC27A1C05F8B276",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Carob Juice",
+      "recipeId": "EGR-DDD2BAC0287C220F",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Turkish Coffee",
+      "recipeId": "EGR-DF88F79B2B47E996",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Roasted Goose",
+      "recipeId": "EGR-DFF244FAD91AB000",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Fried Beef Liver with Wheat Bran",
+      "recipeId": "EGR-E0DC34AC9877BB36",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Bissara",
+      "recipeId": "EGR-E127DFBAC8F90A39",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Mesaqa'ah",
+      "recipeId": "EGR-E1DE01DFE03DE12B",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Rice Kofta",
+      "recipeId": "EGR-E24891FBA09B15C3",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Karkadeh (Hibiscus Tea)",
+      "recipeId": "EGR-E24EA6F844C2A749",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Makhorouta with Milk & Sugar",
+      "recipeId": "EGR-E255F6D87162FE78",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Potato Kofta",
+      "recipeId": "EGR-E277BD0254E7DC8D",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Sweet Couscous",
+      "recipeId": "EGR-E32FBC02563ED2DE",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Moussaka Bechamel",
+      "recipeId": "EGR-E3511C52587B5C69",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Oxtail Tagine with Potato Cubes",
+      "recipeId": "EGR-E35F0E08F06FB0FE",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Zucchini Bechamel",
+      "recipeId": "EGR-E472B007A42B074E",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Sweet Vermicelli with Ghee",
+      "recipeId": "EGR-E5FA86634D1BF9CD",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Ennab Drink",
+      "recipeId": "EGR-E795DCEADC201EB5",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Alexandrian Oriental Sausage",
+      "recipeId": "EGR-E79D8FB1EDC48E68",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Beef Head Meat Casserole",
+      "recipeId": "EGR-E88A46A8099E0ED5",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Macaroni with Tomato Sauce",
+      "recipeId": "EGR-E8DEC9A71E563961",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Plain Kahk El Eid",
+      "recipeId": "EGR-EC2D51A9564D03F4",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Stewed Zucchini with Minced Beef",
+      "recipeId": "EGR-EDD21CAB144DB68A",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Ful with Oriental Sausage",
+      "recipeId": "EGR-EE25319F75BC198A",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Baked Sardine Tray",
+      "recipeId": "EGR-EFB90195B96E379A",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Tarb (Kofta wrapped in Caul Fat)",
+      "recipeId": "EGR-F0847CEACF37AF37",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Baked Mombar Casserole",
+      "recipeId": "EGR-F0D53F4C9EC659C2",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Mint Tea",
+      "recipeId": "EGR-F12EF42576F81D75",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Plain Baladi Hawawshi",
+      "recipeId": "EGR-F2F060930553AB48",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Doum Fruit Juice with Milk",
+      "recipeId": "EGR-F4857CD7445C9A75",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Egyptian Sobia Drink",
+      "recipeId": "EGR-F5FEA556BA472A7F",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Baked Ful with Pastirma",
+      "recipeId": "EGR-F820814603CC5307",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Fried Alexandrian Sardines",
+      "recipeId": "EGR-F84FAC6FB4A96D0A",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Grilled Pigeon",
+      "recipeId": "EGR-FB579383D02B5763",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Roasted Rabbit with Mastic & Cardamom",
+      "recipeId": "EGR-FB89BAE1112A4B5F",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Stuffed Kahk with Malban or Dates",
+      "recipeId": "EGR-FB90013BE2B204C2",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    },
+    {
+      "originalTitle": "Pan-Fried Beef Spleen",
+      "recipeId": "EGR-FCC5E72203AA94D1",
+      "reviewDate": "2026-08-12",
+      "reviewerId": "egyptian_food_reviewer_01"
+    }
+  ]
 }

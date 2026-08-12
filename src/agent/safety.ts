@@ -28,7 +28,7 @@ const EMERGENCY_PATTERNS = [
 ] as const;
 
 const MEDICAL_PATTERNS = [
-  /(?:عندي|مصاب|مريض).{0,24}(?:سكر|ضغط|كلي|كبد|قلب|سرطان|مرض)/u,
+  /(?:عندي|مصاب|مريض).{0,24}(?:(?:ال)?سكري(?![\p{L}\p{N}])|مرض\s+السكر|سكر(?!يات)|ضغط|كلي|كبد|قلب|سرطان|مرض)/u,
   /(?:اعالج|علاج|اشخص|شخص(?:لي| لي)|تشخص|تشخيص|دواء|جرعه|جرعة|وصفه طبيه|وصفة طبية)/u,
   /(?:what should i eat|diet).{0,30}(?:diabetes|hypertension|kidney|disease|condition)/u,
   /\b(?:diagnose|treat me|medication dose|drug dose)\b/u,

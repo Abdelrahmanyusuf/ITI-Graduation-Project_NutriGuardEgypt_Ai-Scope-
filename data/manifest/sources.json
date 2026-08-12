@@ -15,7 +15,30 @@
       "review_status": "pending",
       "reviewed_by": null,
       "review_date": null,
-      "evidence_ids": ["EG-REF-WHO-001"]
+      "evidence_ids": [
+        "EG-REF-WHO-001"
+      ]
+    },
+    {
+      "file": "unified_egyptian_rag_database_v2_final.json",
+      "source_id": "graduation-unified-egyptian-recipes-v2",
+      "source_name": "NutriGuard unified Egyptian graduation recipeSource",
+      "source_url": null,
+      "title": "Egyptian Food RAG Database v2 Final",
+      "visible_date": "2026-08-10",
+      "source_version": "2.0-final",
+      "access_date": "2026-08-12",
+      "license": "Mixed per-record terms; approved for educational graduation-project use",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "review_status": "approved",
+      "reviewed_by": "NutriGuard Graduation Project Team",
+      "review_date": "2026-08-12",
+      "license_review_status": "approved",
+      "license_reviewed_by": "NutriGuard Graduation Project Team",
+      "license_review_date": "2026-08-12",
+      "evidence_ids": [
+        "EG-GRAD-RAG-SOURCE-APPROVAL-001"
+      ]
     }
   ],
   "evidenceReferences": [
@@ -31,8 +54,25 @@
       "purpose": "egyptian_recipe_cultural_evidence",
       "kind": "reference",
       "reference": "Koshari (kushari) is widely documented as a national Egyptian dish in published culinary references",
-      "applicableTo": ["koshari", "kushari", "koshery", "kosheri", "koshary", "koshariy"],
+      "applicableTo": [
+        "koshari",
+        "kushari",
+        "koshery",
+        "kosheri",
+        "koshary",
+        "koshariy"
+      ],
       "status": "pending"
+    },
+    {
+      "id": "EG-GRAD-RAG-SOURCE-APPROVAL-001",
+      "purpose": "graduation_project_recipe_source_approval",
+      "kind": "project_decision",
+      "reference": "User-authorized approval of unified_egyptian_rag_database_v2_final.json for NutriGuard graduation-project RAG and Agent use",
+      "applicableTo": [
+        "all_recipes_in_source"
+      ],
+      "status": "approved"
     }
   ]
 }
