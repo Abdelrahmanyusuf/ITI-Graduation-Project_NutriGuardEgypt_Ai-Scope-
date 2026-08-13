@@ -241,6 +241,24 @@ const ALL_MOCK_ERRORS: DashboardErrorCode[] = [
   "confirmation_expired",
 ];
 
+test("bare mock remains fail-closed when no scenario is configured", async () => {
+  const dashboard = new MockDashboardClient({ log: () => undefined });
+  const response = await dashboard.logMealSelections({
+    idempotency_key: "TEST_FIXTURE_UNCONFIGURED_KEY",
+    selections: [{
+      recipe_id: "TEST_FIXTURE_RECIPE",
+      meal_category: "breakfast",
+      nutrition_snapshot: TEST_FIXTURE_CANDIDATES[0]!.nutritionSnapshot,
+      timestamp: "2026-08-12T09:00:00.000Z",
+    }],
+  });
+  assert.deepEqual(response, {
+    status: "error",
+    error_code: "server_error",
+    message: "No deterministic mock scenario was configured.",
+  });
+});
+
 for (const errorCode of ALL_MOCK_ERRORS) {
   test(`mock state: ${errorCode} leaves the key unapplied`, async () => {
     const dashboard = new MockDashboardClient({

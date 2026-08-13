@@ -11,7 +11,7 @@ import {
 import { loadUnifiedEgyptianDemoDataset } from "../src/demo/unified-egyptian-dataset.js";
 import { MetricsRegistry } from "../src/observability/metrics.js";
 import { InMemoryPilotFeedbackStore } from "../src/pilot/feedback.js";
-import { buildGraduationDemoAgent } from "../src/runtime/graduation-demo-agent.js";
+import { buildGraduationDemoAgent, type GraduationConversationContext } from "../src/runtime/graduation-demo-agent.js";
 import { createNutriGuardHttpServer } from "../src/server/http-app.js";
 import { MockDashboardClient } from "../src/services/dashboard/mock-dashboard-client.js";
 
@@ -99,6 +99,54 @@ test("the Step 16 route returns verified candidates without calling the dashboar
   assert.deepEqual(categories.map((entry) => entry.count), [3, 3, 3]);
   assert.ok(categories.every((entry) => entry.candidates.length === 3));
   assert.equal(dashboard.calls.length, 0);
+});
+
+test("Arabic meal-category proclitics are normalized consistently", async () => {
+  const agent = await buildGraduationDemoAgent("test", null);
+  const response = await agent.invoke({
+    message: "اعرض اختيارات للفطار وبالغداء وكالعشاء بسقف إجمالي 1800 سعر حراري للخطة كلها",
+    language: "ar-EG",
+  });
+
+  assert.equal(response.status, "ok");
+  const data = object(response.data);
+  assert.deepEqual(data.categoryCeilingsKcal, { breakfast: 600, lunch: 600, dinner: 600 });
+  const categories = data.categories as Array<{ category: string }>;
+  assert.deepEqual(categories.map((entry) => entry.category), ["breakfast", "lunch", "dinner"]);
+});
+
+test("interactive graduation runtime logs once and replays the same confirmation idempotently", async () => {
+  const agent = await buildGraduationDemoAgent("test", null);
+  const options = await agent.invoke({
+    message: "اعرض اختيارات للفطار والغداء والعشاء بسقف إجمالي 1800 سعر حراري للخطة كلها",
+    language: "ar-EG",
+  });
+  assert.equal(options.status, "ok");
+  const optionsData = object(options.data);
+  assert.deepEqual(optionsData.categoryCeilingsKcal, { breakfast: 600, lunch: 600, dinner: 600 });
+
+  const summary = await agent.invoke({
+    message: "فطار الاختيار الأول وغداء الاختيار الثاني وعشاء الاختيار الثالث",
+    language: "ar-EG",
+    context: optionsData.conversationContext as GraduationConversationContext,
+  });
+  assert.equal(summary.status, "ok");
+  const summaryData = object(summary.data);
+  assert.equal(object(summaryData.totalNutritionSnapshot).calories, 1010);
+
+  const context = summaryData.conversationContext as GraduationConversationContext;
+  const confirmed = await agent.invoke({ message: "تأكيد", language: "ar-EG", context });
+  assert.equal(confirmed.status, "ok");
+  const confirmedData = object(confirmed.data);
+  assert.equal(confirmedData.applied, true);
+  assert.equal(confirmedData.dailyCaloriesRemaining, 990);
+
+  const replay = await agent.invoke({ message: "تأكيد", language: "ar-EG", context });
+  assert.equal(replay.status, "ok");
+  const replayData = object(replay.data);
+  assert.equal(replayData.applied, false);
+  assert.equal(replayData.reason, "already_logged");
+  assert.equal(replayData.dailyCaloriesRemaining, 990);
 });
 
 test("an allergy exclusion keeps the shared safety disclaimer with verified results", async () => {

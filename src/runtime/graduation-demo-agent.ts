@@ -34,8 +34,10 @@ import {
 } from "./graduation-backend-client.js";
 import { HybridRetrievalTools } from "./hybrid-retrieval-tools.js";
 import { MockDashboardClient } from "../services/dashboard/mock-dashboard-client.js";
+import type { DashboardClient, LogMealSelectionsRequest } from "../services/dashboard/dashboard-client.js";
 
 const DIMENSIONS = 16_384;
+const GRADUATION_DEMO_DAILY_CALORIE_BUDGET = 2_000;
 
 const INGREDIENT_NAMES_AR: Readonly<Record<string, string>> = {
   almonds_raw: "لوز",
@@ -1293,24 +1295,26 @@ class GraduationDemoAgent {
     const firstCalculation = calculateUnifiedDemoNutrition(this.dataset, first);
     const secondCalculation = calculateUnifiedDemoNutrition(this.dataset, second);
     const basis = /(?:حصة|للحصه|للحصة|per serving)/iu.test(query) ? "perServing" : "per100g";
-    const hasExplicitNutrient = /(?:سعر|كالوري|صوديوم|ملح|بروتين|كربوهيدرات|كارب|دهون|ألياف|الياف|سكر|calorie|kcal|sodium|salt|protein|carb|fat|fiber|sugar)/iu.test(query);
     const firstName = language === "en" ? first.name_en : first.name_ar;
     const secondName = language === "en" ? second.name_en : second.name_ar;
     const basisLabel = basis === "perServing" ? (language === "en" ? "per serving" : "للحصة") : (language === "en" ? "per 100 g" : "لكل 100 جرام");
-    if (!hasExplicitNutrient) {
-      const metrics = [
-        { key: "kcal", ar: "السعرات", en: "Calories", unitAr: "سعر", unitEn: "kcal" },
-        { key: "protein", ar: "البروتين", en: "Protein", unitAr: "جم", unitEn: "g" },
-        { key: "carbs", ar: "الكربوهيدرات", en: "Carbohydrates", unitAr: "جم", unitEn: "g" },
-        { key: "fat", ar: "الدهون", en: "Total fat", unitAr: "جم", unitEn: "g" },
-        { key: "fiber", ar: "الألياف", en: "Fiber", unitAr: "جم", unitEn: "g" },
-        { key: "sodium", ar: "الصوديوم", en: "Sodium", unitAr: "مجم", unitEn: "mg" },
-      ] as const;
-      const values = Object.fromEntries(metrics.map((metric) => [metric.key, {
+    const metrics = [
+      { key: "kcal", ar: "السعرات", en: "Calories", unitAr: "سعر حراري", unitEn: "kcal", pattern: /(?:سعر|كالوري|calorie|kcal)/iu, overview: true },
+      { key: "protein", ar: "البروتين", en: "Protein", unitAr: "جم", unitEn: "g", pattern: /(?:بروتين|protein)/iu, overview: true },
+      { key: "carbs", ar: "الكربوهيدرات", en: "Carbohydrates", unitAr: "جم", unitEn: "g", pattern: /(?:كربوهيدرات|كارب|carb)/iu, overview: true },
+      { key: "fat", ar: "الدهون", en: "Total fat", unitAr: "جم", unitEn: "g", pattern: /(?:دهون|fat)/iu, overview: true },
+      { key: "fiber", ar: "الألياف", en: "Fiber", unitAr: "جم", unitEn: "g", pattern: /(?:ألياف|الياف|fiber)/iu, overview: true },
+      { key: "sugar", ar: "السكر", en: "Sugar", unitAr: "جم", unitEn: "g", pattern: /(?:سكر|sugar)/iu, overview: false },
+      { key: "sodium", ar: "الصوديوم", en: "Sodium", unitAr: "مجم", unitEn: "mg", pattern: /(?:صوديوم|ملح|sodium|salt)/iu, overview: true },
+    ] as const;
+    const requestedMetrics = metrics.filter((metric) => metric.pattern.test(query));
+    if (requestedMetrics.length !== 1) {
+      const displayedMetrics = requestedMetrics.length > 0 ? requestedMetrics : metrics.filter((metric) => metric.overview);
+      const values = Object.fromEntries(displayedMetrics.map((metric) => [metric.key, {
         first: firstCalculation[basis][metric.key], second: secondCalculation[basis][metric.key],
         unit: language === "en" ? metric.unitEn : metric.unitAr,
       }]));
-      const lines = metrics.map((metric) => {
+      const lines = displayedMetrics.map((metric) => {
         const firstValue = firstCalculation[basis][metric.key] ?? (language === "en" ? "unknown" : "غير متوفر");
         const secondValue = secondCalculation[basis][metric.key] ?? (language === "en" ? "unknown" : "غير متوفر");
         const label = language === "en" ? metric.en : metric.ar;
@@ -1322,17 +1326,12 @@ class GraduationDemoAgent {
         message: language === "en"
           ? `Nutritional comparison ${basisLabel}:\n\n${lines.join("\n")}\n\nThere is no single overall winner: choose the relevant metric for your goal. This is a numerical comparison, not personalized medical advice.`
           : `مقارنة غذائية ${basisLabel}:\n\n${lines.join("\n")}\n\nمفيش اختيار أفضل بشكل مطلق؛ الاختيار يعتمد على العنصر المهم لهدفك. دي مقارنة رقمية وليست نصيحة طبية شخصية.`,
-        data: { intent: "compare_recipes", comparisonType: "overview", demoOnly: true, reviewStatus: this.dataset.metadata.review_status, basis: basis === "perServing" ? "per_serving" : "per_100g", first: { recipeId: first.recipe_id, name: firstName }, second: { recipeId: second.recipe_id, name: secondName }, metrics: values, conversationContext: { schemaVersion: "1.0", lastIntent: "recipe_reference", recipeId: first.recipe_id } },
+        data: { intent: "compare_recipes", comparisonType: requestedMetrics.length > 0 ? "requested_metrics" : "overview", requestedNutrients: requestedMetrics.map((metric) => metric.key), demoOnly: true, reviewStatus: this.dataset.metadata.review_status, basis: basis === "perServing" ? "per_serving" : "per_100g", first: { recipeId: first.recipe_id, name: firstName }, second: { recipeId: second.recipe_id, name: secondName }, metrics: values, conversationContext: { schemaVersion: "1.0", lastIntent: "recipe_reference", recipeId: first.recipe_id } },
         evidenceDocumentIds: [`DEMO-${first.recipe_id}`, `DEMO-${second.recipe_id}`], provenance: [this.recipeProvenance(first, language), this.recipeProvenance(second, language)],
         toolTrace: [{ tool: "calculate_nutrition", ok: true, code: null }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
       };
     }
-    const nutrient = /(?:صوديوم|ملح|sodium|salt)/iu.test(query) ? "sodium"
-      : /(?:بروتين|protein)/iu.test(query) ? "protein"
-      : /(?:كربوهيدرات|كارب|carb)/iu.test(query) ? "carbs"
-      : /(?:دهون|fat)/iu.test(query) ? "fat"
-      : /(?:ألياف|الياف|fiber)/iu.test(query) ? "fiber"
-      : /(?:سكر|sugar)/iu.test(query) ? "sugar" : "kcal";
+    const nutrient = requestedMetrics[0]!.key;
     const firstValue = firstCalculation[basis][nutrient];
     const secondValue = secondCalculation[basis][nutrient];
     const unit = nutrient === "sodium" ? (language === "en" ? "mg" : "مجم") : nutrient === "kcal" ? (language === "en" ? "kcal" : "سعر حراري") : language === "en" ? "g" : "جم";
@@ -1892,6 +1891,40 @@ export interface GraduationDemoAgentOptions {
   mealSelectionFlow?: MealSelectionFlow;
 }
 
+/**
+ * Gives only the interactive graduation runtime a deterministic successful
+ * dashboard path. MockDashboardClient itself deliberately keeps its fail-closed
+ * no-scenario behavior for tests and every other caller.
+ */
+function createGraduationDemoDashboard(): DashboardClient {
+  const mock = new MockDashboardClient();
+  const configuredKeys = new Set<string>();
+  let dailyCaloriesRemaining = GRADUATION_DEMO_DAILY_CALORIE_BUDGET;
+
+  return {
+    async logMealSelections(request: LogMealSelectionsRequest) {
+      if (!configuredKeys.has(request.idempotency_key)) {
+        configuredKeys.add(request.idempotency_key);
+        const requestedCalories = Math.round(request.selections.reduce(
+          (total, selection) => total + selection.nutrition_snapshot.calories,
+          0,
+        ) * 10) / 10;
+        if (requestedCalories > dailyCaloriesRemaining) {
+          mock.enqueue({
+            kind: "error",
+            errorCode: "insufficient_calories",
+            message: "The graduation-demo calorie balance is insufficient for this selection.",
+          });
+        } else {
+          dailyCaloriesRemaining = Math.round((dailyCaloriesRemaining - requestedCalories) * 10) / 10;
+          mock.enqueue({ kind: "success", dailyCaloriesRemaining });
+        }
+      }
+      return mock.logMealSelections(request);
+    },
+  };
+}
+
 export async function buildGraduationDemoAgent(
   nodeEnv: "development" | "test",
   backendDataSource?: GraduationBackendDataSource | null,
@@ -1947,7 +1980,7 @@ export async function buildGraduationDemoAgent(
   const backend = backendDataSource === undefined
     ? nodeEnv === "development" ? new NutriGuardBackendClient(process.env.NUTRIGUARD_BACKEND_BASE_URL?.trim() || undefined) : null
     : backendDataSource;
-  const dashboard = new MockDashboardClient();
+  const dashboard = createGraduationDemoDashboard();
   const mealSelection = options.mealSelectionFlow ?? new MealSelectionFlow(new DatasetVerifiedMealRecipeRepository(dataset), dashboard);
   return new GraduationDemoAgent(new NutriGuardExpandedAgent(tools, new InMemoryAlternativeRuleRepository([])), tools, dataset, backend, mealSelection);
 }

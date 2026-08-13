@@ -212,10 +212,15 @@ const CATEGORY_LABELS = {
   ar: { breakfast: "الفطار", lunch: "الغداء", dinner: "العشاء" },
   en: { breakfast: "Breakfast", lunch: "Lunch", dinner: "Dinner" },
 } as const;
+// Arabic category tokens may carry a conjunction, a one-letter preposition,
+// and the definite article. The lam + article contraction is written "لل".
+// Keep this morphology in one place so forms such as والفطار، للفطار، بالغداء،
+// and كالعشاء are handled consistently instead of accumulating literal aliases.
+const ARABIC_CATEGORY_PREFIX = "(?:و)?(?:(?:ل(?:ل)?|ب|ك)?(?:ال)?)?";
 const CATEGORY_PATTERNS: Record<MealCategory, string> = {
-  breakfast: "(?<![\\p{L}\\p{N}])(?:و)?(?:الفطار|فطار|الإفطار|الافطار|إفطار|افطار|breakfast)(?![\\p{L}\\p{N}])",
-  lunch: "(?<![\\p{L}\\p{N}])(?:و)?(?:الغدا|الغداء|غدا|غداء|lunch)(?![\\p{L}\\p{N}])",
-  dinner: "(?<![\\p{L}\\p{N}])(?:و)?(?:العشا|العشاء|عشا|عشاء|dinner)(?![\\p{L}\\p{N}])",
+  breakfast: `(?<![\\p{L}\\p{N}])(?:${ARABIC_CATEGORY_PREFIX}(?:فطار|افطار)|breakfast)(?![\\p{L}\\p{N}])`,
+  lunch: `(?<![\\p{L}\\p{N}])(?:${ARABIC_CATEGORY_PREFIX}(?:غدا|غداء)|lunch)(?![\\p{L}\\p{N}])`,
+  dinner: `(?<![\\p{L}\\p{N}])(?:${ARABIC_CATEGORY_PREFIX}(?:عشا|عشاء)|dinner)(?![\\p{L}\\p{N}])`,
 };
 const ORDINALS: ReadonlyArray<{ index: number; pattern: string }> = [
   { index: 0, pattern: "(?:الأول|الاول|أول|اول|first|1)" },

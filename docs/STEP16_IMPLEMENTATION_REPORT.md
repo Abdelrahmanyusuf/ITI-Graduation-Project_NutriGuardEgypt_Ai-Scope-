@@ -30,6 +30,8 @@ Pre-existing unrelated working-tree changes were preserved and are not claimed a
 - Placed the dashboard port/mock in `src/services/dashboard/` and the state machine in `src/agent/`.
 - Bounded process-local selection sessions to 1,000.
 - A new mock key with no injected scenario deterministically returns `server_error`. After an error, the same error repeats unless the test injects a later outcome.
+- The interactive graduation runtime is the deliberate exception: its construction point wraps the otherwise fail-closed mock with a process-local 2,000-calorie demo balance. Each new confirmed key receives an explicit success or `insufficient_calories` scenario there; replay still reaches the same mock key and returns `already_logged`. The bare mock's global no-scenario behavior remains unchanged for tests and all other callers.
+- `createGraduationDemoDashboard()` keeps `dailyCaloriesRemaining` as one closure-scoped value shared by every session using that agent instance; it is not a per-user or per-session balance. Concurrent demo users or testers confirming meals against the same running instance therefore share its 2,000-calorie budget, and a later confirmation can correctly return `insufficient_calories` because an earlier confirmation already spent part of that shared balance. This is expected for the single-presenter graduation demo, not a production accounting model or a runtime bug.
 - Used exact dataset meal-category tags. No undocumented `main_dish` to `lunch`/`dinner` mapping is applied.
 
 ## Commands run + raw output

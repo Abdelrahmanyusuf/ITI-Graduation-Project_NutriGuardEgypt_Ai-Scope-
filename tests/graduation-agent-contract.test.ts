@@ -85,6 +85,24 @@ test("contract 4 compare_recipes: explicit nutrient uses one numerical basis and
   assert.equal(response.provenance.length, 2);
 });
 
+test("contract 4 compare_recipes: three explicitly requested nutrients are retained", async () => {
+  const response = await agent.invoke({
+    message: "قارن بين الكشري والفول من ناحية السعرات والبروتين والصوديوم",
+    language: "ar-EG",
+  });
+  assert.equal(response.status, "ok");
+  const data = record(response.data);
+  assert.equal(data.comparisonType, "requested_metrics");
+  assert.deepEqual(data.requestedNutrients, ["kcal", "protein", "sodium"]);
+  const metrics = record(data.metrics);
+  assert.deepEqual(record(metrics.kcal), { first: 219.2, second: 276.4, unit: "سعر حراري" });
+  assert.deepEqual(record(metrics.protein), { first: 6.5, second: 14.8, unit: "جم" });
+  assert.deepEqual(record(metrics.sodium), { first: 99.6, second: 11.4, unit: "مجم" });
+  assert.match(response.message, /السعرات.*219\.2.*276\.4/su);
+  assert.match(response.message, /البروتين.*6\.5.*14\.8/su);
+  assert.match(response.message, /الصوديوم.*99\.6.*11\.4/su);
+});
+
 test("contract 5 general_guideline: WHO guidance carries an exact public source and stays non-personalized", async () => {
   const pyramid = await agent.invoke({ message: "ما هو الهرم الغذائي؟", language: "ar-EG" });
   assert.equal(pyramid.status, "ok");
