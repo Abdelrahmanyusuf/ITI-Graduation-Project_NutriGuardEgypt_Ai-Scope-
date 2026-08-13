@@ -80,7 +80,7 @@ export class InMemoryAlternativeRuleRepository implements AlternativeRuleReposit
 }
 
 export interface ExpandedToolTrace {
-  tool: "search_recipes" | "search_guidelines" | "calculate_nutrition" | "search_recipes_by_meal_category" | "confirm_and_log_meal_selection";
+  tool: "search_recipes" | "search_guidelines" | "calculate_nutrition" | "search_recipes_by_meal_category" | "confirm_and_log_meal_selection" | "get_user_nutrition_context";
   ok: boolean;
   code: string | null;
 }
@@ -118,7 +118,7 @@ const ResponseSchema = z.object({
   data: z.record(z.string(), z.unknown()).nullable(),
   evidenceDocumentIds: z.array(z.string()),
   provenance: z.array(z.object({ sourceId: z.string().min(1), versionId: z.string().min(1), title: z.string().nullable(), url: z.string().nullable(), accessedAt: z.string().nullable(), locator: z.string().nullable() }).strict()),
-  toolTrace: z.array(z.object({ tool: z.enum(["search_recipes", "search_guidelines", "calculate_nutrition", "search_recipes_by_meal_category", "confirm_and_log_meal_selection"]), ok: z.boolean(), code: z.string().nullable() }).strict()),
+  toolTrace: z.array(z.object({ tool: z.enum(["search_recipes", "search_guidelines", "calculate_nutrition", "search_recipes_by_meal_category", "confirm_and_log_meal_selection", "get_user_nutrition_context"]), ok: z.boolean(), code: z.string().nullable() }).strict()),
   promptVersion: z.literal(NUTRIGUARD_SYSTEM_PROMPT_VERSION),
 }).strict();
 

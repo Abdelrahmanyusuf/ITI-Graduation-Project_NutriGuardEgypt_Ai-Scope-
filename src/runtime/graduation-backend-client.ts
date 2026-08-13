@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { currentBackendAccessToken } from "./backend-request-context.js";
 
 const FoodSchema = z.object({
   id: z.number().int().positive(),
@@ -49,11 +50,40 @@ const FoodDetailSchema = z.object({ isSuccess: z.literal(true), data: FoodSchema
 export type BackendFood = z.infer<typeof FoodSchema>;
 export type BackendRecipe = z.infer<typeof RecipeSchema>;
 
+const MealTypeSchema = z.enum(["Breakfast", "Lunch", "Dinner", "Snack"]);
+const CustomMealRequestSchema = z.object({
+  name: z.string().trim().min(1).max(200),
+  externalReferenceId: z.string().trim().min(1).max(100),
+  source: z.literal("NutriGuardAI"),
+  mealType: MealTypeSchema,
+  date: z.iso.date(),
+  servings: z.number().finite().positive().max(100),
+  energyKcal: z.number().finite().nonnegative(),
+  proteinG: z.number().finite().nonnegative(),
+  carbohydrateG: z.number().finite().nonnegative(),
+  fatG: z.number().finite().nonnegative(),
+}).strict();
+
+export type BackendMealType = z.infer<typeof MealTypeSchema>;
+export type CreateCustomMealRequest = z.infer<typeof CustomMealRequestSchema>;
+
+export interface CreatedCustomMeal {
+  id: number;
+  raw: unknown;
+}
+
 export interface GraduationBackendDataSource {
   searchFoods(term: string, limit?: number): Promise<BackendFood[]>;
   getFood(id: number): Promise<BackendFood>;
   searchRecipes(term: string, limit?: number): Promise<BackendRecipe[]>;
   getRecipe(id: number): Promise<BackendRecipe>;
+  getHealthProfile?(): Promise<unknown>;
+  getFoodPreferences?(): Promise<unknown>;
+  getNutritionTargets?(): Promise<unknown>;
+  getUserRules?(): Promise<unknown>;
+  getDailySummary?(date: string): Promise<unknown>;
+  createCustomMeal?(request: CreateCustomMealRequest): Promise<CreatedCustomMeal>;
+  deleteCustomMeal?(id: number): Promise<void>;
 }
 
 function normalized(value: string): string {
@@ -84,6 +114,7 @@ export class NutriGuardBackendClient implements GraduationBackendDataSource {
     private readonly baseUrl = "http://nutriguard.runasp.net",
     private readonly fetcher: typeof fetch = fetch,
     private readonly timeoutMs = 4_000,
+    private readonly allowInsecureAuthenticatedHttp = false,
   ) {}
 
   public async searchFoods(term: string, limit = 8): Promise<BackendFood[]> {
@@ -105,15 +136,75 @@ export class NutriGuardBackendClient implements GraduationBackendDataSource {
     return RecipeDetailSchema.parse(await this.request(`/api/Recipes/${id}`)).data;
   }
 
+  public async getHealthProfile(): Promise<unknown> {
+    return this.authenticatedRequest("/api/HealthProfile");
+  }
+
+  public async getNutritionTargets(): Promise<unknown> {
+    return this.authenticatedRequest("/api/Nutrition/targets");
+  }
+
+  public async getUserRules(): Promise<unknown> {
+    return this.authenticatedRequest("/api/Nutrition/user-rules");
+  }
+
+  public async getDailySummary(date: string): Promise<unknown> {
+    return this.authenticatedRequest(`/api/Tracking/summary/${z.iso.date().parse(date)}`);
+  }
+
+  public async createCustomMeal(request: CreateCustomMealRequest): Promise<CreatedCustomMeal> {
+    const body = CustomMealRequestSchema.parse(request);
+    const raw = await this.authenticatedRequest("/api/Tracking/custom-meals", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    const id = findPositiveInteger(raw, ["customMealLogId", "mealLogId", "id"]);
+    if (id === null) throw new Error("NutriGuard Backend custom-meal response did not contain a log ID");
+    return { id, raw };
+  }
+
+  public async deleteCustomMeal(id: number): Promise<void> {
+    if (!Number.isSafeInteger(id) || id < 1) throw new Error("custom meal ID must be a positive integer");
+    await this.authenticatedRequest(`/api/Tracking/custom-meals/${id}`, { method: "DELETE" });
+  }
+
   private async request(path: string): Promise<unknown> {
+    return this.performRequest(path, { headers: { accept: "application/json" } });
+  }
+
+  private async authenticatedRequest(path: string, init: RequestInit = {}): Promise<unknown> {
+    if (new URL(this.baseUrl).protocol !== "https:" && !this.allowInsecureAuthenticatedHttp) {
+      throw Object.assign(new Error("Authenticated Backend requests require HTTPS"), { code: "insecure_transport" });
+    }
+    const token = currentBackendAccessToken();
+    if (!token) throw Object.assign(new Error("Backend authentication is required"), { code: "invalid_token" });
+    const headers = new Headers(init.headers);
+    headers.set("accept", "application/json");
+    headers.set("authorization", `Bearer ${token}`);
+    return this.performRequest(path, { ...init, headers });
+  }
+
+  private async performRequest(path: string, init: RequestInit): Promise<unknown> {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), this.timeoutMs);
     try {
-      const response = await this.fetcher(new URL(path, this.baseUrl), { headers: { accept: "application/json" }, signal: controller.signal });
-      if (!response.ok) throw new Error(`NutriGuard backend returned HTTP ${response.status}`);
+      const response = await this.fetcher(new URL(path, this.baseUrl), { ...init, signal: controller.signal });
+      if (!response.ok) throw Object.assign(new Error(`NutriGuard backend returned HTTP ${response.status}`), { status: response.status });
+      if (response.status === 204) return null;
       return await response.json() as unknown;
     } finally {
       clearTimeout(timeout);
     }
   }
+}
+
+function findPositiveInteger(value: unknown, keys: readonly string[]): number | null {
+  if (typeof value !== "object" || value === null) return null;
+  const record = value as Record<string, unknown>;
+  for (const key of keys) {
+    const candidate = record[key];
+    if (typeof candidate === "number" && Number.isSafeInteger(candidate) && candidate > 0) return candidate;
+  }
+  return findPositiveInteger(record.data, keys);
 }

@@ -123,7 +123,22 @@ Demo يستخدم مخزنًا متجهيًا داخل الذاكرة ليعمل
 6. أغلق البرامج الثقيلة والإشعارات قبل العرض.
 7. لا تقل “100% accurate” أو “production approved”. استخدم “deterministic, traceable, graduation-ready”.
 
-## أوامر التحقق قبل العرض
+## ربط Backend الحقيقي في العرض
+
+مسار العرض يستخدم بيانات الوصفات المحلية المعتمدة للبحث والاختيار، ويمكنه تسجيل الاختيار المؤكد في Backend كـ Custom Meal. لتفعيل الربط:
+
+1. يرسل الـFrontend الـaccess token قصير العمر في `Authorization: Bearer <token>` مع كل طلب إلى `/api/v1/chat`.
+2. يمرر AI Adapter التوكن داخل نفس الطلب فقط إلى NutriGuard Backend؛ لا يخزنه في singleton ولا يكتبه في السجلات، ولا يستقبل refresh token.
+3. فعّل `NUTRIGUARD_BACKEND_TRACKING_ENABLED=true`. الاتصالات الموثقة تتطلب HTTPS افتراضيًا.
+4. نشر Backend الحالي يستخدم HTTP فقط؛ للاختبار المحلي أو العرض المغلق يمكن تفعيل `NUTRIGUARD_ALLOW_INSECURE_BACKEND_HTTP=true` مع إدراك أن التوكن يمكن اعتراضه على الشبكة. لا تستخدم هذا الخيار في إنتاج أو على شبكة غير موثوقة.
+
+التسجيل يستخدم `POST /api/Tracking/custom-meals` لكل وصفة مؤكدة، ويرسل معرف الوصفة المحلي في `externalReferenceId` والأرقام الغذائية من snapshot الوصفة المعتمدة. لأن عقد Backend الحالي يسجل Custom Meal واحدة في النداء ولا يوفر idempotency key، فإن تأكيد أكثر من وجبة يُنفّذ بالتتابع، ويجرب حذف ما تم إنشاؤه إذا فشل نداء لاحق. منع التكرار محفوظ في ذاكرة process الـAI فقط، لذلك لا يُدّعى أنه يستمر بعد restart أو أنه atomic على مستوى قاعدة بيانات Backend.
+
+قراءة البروفايل والأهداف والقواعد والملخص اليومي تتم من `GET /api/HealthProfile` و`GET /api/Nutrition/targets` و`GET /api/Nutrition/user-rules` و`GET /api/Tracking/summary/{date}`. أي رقم مفقود يظل `null` ولا يتحول إلى صفر أو تقدير.
+
+لا تضع بيانات دخول أو JWT في Git أو ملفات التوثيق أو المحادثات. استخدم تسجيل الدخول في الـFrontend، واترك refresh token بين الـFrontend وBackend فقط.
+
+## أوامر التحقق الآلي قبل العرض
 
 ```bash
 npm run demo:prepare

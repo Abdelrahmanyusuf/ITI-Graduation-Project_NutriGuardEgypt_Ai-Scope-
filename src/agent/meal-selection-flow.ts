@@ -775,27 +775,33 @@ export class MealSelectionFlow {
       return flowResponse(
         language,
         "no_result",
-        language === "en" ? `Nothing was logged: ${errorMessage(response.error_code, language)}. [MOCK DASHBOARD]` : `لم تتم إضافة أي شيء: ${errorMessage(response.error_code, language)}. [MOCK DASHBOARD]`,
-        { intent: "meal_selection_log", mock: true, applied: false, errorCode: response.error_code, pendingOperationId: operation.id, conversationContext: context },
+        language === "en" ? `Nothing was logged: ${errorMessage(response.error_code, language)}.` : `لم تتم إضافة أي شيء: ${errorMessage(response.error_code, language)}.`,
+        { intent: "meal_selection_log", applied: false, errorCode: response.error_code, pendingOperationId: operation.id, conversationContext: context },
         [],
         [{ tool: "confirm_and_log_meal_selection", ok: false, code: response.error_code }],
       );
     }
     if (!response.applied) {
+      const remaining = response.daily_calories_remaining === null
+        ? language === "en" ? "not returned by the Backend" : "غير متاح من الـBackend"
+        : String(response.daily_calories_remaining);
       return flowResponse(
         language,
         "ok",
-        language === "en" ? `This selection was already logged; no new deduction occurred. Mock daily calories remaining: ${response.daily_calories_remaining}.` : `الاختيارات دي اتسجلت قبل كده؛ محصلش خصم جديد. السعرات اليومية المتبقية في الـmock: ${response.daily_calories_remaining}.`,
-        { intent: "meal_selection_log", mock: true, applied: false, reason: response.reason, pendingOperationId: operation.id, dailyCaloriesRemaining: response.daily_calories_remaining, selections: operation.selections, totalNutritionSnapshot: operation.total, conversationContext: context },
+        language === "en" ? `This selection was already logged; no new deduction occurred. Daily calories remaining: ${remaining}.` : `الاختيارات دي اتسجلت قبل كده؛ محصلش خصم جديد. السعرات اليومية المتبقية: ${remaining}.`,
+        { intent: "meal_selection_log", applied: false, reason: response.reason, pendingOperationId: operation.id, dailyCaloriesRemaining: response.daily_calories_remaining, selections: operation.selections, totalNutritionSnapshot: operation.total, conversationContext: context },
         [],
         [{ tool: "confirm_and_log_meal_selection", ok: true, code: "already_logged" }],
       );
     }
+    const remaining = response.daily_calories_remaining === null
+      ? language === "en" ? "not returned by the Backend" : "غير متاح من الـBackend"
+      : String(response.daily_calories_remaining);
     return flowResponse(
       language,
       "ok",
-      language === "en" ? `Logged to the MOCK dashboard. Mock daily calories remaining: ${response.daily_calories_remaining}.` : `تم التسجيل في MOCK الداشبورد. السعرات اليومية المتبقية في الـmock: ${response.daily_calories_remaining}.`,
-      { intent: "meal_selection_log", mock: true, applied: true, pendingOperationId: operation.id, loggedSelectionIds: response.logged_selection_ids, dailyCaloriesRemaining: response.daily_calories_remaining, selections: operation.selections, totalNutritionSnapshot: operation.total, conversationContext: context },
+      language === "en" ? `The meal selection was logged. Daily calories remaining: ${remaining}.` : `تم تسجيل اختيارات الوجبات. السعرات اليومية المتبقية: ${remaining}.`,
+      { intent: "meal_selection_log", applied: true, pendingOperationId: operation.id, loggedSelectionIds: response.logged_selection_ids, dailyCaloriesRemaining: response.daily_calories_remaining, selections: operation.selections, totalNutritionSnapshot: operation.total, conversationContext: context },
       [],
       [{ tool: "confirm_and_log_meal_selection", ok: true, code: null }],
     );

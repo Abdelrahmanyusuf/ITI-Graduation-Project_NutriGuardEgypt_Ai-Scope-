@@ -63,6 +63,22 @@ export {
 } from "./services/dashboard/dashboard-client.js";
 export { MockDashboardClient, type MockDashboardScenario } from "./services/dashboard/mock-dashboard-client.js";
 export {
+  NutriGuardCustomMealDashboardClient,
+  type CustomMealRecipeIdentity,
+  type NutriGuardCustomMealDashboardClientOptions,
+} from "./services/dashboard/nutriguard-custom-meal-dashboard-client.js";
+export {
+  currentBackendAccessToken,
+  runWithBackendAccessToken,
+} from "./runtime/backend-request-context.js";
+export {
+  NutriGuardBackendClient,
+  type BackendFood,
+  type BackendRecipe,
+  type CreateCustomMealRequest,
+  type GraduationBackendDataSource,
+} from "./runtime/graduation-backend-client.js";
+export {
   InMemoryAlternativeRuleRepository,
   NutriGuardExpandedAgent,
   RuleBasedExpandedAgentPlanner,

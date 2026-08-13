@@ -35,6 +35,7 @@ import {
 import { HybridRetrievalTools } from "./hybrid-retrieval-tools.js";
 import { MockDashboardClient } from "../services/dashboard/mock-dashboard-client.js";
 import type { DashboardClient, LogMealSelectionsRequest } from "../services/dashboard/dashboard-client.js";
+import { NutriGuardCustomMealDashboardClient } from "../services/dashboard/nutriguard-custom-meal-dashboard-client.js";
 
 const DIMENSIONS = 16_384;
 const GRADUATION_DEMO_DAILY_CALORIE_BUDGET = 2_000;
@@ -743,6 +744,84 @@ function hash(value: string): number {
   return result >>> 0;
 }
 
+type PersonalNutrientKey = "calories" | "protein" | "carbohydrate" | "fat";
+interface PersonalNutrientValue { target: number | null; consumed: number | null; remaining: number | null }
+type PersonalNutritionValues = Record<PersonalNutrientKey, PersonalNutrientValue>;
+
+function backendContextResponse(
+  language: "ar-EG" | "ar" | "en",
+  contextType: string,
+  message: string,
+  backendData: Record<string, unknown>,
+): ExpandedAgentResponse {
+  return {
+    status: "ok", primaryIntent: "general_guidance", language, safetyFlags: [], integrityFlags: [], message,
+    data: { intent: "personal_backend_context", contextType, ...backendData }, evidenceDocumentIds: [], provenance: [],
+    toolTrace: [{ tool: "get_user_nutrition_context", ok: true, code: null }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
+  };
+}
+
+function requestedDate(message: string): string | null {
+  const match = normalizeNumberDigits(message).match(/\b(20\d{2}-\d{2}-\d{2})\b/u);
+  if (!match?.[1]) return null;
+  const date = new Date(`${match[1]}T00:00:00Z`);
+  return Number.isFinite(date.getTime()) && date.toISOString().startsWith(match[1]) ? match[1] : null;
+}
+
+function dateInCairo(now: number): string {
+  const parts = new Intl.DateTimeFormat("en-CA", { timeZone: "Africa/Cairo", year: "numeric", month: "2-digit", day: "2-digit" }).formatToParts(new Date(now));
+  const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  return `${values.year}-${values.month}-${values.day}`;
+}
+
+function findBackendNumber(value: unknown, keys: readonly string[], depth = 0): number | null {
+  if (depth > 5 || typeof value !== "object" || value === null) return null;
+  const record = value as Record<string, unknown>;
+  for (const key of keys) {
+    const candidate = record[key];
+    if (typeof candidate === "number" && Number.isFinite(candidate) && candidate >= 0) return candidate;
+  }
+  for (const nested of Object.values(record)) {
+    const candidate = findBackendNumber(nested, keys, depth + 1);
+    if (candidate !== null) return candidate;
+  }
+  return null;
+}
+
+function personalNutritionValues(targets: unknown, summary: unknown): PersonalNutritionValues {
+  const fields: Record<PersonalNutrientKey, { target: string[]; consumed: string[] }> = {
+    calories: { target: ["energyKcal", "dailyCalories", "calorieTarget", "targetCalories", "calories"], consumed: ["energyKcal", "totalCalories", "consumedCalories", "calories"] },
+    protein: { target: ["proteinG", "dailyProteinG", "proteinTargetG", "protein"], consumed: ["proteinG", "totalProteinG", "consumedProteinG", "protein"] },
+    carbohydrate: { target: ["carbohydrateG", "carbsG", "dailyCarbohydrateG", "carbohydrateTargetG", "carbohydrate"], consumed: ["carbohydrateG", "carbsG", "totalCarbohydrateG", "consumedCarbohydrateG", "carbohydrate"] },
+    fat: { target: ["fatG", "dailyFatG", "fatTargetG", "fat"], consumed: ["fatG", "totalFatG", "consumedFatG", "fat"] },
+  };
+  return Object.fromEntries(Object.entries(fields).map(([key, aliases]) => {
+    const target = findBackendNumber(targets, aliases.target);
+    const consumed = findBackendNumber(summary, aliases.consumed);
+    const remaining = target === null || consumed === null ? null : Math.max(0, Math.round((target - consumed) * 10) / 10);
+    return [key, { target, consumed, remaining }];
+  })) as PersonalNutritionValues;
+}
+
+function personalNutritionLines(
+  values: PersonalNutritionValues,
+  language: "ar-EG" | "ar" | "en",
+  field: keyof PersonalNutrientValue,
+): string[] {
+  const labels: Record<PersonalNutrientKey, { ar: string; en: string; unitAr: string; unitEn: string }> = {
+    calories: { ar: "السعرات", en: "Calories", unitAr: "سعر حراري", unitEn: "kcal" },
+    protein: { ar: "البروتين", en: "Protein", unitAr: "جم", unitEn: "g" },
+    carbohydrate: { ar: "الكربوهيدرات", en: "Carbohydrates", unitAr: "جم", unitEn: "g" },
+    fat: { ar: "الدهون", en: "Fat", unitAr: "جم", unitEn: "g" },
+  };
+  return (Object.keys(values) as PersonalNutrientKey[]).flatMap((key) => {
+    const value = values[key][field];
+    if (value === null) return [];
+    const label = labels[key];
+    return [`• ${language === "en" ? label.en : label.ar}: ${value} ${language === "en" ? label.unitEn : label.unitAr}`];
+  });
+}
+
 /** Local deterministic retrieval for the graduation demo; never selected as a production embedding model. */
 export class GraduationDemoEmbeddingProvider implements EmbeddingProvider {
   public readonly modelId = "LOCAL-HASHED-NGRAM-GRADUATION-DEMO";
@@ -864,6 +943,8 @@ class GraduationDemoAgent {
       ...(isMealSelectionContext(input.context) ? { context: input.context } : {}),
     });
     if (mealSelectionResponse) return mealSelectionResponse;
+    const personalized = await this.personalBackendResponse(query, language);
+    if (personalized) return personalized;
     const namedRecipes = explicitlyNamedRecipes(this.dataset, query);
     const referencedId = input.context?.lastIntent === "recipe_reference" ? input.context.recipeId
       : input.context?.lastIntent === "lighter_modification" ? input.context.recipeId
@@ -953,6 +1034,60 @@ class GraduationDemoAgent {
     }
     return this.unsupported(language);
 
+  }
+
+  private async personalBackendResponse(query: string, language: "ar-EG" | "ar" | "en"): Promise<ExpandedAgentResponse | null> {
+    if (!this.backend) return null;
+    const wantsSummary = /(?:ملخص|استهلكت|اكلت.{0,15}النهارده|أكلت.{0,15}النهارده|summary|consumed|logged today)/iu.test(query);
+    const wantsRemaining = /(?:ناقصني|متبقي|متبقى|فاضلي|فاضلى|باقيلي|باقي ليا|remaining|left today|still need)/iu.test(query);
+    const wantsTargets = /(?:هدفي|التارجت|الهدف اليومي|target|daily goal|احتياجي اليومي)/iu.test(query);
+    const wantsProfile = /(?:البروفايل الصحي|الهيلث بروفايل|بياناتي الصحية|health profile|my profile)/iu.test(query);
+    const wantsRules = /(?:تفضيلاتي|حساسيتي|الحساسية عندي|الممنوع عندي|food preferences|my allergies|my restrictions|user rules)/iu.test(query);
+    if (!wantsSummary && !wantsRemaining && !wantsTargets && !wantsProfile && !wantsRules) return null;
+
+    const authFailure = (): ExpandedAgentResponse => ({
+      status: "clarification", primaryIntent: "general_guidance", language, safetyFlags: [], integrityFlags: [],
+      message: language === "en"
+        ? "Sign in through the frontend so NutriGuard can read your Backend profile and tracking data for this request."
+        : "سجّل دخول من الـFrontend علشان NutriGuard يقدر يقرأ البروفايل وبيانات التتبع من الـBackend في الطلب ده.",
+      data: { intent: "personal_backend_context", requiredInput: "backend_access_token" }, evidenceDocumentIds: [], provenance: [],
+      toolTrace: [{ tool: "get_user_nutrition_context", ok: false, code: "invalid_token" }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
+    });
+
+    try {
+      if (wantsProfile && this.backend.getHealthProfile) {
+        const profile = await this.backend.getHealthProfile();
+        return backendContextResponse(language, "health_profile", language === "en" ? "I loaded your health profile from the Backend." : "حمّلت بيانات البروفايل الصحي من الـBackend.", { profile });
+      }
+      if (wantsRules) {
+        const rules = this.backend.getUserRules ? await this.backend.getUserRules()
+          : this.backend.getFoodPreferences ? await this.backend.getFoodPreferences() : null;
+        if (rules !== null) return backendContextResponse(language, "user_rules", language === "en" ? "I loaded your current preferences and nutrition rules from the Backend." : "حمّلت تفضيلاتك وقواعد التغذية الحالية من الـBackend.", { rules });
+      }
+      if ((wantsSummary || wantsRemaining || wantsTargets) && this.backend.getNutritionTargets && this.backend.getDailySummary) {
+        const date = requestedDate(query) ?? dateInCairo(Date.now());
+        const [targets, summary] = await Promise.all([this.backend.getNutritionTargets(), this.backend.getDailySummary(date)]);
+        const values = personalNutritionValues(targets, summary);
+        const lines = personalNutritionLines(values, language, wantsRemaining ? "remaining" : wantsSummary ? "consumed" : "target");
+        const title = language === "en"
+          ? wantsRemaining ? `Remaining nutrition for ${date}` : wantsSummary ? `Consumed nutrition for ${date}` : "Your daily nutrition targets"
+          : wantsRemaining ? `المتبقي ليوم ${date}` : wantsSummary ? `المستهلك ليوم ${date}` : "أهدافك الغذائية اليومية";
+        const message = lines.length > 0
+          ? `${title}:\n${lines.join("\n")}`
+          : language === "en" ? "The Backend responded, but it did not provide recognized numeric target/summary fields." : "الـBackend رد، لكن الاستجابة لم تحتوِ على حقول أرقام معروفة للهدف أو الملخص.";
+        return backendContextResponse(language, wantsRemaining ? "remaining" : wantsSummary ? "daily_summary" : "targets", message, { date, targets, summary, calculated: values });
+      }
+      return backendContextResponse(language, "unavailable", language === "en" ? "This Backend capability is not available in the configured adapter." : "القدرة دي مش متاحة في إعداد الـBackend Adapter الحالي.", {});
+    } catch (cause) {
+      const record = typeof cause === "object" && cause !== null ? cause as Record<string, unknown> : {};
+      if (record.code === "invalid_token" || record.status === 401 || record.status === 403) return authFailure();
+      return {
+        status: "no_result", primaryIntent: "general_guidance", language, safetyFlags: [], integrityFlags: [],
+        message: language === "en" ? "I could not read your current Backend nutrition data. Nothing was guessed." : "مقدرتش أقرأ بيانات التغذية الحالية من الـBackend، ومخمنتش أي أرقام.",
+        data: { intent: "personal_backend_context", errorCode: "backend_unavailable" }, evidenceDocumentIds: [], provenance: [],
+        toolTrace: [{ tool: "get_user_nutrition_context", ok: false, code: "backend_unavailable" }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
+      };
+    }
   }
 
   private medicalSafetyFallback(query: string, language: "ar-EG" | "ar" | "en", base: ExpandedAgentResponse): ExpandedAgentResponse {
@@ -1978,9 +2113,23 @@ export async function buildGraduationDemoAgent(
     tools = new HybridRetrievalTools(remoteTools, localTools, { timeoutMs, circuitBreakerMs });
   }
   const backend = backendDataSource === undefined
-    ? nodeEnv === "development" ? new NutriGuardBackendClient(process.env.NUTRIGUARD_BACKEND_BASE_URL?.trim() || undefined) : null
+    ? nodeEnv === "development" ? new NutriGuardBackendClient(
+      process.env.NUTRIGUARD_BACKEND_BASE_URL?.trim() || undefined,
+      fetch,
+      4_000,
+      /^(?:1|true|yes|on)$/iu.test(process.env.NUTRIGUARD_ALLOW_INSECURE_BACKEND_HTTP?.trim() ?? "false"),
+    ) : null
     : backendDataSource;
-  const dashboard = createGraduationDemoDashboard();
+  const backendTrackingEnabled = /^(?:1|true|yes|on)$/iu.test(process.env.NUTRIGUARD_BACKEND_TRACKING_ENABLED?.trim() ?? "false");
+  const dashboard = backendTrackingEnabled && backend?.createCustomMeal && backend.deleteCustomMeal
+    ? new NutriGuardCustomMealDashboardClient({
+      backend,
+      resolveRecipe: (recipeId) => {
+        const recipe = recipes.get(recipeId);
+        return recipe ? { nameAr: recipe.name_ar, nameEn: recipe.name_en } : null;
+      },
+    })
+    : createGraduationDemoDashboard();
   const mealSelection = options.mealSelectionFlow ?? new MealSelectionFlow(new DatasetVerifiedMealRecipeRepository(dataset), dashboard);
   return new GraduationDemoAgent(new NutriGuardExpandedAgent(tools, new InMemoryAlternativeRuleRepository([])), tools, dataset, backend, mealSelection);
 }

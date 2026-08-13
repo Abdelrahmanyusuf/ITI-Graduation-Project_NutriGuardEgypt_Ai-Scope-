@@ -6,6 +6,7 @@ import { InMemoryPilotFeedbackStore } from "../src/pilot/feedback.js";
 import { buildSyntheticDemoAgent } from "../src/runtime/synthetic-demo-agent.js";
 import { createNutriGuardHttpServer } from "../src/server/http-app.js";
 import { MetricsRegistry } from "../src/observability/metrics.js";
+import { currentBackendAccessToken } from "../src/runtime/backend-request-context.js";
 
 const agent = await buildSyntheticDemoAgent("test");
 const feedback = new InMemoryPilotFeedbackStore();
@@ -42,6 +43,31 @@ test("Step 18 health, readiness, and real Agent chat work end to end", async () 
   const metricText=await metricsResponse.text();
   assert.match(metricText,/nutriguard_agent_outcomes_total\{outcome="ok"\}/);
   assert.match(metricText,/nutriguard_calculation_availability_total\{outcome="available"\}/);
+});
+
+test("chat forwards Backend JWT only through request-scoped context", async () => {
+  let observed: string | null = "not-called";
+  const tokenAwareAgent = {
+    invoke: async () => {
+      observed = currentBackendAccessToken();
+      return agent.invoke({ message: "مرحبا", language: "ar-EG" });
+    },
+  };
+  const isolated = createNutriGuardHttpServer({ agent: tokenAwareAgent, feedbackStore: feedback, mode: "test", releaseId: "TOKEN-TEST", allowedOrigins: [], readiness: async () => ({ ready: true, blockers: [] }), pilotConsentReference: null, privacyNoticeVersion: null });
+  await new Promise<void>((resolve) => isolated.listen(0, "127.0.0.1", resolve));
+  const address = isolated.address() as AddressInfo;
+  try {
+    const response = await fetch(`http://127.0.0.1:${address.port}/api/v1/chat`, {
+      method: "POST",
+      headers: { "content-type": "application/json", authorization: "Bearer request-only-test-token" },
+      body: JSON.stringify({ message: "مرحبا", language: "ar-EG" }),
+    });
+    assert.equal(response.status, 200);
+    assert.equal(observed, "request-only-test-token");
+    assert.equal(currentBackendAccessToken(), null);
+  } finally {
+    await new Promise<void>((resolve, reject) => isolated.close((error) => error ? reject(error) : resolve()));
+  }
 });
 
 test("Step 18 rejects foreign origins, wrong media types, unknown fields, and oversized bodies", async () => {

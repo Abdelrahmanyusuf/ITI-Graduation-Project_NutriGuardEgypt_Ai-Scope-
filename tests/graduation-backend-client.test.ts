@@ -69,3 +69,20 @@ test("backend failures do not break the local graduation agent", async () => {
   assert.equal(response.status, "ok");
   assert.equal(response.data?.recipeId, "EGY-RCP-001");
 });
+
+test("graduation agent calculates remaining nutrition only from Backend targets and summary", async () => {
+  const backend: GraduationBackendDataSource = {
+    searchFoods: async () => [], getFood: async () => { throw new Error(); },
+    searchRecipes: async () => [], getRecipe: async () => { throw new Error(); },
+    getNutritionTargets: async () => ({ isSuccess: true, data: { energyKcal: 2_000, proteinG: 100, carbohydrateG: 250, fatG: 70 } }),
+    getDailySummary: async () => ({ isSuccess: true, data: { energyKcal: 800, proteinG: 40, carbohydrateG: 90, fatG: 25 } }),
+  };
+  const agent = await buildGraduationDemoAgent("test", backend);
+  const response = await agent.invoke({ message: "ناقصني إيه النهارده؟", language: "ar-EG" });
+  assert.equal(response.status, "ok");
+  assert.match(response.message, /1200/);
+  assert.match(response.message, /60/);
+  assert.match(response.message, /160/);
+  assert.match(response.message, /45/);
+  assert.equal(response.toolTrace[0]?.tool, "get_user_nutrition_context");
+});

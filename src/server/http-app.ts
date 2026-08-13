@@ -7,6 +7,7 @@ import { parsePilotFeedbackSubmission, type PilotFeedbackStore } from "../pilot/
 import { renderChatPage } from "../web/chat-page.js";
 import type { StructuredLogger } from "../observability/logger.js";
 import type { MetricsRegistry } from "../observability/metrics.js";
+import { runWithBackendAccessToken } from "../runtime/backend-request-context.js";
 
 const RecipeIdSchema = z.string().regex(/^EGY-RCP-[0-9]{3}$/u);
 const IngredientKeySchema = z.string().trim().min(1).max(100);
@@ -137,7 +138,7 @@ export function createNutriGuardHttpServer(options: HttpAppOptions): Server {
     }
     if (request.method === "OPTIONS") {
       response.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
-      response.setHeader("Access-Control-Allow-Headers", "Content-Type");
+      response.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
       response.statusCode = 204;
       return response.end();
     }
@@ -176,7 +177,14 @@ export function createNutriGuardHttpServer(options: HttpAppOptions): Server {
         if (!parsed.success) throw Object.assign(new Error("message must contain 1–2000 characters and no unknown fields"), { status: 400 });
         let timer: NodeJS.Timeout | undefined;
         const timeout = new Promise<never>((_, reject) => { timer = setTimeout(() => reject(Object.assign(new Error("agent timeout"), { status: 504 })), timeoutMs); });
-        const result = await Promise.race([options.agent.invoke(parsed.data), timeout]).finally(() => { if (timer) clearTimeout(timer); });
+        const authorization = request.headers.authorization;
+        const accessToken = authorization?.startsWith("Bearer ") && authorization.length > 7
+          ? authorization.slice(7)
+          : null;
+        const result = await runWithBackendAccessToken(
+          accessToken,
+          () => Promise.race([options.agent.invoke(parsed.data), timeout]),
+        ).finally(() => { if (timer) clearTimeout(timer); });
         options.metrics?.increment("nutriguard_agent_outcomes_total", { outcome: result.status });
         if (result.status === "no_result" || result.status === "clarification") options.metrics?.increment("nutriguard_retrieval_quality_events_total", { outcome: result.status });
         for (const flag of result.safetyFlags) options.metrics?.increment("nutriguard_safety_routes_total", { outcome: flag });

@@ -23,7 +23,7 @@ export interface LogMealSelectionsRequest {
 export interface DashboardSuccessResponse {
   status: "success";
   applied: true;
-  daily_calories_remaining: number;
+  daily_calories_remaining: number | null;
   logged_selection_ids: string[];
 }
 
@@ -31,7 +31,7 @@ export interface DashboardReplayResponse {
   status: "success";
   applied: false;
   reason: "already_logged";
-  daily_calories_remaining: number;
+  daily_calories_remaining: number | null;
 }
 
 export type DashboardErrorCode =
@@ -51,7 +51,7 @@ export interface DashboardErrorResponse {
 
 export type DashboardResponse = DashboardSuccessResponse | DashboardReplayResponse | DashboardErrorResponse;
 
-/** Port implemented by the mock in Step 16 and by a real HTTP client only after the open questions are resolved. */
+/** Port implemented by the deterministic mock and the graduation Backend adapter. */
 export interface DashboardClient {
   logMealSelections(request: LogMealSelectionsRequest): Promise<DashboardResponse>;
 }
