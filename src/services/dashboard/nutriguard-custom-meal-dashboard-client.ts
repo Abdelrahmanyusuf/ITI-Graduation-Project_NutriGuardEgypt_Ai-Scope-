@@ -63,7 +63,12 @@ export class NutriGuardCustomMealDashboardClient implements DashboardClient {
       return { status: "success", applied: false, reason: "already_logged", daily_calories_remaining: prior.dailyCaloriesRemaining };
     }
     const pending = this.inFlight.get(request.idempotency_key);
-    if (pending) return pending;
+    if (pending) {
+      const response = await pending;
+      return response.status === "success" && response.applied
+        ? { status: "success", applied: false, reason: "already_logged", daily_calories_remaining: response.daily_calories_remaining }
+        : response;
+    }
     const operation = this.apply(request, requestHash).finally(() => this.inFlight.delete(request.idempotency_key));
     this.inFlight.set(request.idempotency_key, operation);
     return operation;

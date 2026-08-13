@@ -624,6 +624,9 @@ const COMMON_RECIPE_ALIASES: Readonly<Record<string, string>> = {
   "الفول": "EGY-RCP-002",
   "طعمية": "EGY-RCP-003",
   "الطعمية": "EGY-RCP-003",
+  "taameya": "EGY-RCP-003",
+  "taamiya": "EGY-RCP-003",
+  "egyptian falafel": "EGY-RCP-003",
 };
 
 function explicitlyNamedRecipes(dataset: UnifiedEgyptianDemoDataset, query: string): UnifiedDemoRecipe[] {
@@ -716,7 +719,8 @@ function classifyGraduationIntent(query: string, namedRecipes: readonly UnifiedD
   if (/(?:أصل(?:ه|ها)?|أصله|اصلها|جات\s*لمصر|من\s*أيام|من\s*قد\s*إيه|بقاله|فرعوني|مستوردة|الخديوي|قبل\s*الإسلام|مين\s+(?:اخترع|عمل)|ليه\s+(?:اسمها|اتسمت)|فرق(?:ه|ها)?\s+عن|histor(?:y|ical)|origin of|who invented)/iu.test(text)) return "unsupported";
   if (/(?:أنا|انا|وأنا|وانا|هل|ممكن|ينفع|وصفات|أكلات|اكلات|for\s+(?:a\s+)?|i\s+am|i'm|suitable).{0,24}(?:نباتي|فيجن|كيتو|جلوتين|صيامي|vegetarian|vegan|keto|gluten[ -]?free)|(?:أنا\s*صايم|صيام)/iu.test(text)) return "unsupported";
   if (/(?:إزاي\s*أخلي|ازاي\s*اخلي|عشان.{0,30}(?:ما|مي)|بيستوي.{0,20}قد\s*إيه|درجة\s*حرارة|من\s*غير\s*ما|بيتخمر.{0,20}قد\s*إيه|بتتقلب\s*إزاي)/iu.test(text)) return "unsupported";
-  if (/(?:هرم غذائي|منظمه الصحه|ارشاد|توصيات|الحد اليومي|دهون مشبعه|دهون متحوله|دهون غير مشبعه|مضر|guideline|food pyramid|\bWHO\b)/iu.test(normalizedText)) return "general_guideline";
+  const explicitWhoReference = /\bWHO\b/u.test(text) || /\bworld health organi[sz]ation\b/iu.test(text);
+  if (explicitWhoReference || /(?:هرم غذائي|منظمه الصحه|ارشاد|توصيات|الحد اليومي|دهون مشبعه|دهون متحوله|دهون غير مشبعه|مضر|guideline|food pyramid)/iu.test(normalizedText)) return "general_guideline";
   const nutrientTerms = /(?:سعر|كالوري|طاقة|بروتين|كربوهيدرات|كارب|ماكروز|دهون|ألياف|الياف|سكر|صوديوم|ملح|غذائي|nutrition|macro|calorie|kcal|protein|carb|fat|fiber|sugar|sodium)/iu;
   if (namedRecipes.length > 0 && nutrientTerms.test(text)) return "recipe_nutrition";
   if (namedRecipes.length === 0 && nutrientTerms.test(text) && /(?:رشح|اقترح|وجبة|أكلة|اكلة|ناقصني|عالي|عالية|غني|غنية|قليل|قليلة|high|rich|low|recommend|suggest)/iu.test(text)) return "find_recipe";

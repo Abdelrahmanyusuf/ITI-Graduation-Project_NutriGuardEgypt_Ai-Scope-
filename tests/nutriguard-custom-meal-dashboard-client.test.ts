@@ -62,6 +62,34 @@ test("custom-meal dashboard logs verified recipe snapshots once and replays loca
   });
 });
 
+test("concurrent confirmations create once and report duplicate callers as replays", async () => {
+  let releases: (() => void) | null = null;
+  const gate = new Promise<void>((resolve) => { releases = resolve; });
+  let createCalls = 0;
+  const backend: GraduationBackendDataSource = {
+    searchFoods: async () => [], getFood: async () => { throw new Error(); },
+    searchRecipes: async () => [], getRecipe: async () => { throw new Error(); },
+    createCustomMeal: async () => {
+      createCalls += 1;
+      await gate;
+      return { id: 902, raw: {} };
+    },
+    deleteCustomMeal: async () => undefined,
+  };
+  const dashboard = new NutriGuardCustomMealDashboardClient({
+    backend,
+    resolveRecipe: () => ({ nameAr: "كشري", nameEn: "Koshary" }),
+  });
+  const first = dashboard.logMealSelections(request);
+  const second = dashboard.logMealSelections(request);
+  const third = dashboard.logMealSelections(request);
+  releases!();
+  const responses = await Promise.all([first, second, third]);
+  assert.equal(createCalls, 1);
+  assert.equal(responses.filter((response) => response.status === "success" && response.applied).length, 1);
+  assert.equal(responses.filter((response) => response.status === "success" && !response.applied && response.reason === "already_logged").length, 2);
+});
+
 test("custom-meal dashboard compensates earlier writes when a later selection fails", async () => {
   let call = 0;
   const deleted: number[] = [];

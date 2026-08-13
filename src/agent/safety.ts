@@ -23,8 +23,8 @@ function matchesAny(text: string, patterns: readonly RegExp[]): boolean {
 
 const EMERGENCY_PATTERNS = [
   /مش قادر (?:ا|أ)تنفس/u,
-  /اختناق|نزيف شديد|اغماء|فاقد الوعي|الم شديد في الصدر|طوارئ/u,
-  /can(?:not|'t) breathe|severe bleeding|unconscious|chest pain|emergency/u,
+  /اختناق|نزيف شديد|اغماء|فاقد الوعي|الم شديد في الصدر|طوارئ|ابتلع.{0,16}(?:سم|مادة سامه)|تسمم/u,
+  /can(?:not|'t) breathe|not breathing|stopped breathing|severe bleeding|unconscious|chest pain|emergency|choking|anaphylaxis|swallow(?:ed)?(?:.{0,20})poison|poisoning/u,
 ] as const;
 
 const MEDICAL_PATTERNS = [
@@ -32,12 +32,17 @@ const MEDICAL_PATTERNS = [
   /(?:اعالج|علاج|اشخص|شخص(?:لي| لي)|تشخص|تشخيص|دواء|جرعه|جرعة|وصفه طبيه|وصفة طبية)/u,
   /(?:what should i eat|diet).{0,30}(?:diabetes|hypertension|kidney|disease|condition)/u,
   /\b(?:diagnose|treat me|medication dose|drug dose)\b/u,
+  /\b(?:dose|dosage)\b.{0,30}\b(?:insulin|metformin|medication|medicine|drug)\b|\b(?:insulin|metformin|medication|medicine|drug)\b.{0,30}\b(?:dose|dosage)\b/u,
+  /\b(?:prescribe|prescription)\b.{0,30}\b(?:diet|meal plan|medication|medicine|drug)\b/u,
+  /\b(?:safe|suitable|what should i eat|what can i eat|diet|meal plan)\b.{0,35}\b(?:diabetes|hypertension|kidney|renal|liver|heart|cancer|disease|condition)\b/u,
+  /\b(?:eat|consume|live on)\b.{0,18}\bonly\b.{0,12}\b\d{2,3}\s*(?:kcal|calories)\b|\b(?:starve|starvation|stop eating|not eat)\b/u,
 ] as const;
 
 const VULNERABLE_PATTERNS = [
   /(?:انا|مراتي|زوجتي).{0,12}(?:حامل|بترضّع|بترضع|مرضع)/u,
   /(?:طفلي|ابني|بنتي|رضيع).{0,24}(?:ياكل|يأكل|اكل|غذا|رجيم|دايت)/u,
   /(?:pregnant|pregnancy|breastfeeding|my child|my baby).{0,30}(?:eat|diet|nutrition|sodium)?/u,
+  /(?:exact|strict|weight[ -]?loss|low[ -]?calorie).{0,20}(?:diet|meal plan).{0,30}(?:child|kid|\d{1,2}[ -]?year[ -]?old)|(?:child|kid|\d{1,2}[ -]?year[ -]?old).{0,30}(?:diet|meal plan|weight[ -]?loss)/u,
 ] as const;
 
 const ALLERGEN_GUARANTEE_PATTERNS = [
