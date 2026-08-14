@@ -2125,7 +2125,8 @@ export async function buildGraduationDemoAgent(
     ) : null
     : backendDataSource;
   const backendTrackingEnabled = /^(?:1|true|yes|on)$/iu.test(process.env.NUTRIGUARD_BACKEND_TRACKING_ENABLED?.trim() ?? "false");
-  const dashboard = backendTrackingEnabled && backend?.createCustomMeal && backend.deleteCustomMeal
+  const backendCanTrackMeals = Boolean(backend?.createCustomMealBatch || (backend?.createCustomMeal && backend.deleteCustomMeal));
+  const dashboard = backendTrackingEnabled && backend && backendCanTrackMeals
     ? new NutriGuardCustomMealDashboardClient({
       backend,
       resolveRecipe: (recipeId) => {

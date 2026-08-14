@@ -40,6 +40,7 @@ export type DashboardErrorCode =
   | "rate_limited"
   | "server_error"
   | "insufficient_calories"
+  | "idempotency_conflict"
   | "validation_failed"
   | "confirmation_expired";
 

@@ -40,7 +40,8 @@
     "db:seed:synthetic": "node --import tsx src/scripts/seed-db.ts",
     "db:test": "node --import tsx --test tests/database.integration.test.ts",
     "test": "node --import tsx --test \"tests/**/*.test.ts\"",
-    "test:agent:wide": "node --import tsx --test tests/graduation-agent-wide.test.ts"
+    "test:agent:wide": "node --import tsx --test tests/graduation-agent-wide.test.ts",
+    "test:backend:batch:live": "node --import tsx scripts/live-backend-batch-smoke.mjs .env.backend.local.txt"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",

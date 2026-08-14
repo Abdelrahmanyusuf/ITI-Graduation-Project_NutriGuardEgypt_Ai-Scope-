@@ -75,6 +75,7 @@ export {
   NutriGuardBackendClient,
   type BackendFood,
   type BackendRecipe,
+  type BatchCustomMealResult,
   type CreateCustomMealRequest,
   type GraduationBackendDataSource,
 } from "./runtime/graduation-backend-client.js";

@@ -394,6 +394,7 @@ function errorMessage(code: DashboardErrorCode, language: "ar-EG" | "ar" | "en")
     rate_limited: "the mock rate limit was reached",
     server_error: "the mock dashboard returned a server error",
     insufficient_calories: "the mock reported insufficient remaining calories",
+    idempotency_conflict: "the confirmation key was reused with different meal selections",
     validation_failed: "the mock rejected the request validation",
     confirmation_expired: "the confirmation has expired",
   };
@@ -403,6 +404,7 @@ function errorMessage(code: DashboardErrorCode, language: "ar-EG" | "ar" | "en")
     rate_limited: "تم الوصول لحد الطلبات في الـmock",
     server_error: "حصل خطأ في mock الداشبورد",
     insufficient_calories: "الـmock أبلغ إن السعرات المتبقية غير كافية",
+    idempotency_conflict: "تمت إعادة استخدام مفتاح التأكيد مع اختيارات وجبات مختلفة",
     validation_failed: "الـmock رفض الطلب بسبب فشل التحقق",
     confirmation_expired: "انتهت صلاحية التأكيد",
   };

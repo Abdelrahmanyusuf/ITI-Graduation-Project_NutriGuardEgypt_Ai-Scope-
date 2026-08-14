@@ -1,6 +1,6 @@
 # NutriGuard Final Graduation-Discussion QA Report
 
-**Date:** 2026-08-13
+**Date:** 2026-08-14
 
 **Branch:** `nutriguard-step3-review`
 
@@ -8,13 +8,13 @@
 
 ## Executive result
 
-- Full suite: **550 tests; 549 passed, 0 failed, 1 skipped**.
+- Full suite: **554 tests; 553 passed, 0 failed, 1 skipped**.
 - The skipped test is the optional live PostgreSQL migration test because `DATABASE_URL` is not configured. It is not used by the graduation runtime, which uses the Backend API for user operational data and the local verified corpus for RAG.
 - Type-check, build, lint, documentation links, recipe staging, and secret scan all pass.
 - Recipe gate: **215 verified, 215 eligible, 0 needs_review, 0 rejected**.
-- Live Backend: login, health profile, targets, user rules, daily summary, custom-meal create/read/delete, Step 16 three-meal logging, and idempotent replay were exercised successfully. All temporary records were deleted.
+- Live Backend: login and the HTTPS atomic custom-meal batch were exercised successfully, including first apply, exact replay, same-key/different-body conflict, and cleanup. All temporary records were deleted.
 
-This evidence materially reduces discussion risk, but it is not a mathematical guarantee that no future input or external outage can ever fail. External Backend availability, HTTP transport, and unconfigured optional PostgreSQL remain explicit operational boundaries.
+This evidence materially reduces discussion risk, but it is not a mathematical guarantee that no future input or external outage can ever fail. External Backend availability and unconfigured optional PostgreSQL remain explicit operational boundaries.
 
 ## User behavior coverage
 
@@ -101,18 +101,18 @@ Three simultaneous confirmations correctly created one Backend record, but calle
 - Invalid token: `401`.
 - Invalid summary date: `400`.
 - Custom meal create/read/delete: successful; GET after delete: `404`.
-- Same idempotency key and identical payload: one write, replay response thereafter.
-- Same key with a different payload: rejected.
-- Step 16 live flow: three Backend records created, all readable, replay created no duplicates, all three deleted and verified absent.
+- `POST /api/Tracking/custom-meals/batch`: first request returned `200`, `applied: true`, and three log IDs.
+- Same idempotency key and identical payload: `200`, `applied: false`, `reason: "already_logged"`, with the same operation ID and the same three log IDs.
+- Same key with a different payload: `409`; no second batch was created.
+- Cleanup: all three exact returned IDs were deleted with `204`.
 - No credential, password, refresh token, or access token was printed or committed.
 
 ## Explicit remaining boundaries
 
-1. The Backend deployment currently uses HTTP. The AI rejects authenticated HTTP by default; the insecure override is graduation-demo only. HTTPS is required for a real deployment.
-2. The Backend custom-meal endpoint is single-record and has no durable idempotency key. The AI adapter uses process-local idempotency and compensating deletes; restart-safe atomic batch behavior requires a Backend batch contract.
-3. The optional AI-side PostgreSQL integration test remains skipped until a separate `DATABASE_URL` is provided. The graduation runtime does not require that database.
-4. Browser QA cannot prove every assistive-technology combination. Semantic labels, keyboard submission, responsive layouts, and core focusable controls were checked, but a formal WCAG audit was not performed.
-5. Backend uptime and network latency are external dependencies. The AI fails closed and does not invent user targets or summaries when Backend data cannot be read.
+1. The hosted Backend now supports HTTPS and documents the batch as durably idempotent. Exact replay was verified live; survival across a Backend process restart was not independently exercised because the AI team cannot restart the hosted service.
+2. The optional AI-side PostgreSQL integration test remains skipped until a separate `DATABASE_URL` is provided. The graduation runtime does not require that database.
+3. Browser QA cannot prove every assistive-technology combination. Semantic labels, keyboard submission, responsive layouts, and core focusable controls were checked, but a formal WCAG audit was not performed.
+4. Backend uptime and network latency are external dependencies. The AI fails closed and does not invent user targets or summaries when Backend data cannot be read.
 
 ## Verification commands
 

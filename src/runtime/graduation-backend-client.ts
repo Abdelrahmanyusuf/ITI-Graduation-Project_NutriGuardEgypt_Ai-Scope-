@@ -54,7 +54,7 @@ const MealTypeSchema = z.enum(["Breakfast", "Lunch", "Dinner", "Snack"]);
 const CustomMealRequestSchema = z.object({
   name: z.string().trim().min(1).max(200),
   externalReferenceId: z.string().trim().min(1).max(100),
-  source: z.literal("NutriGuardAI"),
+  source: z.enum(["AI", "NutriGuardAI"]),
   mealType: MealTypeSchema,
   date: z.iso.date(),
   servings: z.number().finite().positive().max(100),
@@ -66,6 +66,29 @@ const CustomMealRequestSchema = z.object({
 
 export type BackendMealType = z.infer<typeof MealTypeSchema>;
 export type CreateCustomMealRequest = z.infer<typeof CustomMealRequestSchema>;
+
+const BatchCustomMealResultSchema = z.object({
+  applied: z.boolean(),
+  reason: z.string().nullable(),
+  operationId: z.string().trim().min(1).nullable(),
+  loggedSelectionIds: z.array(z.number().int().positive()).nullable(),
+  dailyCaloriesRemaining: z.number().finite().nonnegative(),
+}).strict();
+
+const BatchCustomMealResponseSchema = z.object({
+  isSuccess: z.literal(true),
+  message: z.string().nullable(),
+  data: BatchCustomMealResultSchema,
+}).strict();
+
+export interface BatchCustomMealResult {
+  applied: boolean;
+  reason: string | null;
+  operationId: string | null;
+  loggedSelectionIds: number[];
+  dailyCaloriesRemaining: number;
+  raw: unknown;
+}
 
 export interface CreatedCustomMeal {
   id: number;
@@ -82,6 +105,7 @@ export interface GraduationBackendDataSource {
   getNutritionTargets?(): Promise<unknown>;
   getUserRules?(): Promise<unknown>;
   getDailySummary?(date: string): Promise<unknown>;
+  createCustomMealBatch?(idempotencyKey: string, requests: readonly CreateCustomMealRequest[]): Promise<BatchCustomMealResult>;
   createCustomMeal?(request: CreateCustomMealRequest): Promise<CreatedCustomMeal>;
   deleteCustomMeal?(id: number): Promise<void>;
 }
@@ -162,6 +186,28 @@ export class NutriGuardBackendClient implements GraduationBackendDataSource {
     const id = findPositiveInteger(raw, ["customMealLogId", "mealLogId", "id"]);
     if (id === null) throw new Error("NutriGuard Backend custom-meal response did not contain a log ID");
     return { id, raw };
+  }
+
+  public async createCustomMealBatch(
+    idempotencyKey: string,
+    requests: readonly CreateCustomMealRequest[],
+  ): Promise<BatchCustomMealResult> {
+    const key = z.string().trim().min(1).max(200).parse(idempotencyKey);
+    const selections = z.array(CustomMealRequestSchema).min(1).max(20).parse(requests);
+    const raw = await this.authenticatedRequest("/api/Tracking/custom-meals/batch", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        "Idempotency-Key": key,
+      },
+      body: JSON.stringify({ selections }),
+    });
+    const parsed = BatchCustomMealResponseSchema.parse(raw).data;
+    return {
+      ...parsed,
+      loggedSelectionIds: parsed.loggedSelectionIds ?? [],
+      raw,
+    };
   }
 
   public async deleteCustomMeal(id: number): Promise<void> {

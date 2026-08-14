@@ -29,17 +29,21 @@ interface AppliedOperation {
   loggedSelectionIds: string[];
 }
 
+interface InFlightOperation {
+  requestHash: string;
+  promise: Promise<DashboardResponse>;
+}
+
 /**
  * Graduation integration for the Backend's custom-meal API.
  *
- * The Backend endpoint is single-record, so a multi-selection confirmation is
- * written sequentially and compensated with DELETE if a later write fails.
- * Idempotency is process-local because the current Backend contract has no
- * idempotency key; this limitation is explicit and does not claim crash safety.
+ * The real Backend path uses one atomic batch request and forwards the Step 16
+ * pending-operation ID as its durable idempotency key. The single-record path
+ * remains only as a compatibility fallback for injected legacy data sources.
  */
 export class NutriGuardCustomMealDashboardClient implements DashboardClient {
   private readonly applied = new Map<string, AppliedOperation>();
-  private readonly inFlight = new Map<string, Promise<DashboardResponse>>();
+  private readonly inFlight = new Map<string, InFlightOperation>();
   private readonly backend: GraduationBackendDataSource;
   private readonly resolveRecipe: NutriGuardCustomMealDashboardClientOptions["resolveRecipe"];
   private readonly language: "ar-EG" | "ar" | "en";
@@ -50,41 +54,46 @@ export class NutriGuardCustomMealDashboardClient implements DashboardClient {
     this.resolveRecipe = options.resolveRecipe;
     this.language = options.language ?? "ar-EG";
     this.timeZone = options.timeZone ?? "Africa/Cairo";
-    if (!this.backend.createCustomMeal || !this.backend.deleteCustomMeal) {
+    if (!this.backend.createCustomMealBatch && (!this.backend.createCustomMeal || !this.backend.deleteCustomMeal)) {
       throw new Error("Backend data source does not implement custom-meal tracking");
     }
   }
 
   public async logMealSelections(request: LogMealSelectionsRequest): Promise<DashboardResponse> {
     const requestHash = hashRequest(request);
-    const prior = this.applied.get(request.idempotency_key);
-    if (prior) {
-      if (prior.requestHash !== requestHash) return error("validation_failed", "The idempotency key was reused with different selections.");
-      return { status: "success", applied: false, reason: "already_logged", daily_calories_remaining: prior.dailyCaloriesRemaining };
+    if (!this.backend.createCustomMealBatch) {
+      const prior = this.applied.get(request.idempotency_key);
+      if (prior) {
+        if (prior.requestHash !== requestHash) return error("idempotency_conflict", "The idempotency key was reused with different selections.");
+        return { status: "success", applied: false, reason: "already_logged", daily_calories_remaining: prior.dailyCaloriesRemaining };
+      }
     }
     const pending = this.inFlight.get(request.idempotency_key);
     if (pending) {
-      const response = await pending;
+      if (pending.requestHash !== requestHash) {
+        return error("idempotency_conflict", "The idempotency key is already being used for different selections.");
+      }
+      const response = await pending.promise;
       return response.status === "success" && response.applied
         ? { status: "success", applied: false, reason: "already_logged", daily_calories_remaining: response.daily_calories_remaining }
         : response;
     }
     const operation = this.apply(request, requestHash).finally(() => this.inFlight.delete(request.idempotency_key));
-    this.inFlight.set(request.idempotency_key, operation);
+    this.inFlight.set(request.idempotency_key, { requestHash, promise: operation });
     return operation;
   }
 
   private async apply(request: LogMealSelectionsRequest, requestHash: string): Promise<DashboardResponse> {
     if (request.selections.length === 0) return error("validation_failed", "At least one meal selection is required.");
-    const createdIds: number[] = [];
+    let payloads: CreateCustomMealRequest[];
     try {
-      for (const selection of request.selections) {
+      payloads = request.selections.map((selection) => {
         const recipe = this.resolveRecipe(selection.recipe_id);
         if (!recipe) throw Object.assign(new Error(`Unknown verified recipe: ${selection.recipe_id}`), { code: "recipe_not_found" });
-        const payload: CreateCustomMealRequest = {
+        return {
           name: this.language === "en" ? recipe.nameEn : recipe.nameAr,
           externalReferenceId: selection.recipe_id,
-          source: "NutriGuardAI",
+          source: "AI",
           mealType: backendMealType(selection.meal_category),
           date: dateInTimeZone(selection.timestamp, this.timeZone),
           servings: 1,
@@ -93,6 +102,48 @@ export class NutriGuardCustomMealDashboardClient implements DashboardClient {
           carbohydrateG: selection.nutrition_snapshot.carbs_g,
           fatG: selection.nutrition_snapshot.fat_g,
         };
+      });
+    } catch (cause) {
+      return mapError(cause);
+    }
+    return this.backend.createCustomMealBatch
+      ? this.applyBatch(request, payloads)
+      : this.applyLegacy(request, requestHash, payloads);
+  }
+
+  private async applyBatch(
+    request: LogMealSelectionsRequest,
+    payloads: readonly CreateCustomMealRequest[],
+  ): Promise<DashboardResponse> {
+    try {
+      const result = await this.backend.createCustomMealBatch!(request.idempotency_key, payloads);
+      if (!result.applied) {
+        return result.reason === "already_logged"
+          ? { status: "success", applied: false, reason: "already_logged", daily_calories_remaining: result.dailyCaloriesRemaining }
+          : error("server_error", "The Backend returned a non-applied batch without an idempotent replay reason.");
+      }
+      if (result.loggedSelectionIds.length !== payloads.length) {
+        return error("server_error", "The Backend batch response did not identify every logged selection.");
+      }
+      return {
+        status: "success",
+        applied: true,
+        daily_calories_remaining: result.dailyCaloriesRemaining,
+        logged_selection_ids: result.loggedSelectionIds.map(String),
+      };
+    } catch (cause) {
+      return mapError(cause);
+    }
+  }
+
+  private async applyLegacy(
+    request: LogMealSelectionsRequest,
+    requestHash: string,
+    payloads: readonly CreateCustomMealRequest[],
+  ): Promise<DashboardResponse> {
+    const createdIds: number[] = [];
+    try {
+      for (const payload of payloads) {
         const created = await this.backend.createCustomMeal!(payload);
         createdIds.push(created.id);
       }
@@ -166,6 +217,7 @@ function mapError(cause: unknown): DashboardResponse {
   if (explicit === "recipe_not_found") return error("recipe_not_found", "The selected verified recipe is unavailable.");
   if (explicit === "invalid_token" || status === 401 || status === 403) return error("invalid_token", "Backend authentication failed.");
   if (status === 429) return error("rate_limited", "The Backend rate limit was reached.");
+  if (status === 409) return error("idempotency_conflict", "The Backend rejected reuse of the idempotency key with different selections.");
   if (status === 400 || status === 422) return error("validation_failed", "The Backend rejected the custom-meal request.");
   return error("server_error", "The Backend could not log the custom meal.");
 }
