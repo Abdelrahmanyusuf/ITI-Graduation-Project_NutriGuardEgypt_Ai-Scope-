@@ -38,6 +38,15 @@ export {
 } from "./agent/sodium-prototype.js";
 export { classifySafetyFlags, type SafetyFlag } from "./agent/safety.js";
 export { classifyRequestIntegrity, type RequestIntegrityFlag } from "./agent/request-integrity.js";
+export {
+  assessNutritionBalance,
+  calculatePortionForCalories,
+  diversifyHealthRanked,
+  rankHealthFirst,
+  RECOMMENDATION_POLICY_VERSION,
+  type CalculatedPortion,
+  type NutritionBalanceAssessment,
+} from "./recommendation/health-first.js";
 export { NUTRIGUARD_SYSTEM_PROMPT, NUTRIGUARD_SYSTEM_PROMPT_VERSION } from "./agent/system-prompt.js";
 export {
   DatasetVerifiedMealRecipeRepository,

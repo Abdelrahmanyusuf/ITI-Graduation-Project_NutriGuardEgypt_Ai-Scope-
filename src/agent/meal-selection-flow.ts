@@ -15,6 +15,7 @@ import type {
   MealCategory,
   NutritionSnapshot,
 } from "../services/dashboard/dashboard-client.js";
+import { assessNutritionBalance } from "../recommendation/health-first.js";
 
 export const PENDING_OPERATION_TTL_SECONDS = 600;
 export const MAX_MEAL_SELECTION_SESSIONS = 1_000;
@@ -28,6 +29,10 @@ export interface VerifiedMealRecipe {
   ingredientKeys: string[];
   verificationStatus: "verified" | "needs_review" | "rejected";
   nutrition: NutritionSnapshot;
+  portionGrams?: number;
+  servingFraction?: number;
+  nutritionBalanceScore?: number;
+  cuisineOrigin?: string;
   evidenceDocumentId?: string;
 }
 
@@ -50,7 +55,8 @@ export class DatasetVerifiedMealRecipeRepository implements VerifiedMealRecipeRe
   }
 
   private toMealRecipe(recipe: UnifiedDemoRecipe): VerifiedMealRecipe {
-    const calculated = calculateUnifiedDemoNutrition(this.dataset, recipe).perServing;
+    const calculation = calculateUnifiedDemoNutrition(this.dataset, recipe);
+    const calculated = calculation.perServing;
     const complete = calculated.kcal !== null && calculated.protein !== null && calculated.fat !== null && calculated.carbs !== null;
     return {
       recipeId: recipe.recipe_id,
@@ -71,6 +77,10 @@ export class DatasetVerifiedMealRecipeRepository implements VerifiedMealRecipeRe
             ...(calculated.sodium === null ? {} : { sodium_mg: calculated.sodium }),
           }
         : { calories: Number.NaN, protein_g: Number.NaN, fat_g: Number.NaN, carbs_g: Number.NaN },
+      portionGrams: Math.round(calculation.finalWeightG / recipe.servings),
+      servingFraction: 1,
+      nutritionBalanceScore: assessNutritionBalance(recipe, calculation).score,
+      cuisineOrigin: recipe.origin,
       evidenceDocumentId: `DEMO-${recipe.recipe_id}`,
     };
   }
@@ -100,7 +110,8 @@ export async function search_recipes_by_meal_category(
     .filter((recipe) => completeNutrition(recipe.nutrition))
     .filter((recipe) => calorieCeiling === undefined || recipe.nutrition.calories <= calorieCeiling)
     .filter((recipe) => !recipe.ingredientKeys.some((key) => excluded.has(key)))
-    .sort((left, right) => left.recipeId.localeCompare(right.recipeId))
+    .sort((left, right) => (right.nutritionBalanceScore ?? 0) - (left.nutritionBalanceScore ?? 0)
+      || left.recipeId.localeCompare(right.recipeId))
     .slice(0, 3);
   return {
     category,
@@ -186,6 +197,8 @@ interface FrozenSelection {
   nameAr: string;
   nameEn: string;
   nutritionSnapshot: NutritionSnapshot;
+  portionGrams?: number;
+  servingFraction?: number;
 }
 
 interface PendingOperation {
@@ -367,11 +380,12 @@ function parsePlanRequest(message: string): ParsedPlanRequest | null {
   };
 }
 
-function nutritionLine(snapshot: NutritionSnapshot, language: "ar-EG" | "ar" | "en"): string {
+function nutritionLine(snapshot: NutritionSnapshot, language: "ar-EG" | "ar" | "en", portionGrams?: number): string {
+  const portion = portionGrams === undefined ? "" : language === "en" ? `${portionGrams} g, ` : `${portionGrams} جرام، `;
   const sodium = snapshot.sodium_mg === undefined ? "" : language === "en" ? `, sodium ${snapshot.sodium_mg} mg` : `، صوديوم ${snapshot.sodium_mg} مجم`;
   return language === "en"
-    ? `${snapshot.calories} kcal, protein ${snapshot.protein_g} g, carbs ${snapshot.carbs_g} g, fat ${snapshot.fat_g} g${sodium}`
-    : `${snapshot.calories} سعرة، بروتين ${snapshot.protein_g} جم، كربوهيدرات ${snapshot.carbs_g} جم، دهون ${snapshot.fat_g} جم${sodium}`;
+    ? `${portion}${snapshot.calories} kcal, protein ${snapshot.protein_g} g, carbs ${snapshot.carbs_g} g, fat ${snapshot.fat_g} g${sodium}`
+    : `${portion}${snapshot.calories} سعرة، بروتين ${snapshot.protein_g} جم، كربوهيدرات ${snapshot.carbs_g} جم، دهون ${snapshot.fat_g} جم${sodium}`;
 }
 
 function sumNutrition(selections: readonly FrozenSelection[]): NutritionSnapshot {
@@ -511,6 +525,8 @@ export class MealSelectionFlow {
         recipe_id: selection.recipeId,
         meal_category: selection.mealCategory,
         nutrition_snapshot: structuredClone(selection.nutritionSnapshot),
+        ...(selection.portionGrams === undefined ? {} : { portion_grams: selection.portionGrams }),
+        ...(selection.servingFraction === undefined ? {} : { serving_fraction: selection.servingFraction }),
         timestamp: operation.submissionTimestamp!,
       })),
     };
@@ -599,7 +615,7 @@ export class MealSelectionFlow {
     const sections = results.map((result) => {
       const label = categoryLabel(result.category, language);
       if (result.candidates.length === 0) return language === "en" ? `${label}: no verified matching recipes.` : `${label}: مفيش وصفات موثقة مطابقة.`;
-      const lines = result.candidates.map((candidate, index) => `${index + 1}. ${language === "en" ? candidate.nameEn : candidate.nameAr} — ${nutritionLine(candidate.nutrition, language)}`);
+      const lines = result.candidates.map((candidate, index) => `${index + 1}. ${language === "en" ? candidate.nameEn : candidate.nameAr} — ${nutritionLine(candidate.nutrition, language, candidate.portionGrams)}`);
       const count = result.candidates.length;
       const note = count < 3 ? language === "en" ? `Only ${count} verified option${count === 1 ? "" : "s"} found.` : `اتوجد ${count} ${count === 1 ? "اختيار موثق فقط" : "اختيارات موثقة فقط"}.` : "";
       return `${label}:\n${lines.join("\n")}${note ? `\n${note}` : ""}`;
@@ -624,7 +640,7 @@ export class MealSelectionFlow {
         totalCeilingKcal: request.totalCeiling,
         categoryCeilingsKcal: request.categoryCeilings,
         exclusions: request.exclusions,
-        categories: results.map((result) => ({ category: result.category, status: result.status, count: result.candidates.length, candidates: result.candidates.map((candidate) => ({ recipeId: candidate.recipeId, name: language === "en" ? candidate.nameEn : candidate.nameAr, nutritionSnapshot: candidate.nutrition, verificationStatus: candidate.verificationStatus })) })),
+        categories: results.map((result) => ({ category: result.category, status: result.status, count: result.candidates.length, candidates: result.candidates.map((candidate) => ({ recipeId: candidate.recipeId, name: language === "en" ? candidate.nameEn : candidate.nameAr, portionGrams: candidate.portionGrams, servingFraction: candidate.servingFraction, nutritionSnapshot: candidate.nutrition, nutritionBalanceScore: candidate.nutritionBalanceScore, cuisineOrigin: candidate.cuisineOrigin, verificationStatus: candidate.verificationStatus })) })),
         conversationContext: context,
       },
       results.flatMap((result) => result.candidates.flatMap((candidate) => candidate.evidenceDocumentId ? [candidate.evidenceDocumentId] : [])),
@@ -736,7 +752,7 @@ export class MealSelectionFlow {
     }
     const selections = session.categories.flatMap((category) => {
       const selected = session.selected[category];
-      return selected ? [{ recipeId: selected.recipeId, mealCategory: category, nameAr: selected.nameAr, nameEn: selected.nameEn, nutritionSnapshot: structuredClone(selected.nutrition) }] : [];
+      return selected ? [{ recipeId: selected.recipeId, mealCategory: category, nameAr: selected.nameAr, nameEn: selected.nameEn, nutritionSnapshot: structuredClone(selected.nutrition), ...(selected.portionGrams === undefined ? {} : { portionGrams: selected.portionGrams }), ...(selected.servingFraction === undefined ? {} : { servingFraction: selected.servingFraction }) }] : [];
     });
     const now = this.now();
     const operation: PendingOperation = {
@@ -753,7 +769,7 @@ export class MealSelectionFlow {
     this.pending.set(operation.id, operation);
     this.pruneOperations(operation.id);
     session.latestPendingOperationId = operation.id;
-    const lines = selections.map((selection) => `• ${categoryLabel(selection.mealCategory, language)}: ${language === "en" ? selection.nameEn : selection.nameAr} — ${nutritionLine(selection.nutritionSnapshot, language)}`);
+    const lines = selections.map((selection) => `• ${categoryLabel(selection.mealCategory, language)}: ${language === "en" ? selection.nameEn : selection.nameAr} — ${nutritionLine(selection.nutritionSnapshot, language, selection.portionGrams)}`);
     const mode = operation.ceilingMode === "total_across_plan_equal_split"
       ? language === "en" ? "whole-plan ceiling (equal split)" : "سقف لكل الخطة (مقسوم بالتساوي)"
       : operation.ceilingMode === "per_meal" ? language === "en" ? "separate per-meal ceiling" : "سقف لكل وجبة على حدة" : language === "en" ? "no ceiling" : "بدون سقف سعرات";

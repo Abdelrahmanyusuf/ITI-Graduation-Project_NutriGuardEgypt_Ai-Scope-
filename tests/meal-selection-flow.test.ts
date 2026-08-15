@@ -98,6 +98,8 @@ test("the Step 16 route returns verified candidates without calling the dashboar
   const categories = data.categories as Array<{ count: number; candidates: unknown[] }>;
   assert.deepEqual(categories.map((entry) => entry.count), [3, 3, 3]);
   assert.ok(categories.every((entry) => entry.candidates.length === 3));
+  assert.ok(categories.every((entry) => entry.candidates.every((candidate) => (object(candidate).portionGrams as number) > 0)));
+  assert.match(response.message, /g/u);
   assert.equal(dashboard.calls.length, 0);
 });
 
@@ -132,21 +134,23 @@ test("interactive graduation runtime logs once and replays the same confirmation
   });
   assert.equal(summary.status, "ok");
   const summaryData = object(summary.data);
-  assert.equal(object(summaryData.totalNutritionSnapshot).calories, 1010);
+  const loggedCalories = object(summaryData.totalNutritionSnapshot).calories as number;
+  assert.ok(loggedCalories > 0);
+  assert.match(summary.message, /جرام/u);
 
   const context = summaryData.conversationContext as GraduationConversationContext;
   const confirmed = await agent.invoke({ message: "تأكيد", language: "ar-EG", context });
   assert.equal(confirmed.status, "ok");
   const confirmedData = object(confirmed.data);
   assert.equal(confirmedData.applied, true);
-  assert.equal(confirmedData.dailyCaloriesRemaining, 990);
+  assert.equal(confirmedData.dailyCaloriesRemaining, Math.round((2000 - loggedCalories) * 10) / 10);
 
   const replay = await agent.invoke({ message: "تأكيد", language: "ar-EG", context });
   assert.equal(replay.status, "ok");
   const replayData = object(replay.data);
   assert.equal(replayData.applied, false);
   assert.equal(replayData.reason, "already_logged");
-  assert.equal(replayData.dailyCaloriesRemaining, 990);
+  assert.equal(replayData.dailyCaloriesRemaining, Math.round((2000 - loggedCalories) * 10) / 10);
 });
 
 test("an allergy exclusion keeps the shared safety disclaimer with verified results", async () => {

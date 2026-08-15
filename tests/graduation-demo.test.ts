@@ -97,14 +97,15 @@ test("graduation demo returns useful recipe methods and meal suggestions instead
 
   const arabicBreakfast = await agent.invoke({ message: "عاوز وجبة فطار", language: "ar-EG" });
   assert.equal(arabicBreakfast.status, "ok");
-  assert.match(arabicBreakfast.message, /فول مدمس/);
-  assert.match(arabicBreakfast.message, /طعمية/);
+  assert.match(arabicBreakfast.message, /جرام/);
+  assert.equal(arabicBreakfast.data?.recommendationPolicy, "health-first-local-v1");
+  assert.equal((arabicBreakfast.data?.recommendations as unknown[]).length, 3);
 
   const englishBreakfast = await agent.invoke({ message: "I want a breakfast meal", language: "ar-EG" });
   assert.equal(englishBreakfast.status, "ok");
   assert.equal(englishBreakfast.language, "en");
-  assert.match(englishBreakfast.message, /Ful Medames/);
-  assert.match(englishBreakfast.message, /Ta'ameya/);
+  assert.match(englishBreakfast.message, /g per serving/);
+  assert.equal(englishBreakfast.data?.recommendationPolicy, "health-first-local-v1");
   assert.doesNotMatch(englishBreakfast.message, /Graduation-demo results from the unreviewed/);
 });
 

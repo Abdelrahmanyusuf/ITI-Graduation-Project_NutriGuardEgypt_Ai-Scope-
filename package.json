@@ -20,6 +20,7 @@
     "lint": "eslint .",
     "docs:check": "node scripts/docs-link-check.mjs",
     "audit": "node --import tsx src/scripts/run-audit.ts",
+    "audit:regional-recipes": "node --import tsx src/scripts/audit-regional-recipes.ts",
     "stage": "node --import tsx src/scripts/stage-recipes.ts",
     "resolve:ingredients": "node --import tsx src/scripts/resolve-ingredients.ts",
     "normalize:units": "node --import tsx src/scripts/normalize-quantities.ts",

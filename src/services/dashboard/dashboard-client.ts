@@ -12,6 +12,9 @@ export interface DashboardMealSelection {
   recipe_id: string;
   meal_category: MealCategory;
   nutrition_snapshot: NutritionSnapshot;
+  /** Displayed cooked portion. The current Backend persists the equivalent serving fraction. */
+  portion_grams?: number;
+  serving_fraction?: number;
   timestamp: string;
 }
 

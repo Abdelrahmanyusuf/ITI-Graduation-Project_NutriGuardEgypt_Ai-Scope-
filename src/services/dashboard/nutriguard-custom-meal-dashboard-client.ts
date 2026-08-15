@@ -96,7 +96,7 @@ export class NutriGuardCustomMealDashboardClient implements DashboardClient {
           source: "AI",
           mealType: backendMealType(selection.meal_category),
           date: dateInTimeZone(selection.timestamp, this.timeZone),
-          servings: 1,
+          servings: selection.serving_fraction ?? 1,
           energyKcal: selection.nutrition_snapshot.calories,
           proteinG: selection.nutrition_snapshot.protein_g,
           carbohydrateG: selection.nutrition_snapshot.carbs_g,

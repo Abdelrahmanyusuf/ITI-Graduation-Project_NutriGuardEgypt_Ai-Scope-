@@ -112,6 +112,26 @@ test("dashboard uses one atomic Backend batch and lets the Backend decide durabl
   assert.ok(batches[0]?.selections.every((selection) => selection.source === "AI"));
 });
 
+test("dashboard persists the displayed portion as a fractional serving without requiring a Backend grams field", async () => {
+  const batches: CreateCustomMealRequest[][] = [];
+  const backend: GraduationBackendDataSource = {
+    searchFoods: async () => [], getFood: async () => { throw new Error(); },
+    searchRecipes: async () => [], getRecipe: async () => { throw new Error(); },
+    createCustomMealBatch: async (_key, selections) => {
+      batches.push([...selections]);
+      return { applied: true, reason: null, operationId: "portion-op", loggedSelectionIds: [1], dailyCaloriesRemaining: 1700, raw: {} };
+    },
+  };
+  const dashboard = new NutriGuardCustomMealDashboardClient({ backend, resolveRecipe: () => ({ nameAr: "كشري", nameEn: "Koshary" }) });
+  const response = await dashboard.logMealSelections({
+    ...request,
+    selections: [{ ...request.selections[0]!, nutrition_snapshot: { calories: 300.3, protein_g: 8.8, carbs_g: 42.5, fat_g: 9.2 }, portion_grams: 137, serving_fraction: 0.5524 }],
+  });
+  assert.equal(response.status, "success");
+  assert.equal(batches[0]?.[0]?.servings, 0.5524);
+  assert.equal(batches[0]?.[0]?.energyKcal, 300.3);
+});
+
 test("dashboard maps Backend idempotency conflict and never falls back to sequential writes", async () => {
   let sequentialCalls = 0;
   const backend: GraduationBackendDataSource = {

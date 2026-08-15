@@ -36,6 +36,14 @@ import { HybridRetrievalTools } from "./hybrid-retrieval-tools.js";
 import { MockDashboardClient } from "../services/dashboard/mock-dashboard-client.js";
 import type { DashboardClient, LogMealSelectionsRequest } from "../services/dashboard/dashboard-client.js";
 import { NutriGuardCustomMealDashboardClient } from "../services/dashboard/nutriguard-custom-meal-dashboard-client.js";
+import {
+  assessNutritionBalance,
+  calculatePortionForCalories,
+  diversifyHealthRanked,
+  rankHealthFirst,
+  RECOMMENDATION_POLICY_VERSION,
+  type CalculatedPortion,
+} from "../recommendation/health-first.js";
 
 const DIMENSIONS = 16_384;
 const GRADUATION_DEMO_DAILY_CALORIE_BUDGET = 2_000;
@@ -929,7 +937,17 @@ class GraduationDemoAgent {
     };
     absorb(incoming);
     absorb(next);
-    const current = next ?? focused ?? incoming;
+    const recommendationIds = Array.isArray(responseData.recommendations)
+      ? responseData.recommendations.flatMap((entry) => typeof entry === "object" && entry !== null && typeof (entry as { recipeId?: unknown }).recipeId === "string" ? [(entry as { recipeId: string }).recipeId] : [])
+      : [];
+    if (recommendationIds.length > 0) {
+      memory.recentRecipeIds = [...recommendationIds, ...memory.recentRecipeIds.filter((id) => !recommendationIds.includes(id))].slice(0, 8);
+      memory.activeRecipeId ??= recommendationIds[0] ?? null;
+    }
+    const recommendationContext: RecipeReferenceConversationContext | undefined = recommendationIds[0]
+      ? { schemaVersion: "1.0", lastIntent: "recipe_reference", recipeId: recommendationIds[0], memory }
+      : undefined;
+    const current = next ?? focused ?? incoming ?? recommendationContext;
     if (!current) return response;
     const conversationContext: GraduationConversationContext = { ...current, memory };
     return { ...response, data: { ...responseData, conversationContext } };
@@ -980,7 +998,8 @@ class GraduationDemoAgent {
     }
     const directMealPlan = this.recommendMealPlan(query, language, input.context);
     if (directMealPlan) return directMealPlan;
-    if ((mealCategory(query) || input.context?.lastIntent === "meal_calorie_target") && !(namedRecipes.length > 0 && hasIngredientExclusionRequest(query))) {
+    const hasExplicitCalorieTarget = /\d+(?:\.\d+)?\s*(?:سعر(?:ة|ات)?(?:\s*حراري(?:ة|ه)?)?|كالوري|kcal|calories?)/iu.test(normalizeNumberDigits(query));
+    if ((mealCategory(query) || input.context?.lastIntent === "meal_calorie_target" || namedRecipes.length > 0 && hasExplicitCalorieTarget) && !(namedRecipes.length > 0 && hasIngredientExclusionRequest(query))) {
       const directCalorieTarget = this.recommendToCalorieTarget(query, language, input.context);
       if (directCalorieTarget) return directCalorieTarget;
     }
@@ -1027,7 +1046,7 @@ class GraduationDemoAgent {
       const calorieTargetRecommendation = this.recommendToCalorieTarget(query, language, input.context);
       if (calorieTargetRecommendation) return calorieTargetRecommendation;
       const deterministicCategory = mealCategory(query);
-      if (deterministicCategory) return this.recommendMeal(deterministicCategory, language);
+      if (deterministicCategory) return this.recommendMeal(deterministicCategory, language, input.context);
       const nutritionRecommendation = this.recommendByNutrition(query, language);
       if (nutritionRecommendation) return nutritionRecommendation;
       const pantryRecommendation = this.recommendFromIngredients(query, language);
@@ -1171,12 +1190,20 @@ class GraduationDemoAgent {
       };
     }
     const used = new Set<string>();
-    const choose = (categories: ReadonlySet<string>, desired: number, enforceCeiling: boolean) => this.dataset.recipes
+    const recentRecipeIds = new Set(context?.memory?.recentRecipeIds ?? []);
+    const choose = (categories: ReadonlySet<string>, desired: number) => rankHealthFirst(this.dataset.recipes
       .filter((recipe) => categories.has(recipe.category) && !used.has(recipe.recipe_id) && !recipeContainsExcludedIngredient(recipe, exclusions))
-      .map((recipe) => ({ recipe, nutrition: calculateUnifiedDemoNutrition(this.dataset, recipe).perServing }))
-      .filter((entry): entry is typeof entry & { nutrition: typeof entry.nutrition & { kcal: number } } => entry.nutrition.kcal !== null)
-      .filter((entry) => !enforceCeiling || entry.nutrition.kcal <= desired)
-      .sort((a, b) => Math.abs(a.nutrition.kcal - desired) - Math.abs(b.nutrition.kcal - desired) || a.recipe.recipe_id.localeCompare(b.recipe.recipe_id))[0];
+      .map((recipe) => {
+        const calculation = calculateUnifiedDemoNutrition(this.dataset, recipe);
+        return { recipe, calculation, assessment: assessNutritionBalance(recipe, calculation) };
+      }), context?.memory?.recentRecipeIds)
+      .map((entry) => ({ ...entry, portion: calculatePortionForCalories(entry.calculation, desired, entry.recipe.servings, calorieConstraint === "maximum" ? "floor" : "nearest") }))
+      .filter((entry): entry is typeof entry & { portion: CalculatedPortion } => entry.portion !== null)
+      .filter((entry) => entry.portion.servingFraction >= 0.25 && entry.portion.servingFraction <= 2)
+      .sort((left, right) => Number(recentRecipeIds.has(left.recipe.recipe_id)) - Number(recentRecipeIds.has(right.recipe.recipe_id))
+        || right.assessment.score - left.assessment.score
+        || Math.abs(1 - left.portion.servingFraction) - Math.abs(1 - right.portion.servingFraction)
+        || left.recipe.recipe_id.localeCompare(right.recipe.recipe_id))[0];
     const slotDefinitions = {
       breakfast: { categories: new Set(["breakfast", "bread"]), groupShare: 0.25 },
       lunch: { categories: new Set(["main_dish"]), groupShare: 0.4 },
@@ -1199,15 +1226,15 @@ class GraduationDemoAgent {
         share: definition.groupShare / count,
       }));
     });
-    const meals: Array<{ slot: string; recipe: UnifiedDemoRecipe; nutrition: ReturnType<typeof calculateUnifiedDemoNutrition>["perServing"] & { kcal: number } }> = [];
+    const meals: Array<{ slot: string; recipe: UnifiedDemoRecipe; portion: CalculatedPortion; healthScore: number }> = [];
     for (const slot of requestedSlots) {
-      const caloriesUsed = meals.reduce((sum, meal) => sum + meal.nutrition.kcal, 0);
+      const caloriesUsed = meals.reduce((sum, meal) => sum + (meal.portion.nutrition.kcal ?? 0), 0);
       const slotsRemaining = mealCount - meals.length;
       const desired = calorieConstraint === "maximum" ? Math.max(0, (target - caloriesUsed) / slotsRemaining) : target * slot.share;
-      const selected = choose(slot.categories, desired, calorieConstraint === "maximum");
+      const selected = choose(slot.categories, desired);
       if (!selected) break;
       used.add(selected.recipe.recipe_id);
-      meals.push({ slot: slot.key, recipe: selected.recipe, nutrition: selected.nutrition });
+      meals.push({ slot: slot.key, recipe: selected.recipe, portion: selected.portion, healthScore: selected.assessment.score });
     }
     if (meals.length !== mealCount) {
       const conversationContext: MealPlanDraftConversationContext = { schemaVersion: "1.0", lastIntent: "meal_plan_draft", mealCount, excludedIngredientKeys: [...exclusions], calorieConstraint };
@@ -1217,15 +1244,15 @@ class GraduationDemoAgent {
         data: { intent: "meal_plan", reasonCode: "rules_cannot_be_satisfied", targetCaloriesKcal: target, mealCount, calorieConstraint, excludedIngredientKeys: [...exclusions], rulesUnmet: ["distinct_meals_within_calorie_rule"], conversationContext }, evidenceDocumentIds: [], provenance: [], toolTrace: [{ tool: "calculate_nutrition", ok: false, code: "rules_cannot_be_satisfied" }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
       };
     }
-    const total = Math.round(meals.reduce((sum, meal) => sum + meal.nutrition.kcal, 0) * 10) / 10;
+    const total = Math.round(meals.reduce((sum, meal) => sum + (meal.portion.nutrition.kcal ?? 0), 0) * 10) / 10;
     const difference = Math.round((total - target) * 10) / 10;
     const labels: Record<string, string> = language === "en" ? { breakfast: "Breakfast", lunch: "Lunch", dinner: "Dinner" } : { breakfast: "الفطار", lunch: "الغداء", dinner: "العشاء" };
     const groupOrder = ["breakfast", "lunch", "dinner"];
     const sections = groupOrder.flatMap((slot) => {
       const group = meals.filter((meal) => meal.slot === slot);
       if (group.length === 0) return [];
-      const lines = group.map((meal, index) => `• ${index + 1}. ${language === "en" ? meal.recipe.name_en : meal.recipe.name_ar} — ${meal.nutrition.kcal} ${language === "en" ? "kcal" : "سعر حراري"}`);
-      const subtotal = Math.round(group.reduce((sum, meal) => sum + meal.nutrition.kcal, 0) * 10) / 10;
+      const lines = group.map((meal, index) => `• ${index + 1}. ${language === "en" ? meal.recipe.name_en : meal.recipe.name_ar} — ${meal.portion.portionGrams} ${language === "en" ? "g" : "جرام"}, ${meal.portion.nutrition.kcal} ${language === "en" ? "kcal" : "سعر حراري"}`);
+      const subtotal = Math.round(group.reduce((sum, meal) => sum + (meal.portion.nutrition.kcal ?? 0), 0) * 10) / 10;
       return [`${labels[slot]} (${group.length}):\n${lines.join("\n")}\n${language === "en" ? "Subtotal" : "الإجمالي"}: ${subtotal} ${language === "en" ? "kcal" : "سعر حراري"}`];
     });
     const exclusionNote = exclusions.size === 0 ? "" : language === "en"
@@ -1236,7 +1263,7 @@ class GraduationDemoAgent {
     return {
       status: "ok", primaryIntent: "general_guidance", language, safetyFlags: [], integrityFlags: [],
       message: language === "en" ? `${mealCount}-meal example with ${goalLabel} kcal for the day, divided into breakfast, lunch, and dinner:\n\n${sections.join("\n\n")}\n\nCalculated total: ${total} kcal${calorieConstraint === "target" ? ` (${difference >= 0 ? "+" : ""}${difference} from target)` : " (within the maximum)"}.${exclusionNote}\n\nThis is a general dataset-based example, not a personal prescription.` : `مثال ${mealCount} ${mealCount === 1 ? "وجبة" : "وجبات"} ${goalLabel} سعر حراري لليوم، مقسّمة إلى فطار وغداء وعشاء:\n\n${sections.join("\n\n")}\n\nالإجمالي المحسوب: ${total} سعر حراري${calorieConstraint === "target" ? ` (${difference >= 0 ? "+" : ""}${difference} عن الهدف)` : "، داخل الحد الأقصى"}.${exclusionNote}\n\nده مثال عام مبني على بيانات المشروع، مش وصفة علاجية أو نظام شخصي.`,
-      data: { intent: "meal_plan", recommendationType: "daily_calorie_plan", targetCaloriesKcal: target, totalCaloriesKcal: total, differenceCaloriesKcal: difference, mealCount, calorieConstraint, mealDistribution: slotCounts, rulesApplied: { maximumCaloriesKcal: calorieConstraint === "maximum" ? target : null, excludedIngredientKeys: [...exclusions], distinctRecipes: true, categorizedMeals: true }, excludedIngredientKeys: [...exclusions], meals: meals.map((meal) => ({ slot: meal.slot, slotIndex: meals.filter((candidate) => candidate.slot === meal.slot).indexOf(meal) + 1, recipeId: meal.recipe.recipe_id, name: language === "en" ? meal.recipe.name_en : meal.recipe.name_ar, perServing: meal.nutrition })), conversationContext },
+      data: { intent: "meal_plan", recommendationType: "daily_calorie_plan", recommendationPolicy: RECOMMENDATION_POLICY_VERSION, targetCaloriesKcal: target, totalCaloriesKcal: total, differenceCaloriesKcal: difference, mealCount, calorieConstraint, mealDistribution: slotCounts, rulesApplied: { maximumCaloriesKcal: calorieConstraint === "maximum" ? target : null, excludedIngredientKeys: [...exclusions], distinctRecipes: true, categorizedMeals: true, healthFirstRanking: true }, excludedIngredientKeys: [...exclusions], meals: meals.map((meal) => ({ slot: meal.slot, slotIndex: meals.filter((candidate) => candidate.slot === meal.slot).indexOf(meal) + 1, recipeId: meal.recipe.recipe_id, name: language === "en" ? meal.recipe.name_en : meal.recipe.name_ar, portionGrams: meal.portion.portionGrams, servingFraction: meal.portion.servingFraction, portionNutrition: meal.portion.nutrition, portionBasis: meal.portion.basis, nutritionBalanceScore: meal.healthScore, cuisineOrigin: meal.recipe.origin })), conversationContext },
       evidenceDocumentIds: meals.map((meal) => `DEMO-${meal.recipe.recipe_id}`), provenance: meals.map((meal) => this.recipeProvenance(meal.recipe, language)), toolTrace: [{ tool: "calculate_nutrition", ok: true, code: null }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
     };
   }
@@ -1268,17 +1295,23 @@ class GraduationDemoAgent {
     const category = mealCategory(query) ?? calorieContext?.category ?? null;
     const exclusions = new Set([...calorieContext?.excludedIngredientKeys ?? [], ...freshExclusions]);
     const mealCategories = new Set(["main_dish", "breakfast", "soup"]);
-    const candidates = this.dataset.recipes
+    const namedRecipe = explicitlyNamedRecipe(this.dataset, query);
+    const recentRecipeIds = new Set(context?.memory?.recentRecipeIds ?? []);
+    const candidates = rankHealthFirst(this.dataset.recipes
+      .filter((recipe) => namedRecipe ? recipe.recipe_id === namedRecipe.recipe_id : true)
       .filter((recipe) => category ? recipe.category === category : mealCategories.has(recipe.category))
       .filter((recipe) => !recipeContainsExcludedIngredient(recipe, exclusions))
-      .map((recipe) => ({ recipe, nutrition: calculateUnifiedDemoNutrition(this.dataset, recipe).perServing }))
-      .filter((entry): entry is typeof entry & { nutrition: typeof entry.nutrition & { kcal: number } } => entry.nutrition.kcal !== null)
-      .filter((entry) => relation === "below" ? entry.nutrition.kcal < target : relation === "above" ? entry.nutrition.kcal > target : true)
-      .sort((a, b) => {
-        const firstDistance = Math.abs(a.nutrition.kcal - desiredTarget);
-        const secondDistance = Math.abs(b.nutrition.kcal - desiredTarget);
-        return firstDistance - secondDistance || a.recipe.recipe_id.localeCompare(b.recipe.recipe_id);
-      });
+      .map((recipe) => {
+        const calculation = calculateUnifiedDemoNutrition(this.dataset, recipe);
+        return { recipe, calculation, assessment: assessNutritionBalance(recipe, calculation) };
+      }), context?.memory?.recentRecipeIds)
+      .map((entry) => ({ ...entry, portion: calculatePortionForCalories(entry.calculation, desiredTarget, entry.recipe.servings) }))
+      .filter((entry): entry is typeof entry & { portion: CalculatedPortion } => entry.portion !== null)
+      .filter((entry) => entry.portion.servingFraction >= 0.2 && entry.portion.servingFraction <= 2.5)
+      .sort((left, right) => Number(recentRecipeIds.has(left.recipe.recipe_id)) - Number(recentRecipeIds.has(right.recipe.recipe_id))
+        || right.assessment.score - left.assessment.score
+        || Math.abs(1 - left.portion.servingFraction) - Math.abs(1 - right.portion.servingFraction)
+        || left.recipe.recipe_id.localeCompare(right.recipe.recipe_id));
     const selected = candidates[0];
     if (!selected) {
       return {
@@ -1288,9 +1321,9 @@ class GraduationDemoAgent {
       };
     }
     const name = language === "en" ? selected.recipe.name_en : selected.recipe.name_ar;
-    const calories = selected.nutrition.kcal;
+    const calories = selected.portion.nutrition.kcal!;
     const difference = Math.round(Math.abs(calories - target) * 10) / 10;
-    const energyReconciliation = reconcileEnergyWithMacros(selected.nutrition);
+    const energyReconciliation = reconcileEnergyWithMacros(selected.portion.nutrition);
     const macroDifferenceFromTarget = energyReconciliation === null ? null : Math.round(Math.abs(energyReconciliation.macroEstimateKcal - target) * 10) / 10;
     const relationText = language === "en" ? relation === "below" ? `the closest meal below ${target}` : relation === "above" ? `the closest meal above ${target}` : `the closest meal to ${target}`
       : relation === "below" ? `أقرب وجبة أقل من ${target}` : relation === "above" ? `أقرب وجبة أعلى من ${target}` : `أقرب وجبة لهدف ${target}`;
@@ -1300,8 +1333,8 @@ class GraduationDemoAgent {
       : " تم استبعاد الوصفات التي تحتوي مكوناتها المسجلة على العناصر المطلوبة، لكن ده مش ضمان حساسية أو خلو من التلوث التبادلي.";
     return {
       status: "ok", primaryIntent: "general_guidance", language, safetyFlags: [], integrityFlags: [],
-      message: language === "en" ? `${relationText} kcal per serving is ${name}: about ${calories} kcal, ${selected.nutrition.protein ?? "unknown"} g protein, ${selected.nutrition.carbs ?? "unknown"} g carbohydrates, and ${selected.nutrition.fat ?? "unknown"} g fat. Difference from the target using recorded ingredient energy: ${difference} kcal.${energyReconciliationNote(selected.nutrition, language)}${macroDifferenceFromTarget === null ? "" : ` Difference from the target using the 4/4/9 check: ${macroDifferenceFromTarget} kcal.`} Ask for the recipe name to see ingredients and preparation.${exclusionNote}` : `${relationText} سعر حراري للحصة هي ${name}: حوالي ${calories} سعر حراري، ${selected.nutrition.protein ?? "غير متوفر"} جم بروتين، ${selected.nutrition.carbs ?? "غير متوفر"} جم كربوهيدرات، و${selected.nutrition.fat ?? "غير متوفر"} جم دهون. الفرق عن الهدف حسب طاقة المكونات المسجلة ${difference} سعر حراري.${energyReconciliationNote(selected.nutrition, language)}${macroDifferenceFromTarget === null ? "" : ` والفرق عن الهدف حسب فحص 4/4/9 هو ${macroDifferenceFromTarget} سعر حراري.`} اطلب اسم الوصفة لعرض المكونات والطريقة.${exclusionNote}`,
-      data: { intent: "find_recipe", recommendationType: "calorie_target", targetCaloriesKcal: target, relation, differenceCaloriesKcal: difference, differenceBasis: "recorded_ingredient_energy", macroDifferenceFromTargetKcal: macroDifferenceFromTarget, energyReconciliation, excludedIngredientKeys: [...exclusions], recipeId: selected.recipe.recipe_id, recipeName: name, caloriesPerServingKcal: calories, perServing: selected.nutrition, conversationContext },
+      message: language === "en" ? `${relationText} is ${name}: about ${selected.portion.portionGrams} g provides ${calories} kcal, ${selected.portion.nutrition.protein ?? "unknown"} g protein, ${selected.portion.nutrition.carbs ?? "unknown"} g carbohydrates, and ${selected.portion.nutrition.fat ?? "unknown"} g fat. The grams are calculated from the verified per-100g snapshot. Difference from the target: ${difference} kcal.${energyReconciliationNote(selected.portion.nutrition, language)}${macroDifferenceFromTarget === null ? "" : ` Difference using the 4/4/9 check: ${macroDifferenceFromTarget} kcal.`}${exclusionNote}` : `${relationText} هي ${name}: حوالي ${selected.portion.portionGrams} جرام تعطي ${calories} سعر حراري، ${selected.portion.nutrition.protein ?? "غير متوفر"} جم بروتين، ${selected.portion.nutrition.carbs ?? "غير متوفر"} جم كربوهيدرات، و${selected.portion.nutrition.fat ?? "غير متوفر"} جم دهون. الجرامات محسوبة من القيمة الموثقة لكل 100 جرام. الفرق عن الهدف ${difference} سعر حراري.${energyReconciliationNote(selected.portion.nutrition, language)}${macroDifferenceFromTarget === null ? "" : ` والفرق حسب فحص 4/4/9 هو ${macroDifferenceFromTarget} سعر حراري.`}${exclusionNote}`,
+      data: { intent: "find_recipe", recommendationType: "calorie_target", recommendationPolicy: RECOMMENDATION_POLICY_VERSION, targetCaloriesKcal: target, relation, differenceCaloriesKcal: difference, differenceBasis: "verified_per_100g_portion", macroDifferenceFromTargetKcal: macroDifferenceFromTarget, energyReconciliation, excludedIngredientKeys: [...exclusions], recipeId: selected.recipe.recipe_id, recipeName: name, caloriesPerServingKcal: calories, portionCaloriesKcal: calories, portionGrams: selected.portion.portionGrams, servingFraction: selected.portion.servingFraction, portionNutrition: selected.portion.nutrition, portionBasis: selected.portion.basis, nutritionBalanceScore: selected.assessment.score, nutritionBalanceAssessment: selected.assessment, cuisineOrigin: selected.recipe.origin, locallyAvailableInEgypt: selected.recipe.origin === "Egypt", conversationContext },
       evidenceDocumentIds: [`DEMO-${selected.recipe.recipe_id}`], provenance: [this.recipeProvenance(selected.recipe, language)], toolTrace: [{ tool: "calculate_nutrition", ok: true, code: null }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
     };
   }
@@ -1316,12 +1349,17 @@ class GraduationDemoAgent {
     const wantsLow = /(?:قليل|قليلة|أقل|اقل|منخفض|low|lower)/iu.test(query) || target === "kcal";
     const candidates = this.dataset.recipes
       .filter((recipe) => target === "kcal" ? new Set(["main_dish", "breakfast", "soup"]).has(recipe.category) : recipe.category !== "beverage")
-      .map((recipe) => ({ recipe, nutrition: calculateUnifiedDemoNutrition(this.dataset, recipe).perServing }))
+      .map((recipe) => {
+        const calculation = calculateUnifiedDemoNutrition(this.dataset, recipe);
+        return { recipe, calculation, nutrition: calculation.perServing, assessment: assessNutritionBalance(recipe, calculation) };
+      })
       .filter((entry) => entry.nutrition[target] !== null)
       .sort((a, b) => {
         const first = a.nutrition[target] ?? 0;
         const second = b.nutrition[target] ?? 0;
-        return (wantsLow ? first - second : second - first) || a.recipe.recipe_id.localeCompare(b.recipe.recipe_id);
+        return (wantsLow ? first - second : second - first)
+          || b.assessment.score - a.assessment.score
+          || a.recipe.recipe_id.localeCompare(b.recipe.recipe_id);
       });
     const selected = candidates[0];
     if (!selected) return null;
@@ -1333,8 +1371,8 @@ class GraduationDemoAgent {
     const value = selected.nutrition[target];
     return {
       status: "ok", primaryIntent: "general_guidance", language, safetyFlags: [], integrityFlags: [],
-      message: language === "en" ? `${name} is the strongest matching option in the current project dataset for ${wantsLow ? "lower" : "higher"} ${labels[target]}: about ${value} ${units} per serving. Ask for its recipe if you want the ingredients and method. This is a dataset-based suggestion, not a personalized diet.` : `${name} هو الاختيار الأقرب في بيانات المشروع لطلب ${wantsLow ? "الأقل" : "الأعلى"} في ${labels[target]}: حوالي ${value} ${units} للحصة. اطلب اسم الوصفة لو عايز المكونات والطريقة. ده اقتراح من البيانات، مش نظام غذائي شخصي.`,
-      data: { intent: "find_recipe", recommendationType: "nutrition_ranked", targetNutrient: target, direction: wantsLow ? "lower" : "higher", recipeId: selected.recipe.recipe_id, recipeName: name, perServing: selected.nutrition },
+      message: language === "en" ? `${name} is the strongest matching option in the current project dataset for ${wantsLow ? "lower" : "higher"} ${labels[target]}: about ${value} ${units} in a ${Math.round(selected.calculation.finalWeightG / selected.recipe.servings)} g serving. Ask for its recipe if you want the ingredients and method. This is a dataset-based suggestion, not a personalized diet.` : `${name} هو الاختيار الأقرب في بيانات المشروع لطلب ${wantsLow ? "الأقل" : "الأعلى"} في ${labels[target]}: حوالي ${value} ${units} في حصة ${Math.round(selected.calculation.finalWeightG / selected.recipe.servings)} جرام. اطلب اسم الوصفة لو عايز المكونات والطريقة. ده اقتراح من البيانات، مش نظام غذائي شخصي.`,
+      data: { intent: "find_recipe", recommendationType: "nutrition_ranked", recommendationPolicy: RECOMMENDATION_POLICY_VERSION, targetNutrient: target, direction: wantsLow ? "lower" : "higher", recipeId: selected.recipe.recipe_id, recipeName: name, portionGrams: Math.round(selected.calculation.finalWeightG / selected.recipe.servings), perServing: selected.nutrition, nutritionBalanceScore: selected.assessment.score, cuisineOrigin: selected.recipe.origin },
       evidenceDocumentIds: [`DEMO-${selected.recipe.recipe_id}`], provenance: [this.recipeProvenance(selected.recipe, language)], toolTrace: [{ tool: "calculate_nutrition", ok: true, code: null }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
     };
   }
@@ -1347,8 +1385,9 @@ class GraduationDemoAgent {
     const candidates = this.dataset.recipes.map((recipe) => {
       const recipeKeys = new Set(recipe.ingredients.map((ingredient) => ingredient.ingredient));
       const matched = [...requestedKeys].filter((key) => recipeKeys.has(key));
-      return { recipe, matched };
-    }).filter((entry) => entry.matched.length > 0).sort((a, b) => b.matched.length - a.matched.length || a.recipe.recipe_id.localeCompare(b.recipe.recipe_id));
+      const calculation = calculateUnifiedDemoNutrition(this.dataset, recipe);
+      return { recipe, matched, calculation, assessment: assessNutritionBalance(recipe, calculation) };
+    }).filter((entry) => entry.matched.length > 0).sort((a, b) => b.matched.length - a.matched.length || b.assessment.score - a.assessment.score || a.recipe.recipe_id.localeCompare(b.recipe.recipe_id));
     const selected = candidates[0];
     if (!selected) return null;
     const name = language === "en" ? selected.recipe.name_en : selected.recipe.name_ar;
@@ -1356,7 +1395,7 @@ class GraduationDemoAgent {
     return {
       status: "ok", primaryIntent: "general_guidance", language, safetyFlags: [], integrityFlags: [],
       message: language === "en" ? `${name} is the closest Egyptian recipe in the project data to the ingredients you listed (${matchedLabels.join(", ")}). Ask for ${name} to see the recorded ingredients and method; you may still need additional ingredients.` : `${name} هي أقرب وصفة مصرية في بيانات المشروع للمكونات اللي ذكرتها (${matchedLabels.join("، ")}). اطلب ${name} لعرض المكونات والطريقة المسجلة؛ وقد تحتاج مكونات إضافية.`,
-      data: { intent: "find_recipe", recommendationType: "ingredient_overlap", recipeId: selected.recipe.recipe_id, recipeName: name, matchedIngredients: selected.matched }, evidenceDocumentIds: [`DEMO-${selected.recipe.recipe_id}`], provenance: [this.recipeProvenance(selected.recipe, language)], toolTrace: [{ tool: "search_recipes", ok: true, code: null }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
+      data: { intent: "find_recipe", recommendationType: "ingredient_overlap", recommendationPolicy: RECOMMENDATION_POLICY_VERSION, recipeId: selected.recipe.recipe_id, recipeName: name, portionGrams: Math.round(selected.calculation.finalWeightG / selected.recipe.servings), matchedIngredients: selected.matched, nutritionBalanceScore: selected.assessment.score, cuisineOrigin: selected.recipe.origin }, evidenceDocumentIds: [`DEMO-${selected.recipe.recipe_id}`], provenance: [this.recipeProvenance(selected.recipe, language)], toolTrace: [{ tool: "search_recipes", ok: true, code: null }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
     };
   }
 
@@ -1938,29 +1977,35 @@ class GraduationDemoAgent {
     } catch { return null; }
   }
 
-  private recommendMeal(category: string, language: "ar-EG" | "ar" | "en"): ExpandedAgentResponse {
-    const recipes = this.dataset.recipes.filter((recipe) => recipe.category === category).slice(0, 3);
-    if (recipes.length === 0) {
+  private recommendMeal(category: string, language: "ar-EG" | "ar" | "en", context?: GraduationConversationContext): ExpandedAgentResponse {
+    const ranked = rankHealthFirst(this.dataset.recipes
+      .filter((recipe) => recipe.category === category)
+      .map((recipe) => {
+        const calculation = calculateUnifiedDemoNutrition(this.dataset, recipe);
+        return { recipe, calculation, assessment: assessNutritionBalance(recipe, calculation) };
+      }), context?.memory?.recentRecipeIds);
+    const selected = diversifyHealthRanked(ranked, 3);
+    if (selected.length === 0) {
       return {
         status: "no_result", primaryIntent: "general_guidance", language, safetyFlags: [], integrityFlags: [],
         message: language === "en" ? "I could not find a matching Egyptian meal in the demo dataset." : "ملقتش وجبة مصرية مناسبة للنوع ده في بيانات العرض.",
         data: null, evidenceDocumentIds: [], provenance: [], toolTrace: [{ tool: "search_recipes", ok: true, code: null }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
       };
     }
-    const recommendations = recipes.map((recipe) => {
-      const nutrition = calculateUnifiedDemoNutrition(this.dataset, recipe).perServing;
-      return { recipeId: recipe.recipe_id, name: language === "en" ? recipe.name_en : recipe.name_ar, caloriesKcal: nutrition.kcal, proteinG: nutrition.protein };
+    const recommendations = selected.map(({ recipe, calculation, assessment }) => {
+      const servingGrams = Math.round(calculation.finalWeightG / recipe.servings);
+      return { recipeId: recipe.recipe_id, name: language === "en" ? recipe.name_en : recipe.name_ar, portionGrams: servingGrams, caloriesKcal: calculation.perServing.kcal, proteinG: calculation.perServing.protein, nutritionBalanceScore: assessment.score, cuisineOrigin: recipe.origin };
     });
     const lines = recommendations.map((item) => language === "en"
-      ? `• ${item.name} — about ${item.caloriesKcal ?? "unknown"} kcal and ${item.proteinG ?? "unknown"} g protein per serving.`
-      : `• ${item.name} — حوالي ${item.caloriesKcal ?? "غير معروف"} سعر حراري و${item.proteinG ?? "غير معروف"} جم بروتين للحصة.`);
+      ? `• ${item.name} — ${item.portionGrams} g per serving, about ${item.caloriesKcal ?? "unknown"} kcal and ${item.proteinG ?? "unknown"} g protein.`
+      : `• ${item.name} — الحصة ${item.portionGrams} جرام، حوالي ${item.caloriesKcal ?? "غير معروف"} سعر حراري و${item.proteinG ?? "غير معروف"} جم بروتين.`);
     return {
       status: "ok", primaryIntent: "general_guidance", language, safetyFlags: [], integrityFlags: [],
       message: language === "en"
-        ? `Here are three Egyptian options from the project dataset:\n\n${lines.join("\n")}\n\nTell me which one you prefer and I can show its ingredients and preparation method.`
-        : `دي 3 اختيارات مصرية من قاعدة المشروع:\n\n${lines.join("\n")}\n\nاكتب اسم الاختيار اللي عجبك وأنا أعرض لك المكونات وطريقة التحضير.`,
-      data: { demoOnly: true, reviewStatus: this.dataset.metadata.review_status, recommendations }, evidenceDocumentIds: recipes.map((recipe) => `DEMO-${recipe.recipe_id}`),
-      provenance: recipes.map((recipe) => ({ sourceId: GRADUATION_RECIPE_SOURCE_ID, versionId: "2.0-final-demo-normalized", title: language === "en" ? recipe.name_en : recipe.name_ar, url: recipe.source_url, accessedAt: this.dataset.metadata.created_date, locator: recipe.recipe_id })),
+        ? `Here are three verified Egyptian options ranked first by the project's nutrition-balance policy and diversified by cooking method:\n\n${lines.join("\n")}\n\nThe score is a transparent comparison heuristic, not a medical “healthy” certification.`
+        : `دي 3 اختيارات مصرية موثقة، مرتبة أولًا بسياسة التوازن الغذائي في المشروع ومتنوعة حسب طريقة الطهي:\n\n${lines.join("\n")}\n\nالترتيب أداة مقارنة شفافة، مش شهادة طبية إن أكلة معينة «صحية» لكل شخص.`,
+      data: { demoOnly: true, reviewStatus: this.dataset.metadata.review_status, recommendationPolicy: RECOMMENDATION_POLICY_VERSION, rankingMeaning: "graduation_project_comparison_heuristic_not_medical_certification", recommendations }, evidenceDocumentIds: selected.map(({ recipe }) => `DEMO-${recipe.recipe_id}`),
+      provenance: selected.map(({ recipe }) => ({ sourceId: GRADUATION_RECIPE_SOURCE_ID, versionId: "2.0-final-demo-normalized", title: language === "en" ? recipe.name_en : recipe.name_ar, url: recipe.source_url, accessedAt: this.dataset.metadata.created_date, locator: recipe.recipe_id })),
       toolTrace: [{ tool: "search_recipes", ok: true, code: null }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
     };
   }
@@ -1971,9 +2016,13 @@ class GraduationDemoAgent {
     const categoryPriority = new Map(["main_dish", "breakfast", "soup", "salad"].map((category, index) => [category, index]));
     const candidate = this.dataset.recipes
       .filter((recipe) => categoryPriority.has(recipe.category) && !recipeContainsExcludedIngredient(recipe, exclusions))
-      .map((recipe) => ({ recipe, nutrition: calculateUnifiedDemoNutrition(this.dataset, recipe) }))
+      .map((recipe) => {
+        const nutrition = calculateUnifiedDemoNutrition(this.dataset, recipe);
+        return { recipe, nutrition, assessment: assessNutritionBalance(recipe, nutrition) };
+      })
       .filter(({ nutrition }) => nutrition.perServing.kcal !== null)
       .sort((left, right) => (categoryPriority.get(left.recipe.category) ?? 99) - (categoryPriority.get(right.recipe.category) ?? 99)
+        || right.assessment.score - left.assessment.score
         || left.recipe.recipe_id.localeCompare(right.recipe.recipe_id))[0];
     if (!candidate) return null;
     const { recipe, nutrition } = candidate;
@@ -2013,12 +2062,13 @@ class GraduationDemoAgent {
     const ingredients = recipe.ingredients.map((item) => `• ${item.quantity} ${localizedUnit(item.unit, language)} ${ingredientLabel(item.ingredient, language)}`).join("\n");
     const title = language === "en" ? recipe.name_en : recipe.name_ar;
     const nutrition = calculation.perServing;
+    const servingWeightG = Math.round(calculation.finalWeightG / recipe.servings);
     const message = language === "en"
-      ? `${title}\n\nIngredients for ${recipe.servings} servings:\n${ingredients}\n\nPreparation method (recorded in Arabic in the source):\n${recipe.method_summary}\n\nEstimated per serving: ${nutrition.kcal ?? "unknown"} kcal, ${nutrition.protein ?? "unknown"} g protein, ${nutrition.fat ?? "unknown"} g fat, and ${nutrition.carbs ?? "unknown"} g carbohydrates.${energyReconciliationNote(nutrition, language)}`
-      : `${title}\n\nالمكونات (${recipe.servings} حصص):\n${ingredients}\n\nطريقة التحضير:\n${recipe.method_summary}\n\nتقدير الحصة: ${nutrition.kcal ?? "غير معروف"} سعر حراري، ${nutrition.protein ?? "غير معروف"} جم بروتين، ${nutrition.fat ?? "غير معروف"} جم دهون، و${nutrition.carbs ?? "غير معروف"} جم كربوهيدرات.${energyReconciliationNote(nutrition, language)}`;
+      ? `${title}\n\nIngredients for ${recipe.servings} servings:\n${ingredients}\n\nPreparation method (recorded in Arabic in the source):\n${recipe.method_summary}\n\nEstimated ${servingWeightG} g serving: ${nutrition.kcal ?? "unknown"} kcal, ${nutrition.protein ?? "unknown"} g protein, ${nutrition.fat ?? "unknown"} g fat, and ${nutrition.carbs ?? "unknown"} g carbohydrates.${energyReconciliationNote(nutrition, language)}`
+      : `${title}\n\nالمكونات (${recipe.servings} حصص):\n${ingredients}\n\nطريقة التحضير:\n${recipe.method_summary}\n\nتقدير الحصة (${servingWeightG} جرام): ${nutrition.kcal ?? "غير معروف"} سعر حراري، ${nutrition.protein ?? "غير معروف"} جم بروتين، ${nutrition.fat ?? "غير معروف"} جم دهون، و${nutrition.carbs ?? "غير معروف"} جم كربوهيدرات.${energyReconciliationNote(nutrition, language)}`;
     return {
       status: "ok", primaryIntent: "general_guidance", language, safetyFlags: [], integrityFlags: [], message,
-      data: { intent: "find_recipe", demoOnly: true, reviewStatus: this.dataset.metadata.review_status, recipe: { recipeId: recipe.recipe_id, nameAr: recipe.name_ar, nameEn: recipe.name_en, servings: recipe.servings, ingredients: recipe.ingredients, method: recipe.method_summary, nutritionPerServing: nutrition, energyReconciliation: reconcileEnergyWithMacros(nutrition) }, passages, conversationContext: { schemaVersion: "1.0", lastIntent: "recipe_reference", recipeId: recipe.recipe_id } },
+      data: { intent: "find_recipe", demoOnly: true, reviewStatus: this.dataset.metadata.review_status, recipe: { recipeId: recipe.recipe_id, nameAr: recipe.name_ar, nameEn: recipe.name_en, servings: recipe.servings, servingWeightG, ingredients: recipe.ingredients, method: recipe.method_summary, nutritionPerServing: nutrition, cuisineOrigin: recipe.origin, energyReconciliation: reconcileEnergyWithMacros(nutrition) }, passages, conversationContext: { schemaVersion: "1.0", lastIntent: "recipe_reference", recipeId: recipe.recipe_id } },
       evidenceDocumentIds: passages.map((passage) => passage.documentId), provenance,
       toolTrace: [{ tool: "search_recipes", ok: true, code: null }, { tool: "calculate_nutrition", ok: true, code: null }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
     };

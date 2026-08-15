@@ -18,7 +18,7 @@ export const GRADUATION_DEMO_VERSION = "2.0-final-demo-normalized";
 
 const NUTRIENTS = ["kcal", "protein", "fat", "carbs", "fiber", "sugar", "sodium"] as const;
 type DemoNutrient = (typeof NUTRIENTS)[number];
-type DemoNutrition = Record<DemoNutrient, number | null>;
+export type DemoNutrition = Record<DemoNutrient, number | null>;
 type DemoRetention = Partial<Record<DemoNutrient, number>>;
 
 interface DemoIngredient {
