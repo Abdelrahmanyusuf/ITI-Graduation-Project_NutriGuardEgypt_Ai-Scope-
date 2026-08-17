@@ -132,6 +132,8 @@ Demo يستخدم مخزنًا متجهيًا داخل الذاكرة ليعمل
 3. فعّل `NUTRIGUARD_BACKEND_TRACKING_ENABLED=true`. الاتصالات الموثقة تتطلب HTTPS افتراضيًا.
 4. استخدم `https://nutriguard.runasp.net` كعنوان Backend. خيار `NUTRIGUARD_ALLOW_INSECURE_BACKEND_HTTP` يظل مغلقًا، ولا يُستخدم إلا مع Backend محلي داخل جهاز المطور.
 
+إذا ظهر `loggedSelectionIds` بقيم مثل `mock-log-1` فهذا يعني أن الـruntime بدأ والـtracking flag مغلق، ولم تُكتب أي وجبة في قاعدة بيانات الـBackend. أعد تشغيل AI Server بعد تعديل `.env` لأن متغيرات البيئة تُقرأ عند بدء العملية. التسجيل الحقيقي يرجع IDs رقمية يولدها الـBackend، وتظهر الوجبات تحت `customMeals` في ملخص اليوم أو من endpoint الـCustom Meals المؤرخ، وليس تحت `meals` الخاصة بعناصر كتالوج Foods.
+
 التسجيل الحقيقي يستخدم نداءً واحدًا إلى `POST /api/Tracking/custom-meals/batch`. يرسل الـAI كل اختيارات الملخص المؤكد معًا، ويضع نفس `pending_operation_id` في هيدر `Idempotency-Key`. الـBackend هو مصدر الحقيقة للذرّية ومنع التكرار الدائم: أول طلب صحيح يرجع `applied: true` ومعرّفات السجلات، وإعادة نفس الطلب ترجع `applied: false` و`reason: "already_logged"`، أما إعادة المفتاح مع محتوى مختلف فترجع `409`. لا يُستخدم التسجيل المتتابع إلا كمسار توافق داخلي عند حقن data source قديم في الاختبارات؛ الـruntime الحقيقي يفضّل الـbatch دائمًا.
 
 قراءة البروفايل والأهداف والقواعد والملخص اليومي تتم من `GET /api/HealthProfile` و`GET /api/Nutrition/targets` و`GET /api/Nutrition/user-rules` و`GET /api/Tracking/summary/{date}`. أي رقم مفقود يظل `null` ولا يتحول إلى صفر أو تقدير.
