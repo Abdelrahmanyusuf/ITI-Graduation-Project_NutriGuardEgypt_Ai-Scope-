@@ -1268,9 +1268,10 @@ class GraduationDemoAgent {
     const countMatch = normalized.match(/(-?\d+(?:\.\d+)?)\s*(?:وجبه|وجبة|وجبات|meals?)/iu);
     const requestedMealCount = countMatch && !ambiguousOrMalformedMealCount ? Number(countMatch[1]) : outOfRangeWordCount || ambiguousOrMalformedMealCount ? Number.NaN : wordMealCount;
     const changesMealCount = /(?:زود|ضيف|اضف|قلل|احذف|شيل|increase|add|remove|reduce).{0,12}(?:وجبه|وجبة|وجبات|meal)/iu.test(normalized);
-    const isPlanFollowup = Boolean(previous && (hasDailyTargetWording || requestedMealCount !== null || changesMealCount || hasIngredientExclusionRequest(normalized) || /(?:قلل|خفض|زود|ارفع|غير|بدل|خلي|اقل|اكتر|reduce|increase|change)/iu.test(normalized)));
+    const explicit = normalized.match(/(\d+(?:\.\d+)?)\s*(?:سعر(?:ة|ات)?(?:\s*حراري(?:ة|ه)?)?|كالوري|kcal|calories?)/iu)
+      ?? (previous?.lastIntent === "meal_plan_draft" ? normalized.match(/^\s*(\d+(?:\.\d+)?)\s*$/u) : null);
+    const isPlanFollowup = Boolean(previous && (explicit || hasDailyTargetWording || requestedMealCount !== null || changesMealCount || hasIngredientExclusionRequest(normalized) || /(?:قلل|خفض|زود|ارفع|غير|بدل|خلي|اقل|اكتر|reduce|increase|change)/iu.test(normalized)));
     if (!isPlanRequest && !englishPlanRequest && !numericMealCountRequest && !isPlanFollowup) return null;
-    const explicit = normalized.match(/(\d+(?:\.\d+)?)\s*(?:سعر(?:ة|ات)?(?:\s*حراري(?:ة|ه)?)?|كالوري|kcal|calories?)/iu);
     const amount = explicit ? Number(explicit[1]) : null;
     const previousMealCount = previous?.mealCount ?? 3;
     const relativeMealCount = changesMealCount

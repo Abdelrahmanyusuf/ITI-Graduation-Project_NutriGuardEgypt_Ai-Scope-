@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { loadUnifiedEgyptianDemoDataset } from "../src/demo/unified-egyptian-dataset.js";
 import { buildGraduationDemoAgent } from "../src/runtime/graduation-demo-agent.js";
+import type { GraduationConversationContext } from "../src/runtime/graduation-demo-agent.js";
 
 const dataset = await loadUnifiedEgyptianDemoDataset();
 const agent = await buildGraduationDemoAgent("test", null);
@@ -140,6 +141,7 @@ test("any/أي/اي Egyptian meal requests return one deterministic verified opt
 
 test("natural English any-meal variants use the same verified health-first route", async () => {
   for (const message of [
+    "Suggest any Egyptian recipe",
     "Could you recommend a meal?",
     "Please give me some Egyptian food",
     "Surprise me with an Egyptian dish",
@@ -153,6 +155,28 @@ test("natural English any-meal variants use the same verified health-first route
     const recommendations = response.data?.recommendations as Array<{ recipeId: string; ingredients: IngredientGrams[] }>;
     assert.equal(recommendations.length, 1, message);
     assertCompleteIngredientGrams(recommendations[0]!.recipeId, recommendations[0]!.ingredients);
+  }
+});
+
+test("exact committee Arabic phrase preserves three meals and accepts a short calorie follow-up", async () => {
+  for (const followup of ["1800 سعر", "1800"]) {
+    const draft = await agent.invoke({ message: "اقترح لي ثلاث وجبات لهذا اليوم", language: "ar-EG" });
+    assert.equal(draft.status, "clarification");
+    assert.equal(draft.data?.requiredInput, "daily_calorie_target");
+    const context = draft.data?.conversationContext as GraduationConversationContext;
+    assert.equal(context.lastIntent, "meal_plan_draft");
+    assert.equal("mealCount" in context ? context.mealCount : null, 3);
+
+    const response = await agent.invoke({ message: followup, language: "ar-EG", context });
+    assert.equal(response.status, "ok", followup);
+    assert.equal(response.data?.mealCount, 3, followup);
+    assert.equal(response.data?.targetCaloriesKcal, 1800, followup);
+    const meals = response.data?.meals as Array<{ recipeId: string; portionGrams: number; ingredients: IngredientGrams[] }>;
+    assert.equal(meals.length, 3, followup);
+    for (const meal of meals) {
+      assert.ok(meal.portionGrams > 0, followup);
+      assertCompleteIngredientGrams(meal.recipeId, meal.ingredients);
+    }
   }
 });
 
