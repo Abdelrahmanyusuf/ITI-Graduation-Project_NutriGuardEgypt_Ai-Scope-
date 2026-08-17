@@ -11,7 +11,7 @@ import { currentBackendAccessToken } from "../src/runtime/backend-request-contex
 const agent = await buildSyntheticDemoAgent("test");
 const feedback = new InMemoryPilotFeedbackStore();
 const metrics = new MetricsRegistry();
-const server = createNutriGuardHttpServer({ agent, feedbackStore: feedback, mode: "test", releaseId: "TEST-RELEASE", allowedOrigins: ["https://allowed.test"], readiness: async () => ({ ready: true, blockers: [] }), pilotConsentReference: "SERVER-CONSENT-001", privacyNoticeVersion: "v1", rateLimit: { windowMs: 60_000, maxRequests: 20 }, metrics, metricsToken: "test-metrics-token-value-123" });
+const server = createNutriGuardHttpServer({ agent, feedbackStore: feedback, mode: "test", releaseId: "TEST-RELEASE", allowedOrigins: ["https://allowed.test", "https://nutri-guard-frontend.vercel.app/", "http://localhost:5173"], readiness: async () => ({ ready: true, blockers: [] }), pilotConsentReference: "SERVER-CONSENT-001", privacyNoticeVersion: "v1", rateLimit: { windowMs: 60_000, maxRequests: 20 }, metrics, metricsToken: "test-metrics-token-value-123" });
 let baseUrl = "";
 before(async () => { await new Promise<void>((resolve) => server.listen(0, "127.0.0.1", resolve)); baseUrl = `http://127.0.0.1:${(server.address() as AddressInfo).port}`; });
 after(async () => { await new Promise<void>((resolve, reject) => server.close((error) => error ? reject(error) : resolve())); });
@@ -43,6 +43,22 @@ test("Step 18 health, readiness, and real Agent chat work end to end", async () 
   const metricText=await metricsResponse.text();
   assert.match(metricText,/nutriguard_agent_outcomes_total\{outcome="ok"\}/);
   assert.match(metricText,/nutriguard_calculation_availability_total\{outcome="available"\}/);
+});
+
+test("CORS accepts the Vercel and local Vite frontends with canonical Origin matching", async () => {
+  for (const origin of ["https://nutri-guard-frontend.vercel.app", "http://localhost:5173"]) {
+    const response = await fetch(`${baseUrl}/api/v1/chat`, {
+      method: "OPTIONS",
+      headers: {
+        origin,
+        "access-control-request-method": "POST",
+        "access-control-request-headers": "authorization,content-type",
+      },
+    });
+    assert.equal(response.status, 204);
+    assert.equal(response.headers.get("access-control-allow-origin"), origin);
+    assert.match(response.headers.get("access-control-allow-headers") ?? "", /Authorization/);
+  }
 });
 
 test("chat forwards Backend JWT only through request-scoped context", async () => {

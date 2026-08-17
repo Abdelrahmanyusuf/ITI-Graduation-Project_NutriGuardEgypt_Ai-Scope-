@@ -33,6 +33,8 @@ test("the graduation recipeSource exposes verified breakfast, lunch, and dinner 
     assert.equal(result.status, "ok");
     assert.equal(result.candidates.length, 3);
     assert.ok(result.candidates.every((candidate) => candidate.verificationStatus === "verified"));
+    assert.ok(result.candidates.every((candidate) => candidate.ingredientGrams?.length === candidate.ingredientKeys.length));
+    assert.ok(result.candidates.every((candidate) => candidate.ingredientGrams?.every((ingredient) => ingredient.gramsPerServing > 0)));
   }
 });
 
@@ -99,6 +101,11 @@ test("the Step 16 route returns verified candidates without calling the dashboar
   assert.deepEqual(categories.map((entry) => entry.count), [3, 3, 3]);
   assert.ok(categories.every((entry) => entry.candidates.length === 3));
   assert.ok(categories.every((entry) => entry.candidates.every((candidate) => (object(candidate).portionGrams as number) > 0)));
+  assert.ok(categories.every((entry) => entry.candidates.every((candidate) => {
+    const ingredients = object(candidate).ingredientGrams as Array<{ gramsPerServing: number }>;
+    return ingredients.length > 0 && ingredients.every((ingredient) => ingredient.gramsPerServing > 0);
+  })));
+  assert.match(response.message, /ingredient input grams per recorded serving/u);
   assert.match(response.message, /g/u);
   assert.equal(dashboard.calls.length, 0);
 });

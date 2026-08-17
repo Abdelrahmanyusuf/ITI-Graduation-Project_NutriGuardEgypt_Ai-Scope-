@@ -86,3 +86,72 @@ test("graduation agent calculates remaining nutrition only from Backend targets 
   assert.match(response.message, /45/);
   assert.equal(response.toolTrace[0]?.tool, "get_user_nutrition_context");
 });
+
+test("English word-count meal plan asks for calories instead of falsely reporting no recipe", async () => {
+  const agent = await buildGraduationDemoAgent("test", null);
+  const response = await agent.invoke({ message: "Suggest three meals for me today", language: "en" });
+  assert.equal(response.status, "clarification");
+  assert.equal(response.data?.requiredInput, "daily_calorie_target");
+  const context = response.data?.conversationContext as { mealCount?: number } | undefined;
+  assert.equal(context?.mealCount, 3);
+  assert.doesNotMatch(response.message, /could not find.*recipe/iu);
+});
+
+test("authenticated meal-plan request uses Backend remaining calories and returns three gram-based meals", async () => {
+  const backend: GraduationBackendDataSource = {
+    searchFoods: async () => [], getFood: async () => { throw new Error(); },
+    searchRecipes: async () => [], getRecipe: async () => { throw new Error(); },
+    getNutritionTargets: async () => ({ isSuccess: true, data: { energyKcal: 2_000 } }),
+    getDailySummary: async () => ({ isSuccess: true, data: { energyKcal: 800 } }),
+  };
+  const agent = await buildGraduationDemoAgent("test", backend);
+  const response = await agent.invoke({ message: "Suggest three meals for me today", language: "en" });
+  assert.equal(response.status, "ok");
+  assert.equal(response.data?.calorieTargetSource, "backend_remaining_calories");
+  assert.equal(response.data?.remainingCaloriesKcal, 1_200);
+  const meals = response.data?.meals as Array<{ portionGrams?: number }> | undefined;
+  assert.equal(meals?.length, 3);
+  assert.ok(meals?.every((entry) => typeof entry.portionGrams === "number" && entry.portionGrams > 0));
+  assert.match(response.message, /1200 kcal remaining/iu);
+  assert.equal(response.toolTrace[0]?.tool, "get_user_nutrition_context");
+});
+
+test("meal-plan request does not guess when Backend target fields are incomplete", async () => {
+  const backend: GraduationBackendDataSource = {
+    searchFoods: async () => [], getFood: async () => { throw new Error(); },
+    searchRecipes: async () => [], getRecipe: async () => { throw new Error(); },
+    getNutritionTargets: async () => ({ isSuccess: true, data: {} }),
+    getDailySummary: async () => ({ isSuccess: true, data: {} }),
+  };
+  const agent = await buildGraduationDemoAgent("test", backend);
+  const response = await agent.invoke({ message: "Suggest three meals for me today", language: "en" });
+  assert.equal(response.status, "clarification");
+  assert.equal(response.data?.requiredInput, "daily_calorie_target");
+});
+
+test("meal-plan request uses the live Backend summary contract when targets returns 404 for an incomplete profile", async () => {
+  const backend: GraduationBackendDataSource = {
+    searchFoods: async () => [], getFood: async () => { throw new Error(); },
+    searchRecipes: async () => [], getRecipe: async () => { throw new Error(); },
+    getNutritionTargets: async () => { throw Object.assign(new Error("not found"), { status: 404 }); },
+    getDailySummary: async () => ({
+      caloriesTarget: 2_000,
+      caloriesConsumed: 800,
+      caloriesRemaining: 1_200,
+      proteinTargetGrams: 100,
+      proteinConsumedGrams: 40,
+      proteinRemainingGrams: 60,
+      carbsTargetGrams: 250,
+      carbsConsumedGrams: 90,
+      carbsRemainingGrams: 160,
+      fatTargetGrams: 70,
+      fatConsumedGrams: 25,
+      fatRemainingGrams: 45,
+    }),
+  };
+  const agent = await buildGraduationDemoAgent("test", backend);
+  const response = await agent.invoke({ message: "Suggest three meals for me today", language: "en" });
+  assert.equal(response.status, "ok");
+  assert.equal(response.data?.remainingCaloriesKcal, 1_200);
+  assert.equal((response.data?.meals as unknown[])?.length, 3);
+});

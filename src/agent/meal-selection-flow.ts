@@ -27,6 +27,7 @@ export interface VerifiedMealRecipe {
   aliases: string[];
   mealCategories: MealCategory[];
   ingredientKeys: string[];
+  ingredientGrams?: Array<{ ingredientKey: string; nameAr: string; nameEn: string; gramsPerServing: number }>;
   verificationStatus: "verified" | "needs_review" | "rejected";
   nutrition: NutritionSnapshot;
   portionGrams?: number;
@@ -48,7 +49,10 @@ export class InMemoryVerifiedMealRecipeRepository implements VerifiedMealRecipeR
 }
 
 export class DatasetVerifiedMealRecipeRepository implements VerifiedMealRecipeRepository {
-  public constructor(private readonly dataset: UnifiedEgyptianDemoDataset) {}
+  public constructor(
+    private readonly dataset: UnifiedEgyptianDemoDataset,
+    private readonly ingredientName: (ingredientKey: string, language: "ar-EG" | "ar" | "en") => string = (key) => key.replaceAll("_", " "),
+  ) {}
 
   public async list(): Promise<VerifiedMealRecipe[]> {
     return this.dataset.recipes.map((recipe) => this.toMealRecipe(recipe));
@@ -67,6 +71,12 @@ export class DatasetVerifiedMealRecipeRepository implements VerifiedMealRecipeRe
       // values are deliberately never converted at search time.
       mealCategories: [...recipe.meal_categories],
       ingredientKeys: recipe.ingredients.map((ingredient) => ingredient.ingredient),
+      ingredientGrams: recipe.ingredients.map((ingredient) => ({
+        ingredientKey: ingredient.ingredient,
+        nameAr: this.ingredientName(ingredient.ingredient, "ar-EG"),
+        nameEn: this.ingredientName(ingredient.ingredient, "en"),
+        gramsPerServing: Math.round(ingredient.grams / recipe.servings * 100) / 100,
+      })),
       verificationStatus: recipe.status === "verified" ? "verified" : recipe.status === "rejected" ? "rejected" : "needs_review",
       nutrition: complete
         ? {
@@ -388,6 +398,16 @@ function nutritionLine(snapshot: NutritionSnapshot, language: "ar-EG" | "ar" | "
     : `${portion}${snapshot.calories} سعرة، بروتين ${snapshot.protein_g} جم، كربوهيدرات ${snapshot.carbs_g} جم، دهون ${snapshot.fat_g} جم${sodium}`;
 }
 
+function candidateIngredientGramLines(candidate: VerifiedMealRecipe, language: "ar-EG" | "ar" | "en"): string {
+  if (!candidate.ingredientGrams?.length) return "";
+  const heading = language === "en" ? "ingredient input grams per recorded serving" : "جرامات المكونات الداخلة في الحصة المسجلة";
+  const lines = candidate.ingredientGrams.map((ingredient) => {
+    const name = language === "en" ? ingredient.nameEn : ingredient.nameAr;
+    return `    • ${name}: ${ingredient.gramsPerServing} ${language === "en" ? "g" : "جرام"}`;
+  });
+  return `\n  ${heading}:\n${lines.join("\n")}`;
+}
+
 function sumNutrition(selections: readonly FrozenSelection[]): NutritionSnapshot {
   const sodiumValues = selections.map((selection) => selection.nutritionSnapshot.sodium_mg);
   return {
@@ -615,7 +635,7 @@ export class MealSelectionFlow {
     const sections = results.map((result) => {
       const label = categoryLabel(result.category, language);
       if (result.candidates.length === 0) return language === "en" ? `${label}: no verified matching recipes.` : `${label}: مفيش وصفات موثقة مطابقة.`;
-      const lines = result.candidates.map((candidate, index) => `${index + 1}. ${language === "en" ? candidate.nameEn : candidate.nameAr} — ${nutritionLine(candidate.nutrition, language, candidate.portionGrams)}`);
+      const lines = result.candidates.map((candidate, index) => `${index + 1}. ${language === "en" ? candidate.nameEn : candidate.nameAr} — ${nutritionLine(candidate.nutrition, language, candidate.portionGrams)}${candidateIngredientGramLines(candidate, language)}`);
       const count = result.candidates.length;
       const note = count < 3 ? language === "en" ? `Only ${count} verified option${count === 1 ? "" : "s"} found.` : `اتوجد ${count} ${count === 1 ? "اختيار موثق فقط" : "اختيارات موثقة فقط"}.` : "";
       return `${label}:\n${lines.join("\n")}${note ? `\n${note}` : ""}`;
@@ -640,7 +660,7 @@ export class MealSelectionFlow {
         totalCeilingKcal: request.totalCeiling,
         categoryCeilingsKcal: request.categoryCeilings,
         exclusions: request.exclusions,
-        categories: results.map((result) => ({ category: result.category, status: result.status, count: result.candidates.length, candidates: result.candidates.map((candidate) => ({ recipeId: candidate.recipeId, name: language === "en" ? candidate.nameEn : candidate.nameAr, portionGrams: candidate.portionGrams, servingFraction: candidate.servingFraction, nutritionSnapshot: candidate.nutrition, nutritionBalanceScore: candidate.nutritionBalanceScore, cuisineOrigin: candidate.cuisineOrigin, verificationStatus: candidate.verificationStatus })) })),
+        categories: results.map((result) => ({ category: result.category, status: result.status, count: result.candidates.length, candidates: result.candidates.map((candidate) => ({ recipeId: candidate.recipeId, name: language === "en" ? candidate.nameEn : candidate.nameAr, portionGrams: candidate.portionGrams, servingFraction: candidate.servingFraction, ingredientGrams: candidate.ingredientGrams ?? [], ingredientWeightBasis: "input_grams_for_one_recorded_serving", nutritionSnapshot: candidate.nutrition, nutritionBalanceScore: candidate.nutritionBalanceScore, cuisineOrigin: candidate.cuisineOrigin, verificationStatus: candidate.verificationStatus })) })),
         conversationContext: context,
       },
       results.flatMap((result) => result.candidates.flatMap((candidate) => candidate.evidenceDocumentId ? [candidate.evidenceDocumentId] : [])),

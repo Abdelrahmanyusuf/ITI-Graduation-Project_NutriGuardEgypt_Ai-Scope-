@@ -8,6 +8,7 @@ import { renderChatPage } from "../web/chat-page.js";
 import type { StructuredLogger } from "../observability/logger.js";
 import type { MetricsRegistry } from "../observability/metrics.js";
 import { runWithBackendAccessToken } from "../runtime/backend-request-context.js";
+import { canonicalCorsOrigin, canonicalCorsOrigins } from "../config/cors.js";
 
 const RecipeIdSchema = z.string().regex(/^EGY-RCP-[0-9]{3}$/u);
 const IngredientKeySchema = z.string().trim().min(1).max(100);
@@ -114,6 +115,7 @@ function publicError(error: unknown): { status: number; code: string; message: s
 
 export function createNutriGuardHttpServer(options: HttpAppOptions): Server {
   if (!options.releaseId.trim()) throw new Error("releaseId is required");
+  const allowedOrigins = new Set(canonicalCorsOrigins(options.allowedOrigins));
   const buckets = new Map<string, Bucket>();
   const rate = options.rateLimit ?? { windowMs: 60_000, maxRequests: 30 };
   const timeoutMs = options.requestTimeoutMs ?? 15_000;
@@ -132,8 +134,9 @@ export function createNutriGuardHttpServer(options: HttpAppOptions): Server {
     });
     const origin = request.headers.origin;
     if (origin) {
-      if (!options.allowedOrigins.includes(origin)) return json(response, 403, { error: { code: "origin_forbidden", message: "Origin is not allowed." }, requestId });
-      response.setHeader("Access-Control-Allow-Origin", origin);
+      const canonicalOrigin = canonicalCorsOrigin(origin);
+      if (!canonicalOrigin || !allowedOrigins.has(canonicalOrigin)) return json(response, 403, { error: { code: "origin_forbidden", message: "Origin is not allowed." }, requestId });
+      response.setHeader("Access-Control-Allow-Origin", canonicalOrigin);
       response.setHeader("Vary", "Origin");
     }
     if (request.method === "OPTIONS") {

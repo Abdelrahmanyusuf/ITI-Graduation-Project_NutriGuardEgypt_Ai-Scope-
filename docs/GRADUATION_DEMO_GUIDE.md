@@ -149,6 +149,35 @@ npm run build
 npm run docs:check
 ```
 
+## Frontend, CORS, and direct API smoke test
+
+The local graduation runtime allows browser requests from `http://localhost:5173` and `https://nutri-guard-frontend.vercel.app`. The production host must set `ALLOWED_ORIGINS=https://nutri-guard-frontend.vercel.app`; configured origins are canonicalized, so an accidental trailing slash does not change the match.
+
+Before debugging the frontend, call the AI service directly:
+
+```http
+POST /api/v1/chat
+Content-Type: application/json
+Authorization: Bearer <short-lived Backend access token>
+
+{
+  "message": "Suggest three meals for me today",
+  "language": "en"
+}
+```
+
+Do not send a conversation `context` on the first message. With a valid Backend token, the AI reads the current nutrition target and dated daily summary, calculates the remaining calories without inventing missing values, and uses that remainder for the meal plan. Without a usable token or complete Backend numbers, it asks for a calorie target instead of falsely reporting that no recipe exists. The refresh token remains between the frontend and Backend and must never be sent to the AI service.
+
+### Meal-count language and recipe gram weights
+
+- Meal-plan counts accept ASCII digits, Arabic-Indic digits, English words from `one` through `ten`, and common Arabic/Egyptian forms such as `ثلاث`, `ثلاثة`, `تلاتة`, `وجبة واحدة`, and `وجبتين`.
+- Counts outside the supported range of 1–10, including negative, decimal, zero, or words such as `eleven`, return an explicit clarification; they are never silently converted to three meals.
+- Generic requests such as `Suggest any Egyptian meal`, `Recommend me any Egyptian food`, `اقترح أي وجبة مصرية`, and `رشحلي أي أكل مصري` select one deterministic verified option using the health-first ranking. A calorie, nutrient, category, pantry, or exclusion constraint takes precedence over the generic `any/أي` fallback.
+- English polite/free-form variants such as `Could you recommend a meal?`, `Surprise me with an Egyptian dish`, `Pick something Egyptian to eat`, and `Any Egyptian meal is fine` use the same deterministic policy. `A couple of meals` means exactly two. Ambiguous ranges (`2 or 3 meals`, `a few meals`) and likely number typos (`tree meals`) require clarification; the Agent never silently turns them into three meals.
+- `GET /api/Nutrition/targets` is an authenticated Backend endpoint. The current Swagger contract exposes it and an unauthenticated request correctly returns `401`. For the graduation test account, an authenticated request currently returns `404` with `Health profile is incomplete.` even though `GET /api/HealthProfile` returns `200`; therefore this `404` is a domain result for an incomplete target-calculation profile, not a missing API route. The AI Adapter may read target fields from the dated summary as a compatibility fallback, while missing numbers remain unknown and are never converted to zero.
+- Recipe details and nutrition responses expose every recorded ingredient as canonical grams for the full recipe. Recommendations expose every ingredient as grams scaled to the selected serving or calorie-sized portion.
+- Ingredient grams represent input weights. The displayed cooked serving weight can differ from their sum because the recorded nutrition calculation applies edible-portion and cooking-yield factors. The API states the basis in `ingredientWeightBasis` rather than implying that both weights must be equal.
+
 ## جملة ختامية مقترحة
 
 > NutriGuard يحوّل سؤالًا باللهجة المصرية إلى نتيجة غذائية قابلة للتفسير: يجد المعرفة المناسبة، يحسب خارج النموذج اللغوي، ويعرض الدليل وحدود الثقة. لذلك هو نظام قابل للمراجعة والتطوير، وليس مجرد واجهة Chatbot.

@@ -1,3 +1,5 @@
+import { canonicalCorsOrigins } from "./cors.js";
+
 export type NodeEnv = "development" | "test" | "production";
 
 export interface AppConfig {
@@ -115,8 +117,9 @@ export function validateProductionEnv(env: Record<string, string | undefined>): 
   if (qdrantUrl) validateUrl(qdrantUrl, "QDRANT_URL", target, errors);
   if (embeddingBaseUrl) validateUrl(embeddingBaseUrl, "EMBEDDING_BASE_URL", target, errors);
   if (databaseUrl) { try { const url = new URL(databaseUrl); if (!["postgres:", "postgresql:"].includes(url.protocol)) throw new Error(); } catch { errors.push("DATABASE_URL must be a PostgreSQL URL."); } }
-  const allowedOrigins = originText.split(",").map((entry) => entry.trim()).filter(Boolean);
-  for (const origin of allowedOrigins) validateUrl(origin, "ALLOWED_ORIGINS entry", target, errors);
+  const configuredOrigins = originText.split(",").map((entry) => entry.trim()).filter(Boolean);
+  for (const origin of configuredOrigins) validateUrl(origin, "ALLOWED_ORIGINS entry", target, errors);
+  const allowedOrigins = canonicalCorsOrigins(configuredOrigins);
   if (metricsToken && metricsToken.length < 24) errors.push("METRICS_TOKEN must contain at least 24 characters.");
   if (embeddingApiKey && embeddingApiKey.length < 12) errors.push("EMBEDDING_API_KEY is too short.");
   if (errors.length || !base.ok) return { ok: false, errors: [...new Set(errors)] };
