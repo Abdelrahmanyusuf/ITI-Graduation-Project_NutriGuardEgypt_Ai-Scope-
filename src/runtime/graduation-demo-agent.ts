@@ -1,4 +1,5 @@
 import type { ExpandedAgentResponse } from "../agent/expanded-agent.js";
+import { randomUUID } from "node:crypto";
 import { InMemoryAlternativeRuleRepository, NutriGuardExpandedAgent } from "../agent/expanded-agent.js";
 import { NUTRIGUARD_SYSTEM_PROMPT_VERSION } from "../agent/system-prompt.js";
 import {
@@ -16,6 +17,30 @@ import { QdrantVectorStore } from "../retrieval/qdrant.js";
 import type { EmbeddingProvider } from "../retrieval/types.js";
 import { InMemoryVectorStore } from "../retrieval/vector-store.js";
 import { InMemoryGuidelineRuleRepository, NutriGuardTools, type NutriGuardToolset } from "../tools/nutriguard-tools.js";
+import { ClaudeLayer, safetyPreScreen, type ClaudeLayerDependencies } from "../llm/claude-layer.js";
+import { RuleBasedExpandedAgentPlanner } from "../agent/expanded-agent.js";
+import { NUTRIGUARD_SYSTEM_PROMPT } from "../agent/system-prompt.js";
+import { expandedPlannerIntentOf, type RuleBasedClassification } from "../llm/nlu-arbitration.js";
+import {
+  newTrace,
+  type ClaudeRequestTrace,
+  type RetrievalRoute,
+} from "../llm/observability.js";
+import type { ClassifierContextSummary, ReferenceCandidate } from "../llm/claude-classifier.js";
+import type { AgentEntityResolvers } from "../llm/entity-validation.js";
+import {
+  InstrumentedEmbeddingProvider,
+  InstrumentedVectorStore,
+  recordHybridRetrievalEvent,
+  summarizeRetrieval,
+  withRetrievalCollection,
+} from "../llm/retrieval-observer.js";
+import type { HybridRetrievalEvent } from "./hybrid-retrieval-tools.js";
+import { MealSelectionTools, type MealCategoryRecipeRecord, type MealCategoryRecipeSource } from "../tools/meal-selection-tools.js";
+import { MealPlanSelectionFlow, type MealSelectionState } from "./meal-plan-selection.js";
+import type { DashboardClient, DashboardMealCategory } from "../services/dashboard/dashboard-client.js";
+import { MockDashboardClient } from "../services/dashboard/mock-dashboard-client.js";
+import { InMemoryPendingMealOperationStore, type FrozenMealNutrition, type PendingMealOperationStore } from "../services/dashboard/pending-meal-operations.js";
 import {
   NutriGuardBackendClient,
   type BackendFood,
@@ -257,6 +282,36 @@ export interface NutritionConversationMemory {
     originalGrams: number;
     proposedGrams: number;
   } | null;
+  /**
+   * Last two-recipe comparison, so an ambiguous follow-up can continue it.
+   *
+   * Optional for backward compatibility: a browser session that still holds a
+   * memory blob written before this field existed must keep validating at the
+   * API boundary instead of being rejected with a 400.
+   */
+  comparison?: {
+    firstRecipeId: string;
+    secondRecipeId: string;
+    basis: "per_serving" | "per_100g";
+    nutrient: string | null;
+  } | null;
+  /**
+   * Step 16 multi-option meal-plan selection state.
+   *
+   * Deliberately stored inside the SAME bounded short-term memory the BUG-09 fix
+   * introduced, next to `mealPlan` and `singleMealTarget`, rather than in a second
+   * memory mechanism. That is what lets a selection reference survive intervening
+   * turns and lets an unrelated question pass through without disturbing an
+   * active pending confirmation.
+   *
+   * Only identifiers are stored. Nutrition numbers are recomputed from the
+   * dataset every time they are displayed, and the authoritative frozen snapshot
+   * of a shown summary lives server-side in the pending-operation store.
+   *
+   * Optional for backward compatibility: a browser session holding a memory blob
+   * written before this field existed must keep validating at the API boundary.
+   */
+  mealSelection?: MealSelectionState | null;
 }
 
 interface MemoryCarrier { memory?: NutritionConversationMemory }
@@ -305,7 +360,188 @@ export interface MealPlanDraftConversationContext extends MemoryCarrier {
   calorieConstraint: "target" | "maximum";
 }
 
-export type GraduationConversationContext = CalorieTargetConversationContext | LighterModificationConversationContext | RecipeReferenceConversationContext | MealPlanConversationContext | MealPlanDraftConversationContext;
+/**
+ * Comparison state (BUG-16).
+ *
+ * `compare_recipes` previously had no context variant at all, so after producing
+ * a two-recipe comparison the agent downgraded its own state to a single-recipe
+ * `recipe_reference` pointing at the first item. The second recipe, the basis and
+ * the fact that a comparison had happened were discarded at the moment of
+ * success, which is why "مين الأفضل؟" could not be answered as a continuation.
+ */
+export interface ComparisonConversationContext extends MemoryCarrier {
+  schemaVersion: "1.0";
+  lastIntent: "compare_recipes";
+  firstRecipeId: string;
+  secondRecipeId: string;
+  basis: "per_serving" | "per_100g";
+  /** The nutrient the previous turn compared, when it named one. */
+  nutrient: string | null;
+}
+
+/**
+ * Step 16 multi-option meal-plan selection state (see `meal-plan-selection.ts`).
+ *
+ * Carries `memory` like every other variant, so the shared BUG-09 memory keeps
+ * accumulating while a selection is in progress.
+ */
+export interface MealSelectionConversationContext extends MemoryCarrier {
+  schemaVersion: "1.0";
+  lastIntent: "meal_selection";
+  selection: MealSelectionState;
+}
+
+export type GraduationConversationContext = CalorieTargetConversationContext | LighterModificationConversationContext | RecipeReferenceConversationContext | MealPlanConversationContext | MealPlanDraftConversationContext | ComparisonConversationContext | MealSelectionConversationContext;
+
+/**
+ * Conversational cue that the user is referring to a dish already under
+ * discussion instead of naming one.
+ *
+ * Single source of truth: `contextForMessage` and `invokeCore` previously each
+ * carried their own near-duplicate copy of this pattern, which let them drift.
+ *
+ * Besides pronouns it now covers a bare definite reference such as
+ * "اعرضلي مكونات الوصفه", which users reach for immediately after the agent
+ * recommends a dish. Without it the router saw "مكونات" with no named recipe
+ * and asked for ingredient weights in grams — an obvious loss of context.
+ *
+ * Short pronouns are boundary-anchored with Unicode lookarounds. Unanchored they
+ * matched inside ordinary words — "صوديوم" contains "دي" and "جديد" contains
+ * "دي" — so a sodium follow-up was mistaken for a pronoun reference and answered
+ * about one dish. `\b` cannot be used for this: it is defined over `[A-Za-z0-9_]`,
+ * so it never fires between two Arabic letters. English `it` is `\b`-anchored for
+ * the same reason, otherwise it matched inside "white" and "with".
+ */
+const IMPLICIT_RECIPE_REFERENCE_PATTERN = new RegExp(
+  [
+    "(?<!\\p{L})(?:هي|دي|ده|دى)(?!\\p{L})",
+    "(?:قارنها|خففها|قللها|زودها)",
+    "(?<!\\p{L})(?:الوصفه|الوصفة|الاكله|الأكلة|الاكلة|الطبق)(?!\\p{L})",
+    "\\b(?:it|that\\s+recipe|same\\s+recipe|the\\s+recipe|the\\s+dish)\\b",
+  ].join("|"),
+  "iu",
+);
+
+function usesImplicitRecipeReference(message: string): boolean {
+  return IMPLICIT_RECIPE_REFERENCE_PATTERN.test(message);
+}
+
+/**
+ * Explicit user rejection of the result just shown (BUG-11).
+ *
+ * Deliberately narrow. It must fire on identity/correctness denials such as
+ * "دي مش وصفة كشري", "غلط", "مش كده", "مش دا اللي طلبته", and must NOT fire on
+ * ordinary attribute questions such as "يعني هي مش صحية؟", which are legitimate
+ * follow-up questions about a dish rather than a complaint about the answer.
+ *
+ * The trailing `(?![\p{L}])` guards matter: without them "مش صح" would also
+ * match inside "مش صحية" and swallow a health question.
+ */
+const RESULT_REJECTION_PATTERNS: readonly RegExp[] = [
+  // "دي مش وصفة ..." / "ده مش أكلة ..." / "الرد مش صح"
+  /(?:دي|ده|دا|هذه|هذا|الرد|الاجابه|الإجابة|النتيجه|النتيجة)?\s*(?:مش|ليست|ليس)\s*(?:وصفه|وصفة|اكله|أكلة|اكلة|طبق|هي|هو)(?![\p{L}])/u,
+  // "مش صح" / "مش صحيح" but never "مش صحية"
+  /(?:مش|ليس)\s*(?:صح|صحيح)(?![\p{L}])/u,
+  // "مش كده" / "مش كدا" / "مش كذا"
+  /(?:مش|ليس)\s*(?:كده|كدا|كذا)(?![\p{L}])/u,
+  // "مش دا اللي طلبته" / "مش اللي طلبته" / "مش اللي عايزه"
+  /(?:مش|ليس)\s*(?:دا|ده|دي)?\s*(?:اللي|الذي)\s*(?:طلبته|طلبت|عايزه|عايزة|اريده|أريده|قلته)/u,
+  // standalone wrongness
+  /(?:^|\s)(?:غلط|غلطان|خطأ|خطا|بالغلط|انت\s*غلطت)(?![\p{L}])/u,
+  /(?:that'?s|this\s+is)\s+(?:not|wrong|incorrect)/iu,
+  /(?:^|\s)(?:wrong|incorrect)(?:\s+(?:recipe|dish|answer|result))?(?![\p{L}])/iu,
+  /not\s+what\s+i\s+(?:asked|wanted|requested)/iu,
+];
+
+function detectsResultRejection(message: string): boolean {
+  const normalized = normalizedLookupText(message);
+  return RESULT_REJECTION_PATTERNS.some((pattern) => pattern.test(normalized) || pattern.test(message));
+}
+
+/** True when a conversation context still points at `recipeId` in any form. */
+function contextPointsAtRecipe(context: GraduationConversationContext, recipeId: string): boolean {
+  if (context.lastIntent === "meal_plan") return context.recipeIds.includes(recipeId);
+  if (context.lastIntent === "meal_plan_draft") return false;
+  if (context.lastIntent === "compare_recipes") return context.firstRecipeId === recipeId || context.secondRecipeId === recipeId;
+  if (context.lastIntent === "meal_selection") {
+    return context.selection.categories.some((category) => category.options.some((option) => option.recipeIds.includes(recipeId)));
+  }
+  return context.recipeId === recipeId;
+}
+
+/**
+ * Nutrients a comparison can be resolved on, matched against normalized text.
+ * Ordered so that a more specific term is tested before a broader one.
+ */
+const COMPARABLE_NUTRIENTS: ReadonlyArray<{ key: "kcal" | "protein" | "carbs" | "fat" | "fiber" | "sugar" | "sodium"; pattern: RegExp }> = [
+  { key: "sodium", pattern: /(?:صوديوم|ملح|sodium|salt)/u },
+  { key: "protein", pattern: /(?:بروتين|protein)/u },
+  { key: "carbs", pattern: /(?:كربوهيدرات|كارب|carb)/u },
+  { key: "fiber", pattern: /(?:الياف|fiber|fibre)/u },
+  { key: "sugar", pattern: /(?:سكر|sugar)/u },
+  { key: "fat", pattern: /(?:دهون|fat)/u },
+  { key: "kcal", pattern: /(?:سعر|سعرات|كالوري|طاقه|calorie|kcal|energy)/u },
+];
+
+function comparisonNutrient(message: string): "kcal" | "protein" | "carbs" | "fat" | "fiber" | "sugar" | "sodium" | null {
+  const normalized = normalizedLookupText(message);
+  return COMPARABLE_NUTRIENTS.find((entry) => entry.pattern.test(normalized))?.key ?? null;
+}
+
+/**
+ * Ambiguous continuation of a comparison (BUG-16).
+ *
+ * Covers superlative questions ("مين الأفضل؟"), bare criterion questions
+ * ("الأقل صوديوم؟") and justification questions ("ليه؟"). These carry no dish
+ * name, so without this they fell through to an unrelated intent and answered
+ * about a single one of the two compared dishes.
+ */
+const COMPARISON_FOLLOWUP_PATTERN =
+  /(?:افضل|احسن|اصح|انسب|اقل|اكتر|اكثر|اعلي|اغني|ايهما|ايهم|مين|ليه|لماذا|ليش|فرق|why|better|best|which|healthier|lower|higher)/u;
+
+function isComparisonFollowup(message: string): boolean {
+  return COMPARISON_FOLLOWUP_PATTERN.test(normalizedLookupText(message));
+}
+
+function asksWhy(message: string): boolean {
+  return /(?:ليه|لماذا|ليش|why|كيف\s*كده|ازاي\s*كده)/u.test(normalizedLookupText(message));
+}
+
+/**
+ * A bare nutrient question that names no dish, e.g. "الدهون المشبعة كام".
+ *
+ * Such a question is about the dish already under discussion. It used to be
+ * handled only by accident, because the unanchored pronoun "ده" matched inside
+ * "الدهون". Anchoring the pronouns removed that accident, so the intent is now
+ * expressed explicitly instead of relying on a false-positive substring match.
+ */
+function isBareNutrientQuestion(message: string): boolean {
+  const normalized = normalizedLookupText(message);
+  return comparisonNutrient(message) !== null && MEASUREMENT_QUESTION_PATTERN.test(normalized);
+}
+
+/**
+ * Definitional / explanatory questions (BUG-13).
+ *
+ * "ما المقصود بالدهون المشبعة؟" asks what a concept *is*; it must not be
+ * answered with one recipe's number. Measurement wording is excluded so that
+ * "كام الدهون المشبعة في الكشري" and "إيه قيمة الصوديوم" remain recipe lookups.
+ *
+ * Patterns are written against `normalizedLookupText` output, which strips the
+ * definite article — so "المقصود" is matched here as "مقصود" and "بالدهون" as
+ * "دهون". Matching the article-bearing forms silently never fired.
+ */
+const DEFINITIONAL_QUESTION_PATTERN =
+  /(?:مقصود|معني|يعني\s*ايه|مفهوم|تعريف|عرفلي|عرفني|اشرحلي|اشرح|وضحلي|وضح|افهم|ايه\s*الفرق\s*بين|what\s+(?:is|are)\s+meant|what\s+does\s+.{0,40}\bmean|meaning\s+of|define|definition\s+of|explain)/u;
+
+const MEASUREMENT_QUESTION_PATTERN =
+  /(?:كام|كم|قيمه|نسبه|مقدار|عدد|how\s+much|how\s+many|value\s+of|amount\s+of)/u;
+
+function isDefinitionalQuestion(message: string): boolean {
+  const normalized = normalizedLookupText(message);
+  if (!DEFINITIONAL_QUESTION_PATTERN.test(normalized)) return false;
+  return !MEASUREMENT_QUESTION_PATTERN.test(normalized);
+}
 
 function answerLanguage(message: string, requested: "ar-EG" | "ar" | "en" | undefined): "ar-EG" | "ar" | "en" {
   if (/\p{Script=Arabic}/u.test(message)) return requested === "ar" ? "ar" : "ar-EG";
@@ -324,6 +560,23 @@ function mealCategory(message: string): string | null {
 }
 
 const DAIRY_INGREDIENT_KEYS = new Set(["butter_raw", "cheese_feta", "cream_heavy", "ghee", "ice_cream_vanilla", "milk_whole", "yogurt_plain"]);
+
+/**
+ * Dataset categories that make up each dashboard meal category.
+ *
+ * `breakfast`, `lunch` and `dinner` reuse the mapping the existing day-plan
+ * builder already applies, so the two features cannot disagree about what a
+ * lunch is. `snacks` is new in Step 16 v3 and maps to the small-portion
+ * categories in the dataset. Salad is deliberately left out of `snacks` because
+ * it already belongs to `dinner`.
+ */
+const MEAL_CATEGORY_DATASET_CATEGORIES: Readonly<Record<DashboardMealCategory, readonly string[]>> = {
+  breakfast: ["breakfast", "bread"],
+  lunch: ["main_dish"],
+  dinner: ["main_dish", "soup", "salad"],
+  snacks: ["appetizer", "pickle", "beverage", "dessert"],
+};
+
 const EXCLUSION_MARKER_PATTERN = /(?:بدون|من دون|من غير|خالي(?:ه)?(?: تماما| كليا| 100)? من|مفيهاش|مافيهاش|ما\s*يكونش\s*فيها|ميكنش\s*فيها|ما\s*يبقاش\s*فيها|لا\s*تحتوي(?:\s+(?:علي|على))?|شيل(?:لي)?|احذف(?:لي)?|استبعد|بلاش|ما\s*تحطش|ماتحطش|without|free of|free from|remove|delete|omit|\bno\b)/iu;
 
 function exclusionTargetText(message: string): string {
@@ -496,7 +749,13 @@ function modifiedRecipeDisplayName(
   return language === "en" ? `${name} — modified recipe` : `${name} — وصفة معدّلة`;
 }
 
-function exclusionSafetyNote(removedNames: readonly string[], language: "ar-EG" | "ar" | "en"): string {
+/**
+ * Single source of truth for the allergy/exclusion disclaimer.
+ *
+ * Exported so the Step 16 meal-selection flow can reuse this exact implementation
+ * rather than restating the wording. Do not add a second copy anywhere.
+ */
+export function exclusionSafetyNote(removedNames: readonly string[], language: "ar-EG" | "ar" | "en"): string {
   const names = removedNames.join(language === "en" ? ", " : " و");
   return language === "en"
     ? `I excluded ${names} at your request. If this relates to a severe allergy, consult a qualified clinician or dietitian; NutriGuard cannot guarantee absence of cross-contamination.`
@@ -651,6 +910,12 @@ function explicitlyNamedRecipes(dataset: UnifiedEgyptianDemoDataset, query: stri
 function classifyGraduationIntent(query: string, namedRecipes: readonly UnifiedDemoRecipe[]): GraduationIntent {
   const text = normalizeNumberDigits(query);
   if (/(?:طوارئ|نزيف|إغماء|أغمي|اغمي|مش\s*بيتنفس|لا\s*يتنفس|اختناق|جرعة زائدة|suicid|emergency|overdose|diagnos|شخّص|شخص(?:\s*لي|لي)|تشخيص|دواء|علاج|مريض|حامل|سكري|ضغط|allergic|وزني.{0,20}طولي|عايز\s*اخس|اعمل\s+لي\s+نظام|نظام\s+غذائي\s+ليا|رجيم\s*قاسي)/iu.test(text)) return "medical_safety";
+  // BUG-13: a definitional question ("ما المقصود بالدهون المشبعة؟") asks what a
+  // concept means, not what one recipe's value is. It must reach sourced general
+  // guidance rather than a recipe-specific nutrient lookup. Checked before the
+  // nutrient branches, and only when no measurement word ("كام", "قيمة") is
+  // present, so "كام الدهون المشبعة في الكشري" stays a recipe lookup.
+  if (isDefinitionalQuestion(text)) return "general_guideline";
   const explicitComparison = /(?:قارن|مقارنة|compare|versus|\bvs\b)/iu.test(text);
   const comparativeQuestion = /(?:ولا|أيهما|ايهما|مين\s+(?:أقل|اقل|اكتر|أكثر)|أقل من|اكتر من|أكثر من)/iu.test(text)
     && /(?:سعر|بروتين|كربوهيدرات|دهون|ألياف|الياف|سكر|صوديوم|ملح|calorie|protein|carb|fat|fiber|sugar|sodium)/iu.test(text);
@@ -716,17 +981,299 @@ export class GraduationDemoEmbeddingProvider implements EmbeddingProvider {
 }
 
 class GraduationDemoAgent {
+  private readonly expandedPlanner = new RuleBasedExpandedAgentPlanner();
+  private readonly entityVocabulary: string[];
+
   public constructor(
     private readonly base: NutriGuardExpandedAgent,
     private readonly tools: NutriGuardToolset,
     private readonly dataset: UnifiedEgyptianDemoDataset,
     private readonly backend: GraduationBackendDataSource | null,
-  ) {}
+    private readonly claude: ClaudeLayer = new ClaudeLayer({ classifierClient: null, formatterClient: null }),
+    private readonly mealSelection: MealPlanSelectionFlow = buildMealPlanSelectionFlow({ dataset }),
+  ) {
+    // Dataset-wide entity vocabulary for the grounding validator: any of these
+    // names appearing in Claude prose while absent from the structured input is
+    // a fabricated reference.
+    this.entityVocabulary = [
+      ...dataset.recipes.flatMap((recipe) => [recipe.name_ar, recipe.name_en, ...recipe.alt_names]),
+      ...Object.values(INGREDIENT_NAMES_AR),
+      ...Object.keys(dataset.ingredientNutrition).map((key) => key.replaceAll("_", " ")),
+    ].filter((name) => typeof name === "string" && name.trim().length >= 3);
+  }
+
+  /** Read-only access to the Claude layer, used by the internal debug route. */
+  public get claudeLayer(): ClaudeLayer {
+    return this.claude;
+  }
 
   public async invoke(input: { message: string; language?: "ar-EG" | "ar" | "en"; context?: GraduationConversationContext }): Promise<ExpandedAgentResponse> {
+    // With no Claude stage configured and no debug panel enabled, the agent
+    // behaves exactly as it did before Step 17b: no added work, no added
+    // latency, and byte-identical responses.
+    if (!this.claude.tracingEnabled) return this.invokeDeterministic(input);
+    return this.invokeWithClaudeLayer(input);
+  }
+
+  private async invokeDeterministic(
+    input: { message: string; language?: "ar-EG" | "ar" | "en"; context?: GraduationConversationContext },
+    forcedRecipeReference?: UnifiedDemoRecipe,
+  ): Promise<ExpandedAgentResponse> {
     const focusedContext = this.contextForMessage(input.context, input.message);
-    const response = await this.invokeCore({ ...input, context: focusedContext });
+    const response = await this.invokeCore({ ...input, context: focusedContext }, forcedRecipeReference);
     return this.withConversationMemory(response, input.context, focusedContext);
+  }
+
+  /**
+   * Part A + Part B orchestration.
+   *
+   * Order matters: the rule-based safety screen runs first so a medical_safety,
+   * emergency, or integrity-flagged request never reaches Claude in any role
+   * (invariant I4, acceptance criterion 6). Deterministic routing is then run
+   * unchanged, so Claude cannot influence which answer is produced — only how
+   * an already-computed answer is worded, and only after grounding validation.
+   */
+  private async invokeWithClaudeLayer(input: { message: string; language?: "ar-EG" | "ar" | "en"; context?: GraduationConversationContext }): Promise<ExpandedAgentResponse> {
+    const startedAt = performance.now();
+    const query = input.message.trim();
+    const language = answerLanguage(query, input.language);
+    const namedRecipes = explicitlyNamedRecipes(this.dataset, query);
+    const ruleBasedIntent = classifyGraduationIntent(query, namedRecipes);
+    const trace = newTrace({ traceId: randomUUID(), language, ruleBasedIntent });
+
+    const preScreen = safetyPreScreen(query, ruleBasedIntent);
+    trace.safetyRouted = preScreen.safetyRouted;
+    trace.safetyRouteReason = preScreen.reason;
+    let forcedRecipeReference: UnifiedDemoRecipe | undefined;
+
+    if (!preScreen.safetyRouted) {
+      const ruleBased: RuleBasedClassification = {
+        graduationIntent: ruleBasedIntent,
+        expandedPlannerIntent: expandedPlannerIntentOf(await this.expandedPlanner.plan({
+          systemPrompt: NUTRIGUARD_SYSTEM_PROMPT,
+          promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
+          userMessage: query,
+          language,
+        }).catch(() => null)),
+      };
+      const classification = await this.claude.classificationStage({
+        message: query,
+        language,
+        context: this.classifierContext(input.context),
+        ruleBased,
+        resolvers: this.entityResolvers(),
+      });      trace.nluRoute = classification.arbitration.route;
+      trace.expandedPlannerIntent = ruleBased.expandedPlannerIntent;
+      trace.claudeIntent = classification.arbitration.claude?.intent ?? null;
+      trace.claudeConfidence = classification.arbitration.claude?.confidence ?? null;
+      trace.claudeIntentAgreed = classification.arbitration.agreed;
+      trace.classifierModel = classification.arbitration.claudeModel;
+      trace.classifierFailureReason = classification.arbitration.claudeFailureReason;
+      trace.latencies.claudeClassifierMs = classification.latencyMs;
+      if (classification.entityReport) {
+        trace.entityCandidatesTotal = classification.entityReport.records.length;
+        trace.entityCandidatesAccepted = classification.entityReport.acceptedCount;
+        trace.entityCandidatesRejected = classification.entityReport.rejectedCount;
+      }
+      if (this.claude.config.rawMessageDebugOptIn) trace.rawMessage = query;
+
+      // Reference resolution. The deterministic cue is tried first; the model is
+      // consulted only when the deterministic path found nothing, the user named
+      // no dish at all, and a closed candidate set exists. Consulting it while a
+      // dish is named explicitly is what caused BUG-10.
+      const candidates = this.referenceCandidates(input.context);
+      const deterministicallyResolved = usesImplicitRecipeReference(query);
+      const namesARecipeExplicitly = namedRecipes.length > 0;
+      // An ambiguous follow-up to a comparison is resolved as a continuation of
+      // that comparison, so the model must not be asked to pick one of the two
+      // compared dishes — doing so turned "مين الأفضل؟" into a single-recipe answer.
+      const continuesComparison = this.classifierContextIsComparison(input.context) && isComparisonFollowup(query);
+      if (this.claude.config.referenceResolutionEnabled && !deterministicallyResolved && !namesARecipeExplicitly && !continuesComparison && candidates.length > 0) {
+        const validation = this.validateReferenceResolution(classification.arbitration.claude?.referenced_recipe_id, candidates);
+        forcedRecipeReference = validation.recipe;
+        trace.referenceResolution = validation.outcome;
+        trace.referenceResolvedRecipeId = validation.recipe?.recipe_id ?? null;
+      } else {
+        trace.referenceResolution = namesARecipeExplicitly
+          ? "skipped_explicit_recipe_named"
+          : continuesComparison
+            ? "skipped_comparison_continuation"
+            : deterministicallyResolved ? "resolved_deterministically" : "not_proposed";
+      }
+    }
+
+    // Deterministic pipeline, unchanged and always authoritative.
+    const calculationStartedAt = performance.now();
+    const { result: deterministic, collection } = await withRetrievalCollection(() => this.invokeDeterministic(input, forcedRecipeReference));
+    trace.latencies.deterministicCalculationMs = Math.round(performance.now() - calculationStartedAt);
+
+    const searchToolInvoked = deterministic.toolTrace.some((entry) => entry.tool === "search_recipes" || entry.tool === "search_guidelines");
+    const retrieval = summarizeRetrieval(collection, searchToolInvoked);
+    trace.retrievalRoute = retrieval.route as RetrievalRoute;
+    trace.geminiEmbeddingsCalled = retrieval.geminiEmbeddingsCalled;
+    trace.qdrantReturnedResult = retrieval.qdrantReturnedResult;
+    trace.localFallbackSearchUsed = retrieval.localFallbackSearchUsed;
+    trace.latencies.embeddingCallMs = retrieval.embeddingCallMs;
+    trace.latencies.vectorSearchMs = retrieval.vectorSearchMs;
+    trace.latencies.localFallbackSearchMs = retrieval.localFallbackSearchMs;
+
+    const formatted = await this.applyFormatter(deterministic, language, preScreen.safetyRouted, trace);
+    trace.latencies.totalMs = Math.round(performance.now() - startedAt);
+    this.claude.recordTrace(trace);
+    return formatted;
+  }
+
+  /**
+   * Replace the deterministic wording with Claude's only when Part B is in
+   * scope for the intent and the grounding validator passed.
+   */
+  private async applyFormatter(
+    response: ExpandedAgentResponse,
+    language: "ar-EG" | "ar" | "en",
+    safetyRouted: boolean,
+    trace: ClaudeRequestTrace,
+  ): Promise<ExpandedAgentResponse> {
+    const intent = typeof response.data?.intent === "string" ? response.data.intent : trace.ruleBasedIntent;
+    // I4/B3: the fixed safety copy is never rephrased, and only fully computed
+    // successful answers are eligible at all. Step 16 selection turns are also
+    // excluded: their exact wording carries the confirmation contract (the
+    // operation id, the "nothing is logged yet" statement, and the mock notice),
+    // which must never be reworded by a model.
+    const eligible = !safetyRouted
+      && response.status === "ok"
+      && response.safetyFlags.length === 0
+      && response.integrityFlags.length === 0
+      && response.primaryIntent !== "medical_safety_request"
+      && intent !== "meal_plan_selection"
+      && response.data !== null;
+    if (!eligible) {
+      trace.formatterRoute = intent === "medical_safety" || response.primaryIntent === "medical_safety_request"
+        ? "formatter_hard_disabled_medical_safety"
+        : "formatter_intent_out_of_scope";
+      return response;
+    }
+    const stage = await this.claude.formatterStage({
+      intent,
+      language,
+      deterministicText: response.message,
+      data: response.data,
+      knownEntityVocabulary: this.entityVocabulary,
+    });
+    trace.formatterRoute = stage.route;
+    trace.formatterModel = stage.model;
+    trace.formatterFailureReason = stage.failureReason;
+    trace.groundingPassed = stage.grounding ? stage.grounding.passed : null;
+    trace.groundingFailureCodes = stage.grounding?.violations.map((violation) => violation.code) ?? [];
+    trace.groundingViolationTokens = stage.grounding?.violations.map((violation) => violation.token) ?? [];
+    trace.latencies.claudeFormatterMs = stage.formatterLatencyMs;
+    trace.latencies.groundingValidationMs = stage.groundingLatencyMs;
+    if (stage.rejectedOutput !== null && this.claude.config.rawMessageDebugOptIn) {
+      trace.rejectedFormatterOutput = stage.rejectedOutput;
+      trace.rejectedFormatterFacts = JSON.stringify(stage.rejectedFacts?.values ?? null);
+    }
+    // Any rejection keeps the deterministic template verbatim.
+    if (stage.text === null) return response;
+    return { ...response, message: stage.text };
+  }
+
+  /**
+   * Bounded structural summary of the short-term session context.
+   *
+   * Reuses the existing conversation memory rather than reimplementing it, and
+   * passes intent labels and identifiers only — never a nutrition value. The
+   * candidate list is the closed set a conversational reference may resolve to.
+   */
+  private classifierContext(context?: GraduationConversationContext): ClassifierContextSummary | null {
+    if (!context) return null;
+    return {
+      lastIntent: context.lastIntent,
+      activeRecipeId: context.memory?.activeRecipeId ?? null,
+      turnCount: context.memory?.turnCount ?? null,
+      pendingOperation: context.lastIntent === "meal_plan_draft"
+        ? "meal_plan_draft_awaiting_calorie_target"
+        : context.lastIntent === "meal_selection"
+          ? `meal_selection_${context.selection.phase}`
+          : null,
+      referenceCandidates: this.referenceCandidates(context),
+    };
+  }
+
+  /**
+   * The closed candidate set for reference resolution, taken entirely from
+   * deterministic session memory. The model can only pick from this list.
+   */
+  private referenceCandidates(context?: GraduationConversationContext): ReferenceCandidate[] {
+    if (!context) return [];
+    const ids = new Set<string>();
+    if (context.memory?.activeRecipeId) ids.add(context.memory.activeRecipeId);
+    for (const id of context.memory?.recentRecipeIds ?? []) ids.add(id);
+    if (context.lastIntent === "recipe_reference" || context.lastIntent === "lighter_modification") ids.add(context.recipeId);
+    if (context.lastIntent === "meal_calorie_target" && context.recipeId) ids.add(context.recipeId);
+    if (context.lastIntent === "meal_plan") for (const id of context.recipeIds) ids.add(id);
+    if (context.lastIntent === "meal_selection") {
+      for (const category of context.selection.categories) for (const option of category.options) for (const id of option.recipeIds) ids.add(id);
+    }
+    return [...ids]
+      .slice(0, 8)
+      .flatMap((recipeId) => {
+        const recipe = this.dataset.recipes.find((candidate) => candidate.recipe_id === recipeId);
+        return recipe ? [{ recipeId, displayName: recipe.name_ar }] : [];
+      });
+  }
+
+  /**
+   * Validate a model-proposed reference (A5 applied to reference resolution).
+   *
+   * Two independent gates: the id must be a member of the closed candidate set
+   * that deterministic memory produced, and it must resolve to a real dataset
+   * recipe. A value failing either gate is discarded, never used.
+   */
+  private validateReferenceResolution(
+    proposedId: string | null | undefined,
+    candidates: readonly ReferenceCandidate[],
+  ): { recipe: UnifiedDemoRecipe | undefined; outcome: "not_proposed" | "accepted" | "rejected_outside_candidate_set" | "rejected_unknown_recipe" } {
+    if (!proposedId) return { recipe: undefined, outcome: "not_proposed" };
+    if (!candidates.some((candidate) => candidate.recipeId === proposedId)) {
+      return { recipe: undefined, outcome: "rejected_outside_candidate_set" };
+    }
+    const recipe = this.dataset.recipes.find((candidate) => candidate.recipe_id === proposedId);
+    return recipe ? { recipe, outcome: "accepted" } : { recipe: undefined, outcome: "rejected_unknown_recipe" };
+  }
+
+  /** True when the incoming context is a stored two-recipe comparison. */
+  private classifierContextIsComparison(context?: GraduationConversationContext): boolean {
+    if (!context) return false;
+    if (context.lastIntent === "compare_recipes") return true;
+    return context.memory?.comparison != null;
+  }
+
+  /** A5 resolvers: the exact paths a user-typed name would take. */
+  private entityResolvers(): AgentEntityResolvers {
+    return {
+      resolveRecipeId: (name) => explicitlyNamedRecipe(this.dataset, name)?.recipe_id ?? null,
+      resolveIngredientKey: (name) => {
+        const normalized = normalizedLookupText(name);
+        if (!normalized) return null;
+        const match = INGREDIENT_ALIASES
+          .flatMap((entry) => entry.aliases.map((alias) => ({ key: entry.key, alias: normalizedLookupText(alias) })))
+          .filter((candidate) => candidate.alias.length >= 2 && candidate.alias === normalized)
+          .sort((left, right) => right.alias.length - left.alias.length)[0];
+        return match?.key ?? null;
+      },
+    };
+  }
+
+  /**
+   * Read the Step 16 selection state out of the existing session context.
+   *
+   * Reads the SAME bounded memory object the BUG-09 fix introduced. The focused
+   * context pointer is preferred when present, and the shared memory is the
+   * fallback, which is what lets a selection survive intervening turns about
+   * something else.
+   */
+  private mealSelectionState(context?: GraduationConversationContext): MealSelectionState | null {
+    if (context?.lastIntent === "meal_selection") return context.selection;
+    return context?.memory?.mealSelection ?? null;
   }
 
   private contextForMessage(context: GraduationConversationContext | undefined, message: string): GraduationConversationContext | undefined {
@@ -749,8 +1296,24 @@ class GraduationDemoAgent {
       const single = memory.singleMealTarget;
       return { schemaVersion: "1.0", lastIntent: "meal_calorie_target", calorieTargetKcal: single.calorieTargetKcal, category: single.category, relation: single.relation, lastRecommendationCaloriesKcal: single.lastRecommendationCaloriesKcal, excludedIngredientKeys: [...single.excludedIngredientKeys], ...(single.recipeId ? { recipeId: single.recipeId } : {}), memory };
     }
-    const recipeCue = /(?:هي|دي|ده|ها\b|قارنها|خففها|قللها|زودها|الوصفه\s+اللي\s+فاتت|الاكله\s+اللي\s+فاتت|it|that\s+recipe|same\s+recipe)/iu.test(text);
+    const recipeCue = usesImplicitRecipeReference(text);
+    // BUG-16: a remembered comparison is re-focused for an ambiguous follow-up,
+    // but an explicit pronoun reference to a single dish still wins so
+    // "خففها"/"قارنها" keep their existing behaviour.
+    if (memory.comparison && !recipeCue && isComparisonFollowup(text)) {
+      return {
+        schemaVersion: "1.0",
+        lastIntent: "compare_recipes",
+        firstRecipeId: memory.comparison.firstRecipeId,
+        secondRecipeId: memory.comparison.secondRecipeId,
+        basis: memory.comparison.basis,
+        nutrient: memory.comparison.nutrient,
+        memory,
+      };
+    }
     if (memory.activeRecipeId && recipeCue) return { schemaVersion: "1.0", lastIntent: "recipe_reference", recipeId: memory.activeRecipeId, memory };
+    // A bare nutrient question continues on the dish already under discussion.
+    if (memory.activeRecipeId && isBareNutrientQuestion(text)) return { schemaVersion: "1.0", lastIntent: "recipe_reference", recipeId: memory.activeRecipeId, memory };
     return context;
   }
 
@@ -769,8 +1332,10 @@ class GraduationDemoAgent {
       mealPlan: base.mealPlan ? { ...base.mealPlan, excludedIngredientKeys: [...base.mealPlan.excludedIngredientKeys], recipeIds: [...base.mealPlan.recipeIds] } : null,
       singleMealTarget: base.singleMealTarget ? { ...base.singleMealTarget, excludedIngredientKeys: [...base.singleMealTarget.excludedIngredientKeys] } : null,
       lighterModification: base.lighterModification ? { ...base.lighterModification } : null,
+      comparison: base.comparison ? { ...base.comparison } : null,
+      mealSelection: base.mealSelection ? structuredClone(base.mealSelection) : null,
     } : {
-      schemaVersion: "1.0", turnCount: 1, activeRecipeId: null, recentRecipeIds: [], mealPlan: null, singleMealTarget: null, lighterModification: null,
+      schemaVersion: "1.0", turnCount: 1, activeRecipeId: null, recentRecipeIds: [], mealPlan: null, singleMealTarget: null, lighterModification: null, comparison: null, mealSelection: null,
     };
     const absorb = (candidate: GraduationConversationContext | undefined): void => {
       if (!candidate) return;
@@ -796,16 +1361,50 @@ class GraduationDemoAgent {
         memory.recentRecipeIds = [...candidate.recipeIds, ...memory.recentRecipeIds.filter((id) => !candidate.recipeIds.includes(id))].slice(0, 8);
         if (!memory.activeRecipeId) memory.activeRecipeId = candidate.recipeIds[0] ?? null;
       }
+      if (candidate.lastIntent === "compare_recipes") {
+        // Remember BOTH compared recipes and the basis. `activeRecipeId` still
+        // becomes the first one so existing pronoun follow-ups ("خففها") keep
+        // working, but the comparison itself is no longer lost.
+        memory.comparison = { firstRecipeId: candidate.firstRecipeId, secondRecipeId: candidate.secondRecipeId, basis: candidate.basis, nutrient: candidate.nutrient };
+        memory.recentRecipeIds = [candidate.firstRecipeId, candidate.secondRecipeId, ...memory.recentRecipeIds.filter((id) => id !== candidate.firstRecipeId && id !== candidate.secondRecipeId)].slice(0, 8);
+        memory.activeRecipeId = candidate.firstRecipeId;
+      }
+      if (candidate.lastIntent === "meal_selection") {
+        // Step 16 state joins the same shared memory as every other feature, so a
+        // selection reference or a pending confirmation survives turns spent on an
+        // unrelated question.
+        memory.mealSelection = structuredClone(candidate.selection);
+        const shown = candidate.selection.categories.flatMap((category) => category.options.flatMap((option) => option.recipeIds));
+        memory.recentRecipeIds = [...new Set([...shown, ...memory.recentRecipeIds])].slice(0, 8);
+      }
     };
     absorb(incoming);
     absorb(next);
+    // BUG-11: a rejected recipe must not survive in short-term memory, or the
+    // next pronoun would silently resolve straight back to it.
+    const clearedRecipeId = typeof responseData.clearActiveRecipeId === "string" ? responseData.clearActiveRecipeId : null;
+    if (clearedRecipeId) {
+      memory.recentRecipeIds = memory.recentRecipeIds.filter((id) => id !== clearedRecipeId);
+      if (memory.activeRecipeId === clearedRecipeId) memory.activeRecipeId = null;
+      if (memory.lighterModification?.recipeId === clearedRecipeId) memory.lighterModification = null;
+      if (memory.singleMealTarget?.recipeId === clearedRecipeId) memory.singleMealTarget = null;
+      const nextRecipeId = next?.lastIntent === "recipe_reference" ? next.recipeId : null;
+      if (nextRecipeId && nextRecipeId !== clearedRecipeId) memory.activeRecipeId = nextRecipeId;
+    }
     const current = next ?? focused ?? incoming;
     if (!current) return response;
+    // Clearing memory alone is not enough: the top-level context pointer must
+    // also stop aiming at the rejected recipe, otherwise the very next
+    // "اعرضلي مكونات الوصفه" resolves straight back to it.
+    if (clearedRecipeId && contextPointsAtRecipe(current, clearedRecipeId)) return response;
     const conversationContext: GraduationConversationContext = { ...current, memory };
     return { ...response, data: { ...responseData, conversationContext } };
   }
 
-  private async invokeCore(input: { message: string; language?: "ar-EG" | "ar" | "en"; context?: GraduationConversationContext }): Promise<ExpandedAgentResponse> {
+  private async invokeCore(
+    input: { message: string; language?: "ar-EG" | "ar" | "en"; context?: GraduationConversationContext },
+    forcedRecipeReference?: UnifiedDemoRecipe,
+  ): Promise<ExpandedAgentResponse> {
     const result = await this.base.invoke(input);
     if (result.safetyFlags.length > 0 || result.integrityFlags.length > 0) return result;
     if (result.status === "emergency" || result.status === "refused") return result;
@@ -816,8 +1415,28 @@ class GraduationDemoAgent {
       : input.context?.lastIntent === "lighter_modification" ? input.context.recipeId
         : input.context?.lastIntent === "meal_calorie_target" ? input.context.recipeId ?? null : null;
     const referencedRecipe = referencedId ? this.dataset.recipes.find((recipe) => recipe.recipe_id === referencedId) : undefined;
-    const usesImplicitReference = /(?:هي|دي|ده|ها\b|قارنها|خففها|قللها|زودها|الوصفه اللي فاتت|الاكله اللي فاتت|it|that recipe|same recipe)/iu.test(query);
-    if (referencedRecipe && usesImplicitReference && !namedRecipes.some((recipe) => recipe.recipe_id === referencedRecipe.recipe_id)) namedRecipes.unshift(referencedRecipe);
+    // BUG-10 guard. A model-resolved reference may only fill a gap, never
+    // outrank a dish the user named explicitly. Without this, asking for
+    // "سعرات الكشري" while an unrelated recipe sat in session memory returned
+    // that unrelated recipe's (correctly calculated) numbers — a wrong answer
+    // that looks right, which is far harder to spot than a fabrication.
+    const explicitlyNamed = namedRecipes.length > 0;
+    // Captured BEFORE any implicit or model-resolved reference is spliced in, so
+    // later routing can ask "did the USER name a dish?" rather than "does the
+    // list contain one?". Without this, an injected reference made an ambiguous
+    // comparison follow-up look like an explicit single-dish request.
+    const userNamedRecipeCount = namedRecipes.length;
+    const modelReference = explicitlyNamed ? undefined : forcedRecipeReference;
+    const resolvedReference = modelReference ?? referencedRecipe;
+    // Precedence rule: an implicit reference may never displace a dish the user
+    // named. The single exception is a verb carrying an attached pronoun
+    // ("قارنها بالكشري", "خففها"), where the remembered dish is grammatically a
+    // participant in the request rather than a competitor to the named one.
+    const attachedPronounVerb = /(?:قارنها|خففها|قللها|زودها)/u.test(query);
+    const implicitReferenceAllowed = attachedPronounVerb
+      || (!explicitlyNamed && (usesImplicitRecipeReference(query) || isBareNutrientQuestion(query)));
+    const usesImplicitReference = modelReference !== undefined || implicitReferenceAllowed;
+    if (resolvedReference && usesImplicitReference && !namedRecipes.some((recipe) => recipe.recipe_id === resolvedReference.recipe_id)) namedRecipes.unshift(resolvedReference);
     const contextualCalorieFollowup = input.context?.lastIntent === "meal_calorie_target"
       && /^(?:لا\s*)?(?:عاوز|عايز|محتاج)?\s*(?:وجبة\s*)?(?:أقل|اقل|أكتر|اكتر|أكثر|more|less|lower|higher)/iu.test(query);
     const contextualLighterFollowup = input.context?.lastIntent === "lighter_modification"
@@ -830,12 +1449,44 @@ class GraduationDemoAgent {
       return this.personalCalorieRequirementUnsupported(language);
     }
 
+    // Step 16, part 1: turns that answer an already-displayed option list, an
+    // already-displayed confirmation summary, or a confirmation with no live
+    // pending operation. Runs before generic conversational handling so a
+    // confirmation can never be swallowed as a bare acknowledgement, and returns
+    // null for anything unrelated so the rest of the router is unaffected.
+    const mealSelectionState = this.mealSelectionState(input.context);
+    const selectionTurn = await this.mealSelection.handleStateTurn({ message: query, language, state: mealSelectionState });
+    if (selectionTurn) return selectionTurn;
+
     const conversationalResponse = this.scopedConversationResponse(query, language);
     if (conversationalResponse) return conversationalResponse;
+
+    // BUG-11 safety net. When the user explicitly rejects what was just shown,
+    // never serve that same result again. This exists independently of the
+    // BUG-10 fix because a mismatch can arise from any cause: an ambiguous
+    // name, a stale session reference, or simply the wrong dish being recorded.
+    if (detectsResultRejection(query)) {
+      const rejectedId = referencedId ?? input.context?.memory?.activeRecipeId ?? null;
+      if (rejectedId) return this.rejectedResultResponse(rejectedId, namedRecipes, language);
+    }
+
+    // BUG-16: an ambiguous follow-up to a comparison stays inside that
+    // comparison. Only when the user names no dish of their own — naming two
+    // dishes is a fresh comparison, naming one is a normal single-recipe request.
+    if (input.context?.lastIntent === "compare_recipes" && userNamedRecipeCount === 0 && isComparisonFollowup(query)) {
+      const continuation = this.comparisonFollowup(input.context, query, language);
+      if (continuation) return continuation;
+    }
 
     // The graduation UI exposes one answer, not raw retrieval candidates. Safety and
     // integrity always keep the authority of the production agent above this router.
     if (deterministicIntent === "medical_safety") return this.medicalSafetyFallback(query, language, result);
+    // Step 16, part 2: a fresh multi-option meal-plan request. Deliberately placed
+    // after the medical-safety gate so a safety-routed message can never be
+    // answered with a meal plan, and before the single-answer day planner so an
+    // explicit multi-category or snacks request is not collapsed into one plan.
+    const selectionRequest = await this.mealSelection.handleNewRequest({ message: query, language, state: mealSelectionState });
+    if (selectionRequest) return selectionRequest;
     const directMealPlan = this.recommendMealPlan(query, language, input.context);
     if (directMealPlan) return directMealPlan;
     if (mealCategory(query) || input.context?.lastIntent === "meal_calorie_target") {
@@ -920,7 +1571,18 @@ class GraduationDemoAgent {
     const countMatch = normalized.match(/(\d+)\s*(?:وجبه|وجبة|وجبات|meals?)/iu);
     const requestedMealCount = countMatch ? Number(countMatch[1]) : null;
     const changesMealCount = /(?:زود|ضيف|اضف|قلل|احذف|شيل|increase|add|remove|reduce).{0,12}(?:وجبه|وجبة|وجبات|meal)/iu.test(normalized);
-    const isPlanFollowup = Boolean(previous && (hasDailyTargetWording || requestedMealCount !== null || changesMealCount || hasIngredientExclusionRequest(normalized) || /(?:قلل|خفض|زود|ارفع|غير|بدل|خلي|اقل|اكتر|reduce|increase|change)/iu.test(normalized)));
+    // A fresh request for ONE meal must not be absorbed as a follow-up to an
+    // earlier day plan. Previously any exclusion phrase ("ميكنش فيها منتجات
+    // ألبان") was enough to make a single-meal request rebuild the whole plan,
+    // so "وجبة فطار 500 سعر" returned three meals totalling 500 kcal.
+    const planModificationVerb = /(?:قلل|خفض|زود|ارفع|غير|بدل|خلي|احذف|شيل|ارجع|reduce|increase|change|remove)/iu.test(normalized);
+    const singleMealRequest = !planModificationVerb
+      && !hasDailyTargetWording
+      && requestedMealCount === null
+      && !changesMealCount
+      && !/(?:وجبات|meals)/iu.test(normalized)
+      && (mealCategory(normalized) !== null || /وجب(?:ه|ة)/u.test(normalized));
+    const isPlanFollowup = Boolean(previous && !singleMealRequest && (hasDailyTargetWording || requestedMealCount !== null || changesMealCount || hasIngredientExclusionRequest(normalized) || /(?:قلل|خفض|زود|ارفع|غير|بدل|خلي|اقل|اكتر|reduce|increase|change)/iu.test(normalized)));
     if (!isPlanRequest && !isPlanFollowup) return null;
     const explicit = normalized.match(/(\d+(?:\.\d+)?)\s*(?:سعر(?:ة|ات)?(?:\s*حراري(?:ة|ه)?)?|كالوري|kcal|calories?)/iu);
     const amount = explicit ? Number(explicit[1]) : null;
@@ -1153,14 +1815,197 @@ class GraduationDemoAgent {
     };
   }
 
+  /**
+   * User-facing provenance for one demo recipe.
+   *
+   * BUG-15: the recorded `source_url` is an `en.wikipedia.org` page for 214 of
+   * the 215 demo recipes, and the dataset's own `metadata.review_status` is
+   * `needs_review`. DATA_SOURCE_POLICY.md requires that a record whose
+   * review status is not `approved` must not be surfaced to users, and that
+   * user-facing results cite only approved active sources. The URL was being
+   * rendered by the chat UI as a clickable "دليل مرتبط" (related evidence) link
+   * next to calculated nutrition, which was wrong twice over:
+   *
+   *  1. it presented an unapproved source as approved evidence; and
+   *  2. it misattributed the numbers — Wikipedia is the recorded *culinary*
+   *     source for the dish text, while the nutrition is recalculated from
+   *     `ingredient_nutrition_reference`.
+   *
+   * The link is therefore withheld (`url: null`, which the UI renders as plain
+   * text rather than an anchor). The attribution itself is preserved in the
+   * title, because the dish text is reused under CC BY-SA 4.0 and dropping
+   * attribution entirely would trade a policy problem for a licence one.
+   */
   private recipeProvenance(recipe: UnifiedDemoRecipe, language: "ar-EG" | "ar" | "en"): ExpandedAgentResponse["provenance"][number] {
+    const name = language === "en" ? recipe.name_en : recipe.name_ar;
     return {
       sourceId: "DEMO-UNIFIED-EGYPTIAN-DATASET",
       versionId: "2.0-final-demo-normalized",
-      title: language === "en" ? recipe.name_en : recipe.name_ar,
-      url: recipe.source_url,
+      title: language === "en"
+        ? `${name} — project demo dataset (nutrition recalculated from the ingredient reference; dish text from an unapproved candidate source pending review)`
+        : `${name} — بيانات عرض المشروع (القيم الغذائية محسوبة من مرجع المكونات؛ نص الطبق من مصدر مرشّح غير معتمد بعد المراجعة)`,
+      url: null,
       accessedAt: this.dataset.metadata.created_date,
       locator: recipe.recipe_id,
+    };
+  }
+
+  /**
+   * Response to an explicit rejection of the previous result (BUG-11).
+   *
+   * Two branches, and neither can re-serve the rejected recipe:
+   *  - the correction names exactly one different, resolvable dish, so
+   *    resolution is re-attempted with that corrected understanding;
+   *  - otherwise the mismatch is acknowledged, the rejected dish is named so
+   *    the user can see what went wrong, and a precise name is requested.
+   *
+   * Both branches clear the rejected recipe from short-term memory so a later
+   * pronoun cannot silently resolve back to it.
+   */
+  private rejectedResultResponse(
+    rejectedRecipeId: string,
+    namedRecipes: readonly UnifiedDemoRecipe[],
+    language: "ar-EG" | "ar" | "en",
+  ): ExpandedAgentResponse {
+    const rejected = this.dataset.recipes.find((recipe) => recipe.recipe_id === rejectedRecipeId);
+    const rejectedName = rejected ? (language === "en" ? rejected.name_en : rejected.name_ar) : rejectedRecipeId;
+    const corrected = namedRecipes.filter((recipe) => recipe.recipe_id !== rejectedRecipeId);
+
+    if (corrected.length === 1) {
+      const recipe = corrected[0]!;
+      const calculation = calculateUnifiedDemoNutrition(this.dataset, recipe);
+      const nutrition = calculation.perServing;
+      const name = language === "en" ? recipe.name_en : recipe.name_ar;
+      const ingredients = recipe.ingredients
+        .map((item) => `• ${item.quantity} ${localizedUnit(item.unit, language)} ${ingredientLabel(item.ingredient, language)}`)
+        .join("\n");
+      const message = language === "en"
+        ? `You are right — I showed ${rejectedName}, which is not what you asked for. The recipe you mean is ${name}.\n\nIngredients (${recipe.servings} servings):\n${ingredients}\n\nEstimated per serving: ${nutrition.kcal ?? "unknown"} kcal, ${nutrition.protein ?? "unknown"} g protein, ${nutrition.carbs ?? "unknown"} g carbohydrates, and ${nutrition.fat ?? "unknown"} g fat.`
+        : `معاك حق — اللي عرضته كان ${rejectedName}، وده مش اللي طلبته. الوصفة المقصودة هي ${name}.\n\nالمكونات (${recipe.servings} حصص):\n${ingredients}\n\nتقدير الحصة: ${nutrition.kcal ?? "غير معروف"} سعر حراري، ${nutrition.protein ?? "غير معروف"} جم بروتين، ${nutrition.carbs ?? "غير معروف"} جم كربوهيدرات، و${nutrition.fat ?? "غير معروف"} جم دهون.`;
+      return {
+        status: "ok", primaryIntent: "general_guidance", language, safetyFlags: [], integrityFlags: [], message,
+        data: {
+          intent: "find_recipe", correctionApplied: true, reasonCode: "user_rejected_previous_result",
+          rejectedRecipeId, rejectedRecipeName: rejectedName,
+          recipeId: recipe.recipe_id, recipeName: name,
+          recipe: { recipeId: recipe.recipe_id, nameAr: recipe.name_ar, nameEn: recipe.name_en, servings: recipe.servings, ingredients: recipe.ingredients, method: recipe.method_summary, nutritionPerServing: nutrition },
+          clearActiveRecipeId: rejectedRecipeId,
+          conversationContext: { schemaVersion: "1.0", lastIntent: "recipe_reference", recipeId: recipe.recipe_id },
+        },
+        evidenceDocumentIds: [`DEMO-${recipe.recipe_id}`], provenance: [this.recipeProvenance(recipe, language)],
+        toolTrace: [{ tool: "search_recipes", ok: true, code: "user_correction_reresolved" }, { tool: "calculate_nutrition", ok: true, code: null }],
+        promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
+      };
+    }
+
+    const ambiguous = corrected.length > 1;
+    const message = language === "en"
+      ? `You are right, and I am sorry — I showed ${rejectedName}, which does not match what you asked for. I will not repeat it.${ambiguous ? ` I can see more than one possible dish in your message (${corrected.map((recipe) => recipe.name_en).join(", ")}).` : ""}\n\nWrite the exact Egyptian dish name on its own, for example “كشري” or “فول مدمس”, and I will resolve it precisely instead of guessing.`
+      : `معاك حق وأنا آسف — اللي عرضته كان ${rejectedName}، وهو مش مطابق لطلبك، ومش هكرره.${ambiguous ? ` وشايف في رسالتك أكتر من طبق محتمل (${corrected.map((recipe) => recipe.name_ar).join("، ")}).` : ""}\n\nاكتب اسم الأكلة المصرية بالظبط ولوحده، مثلًا «كشري» أو «فول مدمس»، وأنا أحددها بدقة بدل التخمين.`;
+    return {
+      status: "clarification", primaryIntent: "general_guidance", language, safetyFlags: [], integrityFlags: [], message,
+      data: {
+        intent: "find_recipe", correctionApplied: true, reasonCode: "user_rejected_previous_result",
+        requiredInput: "exact_recipe_name", rejectedRecipeId, rejectedRecipeName: rejectedName,
+        candidateRecipeIds: corrected.map((recipe) => recipe.recipe_id),
+        clearActiveRecipeId: rejectedRecipeId,
+      },
+      evidenceDocumentIds: [], provenance: [],
+      toolTrace: [{ tool: "search_recipes", ok: false, code: "user_rejected_previous_result" }],
+      promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
+    };
+  }
+
+  /**
+   * Continue a comparison instead of abandoning it (BUG-16).
+   *
+   * Reached only when the previous turn was a comparison and the current message
+   * names no dish of its own. It never returns a single-recipe result for one of
+   * the two compared items.
+   *
+   * Numbers come from the same deterministic calculator the original comparison
+   * used, so a criterion follow-up is answered with real recomputed values on the
+   * basis already established, not from remembered prose.
+   */
+  private comparisonFollowup(
+    context: ComparisonConversationContext,
+    query: string,
+    language: "ar-EG" | "ar" | "en",
+  ): ExpandedAgentResponse | null {
+    const first = this.dataset.recipes.find((recipe) => recipe.recipe_id === context.firstRecipeId);
+    const second = this.dataset.recipes.find((recipe) => recipe.recipe_id === context.secondRecipeId);
+    if (!first || !second) return null;
+
+    const basis = context.basis === "per_serving" ? "perServing" : "per100g";
+    const basisLabel = basis === "perServing" ? (language === "en" ? "per serving" : "للحصة") : (language === "en" ? "per 100 g" : "لكل 100 جرام");
+    const firstName = language === "en" ? first.name_en : first.name_ar;
+    const secondName = language === "en" ? second.name_en : second.name_ar;
+    const nextContext: ComparisonConversationContext = { ...context };
+    const provenance = [this.recipeProvenance(first, language), this.recipeProvenance(second, language)];
+    const evidenceDocumentIds = [`DEMO-${first.recipe_id}`, `DEMO-${second.recipe_id}`];
+
+    const nutrient = comparisonNutrient(query);
+    if (nutrient) {
+      const firstValue = calculateUnifiedDemoNutrition(this.dataset, first)[basis][nutrient];
+      const secondValue = calculateUnifiedDemoNutrition(this.dataset, second)[basis][nutrient];
+      const unit = nutrient === "sodium" ? (language === "en" ? "mg" : "مجم") : nutrient === "kcal" ? (language === "en" ? "kcal" : "سعر حراري") : language === "en" ? "g" : "جم";
+      const label = language === "en"
+        ? ({ sodium: "sodium", protein: "protein", carbs: "carbohydrates", fat: "total fat", fiber: "fiber", sugar: "sugar", kcal: "calories" } as const)[nutrient]
+        : ({ sodium: "الصوديوم", protein: "البروتين", carbs: "الكربوهيدرات", fat: "الدهون الكلية", fiber: "الألياف", sugar: "السكر", kcal: "السعرات" } as const)[nutrient];
+      const wantsHigher = /(?:اكتر|اكثر|اعلي|اغني|higher|more|richer)/u.test(normalizedLookupText(query));
+      let verdict: string;
+      if (firstValue === null || secondValue === null) {
+        verdict = language === "en" ? "A conclusion is unavailable because one value is missing." : "لا يمكن الحكم لأن إحدى القيمتين غير متوفرة.";
+      } else if (firstValue === secondValue) {
+        verdict = language === "en" ? "Both are equal on this metric." : "القيمتان متساويتان في العنصر ده.";
+      } else {
+        const winner = wantsHigher
+          ? (firstValue > secondValue ? firstName : secondName)
+          : (firstValue < secondValue ? firstName : secondName);
+        verdict = language === "en"
+          ? `${winner} is ${wantsHigher ? "higher" : "lower"} in ${label} on this basis.`
+          : `${winner} هو ${wantsHigher ? "الأعلى" : "الأقل"} في ${label} على نفس الأساس.`;
+      }
+      nextContext.nutrient = nutrient;
+      return {
+        status: "ok", primaryIntent: "compare_recipes", language, safetyFlags: [], integrityFlags: [],
+        message: language === "en"
+          ? `Continuing the comparison of ${firstName} and ${secondName} — ${label} ${basisLabel}:\n\n• ${firstName}: ${firstValue ?? "unknown"} ${unit}\n• ${secondName}: ${secondValue ?? "unknown"} ${unit}\n\n${verdict}\n\nThis is a numerical comparison, not personalized medical advice.`
+          : `بكمّل نفس المقارنة بين ${firstName} و${secondName} — ${label} ${basisLabel}:\n\n• ${firstName}: ${firstValue ?? "غير متوفر"} ${unit}\n• ${secondName}: ${secondValue ?? "غير متوفر"} ${unit}\n\n${verdict}\n\nدي مقارنة رقمية وليست نصيحة طبية شخصية.`,
+        data: {
+          intent: "compare_recipes", comparisonType: "followup_nutrient", continuedComparison: true,
+          basis: context.basis, nutrient, unit,
+          first: { recipeId: first.recipe_id, name: firstName, value: firstValue },
+          second: { recipeId: second.recipe_id, name: secondName, value: secondValue },
+          conversationContext: nextContext,
+        },
+        evidenceDocumentIds, provenance,
+        toolTrace: [{ tool: "calculate_nutrition", ok: true, code: null }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
+      };
+    }
+
+    // No criterion named: restate that there is no absolute winner and offer the
+    // criteria, rather than inventing a preference or switching intent.
+    const criteria = language === "en"
+      ? "calories, protein, carbohydrates, total fat, fiber, or sodium"
+      : "السعرات، البروتين، الكربوهيدرات، الدهون الكلية، الألياف، أو الصوديوم";
+    const why = asksWhy(query);
+    const message = language === "en"
+      ? `${why ? "Because" : "As before,"} there is no absolute “better” between ${firstName} and ${secondName}: the answer depends on the metric that matters for your goal, and the two dishes do not win on the same ones.\n\nTell me which metric matters most — ${criteria} — and I will say which of the two wins on it ${basisLabel}, using the recorded values.`
+      : `${why ? "لأن" : "زي ما قلت،"} مفيش «أفضل» بشكل مطلق بين ${firstName} و${secondName}: الإجابة تعتمد على العنصر المهم لهدفك، والاتنين مش بيتفوقوا في نفس العناصر.\n\nقولي العنصر الأهم لك — ${criteria} — وأنا أقولك مين الأفضل فيه ${basisLabel} بالقيم المسجلة.`;
+    return {
+      status: "clarification", primaryIntent: "compare_recipes", language, safetyFlags: [], integrityFlags: [],
+      message,
+      data: {
+        intent: "compare_recipes", comparisonType: "followup_criterion_required", continuedComparison: true,
+        requiredInput: "comparison_criterion", basis: context.basis,
+        availableCriteria: ["kcal", "protein", "carbs", "fat", "fiber", "sodium"],
+        first: { recipeId: first.recipe_id, name: firstName },
+        second: { recipeId: second.recipe_id, name: secondName },
+        conversationContext: nextContext,
+      },
+      evidenceDocumentIds, provenance,
+      toolTrace: [{ tool: "calculate_nutrition", ok: true, code: "comparison_criterion_required" }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
     };
   }
 
@@ -1172,16 +2017,24 @@ class GraduationDemoAgent {
       ? `${label}: ${value(nutrition.kcal, "kcal")}; protein ${value(nutrition.protein, "g")}; carbs ${value(nutrition.carbs, "g")}; total fat ${value(nutrition.fat, "g")}; fiber ${value(nutrition.fiber, "g")}; sugar ${value(nutrition.sugar, "g")}; sodium ${value(nutrition.sodium, "mg")}.`
       : `${label}: ${value(nutrition.kcal, "سعر حراري")}؛ بروتين ${value(nutrition.protein, "جم")}؛ كربوهيدرات ${value(nutrition.carbs, "جم")}؛ دهون كلية ${value(nutrition.fat, "جم")}؛ ألياف ${value(nutrition.fiber, "جم")}؛ سكر ${value(nutrition.sugar, "جم")}؛ صوديوم ${value(nutrition.sodium, "مجم")}.`;
     const wantsFull = /(?:القيم(?:ة)?\s+الغذائية\s+الكاملة|كل\s+القيم|ماكروز|تفاصيل\s+غذائية|full\s+(?:nutrition|nutritional)|all\s+nutrients|macros?)/iu.test(query);
-    const asksSaturatedFat = /(?:دهون\s+مشبعة|الدهون\s+المشبعة|saturated\s+fat)/iu.test(query);
-    const requested = [
-      /(?:سعر|كالوري|calorie|kcal)/iu.test(query) ? "kcal" : null,
-      /(?:بروتين|protein)/iu.test(query) ? "protein" : null,
-      /(?:كربوهيدرات|كارب|carb)/iu.test(query) ? "carbs" : null,
-      /(?:دهون|fat)/iu.test(query) && !asksSaturatedFat ? "fat" : null,
-      /(?:ألياف|الياف|fiber)/iu.test(query) ? "fiber" : null,
-      /(?:سكر|sugar)/iu.test(query) ? "sugar" : null,
-      /(?:صوديوم|ملح|sodium|salt)/iu.test(query) ? "sodium" : null,
+    // BUG-12: nutrient detection runs on NORMALIZED text. The previous raw-text
+    // patterns required an exact "ة" and no shadda, so ordinary Egyptian
+    // spellings ("المشبعه", "المشبّعة") failed to register as a saturated-fat
+    // request and the generic "دهون" branch answered with TOTAL fat instead — a
+    // different nutrient, silently substituted for the one that was asked about.
+    const nutrientQuery = normalizedLookupText(normalizeNumberDigits(query));
+    const asksSaturatedFat = /(?:مشبعه|مشبع|saturated)/u.test(nutrientQuery);
+    const requestedNutrients = [
+      /(?:سعر|سعرات|كالوري|calorie|kcal)/u.test(nutrientQuery) ? "kcal" : null,
+      /(?:بروتين|protein)/u.test(nutrientQuery) ? "protein" : null,
+      /(?:كربوهيدرات|كارب|carb)/u.test(nutrientQuery) ? "carbs" : null,
+      // Never treat a saturated-fat question as a total-fat question.
+      /(?:دهون|fat)/u.test(nutrientQuery) && !asksSaturatedFat ? "fat" : null,
+      /(?:الياف|fiber|fibre)/u.test(nutrientQuery) ? "fiber" : null,
+      /(?:سكر|sugar)/u.test(nutrientQuery) ? "sugar" : null,
+      /(?:صوديوم|ملح|sodium|salt)/u.test(nutrientQuery) ? "sodium" : null,
     ].filter((item): item is "kcal" | "protein" | "carbs" | "fat" | "fiber" | "sugar" | "sodium" => item !== null);
+    const requested = requestedNutrients;
     const explicitPer100g = /(?:100\s*(?:جرام|جم)|لكل\s*100|per\s*100\s*g)/iu.test(normalizeNumberDigits(query));
     const explicitFullRecipe = /(?:الوصفة\s+كاملة|كامل\s+الوصفة|full\s+recipe|whole\s+recipe)/iu.test(query);
     const basis = explicitPer100g ? "per100g" : explicitFullRecipe ? "totals" : "perServing";
@@ -1248,7 +2101,7 @@ class GraduationDemoAgent {
         message: language === "en"
           ? `Nutritional comparison ${basisLabel}:\n\n${lines.join("\n")}\n\nThere is no single overall winner: choose the relevant metric for your goal. This is a numerical comparison, not personalized medical advice.`
           : `مقارنة غذائية ${basisLabel}:\n\n${lines.join("\n")}\n\nمفيش اختيار أفضل بشكل مطلق؛ الاختيار يعتمد على العنصر المهم لهدفك. دي مقارنة رقمية وليست نصيحة طبية شخصية.`,
-        data: { intent: "compare_recipes", comparisonType: "overview", demoOnly: true, reviewStatus: "needs_review", basis: basis === "perServing" ? "per_serving" : "per_100g", first: { recipeId: first.recipe_id, name: firstName }, second: { recipeId: second.recipe_id, name: secondName }, metrics: values, conversationContext: { schemaVersion: "1.0", lastIntent: "recipe_reference", recipeId: first.recipe_id } },
+        data: { intent: "compare_recipes", comparisonType: "overview", demoOnly: true, reviewStatus: "needs_review", basis: basis === "perServing" ? "per_serving" : "per_100g", first: { recipeId: first.recipe_id, name: firstName }, second: { recipeId: second.recipe_id, name: secondName }, metrics: values, conversationContext: { schemaVersion: "1.0", lastIntent: "compare_recipes", firstRecipeId: first.recipe_id, secondRecipeId: second.recipe_id, basis: basis === "perServing" ? "per_serving" : "per_100g", nutrient: null } },
         evidenceDocumentIds: [`DEMO-${first.recipe_id}`, `DEMO-${second.recipe_id}`], provenance: [this.recipeProvenance(first, language), this.recipeProvenance(second, language)],
         toolTrace: [{ tool: "calculate_nutrition", ok: true, code: null }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
       };
@@ -1273,7 +2126,7 @@ class GraduationDemoAgent {
     return {
       status: "ok", primaryIntent: "compare_recipes", language, safetyFlags: [], integrityFlags: [],
       message: language === "en" ? `${label} comparison ${basisLabel}:\n\n• ${firstName}: ${firstValue ?? "unknown"} ${unit}\n• ${secondName}: ${secondValue ?? "unknown"} ${unit}\n\n${conclusion}` : `مقارنة ${label} ${basisLabel}:\n\n• ${firstName}: ${firstValue ?? "غير متوفر"} ${unit}\n• ${secondName}: ${secondValue ?? "غير متوفر"} ${unit}\n\n${conclusion}`,
-      data: { intent: "compare_recipes", demoOnly: true, reviewStatus: "needs_review", basis: basis === "perServing" ? "per_serving" : "per_100g", nutrient, first: { recipeId: first.recipe_id, name: firstName, value: firstValue }, second: { recipeId: second.recipe_id, name: secondName, value: secondValue }, unit, conversationContext: { schemaVersion: "1.0", lastIntent: "recipe_reference", recipeId: first.recipe_id } },
+      data: { intent: "compare_recipes", demoOnly: true, reviewStatus: "needs_review", basis: basis === "perServing" ? "per_serving" : "per_100g", nutrient, first: { recipeId: first.recipe_id, name: firstName, value: firstValue }, second: { recipeId: second.recipe_id, name: secondName, value: secondValue }, unit, conversationContext: { schemaVersion: "1.0", lastIntent: "compare_recipes", firstRecipeId: first.recipe_id, secondRecipeId: second.recipe_id, basis: basis === "perServing" ? "per_serving" : "per_100g", nutrient } },
       evidenceDocumentIds: [`DEMO-${first.recipe_id}`, `DEMO-${second.recipe_id}`], provenance: [this.recipeProvenance(first, language), this.recipeProvenance(second, language)],
       toolTrace: [{ tool: "calculate_nutrition", ok: true, code: null }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
     };
@@ -1358,13 +2211,26 @@ class GraduationDemoAgent {
       : candidate.ingredient === "vegetable_oil" ? "الزيت النباتي"
       : candidate.ingredient === "olive_oil" ? "زيت الزيتون"
       : `ال${ingredient}`;
+    // BUG-14: state each reduction on an explicitly named basis. The previous
+    // wording put "التخفيض الإضافي ... للحصة" next to "إجمالي التخفيض ... للحصة"
+    // and never showed the whole-recipe figure's basis, so two or three numbers
+    // that measure different things read as if they contradicted each other.
+    const savedFullRounded = Math.round(savedFull * 10) / 10;
     const message = language === "en"
-      ? `${continuing ? "A further reduction for" : "A lower-calorie"} ${name}: reduce the added ${displayedIngredient} from ${currentGrams} g to ${proposedGrams} g and keep the other recorded ingredients unchanged.\n\nEstimated additional reduction: ${incrementalSavedPerServing} kcal per serving. The serving changes from about ${previousPerServing} to ${newPerServing} kcal; total reduction from the recorded recipe is ${savedPerServing} kcal per serving.\n\nThis is a deterministic change based on the recorded oil quantity; taste and texture may change.`
-      : `${continuing ? "تقليل إضافي لسعرات" : "نسخة أقل سعرات من"} ${name}: قلّل ${displayedIngredient} المضاف من ${currentGrams} جرام إلى ${proposedGrams} جرام، مع إبقاء باقي المكونات المسجلة كما هي.\n\nالتخفيض الإضافي التقديري ${incrementalSavedPerServing} سعر حراري للحصة. وبذلك تنخفض الحصة من نحو ${previousPerServing} إلى ${newPerServing} سعر حراري؛ وإجمالي التخفيض عن الوصفة المسجلة ${savedPerServing} سعر حراري للحصة.\n\nده تعديل محسوب من كمية الزيت المسجلة، وقد يغيّر الطعم أو القوام.`;
+      ? `${continuing ? "A further reduction for" : "A lower-calorie"} ${name}: reduce the added ${displayedIngredient} from ${currentGrams} g to ${proposedGrams} g and keep the other recorded ingredients unchanged.\n\n`
+        + `Reduction from this step — per serving: -${incrementalSavedPerServing} kcal\n`
+        + `Cumulative reduction vs the recorded recipe — per serving: -${savedPerServing} kcal | whole recipe (${recipe.servings} servings): -${savedFullRounded} kcal\n`
+        + `Serving calories: about ${previousPerServing} → ${newPerServing} kcal\n\n`
+        + `The whole-recipe figure is the per-serving reduction across all ${recipe.servings} recorded servings, not a separate saving. This is a deterministic change based on the recorded oil quantity; taste and texture may change.`
+      : `${continuing ? "تقليل إضافي لسعرات" : "نسخة أقل سعرات من"} ${name}: قلّل ${displayedIngredient} المضاف من ${currentGrams} جرام إلى ${proposedGrams} جرام، مع إبقاء باقي المكونات المسجلة كما هي.\n\n`
+        + `التخفيض من الخطوة دي — للحصة الواحدة: -${incrementalSavedPerServing} سعر حراري\n`
+        + `إجمالي التخفيض عن الوصفة المسجلة — للحصة الواحدة: -${savedPerServing} سعر حراري | لإجمالي الوصفة (${recipe.servings} حصص): -${savedFullRounded} سعر حراري\n`
+        + `سعرات الحصة: من نحو ${previousPerServing} إلى ${newPerServing} سعر حراري\n\n`
+        + `رقم إجمالي الوصفة هو نفس تخفيض الحصة مضروبًا في ${recipe.servings} حصص مسجلة، وليس توفيرًا منفصلًا أو رقمًا مختلفًا. ده تعديل محسوب من كمية الزيت المسجلة، وقد يغيّر الطعم أو القوام.`;
     conversationContext.proposedGrams = proposedGrams;
     return {
       status: "ok", primaryIntent: "lighter_recipe", language, safetyFlags: [], integrityFlags: [], message,
-      data: { intent: "lighter_modification", demoOnly: true, reviewStatus: "needs_review", recipeId: recipe.recipe_id, modification: { ingredient: candidate.ingredient, originalGrams: candidate.grams, ...(continuing ? { previousGrams: currentGrams } : {}), proposedGrams }, originalCalories: { fullRecipe: calculation.totals.kcal, perServing: calculation.perServing.kcal }, previousModifiedCalories: { perServing: previousPerServing }, modifiedCalories: { fullRecipe: newFull, perServing: newPerServing }, caloriesSaved: { fullRecipe: Math.round(savedFull * 10) / 10, perServing: savedPerServing, additionalPerServing: incrementalSavedPerServing }, conversationContext },
+      data: { intent: "lighter_modification", demoOnly: true, reviewStatus: "needs_review", recipeId: recipe.recipe_id, servings: recipe.servings, modification: { ingredient: candidate.ingredient, originalGrams: candidate.grams, ...(continuing ? { previousGrams: currentGrams } : {}), proposedGrams }, originalCalories: { fullRecipe: calculation.totals.kcal, perServing: calculation.perServing.kcal }, previousModifiedCalories: { perServing: previousPerServing }, modifiedCalories: { fullRecipe: newFull, perServing: newPerServing }, caloriesSaved: { fullRecipe: savedFullRounded, perServing: savedPerServing, additionalPerServing: incrementalSavedPerServing, basisNote: `fullRecipe equals perServing multiplied by the ${recipe.servings} recorded servings; it is the same reduction expressed on a different basis, not an additional saving` }, conversationContext },
       evidenceDocumentIds: [`DEMO-${recipe.recipe_id}`], provenance: [this.recipeProvenance(recipe, language)],
       toolTrace: [{ tool: "search_recipes", ok: true, code: null }, { tool: "calculate_nutrition", ok: true, code: null }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
     };
@@ -1640,7 +2506,7 @@ class GraduationDemoAgent {
         ? `Here are three Egyptian options from the project dataset:\n\n${lines.join("\n")}\n\nTell me which one you prefer and I can show its ingredients and preparation method.`
         : `دي 3 اختيارات مصرية من قاعدة المشروع:\n\n${lines.join("\n")}\n\nاكتب اسم الاختيار اللي عجبك وأنا أعرض لك المكونات وطريقة التحضير.`,
       data: { demoOnly: true, reviewStatus: "needs_review", recommendations }, evidenceDocumentIds: recipes.map((recipe) => `DEMO-${recipe.recipe_id}`),
-      provenance: recipes.map((recipe) => ({ sourceId: "DEMO-UNIFIED-EGYPTIAN-DATASET", versionId: "2.0-final-demo-normalized", title: language === "en" ? recipe.name_en : recipe.name_ar, url: recipe.source_url, accessedAt: this.dataset.metadata.created_date, locator: recipe.recipe_id })),
+      provenance: recipes.map((recipe) => this.recipeProvenance(recipe, language)),
       toolTrace: [{ tool: "search_recipes", ok: true, code: null }], promptVersion: NUTRIGUARD_SYSTEM_PROMPT_VERSION,
     };
   }
@@ -1706,9 +2572,148 @@ class GraduationDemoAgent {
 
 }
 
+/**
+ * Rule-based 8-intent classifier. Exported for the Step 17b regression report,
+ * which must call exactly the classifier the live path uses.
+ */
+export function classifyRuleBasedGraduationIntent(dataset: UnifiedEgyptianDemoDataset, message: string): GraduationIntent {
+  const query = message.trim();
+  return classifyGraduationIntent(query, explicitlyNamedRecipes(dataset, query));
+}
+
+export type { GraduationIntent };
+
+/**
+ * Per-serving snapshot for the Step 16 flow.
+ *
+ * Returns `null` when any of the four contract macros is unknown. A recipe whose
+ * snapshot cannot be fully calculated is never shown as a candidate and never
+ * logged, because both the displayed nutrition and the dashboard payload must be
+ * complete and identical. Missing values are never zero-filled or guessed.
+ */
+function demoMealNutrition(dataset: UnifiedEgyptianDemoDataset, recipe: UnifiedDemoRecipe): FrozenMealNutrition | null {
+  const perServing = calculateUnifiedDemoNutrition(dataset, recipe).perServing;
+  if (perServing.kcal === null || perServing.protein === null || perServing.carbs === null || perServing.fat === null) return null;
+  return {
+    caloriesKcal: perServing.kcal,
+    proteinG: perServing.protein,
+    carbsG: perServing.carbs,
+    fatG: perServing.fat,
+    sodiumMg: perServing.sodium,
+  };
+}
+
+/**
+ * Verification status per recipe, taken from the retrieval corpus rather than
+ * restated.
+ *
+ * `buildGraduationRetrievalCorpus` is the single place that decides which demo
+ * recipes count as verified for retrieval. Reading it here means the meal-category
+ * search and vector search can never disagree about that.
+ */
+function demoVerificationStatuses(dataset: UnifiedEgyptianDemoDataset): ReadonlyMap<string, string> {
+  const statuses = new Map<string, string>();
+  for (const document of buildGraduationRetrievalCorpus(dataset).documents) {
+    const recipeId = typeof document.metadata.recipeId === "string" ? document.metadata.recipeId : null;
+    if (document.kind === "recipe" && recipeId) statuses.set(recipeId, document.egyptianVerificationStatus ?? "needs_review");
+  }
+  return statuses;
+}
+
+/** Demo-dataset implementation of the meal-category recipe port. */
+class DemoMealCategoryRecipeSource implements MealCategoryRecipeSource {
+  private readonly byCategory = new Map<DashboardMealCategory, MealCategoryRecipeRecord[]>();
+
+  public constructor(dataset: UnifiedEgyptianDemoDataset, verificationStatuses: ReadonlyMap<string, string>) {
+    for (const mealCategory of Object.keys(MEAL_CATEGORY_DATASET_CATEGORIES) as DashboardMealCategory[]) {
+      const datasetCategories = new Set(MEAL_CATEGORY_DATASET_CATEGORIES[mealCategory]);
+      const records = dataset.recipes
+        .filter((recipe) => datasetCategories.has(recipe.category))
+        .flatMap((recipe) => {
+          const nutrition = demoMealNutrition(dataset, recipe);
+          if (!nutrition) return [];
+          return [{
+            recipeId: recipe.recipe_id,
+            name: recipe.name_ar,
+            datasetCategory: recipe.category,
+            verificationStatus: verificationStatuses.get(recipe.recipe_id) ?? "needs_review",
+            ingredientKeys: recipe.ingredients.map((item) => item.ingredient),
+            nutrition,
+            provenance: {
+              sourceId: "DEMO-UNIFIED-EGYPTIAN-DATASET",
+              versionId: "graduation-demo",
+              title: recipe.name_ar,
+              url: recipe.source_url,
+              accessedAt: dataset.metadata.created_date,
+              locator: recipe.recipe_id,
+            },
+          } satisfies MealCategoryRecipeRecord];
+        });
+      this.byCategory.set(mealCategory, records);
+    }
+  }
+
+  public listByMealCategory(category: DashboardMealCategory): readonly MealCategoryRecipeRecord[] {
+    return this.byCategory.get(category) ?? [];
+  }
+}
+
+export interface GraduationDashboardOptions {
+  /**
+   * Dashboard implementation. Defaults to the deterministic local mock.
+   *
+   * This is the seam a real HTTP client would occupy once the cross-team auth
+   * linkage from section 1 of the integration contract is resolved. Until then no
+   * real implementation exists.
+   */
+  dashboard?: DashboardClient;
+  /** Server-side pending-operation table. Defaults to a fresh in-memory store. */
+  pendingOperations?: PendingMealOperationStore;
+  /** Injected clock for the submission timestamp. */
+  now?: () => Date;
+}
+
+/** Compose the Step 16 flow over the demo dataset. */
+function buildMealPlanSelectionFlow(
+  input: { dataset: UnifiedEgyptianDemoDataset } & GraduationDashboardOptions,
+): MealPlanSelectionFlow {
+  const { dataset } = input;
+  const recipes = new Map(dataset.recipes.map((recipe) => [recipe.recipe_id, recipe]));
+  const pendingOperations = input.pendingOperations ?? new InMemoryPendingMealOperationStore();
+  const tools = new MealSelectionTools({
+    recipes: new DemoMealCategoryRecipeSource(dataset, demoVerificationStatuses(dataset)),
+    dashboard: input.dashboard ?? new MockDashboardClient(),
+    pendingOperations,
+    now: input.now,
+  });
+  return new MealPlanSelectionFlow({
+    tools,
+    pendingOperations,
+    helpers: {
+      // Reused, not reimplemented: the disclaimer, the exclusion parser and the
+      // text normalizers are the existing implementations from earlier fixes.
+      exclusionSafetyNote,
+      excludedIngredientKeys,
+      ingredientLabel,
+      normalizeNumberDigits,
+      normalizedLookupText,
+      dairyIngredientKeys: DAIRY_INGREDIENT_KEYS,
+    },
+    recipeSnapshot: (recipeId, language) => {
+      const recipe = recipes.get(recipeId);
+      if (!recipe) return null;
+      const nutrition = demoMealNutrition(dataset, recipe);
+      if (!nutrition) return null;
+      return { name: language === "en" ? recipe.name_en : recipe.name_ar, nutrition };
+    },
+  });
+}
+
 export async function buildGraduationDemoAgent(
   nodeEnv: "development" | "test",
   backendDataSource?: GraduationBackendDataSource | null,
+  claudeLayer?: ClaudeLayer | ClaudeLayerDependencies | null,
+  dashboardOptions?: GraduationDashboardOptions,
 ): Promise<GraduationDemoAgent> {
   if (nodeEnv !== "development" && nodeEnv !== "test") throw new Error("graduation demo agent is forbidden outside development/test");
   const dataset = await loadUnifiedEgyptianDemoDataset();
@@ -1738,27 +2743,51 @@ export async function buildGraduationDemoAgent(
     const cooldownSeconds = Number(process.env.RETRIEVAL_CIRCUIT_BREAKER_SECONDS ?? "30");
     const circuitBreakerMs = Math.round(Math.min(300, Math.max(0, Number.isFinite(cooldownSeconds) ? cooldownSeconds : 30)) * 1_000);
     const remoteTools = new NutriGuardTools({
-      embeddingProvider: new OpenAICompatibleEmbeddingProvider({
+      embeddingProvider: new InstrumentedEmbeddingProvider(new OpenAICompatibleEmbeddingProvider({
         baseUrl: process.env.EMBEDDING_BASE_URL?.trim() || "https://generativelanguage.googleapis.com/v1beta/openai",
         apiKey: embeddingApiKey,
         modelId: process.env.EMBEDDING_MODEL?.trim() || "gemini-embedding-2",
         dimensions: Number(process.env.EMBEDDING_DIMENSIONS ?? "3072"),
         timeoutMs,
-      }),
-      vectorStore: new QdrantVectorStore({
+      })),
+      vectorStore: new InstrumentedVectorStore(new QdrantVectorStore({
         baseUrl: qdrantUrl,
         collection: qdrantCollection,
         apiKey: process.env.QDRANT_API_KEY?.trim() || undefined,
         timeoutMs,
-      }),
+      })),
       corpusId: process.env.RETRIEVAL_CORPUS_ID?.trim() || GRADUATION_DEMO_CORPUS_ID,
       calculateNutrition,
       guidelineRules: new InMemoryGuidelineRuleRepository([]),
     });
-    tools = new HybridRetrievalTools(remoteTools, localTools, { timeoutMs, circuitBreakerMs });
+    tools = new HybridRetrievalTools(remoteTools, localTools, {
+      timeoutMs,
+      circuitBreakerMs,
+      observer: (event: HybridRetrievalEvent) => recordHybridRetrievalEvent(event),
+    });
   }
   const backend = backendDataSource === undefined
     ? nodeEnv === "development" ? new NutriGuardBackendClient(process.env.NUTRIGUARD_BACKEND_BASE_URL?.trim() || undefined) : null
     : backendDataSource;
-  return new GraduationDemoAgent(new NutriGuardExpandedAgent(tools, new InMemoryAlternativeRuleRepository([])), tools, dataset, backend);
+  // A test or caller that passes nothing gets a fully inert layer, so the
+  // deterministic behaviour of every existing suite is unchanged. Passing
+  // `undefined` explicitly is the same as passing nothing; only `development`
+  // builds read Claude credentials from the environment.
+  const layer = claudeLayer instanceof ClaudeLayer
+    ? claudeLayer
+    : claudeLayer
+      ? new ClaudeLayer(claudeLayer)
+      : nodeEnv === "development"
+        ? new ClaudeLayer()
+        : new ClaudeLayer({ classifierClient: null, formatterClient: null });
+  return new GraduationDemoAgent(
+    new NutriGuardExpandedAgent(tools, new InMemoryAlternativeRuleRepository([])),
+    tools,
+    dataset,
+    backend,
+    layer,
+    // Step 16: the dashboard is a deterministic local mock unless a caller injects
+    // an implementation. No real dashboard client exists in this repository.
+    buildMealPlanSelectionFlow({ dataset, ...dashboardOptions }),
+  );
 }

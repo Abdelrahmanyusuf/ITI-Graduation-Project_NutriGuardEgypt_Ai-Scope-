@@ -170,7 +170,9 @@ test("lower-calorie Koshary request uses one deterministic modification instead 
   assert.equal(answer.data?.recipeId, "EGY-RCP-001");
   assert.deepEqual(answer.data?.modification, { ingredient: "vegetable_oil", originalGrams: 60, proposedGrams: 30 });
   assert.match(answer.message, /قلّل الزيت النباتي المضاف من 60 جرام إلى 30 جرام/);
-  assert.match(answer.message, /تنخفض الحصة/);
+  // BUG-14: the serving change is now stated with an explicit basis label
+  // instead of the ambiguous "تنخفض الحصة" phrasing.
+  assert.match(answer.message, /سعرات الحصة: من نحو 543\.7 إلى 477\.4/u);
   assert.equal("passages" in (answer.data ?? {}), false);
   assert.equal(answer.evidenceDocumentIds.length, 1);
   assert.doesNotMatch(answer.message, /شاي كشري|Yellow Lentil Koshary/u);

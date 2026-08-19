@@ -60,6 +60,40 @@ A source fails the gate if any required line is “no/unknown.”
 None of the above may be surfaced to users until reviewed and approved. This
 table is the current, honest state — not a claim of compliance.
 
+### Wikipedia is NOT an approved source
+
+`unified_egyptian_rag_database_v2_final.json` (the graduation-demo candidate
+dataset) records `source_url` as an `en.wikipedia.org` page for **214 of its 215
+recipes**, with `license_note: "Wikipedia CC BY-SA 4.0"` and
+`metadata.review_status: "needs_review"`.
+
+| Field | Value |
+| --- | --- |
+| Kind | recipe/dish descriptive text (culinary) |
+| Provenance | English Wikipedia article per dish |
+| Licence | CC BY-SA 4.0 (identified, not yet reviewed) |
+| Review status | `needs_review` |
+| Approved for user-facing citation | **No** |
+
+It is **not** an approved active source, so per §2 and §5 it must not be cited to
+users. Two rules follow:
+
+1. **No clickable Wikipedia link in user-facing output.** The chat UI renders
+   `provenance[].url` as a "دليل مرتبط" link, so `recipeProvenance()` now emits
+   `url: null` for demo recipes. A URL may only reappear here after a Data
+   Steward records an approved review.
+2. **Never cite it as evidence for a number.** Wikipedia is the recorded
+   *culinary* source for the dish text. Nutrition values come from
+   `source_nutrition: "Recalculated from ingredient_nutrition_reference"`.
+   Attaching the article to a calculated nutrition answer misattributes the
+   arithmetic to a source that did not produce it.
+
+Attribution text is still carried in the provenance `title`, because the dish
+text is reused under CC BY-SA 4.0 and silently dropping attribution would trade
+a policy problem for a licensing one. The title states plainly that the dish text
+comes from an unapproved candidate source pending review and that the nutrition
+was recalculated.
+
 ### Audit source manifest
 
 `data/manifest/sources.json` is a **curated audit-time provenance manifest**,

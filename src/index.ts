@@ -66,6 +66,39 @@ export { buildIterationEvidence, type IterationEvidence } from "./evaluation/ite
 export { parsePilotFeedback, parsePilotFeedbackSubmission, InMemoryPilotFeedbackStore, PostgresPilotFeedbackStore, type PilotFeedbackInput, type PilotFeedbackSubmission, type PilotFeedbackRecord, type PilotFeedbackStore } from "./pilot/feedback.js";
 export { evaluateReleaseReadiness, parseReleaseEvidence, type ReadinessResult, type ReleaseEvidenceManifest, type ReleaseTarget } from "./release/readiness.js";
 export { createNutriGuardHttpServer, type HttpAppOptions } from "./server/http-app.js";
+// Meal-plan selection + dashboard logging. The dashboard side is a deterministic
+// local mock only; no real dashboard client exists in this repository, and the
+// real integration is blocked on cross-team auth linkage. See
+// docs/MEAL_PLAN_SELECTION_DASHBOARD_MOCK.md.
+export {
+  DASHBOARD_ERROR_CODES,
+  DASHBOARD_MEAL_CATEGORIES,
+  type DashboardClient,
+  type DashboardErrorCode,
+  type DashboardLogMealsRequest,
+  type DashboardLogMealsResponse,
+  type DashboardMealCategory,
+} from "./services/dashboard/dashboard-client.js";
+export {
+  MOCK_DASHBOARD_CALL_MARKER,
+  MockDashboardClient,
+  type MockDashboardScenario,
+} from "./services/dashboard/mock-dashboard-client.js";
+export {
+  InMemoryPendingMealOperationStore,
+  PENDING_MEAL_CONFIRMATION_TTL_SECONDS,
+  type PendingMealOperation,
+  type PendingMealOperationStore,
+} from "./services/dashboard/pending-meal-operations.js";
+export {
+  MEAL_CATEGORY_OPTION_LIMIT,
+  MEAL_SELECTION_MAX_SEND_ATTEMPTS,
+  MEAL_SELECTION_TOOL_DEFINITIONS,
+  MEAL_SELECTION_TOOL_NAMES,
+  MealSelectionTools,
+  type MealCategoryRecipeSource,
+  type MealSelectionToolset,
+} from "./tools/meal-selection-tools.js";
 
 /**
  * Application entry point. It validates environment configuration and exposes

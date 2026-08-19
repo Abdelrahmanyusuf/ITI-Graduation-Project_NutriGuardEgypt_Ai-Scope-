@@ -9,10 +9,33 @@ import type {
 } from "../tools/nutriguard-tools.js";
 import type { RecipeNutritionResult } from "../domain/nutrition.js";
 
+/**
+ * Per-search observability event (Step 17b, Part C1).
+ *
+ * Reports which retrieval path actually served one search so the debug panel
+ * can state whether remote embeddings and the vector store were used or the
+ * deterministic local corpus answered instead. Structural data only — no query
+ * text and no document content.
+ */
+export interface HybridRetrievalEvent {
+  operation: "search_recipes" | "search_guidelines";
+  /** True when the remote toolset (external embeddings + vector store) ran. */
+  remoteAttempted: boolean;
+  /** True when the remote path returned at least one usable hit. */
+  remoteReturnedResult: boolean;
+  remoteFailure: "timeout" | "remote_error" | null;
+  /** True when the deterministic local corpus produced the served result. */
+  localFallbackUsed: boolean;
+  remoteLatencyMs: number | null;
+  localLatencyMs: number | null;
+}
+
 export interface HybridRetrievalOptions {
   timeoutMs: number;
   circuitBreakerMs: number;
   now?: () => number;
+  /** Optional observer. Never affects retrieval behaviour or results. */
+  observer?: (event: HybridRetrievalEvent) => void;
 }
 
 export interface HybridRetrievalState {
@@ -66,23 +89,57 @@ export class HybridRetrievalTools implements NutriGuardToolset {
     }
   }
 
-  private async search(remoteOperation: SearchOperation, localOperation: SearchOperation, input: SearchToolInput): Promise<ToolResult<SearchToolOutput>> {
+  private async search(
+    remoteOperation: SearchOperation,
+    localOperation: SearchOperation,
+    input: SearchToolInput,
+    operation: HybridRetrievalEvent["operation"],
+  ): Promise<ToolResult<SearchToolOutput>> {
+    const event: HybridRetrievalEvent = {
+      operation,
+      remoteAttempted: false,
+      remoteReturnedResult: false,
+      remoteFailure: null,
+      localFallbackUsed: false,
+      remoteLatencyMs: null,
+      localLatencyMs: null,
+    };
+    const emit = (): void => {
+      if (this.options.observer) this.options.observer(event);
+    };
     if (this.now() >= this.circuitOpenUntil) {
+      event.remoteAttempted = true;
+      const startedAt = performance.now();
       try {
         const result = await this.withTimeout(remoteOperation, input);
+        event.remoteLatencyMs = Math.round(performance.now() - startedAt);
         if (result.ok) {
           this.lastFailure = null;
-          if (result.data.hits.length > 0) return result;
+          if (result.data.hits.length > 0) {
+            event.remoteReturnedResult = true;
+            emit();
+            return result;
+          }
         } else {
           this.lastFailure = "remote_error";
+          event.remoteFailure = "remote_error";
           this.circuitOpenUntil = this.now() + this.options.circuitBreakerMs;
         }
       } catch {
+        event.remoteLatencyMs = Math.round(performance.now() - startedAt);
         this.lastFailure = "timeout";
+        event.remoteFailure = "timeout";
         this.circuitOpenUntil = this.now() + this.options.circuitBreakerMs;
       }
     }
-    return localOperation(input);
+    event.localFallbackUsed = true;
+    const localStartedAt = performance.now();
+    try {
+      return await localOperation(input);
+    } finally {
+      event.localLatencyMs = Math.round(performance.now() - localStartedAt);
+      emit();
+    }
   }
 
   public searchRecipes(input: SearchToolInput): Promise<ToolResult<SearchToolOutput>> {
@@ -90,6 +147,7 @@ export class HybridRetrievalTools implements NutriGuardToolset {
       (value) => this.remote.searchRecipes(value),
       (value) => this.local.searchRecipes(value),
       input,
+      "search_recipes",
     );
   }
 
@@ -98,6 +156,7 @@ export class HybridRetrievalTools implements NutriGuardToolset {
       (value) => this.remote.searchGuidelines(value),
       (value) => this.local.searchGuidelines(value),
       input,
+      "search_guidelines",
     );
   }
 

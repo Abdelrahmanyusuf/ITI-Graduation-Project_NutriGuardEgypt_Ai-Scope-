@@ -39,6 +39,29 @@ and — for each intent — required inputs, outputs, and conditions.
 - All outputs honor the project rules: **no fabricated numbers/sources** and
   **missing = null/unknown**.
 
+### Claude layer position in routing (Step 17b)
+
+NutriGuard is a **Deterministic Nutrition Agent with Hybrid RAG, external
+embeddings, and a narrowly-scoped Claude classifier/formatter layer (advisory
+classification + grounded response phrasing only — never calculation, never data
+invention, never write-action authority).**
+
+Classification remains rule-based. A Claude classifier runs alongside the
+rule-based classifiers as a cross-check, but on disagreement, failure or timeout
+the **rule-based label always decides routing**; Claude's label is logged, not
+obeyed. Claude may also rephrase an answer the deterministic pipeline has already
+computed, and only after a grounding validator confirms every number and entity
+in that prose traces back to the computed facts — otherwise the deterministic
+template is emitted unchanged.
+
+Two exclusions are structural, not configurable:
+
+- `medical_safety_request` and every blocking safety flag are screened **before**
+  any Claude call, so those requests reach Claude in no role whatsoever.
+- Claude holds no authority over any write action.
+
+See [`STEP_17B_CLAUDE_LAYER.md`](./STEP_17B_CLAUDE_LAYER.md).
+
 ## Canonical intents
 
 ### 1. `find_recipe`

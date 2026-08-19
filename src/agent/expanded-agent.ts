@@ -79,8 +79,23 @@ export class InMemoryAlternativeRuleRepository implements AlternativeRuleReposit
   }
 }
 
+/**
+ * Tool names that may appear in a response trace.
+ *
+ * `search_recipes_by_meal_category` and `confirm_and_log_meal_selection` are the
+ * Step 16 meal-selection tools. They are traced through the same channel so the
+ * existing failure and availability metrics cover them without special cases.
+ */
+export const EXPANDED_TRACE_TOOL_NAMES = [
+  "search_recipes",
+  "search_guidelines",
+  "calculate_nutrition",
+  "search_recipes_by_meal_category",
+  "confirm_and_log_meal_selection",
+] as const;
+
 export interface ExpandedToolTrace {
-  tool: "search_recipes" | "search_guidelines" | "calculate_nutrition";
+  tool: (typeof EXPANDED_TRACE_TOOL_NAMES)[number];
   ok: boolean;
   code: string | null;
 }
@@ -118,7 +133,7 @@ const ResponseSchema = z.object({
   data: z.record(z.string(), z.unknown()).nullable(),
   evidenceDocumentIds: z.array(z.string()),
   provenance: z.array(z.object({ sourceId: z.string().min(1), versionId: z.string().min(1), title: z.string().nullable(), url: z.string().nullable(), accessedAt: z.string().nullable(), locator: z.string().nullable() }).strict()),
-  toolTrace: z.array(z.object({ tool: z.enum(["search_recipes", "search_guidelines", "calculate_nutrition"]), ok: z.boolean(), code: z.string().nullable() }).strict()),
+  toolTrace: z.array(z.object({ tool: z.enum(EXPANDED_TRACE_TOOL_NAMES), ok: z.boolean(), code: z.string().nullable() }).strict()),
   promptVersion: z.literal(NUTRIGUARD_SYSTEM_PROMPT_VERSION),
 }).strict();
 

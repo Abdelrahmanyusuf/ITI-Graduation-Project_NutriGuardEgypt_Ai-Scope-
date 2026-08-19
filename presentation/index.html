@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NutriGuard Egypt | Graduation Presentation</title>
+  <style>
+    :root {
+      --ink: #18231f;
+      --muted: #68756e;
+      --paper: #f6f8f5;
+      --surface: #ffffff;
+      --green: #176b58;
+      --green-dark: #0f4e42;
+      --green-soft: #e3f0eb;
+      --mint: #c9e4d9;
+      --coral: #d86f5d;
+      --coral-soft: #fae6e0;
+      --gold: #d1a14b;
+      --line: #dce5df;
+      --shadow: 0 18px 50px rgba(24, 55, 43, .10);
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; background: #dfe8e2; color: var(--ink); font-family: "Segoe UI", Arial, sans-serif; }
+    body { overflow: hidden; }
+    button { font: inherit; }
+    .deck { width: 100vw; height: 100vh; position: relative; }
+    .slide { display: none; position: absolute; inset: 0; width: 100%; height: 100%; padding: clamp(32px, 5vw, 78px) clamp(34px, 7vw, 118px); background: var(--paper); overflow: hidden; }
+    .slide.active { display: block; }
+    .slide::after { content: ""; position: absolute; left: 7vw; right: 7vw; bottom: 24px; height: 1px; background: var(--line); }
+    .slide-no { position: absolute; right: 7vw; bottom: 30px; color: var(--muted); font-size: 12px; letter-spacing: 1px; }
+    .eyebrow { color: var(--green); text-transform: uppercase; font-weight: 800; letter-spacing: 2px; font-size: 12px; margin-bottom: 16px; }
+    h1, h2, h3, p { margin: 0; }
+    h1 { font-size: clamp(40px, 5.6vw, 88px); line-height: .98; letter-spacing: -2px; max-width: 920px; }
+    h2 { font-size: clamp(30px, 3.4vw, 57px); line-height: 1.02; letter-spacing: -1.4px; max-width: 850px; }
+    h3 { font-size: 18px; line-height: 1.2; }
+    .lead { color: var(--muted); font-size: clamp(17px, 1.55vw, 24px); line-height: 1.45; max-width: 760px; margin-top: 24px; }
+    .small { color: var(--muted); font-size: 13px; line-height: 1.5; }
+    .accent { color: var(--green); }
+    .rule { width: 72px; height: 6px; background: var(--coral); margin: 26px 0; }
+    .cover { background: var(--green-dark); color: #f4faf6; }
+    .cover::after { background: rgba(255,255,255,.2); }
+    .cover .eyebrow, .cover .lead, .cover .small { color: #c5ded4; }
+    .cover .rule { background: var(--coral); }
+    .cover-mark { position: absolute; right: 10vw; top: 12vh; width: min(32vw, 420px); height: min(32vw, 420px); border: 1px solid rgba(219,243,232,.28); border-radius: 50%; }
+    .cover-mark::before, .cover-mark::after { content: ""; position: absolute; border: 1px solid rgba(219,243,232,.18); border-radius: 50%; inset: 14%; }
+    .cover-mark::after { inset: 29%; background: var(--coral); border: 0; opacity: .95; }
+    .cover-word { position: absolute; right: 15vw; top: 37vh; z-index: 1; font-size: clamp(34px, 5vw, 76px); font-weight: 800; letter-spacing: -2px; color: white; }
+    .cover-word span { color: #e9b4a7; }
+    .cover-footer { position: absolute; left: 7vw; bottom: 58px; display: flex; gap: 18px; align-items: center; color: #c5ded4; font-size: 13px; }
+    .pill { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 8px 13px; color: var(--green); font-size: 12px; font-weight: 700; background: var(--surface); }
+    .cover .pill { color: #eaf7f1; border-color: rgba(255,255,255,.25); background: rgba(255,255,255,.08); }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 3.5vw, 56px); align-items: center; height: calc(100% - 78px); }
+    .grid-2.top { align-items: start; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .card { background: var(--surface); border: 1px solid var(--line); padding: 22px; box-shadow: 0 7px 24px rgba(24,55,43,.05); }
+    .card.flat { box-shadow: none; }
+    .card h3 { margin-bottom: 10px; }
+    .card p { color: var(--muted); line-height: 1.5; font-size: 14px; }
+    .card .kicker { color: var(--coral); font-weight: 800; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+    .metric-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .metric { padding: 22px; background: var(--surface); border-left: 5px solid var(--green); border-top: 1px solid var(--line); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .metric strong { display: block; color: var(--green-dark); font-size: clamp(27px, 3vw, 46px); line-height: 1; letter-spacing: -1px; }
+    .metric span { display: block; color: var(--muted); font-size: 12px; margin-top: 9px; line-height: 1.3; }
+    .problem-list { display: grid; gap: 15px; }
+    .problem { display: grid; grid-template-columns: 34px 1fr; gap: 13px; align-items: start; }
+    .problem b { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; color: white; background: var(--coral); font-size: 13px; }
+    .problem h3 { margin-bottom: 4px; }
+    .problem p { color: var(--muted); font-size: 14px; line-height: 1.45; }
+    .principles { display: grid; gap: 12px; }
+    .principle { padding: 17px 18px; border: 1px solid var(--line); background: var(--surface); display: grid; grid-template-columns: 40px 1fr; gap: 13px; align-items: center; }
+    .principle .num { color: var(--green); font-weight: 900; font-size: 19px; }
+    .principle p { color: var(--muted); font-size: 13px; margin-top: 4px; line-height: 1.35; }
+    .flow { display: flex; align-items: stretch; gap: 9px; margin: 36px 0 22px; }
+    .flow-item { flex: 1; min-height: 108px; padding: 18px 14px; background: var(--surface); border: 1px solid var(--line); position: relative; }
+    .flow-item::after { content: ">"; position: absolute; right: -15px; top: 40%; color: var(--coral); font-size: 24px; font-weight: 800; z-index: 2; }
+    .flow-item:last-child::after { display: none; }
+    .flow-item b { display: block; color: var(--green-dark); font-size: 14px; margin-bottom: 8px; }
+    .flow-item span { color: var(--muted); font-size: 12px; line-height: 1.35; display: block; }
+    .diagram { position: relative; min-height: 390px; padding: 20px; background: #eef4ef; border: 1px solid var(--line); }
+    .layer { display: grid; grid-template-columns: 150px 1fr; align-items: center; min-height: 61px; border-bottom: 1px solid rgba(104,117,110,.22); }
+    .layer:last-child { border-bottom: 0; }
+    .layer-name { color: var(--green-dark); font-size: 12px; text-transform: uppercase; font-weight: 800; letter-spacing: 1px; }
+    .layer-boxes { display: flex; gap: 8px; flex-wrap: wrap; }
+    .layer-box { background: var(--surface); border: 1px solid var(--line); padding: 9px 11px; font-size: 12px; }
+    .layer-box.important { background: var(--green); color: white; border-color: var(--green); }
+    .trust { display: grid; grid-template-columns: 1fr 55px 1fr; align-items: center; gap: 12px; margin-top: 25px; }
+    .trust-col { padding: 24px; min-height: 175px; border: 1px solid var(--line); background: var(--surface); }
+    .trust-col h3 { color: var(--green-dark); margin-bottom: 10px; }
+    .trust-col ul { padding: 0 0 0 17px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .trust-arrow { text-align: center; color: var(--coral); font-size: 32px; font-weight: 900; }
+    .calc { background: var(--ink); color: white; padding: 28px; min-height: 350px; }
+    .calc .formula { font-family: Consolas, monospace; color: #d6eee4; font-size: clamp(17px, 2vw, 27px); line-height: 1.5; margin: 28px 0; }
+    .calc .formula em { color: #f2b7a8; font-style: normal; }
+    .trace { display: grid; gap: 8px; }
+    .trace div { display: flex; justify-content: space-between; gap: 15px; padding: 10px 12px; background: rgba(255,255,255,.08); font-size: 12px; }
+    .trace span { color: #c5ded4; }
+    .tool-table { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--line); font-size: 13px; }
+    .tool-table th, .tool-table td { padding: 14px 15px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+    .tool-table th { color: var(--green-dark); background: var(--green-soft); font-size: 12px; text-transform: uppercase; letter-spacing: .8px; }
+    .tool-table td:first-child { color: var(--green); font-family: Consolas, monospace; font-weight: 700; white-space: nowrap; }
+    .tool-table td:last-child { color: var(--muted); line-height: 1.4; }
+    .shield { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .guard { padding: 17px; background: var(--surface); border-top: 4px solid var(--green); border-left: 1px solid var(--line); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .guard h3 { font-size: 14px; margin-bottom: 6px; }
+    .guard p { color: var(--muted); font-size: 12px; line-height: 1.45; }
+    .browser { border: 1px solid #bdcbc2; background: white; box-shadow: var(--shadow); }
+    .browser-bar { height: 32px; background: #e8eeea; display: flex; gap: 6px; align-items: center; padding: 0 12px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: #a4b5ab; }
+    .browser-body { padding: 24px; min-height: 290px; display: grid; grid-template-columns: 105px 1fr; gap: 17px; direction: ltr; }
+    .fake-side { background: #f1f4f1; padding: 12px 8px; direction: rtl; }
+    .fake-side b { display: block; color: var(--green); font-size: 11px; margin-bottom: 22px; }
+    .fake-side span { display: block; color: var(--muted); font-size: 9px; padding: 7px 3px; }
+    .fake-chat { direction: rtl; padding: 2px 3px; }
+    .fake-chat h3 { color: var(--green-dark); font-size: 19px; margin-bottom: 7px; }
+    .fake-chat p { color: var(--muted); font-size: 11px; line-height: 1.5; margin-bottom: 20px; }
+    .fake-message { padding: 11px; border: 1px solid var(--line); margin-bottom: 10px; font-size: 11px; line-height: 1.4; }
+    .fake-message.answer { background: var(--green-soft); border-color: var(--mint); }
+    .fake-source { color: var(--green); font-size: 9px; margin-top: 8px; }
+    .score-table { display: grid; gap: 11px; margin-top: 25px; }
+    .score-row { display: grid; grid-template-columns: 125px 1fr 65px; align-items: center; gap: 13px; font-size: 13px; }
+    .score-row label { color: var(--muted); }
+    .bar { height: 15px; background: var(--green-soft); overflow: hidden; }
+    .bar i { display: block; height: 100%; background: var(--green); }
+    .score-row strong { color: var(--green-dark); text-align: right; }
+    .status { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 25px; }
+    .status-card { padding: 20px; border: 1px solid var(--line); background: var(--surface); }
+    .status-card.ready { border-top: 5px solid var(--green); }
+    .status-card.blocked { border-top: 5px solid var(--coral); }
+    .status-card h3 { margin-bottom: 12px; }
+    .status-card ul { color: var(--muted); margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.65; }
+    .demo-script { display: grid; grid-template-columns: 56px 1fr; gap: 15px; align-items: start; margin-top: 20px; }
+    .demo-script .time { color: white; background: var(--coral); padding: 10px 4px; text-align: center; font-weight: 800; font-size: 12px; }
+    .demo-script .script-body { padding: 12px 16px; border-bottom: 1px solid var(--line); }
+    .demo-script b { color: var(--green-dark); font-size: 14px; }
+    .demo-script p { color: var(--muted); font-size: 12px; margin-top: 4px; }
+    .closing { display: grid; place-items: center; text-align: center; height: calc(100% - 40px); }
+    .closing h2 { max-width: 770px; }
+    .closing .quote { color: var(--green-dark); font-size: clamp(20px, 2.2vw, 31px); line-height: 1.35; max-width: 820px; margin: 28px 0; }
+    .closing .tagline { color: var(--muted); font-size: 15px; }
+    .controls { position: fixed; left: 24px; bottom: 21px; z-index: 10; display: flex; gap: 7px; }
+    .controls button { width: 32px; height: 28px; color: var(--green); border: 1px solid var(--line); background: rgba(255,255,255,.88); cursor: pointer; }
+    .progress { position: fixed; top: 0; left: 0; height: 4px; background: var(--coral); z-index: 20; transition: width .25s ease; }
+    .help { position: fixed; top: 16px; left: 24px; z-index: 10; color: var(--muted); font-size: 11px; opacity: .8; }
+    @media (max-width: 800px) {
+      body { overflow: auto; }
+      .deck, .slide { min-height: 100vh; height: auto; }
+      .slide { position: relative; padding: 38px 24px 68px; }
+      .slide:not(.active) { display: none; }
+      .grid-2, .grid-3, .status, .trust, .shield { grid-template-columns: 1fr; height: auto; }
+      .flow { flex-direction: column; }
+      .flow-item::after { content: "v"; right: 49%; top: auto; bottom: -22px; }
+      .flow-item:last-child::after { display: none; }
+      .diagram { min-height: auto; }
+      .layer { grid-template-columns: 1fr; gap: 7px; padding: 12px 0; }
+      .browser-body { grid-template-columns: 1fr; }
+      .fake-side { display: none; }
+      h1 { font-size: 47px; }
+      h2 { font-size: 35px; }
+      .slide::after { left: 24px; right: 24px; }
+      .slide-no { right: 24px; }
+      .controls { left: 24px; }
+      .help { display: none; }
+    }
+    @media print {
+      @page { size: 16in 9in; margin: 0; }
+      body { overflow: visible; background: white; }
+      .deck, .slide { width: 16in; height: 9in; }
+      .slide { display: block !important; position: relative; page-break-after: always; }
+      .controls, .progress, .help { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+  <div class="help">Arrow keys / Space to navigate | Press P to print</div>
+  <main class="deck" id="deck">
+    <section class="slide cover active">
+      <div class="cover-mark"></div><div class="cover-word">Nutri<span>Guard</span></div>
+      <div class="eyebrow">Graduation Project Presentation</div>
+      <h1>Nutrition you can trace.<br>Answers you can trust.</h1>
+      <div class="rule"></div>
+      <p class="lead">A deterministic nutrition agent for verified Egyptian food, combining hybrid retrieval, safe conversational AI, and reproducible nutrition calculations.</p>
+      <div class="cover-footer"><span class="pill">Egyptian food intelligence</span><span>English presentation · 2026</span></div>
+      <span class="slide-no">01</span>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">01 / The Project</div><h2>NutriGuard in one sentence</h2>
+      <div class="grid-2 top" style="margin-top:38px;height:auto;">
+        <div><p class="lead" style="margin-top:0;">NutriGuard turns an Egyptian Arabic, Modern Standard Arabic, or English food question into a sourced, explainable response.</p><p class="small" style="margin-top:20px;">The key design choice: the language model can help with language, but it is never the authority for nutrition numbers.</p></div>
+        <div class="metric-grid"><div class="metric"><strong>215</strong><span>candidate Egyptian recipes in the graduation demo corpus</span></div><div class="metric"><strong>169</strong><span>ingredient references validated for the demo dataset</span></div><div class="metric"><strong>219</strong><span>indexed demo documents: recipes plus sourced guidance</span></div><div class="metric"><strong>4</strong><span>deterministic application tools exposed to the agent</span></div></div>
+      </div><span class="slide-no">02</span>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">02 / The Problem</div><h2>Everyday food questions are deceptively hard</h2>
+      <div class="grid-2 top" style="margin-top:38px;height:auto;">
+        <div class="problem-list"><div class="problem"><b>01</b><div><h3>Generic answers miss local context</h3><p>Egyptian dishes have regional names, Arabic spellings, local household measures, and different cooking states.</p></div></div><div class="problem"><b>02</b><div><h3>LLMs are fluent, not necessarily factual</h3><p>A confident response can still contain an invented calorie value, a merged ingredient, or an untraceable source.</p></div></div><div class="problem"><b>03</b><div><h3>Nutrition is a calculation problem</h3><p>Ingredients, quantities, edible portions, cooking yields, nutrient profiles, and serving bases must agree.</p></div></div></div>
+        <div class="card" style="background:var(--coral-soft);border-color:#efc7bd;"><div class="kicker">The design challenge</div><h3>How do we make a conversational system useful without allowing it to guess?</h3><p style="margin-top:13px;">We separate retrieval, computation, routing, safety, and wording into explicit boundaries. Each boundary can be tested and audited independently.</p></div>
+      </div><span class="slide-no">03</span>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">03 / Product Thesis</div><h2>Trust is an architecture decision</h2>
+      <div class="principles" style="max-width:840px;margin-top:35px;"><div class="principle"><div class="num">01</div><div><h3>Deterministic arithmetic</h3><p>Every calorie, macro, sodium, and comparison value comes from application code, not model memory.</p></div></div><div class="principle"><div class="num">02</div><div><h3>Provenance by default</h3><p>Recipes, nutrient records, factors, and guidelines carry source and version information.</p></div></div><div class="principle"><div class="num">03</div><div><h3>Fail closed when evidence is missing</h3><p>Unknown remains null. Ambiguous data becomes a review item. Unsupported requests receive a refusal or clarification.</p></div></div><div class="principle"><div class="num">04</div><div><h3>Safety before intelligence</h3><p>Medical, emergency, injection, and guarantee requests are intercepted before planning, retrieval, or optional LLM calls.</p></div></div></div><span class="slide-no">04</span>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">04 / User Experience</div><h2>From a natural question to an accountable answer</h2>
+      <div class="flow"><div class="flow-item"><b>01 · User message</b><span>Arabic, Egyptian Arabic, MSA, or English</span></div><div class="flow-item"><b>02 · Safety screen</b><span>Intent, safety flags, and request integrity</span></div><div class="flow-item"><b>03 · Hybrid retrieval</b><span>Find the relevant recipe or guideline context</span></div><div class="flow-item"><b>04 · Deterministic tools</b><span>Resolve, normalize, calculate, compare</span></div><div class="flow-item"><b>05 · Grounded response</b><span>Facts, basis, status, and provenance</span></div></div>
+      <div class="card flat" style="background:var(--green-soft);border-color:var(--mint);"><h3>Example interaction</h3><p style="font-family:Consolas,monospace;color:var(--green-dark);font-size:15px;margin-top:9px;">“How much sodium is in koshari per 100 g?”<br><span style="color:var(--coral);">→ recipe_nutrition → exact recipe → Step 7 calculator → per-100-g result</span></p></div><span class="slide-no">05</span>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">05 / System Architecture</div><h2>A layered system with a clear trust boundary</h2>
+      <div class="diagram" style="margin-top:30px;"><div class="layer"><div class="layer-name">Experience</div><div class="layer-boxes"><div class="layer-box">Responsive RTL chat</div><div class="layer-box">HTTP API</div><div class="layer-box">Feedback endpoint</div></div></div><div class="layer"><div class="layer-name">Agent orchestration</div><div class="layer-boxes"><div class="layer-box important">Rule-based routing</div><div class="layer-box">LangGraph workflows</div><div class="layer-box">Conversation memory</div><div class="layer-box">Safety gates</div></div></div><div class="layer"><div class="layer-name">Application tools</div><div class="layer-boxes"><div class="layer-box important">Nutrition calculator</div><div class="layer-box">Recipe search</div><div class="layer-box">Guideline search</div><div class="layer-box">Same-basis comparison</div></div></div><div class="layer"><div class="layer-name">Data authority</div><div class="layer-boxes"><div class="layer-box">PostgreSQL schema</div><div class="layer-box">Qdrant vector store</div><div class="layer-box">Versioned JSON demo snapshot</div><div class="layer-box">Source manifests</div></div></div><div class="layer"><div class="layer-name">Optional language layer</div><div class="layer-boxes"><div class="layer-box">OpenRouter model</div><div class="layer-box">Advisory classifier</div><div class="layer-box">Grounded formatter</div><div class="layer-box">Never numeric authority</div></div></div></div><span class="slide-no">06</span>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">06 / Data Pipeline</div><h2>The data lifecycle protects meaning</h2>
+      <div class="grid-2 top" style="margin-top:35px;height:auto;"><div class="card"><div class="kicker">Source to serving</div><div class="trace"><div><b>Raw inputs</b><span>preserved byte-for-byte</span></div><div><b>Audit and staging</b><span>reports + review queues</span></div><div><b>Ingredient resolution</b><span>exact and reviewed mappings</span></div><div><b>Unit normalization</b><span>state-aware factors</span></div><div><b>Approved snapshot</b><span>versioned calculation input</span></div><div><b>User response</b><span>status + provenance</span></div></div></div><div><div class="card flat" style="margin-bottom:15px;background:var(--green-soft);border-color:var(--mint);"><h3>Missing is not zero</h3><p style="font-family:Consolas,monospace;color:var(--green-dark);font-size:18px;margin-top:12px;">0 = measured zero<br>null = unknown / unavailable</p></div><div class="card flat"><h3>Review is a first-class state</h3><p>Automation can create candidates and queues, but it cannot self-approve an Egyptian recipe, nutrient source, or conversion factor.</p></div></div></div><span class="slide-no">07</span>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">07 / Nutrition Engine</div><h2>Numbers are produced by a reproducible calculation pipeline</h2>
+      <div class="grid-2 top" style="margin-top:32px;height:auto;"><div class="calc"><div class="eyebrow" style="color:#c5ded4;">Step 7 · Deterministic calculator</div><div class="formula">ingredient mass<br><em>×</em> nutrient profile<br><em>×</em> edible / yield / retention factors<br><em>→</em> recipe, serving, and per-100-g bases</div><div class="trace"><div><b>State aware</b><span>raw / cooked / fried / baked</span></div><div><b>Unrounded internally</b><span>round once at output</span></div></div></div><div class="principles"><div class="principle"><div class="num">A</div><div><h3>Ingredient-level trace</h3><p>The response can explain each contribution and identify missing ingredients.</p></div></div><div class="principle"><div class="num">B</div><div><h3>Explicit availability</h3><p>Each basis is available or unavailable with a machine-readable reason.</p></div></div><div class="principle"><div class="num">C</div><div><h3>Honest coverage</h3><p>Weight, ingredient, and nutrient coverage are reported rather than hidden.</p></div></div></div></div><span class="slide-no">08</span>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">08 / Retrieval and Tools</div><h2>RAG finds context. It does not become numeric authority.</h2>
+      <table class="tool-table" style="margin-top:32px;"><thead><tr><th>Application tool</th><th>Responsibility</th></tr></thead><tbody><tr><td>search_recipes</td><td>Semantic search restricted to approved, licensed, human-verified Egyptian recipes.</td></tr><tr><td>search_guidelines</td><td>Find relevant guidance passages with source and version provenance.</td></tr><tr><td>calculate_nutrition</td><td>Delegates to the deterministic Step 7 engine. Never derives values from retrieved text.</td></tr><tr><td>compare_with_guideline</td><td>Compares against one exact, approved structured rule with matching nutrient, unit, and basis.</td></tr></tbody></table><div class="trust"><div class="trust-col"><h3>Retrieval is descriptive</h3><ul><li>It locates recipes and guidance.</li><li>It carries document provenance.</li><li>It applies approval and verification filters.</li></ul></div><div class="trust-arrow">≠</div><div class="trust-col"><h3>Calculation is authoritative</h3><ul><li>It uses structured data and factors.</li><li>It is independent from generated prose.</li><li>It fails closed on missing evidence.</li></ul></div></div><span class="slide-no">09</span>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">09 / Safety and Integrity</div><h2>Useful intelligence inside explicit boundaries</h2>
+      <div class="shield" style="margin-top:35px;"><div class="guard"><h3>Medical safety precedence</h3><p>Diagnosis, treatment, emergencies, and personalized medical advice route to fixed safe handling before any optional model call.</p></div><div class="guard"><h3>Prompt injection defense</h3><p>Request-integrity controls block attempts to override numeric results, use unapproved data, or change system behavior.</p></div><div class="guard"><h3>Grounded formatting</h3><p>Every number and dataset entity in optional model wording must be traceable to the structured facts. Otherwise, the deterministic template is restored.</p></div><div class="guard"><h3>Privacy-safe observability</h3><p>Logs and debug traces expose routes, timings, and statuses without serving raw user messages or health information.</p></div><div class="guard"><h3>Secure API boundary</h3><p>Strict schemas, body-size limits, content-type checks, rate limiting, origin checks, security headers, request IDs, and timeouts.</p></div><div class="guard"><h3>Fail-closed deployment</h3><p>The synthetic graduation demo refuses to start in production. Release gates distinguish engineering readiness from real deployment evidence.</p></div></div><span class="slide-no">10</span>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">10 / Conversational Capabilities</div><h2>More than lookup: guided, stateful nutrition workflows</h2>
+      <div class="grid-3" style="margin-top:34px;"><div class="card"><div class="kicker">Recipe intelligence</div><h3>Find and explain</h3><p>Search Egyptian recipes, show ingredients and instructions, and retain short-term context for follow-up questions.</p></div><div class="card"><div class="kicker">Nutrition intelligence</div><h3>Calculate and compare</h3><p>Answer per-serving and per-100-g questions, compare recipes on the same basis, and expose unavailable values honestly.</p></div><div class="card"><div class="kicker">Meal planning</div><h3>Select and confirm</h3><p>Offer up to three category candidates, calculate a frozen summary, and confirm with a UUID idempotency key.</p></div></div><div class="card flat" style="margin-top:18px;background:var(--coral-soft);border-color:#efc7bd;"><h3>Meal-plan integration status</h3><p style="margin-top:7px;">Candidate search, selection, confirmation, and deterministic local mock logging are implemented and tested. A real dashboard HTTP client remains blocked on cross-team authentication and privacy contracts.</p></div><span class="slide-no">11</span>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">11 / User Interface</div><h2>A focused interface for an explainable answer</h2>
+      <div class="grid-2" style="margin-top:22px;height:auto;"><div class="browser"><div class="browser-bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i></div><div class="browser-body"><div class="fake-side"><b>NutriGuard</b><span>New chat</span><span>Recipe ideas</span><span>Calories</span><span>General guidance</span></div><div class="fake-chat"><h3>NutriGuard</h3><p>Egyptian food nutrition assistant</p><div class="fake-message">How much sodium is in koshari per 100 g?</div><div class="fake-message answer">Sodium: 214 mg<br><span class="fake-source">Basis: per 100 g · Deterministic calculation</span></div><div class="fake-source">Sources and calculation details +</div></div></div></div><div><div class="principles"><div class="principle"><div class="num">01</div><div><h3>Responsive RTL chat</h3><p>Designed for Egyptian Arabic, with mobile and desktop layouts.</p></div></div><div class="principle"><div class="num">02</div><div><h3>Answer details on demand</h3><p>Nutrition cards, comparison tables, source chips, and expandable evidence.</p></div></div><div class="principle"><div class="num">03</div><div><h3>Clear demo disclosure</h3><p>Candidate/demo data is visibly labelled as estimated and needs review.</p></div></div></div></div></div><span class="slide-no">12</span>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">12 / Evaluation</div><h2>The system is tested at multiple trust levels</h2>
+      <div class="grid-2 top" style="margin-top:32px;height:auto;"><div><div class="score-table"><div class="score-row"><label>Recall@1</label><div class="bar"><i style="width:57.41%"></i></div><strong>57.41%</strong></div><div class="score-row"><label>Recall@3</label><div class="bar"><i style="width:85.19%"></i></div><strong>85.19%</strong></div><div class="score-row"><label>MRR@5</label><div class="bar"><i style="width:70.68%"></i></div><strong>70.68%</strong></div></div><p class="small" style="margin-top:22px;">Local graduation benchmark: 80 synthetic questions, 54 with a clear expected recipe link. It demonstrates a repeatable evaluation harness; it is not production evidence.</p></div><div class="card"><div class="kicker">Verification coverage</div><h3>553 tests in the latest live-layer verification</h3><p style="margin-top:12px;">552 passed, 1 pre-existing skip, 0 failed. Coverage includes data resolution, quantities, nutrition, retrieval, API, safety, adversarial cases, grounding, and regressions.</p><div class="card flat" style="margin-top:16px;padding:13px;background:var(--green-soft);border-color:var(--mint);"><p style="color:var(--green-dark);font-weight:700;">Live optional model layer: 69.7% classifier agreement across 66 comparable cases, with zero LLM calls on medical safety.</p></div></div></div><span class="slide-no">13</span>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">13 / Engineering Readiness</div><h2>Built to be operated, inspected, and recovered</h2>
+      <div class="grid-3" style="margin-top:35px;"><div class="card"><div class="kicker">Data layer</div><h3>PostgreSQL</h3><p>Migrations, provenance constraints, review records, nullability rules, schema validation, and test-only synthetic seeds.</p></div><div class="card"><div class="kicker">Retrieval layer</div><h3>Qdrant + embeddings</h3><p>Provider-neutral embeddings, Recall/MRR benchmark harness, approved-only ingestion, payload filters, and deterministic IDs.</p></div><div class="card"><div class="kicker">Operations</div><h3>Release discipline</h3><p>Docker packaging, health/readiness endpoints, metrics, backups, recovery tooling, incident response, threat model, and release gates.</p></div></div><div class="status"><div class="status-card ready"><h3>Implemented for review</h3><ul><li>End-to-end local graduation demo</li><li>Secure API and responsive chat</li><li>Deterministic calculation and retrieval tools</li><li>Automated tests and operational package</li></ul></div><div class="status-card blocked"><h3>Explicitly not claimed</h3><ul><li>Official production deployment</li><li>Real-user pilot and human wording review</li><li>Approved production nutrition snapshot</li><li>Final infrastructure and owner approvals</li></ul></div></div><span class="slide-no">14</span>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">14 / Honest Scope</div><h2>The graduation demo is ready for review. Production is a separate gate.</h2>
+      <div class="status" style="margin-top:35px;"><div class="status-card ready"><h3>What the demo proves</h3><ul><li>The architecture works end-to-end locally.</li><li>Numbers are reproducible and traceable.</li><li>Ambiguity and missing data are handled explicitly.</li><li>Safety and API boundaries are enforced in code.</li><li>The evaluation and regression workflow can be rerun.</li></ul></div><div class="status-card blocked"><h3>What still requires external work</h3><ul><li>Human approval of recipe, ingredient, conversion, and nutrient records.</li><li>Real Egyptian-Arabic user evaluation and wording review.</li><li>Staging pilot with consent and signed feedback report.</li><li>Approved credentials, infrastructure, rollback evidence, and deployment authority.</li></ul></div></div><div class="card flat" style="margin-top:20px;background:var(--ink);color:white;border-color:var(--ink);"><p style="color:#d6eee4;font-size:16px;"><strong style="color:#f2b7a8;">The right claim:</strong> deterministic, traceable, graduation-ready. Not “100% accurate” and not “production approved.”</p></div><span class="slide-no">15</span>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">15 / Live Demo Plan</div><h2>Four questions that reveal the whole system</h2>
+      <div class="demo-script"><div class="time">01<br>1 min</div><div class="script-body"><b>Find a recipe</b><p>“How do I make Egyptian ta'ameya, and what are the ingredients?” Show retrieval, stable recipe identity, and source details.</p></div></div><div class="demo-script"><div class="time">02<br>1 min</div><div class="script-body"><b>Calculate nutrition</b><p>“How much sodium is in koshari per 100 g?” Show the basis, the deterministic result, and the calculation details.</p></div></div><div class="demo-script"><div class="time">03<br>1 min</div><div class="script-body"><b>Compare fairly</b><p>“Compare koshari and molokhia on the same basis.” Show the comparison table and explain why equal bases matter.</p></div></div><div class="demo-script"><div class="time">04<br>1 min</div><div class="script-body"><b>Ask for guidance</b><p>“What does WHO recommend for sodium?” Show guideline retrieval, provenance, and the medical-information boundary.</p></div></div><div class="card flat" style="margin-top:17px;background:var(--coral-soft);border-color:#efc7bd;"><p><strong>Backup plan:</strong> run <code>npm run demo:prepare</code>, then <code>npm run dev:web</code>, and keep a screenshot or short recording in case the room has no internet.</p></div><span class="slide-no">16</span>
+    </section>
+
+    <section class="slide cover">
+      <div class="closing"><div><div class="eyebrow">16 / Closing</div><h2>NutriGuard makes food intelligence explainable</h2><div class="rule" style="margin:28px auto;"></div><p class="quote">It finds the right context, calculates outside the language model, and shows the evidence and the limits.</p><p class="tagline">A nutrition assistant designed for useful answers, honest uncertainty, and responsible growth.</p><div class="pill" style="margin-top:30px;">Questions & discussion</div></div></div><span class="slide-no">17</span>
+    </section>
+  </main>
+  <div class="controls"><button id="prev" aria-label="Previous slide">&lt;</button><button id="next" aria-label="Next slide">&gt;</button></div>
+  <script>
+    const slides = [...document.querySelectorAll('.slide')];
+    const progress = document.querySelector('#progress');
+    let current = 0;
+    function render() {
+      slides.forEach((slide, index) => slide.classList.toggle('active', index === current));
+      progress.style.width = ((current + 1) / slides.length * 100) + '%';
+      document.title = 'NutriGuard Egypt | ' + String(current + 1).padStart(2, '0') + ' / ' + slides.length;
+    }
+    function move(delta) { current = Math.max(0, Math.min(slides.length - 1, current + delta)); render(); }
+    document.querySelector('#prev').addEventListener('click', () => move(-1));
+    document.querySelector('#next').addEventListener('click', () => move(1));
+    document.addEventListener('keydown', event => {
+      if (['ArrowRight', 'ArrowDown', 'PageDown', ' '].includes(event.key)) { event.preventDefault(); move(1); }
+      if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(event.key)) { event.preventDefault(); move(-1); }
+      if (event.key.toLowerCase() === 'p') window.print();
+      if (event.key === 'Home') { current = 0; render(); }
+      if (event.key === 'End') { current = slides.length - 1; render(); }
+    });
+    render();
+  </script>
+</body>
+</html>

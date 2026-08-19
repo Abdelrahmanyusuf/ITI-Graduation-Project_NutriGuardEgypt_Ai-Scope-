@@ -4,6 +4,15 @@ A nutrition assistant restricted to **verified Egyptian food**. Nutritional
 values and guidelines are deterministic application data — the assistant never
 invents numbers, and every value carries provenance and versioning.
 
+Precisely stated, NutriGuard is a **Deterministic Nutrition Agent with Hybrid
+RAG, external embeddings, and a narrowly-scoped Claude classifier/formatter layer
+(advisory classification + grounded response phrasing only — never calculation,
+never data invention, never write-action authority).** It is deliberately **not** a
+generic "LLM chat agent": intent routing stays rule-based, every number comes from
+the deterministic Step 4–9 pipeline, and model-authored wording is discarded
+unless a grounding validator can trace every number and name in it back to that
+pipeline. See [docs/STEP_17B_CLAUDE_LAYER.md](docs/STEP_17B_CLAUDE_LAYER.md).
+
 > **Status: Steps 0–20 engineering and release-readiness implementation completed for review.** Steps 0–3 (foundation, scope
 > docs, data audit, recipe staging), Step 4 (PostgreSQL schema + migrations +
 > provenance), and Step 5 (ingredient dictionary + deterministic entity
@@ -78,6 +87,9 @@ it to `.env` has no effect on the foundation unless your runtime loads it.
 | `npm run ingest:retrieval` | Ingest one explicit approved corpus into Qdrant |
 | `npm run eval:validate` | Validate the Step 14 evaluation dataset (synthetic is blocked for production) |
 | `npm run eval:adversarial` | Run deterministic Steps 16–17 synthetic adversarial evaluation |
+| `npm run verify:claude-layer` | Exercise the real request path and print Step 17b debug traces |
+| `npm run report:claude-classifier` | Generate the Step 17b classifier regression comparison report |
+| `npm run measure:claude-layer` | Measure the Step 17b layer's in-process latency overhead per intent |
 | `npm run release:check:staging` | Fail-closed Step 19 evidence gate |
 | `npm run release:check:production` | Fail-closed Step 20 evidence gate |
 | `npm run production:packets` | Generate deterministic pending reviewer and Safety/QA packets |
@@ -351,11 +363,31 @@ append-only consent-bound feedback, strict staging/production evidence gates,
 container packaging, and operational/security documentation. See
 [`docs/STEPS_16_20.md`](docs/STEPS_16_20.md).
 
+**Implemented (Step 17b) — narrowly-scoped Claude layer:** an advisory intent
+classifier that cross-checks the rule-based classifiers without ever deciding
+routing, and a response formatter that may only rephrase facts the deterministic
+pipeline already computed. A grounding validator rejects any prose containing a
+number or entity it cannot trace to those facts, falling back to the unchanged
+deterministic template. `medical_safety` is screened out before any Claude call
+and is hard-disabled in the formatter. An internal, token-guarded debug route
+reports the route taken, the model per stage, the retrieval path, and per-stage
+latencies without exposing raw user messages.
+
+**No real Claude call has been made from this repository:** the layer is reached
+through OpenRouter, and on the configured key no Anthropic model was available —
+it was verified with `openai/gpt-4o-mini`, so describe the deployment by the model
+actually in use rather than as a "Claude" layer. Measured 2026-08-19: 69.7%
+classifier agreement over 66 comparable cases, grounded formatting on live
+responses, and zero LLM calls on `medical_safety`. See
+[`docs/STEP_17B_CLAUDE_LAYER.md`](docs/STEP_17B_CLAUDE_LAYER.md).
+
 **External production work still required:**
 - Production-scale dictionary and reviewed conversion-factor expansion
 - Production embedding-model approval and approved production-corpus ingestion
 - Real-user evaluation, human wording review, the actual staging pilot, and its signed feedback report
 - Approved infrastructure/credentials and owner-authorized official deployment
+- A tool-capable OpenRouter model for the Step 17b layer (verified: `openai/gpt-4o-mini`);
+  reasoning models and models without tool support do not work for the classifier
 - Importing verified nutrition data into the DB (import pipeline is future
   work; the schema and migrations exist but no production data is loaded)
 

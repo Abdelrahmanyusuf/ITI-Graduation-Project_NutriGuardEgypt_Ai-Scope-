@@ -13,9 +13,16 @@ const demo = process.argv.includes("--demo");
 const config = demo ? loadConfig() : loadProductionConfig();
 if (demo && config.nodeEnv === "production") throw new Error("synthetic demo mode is forbidden in production");
 const runtime = demo ? null : await buildProductionRuntime(config as ReturnType<typeof loadProductionConfig>);
-const agent = runtime?.agent ?? await buildGraduationDemoAgent(config.nodeEnv as "development" | "test");
+const demoAgent = runtime ? null : await buildGraduationDemoAgent(config.nodeEnv as "development" | "test");
+const agent = runtime?.agent ?? demoAgent!;
 const releaseId = runtime ? (config as ReturnType<typeof loadProductionConfig>).releaseId : `local-demo-${process.env.npm_package_version ?? "0.1.0"}`;
 const logger = new JsonStructuredLogger(); const metrics = new MetricsRegistry();
+// Part C1: the internal Claude trace route exists only when the debug flag and
+// a token are both present. It is never enabled by default.
+const debugToken = process.env.CLAUDE_DEBUG_PANEL_TOKEN?.trim();
+const claudeDebugPanel = demoAgent && debugToken && demoAgent.claudeLayer.config.debugPanelEnabled
+  ? { enabled: true, token: debugToken, list: (limit: number) => demoAgent.claudeLayer.store.list(limit) }
+  : undefined;
 const server = createNutriGuardHttpServer({
   agent,
   feedbackStore: runtime?.feedbackStore ?? new InMemoryPilotFeedbackStore(),
@@ -26,6 +33,7 @@ const server = createNutriGuardHttpServer({
   pilotConsentReference: runtime ? (config as ReturnType<typeof loadProductionConfig>).pilotConsentReference : "LOCAL-GRADUATION-DEMO-CONSENT",
   privacyNoticeVersion: runtime ? (config as ReturnType<typeof loadProductionConfig>).privacyNoticeVersion : "local-demo-v1",
   logger, metrics, metricsToken: runtime ? (config as ReturnType<typeof loadProductionConfig>).metricsToken : undefined,
+  ...(claudeDebugPanel ? { claudeDebugPanel } : {}),
 });
 const host = runtime ? (config as ReturnType<typeof loadProductionConfig>).host : "127.0.0.1";
 server.listen(config.port, host, () => logger.log("info", "server_started", { host, port: config.port, releaseId, mode: runtime ? "production" : "graduation_demo" }));

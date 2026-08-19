@@ -15,7 +15,7 @@ test("validateEnv accepts a valid development configuration", () => {
   assert.equal(result.value.port, 8080);
 });
 
-test("validateEnv accepts production without any OpenRouter key", () => {
+test("validateEnv accepts production without any LLM provider key", () => {
   const result = validateEnv({ NODE_ENV: "production", PORT: "443" });
   assert.ok(result.ok);
   if (!result.ok) return;

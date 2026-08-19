@@ -1,0 +1,106 @@
+{
+  "schemaVersion": "1.0",
+  "title": "Step 17b Claude layer latency impact",
+  "generatedAt": "2026-08-19T03:46:46.082Z",
+  "iterationsPerCase": 20,
+  "warmupIterations": 3,
+  "measurementScope": "in-process overhead only",
+  "providerNetworkLatencyMeasured": false,
+  "providerNetworkLatencyNote": "No OPENROUTER_API_KEY is configured, so real Claude round-trip time is unmeasured and deliberately not estimated. Configured stage timeouts bound it: 3000ms for the classifier and 6000ms for the formatter, after which the deterministic fallback runs.",
+  "claudeCredentialsPresent": true,
+  "notes": [
+    "Baseline is the agent with the Claude layer inert, which is the pre-Step-17b code path.",
+    "The instrumented run exercises the classifier stage, the formatter stage, a full grounding validation pass, and the template fallback.",
+    "medical_safety is included to show the safety pre-screen short-circuits before any Claude stage."
+  ],
+  "perIntent": [
+    {
+      "intent": "recipe_nutrition",
+      "baselineMedianMs": 20.43,
+      "layerMedianMs": 39.59,
+      "deltaMedianMs": 19.16,
+      "baselineP95Ms": 36.88,
+      "layerP95Ms": 75.81,
+      "baselineMeanMs": 23.34,
+      "layerMeanMs": 49.18,
+      "deltaMeanMs": 25.84
+    },
+    {
+      "intent": "ingredient_nutrition",
+      "baselineMedianMs": 20.03,
+      "layerMedianMs": 39.93,
+      "deltaMedianMs": 19.9,
+      "baselineP95Ms": 32.77,
+      "layerP95Ms": 49.95,
+      "baselineMeanMs": 22.98,
+      "layerMeanMs": 41.28,
+      "deltaMeanMs": 18.3
+    },
+    {
+      "intent": "compare_recipes",
+      "baselineMedianMs": 1214.03,
+      "layerMedianMs": 1209.63,
+      "deltaMedianMs": -4.4,
+      "baselineP95Ms": 1269.9,
+      "layerP95Ms": 1545.48,
+      "baselineMeanMs": 1217.1,
+      "layerMeanMs": 1273.69,
+      "deltaMeanMs": 56.59
+    },
+    {
+      "intent": "lighter_modification",
+      "baselineMedianMs": 15.35,
+      "layerMedianMs": 33.74,
+      "deltaMedianMs": 18.39,
+      "baselineP95Ms": 17.41,
+      "layerP95Ms": 57.67,
+      "baselineMeanMs": 15.83,
+      "layerMeanMs": 37.72,
+      "deltaMeanMs": 21.89
+    },
+    {
+      "intent": "find_recipe",
+      "baselineMedianMs": 17.7,
+      "layerMedianMs": 36.99,
+      "deltaMedianMs": 19.29,
+      "baselineP95Ms": 29.92,
+      "layerP95Ms": 55.48,
+      "baselineMeanMs": 21.47,
+      "layerMeanMs": 43.06,
+      "deltaMeanMs": 21.59
+    },
+    {
+      "intent": "general_guideline",
+      "baselineMedianMs": 1191.41,
+      "layerMedianMs": 1223.39,
+      "deltaMedianMs": 31.98,
+      "baselineP95Ms": 1254.14,
+      "layerP95Ms": 1297.03,
+      "baselineMeanMs": 1203.6,
+      "layerMeanMs": 1232.19,
+      "deltaMeanMs": 28.59
+    },
+    {
+      "intent": "meal_plan",
+      "baselineMedianMs": 17.23,
+      "layerMedianMs": 36.38,
+      "deltaMedianMs": 19.15,
+      "baselineP95Ms": 21.58,
+      "layerP95Ms": 40.29,
+      "baselineMeanMs": 18,
+      "layerMeanMs": 36.75,
+      "deltaMeanMs": 18.75
+    },
+    {
+      "intent": "medical_safety",
+      "baselineMedianMs": 2.43,
+      "layerMedianMs": 14.58,
+      "deltaMedianMs": 12.15,
+      "baselineP95Ms": 2.82,
+      "layerP95Ms": 19.77,
+      "baselineMeanMs": 2.5,
+      "layerMeanMs": 15.54,
+      "deltaMeanMs": 13.04
+    }
+  ]
+}
