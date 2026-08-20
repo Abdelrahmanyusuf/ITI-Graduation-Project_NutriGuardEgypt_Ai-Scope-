@@ -884,13 +884,14 @@ export class MealPlanSelectionFlow {
       }, [{ tool: "confirm_and_log_meal_selection", ok: false, code: outcome.response.error_code }]);
     }
     if (outcome.outcome === "already_logged") {
+      const remaining = outcome.response.daily_calories_remaining;
       const message = [
         language === "en"
           ? "This exact operation was already logged, so I did not deduct anything again."
           : "العملية دي كانت مسجلة قبل كده بنفس رقم العملية، فما حصلش أي خصم جديد.",
-        language === "en"
-          ? `Remaining daily calories: ${outcome.response.daily_calories_remaining} kcal.`
-          : `المتبقي من سعرات اليوم: ${outcome.response.daily_calories_remaining} سعر حراري.`,
+        ...(remaining === null ? [] : [language === "en"
+          ? `Remaining daily calories: ${remaining} kcal.`
+          : `المتبقي من سعرات اليوم: ${remaining} سعر حراري.`]),
         dashboardNotice,
       ].join("\n\n");
       return response("ok", language, message, {
@@ -910,9 +911,9 @@ export class MealPlanSelectionFlow {
       language === "en" ? "Logged. Here is exactly what was recorded:" : "تم التسجيل. ده بالظبط اللي اتسجل:",
       this.renderSelectionLines(outcome.selections, language, state.includeSodium),
       language === "en" ? `Total logged: ${outcome.loggedCaloriesKcal} kcal.` : `إجمالي المسجّل: ${outcome.loggedCaloriesKcal} سعر حراري.`,
-      language === "en"
+      ...(outcome.response.daily_calories_remaining === null ? [] : [language === "en"
         ? `Remaining daily calories: ${outcome.response.daily_calories_remaining} kcal.`
-        : `المتبقي من سعرات اليوم: ${outcome.response.daily_calories_remaining} سعر حراري.`,
+        : `المتبقي من سعرات اليوم: ${outcome.response.daily_calories_remaining} سعر حراري.`]),
       dashboardNotice,
     ].join("\n\n");
     return response("ok", language, message, {

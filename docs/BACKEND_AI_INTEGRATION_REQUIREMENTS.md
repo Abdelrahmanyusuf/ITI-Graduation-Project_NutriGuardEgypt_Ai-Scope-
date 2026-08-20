@@ -123,7 +123,7 @@ Add explicit response DTOs and examples for:
 - `POST /api/Nutrition/eligible-recipes`
 - `GET /api/Tracking/summary/{date}`
 - `GET /api/Tracking/history`
-- `POST /api/Tracking/meals`
+- `POST /api/Tracking/custom-meals`
 - All Foods and Recipes endpoints.
 
 Document all success and failure responses: `200`, `201`, `400`, `401`, `403`, `404`, `409`, `422`, `429`, and `500` where applicable.
@@ -602,7 +602,7 @@ Standard error:
 
 ### 10.1 Require explicit user confirmation
 
-The AI should calculate and display the proposed meal first. It may call `POST /api/Tracking/meals` only after a clear confirmation such as “yes, add it.”
+The AI should calculate and display the proposed meal first. It may call `POST /api/Tracking/custom-meals` only after a clear confirmation such as “yes, add it.”
 
 ### 10.2 Add idempotency
 
@@ -616,7 +616,7 @@ Repeated submissions with the same key must not create duplicate meals.
 
 ### 10.3 Return the calculated saved record
 
-`POST /api/Tracking/meals` should return:
+`POST /api/Tracking/custom-meals` should return:
 
 - stable meal-log ID;
 - saved items and quantities;

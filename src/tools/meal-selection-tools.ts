@@ -267,6 +267,7 @@ export class MealSelectionTools implements MealSelectionToolset {
 
     const timestamp = this.now().toISOString();
     const selections: DashboardSelectionPayload[] = operation.selections.flatMap((selection) => selection.recipes.map((recipe) => ({
+      name: recipe.name,
       recipe_id: recipe.recipeId,
       meal_category: selection.mealCategory as DashboardMealCategory,
       // Only the four contract fields are sent. Sodium is shown to the user when

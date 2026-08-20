@@ -16,7 +16,7 @@ const ERROR_CODES = new Set<DashboardErrorCode>([
 ]);
 
 export interface HttpDashboardClientOptions {
-  /** Base URL of the dashboard/backend, without `/api/Tracking/meals`. */
+  /** Base URL of the dashboard/backend, without `/api/Tracking/custom-meals`. */
   baseUrl: string;
   /** Optional service-to-service bearer token accepted by the backend. */
   bearerToken?: string;
@@ -24,7 +24,7 @@ export interface HttpDashboardClientOptions {
   fetchImplementation?: typeof fetch;
 }
 
-/** Real dashboard client for POST /api/Tracking/meals. */
+/** Real dashboard client for POST /api/Tracking/custom-meals. */
 export class HttpDashboardClient implements DashboardClient {
   public readonly implementationId = "HTTP-DASHBOARD-CLIENT";
   private readonly endpoint: string;
@@ -35,32 +35,49 @@ export class HttpDashboardClient implements DashboardClient {
   public constructor(options: HttpDashboardClientOptions) {
     const baseUrl = options.baseUrl.trim().replace(/\/+$/u, "");
     if (!baseUrl) throw new Error("dashboard base URL is required");
-    this.endpoint = `${baseUrl}/api/Tracking/meals`;
+    this.endpoint = `${baseUrl}/api/Tracking/custom-meals`;
     this.bearerToken = options.bearerToken?.trim() || undefined;
     this.timeoutMs = Math.max(1_000, options.timeoutMs ?? 10_000);
     this.fetchImplementation = options.fetchImplementation ?? fetch;
   }
 
   public async logMealSelections(request: DashboardLogMealsRequest): Promise<DashboardLogMealsResponse> {
-    const headers: Record<string, string> = {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      "Idempotency-Key": request.idempotency_key,
-    };
-    if (this.bearerToken) headers.Authorization = `Bearer ${this.bearerToken}`;
+    if (request.selections.length === 0) return { status: "error", error_code: "validation_failed", message: "at least one meal selection is required" };
+    const loggedSelectionIds: string[] = [];
+    for (const [index, selection] of request.selections.entries()) {
+      const result = await this.postCustomMeal(request.idempotency_key, selection, index);
+      if (result.status === "error") return result;
+      if ("loggedId" in result && result.loggedId) loggedSelectionIds.push(result.loggedId);
+    }
+    return { status: "success", applied: true, daily_calories_remaining: null, logged_selection_ids: loggedSelectionIds };
+  }
 
+  private async postCustomMeal(idempotencyKey: string, selection: DashboardLogMealsRequest["selections"][number], index: number): Promise<{ status: "success"; loggedId: string | null } | DashboardLogMealsResponse> {
+    const headers: Record<string, string> = { Accept: "application/json", "Content-Type": "application/json", "Idempotency-Key": idempotencyKey };
+    if (this.bearerToken) headers.Authorization = `Bearer ${this.bearerToken}`;
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), this.timeoutMs);
     try {
       const response = await this.fetchImplementation(this.endpoint, {
         method: "POST",
         headers,
-        body: JSON.stringify(request),
+        body: JSON.stringify({
+          name: selection.name || selection.recipe_id,
+          externalReferenceId: `${idempotencyKey}:${index + 1}`,
+          source: "NutriGuard AI",
+          mealType: this.mealType(selection.meal_category),
+          date: selection.timestamp.slice(0, 10),
+          servings: 1,
+          energyKcal: selection.nutrition_snapshot.calories,
+          proteinG: selection.nutrition_snapshot.protein_g,
+          carbohydrateG: selection.nutrition_snapshot.carbs_g,
+          fatG: selection.nutrition_snapshot.fat_g,
+        }),
         signal: controller.signal,
       });
       const body = await response.json().catch(() => null) as unknown;
       if (!response.ok) return this.errorResponse(response.status, body);
-      return this.successResponse(body);
+      return this.successResponse(body, `${idempotencyKey}:${index + 1}`);
     } catch (error) {
       throw new Error(error instanceof Error && error.name === "AbortError" ? "dashboard request timed out" : `dashboard request failed: ${error instanceof Error ? error.message : String(error)}`);
     } finally {
@@ -68,16 +85,20 @@ export class HttpDashboardClient implements DashboardClient {
     }
   }
 
-  private successResponse(body: unknown): DashboardLogMealsResponse {
-    if (!body || typeof body !== "object") return { status: "error", error_code: "server_error", message: "dashboard returned an invalid response" };
+  private mealType(category: DashboardLogMealsRequest["selections"][number]["meal_category"]): "Breakfast" | "Lunch" | "Dinner" | "Snack" {
+    return category === "breakfast" ? "Breakfast" : category === "lunch" ? "Lunch" : category === "dinner" ? "Dinner" : "Snack";
+  }
+
+  private successResponse(body: unknown, fallbackId: string): { status: "success"; loggedId: string | null } | DashboardLogMealsResponse {
+    if (body === null || body === undefined) return { status: "success", loggedId: fallbackId };
     const value = body as Record<string, unknown>;
-    if (value.status === "success" && value.applied === true && typeof value.daily_calories_remaining === "number" && Array.isArray(value.logged_selection_ids)) {
-      return { status: "success", applied: true, daily_calories_remaining: value.daily_calories_remaining, logged_selection_ids: value.logged_selection_ids.filter((id): id is string => typeof id === "string") };
+    if (typeof value !== "object") return { status: "success", loggedId: fallbackId };
+    if (value.isSuccess === false) {
+      return { status: "error", error_code: "validation_failed", message: typeof value.message === "string" ? value.message : "dashboard rejected the custom meal" };
     }
-    if (value.status === "success" && value.applied === false && value.reason === "already_logged" && typeof value.daily_calories_remaining === "number") {
-      return { status: "success", applied: false, reason: "already_logged", daily_calories_remaining: value.daily_calories_remaining };
-    }
-    return { status: "error", error_code: "validation_failed", message: "dashboard returned an unsupported success response" };
+    const data = value.data && typeof value.data === "object" ? value.data as Record<string, unknown> : value;
+    const id = typeof data.id === "number" || typeof data.id === "string" ? String(data.id) : fallbackId;
+    return { status: "success", loggedId: id };
   }
 
   private errorResponse(status: number, body: unknown): DashboardLogMealsResponse {

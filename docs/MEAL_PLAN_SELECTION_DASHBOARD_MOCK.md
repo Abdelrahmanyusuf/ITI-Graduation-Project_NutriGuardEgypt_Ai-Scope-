@@ -1,7 +1,8 @@
-# Multi-option meal-plan selection with a MOCKED dashboard integration
+# Multi-option meal-plan selection with mock and HTTP dashboard integrations
 
-> **Status: implemented against a deterministic local mock. The real dashboard
-> integration is NOT implemented and is blocked.**
+> **Status: the deterministic local mock remains the default for tests. An
+> opt-in HTTP client now sends confirmed meals to
+> `POST /api/Tracking/custom-meals`.**
 >
 > **Numbering note.** The task that produced this document calls itself "Step 16".
 > That collides with the original roadmap's Step 16 (adversarial evaluation, see
@@ -15,14 +16,12 @@
 | Candidate search, selection, confirmation, and logging flow | Implemented and tested |
 | `DashboardClient` port | Implemented |
 | `MockDashboardClient` (deterministic, local, no network) | Implemented and tested |
-| Real HTTP dashboard client | **Does not exist.** Blocked on cross-team auth linkage |
-| Production readiness of this feature | **Blocked.** See "Blockers" below |
+| Real HTTP dashboard client | Implemented; opt-in through `NUTRIGUARD_DASHBOARD_BASE_URL` |
+| Production readiness of this feature | Requires a valid backend bearer-token flow and backend policy decisions |
 
-Every mock call emits `[MOCK DASHBOARD CALL]` on the injected logger, and every
-user-facing success/replay message states in plain language that the dashboard
-link is still a local mock and that no real account was changed. A mock call can
-therefore not be mistaken for a real integration in a log, a demo, or a
-screenshot.
+Every mock call emits `[MOCK DASHBOARD CALL]` on the injected logger. When the
+HTTP client is configured, confirmation sends one backend-compatible custom-meal
+DTO per confirmed recipe instead of emitting the mock marker.
 
 ## Files
 
@@ -30,6 +29,7 @@ screenshot.
 | --- | --- |
 | `src/services/dashboard/dashboard-client.ts` | The wire contract and the `DashboardClient` port. No I/O. |
 | `src/services/dashboard/mock-dashboard-client.ts` | Deterministic local mock. Scenario-driven, no randomness. |
+| `src/services/dashboard/http-dashboard-client.ts` | Opt-in HTTP client for `POST /api/Tracking/custom-meals`. |
 | `src/services/dashboard/pending-meal-operations.ts` | Server-side in-memory frozen-snapshot table plus the TTL constant. |
 | `src/tools/meal-selection-tools.ts` | `search_recipes_by_meal_category` and `confirm_and_log_meal_selection`. |
 | `src/runtime/meal-plan-selection.ts` | The conversational flow: request, selection, summary, confirmation. |
@@ -187,18 +187,13 @@ state durably is deliberately out of scope for this step and would expand it.
 
 ## Blockers and out-of-scope items
 
-### Real integration is blocked, and this is expected
+### HTTP integration requirements
 
-Section 1 of `NutriGuard_Dashboard_Integration_Contract.md` records that the
-backend team has not yet answered how an authenticated `user_id` or bearer token
-reaches the AI layer, nor whether a separate service-to-service token exists.
-Until that is answered, no HTTP implementation of `DashboardClient` may be written
-or shipped, and the feature cannot go to production even with the code complete —
-there is no guarantee a deduction would land on the right account.
-
-**Swapping in a real client is the intended seam but is not guaranteed to be a
-pure drop-in.** Real auth plumbing, the backend's actual schema, and the
-unresolved items below may each force changes in calling code as well.
+Set `NUTRIGUARD_DASHBOARD_BASE_URL` and a valid
+`NUTRIGUARD_DASHBOARD_TOKEN`. The client sends the backend DTO fields documented
+by Swagger (`name`, `mealType`, `date`, `servings`, `energyKcal`, `proteinG`,
+`carbohydrateG`, `fatG`, `source`, and `externalReferenceId`). Without the URL,
+the deterministic mock remains active.
 
 ### Explicitly out of scope, not assumed away
 

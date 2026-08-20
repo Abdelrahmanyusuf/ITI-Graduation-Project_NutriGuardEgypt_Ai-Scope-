@@ -1,25 +1,10 @@
 /**
- * Step 16 — Dashboard integration port (contract-shaped, NOT connected).
+ * Step 16 — Dashboard integration port.
  *
- * This module is the ONLY place that describes the wire contract agreed with the
- * dashboard/backend team in `NutriGuard_Dashboard_Integration_Contract.md` (v2).
- * Nothing here performs I/O: it declares the request payload, the three response
- * shapes, and the `DashboardClient` port.
- *
- * Real integration status: NOT IMPLEMENTED and blocked. Section 1 of the
- * contract records that cross-team auth linkage (how an authenticated `user_id`
- * or bearer token reaches the AI layer, and whether a separate service-to-service
- * token exists) is still an open question owned by the backend team. Until that is
- * answered no HTTP implementation of this port may be written or shipped.
- *
- * Swapping the mock for a real HTTP client means adding a second implementation
- * of `DashboardClient` in this folder and constructing it instead of
- * `MockDashboardClient`. That is the intended seam, but it is NOT guaranteed to be
- * a pure drop-in swap: real auth plumbing, the backend's actual schema, and the
- * unresolved items in `NutriGuard_Open_Questions_Backend_Privacy.md` (privacy /
- * consent / retention, server-side `nutrition_snapshot` validation, batch
- * atomicity, audit / correction / reversal, negative-balance policy, and
- * timestamp / timezone semantics) may each force changes in calling code too.
+ * The local mock and the opt-in HTTP implementation both satisfy this port.
+ * `HttpDashboardClient` maps the internal selection snapshot to the backend's
+ * `CreateCustomMealLogRequestDto` and calls `/api/Tracking/custom-meals`.
+ * Authentication and per-user routing still depend on the backend token flow.
  */
 
 /** Meal categories the dashboard accepts for a logged selection. */
@@ -60,6 +45,8 @@ export interface DashboardNutritionSnapshot {
 }
 
 export interface DashboardSelectionPayload {
+  /** Display name sent to the custom-meals endpoint. */
+  name?: string;
   recipe_id: string;
   meal_category: DashboardMealCategory;
   nutrition_snapshot: DashboardNutritionSnapshot;
@@ -83,7 +70,7 @@ export interface DashboardLogMealsRequest {
 export interface DashboardSuccessResponse {
   status: "success";
   applied: true;
-  daily_calories_remaining: number;
+  daily_calories_remaining: number | null;
   logged_selection_ids: string[];
 }
 
@@ -91,7 +78,7 @@ export interface DashboardIdempotentReplayResponse {
   status: "success";
   applied: false;
   reason: "already_logged";
-  daily_calories_remaining: number;
+  daily_calories_remaining: number | null;
 }
 
 export interface DashboardErrorResponse {
