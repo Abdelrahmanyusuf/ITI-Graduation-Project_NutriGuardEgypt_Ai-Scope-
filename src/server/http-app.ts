@@ -198,7 +198,7 @@ export function createNutriGuardHttpServer(options: HttpAppOptions): Server {
     }
     if (request.method === "OPTIONS") {
       response.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
-      response.setHeader("Access-Control-Allow-Headers", "Content-Type");
+      response.setHeader("Access-Control-Allow-Headers", "Content-Type,Authorization,Accept");
       response.statusCode = 204;
       return response.end();
     }
