@@ -29,7 +29,7 @@ const server = createNutriGuardHttpServer({
   feedbackStore: runtime?.feedbackStore ?? new InMemoryPilotFeedbackStore(),
   mode: runtime ? (config as ReturnType<typeof loadProductionConfig>).deploymentTarget : config.nodeEnv,
   releaseId,
-  allowedOrigins: runtime ? (config as ReturnType<typeof loadProductionConfig>).allowedOrigins : [...FRONTEND_ORIGINS, `http://127.0.0.1:${config.port}`, `http://localhost:${config.port}`],
+  allowedOrigins: runtime ? [...(config as ReturnType<typeof loadProductionConfig>).allowedOrigins, ...FRONTEND_ORIGINS] : [...FRONTEND_ORIGINS, `http://127.0.0.1:${config.port}`, `http://localhost:${config.port}`],
   readiness: runtime?.readiness ?? (async () => ({ ready: true, blockers: [] })),
   pilotConsentReference: runtime ? (config as ReturnType<typeof loadProductionConfig>).pilotConsentReference : "LOCAL-GRADUATION-DEMO-CONSENT",
   privacyNoticeVersion: runtime ? (config as ReturnType<typeof loadProductionConfig>).privacyNoticeVersion : "local-demo-v1",
