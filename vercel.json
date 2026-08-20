@@ -2,14 +2,11 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
   "installCommand": "npm ci",
-  "buildCommand": "npm run build",
+  "buildCommand": "",
   "functions": {
     "server.ts": {
       "maxDuration": 60,
-      "includeFiles": [
-        "unified_egyptian_rag_database_v2_final.json",
-        "data/dictionary/ingredients.json"
-      ]
+      "includeFiles": "{unified_egyptian_rag_database_v2_final.json,data/dictionary/ingredients.json}"
     }
   }
 }
