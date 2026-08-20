@@ -7,6 +7,7 @@ import { JsonStructuredLogger } from "../src/observability/logger.js";
 import { MetricsRegistry } from "../src/observability/metrics.js";
 import { InMemoryPilotFeedbackStore } from "../src/pilot/feedback.js";
 import { createNutriGuardHttpServer } from "../src/server/http-app.js";
+import { FRONTEND_ORIGINS } from "../src/config/frontend-origins.js";
 
 type VercelMode = "graduation_demo" | "production";
 
@@ -25,7 +26,7 @@ function configuredOrigins(): string[] {
     .map((value) => value?.trim())
     .filter((value): value is string => Boolean(value))
     .map((host) => `https://${host.replace(/^https?:\/\//u, "")}`);
-  return [...new Set([...explicit, ...vercelHosts])];
+  return [...new Set([...FRONTEND_ORIGINS, ...explicit, ...vercelHosts])];
 }
 
 function requestTimeoutMs(): number {
