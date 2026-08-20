@@ -119,6 +119,7 @@ export type ConfirmAndLogOutcome =
   | { outcome: "confirmation_expired"; pendingOperationId: string; reason: "unknown" | "expired" | "invalidated" | "resolved" };
 
 export interface MealSelectionToolset {
+  readonly implementationId?: string;
   searchRecipesByMealCategory(input: SearchRecipesByMealCategoryInput): Promise<ToolResult<MealCategorySearchOutput>>;
   confirmAndLogMealSelection(input: { pendingOperationId: string }): Promise<ToolResult<ConfirmAndLogOutcome>>;
 }
@@ -148,9 +149,11 @@ function round(value: number): number {
  * can hand it selections or nutrition numbers.
  */
 export class MealSelectionTools implements MealSelectionToolset {
+  public readonly implementationId: string;
   private readonly now: () => Date;
 
   public constructor(private readonly dependencies: MealSelectionToolDependencies) {
+    this.implementationId = dependencies.dashboard.implementationId;
     this.now = dependencies.now ?? (() => new Date());
   }
 

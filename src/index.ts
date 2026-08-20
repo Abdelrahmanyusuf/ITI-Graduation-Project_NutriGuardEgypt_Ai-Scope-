@@ -84,6 +84,7 @@ export {
   MockDashboardClient,
   type MockDashboardScenario,
 } from "./services/dashboard/mock-dashboard-client.js";
+export { HttpDashboardClient, type HttpDashboardClientOptions } from "./services/dashboard/http-dashboard-client.js";
 export {
   InMemoryPendingMealOperationStore,
   PENDING_MEAL_CONFIRMATION_TTL_SECONDS,

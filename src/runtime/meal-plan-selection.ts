@@ -849,9 +849,15 @@ export class MealPlanSelectionFlow {
       }, [{ tool: "confirm_and_log_meal_selection", ok: false, code: result.errors[0]?.code ?? "unknown" }]);
     }
     const outcome = result.data;
-    const mockNotice = language === "en"
-      ? "Note: the dashboard link is still a local deterministic mock. No request left this process and no real account was changed."
-      : "ملاحظة: الربط بالداشبورد لسه mock محلي حتمي. مفيش أي طلب خرج من العملية دي ومفيش حساب حقيقي اتغير.";
+    const usesMockDashboard = (this.dependencies.tools.implementationId ?? "").startsWith("MOCK-");
+    const dashboardNotice = usesMockDashboard
+      ? language === "en"
+        ? "Note: the dashboard link is a local deterministic mock. No request left this process and no real account was changed."
+        : "ملاحظة: الربط بالداشبورد mock محلي حتمي. مفيش أي طلب خرج من العملية دي ومفيش حساب حقيقي اتغير."
+      : language === "en"
+        ? "The meal was submitted to the real dashboard endpoint."
+        : "الوجبة اتبعتت فعليًا إلى endpoint تسجيل الوجبات في الداشبورد.";
+    const dashboardImplementation = usesMockDashboard ? "mock" : "http";
 
     if (outcome.outcome === "confirmation_expired") {
       return this.confirmationExpired(pendingOperationId, outcome.reason, language);
@@ -864,7 +870,7 @@ export class MealPlanSelectionFlow {
         language === "en"
           ? `The same operation id ${pendingOperationId} is still the key, so retrying cannot double-count anything.`
           : `نفس رقم العملية ${pendingOperationId} لسه هو المفتاح، فإعادة المحاولة ما تقدرش تخصم مرتين.`,
-        mockNotice,
+        dashboardNotice,
       ].join("\n\n");
       return response("no_result", language, message, {
         intent: "meal_plan_selection",
@@ -873,7 +879,7 @@ export class MealPlanSelectionFlow {
         errorCode: outcome.response.error_code,
         pendingOperationId,
         idempotencyKey: pendingOperationId,
-        dashboardImplementation: "mock",
+        dashboardImplementation,
         conversationContext: this.contextOf(state),
       }, [{ tool: "confirm_and_log_meal_selection", ok: false, code: outcome.response.error_code }]);
     }
@@ -885,7 +891,7 @@ export class MealPlanSelectionFlow {
         language === "en"
           ? `Remaining daily calories: ${outcome.response.daily_calories_remaining} kcal.`
           : `المتبقي من سعرات اليوم: ${outcome.response.daily_calories_remaining} سعر حراري.`,
-        mockNotice,
+        dashboardNotice,
       ].join("\n\n");
       return response("ok", language, message, {
         intent: "meal_plan_selection",
@@ -895,7 +901,7 @@ export class MealPlanSelectionFlow {
         dailyCaloriesRemaining: outcome.response.daily_calories_remaining,
         pendingOperationId,
         idempotencyKey: pendingOperationId,
-        dashboardImplementation: "mock",
+        dashboardImplementation,
         conversationContext: this.contextOf({ ...state, phase: "completed" }),
       }, [{ tool: "confirm_and_log_meal_selection", ok: true, code: "already_logged" }]);
     }
@@ -907,7 +913,7 @@ export class MealPlanSelectionFlow {
       language === "en"
         ? `Remaining daily calories: ${outcome.response.daily_calories_remaining} kcal.`
         : `المتبقي من سعرات اليوم: ${outcome.response.daily_calories_remaining} سعر حراري.`,
-      mockNotice,
+      dashboardNotice,
     ].join("\n\n");
     return response("ok", language, message, {
       intent: "meal_plan_selection",
@@ -918,7 +924,7 @@ export class MealPlanSelectionFlow {
       loggedSelectionIds: outcome.response.logged_selection_ids,
       pendingOperationId,
       idempotencyKey: pendingOperationId,
-      dashboardImplementation: "mock",
+      dashboardImplementation,
       selections: outcome.selections.map((selection) => this.selectionPayload(selection, state.includeSodium)),
       conversationContext: this.contextOf({ ...state, phase: "completed" }),
     }, [{ tool: "confirm_and_log_meal_selection", ok: true, code: null }]);

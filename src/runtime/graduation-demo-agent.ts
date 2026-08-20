@@ -40,6 +40,7 @@ import { MealSelectionTools, type MealCategoryRecipeRecord, type MealCategoryRec
 import { MealPlanSelectionFlow, type MealSelectionState } from "./meal-plan-selection.js";
 import type { DashboardClient, DashboardMealCategory } from "../services/dashboard/dashboard-client.js";
 import { MockDashboardClient } from "../services/dashboard/mock-dashboard-client.js";
+import { HttpDashboardClient } from "../services/dashboard/http-dashboard-client.js";
 import { InMemoryPendingMealOperationStore, type FrozenMealNutrition, type PendingMealOperationStore } from "../services/dashboard/pending-meal-operations.js";
 import {
   NutriGuardBackendClient,
@@ -2682,7 +2683,7 @@ function buildMealPlanSelectionFlow(
   const pendingOperations = input.pendingOperations ?? new InMemoryPendingMealOperationStore();
   const tools = new MealSelectionTools({
     recipes: new DemoMealCategoryRecipeSource(dataset, demoVerificationStatuses(dataset)),
-    dashboard: input.dashboard ?? new MockDashboardClient(),
+    dashboard: input.dashboard ?? dashboardFromEnvironment() ?? new MockDashboardClient(),
     pendingOperations,
     now: input.now,
   });
@@ -2706,6 +2707,16 @@ function buildMealPlanSelectionFlow(
       if (!nutrition) return null;
       return { name: language === "en" ? recipe.name_en : recipe.name_ar, nutrition };
     },
+  });
+}
+
+function dashboardFromEnvironment(): DashboardClient | null {
+  const baseUrl = process.env.NUTRIGUARD_DASHBOARD_BASE_URL?.trim() || process.env.NUTRIGUARD_BACKEND_BASE_URL?.trim();
+  if (!baseUrl) return null;
+  return new HttpDashboardClient({
+    baseUrl,
+    bearerToken: process.env.NUTRIGUARD_DASHBOARD_TOKEN?.trim() || process.env.NUTRIGUARD_BACKEND_TOKEN?.trim(),
+    timeoutMs: Number(process.env.NUTRIGUARD_DASHBOARD_TIMEOUT_MS ?? "10000"),
   });
 }
 
